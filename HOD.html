@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heads of Department | Mbarara Army Boarding Secondary School</title>
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Meet the Heads of Department at Mbarara Army Boarding Secondary School. Academic leaders guiding curriculum development and teaching excellence across all disciplines.">
+    <meta name="keywords" content="Mbarara Army School, Heads of Department, Academic Leadership, School Departments, Science Department, Humanities Department, Languages Department, Vocational Department">
+    <meta name="author" content="Mbarara Army Boarding Secondary School">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Heads of Department | Mbarara Army Boarding Secondary School">
+    <meta property="og:description" content="Academic leaders who guide curriculum development and teaching excellence">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mbararaarmyschool.edu.ug/hod.html">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin: 1rem 0 2rem;
+            padding: 0.6rem 1.2rem;
+            background-color: #097e19; /* Army blue from previous pages */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            background-color: #082548;
+            transform: translateY(-2px);
+        }
+
+        .back-button svg {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        
+        /* Header Styles - Consistent with other pages */
+        .page-header {
+            background-color:  #097e19; /* Primary army blue */
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('image/academic-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient  #006341;
+        }
+        
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+            color: #e0e0e0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Department Tabs - Updated colors */
+        .department-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .tab-button {
+            padding: 0.7rem 1.5rem;
+            background-color: #e9ecef;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: #495057;
+            border: 2px solid transparent;
+        }
+        
+        .tab-button:hover {
+            background-color: #dee2e6;
+            transform: translateY(-2px);
+        }
+        
+        .tab-button.active {
+            background-color: #0a2e5c;
+            color: white;
+            border-color: #0a2e5c;
+            box-shadow: 0 4px 8px rgba(10, 46, 92, 0.2);
+        }
+        
+        /* Staff Grid */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .staff-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid #eaeaea;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(10, 46, 92, 0.15);
+            border-color: #0a2e5c;
+        }
+
+        .staff-img-container {
+            width: 100%;
+            padding: 1.5rem 1.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .staff-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
+        }
+        
+        .staff-card:hover .staff-img {
+            border-color: #0a2e5c;
+        }
+        
+        .staff-info {
+            padding: 1.5rem;
+        }
+        
+        .staff-name {
+            color: #0a2e5c;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .staff-title {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            color: #d9534f; /* Keep red for emphasis */
+            line-height: 1.4;
+        }
+        
+        .staff-department {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-style: italic;
+            padding: 0.3rem 0.8rem;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            display: inline-block;
+            border: 1px solid #e9ecef;
+        }
+        
+        /* Modal Styles - Updated colors */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+
+        .close-modal:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .modal-header {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0a2e5c 0%, #164863 100%);
+        }
+        
+        .modal-header img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+            position: relative;
+        }
+        
+        .modal-header-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 46, 92, 0.95), transparent);
+            padding: 2rem 1.5rem 1rem;
+            color: white;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .modal-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+            color: white;
+        }
+        
+        .modal-title {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: #e0e0e0;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-section {
+            margin-bottom: 1.8rem;
+        }
+        
+        .modal-section h3 {
+            color: #0a2e5c;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .modal-bio {
+            line-height: 1.7;
+            color: #495057;
+        }
+        
+        .modal-contact {
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem 0;
+        }
+        
+        .contact-icon {
+            margin-right: 0.8rem;
+            color: #0a2e5c;
+            font-size: 1.2rem;
+            min-width: 24px;
+            text-align: center;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .staff-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .modal-name {
+                font-size: 1.5rem;
+            }
+
+            .staff-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .modal-header img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .staff-img {
+                width: 130px;
+                height: 130px;
+            }
+
+            .modal-header img {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .department-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-button {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .modal-header {
+                height: 220px;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="container">
+        <a href="staff.html" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+            Back to Staff
+        </a>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">Heads of Department</h1>
+            <p class="page-subtitle">Our academic leaders who guide curriculum development and teaching excellence across all disciplines at Mbarara Army Boarding Secondary School</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Department Tabs -->
+        <div class="department-tabs">
+            <button class="tab-button active" onclick="filterDepartments('all')">All Departments</button>
+            <button class="tab-button" onclick="filterDepartments('sciences')">Sciences</button>
+            <button class="tab-button" onclick="filterDepartments('humanities')">Humanities</button>
+            <button class="tab-button" onclick="filterDepartments('languages')">Languages</button>
+            <button class="tab-button" onclick="filterDepartments('vocational')">Vocational</button>
+        </div>
+        
+        <div class="staff-grid" id="departmentStaffGrid">
+            <!-- Staff cards remain the same as in your original code -->
+            <!-- Sciences -->
+            <div class="staff-card" data-department="humanities" onclick="openModal('SSM')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/JULIUS.jpg" alt="WO1. ISABIRYE JULIUS" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">WO1. ISABIRYE JULIUS</h3>
+                    <p class="staff-title">SSM</p>
+                    <p class="staff-department">HISTORY | CRE</p>
+                </div>
+            </div>
+
+            <div class="staff-card" data-department="sciences" onclick="openModal('CHRIS')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/CHRIS.jpg" alt="WO1.KATSEGHE CHRISPUS" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">WO1.KATSEGHE CHRISPUS</h3>
+                    <p class="staff-title">GAMES & SPORTS | POLITICAL COMMISSAR(PC)</p>
+                    <p class="staff-department">CST(ICT)</p>
+                </div>
+            </div>
+
+            <div class="staff-card" data-department="sciences" onclick="openModal('ENOS')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/enos.jpg" alt="RUREMA HENRY ENOS" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">RUREMA HENRY ENOS</h3>
+                    <p class="staff-title">Head of Department</p>
+                    <p class="staff-department">Chemistry</p>
+                </div>
+            </div>
+            
+            <!-- Mathematics -->
+            <div class="staff-card" data-department="sciences" onclick="openModal('BENJAMIN')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/BENJAMIN.jpg" alt="MWESIGWA BENJAMIN" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MWESIGWA BENJAMIN</h3>
+                    <p class="staff-title">Head of Department</p>
+                    <p class="staff-department">Mathematics</p>
+                </div>
+            </div>
+            
+            <!-- Humanities -->
+            <div class="staff-card" data-department="humanities" onclick="openModal('HUMBLY')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/humbly.jpg" alt="WO1. TUMUSHABE HUMBLY" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">WO1. TUMUSHABE HUMBLY</h3>
+                    <p class="staff-title">Head of Department</p>
+                    <p class="staff-department">Geography</p>
+                </div>
+            </div>
+
+            <div class="staff-card" data-department="sciences" onclick="openModal('HANNINGTON')">
+                <div class="staff-img-container">
+                    <img src="image/holder.png" alt="MR.NUWAMANYA HANNINGTON" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR.NUWAMANYA HANNINGTON</h3>
+                    <p class="staff-title">Head of Department</p>
+                    <p class="staff-department">PHYSICS</p>
+                </div>
+            </div>
+            
+            <div class="staff-card" data-department="sciences" onclick="openModal('ISAAC')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/balu.jpg" alt="MR.BALU ISAAC" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR.BALU ISAAC</h3>
+                    <p class="staff-title">Head of Department</p>
+                    <p class="staff-department">Biology</p>
+                </div>
+            </div>
+
+            <div class="staff-card" data-department="sciences" onclick="openModal('FRANCIS')">
+                <div class="staff-img-container">
+                    <img src="image/holder.png" alt="IKOBA FRANCIS" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">IKOBA FRANCIS</h3>
+                    <p class="staff-title">Head of Department</p>
+                    <p class="staff-department"></p>
+                </div>
+            </div>
+            
+            <div class="staff-card" data-department="humanities" onclick="openModal('MOHAMMOOD')">
+                <div class="staff-img-container">
+                    <img src="image/holder.png" alt="KASSIM MOHAMMOOD" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">KASSIM MOHAMMOOD</h3>
+                    <p class="staff-title">Head of Department</p>
+                    <p class="staff-department">IRE</p>
+                </div>
+            </div>
+
+            <div class="staff-card" data-department="vocational" onclick="openModal('JULIUS')">
+                <div class="staff-img-container">
+                    <img src="image/holder.png" alt="MR.MUGUMYA JULIUS" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR.MUGUMYA JULIUS</h3>
+                    <p class="staff-title">Head of Department</p>
+                    <p class="staff-department">Enterprenuership</p>
+                </div>
+            </div>
+
+            <div class="staff-card" data-department="vocational" onclick="openModal('RONALD')">
+                <div class="staff-img-container">
+                    <img src="image/holder.png" alt="TAYEBWA RONALD" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">TAYEBWA RONALD</h3>
+                    <p class="staff-title">Head of Department</p>
+                    <p class="staff-department">ART</p>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="staff-card" data-department="humanities" onclick="openModal('kasikye')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/KHASIKYE (1).jpg" alt="SGT. KHASIKYE MOSES SAMSON" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">SGT. KHASIKYE MOSES SAMSON</h3>
+                    <p class="staff-title">QUOTA MASTER</p>
+                    <p class="staff-department">Divinity</p>
+                </div>
+            </div>
+
+            <div class="staff-card" data-department="languages" onclick="openModal('kisw')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/madam.jpg" alt="MS. ATWIJUKIRE BEATRICE" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MS. ATWIJUKIRE BEATRICE</h3>
+                    <p class="staff-title">HOD KISWAHILI</p>
+                    <p class="staff-department">Welfare Incharge</p>
+                </div>
+            </div>
+
+            <div class="staff-card" data-department="languages" onclick="openModal('ENG')">
+                <div class="staff-img-container">
+                    <img src="image/holder.png" alt="MR.BESIMIRA MUSA" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR.BESIMIRA MUSA</h3>
+                    <p class="staff-title">HOD ENGLISH</p>
+                    <p class="staff-department">CAREER MASTERS</p>
+                </div>
+            </div>
+            
+            <!-- Vocational -->
+            <div class="staff-card" data-department="vocational" onclick="openModal('SLATTER')">
+                <div class="staff-img-container">
+                    <img src="image/wa.jpg" alt="Mr. ARINATWE SLATTER" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">Mr. ARINATWE SLATTER</h3>
+                    <p class="staff-title">Head of AGRICULTURE</p>
+                    <p class="staff-department">Agriculture</p>
+                </div>
+            </div>
+            
+            <!-- ICT -->
+            <div class="staff-card" data-department="sciences" onclick="openModal('RICHARD')">
+                <div class="staff-img-container">
+                    <img src="image/rich.jpg" alt="L/CPL. AHEEBWA RICHARD" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">L/CPL. AHEEBWA RICHARD</h3>
+                    <p class="staff-title">Head of ICT</p>
+                    <p class="staff-department">Computer Studies</p>
+                </div>
+            </div>
+
+            <div class="staff-card" data-department="humanities" onclick="openModal('MDD')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/Christine.jpg" alt="MS. NAKATO CHRISTINE" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MS. NAKATO CHRISTINE</h3>
+                    <p class="staff-title">Patron MDD & SPORTS</p>
+                    <p class="staff-department">HISTORY | MUISC</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="staffModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <img id="modalStaffImg" src="" alt="Staff Photo">
+                <div class="modal-header-overlay">
+                    <h2 class="modal-name" id="modalStaffName"></h2>
+                    <p class="modal-title" id="modalStaffTitle"></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>Department Information</h3>
+                    <p id="modalStaffDepartment"></p>
+                    <p id="modalStaffExperience"></p>
+                    <p id="modalStaffQualifications"></p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Department Vision</h3>
+                    <p class="modal-bio" id="modalStaffVision"></p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Key Responsibilities</h3>
+                    <p class="modal-bio" id="modalStaffResponsibilities"></p>
+                </div>
+                
+                <div class="modal-section modal-contact">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <span id="modalStaffPhone"></span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <span id="modalStaffEmail"></span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🏢</span>
+                        <span id="modalStaffOffice"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Staff data - Updated with actual staff information
+        const hodData = {
+            'ENOS': {
+                name: 'RUREMA HENRY ENOS',
+                title: 'Head of Chemistry Department',
+                department: 'Chemistry Department',
+                experience: '10+ years teaching experience in Chemistry',
+                qualifications: 'MSc in Chemistry, BEd in Science Education',
+                vision: 'To cultivate scientific curiosity and develop practical skills in chemistry that prepare students for higher education and careers in science and technology.',
+                responsibilities: 'Oversees chemistry curriculum development, coordinates laboratory experiments and safety protocols, mentors chemistry teachers, and organizes science exhibitions.',
+                phone: '+256 772 123456',
+                email: 'henry.enos@mabararaarmyschool.edu.ug',
+                office: 'Science Block, Chemistry Lab',
+                image: 'image/Staff/enos.jpg'
+            },
+            'BENJAMIN': {
+                name: 'MWESIGWA BENJAMIN',
+                title: 'Head of Mathematics Department',
+                department: 'Mathematics Department',
+                experience: '12+ years teaching Mathematics',
+                qualifications: 'MSc in Mathematics, BEd in Mathematics Education',
+                vision: 'To develop logical thinking and problem-solving skills through mathematics, making the subject accessible and enjoyable for all students.',
+                responsibilities: 'Leads mathematics curriculum planning, implements innovative teaching strategies, coordinates math competitions, and provides teacher development.',
+                phone: '+256 772 234567',
+                email: 'benjamin.mwesigwa@mabararaarmyschool.edu.ug',
+                office: 'Mathematics Wing, Room 201',
+                image: 'image/Staff/BENJAMIN.jpg'
+            },
+            'HUMBLY': {
+                name: 'WO1. TUMUSHABE HUMBLY',
+                title: 'Head of Geography Department',
+                department: 'Geography Department',
+                experience: '8+ years teaching Geography',
+                qualifications: 'BSc in Geography, Diploma in Education',
+                vision: 'To develop spatial awareness and understanding of human-environment interactions that prepares students to address geographical challenges.',
+                responsibilities: 'Coordinates geography curriculum, organizes field trips and geographical research projects, oversees map reading and GIS activities.',
+                phone: '+256 772 345678',
+                email: 'humbly.tumushabe@mabararaarmyschool.edu.ug',
+                office: 'Humanities Block, Room 105',
+                image: 'image/Staff/humbly.jpg'
+            },
+            'ISAAC': {
+                name: 'MR. BALU ISAAC',
+                title: 'Head of Biology Department',
+                department: 'Biology Department',
+                experience: '9+ years teaching Biology',
+                qualifications: 'MSc in Biology, BEd in Science Education',
+                vision: 'To foster appreciation for biological sciences and understanding of living organisms, ecosystems, and environmental conservation.',
+                responsibilities: 'Manages biology curriculum, oversees laboratory practicals, coordinates environmental conservation projects, and organizes biology field studies.',
+                phone: '+256 772 456789',
+                email: 'isaac.balu@mabararaarmyschool.edu.ug',
+                office: 'Science Block, Biology Lab',
+                image: 'image/Staff/balu.jpg'
+            },
+            'HANNINGTON': {
+                name: 'MR. NUWAMANYA HANNINGTON',
+                title: 'Head of Physics Department',
+                department: 'Physics Department',
+                experience: '7+ years teaching Physics',
+                qualifications: 'MSc in Physics, BEd in Physics Education',
+                vision: 'To develop understanding of physical principles and their applications in technology and everyday life.',
+                responsibilities: 'Oversees physics curriculum, coordinates laboratory experiments, maintains physics equipment, and organizes physics competitions.',
+                phone: '+256 772 567890',
+                email: 'hannington.nuwamanya@mabararaarmyschool.edu.ug',
+                office: 'Science Block, Physics Lab',
+                image: 'image/holder.png'
+            },
+            'RICHARD': {
+                name: 'L/CPL. AHEEBWA RICHARD',
+                title: 'Head of ICT Department',
+                department: 'Computer Studies Department',
+                experience: '6+ years teaching ICT',
+                qualifications: 'BSc in Computer Science, Diploma in ICT Education',
+                vision: 'To prepare digitally literate students who can leverage technology for learning, innovation, and solving community challenges.',
+                responsibilities: 'Manages ICT curriculum, oversees computer labs, provides technology integration support, and coordinates coding clubs.',
+                phone: '+256 772 678901',
+                email: 'richard.aheebwa@mabararaarmyschool.edu.ug',
+                office: 'ICT Center, Computer Lab 1',
+                image: 'image/rich.jpg'
+            },
+            'SLATTER': {
+                name: 'Mr. ARINATWE SLATTER',
+                title: 'Head of Agriculture Department',
+                department: 'Agriculture Department',
+                experience: '8+ years teaching Agriculture',
+                qualifications: 'BSc in Agricultural Education, Diploma in Farm Management',
+                vision: 'To equip students with practical agricultural skills for self-reliance and contribution to food security.',
+                responsibilities: 'Manages school farm, coordinates agricultural projects, oversees practical sessions, and organizes agricultural shows.',
+                phone: '+256 772 789012',
+                email: 'slatter.arinatwe@mabararaarmyschool.edu.ug',
+                office: 'Agriculture Department Office',
+                image: 'image/wa.jpg'
+            },
+            // Add more staff data as needed
+        };
+        
+        // Filter departments
+        function filterDepartments(department) {
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Activate the clicked button
+            event.target.classList.add('active');
+            
+            const staffCards = document.querySelectorAll('.staff-card');
+            staffCards.forEach(card => {
+                if (department === 'all' || card.getAttribute('data-department') === department) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Modal functions
+        function openModal(staffId) {
+            const staff = hodData[staffId];
+            if (!staff) {
+                // Default data for staff not in hodData
+                const staffCard = event.currentTarget;
+                const name = staffCard.querySelector('.staff-name').textContent;
+                const title = staffCard.querySelector('.staff-title').textContent;
+                const department = staffCard.querySelector('.staff-department').textContent;
+                const imgSrc = staffCard.querySelector('.staff-img').src;
+                
+                document.getElementById('modalStaffImg').src = imgSrc;
+                document.getElementById('modalStaffName').textContent = name;
+                document.getElementById('modalStaffTitle').textContent = title;
+                document.getElementById('modalStaffDepartment').textContent = department;
+                document.getElementById('modalStaffExperience').textContent = 'Detailed information to be added';
+                document.getElementById('modalStaffQualifications').textContent = 'Qualifications to be updated';
+                document.getElementById('modalStaffVision').textContent = 'Department vision statement to be provided';
+                document.getElementById('modalStaffResponsibilities').textContent = 'Key responsibilities to be outlined';
+                document.getElementById('modalStaffPhone').textContent = 'Phone number to be provided';
+                document.getElementById('modalStaffEmail').textContent = 'Email address to be provided';
+                document.getElementById('modalStaffOffice').textContent = 'Office location to be specified';
+            } else {
+                document.getElementById('modalStaffImg').src = staff.image;
+                document.getElementById('modalStaffName').textContent = staff.name;
+                document.getElementById('modalStaffTitle').textContent = staff.title;
+                document.getElementById('modalStaffDepartment').textContent = staff.department;
+                document.getElementById('modalStaffExperience').textContent = staff.experience;
+                document.getElementById('modalStaffQualifications').textContent = staff.qualifications;
+                document.getElementById('modalStaffVision').textContent = staff.vision;
+                document.getElementById('modalStaffResponsibilities').textContent = staff.responsibilities;
+                document.getElementById('modalStaffPhone').textContent = staff.phone;
+                document.getElementById('modalStaffEmail').textContent = staff.email;
+                document.getElementById('modalStaffOffice').textContent = staff.office;
+            }
+            
+            const modal = document.getElementById('staffModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('staffModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside content
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('staffModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

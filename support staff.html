@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Staff | Mbarara Army Boarding Secondary School</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin: 1rem 0 2rem;
+            padding: 0.6rem 1.2rem;
+            background-color: #006341;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #004d33;
+        }
+
+        .back-button svg {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        
+        /* Header Styles */
+        .page-header {
+            background-color: #006341;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('image/support-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        /* Staff Grid */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .staff-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .staff-img-container {
+            width: 100%;
+            padding: 1.5rem 1.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .staff-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .staff-info {
+            padding: 1.5rem;
+        }
+        
+        .staff-name {
+            color: #006341;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .staff-title {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+        
+        .staff-qualification {
+            font-size: 0.85rem;
+            color: #868e96;
+            font-style: italic;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #666;
+            background: none;
+            border: none;
+            z-index: 10;
+        }
+        
+        .modal-header {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-header img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-header-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 99, 65, 0.9), transparent);
+            padding: 2rem 1.5rem 1rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .modal-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .modal-title {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-section h3 {
+            color: #006341;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+        
+        .modal-bio {
+            line-height: 1.7;
+        }
+        
+        .modal-contact {
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-icon {
+            margin-right: 0.8rem;
+            color: #006341;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .staff-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .modal-name {
+                font-size: 1.5rem;
+            }
+
+            .staff-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .modal-header img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .staff-img {
+                width: 130px;
+                height: 130px;
+            }
+
+            .modal-header img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="container">
+        <a href="staff.html" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+            Back to Staff
+        </a>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">Support Staff</h1>
+            <p class="page-subtitle">The dedicated professionals who keep our school running smoothly</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="staff-grid">
+            <!-- Counselor -->
+            <div class="staff-card" onclick="openModal('counselor')">
+                <div class="staff-img-container">
+                    <img src="image/holder.png" alt="ASKARI" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">NAME</h3>
+                    <p class="staff-title">ASKARI</p>
+                    <p class="staff-qualification"> </p>
+                </div>
+            </div>
+            
+            <!-- Librarian -->
+            <div class="staff-card" onclick="openModal('librarian')">
+                <div class="staff-img-container">
+                    <img src="image/holder.png" alt="ASKARI" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">NAME</h3>
+                    <p class="staff-title">ASKARI</p>
+                    <p class="staff-qualification">  </p>
+                </div>
+            </div>
+            
+            <!-- IT Specialist -->
+
+            <div class="staff-card" onclick="openModal('it-specialist')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/BOAZ.jpg" alt="IT Support Specialist" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR. AHIMBISIBWE BOAZ</h3>
+                    <p class="staff-title">COOK</p>
+                    <p class="staff-qualification"> </p>
+                </div>
+            </div>
+
+            <div class="staff-card" onclick="openModal('it-specialist')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/DINAH.jpg" alt="IT Support Specialist" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MS. KYATUHAIRE DINNAH</h3>
+                    <p class="staff-title">OFFICE ATTENDANT</p>
+                    <p class="staff-qualification"> </p>
+                </div>
+            </div>
+
+            <div class="staff-card" onclick="openModal('it-specialist')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/PAFURAS.jpg" alt="IT Support Specialist" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR. MBABAZI POFURAZI</h3>
+                    <p class="staff-title">COOK</p>
+                    <p class="staff-qualification"> </p>
+                </div>
+            </div>
+
+            <div class="staff-card" onclick="openModal('it-specialist')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/JUMA.jpg" alt="IT Support Specialist" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR. MASEREKA JUMA</h3>
+                    <p class="staff-title">COOK</p>
+                    <p class="staff-qualification"> </p>
+                </div>
+            </div>
+
+            <div class="staff-card" onclick="openModal('it-specialist')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/PIUS.jpg" alt="IT Support Specialist" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR. MUBANGIZI PUIS</h3>
+                    <p class="staff-title">COOK</p>
+                    <p class="staff-qualification"> </p>
+                </div>
+            </div>
+
+            <div class="staff-card" onclick="openModal('it-specialist')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/ASUMPTA.jpg" alt="IT Support Specialist" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MS. NYANGOMA ASUMPTA MATENE</h3>
+                    <p class="staff-title">COOK</p>
+                    <p class="staff-qualification"> </p>
+                </div>
+            </div>
+            
+            <!-- Nurse -->
+            <div class="staff-card" onclick="openModal('nurse')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/GODFREY.jpg" alt="School Nurse" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR. NGASIRWA GODFREY</h3>
+                    <p class="staff-title">GARDENER</p>
+                    <p class="staff-qualification"> </p>
+                </div>
+            </div>
+
+            <div class="staff-card" onclick="openModal('it-specialist')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/PAUL.jpg" alt="IT Support Specialist" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">TWINOMUJUNI PAUL</h3>
+                    <p class="staff-title">FARMER</p>
+                    <p class="staff-qualification"> </p>
+                </div>
+            </div>
+            
+            <!-- Accountant -->
+            <div class="staff-card" onclick="openModal('accountant')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/MUBA.jpg" alt="School Accountant" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MUBANGIZI MESITERIO</h3>
+                    <p class="staff-title">COOK</p>
+                    <p class="staff-qualification">  </p>
+                </div>
+            </div>
+            
+            <!-- Laboratory Technician -->
+            <div class="staff-card" onclick="openModal('lab-tech')">
+                <div class="staff-img-container">
+                    <img src="image/Staff/TWINA.jpg" alt="Laboratory Technician" class="staff-img">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">TWINEMASIKO DAVID</h3>
+                    <p class="staff-title">COOK</p>
+                    <p class="staff-qualification"> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="staffModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <img id="modalStaffImg" src="" alt="Staff Photo">
+                <div class="modal-header-overlay">
+                    <h2 class="modal-name" id="modalStaffName"></h2>
+                    <p class="modal-title" id="modalStaffTitle"></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>Professional Information</h3>
+                    <p id="modalStaffQualification"></p>
+                    <p id="modalStaffExperience"></p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Responsibilities</h3>
+                    <p class="modal-bio" id="modalStaffResponsibilities"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Staff data
+        const supportStaffData = {
+            'counselor': {
+                name: 'Ms. Jennifer Adams',
+                title: 'School Counselor',
+                qualification: 'MA Counseling Psychology, Makerere University | BA Social Work, Kyambogo University',
+                experience: '12 years of counseling experience in educational settings',
+                responsibilities: 'Provides academic and emotional support to students. Specializes in adolescent development, career counseling, and crisis intervention. Conducts regular guidance sessions and organizes workshops on study skills, stress management, and career planning.',
+            },
+            'librarian': {
+                name: 'Mrs. Susan Miller',
+                title: 'School Librarian',
+                qualification: 'BLIS (Bachelor of Library and Information Science), Makerere University | Diploma in Library Science',
+                experience: '15 years of experience in library management',
+                responsibilities: 'Manages the school\'s extensive library resources including books, e-books, and research materials. Organizes reading programs, author visits, and book fairs. Provides information literacy instruction to students and maintains the library\'s digital catalog system.',
+                phone: '+256 782 234567',
+                email: 's.miller@mabss.edu.ug',
+                office: 'Main Library, Academic Block',
+                image: 'image/librarian.jpg'
+            },
+            'it-specialist': {
+                name: 'Mr. Thomas Lee',
+                title: 'IT Support Specialist',
+                qualification: 'BSc. Computer Science, Mbarara University | Cisco Certified Network Associate (CCNA)',
+                experience: '8 years of IT support experience in educational institutions',
+                responsibilities: 'Manages all school technology systems including network infrastructure, computer labs, and software. Provides technical support to staff and students. Conducts technology training workshops and maintains the school\'s website and learning management system.',
+                phone: '+256 782 345678',
+                email: 't.lee@mabss.edu.ug',
+                office: 'IT Department, Administration Block',
+                image: 'image/it-specialist.jpg'
+            },
+            'nurse': {
+                name: 'Ms. Grace Nakimuli',
+                title: 'School Nurse',
+                qualification: 'Diploma in Nursing, Mulago School of Nursing | Certified in First Aid and Emergency Response',
+                experience: '10 years of nursing experience, 5 years in school health',
+                responsibilities: 'Provides primary healthcare services to students and staff. Maintains health records and administers medications. Conducts health education sessions and coordinates with local health facilities for referrals. Manages the school\'s health clinic and first aid stations.',
+                phone: '+256 782 456789',
+                email: 'g.nakimuli@mabss.edu.ug',
+                office: 'School Clinic, Near Dormitories',
+                image: 'image/nurse.jpg'
+            },
+            'accountant': {
+                name: 'Mr. David Kato',
+                title: 'School Accountant',
+                qualification: 'CPA Uganda | BBA Accounting, Makerere University',
+                experience: '14 years of accounting experience in educational institutions',
+                responsibilities: 'Manages all financial operations including fees collection, payroll, and budgeting. Prepares financial reports and ensures compliance with accounting standards. Oversees school procurement processes and maintains relationships with financial institutions.',
+                phone: '+256 782 567890',
+                email: 'd.kato@mabss.edu.ug',
+                office: 'Accounts Office, Administration Block',
+                image: 'image/accountant.jpg'
+            },
+            'lab-tech': {
+                name: 'Mr. Robert Ssemakula',
+                title: 'Laboratory Technician',
+                qualification: 'Diploma in Laboratory Technology, Mulago Paramedical School | Certified in Laboratory Safety',
+                experience: '9 years of experience in school laboratory management',
+                responsibilities: 'Prepares and maintains all science laboratory equipment and materials. Ensures safety protocols are followed during experiments. Assists teachers in demonstrating experiments and maintains inventory of laboratory supplies. Oversees proper disposal of laboratory waste.',
+                phone: '+256 782 678901',
+                email: 'r.ssemakula@mabss.edu.ug',
+                office: 'Science Laboratory Block',
+                image: 'image/lab-tech.jpg'
+            }
+        };
+        
+        // Modal functions
+        function openModal(staffId) {
+            const staff = supportStaffData[staffId];
+            if (!staff) return;
+            
+            document.getElementById('modalStaffImg').src = staff.image;
+            document.getElementById('modalStaffName').textContent = staff.name;
+            document.getElementById('modalStaffTitle').textContent = staff.title;
+            document.getElementById('modalStaffQualification').textContent = staff.qualification;
+            document.getElementById('modalStaffExperience').textContent = staff.experience;
+            document.getElementById('modalStaffResponsibilities').textContent = staff.responsibilities;
+            document.getElementById('modalStaffPhone').textContent = staff.phone;
+            document.getElementById('modalStaffEmail').textContent = staff.email;
+            document.getElementById('modalStaffOffice').textContent = staff.office;
+            
+            const modal = document.getElementById('staffModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('staffModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside content
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('staffModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

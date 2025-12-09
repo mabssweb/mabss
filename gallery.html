@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mbarara Army Boarding SS - Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a237e;
+            --navy-light: #283593;
+            --gold: #ffd700;
+            --gold-light: #ffecb3;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #e9ecef;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --accent: #4361ee;
+            --accent-light: #4895ef;
+            --army-green: #0e7704;
+            --army-green-dark: #004d33;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Bar - Positioned at Top */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 300px;
+            padding-right: 100px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: var(--army-green);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            width: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-right: 0.5rem;
+        }
+        
+        .school-name {
+            margin: 0;
+            font-size: 1rem;
+            white-space: nowrap;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: block;
+        }
+        
+        .nav-menu {
+            display: none;
+            background-color: var(--army-green);
+            padding: 1rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-menu.show {
+            display: block;
+        }
+        
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-item {
+            margin: 0.5rem 0;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(18, 75, 141, 0.8), rgba(42, 63, 44, 0.9)), 
+                        url('image/of.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.5s ease;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Gallery Navigation */
+        .gallery-nav {
+            padding-left: 400px;
+            background-color: var(--army-green-dark);
+        }
+        
+        .gallery-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-buttons {
+            display: flex;
+            overflow-x: auto;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+        }
+        
+        .gallery-link {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-link:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        /* Photo Gallery */
+        .gallery-section {
+            padding: 3rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--navy);
+            font-size: 2.2rem;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(to right, var(--navy), var(--accent));
+            margin: 15px auto;
+            border-radius: 5px;
+        }
+        
+        .gallery-grid {
+            columns: 1;
+            column-gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            background-color: var(--white);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            margin: 0;
+            padding: 1rem;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Video Gallery */
+        .video-section {
+            padding: 3rem 1rem;
+            background-color: var(--gray-light);
+        }
+        
+        .video-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .video-player {
+            width: 100%;
+            display: block;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+        }
+        
+        .video-card-title {
+            color: var(--navy);
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        .video-card-desc {
+            margin: 0.5rem 0 0;
+            color: var(--text-light);
+        }
+
+        /* Alumni Section - Directory Style */
+        .alumni-section {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, var(--gray-light), var(--white));
+        }
+
+        .alumni-carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .alumni-carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .alumni-card {
+            min-width: 100%;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--gray-light), var(--white));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .alumni-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 5px solid var(--gold);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .alumni-name {
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-size: 1.7rem;
+            font-weight: 600;
+        }
+
+        .alumni-position {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+        }
+
+        .alumni-desc {
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .carousel-btn {
+            background: linear-gradient(to right, var(--navy), var(--accent));
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .view-more {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .view-more-btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .view-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        /* Footer */
+
+                .footer {
+            background-color: #004d33;
+            color: white;
+            padding: 2rem 1rem;
+        }
+         .social-media {
+            margin-top: 1.5rem;
+        }
+        
+        .social-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icon.facebook:hover {
+            background-color: #3b5998;
+        }
+        
+        .social-icon.twitter:hover {
+            background-color: #1da1f2;
+        }
+        
+        .social-icon.youtube:hover {
+            background-color: #ff0000;
+        }
+        
+        .social-icon.pinterest:hover {
+            background-color: #bd081c;
+        }
+        
+        .social-icon.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .social-icon.whatsapp:hover {
+            background-color: #25d366;
+        }
+        
+        .social-icon.linkedin:hover {
+            background-color: #0077b5;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .footer-section {
+            min-width: 250px;
+        }
+        
+        .footer-heading {
+            border-bottom: 2px solid #006341;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #006341;
+        }
+        
+        .footer {
+            background-color: var(--army-green-dark);
+            color: var(--white);
+            padding: 3rem 1rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .footer-section {
+            min-width: 250px;
+        }
+        
+        .footer-heading {
+            border-bottom: 2px solid var(--army-green);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-item {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-link {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--gold-light);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--army-green);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+            
+            .nav-menu {
+                display: flex;
+                position: static;
+                background: transparent;
+                padding: 0;
+                width: auto;
+                box-shadow: none;
+            }
+            
+            .nav-list {
+                flex-direction: row;
+            }
+            
+            .nav-item {
+                margin: 0 0.5rem;
+            }
+            
+            .gallery-grid {
+                columns: 2;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 3.5rem;
+            }
+            
+            .school-name {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .gallery-grid {
+                columns: 3;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .school-name {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar - At the Top -->
+    <div class="nav-container">
+        <div class="logo-container">
+            <img src="image/logo mabss.jpg" alt="logo mabss" class="logo">
+            <h1 class="school-name">Mbarara Army Boarding<br> Secondary School</h1>
+        </div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <nav class="nav-menu" id="mainNav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
+                <li class="nav-item"><a href="login.html" class="nav-link">Materials</a></li>
+                <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>School Gallery</h1>
+                <p>Capturing moments of excellence, discipline, and achievement</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Gallery Navigation -->
+    <section class="gallery-nav">
+        <div class="gallery-nav-container">
+            <div class="gallery-buttons">
+                <a href="events.html" class="gallery-link">All Photos</a>
+                <a href="staff.html" class="gallery-link">Staff</a>
+                <a href="events.html" class="gallery-link">Sports</a>
+                <a href="events.html" class="gallery-link">Events</a>
+                <a href="events.html" class="gallery-link">Students Life</a>
+                <a href="events.html" class="gallery-link">Achievements</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="gallery-section">
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="image/SPRTS.jpg" alt="School Event" class="gallery-image">
+                <p class="gallery-caption">Annual Sports Day 2023 - Students showcasing their athletic talents</p>
+            </div>
+            <div class="gallery-item">
+                <img src="image/COMP.jpg" alt="Computer Lab" class="gallery-image">
+                <p class="gallery-caption">Computer Laboratory - Equipped with modern technology</p>
+            </div>
+            <div class="gallery-item">
+                <img src="image/heads/allll.JPG" alt="School Building" class="gallery-image">
+                <p class="gallery-caption">Main School Building - A conducive learning environment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery -->
+    <section class="video-section">
+        <div class="video-container">
+            <h2 class="section-title">Video Gallery</h2>
+            
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <video controls class="video-player" poster="video-poster.jpg">
+                        <source src="image/sports.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3 class="video-card-title">School Sports Day 2025</h3>
+                        <p class="video-card-desc">Highlights from our annual sports competition featuring various track and field events</p>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <video controls class="video-player" poster="video-poster.jpg">
+                        <source src="image/" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-info">
+                        <h3 class="video-card-title">End of Term Ceremony</h3>
+                        <p class="video-card-desc">Memorable moments from our End of Term 2024 celebrations and award ceremonies</p>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <video controls class="video-player" poster="video-poster.jpg">
+                        <source src="image/" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-info">
+                        <h3 class="video-card-title">Campus Tour</h3>
+                        <p class="video-card-desc">Explore our facilities, classrooms, and beautiful campus environment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Alumni Gallery -->
+    <section class="alumni-section">
+        <h2 class="section-title">OB's & OG's Success Stories</h2>
+        
+        <div class="alumni-carousel-container">
+            <div class="alumni-carousel" id="alumniCarousel">
+                <div class="alumni-card">
+                    <img src="image/Staff/RO.jpg" alt="Alumni" class="alumni-image">
+                    <h3 class="alumni-name">MR.TUMWESIGYE RONALD</h3>
+                    <p class="alumni-position">He was our Ob</p>
+                    <p class="alumni-desc">Once a student, now a teacher at my alma mater. Mbarara Army Boarding Secondary School instilled in me the discipline and passion I now bring to my History and Divinity classes. I teach here not just as a job, but as a duty to pass on the values I learned</p>
+                </div>
+                <div class="alumni-card">
+                    <img src="image/hm.jpg" alt="Alumni" class="alumni-image">
+                    <h3 class="alumni-name">Miss KABAHINDA SHANNITAH</h3>
+                    <p class="alumni-position">Social Worker</p>
+                    <p class="alumni-desc">Class of 2022, now pursuing Bachelors of Social Work at Kabale University.</p>
+                </div>
+                
+                <div class="alumni-card">
+                    <img src="image/tr.JPG" alt="Alumni" class="alumni-image">
+                    <h3 class="alumni-name">Miss ABAASA NANCY PATRA</h3>
+                    <p class="alumni-position">MENTOR</p>
+                    <p class="alumni-desc">Class of 2023, works with EDUCATE UGANDA. She was awarded the best science student in her final year and now mentors young girls in STEM fields.</p>
+                </div>
+                
+                <div class="alumni-card">
+                    <img src="image/MS.jpg" alt="Alumni" class="alumni-image">
+                    <h3 class="alumni-name">MR. TWIJUKYE EDSON</h3>
+                    <p class="alumni-position">GRC of COMPUTER SCIENCE at YMCA</p>
+                    <p class="alumni-desc">Former H.P (2022-2023). He was instrumental in establishing the school's coding club and now leads computer science initiatives at YMCA Comprehensive Institute.</p>
+                </div>
+                
+                <div class="alumni-card">
+                    <img src="image/no.jpg" alt="Alumni" class="alumni-image">
+                    <h3 class="alumni-name">MR. AMWINE FRANKLINE</h3>
+                    <p class="alumni-position">OB (2017-2023)</p>
+                    <p class="alumni-desc">7 Years of Transformation & Triumph! Student at KABALE UNIVERSITY pursuing Information Technology. He was the school's lead debater and represented the region in national competitions.</p>
+                </div>
+                
+                <div class="alumni-card">
+                    <img src="image/KATO.jpg" alt="Alumni" class="alumni-image">
+                    <h3 class="alumni-name">MR. KATO SURAIMAN</h3>
+                    <p class="alumni-position">OB (2017-2023)</p>
+                    <p class="alumni-desc">Pursuing BSC.COMPUTER SCIENCE at KABALE UNIVERSITY. He was the captain of the school's football team and maintains an active role in alumni sports initiatives.</p>
+                </div>
+            </div>
+            <div class="carousel-indicators" id="carouselIndicators">
+                <!-- Indicators will be added dynamically -->
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <div class="view-more">
+            <a href="#" class="view-more-btn">View More Success Stories</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-list">
+                   <li class="footer-item"><a href="homepage.html" class="footer-link">Home</a></li>
+                    <li class="footer-item"><a href="login.html" class="footer-link">Academics</a></li>
+                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
+                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
+                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
+                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
+                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Contact Us</h3>
+                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
+                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 |<br> +256 779 927775</p>
+                <p><strong>Email:</strong> mabss2014@gmail.com</p>
+
+                <!-- Social Media Icons -->
+                <div class="social-media">
+                    <h4 class="social-heading">Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/2567820906231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">School Hours</h3>
+                <p><strong>Monday - Friday:</strong> 7:00 AM - 4:00 PM</p>
+                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
+                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('show');
+        });
+
+        // Alumni Carousel Functionality
+        const alumniCarousel = document.getElementById('alumniCarousel');
+        const alumniCards = document.querySelectorAll('.alumni-card');
+        const alumniPrevBtn = document.querySelector('.alumni-section .prev-btn');
+        const alumniNextBtn = document.querySelector('.alumni-section .next-btn');
+        const carouselIndicators = document.getElementById('carouselIndicators');
+        let currentAlumniSlide = 0;
+
+        // Create indicators
+        alumniCards.forEach((_, index) => {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator';
+            if (index === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => {
+                showAlumniSlide(index);
+            });
+            carouselIndicators.appendChild(indicator);
+        });
+
+        const indicators = document.querySelectorAll('.indicator');
+
+        function showAlumniSlide(index) {
+            if (index < 0) index = alumniCards.length - 1;
+            if (index >= alumniCards.length) index = 0;
+            
+            // Update carousel position
+            alumniCarousel.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Update active indicator
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            indicators[index].classList.add('active');
+            
+            currentAlumniSlide = index;
+        }
+
+        // Add event listeners for carousel controls
+        if (alumniPrevBtn && alumniNextBtn) {
+            alumniPrevBtn.addEventListener('click', () => {
+                showAlumniSlide(currentAlumniSlide - 1);
+            });
+            
+            alumniNextBtn.addEventListener('click', () => {
+                showAlumniSlide(currentAlumniSlide + 1);
+            });
+        }
+
+        // Initialize the first slide
+        showAlumniSlide(0);
+
+        // Auto-advance carousel
+        setInterval(() => {
+            showAlumniSlide(currentAlumniSlide + 1);
+        }, 5000);
+    </script>
+</body>
+</html>

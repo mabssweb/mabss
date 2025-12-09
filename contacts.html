@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Mbarara Army Boarding SS - Contacts</title>
+    <style>
+        .here {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; 
+            padding: 0; 
+            background-color: #f5f5f5; 
+            color: #333;
+        }
+        
+        /* Responsive Navigation */
+        .header {
+            background-color: #0e7704;
+            color: white;
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            margin-right: 0.5rem;
+        }
+        
+        .school-name {
+            margin: 0;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .nav-menu {
+            display: none;
+            background-color: #0e7704;
+            padding: 1rem;
+        }
+        
+        .nav-menu.show {
+            display: block;
+        }
+        
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-item {
+            margin: 0.5rem 0;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 4px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('image/school/END.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 300px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 1rem;
+        }
+        
+        .hero-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Contact Information */
+        .section {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #006341;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            color: #006341;
+            display: flex;
+            align-items: center;
+            margin-top: 0;
+        }
+        
+        .card-title span {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Contact Form */
+        .form-section {
+            background-color: #f0f0f0;
+            padding: 2rem 1rem;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .form-label {
+            font-weight: bold;
+        }
+        
+        .form-input {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .form-button {
+            background-color: #006341;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        /* Map Section */
+        .map-container {
+            height: 300px;
+            background-color: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #004d33;
+            color: white;
+            padding: 2rem 1rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .footer-section {
+            min-width: 250px;
+        }
+        
+        .footer-heading {
+            border-bottom: 2px solid #006341;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #006341;
+        }
+        
+           .social-media {
+            margin-top: 1.5rem;
+        }
+        
+        .social-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icon.facebook:hover {
+            background-color: #3b5998;
+        }
+        
+        .social-icon.twitter:hover {
+            background-color: #1da1f2;
+        }
+        
+        .social-icon.youtube:hover {
+            background-color: #ff0000;
+        }
+        
+        .social-icon.pinterest:hover {
+            background-color: #bd081c;
+        }
+        
+        .social-icon.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .social-icon.whatsapp:hover {
+            background-color: #25d366;
+        }
+        
+        .social-icon.linkedin:hover {
+            background-color: #0077b5;
+        }
+        
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+            
+            .nav-menu {
+                display: block;
+                padding: 0;
+            }
+            
+            .nav-list {
+                flex-direction: row;
+            }
+            
+            .nav-item {
+                margin: 0 0.5rem;
+            }
+            
+            .hero {
+                min-height: 400px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .hero {
+                min-height: 500px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .school-name {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                height: 70px;
+                width: 70px;
+            }
+            header{
+            display: flex;
+            justify-content:left;
+            align-items: center;
+            padding-right: 200px;
+
+            }
+            
+        }
+    </style>
+</head>
+<body class="here">
+    <!-- Navigation Bar -->
+    <div class="header">
+        <header>
+            <div class="nav-container">
+                <div class="logo-container">
+                    <img src="image/logo mabss.jpg" alt="logo mabss" class="logo">
+                    <h1 class="school-name">Mbarara Army Boarding <br/>Secondary School</h1>
+                </div>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+            <nav class="nav-menu" id="mainNav">
+               <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link">Academics</a></li>
+                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
+                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Contacts Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Contact Us</h1>
+            <p class="hero-subtitle">We're here to answer your questions and provide information</p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="section">
+        <h2 class="section-title">School Contact Information</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <h3 class="card-title"><span>📌</span>Physical Address</h3>
+                <p><strong>Mbarara Army Boarding Secondary School</strong><br>
+                P.O. Box 521<br>
+                Mbarara, Uganda</p>
+                
+                <h3 class="card-title" style="margin-top: 2rem;"><span>🕒</span>Office Hours</h3>
+                <p><strong>Monday - Friday:</strong> 7:30 AM - 5:00 PM<br>
+                <strong>Saturday:</strong> 8:00 AM - 5:00 PM<br>
+                <strong>Sunday:</strong> Closed</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><span>📞</span>Phone Contacts</h3>
+                <p><strong>Head Teacher:</strong> +256 782 096231 | +256 771 169129<br>
+                <strong>Deputy Head Teacher-Administration:</strong> +256 782 371824<br>
+                <strong>Deputy Head Teacher- Academic & co-curricular Activities :</strong> +256 779 927775<br>
+                <strong>Director of Studies:</strong> +256 771 645344<br>
+                
+                <h3 class="card-title" style="margin-top: 2rem;"><span>✉️</span>Email Addresses</h3>
+                <p><strong></strong> mabss2014@gmail.com<br>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="form-section">
+        <div class="form-container">
+            <h2 class="section-title">Send Us a Message</h2>
+            
+            <form class="form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <select id="subject" name="subject" class="form-input">
+                        <option value="">Select a subject</option>
+                        <option value="admissions">Admissions Inquiry</option>
+                        <option value="academics">Academic Matters</option>
+                        <option value="welfare">Student Welfare</option>
+                        <option value="fees">Fees Payment</option>
+                        <option value="other">Other Inquiry</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea id="message" name="message" rows="5" class="form-input"></textarea>
+                </div>
+                
+                <button type="submit" class="form-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Staff Contacts -->
+    <section class="section">
+        <h2 class="section-title">Key Staff Contacts</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <h3 class="card-title">Administration</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                        <strong>Head Teacher</strong><br>
+                        Cpt. Okullo Richard<br>
+                        Phone: +256 782 096231 | +256 782 371824<br>
+                 
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>Deputy Head Teacher (Administration)</strong><br>
+                        LT. Rwakatsimba Bright<br>
+                        Phone: +256 782 371824<br>
+                    
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                        <strong>Deputy Head Teacher (Academic & Co-curricular Activities)</strong><br>
+                        MR. Kyabalono Yunusu<br>
+                        Phone: +256 779927775<br>
+                    
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>Director of studies</strong><br>
+                        MR. Amanya Robert<br>
+                        Phone: +256 771 645344<br>
+                    
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section">
+        <h2 class="section-title">Our Location</h2>
+        <div class="map-container">
+            <!-- Embedded Google Map -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.753622315743!2d30.65841431475389!3d-0.6132999994674606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d91a3a1c1d1a3b%3A0x1b0b0b0b0b0b0b0b!2sMbarara%20Army%20Boarding%20Secondary%20School!5e0!3m2!1sen!2sug!4v1620000000000!5m2!1sen!2sug" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-list">
+                    <li class="footer-item"><a href="homepage.html" class="footer-link">Home</a></li>
+                    <li class="footer-item"><a href="login.html" class="footer-link">Academics</a></li>
+                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
+                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
+                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
+                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
+                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Contact Us</h3>
+                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
+                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
+                <p><strong>Email:</strong> mabss2014@gmail.com</p>
+
+                 <!-- Social Media Icons -->
+                <div class="social-media">
+                    <h4 class="social-heading">Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z"  target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/2567820906231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"   target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">School Hours</h3>
+                <p><strong>Monday - Friday:</strong> 7:30 AM - 5:00 PM</p>
+                <p><strong>Saturday:</strong> 8:00 AM - 5:00 PM</p>
+                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>MABSS Games & Sports</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; 
+            padding: 0; 
+            background-color: #f5f5f5; 
+            color: #333;
+            padding-top: 80px;
+        }
+        
+        .header {
+            background-color: #0e7704;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            width: 100%;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+        
+        .logo {
+            height: 60px;
+            width: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-right: 1rem;
+        }
+        
+        .school-name {
+            margin: 0;
+            font-size: 1.2rem;
+            white-space: nowrap;
+        }
+        
+        nav {
+            display: none;
+            width: 100%;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-item {
+            margin: 0.5rem;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem;
+            border-radius: 4px;
+            display: block;
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: block;
+        }
+
+        /* Hero Banner */
+        #hero-slideshow {
+            position:relative;
+            height: 300px;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+        }
+        
+        /* Main Content Sections */
+        .section {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            color: #006341; /* Matched to homepage */
+            text-align: center; /* Added to match homepage */
+            font-size: 1.5rem; /* Added to match homepage */
+            border-bottom: 2px solid #006341; /* Updated to match homepage */
+            padding-bottom: 10px;
+            margin-bottom: 1.5rem; /* Increased to match homepage */
+            position: relative; /* Added for consistency */
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #006341; /* Matched to homepage */
+        }
+        
+        /* Update Cards */
+        .update-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+        }
+        
+        .update-title {
+            margin-top: 0;
+            color: #006341; /* Updated to match homepage */
+        }
+        
+        .update-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .read-more {
+            color: #006341;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        
+        /* Teams Grid */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .team-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-sport {
+            background-color: #006341; /* Updated to match homepage */
+            color: white;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        /* Clubs Grid */
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .club-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .club-name {
+            background-color: #0e7704; /* Updated to match header */
+            color: white;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        /* Patriotism Section */
+        .patriotism-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .patriotism-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        /* Scouts Section */
+        .scouts-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .scouts-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        /* Entertainment Grid */
+        .entertainment-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .entertainment-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .entertainment-title {
+            background-color: #0e7704; /* Updated to match header */
+            color: white;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        /* Fixtures Table - Improved for mobile */
+        .fixtures-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .fixtures-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-width: 600px; /* Ensures table doesn't get too narrow */
+        }
+        
+        .fixtures-table th {
+            background-color: #006341; /* Updated to match homepage */
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            white-space: nowrap;
+        }
+        
+        .fixtures-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #ddd;
+            white-space: nowrap;
+        }
+        
+        .fixtures-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Achievements List */
+        .achievements-list {
+            list-style: none;
+            padding: 0;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .achievement-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .achievement-number {
+            background-color: #FFD700;
+            color: #006341; /* Updated to match homepage */
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* Footer Styles - Updated to match homepage.html */
+        .footer {
+            background-color: #004d33;
+            color: white;
+            padding: 2rem 1rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .footer-section {
+            min-width: 250px;
+        }
+        
+        .footer-heading {
+            border-bottom: 2px solid #006341;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Social Media Icons - Updated to match homepage.html */
+        .social-media {
+            margin-top: 1.5rem;
+        }
+        
+        .social-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icon.facebook:hover {
+            background-color: #3b5998;
+        }
+        
+        .social-icon.twitter:hover {
+            background-color: #1da1f2;
+        }
+        
+        .social-icon.youtube:hover {
+            background-color: #ff0000;
+        }
+        
+        .social-icon.pinterest:hover {
+            background-color: #bd081c;
+        }
+        
+        .social-icon.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .social-icon.whatsapp:hover {
+            background-color: #25d366;
+        }
+        
+        .social-icon.linkedin:hover {
+            background-color: #0077b5;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #006341;
+        }
+        
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+            
+            nav {
+                display: block;
+                width: auto;
+            }
+            
+            .nav-list {
+                flex-wrap: nowrap;
+            }
+            
+            .teams-grid,
+            .clubs-grid,
+            .entertainment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            #hero-slideshow {
+                height: 650px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .patriotism-content,
+            .scouts-content {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .patriotism-image,
+            .scouts-image {
+                width: 50%;
+            }
+            
+            .fixtures-container {
+                overflow-x: visible;
+            }
+            
+            .fixtures-table {
+                min-width: 100%;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .teams-grid,
+            .clubs-grid,
+            .entertainment-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .school-name {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="image/logo mabss.jpg" alt="logo mabss" class="logo">
+                <h1 class="school-name">Mbarara Army Boarding<br> Secondary School</h1>
+            </div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link">Academics</a></li>
+                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
+                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <section id="hero-slideshow">
+        <div class="hero-content">
+            <div>
+                <h1>MBARARA ARMY BOARDING SECONDARY SCHOOL</h1>
+                <p>GAMES, SPORTS, CLUBS, PATRIOTISM, SCOUTING, ENTERTAINMENT</p>
+                <p>Developing discipline, teamwork and leadership through diverse activities</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const hero = document.getElementById('hero-slideshow');
+        const images = [
+            'url("image/heads/helo.jpg")',
+            'url("image/scouts.jpg")',
+            'url("image/RC.jpg")'
+        ];
+        let current = 0;
+    
+        function changeBackground() {
+            hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), ${images[current]}`;
+            hero.style.backgroundSize = 'cover';
+            hero.style.backgroundPosition = 'center';
+            hero.style.transition = 'background-image 1s ease-in-out';
+            
+            current = (current + 1) % images.length;
+        }
+        setInterval(changeBackground, 4000);
+        changeBackground();
+    </script>
+
+    <main>
+        <!-- Updates Section -->
+        <section id="updates" class="section">
+            <h2 class="section-title">LATEST UPDATES</h2>
+            
+            <!-- Update 1 -->
+            <div class="update-card">
+                <h3 class="update-title">MABSS wins silver medal in National Athletics Championship</h3>
+                <p class="update-meta">Posted on: July 20, 2025</p>
+                <p> The Athletics team representing Mbarara City at the recently concluded Ball Game II at ST Peter's SS, Tororo, MABSS managed to win 1 silver medal and 2 Bronze medals. We qualified for East Africa Competition due to take place in Kenya in September.</p>
+            </div>
+        </section>
+
+        <!-- Teams Section -->
+        <section id="teams" class="section">
+            <h2 class="section-title">OUR TEAMS</h2>
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-sport">FOOTBALL</div>
+                    <p>Senior and Junior teams competing in city, regional and national competitions</p>
+                    <p style="font-weight: bold; color: #006400;"> Incharge: PTE Akankwasa Kenneth</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-sport">NETBALL</div>
+                    <p>Senior and Junior teams competing in city, regional and national competitions</p>
+                    <p style="font-weight: bold; color: #006400;">Coach: Mr. Jariata Jamiru</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-sport">ATHLETICS</div>
+                    <p>Track and field program producing national champions</p>
+                    <p style="font-weight: bold; color: #006400;"> Incharge, Mr Ainomugisha Moses</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-sport">VOLLEYBALL</div>
+                    <p>Competitive teams participating in national tournaments</p>
+                    <p style="font-weight: bold; color: #006400;">Incharge, 2LT Elaijah Asiimwe</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clubs Section -->
+        <section id="clubs" class="section">
+            <h2 class="section-title">SCHOOL CLUBS</h2>
+            <div class="clubs-grid">
+                <div class="club-card">
+                    <div class="club-name">DEBATE CLUB</div>
+                    <p>Develop public speaking and critical thinking skills through competitive debates</p>
+                    <p style="font-weight: bold; color: #006400;">Patron: Mr. MUHINDO JOHNSON</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-name">SCIENCE CLUB</div>
+                    <p>Explore scientific concepts through experiments and projects</p>
+                    <p style="font-weight: bold; color: #006400;">Patron: MR. BALU ISAAC</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-name">MDD CLUB</div>
+                    <p>Develop musical talents through choir, band and instrumental training</p>
+                    <p style="font-weight: bold; color: #006400;">Patron: Miss. NYAKATO CHRISTINE</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-name">REDCROSS CLUB</div>
+                    <p>Red Cross School Club: Empowering students to save lives, serve communities, and spread humanitarian values.</p>
+                    <p style="font-weight: bold; color: #006400;">Patron: Pte. OMIOLOKO ISAAC</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-name">INTERACT CLUB</div>
+                    <p>Interact Club: Where passion meets purpose! Youth leading change through service, friendship, and global impact.</p>
+                    <p style="font-weight: bold; color: #006400;">Patron: MR. AMANYA ROBERT</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-name">EAC(Swahili) CLUB</div>
+                    <p>EAC club at MABSS promotes regional awarenes through debates, cultural exchanges, and activities on trade, politics, and unity among EAC members states </p>
+                    <p style="font-weight: bold; color: #006400;">Patron: Mr. MUHINDO JOHNSON </p>
+                </div>
+                <div class="club-card">
+                    <div class="club-name">YOUNG LIFE CLUB</div>
+                    <p>Young Life Club: Where faith, fun, and friendship collide! Building hope and purpose in teens through Christ-centered adventures.</p>
+                    <p style="font-weight: bold; color: #006400;">Patron: MR. NATURINDA ALEX</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-name">WRITERS CLUB</div>
+                    <p>Writers Club: Where creativity flows, words ignite, and stories come alive!</p>
+                    <p style="font-weight: bold; color: #006400;">Patron: MR. BESIMIRA MUSA</p>
+                </div>
+                <div class="club-card">
+                    <div class="club-name">EDUCATE CLUB</div>
+                    <p>Educate Club: Empowering minds through learning, mentorship, and community impact. Knowledge shared is future built!</p>
+                    <p style="font-weight: bold; color: #006400;">Patron: MR. ATUHWERE FELESIANO </p>
+                </div>
+
+                <div class="club-card">
+                    <div class="club-name">MAMSA CLUB</div>
+                    <p> A club that brings together all Muslim students. Five daily prayers are conducted as well as Jumah prayers. Islamic preachings and lessons are conducted on Sundays from 10AM-12PM <p style="font-weight: bold; color: #006400;">Patron: MR. SSEMAKULA RASHID </p>
+                </div>
+                <div class="club-card">
+                    <div class="club-name">Scripture Union CLUB</div>
+                    <p>Scripture Union Club: Growing faith, building community, and living God's Word together!</p>
+                    <p style="font-weight: bold; color: #006400;">Patron: MRs. KAHERU PROSSY SCOVIA</p>
+                </div>
+                 <div class="club-card">
+                    <div class="club-name">PATRIOTISM CLUB</div>
+                    <p>From flag ceremonies to community projects, we fuel love for our nation through learning, service, and civic responsibility every day</p>
+                    <p style="font-weight: bold; color: #006400;">Patron: WO1. ISABIRYE JULIUS</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patriotism Section -->
+        <section id="patriotism" class="section">
+            <h2 class="section-title">PATRIOTISM PROGRAM</h2>
+            <div class="patriotism-content">
+                <div>
+                    <p>At MABSS, we instill strong patriotic values in our students through various activities:</p>
+                    <ul>
+                        <li>Daily flag raising ceremonies with School, National and East African Anthems</li>
+                        <li>History lessons focusing on Uganda's heritage</li>
+                        <li>Participation in national celebrations</li>
+                        <li>Community service projects</li>
+                        <li>Leadership training with emphasis on national service</li>
+                    </ul>
+                    <p>Our patriotism program helps students develop love for their country and prepares them to be responsible citizens.</p>
+                </div>
+                <img src="image/heads/still.JPG" alt="Patriotism Activities" class="patriotism-image">
+            </div>
+        </section>
+
+        <!-- Scouts Section -->
+        <section id="scouts" class="section">
+            <h2 class="section-title">SCOUTS & GUIDES</h2>
+            <div class="scouts-content">
+                <img src="image/heads/gun.jpg" alt="Scouts Activities" class="scouts-image">
+                <div>
+                    <p>Our Scouts and Guides program focuses on character development and outdoor skills:</p>
+                    <ul>
+                        <li>Weekly meetings and training sessions</li>
+                        <li>Camping and hiking expeditions</li>
+                        <li>First aid and survival skills training</li>
+                        <li>Community service projects</li>
+                        <li>Participation in national jamborees</li>
+                    </ul>
+                    <p>The program helps students develop leadership, teamwork, and practical life skills while fostering a spirit of service.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Entertainment Section -->
+        <section id="entertainment" class="section">
+            <h2 class="section-title">ENTERTAINMENT</h2>
+            <div class="entertainment-grid">
+                <div class="entertainment-card">
+                    <div class="entertainment-title">MUSIC & DANCE</div>
+                    <p>Regular music and dance competitions showcasing traditional and modern performances</p>
+                    <p style="font-weight: bold; color: #006400;">Coordinator: Miss. NYAKATO CHRISTINE</p>
+                </div>
+                <div class="entertainment-card">
+                    <div class="entertainment-title">DRAMA FESTIVALS</div>
+                    <p>Annual drama festivals featuring student-written and performed plays</p>
+                    <p style="font-weight: bold; color: #006400;">Coordinator: Miss. NYAKATO CHRISTINE</p>
+                </div>
+                <div class="entertainment-card">
+                    <div class="entertainment-title">TALENT SHOWS</div>
+                    <p>Quarterly talent shows highlighting diverse student abilities</p>
+                    <p style="font-weight: bold; color: #006400;">Coordinator: Miss. NYAKATO CHRISTINE</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fixtures Section - Improved for mobile -->
+        <section id="fixtures" class="section">
+            <h2 class="section-title">UPCOMING PROGRAMS</h2>
+            <div class="fixtures-container">
+                <table class="fixtures-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                            <th>Responsible</th>
+                            <th>Venue</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>November 29th, 2025</td>
+                            <td>Old Students Re-union 2025</td>
+                            <td>All students from 2004 to 2024</td>
+                            <td>School Premises</td>
+                            <td>9:00 AM</td>
+                        <tr>
+                            <td>November 7th, 2025</td>
+                            <td>UACE Examinations 2025</td>
+                            <td>S.6 Candidates</td>
+                            <td>Kaburangire Halls</td>
+                            <td>9:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>October 24th, 2025</td>
+                            <td>Capacity Building  Workshop 2025</td>
+                            <td>All Staff </td>
+                            <td>Library</td>
+                            <td>8:00AM</td>
+                        </tr>
+                        <tr>
+                            <td>October 10th, 2025</td>
+                            <td>UCE  Examinations  2025</td>
+                            <td>S.4 Candidates</td>
+                            <td>Seguya Hall, Kaburangire Halls</td>
+                            <td>9:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>July 25th, 2025</td>
+                            <td>Breifing for MOCK Examinations 2025</td>
+                            <td>All Candidates</td>
+                            <td>Seguya Hall</td>
+                            <td>2:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>August 8-15th, 2025</td>
+                            <td>End of term II Examinations</td>
+                            <td>Other classess</td>
+                            <td>Classroooms</td>
+                            <td>8:00 AM</td>
+                        </tr>
+                        <tr>
+                            <td>August 20, 2025</td>
+                            <td>Academic Commitee Meeting</td>
+                            <td>Class teachers, HODS, Administrators</td>
+                            <td>School Library</td>
+                            <td>2:00PM</td>
+                        </tr>
+                        <tr>
+                            <td>August 21, 2025</td>
+                            <td>End of term II staff meeting</td>
+                            <td>All members of staff</td>
+                            <td>School Library</td>
+                            <td>9:00AM</td>
+                        </tr>
+                        <tr>
+                            <td>August 22, 2025</td>
+                            <td>End of term II General Assembly</td>
+                            <td>Students and All members of staff</td>
+                            <td>Academic Square</td>
+                            <td>8:00AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="section">
+            <h2 class="section-title">RECENT ACHIEVEMENTS</h2>
+            <ul class="achievements-list">
+                <li class="achievement-item">
+                    <span class="achievement-number">1</span>
+                    <span>National Secondary Schools Football Champions 2024</span>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-number">3</span>
+                    <span>5 Gold Medals in National Athletics Championships</span>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-number">4</span>
+                    <span>Best Disciplined Team Award - USSSA Games 2023</span>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-number">5</span>
+                    <span>1st Place in Regional Debate Competition 2023</span>
+                </li>
+                <li class="achievement-item">
+                    <span class="achievement-number">6</span>
+                    <span>Best Scouts Group in Western Region 2023</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <h2 class="section-title">PHOTO GALLERY</h2>
+            <div class="gallery-grid">
+                <img src="image/r.jpg" alt="Football Team" class="gallery-image">
+                <img src="image/SPRTS.jpg" alt="Basketball Match" class="gallery-image">
+                <img src="image/school/sp.jpg" alt="Debate Club" class="gallery-image">
+                <img src="image/heads/steady.jpg" alt="Scouts Camping" class="gallery-image">
+                <img src="image/heads/danc.JPG" alt="Music Performance" class="gallery-image">
+                <img src="image/heads/yes.JPG" alt="Patriotism Ceremony" class="gallery-image">
+                <img src="image/heads/tour.JPG" alt="Music Performance" class="gallery-image">
+                <img src="image/heads/plant.JPG" alt="Patriotism Ceremony" class="gallery-image">
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer - Updated to match homepage.html -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-list">
+                    <li class="footer-item"><a href="homepage.html" class="footer-link">Home</a></li>
+                    <li class="footer-item"><a href="login.html" class="footer-link">Academics</a></li>
+                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
+                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
+                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
+                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
+                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Contact Us</h3>
+                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
+                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
+                <p><strong>Email:</strong> mabss2014@gmail.com</p>
+
+                <!-- Social Media Icons -->
+                <div class="social-media">
+                    <h4 class="social-heading">Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/2567820906231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">School Hours</h3>
+                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
+                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
+                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>

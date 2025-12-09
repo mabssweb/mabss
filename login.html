@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Mbarara Army Boarding SS</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+       
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+       
+        .login-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+        }
+       
+        .login-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            min-height: 80px; /* Ensure consistent height during animation */
+        }
+        
+        .logo-container {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .school-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        h1 {
+            color: #006341;
+            text-align: left;
+            margin-bottom: 0;
+            font-size: 1.8rem;
+            flex-grow: 1;
+        }
+
+        .typewriter-container {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 2px solid #006341;
+            white-space: nowrap;
+            animation: blink-caret 0.75s step-end infinite;
+            font-size: 20px;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #006341; }
+        }
+
+        .static-text {
+            display: inline-block;
+        }
+       
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+       
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+       
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+       
+        button {
+            background-color: #006341;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+       
+        button:hover {
+            background-color: #004d33;
+        }
+
+        .message {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+        }
+       
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+       
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+       
+        .info {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo-container">
+                <img src="image/logo mabss.jpg" alt="School Logo" class="school-logo">
+            </div>
+            <h1>
+                <div class="typewriter-container">
+                    <span id="typewriter"></span>
+                </div>
+                <br>
+                <span class="static-text"></span>
+            </h1>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required placeholder="Enter username">
+            </div>
+           
+            <div class="form-group">
+                <label for="accessCode">Access Code</label>
+                <input type="password" id="accessCode" required placeholder="Enter your access code">
+            </div>
+           
+            <button type="submit">Login</button>
+           
+            <div id="message" class="message"></div>
+        </form>
+       
+        <p class="info">Access codes are provided by the system administrator. Contact admin if you need access.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced Typewriter Effect
+            const typewriterElement = document.getElementById('typewriter');
+            const lines = [
+                "Welcome to User login",
+                "Your Learning Portal",
+                "Please continue To Login",
+            ];
+            let currentLine = 0;
+            let i = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+            let pauseBetweenLines = 2000;
+
+            function typeWriter() {
+                const currentText = lines[currentLine];
+                
+                if (isDeleting) {
+                    typewriterElement.innerHTML = currentText.substring(0, i-1);
+                    i--;
+                    typingSpeed = 50; // Faster when deleting
+                } else {
+                    typewriterElement.innerHTML = currentText.substring(0, i+1);
+                    i++;
+                    typingSpeed = 100;
+                }
+
+                if (!isDeleting && i === currentText.length) {
+                    // Pause at end of line before deleting
+                    typingSpeed = pauseBetweenLines;
+                    isDeleting = true;
+                } else if (isDeleting && i === 0) {
+                    isDeleting = false;
+                    currentLine = (currentLine + 1) % lines.length; // Move to next line or loop
+                    typingSpeed = 500; // Pause before typing next line
+                }
+
+                // Add/remove cursor based on animation state
+                if (i > 0) {
+                    typewriterElement.classList.add('typewriter');
+                } else {
+                    typewriterElement.classList.remove('typewriter');
+                }
+
+                setTimeout(typeWriter, typingSpeed);
+            }
+
+            // Start the typewriter effect after a brief delay
+            setTimeout(typeWriter, 500);
+
+            // Login Form Functionality
+            const loginForm = document.getElementById('loginForm');
+            const messageDiv = document.getElementById('message');
+           
+            // In a real implementation, this would be stored securely on the server
+            const validUsers = {
+                "admin": { code: "123", email: "anwiinefrankline@gmail.com" },
+                "teacher1": { code: "TEACH123", email: "anwiinefrankline@gmail.com" },
+                "teacher2": { code: "TEACH456", email: "anwiinefrankline@gmail.com" }
+            };
+           
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+               
+                const username = document.getElementById('username').value.trim();
+                const accessCode = document.getElementById('accessCode').value.trim();
+               
+                // Validate inputs
+                if (!username || !accessCode) {
+                    showMessage('Please fill in all fields', 'error');
+                    return;
+                }
+               
+                // Check if user exists
+                if (!validUsers[username]) {
+                    showMessage('Invalid username', 'error');
+                    return;
+                }
+               
+                // Check access code
+                if (validUsers[username].code !== accessCode) {
+                    showMessage('Invalid access code', 'error');
+                    return;
+                }
+               
+                // Successful login
+                showMessage('Login successful! Redirecting...', 'success');
+               
+                // Store login status (in a real app, use proper session management)
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('username', username);
+               
+                // Redirect after delay
+                setTimeout(() => {
+                    window.location.href = 'materials.html';
+                }, 1000);
+            });
+           
+            function showMessage(text, type) {
+                messageDiv.textContent = text;
+                messageDiv.className = `message ${type}`;
+                messageDiv.style.display = 'block';
+               
+                // Hide message after 3 seconds
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Our Staff | Mbarara Army Boarding Secondary School</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            padding-top: 80px; /* Space for fixed header */
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            margin-right: 1rem;
+        }
+        
+        .school-name {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background-color: #006341;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .page-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        /* Staff Organization Chart */
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Leadership Level */
+        .leadership {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+            width: 100%;
+        }
+        
+        .principal {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            transition: transform 0.3s;
+            max-width: 280px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .principal:hover {
+            transform: translateY(-5px);
+        }
+        
+        .principal img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #f5f5f5;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+        
+        .principal:hover img {
+            transform: scale(1.05);
+        }
+        
+        .principal h2 {
+            color: #006341;
+            margin: 1rem 0 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        /* Department Heads */
+        .department-heads {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            width: 75%;
+            justify-items: center;
+        }
+        
+        .dept-head {
+            text-align: center;
+            padding: 1.2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            max-width: 220px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .dept-head:hover {
+            transform: translateY(-5px);
+        }
+        
+        .dept-head img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f5f5f5;
+            transition: transform 0.3s;
+        }
+        
+        .dept-head:hover img {
+            transform: scale(1.05);
+        }
+        
+        .dept-head h3 {
+            color: #006341;
+            margin: 0.8rem 0 0.3rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Teachers */
+        .teachers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            width: 100%;
+            justify-items: center;
+            padding-top: 40px;
+        }
+        
+        .teacher {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            max-width: 180px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .teacher:hover {
+            transform: translateY(-3px);
+        }
+        
+        .teacher img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f5f5f5;
+            transition: transform 0.3s;
+        }
+        
+        .teacher:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Connectors */
+        .connector {
+            width: 2px;
+            height: 30px;
+            background-color: #3498db;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .connector:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -6px;
+            right: -6px;
+            height: 2px;
+            background-color: #3498db;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 1.5rem;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: #666;
+            background: none;
+            border: none;
+        }
+        
+        .modal-profile {
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .modal-profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f5f5f5;
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.12);
+        }
+        
+        .modal-profile h2 {
+            color: #006341;
+            margin: 1rem 0 0.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .modal-title {
+            color: #0e7704;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-qualification {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-subjects {
+            background: #f5f5f5;
+            padding: 0.7rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+        
+        .modal-subjects h4 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1rem;
+        }
+        
+        .modal-bio {
+            margin-top: 1.2rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        /* QR Code Styles */
+        .modal-qr-container {
+            margin-top: 1rem;
+            text-align: center;
+            padding: 0.8rem;
+            background: #f0f0f0;
+            border-radius: 6px;
+        }
+        
+        .modal-qr-code {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            padding: 5px;
+            background: white;
+        }
+        
+        .qr-instruction {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        /* Footer */
+
+           .social-media {
+            margin-top: 1.5rem;
+        }
+        
+        .social-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icon.facebook:hover {
+            background-color: #3b5998;
+        }
+        
+        .social-icon.twitter:hover {
+            background-color: #1da1f2;
+        }
+        
+        .social-icon.youtube:hover {
+            background-color: #ff0000;
+        }
+        
+        .social-icon.pinterest:hover {
+            background-color: #bd081c;
+        }
+        
+        .social-icon.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .social-icon.whatsapp:hover {
+            background-color: #25d366;
+        }
+        
+        .social-icon.linkedin:hover {
+            background-color: #0077b5;
+        }
+        
+
+        .footer {
+            background-color: #004d33;
+            color: white;
+            padding: 1.5rem 1rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .footer-section {
+            min-width: 220px;
+        }
+        
+        .footer-heading {
+            border-bottom: 2px solid #006341;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-list {
+            list-style: none;
+            padding: 0;
+            color: #ffffff;
+        }
+        .nav-list{
+            color: white;
+        }
+        .nav-link{
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .footer-item {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: #f0f0f0;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #006341;
+            font-size: 0.85rem;
+        }
+        
+        /* Staff Categories Navigation Styles */
+        .staff-categories-nav {
+            background-color: #f8f9fa;
+            padding: 1rem 1rem;
+            margin: 1.5rem 0;
+            border-top: 1px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .categories-title {
+            text-align: center;
+            color: #006341;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .categories-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: #3498db;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.8rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 6px;
+            padding: 0.8rem;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            color: #006341;
+        }
+        
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #006341;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        
+        .category-card h3 {
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+            color: inherit;
+        }
+        
+        .category-card p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+            
+            .principal, .dept-head, .teacher {
+                max-width: 100%;
+            }
+            
+            .department-heads {
+                width: 100%;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1.2rem;
+            }
+            
+            .modal-profile img {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .school-name {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .categories-title {
+                font-size: 1.1rem;
+            }
+            
+            .page-header {
+                padding: 1rem;
+            }
+            
+            .page-title {
+                font-size: 1.3rem;
+            }
+            
+            .principal img {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .dept-head img {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .teacher img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Our Distinguished Staff</h1>
+        <p class="page-subtitle">Meet the dedicated professionals shaping young minds</p>
+    </div>
+    <!-- Organization Chart -->
+    <div class="org-chart">
+        <!-- Leadership Level -->
+        <div class="leadership">
+            <div class="principal" onclick="openModal('principal')">
+                <img src="image/Staff/OKULLO.jpg" alt="Principal">
+                <h2>CAPT. RICHARD OKULLO </h2>
+                <div class="title">HEADTEACHER</div>
+            </div>
+        </div>
+        
+        <!-- Department Heads -->
+        <div class="department-heads">
+            <div class="dept-head" onclick="openModal('math-head')">
+                <img src="image/Bright.jpg" alt="Head">
+                <h3>LT. BRIGHT MUGISHA RWAKASIMBA</h3>
+                <div class="title">DEPUTY HEADTEACHER- ADMINISTRATION</div>
+            </div>
+            
+            <div class="dept-head" onclick="openModal('science-head')">
+                <img src="image/dp.jpg" alt="Science Department Head">
+                <h3> MR. KYABALONGO YUNUSU</h3>
+                <div class="title">DEPUTY HEADTEACHER- ACADEMIC</div>
+            </div>
+        </div>
+        
+        <!-- Teaching Staff -->
+        <div class="teachers">
+             <div class="teacher" onclick="openModal('AMANYA')">
+                <img src="image/RB.jpg" alt="AMANYA">
+                <h4>Mr. AMANYA ROBERT</h4>
+                <div class="title">HEAD DOS</div>
+            </div>
+
+            <div class="teacher" onclick="openModal('Head of Department IT')">
+                <img src="image/MJ.jpg" alt="Head of Department IT">
+                <h4>MR. MUHINDO JOHNSON</h4>
+                <div class="title">DOS UPPER</div>
+            </div>
+            <div class="teacher" onclick="openModal('SARA')">
+                <img src="image/LIBERTY.jpg" alt="SARA">
+                <h4>Ms NATUKUNDA SARAH LIBERTY</h4>
+                <div class="title">DOS LOWER</div>
+            </div>
+        </div>
+
+        <!-- Compact Staff Categories Navigation -->
+        <div class="staff-categories-nav">
+            <div class="container">
+                <h2 class="categories-title">Staff Categories</h2>
+                <div class="categories-grid">
+                    <a href="teaching.html" class="category-card">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm-1 3h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+                            </svg>
+                        </div>
+                        <h3>Teaching Staff</h3>
+                        <p>Our academic faculty</p>
+                    </a>
+                    
+                    <a href="class teachers.html" class="category-card">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M4 22a8 8 0 1 1 16 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"/>
+                            </svg>
+                        </div>
+                        <h3>Class Teachers</h3>
+                        <p>Dedicated classroom educators</p>
+                    </a>
+                    
+                    <a href="hod.html" class="category-card">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 15.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm1-5.5h-2v-6h2v6z"/>
+                            </svg>
+                        </div>
+                        <h3>Department Heads</h3>
+                        <p>Academic department leaders</p>
+                    </a>
+                    
+                    <a href="support staff.html" class="category-card">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2a9 9 0 0 1 9 9v6a3 3 0 0 1-3 3h-1v-2h1a1 1 0 0 0 1-1v-6a7 7 0 0 0-7-7 7 7 0 0 0-7 7v6a1 1 0 0 0 1 1h1v2H6a3 3 0 0 1-3-3v-6a9 9 0 0 1 9-9zm-4 9a4 4 0 1 1 8 0v1h-2v-1a2 2 0 1 0-4 0v1H8v-1z"/>
+                            </svg>
+                        </div>
+                        <h3>Support Staff</h3>
+                        <p>Counselors and specialists</p>
+                    </a>
+                    
+                    <a href="non teaching.html" class="category-card">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm-1 3h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+                            </svg>
+                        </div>
+                        <h3>Non-Teaching</h3>
+                        <p>Administrative teams</p>
+                    </a>
+
+                    <a href="directory .html" class="category-card">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M4 22a8 8 0 1 1 16 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z"/>
+                            </svg>
+                        </div>
+                        <h3>OUR DIRECTORY</h3>
+                        <p>GALLERY SINCE 2004</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Structure -->
+    <div class="modal" id="staffModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div class="modal-profile">
+                <img id="modalImage" src="" alt="Staff Member">
+                <h2 id="modalName"></h2>
+                <div class="modal-title" id="modalTitle"></div>
+                <div class="modal-qualification" id="modalQualification"></div>
+            </div>
+            <div class="modal-subjects">
+                <h4>Subjects/Responsibilities</h4>
+                <div id="modalSubjects"></div>
+            </div>
+            <div class="modal-qr-container">
+                <div id="modalQrCode" class="modal-qr-code"></div>
+                <p class="qr-instruction">Scan to verify staff member</p>
+            </div>
+            <div class="modal-bio" id="modalBio"></div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-list">
+                    <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
+                    <li class="footer-item"><a href="login.html" class="footer-link">Academics</a></li>
+                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-culrricular Activities</a></li>
+                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discpline</a></li>
+                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
+                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
+                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Contact Us</h3>
+                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
+                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
+                <p><strong>Email:</strong> mabss2014@gmail.com</p>
+                <!-- Social Media Icons -->
+                <div class="social-media">
+                    <h4 class="social-heading">Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z"  target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/2567820906231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"   target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">School Hours</h3>
+                <p><strong>Monday - Friday:</strong> 7:00 AM - 4:00 PM</p>
+                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
+                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- QR Code Library -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    
+    <script>
+        // Staff data
+        const staffData = {
+            'principal': {
+                name: 'CAPT. RICHARD OKULLO ',
+                title: 'HEADTEACHER',
+                qualification: 'Masters Degree in Public Administration, Gulu University. BA with Education and Diploma in Education, both from Kyambogo University',
+                subjects: 'History and Religious Studies',
+                bio: ' ',
+                image: "image/Staff/OKULLO.jpg"
+            },
+            'math-head': {
+                name: 'LT BRIGHT MUGISHA RWAKASIMBA',
+                title: 'DEPUTY HEADTEACHER- ADMINISTRATION',
+                qualification: 'BSC, BSU & Diploma, NTC, Kakoba',
+                subjects: 'Agriculture',
+                bio: '',
+                image: 'image/Bright.jpg'
+            },
+            'science-head': {
+                name: 'MR KYABALONGO YUNUSU',
+                title: 'DEPUTY HEADTEACHER- ACADEMIC & CO- CURRICULAR ACTIVITIES',
+                qualification: 'BSC with Educ, MUST',
+                subjects: 'Physics and Mathematics',
+                bio: '',
+                image: 'image/dp.jpg'
+            },
+            'Head of Department IT': {
+                name: 'Mr. MUHINDO JOHNSON',
+                title: 'DOS-MIDDLE S3-S4',
+                qualification: 'MASTER ARTS EDUCATION',
+                subjects: 'KISWAHILI & GENERAL PAPER',
+                image: 'image/MJ.jpg'
+            },
+            'AMANYA': {
+                name: 'AMANYA ROBERT',
+                title: 'DOS-UPPER S5-S6',
+                qualification: 'BCS. OF SCIENCE WITH EDUCATION (MUST)',
+                subjects: 'BIOLOGY & CHEMISTRY',
+                bio: '',
+                image: 'image/RB.jpg'
+            },
+            'SARA': {
+                name: 'Miss NATUKUNDA SARAH LIBERTY',
+                title: 'ASST-DOS',
+                qualification: '.',
+                subjects: 'ENGLISH & LITERATURE',
+                bio: '',
+                image: 'image/LIBERTY.jpg'
+            },
+            'LAUBEN': {
+                name: 'WO1. MUJURIZI LAUBEN',
+                title: 'DOS-LOWER S1-S2',
+                qualification: 'BACHEROLS IN EDUCATION',
+                subjects: 'DIVINITY & CRE',
+                bio: '.',
+                image: 'image/LAUBEN.jpg'
+            },
+            'english-teacher': {
+                name: 'Mr. Thomas O\'Reilly',
+                title: 'English Teacher',
+                qualification: 'MA English Literature',
+                subjects: 'English Literature, Creative Writing, Journalism',
+                bio: 'A published poet and former journalist, Mr. O\'Reilly brings a wealth of writing experience to his literature classes and advises the school newspaper.',
+                image: 'image/no.jpg'
+            },
+            'physics-teacher': {
+                name: 'Dr. Lisa Zhang',
+                title: 'Physics Teacher',
+                qualification: 'PhD in Physics',
+                subjects: 'Physics, Astronomy, Quantum Mechanics',
+                bio: 'Dr. Zhang worked at CERN before transitioning to education. She brings cutting-edge physics concepts into the classroom in accessible ways.',
+                image: 'image/no.jpg'
+            },
+            'pe-teacher': {
+                name: 'Mr. Carlos Mendez',
+                title: 'Physical Education Teacher',
+                qualification: 'B.Sc Sports Science',
+                subjects: 'Physical Education, Health, Sports Medicine',
+                bio: 'A former professional athlete, Mr. Mendez emphasizes the connection between physical health and academic performance in his holistic approach to PE.',
+                image: 'image/no.jpg'
+            },
+            'art-teacher': {
+                name: 'Ms. Sophia Laurent',
+                title: 'Art Teacher',
+                qualification: 'BFA Visual Arts',
+                subjects: 'Art, Art History, Digital Media',
+                bio: 'Ms. Laurent\'s students regularly win regional art competitions. She curates the school\'s rotating art gallery featuring student work.',
+                image: 'image/no.jpg'
+            },
+            'csi-teacher': {
+                name: 'Mr. Baseeta Johnwilson',
+                title: 'ICT Teacher',
+                qualification: 'M.Sc Computer Science',
+                subjects: 'ICT, GEOGRAPHY',
+                bio: '.',
+                image: 'image/no.jpg'
+            },
+            'music-teacher': {
+                name: 'Mr. Baseeta Johnwilson',
+                title: 'ICT Teacher',
+                qualification: 'M.Sc Computer Science',
+                subjects: 'ICT, GEOGRAPHY',
+                bio: '.',
+                image: 'image/na.jpg'
+            },
+            'cs-teacher': {
+                name: 'Mr. Baseeta Johnwilson',
+                title: 'ICT Teacher',
+                qualification: 'M.Sc Computer Science',
+                subjects: 'ICT, GEOGRAPHY',
+                bio: '.',
+                image: 'image/ba.jpg'
+            },
+            'mu-teacher': {
+                name: 'MR. Arinaitwe Slatter',
+                title: 'HOD Agriculture, Senior boys Warden, Dotshule dotsaidia system school administrator',
+                qualification: 'BSC',
+                subjects: 'Agriculture',
+                bio: '.',
+                image: 'image/wa.jpg'
+            }
+        };
+        
+        // Modal functions
+        function openModal(staffId) {
+            const staff = staffData[staffId];
+            if (!staff) return;
+            
+            document.getElementById('modalImage').src = staff.image;
+            document.getElementById('modalImage').alt = staff.name;
+            document.getElementById('modalName').textContent = staff.name;
+            document.getElementById('modalTitle').textContent = staff.title;
+            document.getElementById('modalQualification').textContent = staff.qualification;
+            document.getElementById('modalSubjects').textContent = staff.subjects;
+            document.getElementById('modalBio').textContent = staff.bio;
+            
+            // Generate QR code
+            const qrContainer = document.getElementById('modalQrCode');
+            qrContainer.innerHTML = ''; // Clear previous QR code
+            const qrText = `${staff.name}, ${staff.title} is Currently working with MBARARA ARMY BOARDING SECONDARY SCHOOL`;
+            new QRCode(qrContainer, {
+                text: qrText,
+                width: 100,
+                height: 100,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            
+            const modal = document.getElementById('staffModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('staffModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside content
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('staffModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

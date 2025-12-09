@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mbarara Army Boarding Secondary School - Discipline</title>
+    <meta name="description" content="Discipline at Mbarara Army Boarding Secondary School - Excellence through order, respect, and military-style discipline principles.">
+    <meta name="keywords" content="Mbarara Army School, School Discipline, Military Discipline, Student Conduct, School Rules, Behavior Management">
+    <meta name="author" content="Mbarara Army Boarding Secondary School">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; 
+            padding: 0; 
+            background-color: #f5f5f5; 
+            color: #333;
+        }
+        
+        /* Header/Navigation - EXACTLY like homepage */
+        .header {
+            background-color: #0e7704;
+            color: white;
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            margin-right: 0.5rem;
+        }
+        
+        .school-name {
+            margin: 0;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .nav-menu {
+            display: none;
+            background-color: #0e7704;
+            padding: 1rem;
+        }
+        
+        .nav-menu.show {
+            display: block;
+        }
+        
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-item {
+            margin: 0.5rem 0;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 4px;
+        }
+        
+        /* Hero Section with Slideshow - RE-ADDED SLIDESHOW */
+        .hero {
+            position: relative;
+            min-height: 300px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 1rem;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Discipline Content Sections */
+        .section {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #006341;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .discipline-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            color: #006341;
+            margin-top: 0;
+            border-bottom: 2px solid #0e7704;
+            padding-bottom: 0.5rem;
+        }
+        
+        .principle-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .principle-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #0e7704;
+        }
+        
+        /* Daily Routine Section */
+        .routine-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .routine-table th, .routine-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .routine-table th {
+            background-color: #0e7704;
+            color: white;
+        }
+        
+        .routine-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        /* Consequences & Rewards */
+        .system-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .system-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .system-card h3 {
+            color: #006341;
+            margin-top: 0;
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        /* Footer - EXACTLY like homepage */
+        .footer {
+            background-color: #004d33;
+            color: white;
+            padding: 2rem 1rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .footer-section {
+            min-width: 250px;
+            list-style: none;
+        }
+        
+        .footer-heading {
+            border-bottom: 2px solid #006341;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            list-style: none;
+        }
+        
+        .footer-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Social Media Icons - EXACTLY like homepage */
+        .social-media {
+            margin-top: 1.5rem;
+        }
+        
+        .social-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icon.facebook:hover {
+            background-color: #3b5998;
+        }
+        
+        .social-icon.twitter:hover {
+            background-color: #1da1f2;
+        }
+        
+        .social-icon.youtube:hover {
+            background-color: #ff0000;
+        }
+        
+        .social-icon.pinterest:hover {
+            background-color: #bd081c;
+        }
+        
+        .social-icon.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .social-icon.whatsapp:hover {
+            background-color: #25d366;
+        }
+        
+        .social-icon.linkedin:hover {
+            background-color: #0077b5;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #006341;
+        }
+        
+        /* Responsive Adjustments - EXACTLY like homepage */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+            
+            .nav-menu {
+                display: block;
+                padding: 0;
+            }
+            
+            .nav-list {
+                flex-direction: row;
+            }
+            
+            .nav-item {
+                margin: 0 0.5rem;
+            }
+            
+            .hero {
+                min-height: 400px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 2.2rem;
+            }
+            
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .system-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .hero {
+                min-height: 500px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .card-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .school-name {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                height: 70px;
+                width: 70px;
+            }
+            
+            header {
+                display: flex;
+                justify-content: left;
+                align-items: center;
+                padding-right: 200px;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar - EXACTLY like homepage -->
+    <div class="header">
+        <header>
+            <div class="nav-container">
+                <div class="logo-container">
+                    <img src="image/logo mabss.jpg" alt="logo mabss" class="logo">
+                    <h1 class="school-name">Mbarara Army Boarding<br> Secondary School</h1>
+                </div>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+            <nav class="nav-menu" id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link">Academics</a></li>
+                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
+                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Hero Section with Slideshow - RE-ADDED SLIDESHOW -->
+    <section class="hero">
+        <div class="hero-slides">
+            <div class="hero-slide active" style="background-image: url('image/heads/now.JPG');"></div>
+            <div class="hero-slide" style="background-image: url('image/heads/touring.JPG');"></div>
+            <div class="hero-slide" style="background-image: url('image/heads/real.JPG');"></div>
+            <div class="hero-slide" style="background-image: url('image/heads/THE.JPG');"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Discipline at Mbarara Army Boarding SS</h1>
+            <p class="hero-subtitle">Excellence Through Order & Respect</p>
+        </div>
+    </section>
+
+    <!-- Discipline Principles Section -->
+    <section class="section">
+        <h2 class="section-title">Our Discipline Principles</h2>
+        <div class="card-container">
+            <div class="discipline-card">
+                <h3 class="card-title">The UPDF Way</h3>
+                <p>Our discipline system is modeled after the Uganda People's Defence Forces values:</p>
+                <div class="principle-item">
+                    <span class="principle-icon"></span>
+                    <div>
+                        <h4>Punctuality</h4>
+                        <p>"Early is on time, on time is late!" - All students must be 5 minutes early to all activities.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-icon"></span>
+                    <div>
+                        <h4>Respect</h4>
+                        <p>Salute superiors, address staff properly, and maintain decorum at all times.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-icon"></span>
+                    <div>
+                        <h4>Uniform Code</h4>
+                        <p>Full uniform must be worn correctly at all times - no alterations allowed.<br>T.shirt is worn every Wednesday & Weekend ONLY.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="discipline-card">
+                <h3 class="card-title">Academic Standards</h3>
+                <div class="principle-item">
+                    <span class="principle-icon"></span>
+                    <div>
+                        <h4>Integrity</h4>
+                        <p>Zero tolerance for cheating. All work must be original with proper citations.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-icon"></span>
+                    <div>
+                        <h4>Assignments</h4>
+                        <p>All homework must be completed and submitted on time - no exceptions.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-icon"></span>
+                    <div>
+                        <h4>Classroom Conduct</h4>
+                        <p>Stand when teacher enters, no phones, attentive participation required.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="discipline-card">
+                <h3 class="card-title">Community Values</h3>
+                <div class="principle-item">
+                    <span class="principle-icon"></span>
+                    <div>
+                        <h4>Dormitory Rules</h4>
+                        <p>Beds made military-style by 6:30am, no unauthorized items, lights out at 9:30pm sharp.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-icon"></span>
+                    <div>
+                        <h4>Teamwork</h4>
+                        <p>House competitions encourage unity and collective responsibility.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-icon"></span>
+                    <div>
+                        <h4>Physical Fitness</h4>
+                        <p>Mandatory morning drills keep students physically and mentally sharp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Routine Section -->
+    <section class="section" style="background-color: #f0f0f0;">
+        <h2 class="section-title">Daily Program</h2>
+        <div class="discipline-card">
+            <table class="routine-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Activity</th>
+                        <th>Discipline Focus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>4:00 AM</td>
+                        <td>Wake-up Morning Preps</td>
+                        <td>Punctuality, Physical Fitness</td>
+                    </tr>
+                    <tr>
+                        <td>6:00 AM</td>
+                        <td>Inspection (Uniform & Dorm)</td>
+                        <td>Personal Grooming, Attention to Detail</td>
+                    </tr>
+                    <tr>
+                        <td>6:00 AM</td>
+                        <td>Breakfast & Assembly</td>
+                        <td>Formation Discipline, Silence During Announcements</td>
+                    </tr>
+                    <tr>
+                        <td>8:00 AM - 4:00 PM</td>
+                        <td>Academic Classes</td>
+                        <td>Academic Integrity, Classroom Conduct</td>
+                    </tr>
+                    <tr>
+                        <td>4:40 PM</td>
+                        <td>Sports & Extra-Curricular</td>
+                        <td>Teamwork, Leadership</td>
+                    </tr>
+                    <tr>
+                        <td>7:00 PM - 09:30 PM</td>
+                        <td> Evening Prep</td>
+                        <td>Academic Focus, Silent Study</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Consequences & Rewards Section -->
+    <section class="section">
+        <h2 class="section-title">Discipline System</h2>
+        <div class="system-container">
+            <div class="system-card">
+                <h3>Consequences for Violations</h3>
+                <ol>
+                    <li><strong>Verbal Warning:</strong> First minor offense noted</li>
+                    <li><strong>Written Warning:</strong> Documented in student file</li>
+                    <li><strong>Extra Duty:</strong> Cleaning, gardening, or other service</li>
+                    <li><strong>Demerits:</strong> 3 demerits = suspension</li>
+                    <li><strong>Suspension:</strong> 1-5 days depending on severity</li>
+                    <li><strong>Expulsion:</strong> For repeated or serious offenses</li>
+                    <p><em><strong> the Rod Spoil the child(Proverbs 13-24.)</strong></em></p>
+                </ol>
+                <p><em>Serious offenses (fighting, theft, etc.) may lead to indefinite suspension.</em></p>
+            </div>
+            
+            <div class="system-card">
+                <h3>Rewards for Excellence</h3>
+                <ul>
+                    <li><strong>Bursary :</strong> Bursary for disciplined students </li>
+                    <li><strong>Bursary :</strong> Academic Bursary for best perfomers in class </li>
+                    <li><strong>Leadership Roles:</strong> Prefect, House Captain positions</li>
+                    <li><strong>Weekend Passes:</strong> For students with clean records</li>
+                    <li><strong>Honors Society:</strong> Academic and discipline excellence</li>
+                    <li><strong>Special Events:</strong> Invitations to military ceremonies</li>
+                    <li><strong>Recommendation Letters:</strong> For university applications</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" style="background-color: #f0f0f0;">
+        <h2 class="section-title">What Our Community Says</h2>
+        <div class="card-container">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The discipline I learned at MABSS gave me structure that helped me succeed at Makerere University and now in my military career."</p>
+                <p class="testimonial-author">— Lt. James Mugisha, OB</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"As a parent, I've seen remarkable changes in my son's responsibility and time management since joining this school."</p>
+                <p class="testimonial-author">— Mrs. Atim, Parent</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The morning drills and uniform inspections taught me attention to detail that I now apply in my medical studies."</p>
+                <p class="testimonial-author">— Sarah K., S6 (OG)
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - EXACTLY like homepage -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-list">
+                    <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
+                    <li class="footer-item"><a href="login.html" class="footer-link">Academics</a></li>
+                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
+                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
+                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
+                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
+                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Contact Us</h3>
+                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
+                <p><strong>Phone:</strong> +256 782 096231 <br> +256 782 371824 | +256 779 927775</p>
+                <p><strong>Email:</strong> mabss2014@gmail.com</p>
+
+                <!-- Social Media Icons - EXACTLY like homepage -->
+                <div class="social-media">
+                    <h4 class="social-heading">Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z"  target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/2567820906231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"   target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">School Hours</h3>
+                <p><strong>Monday - Friday:</strong> 7:00 AM - 4:00 PM</p>
+                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
+                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle - EXACTLY like homepage
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('show');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.getElementById('mainNav');
+                if (nav.classList.contains('show')) {
+                    nav.classList.remove('show');
+                }
+            });
+        });
+
+        // Hero Slideshow Animation - RE-ADDED SLIDESHOW FUNCTIONALITY
+        function startSlideshow() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            
+            function showNextSlide() {
+                // Remove active class from current slide
+                slides[currentSlide].classList.remove('active');
+                
+                // Move to next slide
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                // Add active class to new slide
+                slides[currentSlide].classList.add('active');
+            }
+            
+            // Change slide every 5 seconds
+            setInterval(showNextSlide, 5000);
+        }
+        
+        // Start slideshow when page loads
+        window.addEventListener('load', startSlideshow);
+    </script>
+</body>
+</html>

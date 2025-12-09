@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Former Staff Administrators Directory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy: #1a237e;
+            --navy-light: #283593;
+            --gold: #ffd700;
+            --gold-light: #ffecb3;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #e9ecef;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --accent: #4361ee;
+            --accent-light: #4895ef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(18, 75, 141, 0.651), rgba(42, 63, 44, 0.9)), 
+            url('image/of.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.5s ease;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Welcome Message */
+        .welcome-section {
+            background-color: var(--gray-light);
+            padding: 60px 0;
+        }
+
+        .welcome-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .welcome-content h2 {
+            color: var(--navy);
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+
+        .welcome-content p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .current-admin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--gray-light), var(--white));
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .current-admin img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-info h3 {
+            color: var(--navy);
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .admin-info p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Featured Carousel */
+        .featured-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--navy);
+            font-size: 2.4rem;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(to right, var(--navy), var(--accent));
+            margin: 15px auto;
+            border-radius: 5px;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--gray-light), var(--white));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--gold);
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-item h3 {
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-size: 1.7rem;
+            font-weight: 600;
+        }
+
+        .carousel-item p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .admin-years {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .carousel-btn {
+            background: linear-gradient(to right, var(--navy), var(--accent));
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Directory Section */
+        .directory-section {
+            padding: 80px 0;
+            background-color: var(--gray-light);
+        }
+
+        .directory-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border: 2px solid var(--gray);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: var(--white);
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-controls select {
+            padding: 15px 20px;
+            border: 2px solid var(--gray);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            background-color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 180px;
+        }
+
+        .filter-controls select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* Modern Card Design */
+        .admin-card {
+            background: linear-gradient(135deg, var(--white), var(--gray-light));
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .admin-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            padding: 25px 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .admin-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .admin-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .admin-card:hover .admin-img img {
+            transform: scale(1.1);
+        }
+
+        .admin-basic-info {
+            flex: 1;
+        }
+
+        .admin-basic-info h3 {
+            color: var(--navy);
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .admin-basic-info p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .admin-years-card {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .card-body {
+            padding: 20px 25px;
+        }
+
+        .card-body p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
+            font-weight: 500;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .admin-card:hover .read-more i {
+            transform: translateX(5px);
+        }
+        .footer {
+            background-color: #004d33;
+            color: white;
+            padding: 2rem 1rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .footer-section {
+            min-width: 250px;
+        }
+        
+        .footer-heading {
+            border-bottom: 2px solid #006341;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #006341;
+        }
+        .social-media {
+            margin-top: 1.5rem;
+        }
+        
+        .social-heading {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-icon.facebook:hover {
+            background-color: #3b5998;
+        }
+        
+        .social-icon.twitter:hover {
+            background-color: #1da1f2;
+        }
+        
+        .social-icon.youtube:hover {
+            background-color: #ff0000;
+        }
+        
+        .social-icon.pinterest:hover {
+            background-color: #bd081c;
+        }
+        
+        .social-icon.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .social-icon.whatsapp:hover {
+            background-color: #25d366;
+        }
+        
+        .social-icon.linkedin:hover {
+            background-color: #0077b5;
+        }
+        
+        
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+            
+            nav {
+                display: block;
+                width: auto;
+            }
+            
+            .nav-list {
+                flex-wrap: nowrap;
+            }
+            
+            .materials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .subject-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .combination-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            #hero-slideshow {
+                height: 400px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .materials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .subject-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .school-name {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 16px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.4s ease;
+        }
+
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid var(--gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--navy), var(--accent));
+            color: var(--white);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .modal-header h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.2);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-admin {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 25px;
+            align-items: center;
+        }
+
+        .modal-admin img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--gold);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-admin-info h3 {
+            color: var(--navy);
+            margin-bottom: 8px;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .modal-admin-info p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .modal-bio {
+            margin-top: 25px;
+        }
+
+        .modal-bio h4 {
+            color: var(--navy);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .modal-bio h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            border-radius: 3px;
+        }
+
+        .modal-bio p {
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .directory-controls {
+                flex-direction: column;
+            }
+            
+            .search-box {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .modal-admin {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .current-admin {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .carousel-item img {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .directory-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .filter-controls select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Former Staff Administrators Directory</h1>
+                <p>Celebrating Our Leaders – From the Beginning to Now</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Welcome Message -->
+    <section class="welcome-section">
+        <div class="container">
+            <div class="welcome-content">
+                <h2>A Message from Our Current Administrator</h2>
+                <p>Welcome to our Former Staff Administrators Directory. This platform honors the dedicated leaders who have shaped our institution through their vision, commitment, and service. Each administrator has left an indelible mark on our community, and we're proud to celebrate their contributions.</p>
+                <p>We invite you to explore their stories, learn about their achievements, and appreciate the legacy they've built for future generations.</p>
+                <div class="current-admin">
+                    <img src="image/HM (2).jpg" alt="Current Administrator">
+                    <div class="admin-info">
+                        <h3>CAPT. RICHARD OKULLO </h3>
+                        <p>Current HEADTEACHER</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Administrators Carousel -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title">Our Featured HeadTeachers since 2004</h2>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="image/HM (2).jpg" alt="Featured Administrator">
+                        <h3>CAPT. RICHARD OKULLO</h3>
+                        <p>Pioneered our digital transformation initiative and established the Innovation Center that continues to benefit students and faculty today.</p>
+                        <div class="admin-years">2023- upto Date</div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/holder.png" alt="Featured Administrator">
+                        <h3>RTD MAJ.MUGISHA MOSES </h3>
+                        <p>Led the expansion of our campus facilities and established key partnerships with industry leaders that enhanced our academic programs.</p>
+                        <div class="admin-years">2020-2023</div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/holder.png" alt="Featured Administrator">
+                        <h3>MAJ.TUMUKENDE JOSEPHAT</h3>
+                        <p>MAJ.TUMUKENDE JOSEPHAT served as a dedicated leader of Mbarara Army Boarding Secondary School, guiding students and staff with discipline, integrity, and commitment to excellence. Their leadership contributed greatly to the school’s growth and continued success..</p>
+                        <div class="admin-years">2011-2020</div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/holder.png" alt="Featured Administrator">
+                        <h3>CAPT.MARTIN IRERA</h3>
+                        <p>CAPT.MARTIN IRERA served as a dedicated leader of Mbarara Army Boarding Secondary School, guiding students and staff with discipline, integrity, and commitment to excellence. His leadership contributed greatly to the school’s growth and continued success..</p>
+                        <div class="admin-years">2010</div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/holder.png" alt="Featured Administrator">
+                        <h3>LT.JULIUS K KANSIIME</h3>
+                        <p>LT.JULIUS K KANSIIME Led Mbarara Army Boarding Secondary School with passion and wisdom, inspiring both students and teachers to uphold the school’s values of discipline, patriotism, and academic excellence..</p>
+                        <div class="admin-years">2010-2009</div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/holder.png" alt="Featured Administrator">
+                        <h3>CAPT.BOB TURYAGYENDA</h3>
+                        <p>CAPT.BOB TURYAGYENDA provided strong and principled leadership at Mbarara Army Boarding Secondary School, promoting patriotism, hard work, and moral values among learners and staff.</p>
+                        <div class="admin-years">2005</div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/holder.png" alt="Featured Administrator">
+                        <h3>CAPT.BAYISE MUKASA</h3>
+                        <p>APT.BAYISE MUKASA guided Mbarara Army Boarding Secondary School with a vision of excellence, nurturing both academic achievement and character development within the school community.</p>
+                        <div class="admin-years">2004</div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Directory Section -->
+    <section class="directory-section">
+        <div class="container">
+            <h2 class="section-title">Deputy Administrators Directory Since 2004</h2>
+            <div class="directory-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search by name or position...">
+                </div>
+                <div class="filter-controls">
+                    <select id="year-filter">
+                        <option value="">All Years</option>
+                        <option value="2023">2023</option>
+                        <option value="2020">2020-2023</option>
+                        <option value="2015">2015-2020</option>
+                        <option value="2010">2010-2015</option>
+                        <option value="2005">2005-2010</option>
+                        <option value="2004">1995-2005</option>
+                        <option value=".....">others</option>
+                    </select>
+                    <select id="position-filter">
+                        <option value="">All Positions</option>
+                        <option value="DEPUTY ADMIN">DEPUTY ADMIN</option>
+                        <option value="DEPUTY ACADEMICS">DEPUTY ACADEMICS</option>
+                        <option value="HEADHEACTER">HEADHEACTER</option>
+                        <option value="President"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="directory-grid" id="directory-grid">
+                <!-- Administrator cards will be dynamically generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Administrator Modal -->
+    <div class="modal" id="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Administrator Details</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be dynamically generated here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+           <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-list">
+                    <li class="footer-item"><a href="login.html" class="footer-link">Academics</a></li>
+                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
+                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
+                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
+                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
+                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+                    
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Contact Us</h3>
+                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
+                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
+                <p><strong>Email:</strong> mabss2014@gmail.com</p>
+
+                <!-- Social Media Icons -->
+                <div class="social-media">
+                    <h4 class="social-heading">Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z"  target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/2567820906231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"   target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">School Hours</h3>
+                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
+                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
+                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Administrator data
+        const administrators = [
+            {
+                id: 1,
+                name: "LT. BRIGHT RWAKASIMBA",
+                position: "DEPUTY ADMIN",
+                years: "2023-TO DATE",
+                image: "image/Bright.jpg",
+                bio: "LT. BRIGHT RWAKASIMBA has pioneered our digital transformation initiative and established the Innovation Center. Under her leadership, our institution saw a 40% increase in research funding and the implementation of cutting-edge educational technologies. She was instrumental in creating partnerships with tech industry leaders that continue to benefit our students today.",
+                shortBio: "Pioneered our digital transformation initiative and established the Innovation Center that continues to benefit students and faculty today."
+            },
+            {
+                id: 2,
+                name: "MR.KYABARONGO YUNUS",
+                position: "DEPUTY ACADEMICS",
+                years: "2024-TO DATE",
+                image: "image/dp.jpg",
+                bio: "MR.KYABARONGO YUNUS led the expansion of our campus facilities and established key partnerships with industry leaders. His vision resulted in the construction of two new academic buildings and the creation of five new degree programs. During his tenure, student enrollment increased by 25% and graduation rates reached record highs.",
+                shortBio: "Led the expansion of our campus facilities and established key partnerships with industry leaders that enhanced our academic programs."
+            },
+            {
+                id: 3,
+                name: "CAPT. AHMED KITYO",
+                position: "DEPUTY ADMIN",
+                years: "2023",
+                image: "image/holder.png",
+                bio: "CAPT. AHMED KITYO championed diversity and inclusion initiatives that transformed our institution. She established mentorship programs for underrepresented students and faculty, increasing diversity in our community by 35%. Her leadership in creating equitable hiring practices has become a model for other institutions.",
+                shortBio: "Championed diversity and inclusion initiatives that transformed our institution into a more welcoming and equitable community."
+            },
+            {
+                id: 4,
+                name: "MR.BAGABAGYE GARVAS",
+                position: "DEPUTY ACADEMICS",
+                years: "2015-2021",
+                image: "image/holder.png",
+                bio: "MR.BAGABAGYE GARVAS navigated our institution through unprecedented challenges, implementing innovative remote learning solutions while maintaining our community's strong sense of connection and purpose. Under his leadership, we successfully transitioned to hybrid learning models and expanded mental health support services for students and staff.",
+                shortBio: "Navigated our institution through unprecedented challenges while maintaining our community's strong sense of connection and purpose."
+            },
+            {
+                id: 5,
+                name: "CAPT. KENNETH KWIKIRIZA",
+                position: "DEPUTY ADMIN",
+                years: ".....",
+                image: "image/holder.png",
+                bio: "CAPT. KENNETH KWIKIRIZA established the core academic programs that define our institution today. Her decade of leadership saw the creation of our honors program and the accreditation of seven key departments. She was known for her commitment to academic excellence and her ability to inspire both students and faculty.",
+                shortBio: "Established the core academic programs that define our institution and created our honors program."
+            },
+            {
+                id: 6,
+                name: "MS. KABARUNGI ANGELLA",
+                position: "DEPUTY ACADEMICS",
+                years: "2007",
+                image: "image/holder.png",
+                bio: "As our founding administrator, MS. KABARUNGI ANGELLA built our institution from the ground up. His vision and determination established the values and academic excellence that continue to guide us today. He personally recruited our first faculty members and developed the curriculum that formed the foundation of our academic reputation.",
+                shortBio: "As our founding administrator, built our institution from the ground up and established our core values."
+            },
+            {
+                id: 7,
+                name: "LT. ARTHER KATUSHABE",
+                position: "DEPUTY ADMIN",
+                years: ".....",
+                image: "image/holder.png",
+                bio: "LT. ARTHER KATUSHABE focused on strengthening our international partnerships and study abroad programs. Under his leadership, student participation in global education opportunities increased by 60%. He also established faculty exchange programs with five international universities, enriching our academic community.",
+                shortBio: "Focused on strengthening our international partnerships and expanding global education opportunities for students."
+            },
+            {
+                id: 8,
+                name: "LT.GOZANGA GONZA KWOREKWE",
+                position: "DEPUTY ACADEMICS",
+                years: "2004-2006",
+                image: "image/holder.png",
+                bio: "LT.GOZANGA GONZA KWOREKWE revolutionized our student support services, implementing comprehensive wellness programs and academic success initiatives that significantly improved student retention and graduation rates. Her 'whole student' approach has become a cornerstone of our institutional philosophy.",
+                shortBio: "Revolutionized our student support services, implementing comprehensive wellness programs and academic success initiatives."
+            },
+            {
+                id: 9,
+                name: "LT.DAVID MATOVU",
+                position: "DEPUTY ADMIN",
+                years: ".....",
+                image: "image/holder.png",
+                bio: "",
+                shortBio: ""
+            },
+            {
+                id: 10,
+                name: "LT.ROBERT BITUBYO",
+                position: "DEPUTY ADMIN",
+                years: ".....",
+                image: "image/holder.png",
+                bio:"",
+                shortBio: ""
+            },
+            {
+                id: 11,
+                name: "LT.J.BOSCO MUSIMENTA(LATE)",
+                position: "DEPUTY ADMIN",
+                years: ".....",
+                image: "image/holder.png",
+                bio:"",
+                shortBio:""
+            },
+            {
+                id: 12,
+                name: "LT. RICHARD TURYAHEBWA",
+                position: "DEPUTY ADMIN",
+                years: ".....",
+                image: "image/holder.png",
+                bio:"",
+                shortBio:" "
+            },
+            {
+                id: 13,
+                name: "CAPT RICHARD NIMANYA",
+                position: "DEPUTY ADMIN",
+                years: ".....",
+                image: "image/holder.png",
+                bio:"",
+                shortBio:""
+            },
+            {
+                id: 14,
+                name: "LT.KARUME ABU BAKER",
+                position: "DEPUTY ADMIN",
+                years: "2006",
+                image: "image/holder.png",
+                bio:"",
+                shortBio:""
+            },
+            {
+                id: 15,
+                name: "LT.NATHAN MPAIRWE",
+                position: "DEPUTY ADMIN",
+                years: "2004-2005",
+                image: "image/holder.png",
+                bio:"",
+                shortBio:""
+            },
+            {
+                id: 16,
+                name: "MR.OUTWEGAMIRA HABERT",
+                position: "DEPUTY ACADEMICIS",
+                years: "2014",
+                image: "image/holder.png",
+                bio:"",
+                shortBio:""
+            }
+        ]
+        // DOM elements
+        const directoryGrid = document.getElementById('directory-grid');
+        const searchInput = document.getElementById('search-input');
+        const yearFilter = document.getElementById('year-filter');
+        const positionFilter = document.getElementById('position-filter');
+        const adminModal = document.getElementById('admin-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const closeModal = document.querySelector('.close-modal');
+        const carouselInner = document.querySelector('.carousel-inner');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        // Initialize the directory
+        function initializeDirectory() {
+            renderAdministrators(administrators);
+            
+            // Add event listeners
+            searchInput.addEventListener('input', filterAdministrators);
+            yearFilter.addEventListener('change', filterAdministrators);
+            positionFilter.addEventListener('change', filterAdministrators);
+            closeModal.addEventListener('click', () => {
+                adminModal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === adminModal) {
+                    adminModal.style.display = 'none';
+                }
+            });
+            
+            // Carousel functionality
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel-item');
+            
+            function showSlide(index) {
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                
+                carouselInner.style.transform = `translateX(-${index * 100}%)`;
+                currentSlide = index;
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+            });
+            
+            // Auto-advance carousel
+            setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        }
+
+        // Render administrator cards
+        function renderAdministrators(admins) {
+            directoryGrid.innerHTML = '';
+            
+            admins.forEach(admin => {
+                const card = document.createElement('div');
+                card.className = 'admin-card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="admin-img">
+                            <img src="${admin.image}" alt="${admin.name}">
+                        </div>
+                        <div class="admin-basic-info">
+                            <h3>${admin.name}</h3>
+                            <p>${admin.position}</p>
+                            <span class="admin-years-card">${admin.years}</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>${admin.shortBio}</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => {
+                    openAdminModal(admin);
+                });
+                
+                directoryGrid.appendChild(card);
+            });
+        }
+
+        // Filter administrators based on search and filters
+        function filterAdministrators() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedYear = yearFilter.value;
+            const selectedPosition = positionFilter.value;
+            
+            const filteredAdmins = administrators.filter(admin => {
+                const matchesSearch = admin.name.toLowerCase().includes(searchTerm) || 
+                                     admin.position.toLowerCase().includes(searchTerm);
+                
+                const matchesYear = !selectedYear || admin.years.includes(selectedYear);
+                const matchesPosition = !selectedPosition || admin.position === selectedPosition;
+                
+                return matchesSearch && matchesYear && matchesPosition;
+            });
+            
+            renderAdministrators(filteredAdmins);
+        }
+
+        // Open modal with administrator details
+        function openAdminModal(admin) {
+            modalTitle.textContent = admin.name;
+            modalBody.innerHTML = `
+                <div class="modal-admin">
+                    <img src="${admin.image}" alt="${admin.name}">
+                    <div class="modal-admin-info">
+                        <h3>${admin.name}</h3>
+                        <p>${admin.position}</p>
+                        <span class="admin-years-card">${admin.years}</span>
+                    </div>
+                </div>
+                <div class="modal-bio">
+                    <h4>About</h4>
+                    <p>${admin.bio}</p>
+                </div>
+            `;
+            
+            adminModal.style.display = 'flex';
+        }
+
+        // Initialize the directory when the page loads
+        document.addEventListener('DOMContentLoaded', initializeDirectory);
+    </script>
+</body>
+</html>

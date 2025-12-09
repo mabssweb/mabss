@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Teachers | Mbarara Army Boarding Secondary School</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin: 1rem 0 2rem;
+            padding: 0.6rem 1.2rem;
+            background-color: #006341;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #004d33;
+        }
+
+        .back-button svg {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        
+        /* Header Styles */
+        .page-header {
+            background-color: #006341;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('image/classroom-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        /* Level Navigation */
+        .level-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .level-btn {
+            padding: 0.7rem 1.5rem;
+            background: #e9ecef;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .level-btn:hover, .level-btn.active {
+            background: #006341;
+            color: white;
+        }
+        
+        /* Teachers Grid */
+        .teachers-container {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .teachers-container.active {
+            display: block;
+        }
+        
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .teacher-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .teacher-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .teacher-img-container {
+            width: 100%;
+            padding: 1.5rem 1.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .teacher-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .teacher-info {
+            padding: 1.5rem;
+        }
+        
+        .teacher-name {
+            color: #006341;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .teacher-level {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: #495057;
+        }
+        
+        .teacher-subjects {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .teacher-qualification {
+            font-size: 0.85rem;
+            color: #868e96;
+            font-style: italic;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #666;
+            background: none;
+            border: none;
+            z-index: 10;
+        }
+        
+        .modal-header {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-header img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-header-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 99, 65, 0.9), transparent);
+            padding: 2rem 1.5rem 1rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .modal-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .modal-title {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-section h3 {
+            color: #006341;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+        
+        .modal-bio {
+            line-height: 1.7;
+        }
+        
+        .modal-subjects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .subject-tag {
+            background: #e9ecef;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .teachers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .modal-name {
+                font-size: 1.5rem;
+            }
+
+            .teacher-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .modal-header img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .teachers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .level-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .level-btn {
+                width: 100%;
+            }
+
+            .teacher-img {
+                width: 130px;
+                height: 130px;
+            }
+
+            .modal-header img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="container">
+        <a href="staff.html" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+            Back to Staff
+        </a>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">Our Class Teachers</h1>
+            <p class="page-subtitle">Dedicated educators shaping the future of our students</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Level Navigation -->
+        <div class="level-nav">
+            <button class="level-btn active" data-level="s1">Senior 1</button>
+            <button class="level-btn" data-level="s2">Senior 2</button>
+            <button class="level-btn" data-level="s3">Senior 3</button>
+            <button class="level-btn" data-level="s4">Senior 4</button>
+            <button class="level-btn" data-level="s5">Senior 5</button>
+            <button class="level-btn" data-level="s6">Senior 6</button>
+        </div>
+        
+        <!-- Senior 1 Teachers -->
+        <div class="teachers-container active" id="s1-teachers">
+            <h2 class="section-title">Senior 1 Class Teachers</h2>
+            <div class="teachers-grid">
+                <!-- Teacher 1 -->
+                <div class="teacher-card" onclick="openModal('s1-teacher1')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/ALLAN.jpg" alt="ABIINE ALLAN" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">PTE. ABIINE ALLAN</h3>
+                        <span class="teacher-level">Senior 1A</span>
+                        <p class="teacher-subjects">KISWAHILI </p>
+                        <p class="teacher-qualification">BACHELORS IN ARTS WITH EDUCATION</p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 2 -->
+                <div class="teacher-card" onclick="openModal('bosco')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/bosco.jpg" alt="SGT. NGABIRANO BOSCO" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">SGT. NGABIRANO BOSCO</h3>
+                        <span class="teacher-level">Senior 1B</span>
+                        <p class="teacher-subjects">CRE, ENTREPRENEURSHIP & ECONOMICS</p>
+                        <p class="teacher-qualification">BACHELORS OF ARTS WITH EDUCATION</p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 3 -->
+                <div class="teacher-card" onclick="openModal('s1-teacher3')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/allen.jpg" alt="allen" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">MS. NABASA ALLEN</h3>
+                        <span class="teacher-level">Senior 1C</span>
+                        <p class="teacher-subjects">CRE & GEOGRAPHY</p>
+                        <p class="teacher-qualification">BACHELORS OF ARTS WITH EDUCATION</p>
+                    </div>
+                </div>
+                 <!-- Teacher 4 -->
+                <div class="teacher-card" onclick="openModal('davis')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/Davis.jpg" alt="davis" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">GUMA DAVIS</h3>
+                        <span class="teacher-level">Senior 1D</span>
+                        <p class="teacher-subjects">PHYSICS & MTC</p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+
+                 <!-- Teacher 5 -->
+                <div class="teacher-card" onclick="openModal('davis')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/baseeta.jpg" alt="davis" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">L/CPL. BASEETA JOHNWILSON</h3>
+                        <span class="teacher-level">Senior 1D</span>
+                        <p class="teacher-subjects">ICT </p>
+                        <p class="teacher-qualification">BACHELORS OF SCIENCE WITH EDUCATION</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Senior 2 Teachers -->
+        <div class="teachers-container" id="s2-teachers">
+            <h2 class="section-title">Senior 2 Class Teachers</h2>
+            <div class="teachers-grid">
+                <!-- Teacher 1 -->
+                <div class="teacher-card" onclick="openModal('s1-teacher1')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/innocent.jpg" alt="L/CPL. MBABAZI INNOCENT" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">L/CPL. MBABAZI INNOCENT</h3>
+                        <span class="teacher-level">Senior 2A</span>
+                        <p class="teacher-subjects">GEOGRAPHY, ENTREPRENEURSHIP</p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 2 -->
+                <div class="teacher-card" onclick="openModal('s2-teacher2')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/Akasigye.jpg" alt="FERESIANO" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">L/CPL. ATUHWERE FERESIANO.</h3>
+                        <span class="teacher-level">Senior 2B</span>
+                        <p class="teacher-subjects">ENTREPRENEURSHIP/ ICT</p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 3 -->
+                <div class="teacher-card" onclick="openModal('s2-teacher3')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/AGAABA.jpg"  alt="UNIQUE" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">PTE. AGAABA UNIQUE</h3>
+                        <span class="teacher-level">Senior 2C</span>
+                        <p class="teacher-subjects">English/Literature </p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 4-->
+                <div class="teacher-card" onclick="openModal('s2-teacher4')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/oluti.jpg" alt="STEVEN" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">L/CPL. OLWIT STEVEN</h3>
+                        <span class="teacher-level">Senior 2D</span>
+                        <p class="teacher-subjects">AGRICULTURE</p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Senior 3 Teachers -->
+        <div class="teachers-container" id="s3-teachers">
+            <h2 class="section-title">Senior 3 Class Teachers</h2>
+            <div class="teachers-grid">
+                <!-- Teacher 1 -->
+                <div class="teacher-card" onclick="openModal('s3-teacher1')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/balu.jpg" alt="Mr. James Katongole" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">L/CPL.BALU ISAAC</h3>
+                        <span class="teacher-level">Senior 3A</span>
+                        <p class="teacher-subjects"></p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 2 -->
+                <div class="teacher-card" onclick="openModal('ben')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/micheal.jpg" alt="ONGWECH MICHEAL BEN" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name"> L/CPL. ONGWECH MICHEAL BEN</h3>
+                        <span class="teacher-level">Senior 3B</span>
+                        <p class="teacher-subjects">Biology, Chemistry</p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 3 -->
+                <div class="teacher-card" onclick="openModal('s3-teacher3')">
+                    <div class="teacher-img-container">
+                        <img src="image/rich.jpg" alt="Mr. Richard Byaruhanga" class="teacher-img">
+                    </div>
+                   <div class="teacher-info">
+                        <h3 class="teacher-name">L/CPL. AHEBWA RICHARD</h3>
+                        <span class="teacher-level">Senior 3D</span>
+                        <p class="teacher-subjects">ICT & COMPUTER</p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+
+                 <!-- Teacher 4 -->
+               <div class="teacher-card" onclick="openModal('s3-teacher3')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/OJOK.jpg" alt="Mr. Richard Byaruhanga" class="teacher-img">
+                    </div>
+                   <div class="teacher-info">
+                        <h3 class="teacher-name">L/CPL. OJOK EMMANUEL</h3>
+                        <span class="teacher-level">Senior 3D</span>
+                        <p class="teacher-subjects">HISTORY & GEOGRAPHY</p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Senior 4 Teachers -->
+        <div class="teachers-container" id="s4-teachers">
+            <h2 class="section-title">Senior 4 Class Teachers</h2>
+            <div class="teachers-grid">
+                <!-- Teacher 1 -->
+                <div class="teacher-card" onclick="openModal('s4-teacher1')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/" alt="IKOBA FRANCIS" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">CPL. IKOBA FRANCIS</h3>
+                        <span class="teacher-level">Senior 4A</span>
+                        <p class="teacher-subjects"></p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 2 -->
+                <div class="teacher-card" onclick="openModal('s4-teacher2')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/RO.jpg" alt="TUMWESIGYE RONALD" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">Mr.TUMWESIGYE RONALD</h3>
+                        <span class="teacher-level">Senior 4B</span>
+                        <p class="teacher-subjects">HISTORY</p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 3 -->
+                <div class="teacher-card" onclick="openModal('s4-teacher3')">
+                    <div class="teacher-img-container">
+                        <img src="image/.jpg" alt="NIMWESIGA JUDE " class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">NIMWESIGA JUDE </h3>
+                        <span class="teacher-level">Senior 4C</span>
+                        <p class="teacher-subjects"></p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+
+                <!-- Teacher 4 -->
+                <div class="teacher-card" onclick="openModal('s4-teacher4')">
+                    <div class="teacher-img-container">
+                        <img src="image/.jpg" alt="NUWAMANYA HANNINGTON" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">NUWAMANYA HANNINGTON</h3>
+                        <span class="teacher-level">Senior 4D</span>
+                        <p class="teacher-subjects"></p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Senior 5 Teachers -->
+        <div class="teachers-container" id="s5-teachers">
+            <h2 class="section-title">Senior 5 Class Teachers</h2>
+            <div class="teachers-grid">
+                <!-- Teacher 1 -->
+                <div class="teacher-card" onclick="openModal('s5-teacher1')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/Kariisa.jpg" alt="james" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">WO1. KARIISA JAMES </h3>
+                        <span class="teacher-level">Senior 5ARTS</span>
+                        <p class="teacher-subjects">HISTORY</p>
+                        <p class="teacher-qualification">BACHELORS OF ARTS IN EDUCATION</p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 2 -->
+                <div class="teacher-card" onclick="openModal('s5-teacher2')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/agaba.jpg" alt="AGABA GODFREY" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">AGABA GODFREY</h3>
+                        <span class="teacher-level">Senior 5SCI</span>
+                        <p class="teacher-subjects">MATHEMATICS & ECONOMICS</p>
+                        <p class="teacher-qualification">BACHELORS OF SCIENCE WITH EDUCATION (MUK)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Senior 6 Teachers -->
+        <div class="teachers-container" id="s6-teachers">
+            <h2 class="section-title">Senior 6 Class Teachers</h2>
+            <div class="teachers-grid">
+                <!-- Teacher 1 -->
+                <div class="teacher-card" onclick="openModal('s6-teacher1')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/PA.jpg" alt="Dr. Elizabeth Nansubuga" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">MS. NASASIRA PAMELA</h3>
+                        <span class="teacher-level">Senior 6ARTS</span>
+                        <p class="teacher-subjects">GEOGRAPHY</p>
+                        <p class="teacher-qualification"></p>
+                    </div>
+                </div>
+                
+                <!-- Teacher 2 -->
+                <div class="teacher-card" onclick="openModal('cossma')">
+                    <div class="teacher-img-container">
+                        <img src="image/Staff/COSMA.jpg" alt="cosma" class="teacher-img">
+                    </div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">L/CPL. TUMUSINGIZE COSMA</h3>
+                        <span class="teacher-level">Senior 6.SCI</span>
+                        <p class="teacher-subjects">PHYSICS & MTC</p>
+                        <p class="teacher-qualification">BACHELORS OF SCIENCE WITH EDUCATION</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="teacherModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <img id="modalTeacherImg" src="" alt="Teacher Photo">
+                <div class="modal-header-overlay">
+                    <h2 class="modal-name" id="modalTeacherName"></h2>
+                    <p class="modal-title" id="modalTeacherTitle"></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>Professional Information</h3>
+                    <p id="modalTeacherQualification"></p>
+                    <p id="modalTeacherLevel"></p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Subjects Taught</h3>
+                    <div class="modal-subjects" id="modalTeacherSubjects"></div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>About</h3>
+                    <p class="modal-bio" id="modalTeacherBio"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Teacher data
+        const teachersData = {
+            // Senior 1 Teachers
+            's1-teacher1': {
+                name: 'Mr. John Mugisha',
+                title: 'Senior 1 East Class Teacher',
+                level: 'Senior 1 East',
+                qualification: 'MSc. Mathematics, Makerere University | BEd. Science Education, Kyambogo University',
+                subjects: ['Mathematics', 'Physics', 'Additional Mathematics'],
+                bio: 'With over 10 years of teaching experience, Mr. Mugisha specializes in making complex mathematical concepts accessible to students. He has coached several national mathematics olympiad winners and runs the school\'s math club.'
+            },
+            's1-teacher2': {
+                name: 'Ms. Sarah Kiconco',
+                title: 'Senior 1 West Class Teacher',
+                level: 'Senior 1 West',
+                qualification: 'MA English, Kyambogo University | BA Education, Makerere University',
+                subjects: ['English Language', 'Literature in English', 'Reading Skills'],
+                bio: 'Ms. Kiconco is passionate about developing students\' communication skills. She organizes the annual school debating competition and drama festivals. Her innovative teaching methods have significantly improved students\' performance in English.'
+            },
+            's1-teacher3': {
+                name: 'Mr. Robert Tumwesigye',
+                title: 'Senior 1 North Class Teacher',
+                level: 'Senior 1 North',
+                qualification: 'BSc. Education (Biology, Chemistry), Mbarara University | Diploma in Education',
+                subjects: ['Biology', 'Chemistry', 'General Science'],
+                bio: 'Mr. Tumwesigye brings practical laboratory experience to his teaching. He established the school\'s science club and organizes annual science fairs to stimulate students\' interest in scientific inquiry.'
+            },
+            
+            // Senior 2 Teachers
+            's2-teacher1': {
+                name: 'Ms. Grace Nalwadda',
+                title: 'Senior 2 East Class Teacher',
+                level: 'Senior 2 East',
+                qualification: 'BA Education (History, Geography), Makerere University',
+                subjects: ['History', 'Geography', 'Political Education'],
+                bio: 'Ms. Nalwadda uses interactive methods including educational trips to historical sites to bring history to life. She coordinates the Model United Nations program and current affairs club.'
+            },
+            's2-teacher2': {
+                name: 'Mr. David Mwesigwa',
+                title: 'Senior 2 West Class Teacher',
+                level: 'Senior 2 West',
+                qualification: 'MSc. Physics, Kyambogo University | BSc. Education, Makerere University',
+                subjects: ['Mathematics', 'Physics', 'ICT'],
+                bio: 'Mr. Mwesigwa integrates technology in teaching physics concepts. He established the school\'s robotics club and has led teams to national competitions.'
+            },
+            's2-teacher3': {
+                name: 'Ms. Juliet Kansiime',
+                title: 'Senior 2 North Class Teacher',
+                level: 'Senior 2 North',
+                qualification: 'MA Literature, Makerere University | BA Education, Kyambogo University',
+                subjects: ['English Language', 'Literature in English', 'Creative Writing'],
+                bio: 'A published poet, Ms. Kansiime runs the creative writing club and school magazine. Her students regularly win writing competitions at national level.'
+            },
+            
+            // Senior 3 Teachers
+            's3-teacher1': {
+                name: 'Mr. James Katongole',
+                title: 'Senior 3 East Class Teacher',
+                level: 'Senior 3 East',
+                qualification: 'MSc. Mathematics, Makerere University | BEd. Science Education',
+                subjects: ['Mathematics', 'Physics', 'Additional Mathematics'],
+                bio: 'Mr. Katongole specializes in exam preparation techniques. His students consistently achieve excellent results in national examinations.'
+            },
+            's3-teacher2': {
+                name: 'Ms. Prossy Namutebi',
+                title: 'Senior 3 West Class Teacher',
+                level: 'Senior 3 West',
+                qualification: 'BSc. Education (Biology, Chemistry), Mbarara University',
+                subjects: ['Biology', 'Chemistry', 'Health Education'],
+                bio: 'Ms. Namutebi emphasizes practical applications of biological concepts. She established the school\'s environmental club and leads tree planting initiatives.'
+            },
+            's3-teacher3': {
+                name: 'Mr. Richard Byaruhanga',
+                title: 'Senior 3 North Class Teacher',
+                level: 'Senior 3 North',
+                qualification: 'BA Education (History, CRE), Kyambogo University',
+                subjects: ['History', 'CRE', 'Political Education'],
+                bio: 'Mr. Byaruhanga integrates moral education with academic learning. He coordinates the school\'s community service program and interfaith dialogues.'
+            },
+            
+            // Senior 4 Teachers
+            's4-teacher1': {
+                name: 'Ms. Annet Nalubega',
+                title: 'Senior 4 East Class Teacher',
+                level: 'Senior 4 East',
+                qualification: 'MA English, Makerere University | BA Education, Kyambogo University',
+                subjects: ['English Language', 'Literature in English'],
+                bio: 'Ms. Nalubega specializes in exam preparation strategies for English. Her innovative teaching methods have significantly improved students\' performance in UNEB examinations.'
+            },
+            's4-teacher2': {
+                name: 'Mr. Patrick Okello',
+                title: 'Senior 4 West Class Teacher',
+                level: 'Senior 4 West',
+                qualification: 'MSc. Physics, Kyambogo University | BSc. Education, Makerere University',
+                subjects: ['Mathematics', 'Physics', 'ICT'],
+                bio: 'Mr. Okello focuses on developing problem-solving skills in physics. He has authored several revision booklets used by schools nationwide.'
+            },
+            's4-teacher3': {
+                name: 'Ms. Rose Akello',
+                title: 'Senior 4 North Class Teacher',
+                level: 'Senior 4 North',
+                qualification: 'BSc. Education (Biology, Chemistry), Mbarara University',
+                subjects: ['Biology', 'Chemistry', 'Agriculture'],
+                bio: 'Ms. Akello connects classroom learning with real-world applications. She established the school\'s agricultural project that supplies vegetables to the dining hall.'
+            },
+            
+            // Senior 5 Teachers
+            's5-teacher1': {
+                name: 'Mr. Samuel Wasswa',
+                title: 'Senior 5 Science Class Teacher',
+                level: 'Senior 5 Science',
+                qualification: 'PhD Physics, Makerere University | MSc. Physics, University of Nairobi',
+                subjects: ['Physics', 'Mathematics', 'Physical Chemistry'],
+                bio: 'Dr. Wasswa brings university-level research experience to A-level teaching. He mentors students pursuing careers in STEM fields and coordinates the science olympiad program.'
+            },
+            's5-teacher2': {
+                name: 'Ms. Jennifer Atim',
+                title: 'Senior 5 Arts Class Teacher',
+                level: 'Senior 5 Arts',
+                qualification: 'MA History, Makerere University | BA Education, Kyambogo University',
+                subjects: ['History', 'Geography', 'Political Education'],
+                bio: 'Ms. Atim emphasizes critical thinking in humanities. She organizes historical debates and has led student trips to national museums and cultural sites.'
+            },
+            's5-teacher3': {
+                name: 'Mr. Michael Ochieng',
+                title: 'Senior 5 Commercial Class Teacher',
+                level: 'Senior 5 Commercial',
+                qualification: 'MBA, Uganda Martyrs University | BCom, Makerere University',
+                subjects: ['Economics', 'Entrepreneurship', 'Business Studies'],
+                bio: 'With industry experience in banking, Mr. Ochieng brings practical business knowledge to the classroom. He coordinates the school\'s entrepreneurship fair.'
+            },
+            
+            // Senior 6 Teachers
+            's6-teacher1': {
+                name: 'Dr. Elizabeth Nansubuga',
+                title: 'Senior 6 Science Class Teacher',
+                level: 'Senior 6 Science',
+                qualification: 'PhD Chemistry, Makerere University | MSc. Chemistry, University of Dar es Salaam',
+                subjects: ['Biology', 'Chemistry', 'Physical Chemistry'],
+                bio: 'Dr. Nansubuga specializes in advanced chemistry concepts. She mentors students applying for international universities and competitive scholarships.'
+            },
+            's6-teacher2': {
+                name: 'Mr. Joseph Ssebaggala',
+                title: 'Senior 6 Arts Class Teacher',
+                level: 'Senior 6 Arts',
+                qualification: 'MA Literature, Kyambogo University | BA Education, Makerere University',
+                subjects: ['Literature in English', 'Divinity', 'General Paper'],
+                bio: 'Mr. Ssebaggala has extensive experience in UNEB examination marking. His students consistently achieve distinction grades in literature and general paper.'
+            },
+            's6-teacher3': {
+                name: 'Ms. Rebecca Namukasa',
+                title: 'Senior 6 Commercial Class Teacher',
+                level: 'Senior 6 Commercial',
+                qualification: 'MSc. Accounting, Makerere University | BBA, Uganda Christian University',
+                subjects: ['Accounts', 'Mathematics', 'Entrepreneurship'],
+                bio: 'A certified accountant, Ms. Namukasa prepares students for professional courses. She established the school\'s investment club where students manage a portfolio.'
+            }
+        };
+        
+        // Level navigation
+        document.querySelectorAll('.level-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all teacher containers
+                document.querySelectorAll('.teachers-container').forEach(container => {
+                    container.classList.remove('active');
+                });
+                
+                // Show selected teacher container
+                const level = this.getAttribute('data-level');
+                document.getElementById(`${level}-teachers`).classList.add('active');
+            });
+        });
+        
+        // Modal functions
+        function openModal(teacherId) {
+            const teacher = teachersData[teacherId];
+            if (!teacher) return;
+            
+            document.getElementById('modalTeacherImg').src = document.querySelector(`[onclick="openModal('${teacherId}')] img`).src;
+            document.getElementById('modalTeacherName').textContent = teacher.name;
+            document.getElementById('modalTeacherTitle').textContent = teacher.title;
+            document.getElementById('modalTeacherQualification').textContent = teacher.qualification;
+            document.getElementById('modalTeacherLevel').textContent = `Class: ${teacher.level}`;
+            
+            // Clear previous subjects
+            const subjectsContainer = document.getElementById('modalTeacherSubjects');
+            subjectsContainer.innerHTML = '';
+            
+            // Add subjects
+            teacher.subjects.forEach(subject => {
+                const subjectTag = document.createElement('span');
+                subjectTag.className = 'subject-tag';
+                subjectTag.textContent = subject;
+                subjectsContainer.appendChild(subjectTag);
+            });
+            
+            document.getElementById('modalTeacherBio').textContent = teacher.bio;
+            
+            const modal = document.getElementById('teacherModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('teacherModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside content
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('teacherModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

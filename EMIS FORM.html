@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MABSS Registration Form</title>
+    <style>
+        :root {
+            --updf-blue: #00b327;
+            --updf-gold: #248b0a;
+            --light-blue: #e6f0fa;
+            --dark-blue: #003366;
+        }
+        
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--updf-blue), var(--dark-blue));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--updf-gold);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        
+        header h2 {
+            margin: 10px 0 0;
+            font-size: 18px;
+            font-weight: normal;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--light-blue);
+            border-radius: 8px;
+            border-left: 5px solid var(--updf-blue);
+        }
+        
+        .form-section h3 {
+            margin-top: 0;
+            color: var(--updf-blue);
+            border-bottom: 2px solid var(--updf-gold);
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+        
+        .form-col {
+            flex: 1;
+            min-width: 200px;
+            padding: 0 10px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--updf-blue);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.2);
+        }
+        
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input, .checkbox-option input {
+            margin-right: 8px;
+        }
+        
+        .address-fields {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        button {
+            background: linear-gradient(to right, var(--updf-blue), var(--dark-blue));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin: 30px auto;
+            width: 200px;
+        }
+        
+        button:hover {
+            background: linear-gradient(to right, var(--dark-blue), var(--updf-blue));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .declaration {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-top: 30px;
+        }
+        
+        .declaration label {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .declaration input {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .signature-fields {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .signature-field {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+        }
+        
+        .signature-line {
+            border-bottom: 1px solid #333;
+            margin-top: 40px;
+            padding-bottom: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-col {
+                flex: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .address-fields {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 20px;
+            }
+            
+            header h2 {
+                font-size: 16px;
+            }
+        }
+        
+        @media print {
+            button {
+                display: none;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MBARARA ARMY BOARDING SECONDARY SCHOOL</h1>
+            <h2>LEARNERS EMIS/DOTSHULE REGISTRATION FORM</h2>
+        </header>
+        
+        <form id="registrationForm">
+            <div class="form-section">
+                <h3>(a) LEARNER'S PERSONAL INFORMATION</h3>
+                
+                <div class="form-group">
+                    <label for="fullName">(i) FULL NAME</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>(i) PLACE OF BIRTH</label>
+                    <div class="address-fields">
+                        <div>
+                            <label for="birthCountry">Country</label>
+                            <input type="text" id="birthCountry" name="birthCountry" value="Uganda" required>
+                        </div>
+                        <div>
+                            <label for="birthDistrict">District</label>
+                            <input type="text" id="birthDistrict" name="birthDistrict" required>
+                        </div>
+                        <div>
+                            <label for="birthSubcounty">Subcounty</label>
+                            <input type="text" id="birthSubcounty" name="birthSubcounty" required>
+                        </div>
+                        <div>
+                            <label for="birthCounty">County</label>
+                            <input type="text" id="birthCounty" name="birthCounty" required>
+                        </div>
+                        <div>
+                            <label for="birthParish">Parish</label>
+                            <input type="text" id="birthParish" name="birthParish">
+                        </div>
+                        <div>
+                            <label for="birthVillage">Village</label>
+                            <input type="text" id="birthVillage" name="birthVillage">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="dob">(i) DATE OF BIRTH</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label>(iii) SEX</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="male" name="sex" value="Male" required>
+                                    <label for="male">Male</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="female" name="sex" value="Female">
+                                    <label for="female">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>(iv) ADMISSION MODE</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="newTransactional" name="admissionMode" value="New Transactional" required>
+                            <label for="newTransactional">New Transactional</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="newTransfer" name="admissionMode" value="New Transfer">
+                            <label for="newTransfer">New Transfer</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="freshRegistration" name="admissionMode" value="Fresh Registration">
+                            <label for="freshRegistration">Fresh Registration</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label>(v) RESIDENCE TYPE</label>
+                            <select id="residenceType" name="residenceType" required>
+                                <option value="">Select...</option>
+                                <option value="Day">Day</option>
+                                <option value="Boarding">Boarding</option>
+                                <option value="House">House</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label>(vi) ORPHANAGE STATUS</label>
+                            <select id="orphanageStatus" name="orphanageStatus" required>
+                                <option value="">Select...</option>
+                                <option value="None">Both Parents Alive</option>
+                                <option value="Mother">Mother Only</option>
+                                <option value="Father">Father Only</option>
+                                <option value="Both">Both Parents Deceased</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="lin">(vii) LIN</label>
+                            <input type="text" id="lin" name="lin">
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="indexNo">(viii) INDEX NO</label>
+                            <input type="text" id="indexNo" name="indexNo" placeholder="PLE">
+                            <input type="text" id="indexNo" name="indexNo" placeholder="UCE">
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="examYear">(ix) YEAR OF EXAM</label>
+                            <input type="number" id="examYear" name="examYear" placeholder="year of sitting PLE" min="2000" max="2099">
+                            <input type="number" id="examYear" name="examYear" placeholder="year of sitting UCE" min="2000" max="2099">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="lin">(vii) LIN</label>
+                            <input type="text" id="lin" name="lin">
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="indexNo">(viii) INDEX NO</label>
+                            <input type="text" id="indexNo" name="indexNo" placeholder="UACE">
+                            <input type="text" id="combination" name="combination" placeholder="enter a combination">
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="examYear">(ix) YEAR OF EXAM</label>
+                            <input type="number" id="examYear" name="examYear" min="2000" max="2099">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>(b) LEARNER'S SPECIAL NEEDS INFORMATION</h3>
+                
+                <div class="form-group">
+                    <label for="healthNeeds">(x) HEALTH NEEDS</label>
+                    <textarea id="healthNeeds" name="healthNeeds" rows="3" placeholder="Describe any special health needs"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="talent">(xi) TALENT</label>
+                    <textarea id="talent" name="talent" rows="3" placeholder="Describe learner's talents"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="practicalNeeds">(xii) PRACTICAL NEEDS</label>
+                    <textarea id="practicalNeeds" name="practicalNeeds" rows="3" placeholder="Describe any practical needs"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>(c) PARENT/GUARDIAN INFORMATION</h3>
+                
+                <div class="form-group">
+                    <label>Relationship to Learner</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="parent" name="relationshipType" value="Parent" required>
+                            <label for="parent">Parent</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="guardian" name="relationshipType" value="Guardian">
+                            <label for="guardian">Guardian</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="pgName">NAMES</label>
+                            <input type="text" id="pgName" name="pgName" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label>SEX</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="pgMale" name="pgSex" value="Male" required>
+                                    <label for="pgMale">Male</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="pgFemale" name="pgSex" value="Female">
+                                    <label for="pgFemale">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="pgRelationship">RELATIONSHIP TO LEARNER</label>
+                            <input type="text" id="pgRelationship" name="pgRelationship" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="pgProfession">PROFESSION/OCCUPATION</label>
+                            <input type="text" id="pgProfession" name="pgProfession" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pgResidence">RESIDENCE</label>
+                    <input type="text" id="pgResidence" name="pgResidence" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="pgContacts">CONTACTS</label>
+                            <input type="tel" id="pgContacts" name="pgContacts" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="pgDistrict">DISTRICT</label>
+                            <input type="text" id="pgDistrict" name="pgDistrict" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pgNin">NIN (ID)</label>
+                    <input type="text" id="pgNin" name="pgNin">
+                </div>
+            </div>
+            
+            <div class="declaration">
+                <h3>DECLARATION</h3>
+                <p>I hereby declare that the information provided above is true and accurate to the best of my knowledge. I understand that providing false information may lead to disqualification or dismissal.</p>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="declaration" required> I agree to the above declaration
+                    </label>
+                </div>
+                
+                <div class="signature-fields">
+                    <div class="signature-field">
+                        <label for="signature">SIGNATURE</label>
+                        <div class="signature-line"></div>
+                    </div>
+                    <div class="signature-field">
+                        <label for="date">DATE</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                </div>
+            </div>
+            <button type="amwiinefrankline@gmail.com">SUBMIT FORM</button>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Form validation
+            const requiredFields = document.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    field.style.borderColor = 'red';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Form submission (in a real app, this would send to a server)
+            alert('Form submitted successfully!');
+            // this.submit(); // Uncomment to actually submit the form
+        });
+        
+        // Responsive adjustments
+        function adjustLayout() {
+            // Additional responsive adjustments if needed
+        }
+        
+        window.addEventListener('resize', adjustLayout);
+        adjustLayout();
+    </script>
+</body>
+</html>
