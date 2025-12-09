@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><html lang="en-UG">
+<html lang="en-UG">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +9,6 @@
     <meta name="description" content="Mbarara Army Boarding Secondary School, in Uganda offers quality O-Level & A-Level education with discipline, patriotism & academic excellence. Join us today., mabss, mabss.ac, mabss.ac.ug">
     <meta name="keywords" content="mabss, mabss.ac, mabss.ac.ug, Mbarara Army Boarding Secondary School, One of the Main boarding schools in Uganda, O-Level Uganda, A-Level Uganda, quality education, discipline, patriotism, academic excellence, Mbarara schools, national service, Makenke Barracks, secondary education Uganda">
     <meta name="author" content="Mbarara Army Boarding Secondary School | Designed by Amwine Frankline">
-">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph Tags -->
@@ -25,7 +20,6 @@
     <meta property="og:site_name" content="Mbarara Army Boarding Secondary School">
     <meta property="og:locale" content="en_UG">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -41,7 +35,7 @@
             padding-top: 90px; /* Space for fixed header */
         }
         
-        /* Header & Navigation */
+        /* IMPROVED HEADER & NAVIGATION */
         .header {
             background-color: #0e7704;
             color: white;
@@ -69,33 +63,43 @@
         .logo-container {
             display: flex;
             align-items: center;
+            gap: 1rem;
             flex-grow: 1;
-            min-width: 250px;
+            min-width: 0; /* Allow shrinking */
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+            min-width: 0; /* Allow text to wrap */
         }
         
         .helo {
             height: 70px;
             width: 70px;
+            min-width: 70px; /* Prevent logo from shrinking */
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid white;
-            margin-right: 1rem;
         }
         
         .school-name {
             margin: 0;
-            font-size: 40px;
+            font-size: 1.8rem;
             font-weight: bold;
-            text-align: center;
+            line-height: 1.2;
+            text-align: left;
             flex-grow: 1;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
         
         .division-logo {
-            display: grid;
-            place-items: center;
             height: 40px;
+            margin-left: 1rem;
             flex-shrink: 0;
-            margin: 2px auto;
         }
         
         /* Typewriter Effect */
@@ -422,25 +426,71 @@
             border-top: 1px solid #006341;
         }
         
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .school-name {
-                font-size: 1.5rem;
+        /* RESPONSIVE ADJUSTMENTS FOR IMPROVED HEADER */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                padding: 0.5rem 1rem;
             }
             
-            .helo {
-                height: 70px;
-                width: 70px;
+            .logo-container {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 0.5rem;
+            }
+            
+            .logo-wrapper {
+                justify-content: center;
+                text-align: center;
             }
             
             .division-logo {
-                height: 30px;
+                margin: 0.5rem 0;
+                height: 35px;
             }
             
             .typewriter {
                 font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body.here {
+                padding-top: 100px; /* More space for taller header on mobile */
+            }
+            
+            .header {
+                padding: 0.3rem 0;
+            }
+            
+            .logo-wrapper {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            
+            .helo {
+                height: 60px;
+                width: 60px;
+                min-width: 60px;
+            }
+            
+            .school-name {
+                font-size: 1.4rem;
+                text-align: center;
+                line-height: 1.1;
+            }
+            
+            .division-logo {
+                height: 30px;
+                margin-left: 0;
+            }
+            
+            .typewriter {
+                font-size: 1.3rem;
                 white-space: normal;
                 border-right: none;
+                padding: 0 0.5rem;
             }
             
             .hero {
@@ -478,26 +528,37 @@
         }
         
         @media (max-width: 480px) {
+            body.here {
+                padding-top: 110px; /* Even more space for very small screens */
+            }
+            
+            .header {
+                padding: 0.2rem 0;
+            }
+            
             .header-container {
-                flex-direction: column;
-                text-align: center;
+                padding: 0.5rem;
             }
             
-            .logo-container {
-                margin-bottom: 0.5rem;
-            }
-            
-            .division-logo {
-                margin-top: 0.5rem;
-                font-size:30px;
-            }
-            
-            .typewriter {
-                font-size: 1.2rem;
+            .helo {
+                height: 50px;
+                width: 50px;
+                min-width: 50px;
+                border-width: 2px;
             }
             
             .school-name {
-                font-size: 1.8rem;
+                font-size: 1.2rem;
+                line-height: 1;
+            }
+            
+            .division-logo {
+                height: 25px;
+            }
+            
+            .typewriter {
+                font-size: 1.1rem;
+                line-height: 1.4;
             }
             
             .counter-container {
@@ -515,30 +576,55 @@
             }
         }
         
-        @media (min-width: 992px) {
-            .footer-container {
-                grid-template-columns: repeat(3, 1fr);
+        @media (min-width: 1200px) {
+            .school-name {
+                font-size: 2.2rem;
             }
             
             .typewriter {
                 font-size: 2.5rem;
             }
         }
+        
+        /* Small tablet adjustments */
+        @media (min-width: 481px) and (max-width: 600px) {
+            .school-name {
+                font-size: 1.3rem;
+            }
+            
+            .helo {
+                height: 55px;
+                width: 55px;
+            }
+        }
+        
+        /* Medium tablet adjustments */
+        @media (min-width: 601px) and (max-width: 768px) {
+            .logo-wrapper {
+                flex-direction: row;
+                text-align: left;
+            }
+            
+            .school-name {
+                font-size: 1.5rem;
+                text-align: left;
+            }
+        }
     </style>
 </head>
 <body class="here">
-    <!-- Header -->
-    <div class="header">
-        <img src="image/4th.png" class="division-logo" alt="Division Logo">
+    <!-- IMPROVED HEADER -->
+    <header class="header">
         <div class="header-container">
-            
             <div class="logo-container">
-                <img src="image/logo mabss.jpg" alt="logo mabss" class="helo">
-                <h1 class="school-name">Mbarara Army Boarding  Secondary School</h1>
+                <div class="logo-wrapper">
+                    <img src="image/logo mabss.jpg" alt="MABSS Logo" class="helo">
+                    <h1 class="school-name">Mbarara Army Boarding Secondary School</h1>
+                </div>
+                <img src="image/4th.png" class="division-logo" alt="Division Logo">
             </div>
-            
         </div>
-    </div>
+    </header>
 
     <!-- Hero Section with Slideshow -->
     <section class="hero">
@@ -610,7 +696,7 @@
                         <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
                         <a href="https://pin.it/5oaOEpb4Z"  target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
                         <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/2567820906231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"   target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
