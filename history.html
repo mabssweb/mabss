@@ -269,6 +269,7 @@
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Matches homepage cards */
             transition: transform 0.3s ease;
+            text-align: center;
         }
 
         .leader-card:hover {
@@ -276,8 +277,13 @@
         }
 
         .leader-image {
-            height: 250px;
+            height: 200px;
+            width: 200px;
+            margin: 2rem auto 1rem;
             overflow: hidden;
+            border-radius: 50%;
+            border: 5px solid var(--medium-green);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .leader-image img {
@@ -292,8 +298,7 @@
         }
 
         .leader-info {
-            padding: 1.5rem; /* Matches homepage card padding */
-            text-align: center;
+            padding: 0 1.5rem 1.5rem; /* Matches homepage card padding */
         }
 
         .leader-info h3 {
@@ -305,6 +310,7 @@
             color: var(--medium-green); /* Matches homepage accents */
             font-weight: 600;
             margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
 
         /* Student Life & Achievements */
@@ -542,6 +548,40 @@
             background-color: #0077b5;
         }
 
+        /* Governance Group Styles */
+        .governance-group {
+            margin-bottom: 4rem;
+        }
+
+        .governance-group h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--section-title);
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .governance-group h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--medium-green);
+        }
+
+        /* Governance Action Cards - Keep rectangular for these */
+        .governance-action .leader-image {
+            border-radius: 8px;
+            height: 250px;
+            width: 100%;
+            margin: 0;
+            border: none;
+        }
+
         /* Responsive Styles - Updated to match homepage breakpoints */
         @media (max-width: 992px) {
             .background-content {
@@ -558,6 +598,15 @@
             
             .footer-container {
                 grid-template-columns: repeat(2, 1fr); /* Matches homepage */
+            }
+
+            .governance-group {
+                margin-bottom: 3rem;
+            }
+
+            .leader-image {
+                height: 180px;
+                width: 180px;
             }
         }
 
@@ -617,6 +666,20 @@
             .footer-container {
                 grid-template-columns: 1fr; /* Stack on mobile */
             }
+
+            .governance-group {
+                margin-bottom: 2.5rem;
+            }
+
+            .governance-group h3 {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .leader-image {
+                height: 160px;
+                width: 160px;
+            }
         }
 
         @media (min-width: 768px) {
@@ -669,6 +732,20 @@
             .section-title {
                 font-size: 1.3rem;
             }
+
+            .governance-group h3 {
+                font-size: 1.1rem;
+            }
+
+            .leader-image {
+                height: 140px;
+                width: 140px;
+                margin: 1.5rem auto 1rem;
+            }
+
+            .leader-info {
+                padding: 0 1rem 1.5rem;
+            }
         }
     </style>
 </head>
@@ -715,7 +792,7 @@
             <div class="background-content">
                 <div class="background-text">
                     <p>Mbarara Army Boarding Secondary School was established in 2004 with the vision of providing quality education infused with military discipline and patriotic values. Founded by the Uganda People's Defence Forces (UPDF), the school aimed to create an institution that would nurture future leaders with strong moral character and academic excellence.</p>
-                    <p>Located on the scenic hills of Makenke,Mbarara, Western Uganda, Along Mbarara-Masaka highway road. The school began with just 120 students and 15 staff members. Over the years, it has grown significantly, now accommodating over 800 students from various regions of Uganda.</p>
+                    <p>Located on the scenic hills of Makenke,Mbarara, Western Uganda, Along Mbarara-Masaka highway road. The school began with just 120 students and 15 staff members. Over the years, it has grown significantly, now accommodating over 2000+ students from various regions of Uganda.</p>
                     <p>The school's unique approach combines rigorous academic training with military-style discipline, producing graduates who excel not only in academics but also in character development and leadership skills.</p>
                     <p>Today, Mbarara Army Boarding Secondary School stands as one of the premier educational institutions in the region, consistently ranking among the top schools in national examinations and producing citizens who contribute meaningfully to Uganda's development.</p>
                 </div>
@@ -765,48 +842,167 @@
     <!-- Leadership Section -->
     <section class="leadership" id="leadership">
         <div class="container">
-            <h2 class="section-title">BOG Meeting & Site Inspection</h2>
-            <div class="leadership-grid">
-
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765376993/2nd_div_vbhop9.jpg" alt="BOG Oversight">
-                    </div>
-                    <div class="leader-info">
-                        <h3>Maj. Gen. Paul Muhaguzi at MABSS</h3>
-                        <p>Maj. Gen. Paul Muhaguzi, the 2nd Division Commander, graced the Board of Governors engagement on 04th December 2025, reaffirming the Division’s strong commitment toward supporting the growth, discipline, and continued development of Mbarara Army Boarding Secondary School.</p>
-                    </div>
-                </div>
-
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346638/bog_ssijce.jpg" alt="Board of Governors">
-                    </div>
-                    <div class="leader-info">
-                        <h3>The Governing Body in Picture</h3>
-                        <p>The Board of Governors captured in a moment of unified leadership on 04th December 2025. At the center is The 2nd DIV Commander Maj. Gen. Paul Muhaguzi, Chairperson BOG. Next left in the second row stands there's the Vice Chairperson Col. W.M. Kakuru and is the 2DIV Administrative Officer. Together, these leaders continue to provide strategic guidance and unwavering support toward the advancement of Mbarara Army Boarding Secondary School.</p>
+            <h2 class="section-title">School Governance</h2>
+            
+            <!-- Chairperson -->
+            <div class="governance-group">
+                <h3>Chairperson BOG</h3>
+                <div class="leadership-grid">
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765376993/2nd_div_vbhop9.jpg" alt="Maj. Gen. Paul Muhaguzi">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Maj. Gen. Paul Muhaguzi</h3>
+                            <div class="leader-position">Chairperson, Board of Governors</div>
+                            <p>2nd Division Commander providing strategic leadership and oversight for the school's development and discipline standards.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346639/cos1_soooxz.jpg" alt="Construction Site">
-                    </div>
-                    <div class="leader-info">
-                        <h3>From Blueprint to Reality: BOG Tour New Construction</h3>
-                        <p>Following the boardroom discussions, the Board of Governors conducted an on-site inspection of the ongoing classroom construction. This hands-on visit underscores the BOG's commitment to translating plans into tangible improvements for our learning environment.</p>
-                    </div>
-                </div>
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346640/cons2_vmsser.jpg" alt="Construction Inspection">
-                    </div>
-                    <div class="leader-info">
-                        <h3>On the Ground: BOG Members Inspect Progress</h3>
-                        <p>Capturing the progress firsthand. These candid shots show the Board of Governors actively engaging with the construction site, examining the work that will soon become new classrooms for our students.</p>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- Vice Chairperson -->
+            <div class="governance-group">
+                <h3>Vice Chairperson BOG</h3>
+                <div class="leadership-grid">
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Col. W.M.Kakuru">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Col. W.M. Kakuru</h3>
+                            <div class="leader-position">Vice Chairperson, Board of Governors</div>
+                            <p>2nd Division Administrative Officer supporting the Chairperson in governance and operational oversight of school affairs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Board Members -->
+            <div class="governance-group">
+                <h3>Board Members</h3>
+                <div class="leadership-grid">
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Board Member 1">
+                        </div>
+                        <div class="leader-info">
+                            <h3>.....</h3>
+                            <div class="leader-position">Board Member</div>
+                            <p>Oversees infrastructure development and facility maintenance projects for the school.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Board Member 2">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Memberr</h3>
+                            <div class="leader-position">Board Member</div>
+                            <p>Focuses on academic standards, curriculum development, and educational quality assurance.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Board Member 3">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Member</h3>
+                            <div class="leader-position">Board Member</div>
+                            <p>Provides expertise in educational policy and student welfare programs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Board Member 4">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Member</h3>
+                            <div class="leader-position">Board Member</div>
+                            <p>Leads financial oversight and budget planning for school operations and development.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PTA Representatives -->
+            <div class="governance-group">
+                <h3>PTA Representatives</h3>
+                <div class="leadership-grid">
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765396272/CP_jhjl7i.jpg" alt="PTA Representative 1">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Mr.TWESIGYE HANNINGTON</h3>
+                            <div class="leader-position">PTA Chairperson</div>
+                            <p>Represents parent interests and facilitates communication between parents and school administration.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="PTA Representative 2">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Member</h3>
+                            <div class="leader-position">PTA Vice Chairperson</div>
+                            <p>Coordinates parent volunteer programs and community engagement initiatives.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="PTA Representative 3">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Member</h3>
+                            <div class="leader-position">PTA Secretary</div>
+                            <p>Manages PTA communications, meeting records, and parent feedback channels.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Governance in Action -->
+            <div class="governance-group">
+                <h3>Governance in Action</h3>
+                <div class="leadership-grid">
+                    <div class="leader-card governance-action">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346638/bog_ssijce.jpg" alt="Board of Governors Meeting">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Strategic Planning Session</h3>
+                            <p>The Board of Governors engaged in strategic discussions on 04th December 2025, charting the school's future development path.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card governance-action">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346639/cos1_soooxz.jpg" alt="Construction Site Inspection">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Infrastructure Oversight</h3>
+                            <p>Board members conducting on-site inspection of ongoing construction projects to ensure quality and timely completion.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card governance-action">
+                        <div class="leader-image">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346640/cons2_vmsser.jpg" alt="Site Progress Review">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Progress Assessment</h3>
+                            <p>Governance team reviewing construction progress and providing guidance for future development phases.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
