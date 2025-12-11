@@ -105,6 +105,49 @@
             flex-shrink: 0;
         }
         
+        /* Navigation Styles */
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: none;
+            padding: 0.5rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding-left: 200px;
+            gap: 1.5rem;
+        }
+        
+        .nav-item {
+            margin: 0;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
         /* Typewriter Effect */
         .typewriter {
             font-family: 'Courier New', Courier, monospace;
@@ -194,6 +237,111 @@
         
         .learn-button:hover {
             background-color: #004d33;
+        }
+        
+        /* NOTICEBOARD Section */
+        .noticeboard-section {
+            background-color: white;
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #0e7704;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #006341;
+        }
+        
+        .noticeboard-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .notice-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #0e7704;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .notice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .notice-date {
+            display: inline-block;
+            background-color: #0e7704;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .notice-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #006341;
+        }
+        
+        .notice-content {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .notice-marquee {
+            background-color: #f0f7f0;
+            border: 1px solid #d0e6d0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+        
+        .marquee-title {
+            color: #0e7704;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .marquee-content {
+            display: flex;
+            animation: marquee 25s linear infinite;
+        }
+        
+        .marquee-item {
+            padding: 0 2rem;
+            color: #006341;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
         
         /* Counter Section */
@@ -438,13 +586,13 @@
             
             .logo-container {
                 width: 100%;
-                justify-content: center;
+                justify-content: space-between;
                 margin-bottom: 0.5rem;
             }
             
             .logo-wrapper {
-                justify-content: center;
-                text-align: center;
+                justify-content: flex-start;
+                text-align: left;
             }
             
             .division-logo {
@@ -452,8 +600,45 @@
                 height: 35px;
             }
             
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+                
+            }
+            
+            .nav-menu.show {
+                display: block;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding-left: 100px;
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .nav-link {
+                display: block;
+                padding: 0.8rem;
+                text-align: center;
+                border-radius: 4px;
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+            
             .typewriter {
                 font-size: 1.5rem;
+            }
+            
+            .noticeboard-container {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -467,9 +652,9 @@
             }
             
             .logo-wrapper {
-                flex-direction: column;
+                flex-direction: row;
                 gap: 0.5rem;
-                text-align: center;
+                text-align: left;
             }
             
             .helo {
@@ -480,7 +665,7 @@
             
             .school-name {
                 font-size: 1.4rem;
-                text-align: center;
+                text-align: left;
                 line-height: 1.1;
             }
             
@@ -527,6 +712,10 @@
             
             .social-icons {
                 justify-content: center;
+            }
+            
+            .marquee-content {
+                animation: marquee 15s linear infinite;
             }
         }
         
@@ -577,6 +766,10 @@
                 font-size: 1rem;
                 padding: 0.8rem 1.5rem;
             }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
         }
         
         @media (min-width: 1200px) {
@@ -622,10 +815,24 @@
             <div class="logo-container">
                 <div class="logo-wrapper">
                     <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" alt="MABSS Logo" class="helo">
-                    <h1 class="school-name">Mbarara Army Boarding Secondary School</h1>
+                    <h1 class="school-name">MABSS</h1>
                 </div>
                 <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/4th_aojuc3.png" class="division-logo" alt="Division Logo">
+                <button class="menu-toggle" id="menuToggle">☰</button>
             </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="nav-menu" id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link">Academics</a></li>
+                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
+                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -645,6 +852,8 @@
     <div class="button-section">
         <a href="homepage.html" class="learn-button">Learn More</a>
     </div>
+
+   
 
     <!-- Counter Section -->
     <section class="counter-section">
@@ -717,6 +926,12 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('show');
+        });
+
         // Typewriter Effect
         const texts = [
             "Welcome to!",
