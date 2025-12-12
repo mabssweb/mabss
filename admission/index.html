@@ -10,6 +10,128 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico" type="image/x-icon">
     <style>
+        /* Header & Navigation Styles from homepage.html */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .header {
+            background-color: #0e7704;
+            color: white;
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            margin-right: 0.5rem;
+        }
+        
+        .school-name {
+            margin: 0;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .nav-menu {
+            display: none;
+            background-color: #0e7704;
+            padding: 1rem;
+        }
+        
+        .nav-menu.show {
+            display: block;
+        }
+        
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-item {
+            margin: 0.5rem 0;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 4px;
+        }
+        
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+            
+            .nav-menu {
+                display: block;
+                padding: 0;
+            }
+            
+            .nav-list {
+                flex-direction: row;
+            }
+            
+            .nav-item {
+                margin: 0 0.5rem;
+            }
+            
+            .school-name {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .school-name {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                height: 50px;
+                width: 50px;
+            }
+        }
+
+        /* Original Registration Form Styles */
         :root {
             --updf-blue: #020e04;
             --updf-gold: #248b0a;
@@ -22,7 +144,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        body {
+        .registration-body {
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
@@ -39,7 +161,7 @@
             border-radius: 8px;
         }
         
-        header {
+        .form-header {
             background: linear-gradient(135deg, var(--updf-blue), var(--dark-blue));
             color: white;
             padding: 20px;
@@ -50,7 +172,7 @@
             overflow: hidden;
         }
         
-        header::before {
+        .form-header::before {
             content: "";
             position: absolute;
             top: 0;
@@ -60,13 +182,13 @@
             background: var(--updf-gold);
         }
         
-        header h1 {
+        .form-header h1 {
             margin: 0;
             font-size: 24px;
             text-transform: uppercase;
         }
         
-        header h2 {
+        .form-header h2 {
             margin: 10px 0 0;
             font-size: 18px;
             font-weight: normal;
@@ -285,11 +407,11 @@
                 grid-template-columns: 1fr;
             }
             
-            header h1 {
+            .form-header h1 {
                 font-size: 20px;
             }
             
-            header h2 {
+            .form-header h2 {
                 font-size: 16px;
             }
             
@@ -318,16 +440,44 @@
             .container {
                 box-shadow: none;
             }
+            
+            .header {
+                display: none !important;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Navigation Bar (Exact copy from homepage.html) -->
+    <div class="header">
         <header>
+            <div class="nav-container">
+                <div class="logo-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" alt="logo mabss" class="logo">
+                    <h1 class="school-name">Mbarara Army Boarding<br> Secondary School</h1>
+                </div>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+            <nav class="nav-menu" id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link">Academics</a></li>
+                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
+                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <div class="container">
+        <div class="form-header">
             <h1>MBARARA ARMY BOARDING SECONDARY SCHOOL</h1>
             <h2>LEARNERS EMIS/DOTSHULE REGISTRATION FORM</h2>
             <p style="font-size: 14px; margin-top: 10px; opacity: 0.9;">Fill the form and download as PDF</p>
-        </header>
+        </div>
         
         <form id="registrationForm">
             <div class="form-section">
@@ -630,6 +780,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
+        // Mobile menu toggle (from homepage.html)
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('show');
+        });
+
         // Global jsPDF variable
         const { jsPDF } = window.jspdf;
         
