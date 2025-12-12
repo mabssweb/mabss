@@ -44,7 +44,7 @@
             width: 100%;
         }
 
-        /* Navigation Bar - FIXED */
+        /* Navigation Bar */
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -81,7 +81,6 @@
             color: white;
             font-weight: 600;
             line-height: 1.2;
-            overflow-wrap: break-word;
         }
         
         .menu-toggle {
@@ -134,21 +133,21 @@
             font-size: 0.95rem;
         }
 
-        .nav-link:hover {
+        .nav-link:hover,
+        .nav-link.active {
             background-color: rgba(255, 255, 255, 0.1);
         }
 
         /* Header Styles */
         header {
             background: linear-gradient(135deg, rgba(18, 75, 141, 0.8), rgba(42, 63, 44, 0.9)), 
-                        url('image/of.jpg');
+                        url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345190/of_b6iiqx.jpg');
             background-size: cover;
             background-position: center;
             color: var(--white);
             padding: 40px 0;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
         .header-content {
@@ -171,14 +170,12 @@
             max-width: 700px;
             margin: 0 auto;
             opacity: 0.9;
-            font-weight: 300;
         }
 
         /* Gallery Navigation */
         .gallery-nav {
             background-color: var(--army-green-dark);
             width: 100%;
-            overflow-x: auto;
         }
         
         .gallery-nav-container {
@@ -189,8 +186,10 @@
         
         .gallery-buttons {
             display: flex;
+            flex-wrap: wrap;
             gap: 8px;
             padding: 10px 0;
+            justify-content: center;
         }
         
         .gallery-link {
@@ -205,16 +204,16 @@
             font-size: 0.85rem;
         }
 
-        .gallery-link:hover {
+        .gallery-link:hover,
+        .gallery-link.active {
             background-color: rgba(255,255,255,0.3);
         }
 
         /* Photo Gallery */
         .gallery-section {
             padding: 2rem 15px;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            width: 100%;
         }
 
         .section-title {
@@ -237,19 +236,17 @@
         }
         
         .gallery-grid {
-            columns: 1;
-            column-gap: 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
         }
         
         .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 1rem;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
             background-color: var(--white);
-            width: 100%;
         }
 
         .gallery-item:hover {
@@ -258,7 +255,8 @@
         
         .gallery-image {
             width: 100%;
-            height: auto;
+            height: 250px;
+            object-fit: cover;
             display: block;
             transition: transform 0.5s ease;
         }
@@ -284,7 +282,6 @@
         .video-container {
             max-width: 1200px;
             margin: 0 auto;
-            width: 100%;
         }
         
         .video-grid {
@@ -299,7 +296,6 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
-            width: 100%;
         }
 
         .video-card:hover {
@@ -308,7 +304,8 @@
         
         .video-player {
             width: 100%;
-            height: auto;
+            height: 200px;
+            object-fit: cover;
             display: block;
         }
         
@@ -326,10 +323,9 @@
             margin: 0.5rem 0 0;
             color: var(--text-light);
             font-size: 0.9rem;
-            line-height: 1.4;
         }
 
-        /* Alumni Section - REVISED for Mobile */
+        /* Alumni Section */
         .alumni-section {
             padding: 2rem 15px;
             background: linear-gradient(135deg, var(--gray-light), var(--white));
@@ -370,7 +366,6 @@
             object-fit: cover;
             margin-bottom: 15px;
             border: 3px solid var(--gold);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .alumni-name {
@@ -378,7 +373,6 @@
             margin-bottom: 8px;
             font-size: 1.1rem;
             font-weight: 600;
-            line-height: 1.2;
         }
 
         .alumni-position {
@@ -390,7 +384,6 @@
             font-size: 0.85rem;
             font-weight: 500;
             margin-bottom: 12px;
-            box-shadow: 0 3px 8px rgba(67, 97, 238, 0.2);
         }
 
         .alumni-desc {
@@ -421,7 +414,6 @@
             justify-content: center;
             transition: all 0.3s ease;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-            font-size: 0.9rem;
         }
 
         .carousel-btn:hover {
@@ -478,7 +470,6 @@
             background-color: var(--army-green-dark);
             color: var(--white);
             padding: 2rem 15px;
-            width: 100%;
         }
         
         .social-media {
@@ -598,121 +589,8 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Design - MOBILE FIRST */
-        /* 320px - Very Small Phones */
-        @media (max-width: 320px) {
-            .logo {
-                height: 35px;
-                width: 35px;
-                min-width: 35px;
-            }
-            
-            .school-name {
-                font-size: 0.8rem;
-            }
-            
-            header {
-                padding: 30px 0;
-            }
-            
-            header h1 {
-                font-size: 1.6rem;
-            }
-            
-            header p {
-                font-size: 0.9rem;
-            }
-            
-            .section-title {
-                font-size: 1.4rem;
-            }
-            
-            .alumni-carousel-container {
-                height: 320px;
-            }
-            
-            .alumni-image {
-                width: 90px;
-                height: 90px;
-            }
-            
-            .alumni-name {
-                font-size: 1rem;
-            }
-            
-            .alumni-desc {
-                font-size: 0.85rem;
-            }
-            
-            .carousel-btn {
-                width: 36px;
-                height: 36px;
-            }
-        }
-        
-        /* 480px - Small Phones */
-        @media (min-width: 321px) and (max-width: 480px) {
-            .nav-container {
-                padding: 8px 12px;
-            }
-            
-            .logo {
-                height: 38px;
-                width: 38px;
-            }
-            
-            .school-name {
-                font-size: 0.85rem;
-            }
-            
-            header {
-                padding: 35px 0;
-            }
-            
-            header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .alumni-carousel-container {
-                height: 340px;
-            }
-        }
-        
-        /* 600px - Large Phones/Small Tablets */
-        @media (min-width: 481px) and (max-width: 600px) {
-            .nav-container {
-                padding: 10px 15px;
-            }
-            
-            .logo {
-                height: 42px;
-                width: 42px;
-            }
-            
-            .school-name {
-                font-size: 0.9rem;
-            }
-            
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 1.7rem;
-            }
-            
-            .alumni-carousel-container {
-                height: 360px;
-            }
-            
-            .alumni-image {
-                width: 110px;
-                height: 110px;
-            }
-        }
-        
-        /* 768px - Tablets */
-        @media (min-width: 601px) {
+        /* Responsive Design */
+        @media (min-width: 600px) {
             .menu-toggle {
                 display: none;
             }
@@ -742,7 +620,7 @@
             }
             
             .gallery-grid {
-                columns: 2;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .video-grid {
@@ -761,17 +639,9 @@
                 width: 120px;
                 height: 120px;
             }
-            
-            .alumni-name {
-                font-size: 1.2rem;
-            }
-            
-            .alumni-desc {
-                font-size: 0.95rem;
-            }
         }
         
-        @media (min-width: 768px) and (max-width: 991px) {
+        @media (min-width: 768px) {
             .nav-container {
                 padding: 10px 20px;
             }
@@ -810,9 +680,12 @@
             .alumni-carousel-container {
                 height: 400px;
             }
+            
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         
-        /* 992px - Desktops */
         @media (min-width: 992px) {
             .nav-container {
                 padding: 12px 30px;
@@ -849,14 +722,10 @@
             }
             
             .gallery-grid {
-                columns: 3;
-            }
-            
-            .video-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
             
-            .footer-container {
+            .video-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
             
@@ -886,7 +755,6 @@
             }
         }
         
-        /* Large Desktop */
         @media (min-width: 1200px) {
             .school-name {
                 font-size: 1.2rem;
@@ -899,13 +767,13 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar - At the Top -->
+    <!-- Navigation Bar -->
     <div class="nav-container">
         <div class="logo-container">
-            <img src="image/logo mabss.jpg" alt="logo mabss" class="logo">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" alt="MABSS Logo" class="logo">
             <h1 class="school-name">Mbarara Army Boarding<br> Secondary School</h1>
         </div>
-        <button class="menu-toggle" id="menuToggle">☰</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
         <nav class="nav-menu" id="mainNav">
             <ul class="nav-list">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -913,7 +781,7 @@
                 <li class="nav-item"><a href="login.html" class="nav-link">Materials</a></li>
                 <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="gallery.html" class="nav-link active">Gallery</a></li>
             </ul>
         </nav>
     </div>
@@ -932,12 +800,12 @@
     <section class="gallery-nav">
         <div class="gallery-nav-container">
             <div class="gallery-buttons">
-                <a href="events.html" class="gallery-link">All Photos</a>
+                <a href="gallery.html" class="gallery-link active">All Photos</a>
                 <a href="staff.html" class="gallery-link">Staff</a>
-                <a href="events.html" class="gallery-link">Sports</a>
+                <a href="sports.html" class="gallery-link">Sports</a>
                 <a href="events.html" class="gallery-link">Events</a>
-                <a href="events.html" class="gallery-link">Students Life</a>
-                <a href="events.html" class="gallery-link">Achievements</a>
+                <a href="student-life.html" class="gallery-link">Students Life</a>
+                <a href="achievements.html" class="gallery-link">Achievements</a>
             </div>
         </div>
     </section>
@@ -947,15 +815,15 @@
         <h2 class="section-title">Photo Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="image/SPRTS.jpg" alt="School Event" class="gallery-image">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345613/SPRTS_wawnzd.jpg" alt="School Sports Day" class="gallery-image">
                 <p class="gallery-caption">Annual Sports Day 2023 - Students showcasing their athletic talents</p>
             </div>
             <div class="gallery-item">
-                <img src="image/COMP.jpg" alt="Computer Lab" class="gallery-image">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345159/COMP_c1x933.jpg" alt="Computer Lab" class="gallery-image">
                 <p class="gallery-caption">Computer Laboratory - Equipped with modern technology</p>
             </div>
             <div class="gallery-item">
-                <img src="image/heads/allll.JPG" alt="School Building" class="gallery-image">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346648/allll_aoxw55.jpg" alt="School Building" class="gallery-image">
                 <p class="gallery-caption">Main School Building - A conducive learning environment</p>
             </div>
         </div>
@@ -969,8 +837,9 @@
             <div class="video-grid">
                 <!-- Video 1 -->
                 <div class="video-card">
-                    <video controls class="video-player" poster="video-poster.jpg">
-                        <source src="image/sports.mp4" type="video/mp4">
+                    <video controls class="video-player" poster="https://via.placeholder.com/400x225/1a237e/ffffff?text=Video+Thumbnail">
+                        <source src="https://res.cloudinary.com/dr7bzccrr/video/upload/v1765345602/sports_hyslbm.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
                     <div class="video-info">
                         <h3 class="video-card-title">School Sports Day 2025</h3>
@@ -980,8 +849,8 @@
                 
                 <!-- Video 2 -->
                 <div class="video-card">
-                    <video controls class="video-player" poster="video-poster.jpg">
-                        <source src="image/" type="video/mp4">
+                    <video controls class="video-player" poster="https://via.placeholder.com/400x225/1a237e/ffffff?text=Video+Thumbnail">
+                        <source src="https://res.cloudinary.com/dr7bzccrr/video/upload/v1765345602/sports_hyslbm.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-info">
@@ -992,8 +861,8 @@
                 
                 <!-- Video 3 -->
                 <div class="video-card">
-                    <video controls class="video-player" poster="video-poster.jpg">
-                        <source src="image/" type="video/mp4">
+                    <video controls class="video-player" poster="https://via.placeholder.com/400x225/1a237e/ffffff?text=Video+Thumbnail">
+                        <source src="https://res.cloudinary.com/dr7bzccrr/video/upload/v1765345602/sports_hyslbm.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-info">
@@ -1012,57 +881,57 @@
         <div class="alumni-carousel-container">
             <div class="alumni-carousel" id="alumniCarousel">
                 <div class="alumni-card">
-                    <img src="image/Staff/RO.jpg" alt="Alumni" class="alumni-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" alt="MR.TUMWESIGYE RONALD" class="alumni-image">
                     <h3 class="alumni-name">MR.TUMWESIGYE RONALD</h3>
                     <p class="alumni-position">He was our Ob</p>
-                    <p class="alumni-desc">Once a student, now a teacher at my alma mater. Mbarara Army Boarding Secondary School instilled in me the discipline and passion I now bring to my History and Divinity classes. I teach here not just as a job, but as a duty to pass on the values I learned</p>
+                    <p class="alumni-desc">Once a student, now a teacher at my alma mater. Mbarara Army Boarding Secondary School instilled in me the discipline and passion I now bring to my History and Divinity classes.</p>
                 </div>
                 <div class="alumni-card">
-                    <img src="image/hm.jpg" alt="Alumni" class="alumni-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Miss KABAHINDA SHANNITAH" class="alumni-image">
                     <h3 class="alumni-name">Miss KABAHINDA SHANNITAH</h3>
                     <p class="alumni-position">Social Worker</p>
                     <p class="alumni-desc">Class of 2022, now pursuing Bachelors of Social Work at Kabale University.</p>
                 </div>
                 
                 <div class="alumni-card">
-                    <img src="image/tr.JPG" alt="Alumni" class="alumni-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345616/tr_foxrgt.jpg" alt="Miss ABAASA NANCY PATRA" class="alumni-image">
                     <h3 class="alumni-name">Miss ABAASA NANCY PATRA</h3>
                     <p class="alumni-position">MENTOR</p>
-                    <p class="alumni-desc">Class of 2023, works with EDUCATE UGANDA. She was awarded the best science student in her final year and now mentors young girls in STEM fields.</p>
+                    <p class="alumni-desc">Class of 2023, works with EDUCATE UGANDA. She was awarded the best science student in her final year.</p>
                 </div>
                 
                 <div class="alumni-card">
-                    <img src="image/MS.jpg" alt="Alumni" class="alumni-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345080/MS_p4tfnj.jpg" alt="MR. TWIJUKYE EDSON" class="alumni-image">
                     <h3 class="alumni-name">MR. TWIJUKYE EDSON</h3>
                     <p class="alumni-position">GRC of COMPUTER SCIENCE at YMCA</p>
-                    <p class="alumni-desc">Former H.P (2022-2023). He was instrumental in establishing the school's coding club and now leads computer science initiatives at YMCA Comprehensive Institute.</p>
+                    <p class="alumni-desc">Former H.P (2022-2023). He was instrumental in establishing the school's coding club and now leads computer science initiatives.</p>
                 </div>
                 
                 <div class="alumni-card">
-                    <img src="image/no.jpg" alt="Alumni" class="alumni-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345091/no_ytbaub.jpg" alt="MR. AMWINE FRANKLINE" class="alumni-image">
                     <h3 class="alumni-name">MR. AMWINE FRANKLINE</h3>
                     <p class="alumni-position">OB (2017-2023)</p>
-                    <p class="alumni-desc">7 Years of Transformation & Triumph! Student at KABALE UNIVERSITY pursuing Information Technology. He was the school's lead debater and represented the region in national competitions.</p>
+                    <p class="alumni-desc">7 Years of Transformation & Triumph! Student at KABALE UNIVERSITY pursuing Information Technology.</p>
                 </div>
                 
                 <div class="alumni-card">
-                    <img src="image/KATO.jpg" alt="Alumni" class="alumni-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/KATO_rb7fvj.jpg" alt="MR. KATO SURAIMAN" class="alumni-image">
                     <h3 class="alumni-name">MR. KATO SURAIMAN</h3>
                     <p class="alumni-position">OB (2017-2023)</p>
-                    <p class="alumni-desc">Pursuing BSC.COMPUTER SCIENCE at KABALE UNIVERSITY. He was the captain of the school's football team and maintains an active role in alumni sports initiatives.</p>
+                    <p class="alumni-desc">Pursuing BSC.COMPUTER SCIENCE at KABALE UNIVERSITY. Former captain of the school's football team.</p>
                 </div>
             </div>
             <div class="carousel-indicators" id="carouselIndicators">
                 <!-- Indicators will be added dynamically -->
             </div>
             <div class="carousel-controls">
-                <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                <button class="carousel-btn prev-btn" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next-btn" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
         
         <div class="view-more">
-            <a href="#" class="view-more-btn">View More Success Stories</a>
+            <a href="alumni.html" class="view-more-btn">View More Success Stories</a>
         </div>
     </section>
 
@@ -1072,32 +941,32 @@
             <div class="footer-section">
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-list">
-                   <li class="footer-item"><a href="homepage.html" class="footer-link">Home</a></li>
+                    <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
                     <li class="footer-item"><a href="login.html" class="footer-link">Academics</a></li>
                     <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
-                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
+                    <li class="footer-item"><a href="discipline.html" class="footer-link">Discipline</a></li>
                     <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
-                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
+                    <li class="footer-item"><a href="staff.html" class="footer-link">Staff</a></li>
                     <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3 class="footer-heading">Contact Us</h3>
                 <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
-                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 |<br> +256 779 927775</p>
+                <p><strong>Phone:</strong> +256 782 096231<br>+256 782 371824<br>+256 779 927775</p>
                 <p><strong>Email:</strong> mabss2014@gmail.com</p>
 
                 <!-- Social Media Icons -->
                 <div class="social-media">
                     <h4 class="social-heading">Follow Us</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2004?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2004?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -1131,70 +1000,90 @@
         });
 
         // Alumni Carousel Functionality
-        const alumniCarousel = document.getElementById('alumniCarousel');
-        const alumniCards = document.querySelectorAll('.alumni-card');
-        const alumniPrevBtn = document.querySelector('.alumni-section .prev-btn');
-        const alumniNextBtn = document.querySelector('.alumni-section .next-btn');
-        const carouselIndicators = document.getElementById('carouselIndicators');
-        let currentAlumniSlide = 0;
-
-        // Create indicators
-        alumniCards.forEach((_, index) => {
-            const indicator = document.createElement('div');
-            indicator.className = 'indicator';
-            if (index === 0) indicator.classList.add('active');
-            indicator.addEventListener('click', () => {
-                showAlumniSlide(index);
-            });
-            carouselIndicators.appendChild(indicator);
-        });
-
-        const indicators = document.querySelectorAll('.indicator');
-
-        function showAlumniSlide(index) {
-            if (index < 0) index = alumniCards.length - 1;
-            if (index >= alumniCards.length) index = 0;
+        document.addEventListener('DOMContentLoaded', function() {
+            const alumniCarousel = document.getElementById('alumniCarousel');
+            const alumniCards = document.querySelectorAll('.alumni-card');
+            const alumniPrevBtn = document.querySelector('.alumni-section .prev-btn');
+            const alumniNextBtn = document.querySelector('.alumni-section .next-btn');
+            const carouselIndicators = document.getElementById('carouselIndicators');
             
-            // Update carousel position
-            alumniCarousel.style.transform = `translateX(-${index * 100}%)`;
+            if (!alumniCarousel || alumniCards.length === 0) return;
             
-            // Update active indicator
-            indicators.forEach(indicator => {
-                indicator.classList.remove('active');
+            let currentAlumniSlide = 0;
+            let carouselInterval;
+
+            // Create indicators
+            alumniCards.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (index === 0) indicator.classList.add('active');
+                indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                indicator.addEventListener('click', () => {
+                    showAlumniSlide(index);
+                });
+                carouselIndicators.appendChild(indicator);
             });
-            indicators[index].classList.add('active');
-            
-            currentAlumniSlide = index;
-        }
 
-        // Add event listeners for carousel controls
-        if (alumniPrevBtn && alumniNextBtn) {
-            alumniPrevBtn.addEventListener('click', () => {
-                showAlumniSlide(currentAlumniSlide - 1);
+            const indicators = document.querySelectorAll('.indicator');
+
+            function showAlumniSlide(index) {
+                if (index < 0) index = alumniCards.length - 1;
+                if (index >= alumniCards.length) index = 0;
+                
+                // Update carousel position
+                alumniCarousel.style.transform = `translateX(-${index * 100}%)`;
+                
+                // Update active indicator
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                });
+                if (indicators[index]) {
+                    indicators[index].classList.add('active');
+                }
+                
+                currentAlumniSlide = index;
+            }
+
+            // Add event listeners for carousel controls
+            if (alumniPrevBtn && alumniNextBtn) {
+                alumniPrevBtn.addEventListener('click', () => {
+                    showAlumniSlide(currentAlumniSlide - 1);
+                });
+                
+                alumniNextBtn.addEventListener('click', () => {
+                    showAlumniSlide(currentAlumniSlide + 1);
+                });
+            }
+
+            // Initialize the first slide
+            showAlumniSlide(0);
+
+            // Auto-advance carousel
+            function startAutoAdvance() {
+                carouselInterval = setInterval(() => {
+                    showAlumniSlide(currentAlumniSlide + 1);
+                }, 5000);
+            }
+
+            startAutoAdvance();
+
+            // Pause auto-advance on hover
+            alumniCarousel.addEventListener('mouseenter', () => {
+                clearInterval(carouselInterval);
             });
-            
-            alumniNextBtn.addEventListener('click', () => {
-                showAlumniSlide(currentAlumniSlide + 1);
+
+            alumniCarousel.addEventListener('mouseleave', () => {
+                startAutoAdvance();
             });
-        }
 
-        // Initialize the first slide
-        showAlumniSlide(0);
-
-        // Auto-advance carousel
-        let carouselInterval = setInterval(() => {
-            showAlumniSlide(currentAlumniSlide + 1);
-        }, 5000);
-
-        // Pause auto-advance on hover
-        alumniCarousel.addEventListener('mouseenter', () => {
-            clearInterval(carouselInterval);
-        });
-
-        alumniCarousel.addEventListener('mouseleave', () => {
-            carouselInterval = setInterval(() => {
-                showAlumniSlide(currentAlumniSlide + 1);
-            }, 5000);
+            // Pause auto-advance when tab is not visible
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    clearInterval(carouselInterval);
+                } else {
+                    startAutoAdvance();
+                }
+            });
         });
     </script>
 </body>
