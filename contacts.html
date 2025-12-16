@@ -210,6 +210,65 @@
             transition: background-color 0.3s;
         }
         
+        .form-button:hover {
+            background-color: #004d33;
+        }
+        
+        .whatsapp-button {
+            background-color: #25d366;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #128c7e;
+        }
+        
+        .whatsapp-button i {
+            font-size: 1.2rem;
+        }
+        
+        .message-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .message-preview.show {
+            display: block;
+        }
+        
+        .message-preview h4 {
+            color: #006341;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .message-preview p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        
+        .send-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
         /* Map Section */
         .map-container {
             height: 300px;
@@ -365,6 +424,10 @@
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .send-buttons {
+                flex-direction: row;
+            }
         }
         
         @media (min-width: 992px) {
@@ -455,6 +518,7 @@
                 <strong>Deputy Head Teacher-Administration:</strong> +256 782 371824<br>
                 <strong>Deputy Head Teacher- Academic & co-curricular Activities :</strong> +256 779 927775<br>
                 <strong>Director of Studies:</strong> +256 771 645344<br>
+                <strong>Direct Message Contact:</strong> +256 789 190 064<br>
                 
                 <h3 class="card-title" style="margin-top: 2rem;"><span>✉️</span>Email Addresses</h3>
                 <p><strong></strong> mabss2014@gmail.com<br>
@@ -466,26 +530,29 @@
     <section class="form-section">
         <div class="form-container">
             <h2 class="section-title">Send Us a Message</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">
+                Fill out the form below and your message will be sent directly to WhatsApp (+256 789 190 064)
+            </p>
             
-            <form class="form">
+            <form class="form" id="contactForm">
                 <div class="form-group">
                     <label for="name" class="form-label">Your Name</label>
-                    <input type="text" id="name" name="name" class="form-input">
+                    <input type="text" id="name" name="name" class="form-input" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="email" class="form-label">Email Address</label>
-                    <input type="email" id="email" name="email" class="form-input">
+                    <input type="email" id="email" name="email" class="form-input" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" class="form-input">
+                    <input type="tel" id="phone" name="phone" class="form-input" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="subject" class="form-label">Subject</label>
-                    <select id="subject" name="subject" class="form-input">
+                    <select id="subject" name="subject" class="form-input" required>
                         <option value="">Select a subject</option>
                         <option value="admissions">Admissions Inquiry</option>
                         <option value="academics">Academic Matters</option>
@@ -497,11 +564,37 @@
                 
                 <div class="form-group">
                     <label for="message" class="form-label">Your Message</label>
-                    <textarea id="message" name="message" rows="5" class="form-input"></textarea>
+                    <textarea id="message" name="message" rows="5" class="form-input" required></textarea>
                 </div>
                 
-                <button type="submit" class="form-button">Send Message</button>
+                <div class="send-buttons">
+                    <button type="submit" class="form-button" id="previewMessage">
+                        <i class="fas fa-eye"></i> Preview & Send via WhatsApp
+                    </button>
+                    
+                    <button type="button" class="whatsapp-button" id="directWhatsApp">
+                        <i class="fab fa-whatsapp"></i> Open WhatsApp Directly
+                    </button>
+                </div>
             </form>
+            
+            <!-- Message Preview Section -->
+            <div class="message-preview" id="messagePreview">
+                <h4>Your Message Preview</h4>
+                <p><strong>From:</strong> <span id="previewName"></span></p>
+                <p><strong>Phone:</strong> <span id="previewPhone"></span></p>
+                <p><strong>Email:</strong> <span id="previewEmail"></span></p>
+                <p><strong>Subject:</strong> <span id="previewSubject"></span></p>
+                <p><strong>Message:</strong> <span id="previewMessageText"></span></p>
+                
+                <button type="button" class="whatsapp-button" id="sendWhatsApp">
+                    <i class="fab fa-whatsapp"></i> Send via WhatsApp Now
+                </button>
+                
+                <button type="button" class="form-button" style="margin-top: 10px;" id="editMessage">
+                    <i class="fas fa-edit"></i> Edit Message
+                </button>
+            </div>
         </div>
     </section>
 
@@ -517,8 +610,7 @@
                         <strong>Head Teacher</strong><br>
                         Cpt. Okullo Richard<br>
                         Phone: +256 782 096231 | +256 782 371824<br>
-                 
-                    </li>
+                  </li>
                     <li style="margin-bottom: 1rem;">
                         <strong>Deputy Head Teacher (Administration)</strong><br>
                         LT. Rwakatsimba Bright<br>
@@ -570,6 +662,7 @@
                 <h3 class="footer-heading">Contact Us</h3>
                 <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
                 <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
+                <p><strong>Direct WhatsApp:</strong> +256 789 190 064</p>
                 <p><strong>Email:</strong> mabss2014@gmail.com</p>
 
                  <!-- Social Media Icons -->
@@ -604,6 +697,127 @@
             const nav = document.getElementById('mainNav');
             nav.classList.toggle('show');
         });
+
+        // WhatsApp Integration
+        const phoneNumber = "256782096231"; // Your WhatsApp number
+        
+        // Form elements
+        const contactForm = document.getElementById('contactForm');
+        const messagePreview = document.getElementById('messagePreview');
+        const previewMessageBtn = document.getElementById('previewMessage');
+        const directWhatsAppBtn = document.getElementById('directWhatsApp');
+        const sendWhatsAppBtn = document.getElementById('sendWhatsApp');
+        const editMessageBtn = document.getElementById('editMessage');
+        
+        // Preview elements
+        const previewName = document.getElementById('previewName');
+        const previewPhone = document.getElementById('previewPhone');
+        const previewEmail = document.getElementById('previewEmail');
+        const previewSubject = document.getElementById('previewSubject');
+        const previewMessageText = document.getElementById('previewMessageText');
+        
+        // Subject mapping for better display
+        const subjectMap = {
+            'admissions': 'Admissions Inquiry',
+            'academics': 'Academic Matters',
+            'welfare': 'Student Welfare',
+            'fees': 'Fees Payment',
+            'other': 'Other Inquiry'
+        };
+        
+        // Handle form submission for preview
+        previewMessageBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+            
+            // Validate form
+            if (!name || !email || !phone || !subject || !message) {
+                alert('Please fill in all fields before sending.');
+                return;
+            }
+            
+            // Update preview
+            previewName.textContent = name;
+            previewPhone.textContent = phone;
+            previewEmail.textContent = email;
+            previewSubject.textContent = subjectMap[subject] || subject;
+            previewMessageText.textContent = message;
+            
+            // Show preview section
+            messagePreview.classList.add('show');
+            
+            // Scroll to preview
+            messagePreview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        
+        // Open WhatsApp directly with default message
+        directWhatsAppBtn.addEventListener('click', function() {
+            const defaultMessage = "Hello MABSS, I would like to inquire about...";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Send message via WhatsApp with form data
+        sendWhatsAppBtn.addEventListener('click', function() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+            
+            // Create formatted message for WhatsApp
+            const whatsappMessage = `
+*MABSS CONTACT FORM MESSAGE*
+
+*From:* ${name}
+*Phone:* ${phone}
+*Email:* ${email}
+*Subject:* ${subjectMap[subject] || subject}
+
+*Message:*
+${message}
+
+*Sent via:* MABSS Website Contact Form
+*Time:* ${new Date().toLocaleString()}
+            `.trim();
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            alert('WhatsApp is opening with your message. Please click send to complete the process.');
+            
+            // Optional: Clear form after sending
+            // contactForm.reset();
+            // messagePreview.classList.remove('show');
+        });
+        
+        // Edit message button
+        editMessageBtn.addEventListener('click', function() {
+            messagePreview.classList.remove('show');
+            // Scroll back to form
+            contactForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        
+        // Also allow Enter key to submit form
+        contactForm.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                previewMessageBtn.click();
+            }
+        });
+        
+        // Add the WhatsApp number to the contact card (already added in HTML)
+        console.log("WhatsApp integration ready. Messages will be sent to: +256 789 190 064");
     </script>
 </body>
 </html>
