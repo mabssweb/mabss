@@ -577,6 +577,271 @@
             border-top: 1px solid #006341;
         }
         
+        /* CHATBOT STYLES */
+        /* Chatbot Toggle Button */
+        .chatbot-toggle-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0e7704 0%, #004d33 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-toggle-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Chatbot Container */
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        .chatbot-container.active {
+            display: flex;
+        }
+
+        /* Chatbot Header */
+        .chatbot-header {
+            background: linear-gradient(135deg, #0e7704 0%, #004d33 100%);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .chatbot-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chatbot-logo img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .chatbot-logo span {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .chatbot-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Chat Messages Area */
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #f8f9fa;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            line-height: 1.4;
+            word-wrap: break-word;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bot-message {
+            background: #e9f7e9;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+            border: 1px solid #d0e6d0;
+        }
+
+        .user-message {
+            background: #0e7704;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            background: #e9f7e9;
+            border-radius: 18px;
+            width: fit-content;
+            border: 1px solid #d0e6d0;
+        }
+
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: #0e7704;
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+        }
+
+        /* Quick Action Buttons */
+        .quick-actions {
+            padding: 10px 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            background: white;
+        }
+
+        .quick-btn {
+            padding: 6px 12px;
+            background: #f0f7f0;
+            border: 1px solid #d0e6d0;
+            border-radius: 20px;
+            color: #0e7704;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-btn:hover {
+            background: #0e7704;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* User Input Area */
+        .chatbot-input-area {
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            background: white;
+        }
+
+        .chatbot-input-area input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #d0e6d0;
+            border-radius: 25px;
+            outline: none;
+            font-size: 0.95rem;
+            transition: border 0.3s;
+        }
+
+        .chatbot-input-area input:focus {
+            border-color: #0e7704;
+        }
+
+        .chatbot-input-area button {
+            padding: 10px 20px;
+            background: #0e7704;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .chatbot-input-area button:hover {
+            background: #004d33;
+        }
+
+        /* Disclaimer */
+        .chatbot-disclaimer {
+            padding: 8px 15px;
+            background: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        /* Option Buttons */
+        .options-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option-btn {
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid #0e7704;
+            border-radius: 15px;
+            color: #0e7704;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option-btn:hover {
+            background: #0e7704;
+            color: white;
+        }
+
         /* RESPONSIVE ADJUSTMENTS FOR IMPROVED HEADER */
         @media (max-width: 992px) {
             .header-container {
@@ -717,6 +982,21 @@
             .marquee-content {
                 animation: marquee 15s linear infinite;
             }
+            
+            /* Chatbot Responsive */
+            .chatbot-container {
+                width: 90%;
+                right: 5%;
+                height: 450px;
+                bottom: 90px;
+            }
+            
+            .chatbot-toggle-btn {
+                width: 55px;
+                height: 55px;
+                bottom: 25px;
+                right: 25px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -769,6 +1049,22 @@
             
             .section-title {
                 font-size: 1.7rem;
+            }
+            
+            /* Chatbot Mobile */
+            .chatbot-container {
+                width: 95%;
+                right: 2.5%;
+                height: 400px;
+            }
+            
+            .quick-actions {
+                justify-content: center;
+            }
+            
+            .quick-btn {
+                font-size: 0.8rem;
+                padding: 5px 10px;
             }
         }
         
@@ -941,6 +1237,47 @@
         </div>
     </footer>
 
+    <!-- CHATBOT CONTAINER -->
+    <div id="mabss-chatbot-container" class="chatbot-container">
+        <!-- Chatbot Header -->
+        <div class="chatbot-header">
+            <div class="chatbot-logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" alt="MABSS Logo">
+                <span>MABSS Assistant</span>
+            </div>
+            <button class="chatbot-close">×</button>
+        </div>
+        
+        <!-- Chat Messages Area -->
+        <div class="chatbot-messages" id="chatMessages">
+            <!-- Initial greeting will appear here -->
+        </div>
+        
+        <!-- Quick Action Buttons -->
+        <div class="quick-actions">
+            <button class="quick-btn" data-intent="admissions">Admissions</button>
+            <button class="quick-btn" data-intent="fees">Fees Structure</button>
+            <button class="quick-btn" data-intent="calendar">Academic Calendar</button>
+            <button class="quick-btn" data-intent="contact">Contact Us</button>
+        </div>
+        
+        <!-- User Input Area -->
+        <div class="chatbot-input-area">
+            <input type="text" id="userInput" placeholder="Type your question here..." maxlength="200">
+            <button id="sendButton">Send</button>
+        </div>
+        
+        <!-- Disclaimer -->
+        <div class="chatbot-disclaimer">
+            <small>For official documents, please contact school administration directly.</small>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbotToggle" class="chatbot-toggle-btn">
+        <i class="fas fa-comments"></i>
+    </button>
+
     <script>
         // Mobile menu toggle
         document.getElementById('menuToggle').addEventListener('click', function() {
@@ -1053,6 +1390,333 @@
         
         // Start slideshow when page loads
         window.addEventListener('load', startSlideshow);
+
+        // ============================
+        // CHATBOT FUNCTIONALITY
+        // ============================
+
+        // Chatbot Knowledge Base
+        const chatbotResponses = {
+            // Greetings
+            greetings: [
+                "Hello! Welcome to Mbarara Army Boarding Secondary School. How can I assist you today?",
+                "Greetings! I'm MABSS Assistant. How may I help you?",
+                "Good day! Welcome to MABSS. What information are you looking for?"
+            ],
+            
+            // School Information
+            school_info: {
+                history: "Mbarara Army Boarding Secondary School (MABSS) was established in 2014 under the Uganda People's Defence Forces (UPDF) to provide quality education with discipline and patriotism. Located in Makenke Barracks, Mbarara, we offer both O-Level and A-Level education.",
+                vision: "Our vision is to be a leading institution that produces disciplined, patriotic, and academically excellent citizens.",
+                mission: "To provide quality education through disciplined training, academic excellence, and character formation for national development.",
+                motto: "Creativity For Excellence",
+                values: "Discipline, Patriotism, Integrity, Excellence, Teamwork"
+            },
+            
+            // Academics
+            academics: {
+                subjects_olevel: "O-Level subjects include: English, Mathematics, Physics, Chemistry, Biology, History, Geography, Commerce, Accounts, Computer Studies, and more.",
+                subjects_alevel: "A-Level combinations available: Sciences (PCM, PCB), Arts (HED, HEG, HEC), and other combinations as per UNEB guidelines.",
+                curriculum: "We follow the Ugandan National Curriculum with emphasis on practical skills and character development.",
+                exams: "Internal examinations are conducted regularly. National examinations (UNEB) are taken at the end of S4 (UCE) and S6 (UACE)."
+            },
+            
+            // Admissions
+            admissions: {
+                requirements: "Requirements: Completed application form, previous academic reports, birth certificate, passport photos, and recommendation letters.",
+                process: "1. Collect application form from school office or download online. 2. Submit completed form with required documents. 3. Attend interview if shortlisted. 4. Receive admission letter. 5. Complete payment.",
+                fees: "Fee structure varies by class. O-Level: Approximately 1,200,000 UGX per term. A-Level: Approximately 1,500,000 UGX per term. Contact finance office for detailed breakdown.",
+            },
+            
+            // Parents & Students
+            parents_students: {
+                visiting: "Visiting days: 28 Saturday of March 2026 from 9:00 AM to 4:00 PM & Annual General Meeting (AGM) and Parents Association Talks (PAT) are held in March 2026.",
+                discipline: "MABSS maintains strict discipline following military values. All students must adhere to school rules and code of conduct.",
+                welfare: "We have a well-equipped sick bay, counseling department, and comfortable boarding facilities with 24/7 security.",
+                opening: "Next term begins: February 2nd, 2026.",
+
+            },
+            
+            // Contact
+            contact: {
+                phone: "Call us at: +256 782 096231, +256 782 371824, +256 779 927775",
+                email: "Email: mabss2014@gmail.com",
+                address: "P.O. Box 521, Makenke Barracks, Mbarara, Uganda",
+                office: "Office hours: Monday-Friday 7:00 AM - 6:00 PM, Saturday 8:00 AM - 4:00 PM"
+            },
+            
+            // Navigation
+            navigation: {
+                admissions_page: "You can find admissions information at: <a href='admission/index.html' style='color: #0e7704; text-decoration: underline;'>Admissions Page</a>",
+                contact_page: "Our contact details are at: <a href='contacts.html' style='color: #0e7704; text-decoration: underline;'>Contact Page</a>",
+                gallery: "View our school gallery: <a href='gallery.html' style='color: #0e7704; text-decoration: underline;'>Gallery</a>"
+            },
+            
+            // Fallbacks
+            fallbacks: [
+                "I'm not sure about that. Please contact the school administration directly for specific queries.",
+                "For detailed information on that topic, please visit the school office or call our hotlines.",
+                "That's a good question! I recommend speaking with our administration for accurate information."
+            ]
+        };
+
+        // Chatbot State Management
+        let chatHistory = [];
+        let currentContext = null;
+
+        // DOM Elements
+        const chatbotContainer = document.getElementById('mabss-chatbot-container');
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendButton = document.getElementById('sendButton');
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotClose = document.querySelector('.chatbot-close');
+        const quickButtons = document.querySelectorAll('.quick-btn');
+
+        // Initialize Chatbot
+        function initChatbot() {
+            // Show welcome message after a short delay
+            setTimeout(() => {
+                addBotMessage(chatbotResponses.greetings[Math.floor(Math.random() * chatbotResponses.greetings.length)]);
+                showQuickOptions();
+            }, 1000);
+        }
+
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.innerHTML = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Add to history
+            chatHistory.push({ text, sender, timestamp: new Date() });
+            
+            // Limit history to last 50 messages
+            if (chatHistory.length > 50) {
+                chatHistory.shift();
+            }
+        }
+
+        // Add bot message
+        function addBotMessage(text) {
+            addMessage(text, 'bot');
+        }
+
+        // Add user message
+        function addUserMessage(text) {
+            addMessage(text, 'user');
+        }
+
+        // Show typing indicator
+        function showTyping() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = '<span></span><span></span><span></span>';
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Hide typing indicator
+        function hideTyping() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        // Process user input
+        function processUserInput(input) {
+            input = input.toLowerCase().trim();
+            
+            // Show typing indicator
+            showTyping();
+            
+            // Simulate processing delay
+            setTimeout(() => {
+                hideTyping();
+                
+                // Check for greetings
+                if (input.match(/hello|hi|hey|greetings|good morning|good afternoon|good evening/)) {
+                    const greeting = chatbotResponses.greetings[Math.floor(Math.random() * chatbotResponses.greetings.length)];
+                    addBotMessage(greeting);
+                    showQuickOptions();
+                    return;
+                }
+                
+                // Check for school information
+                if (input.match(/history|about school|background/)) {
+                    addBotMessage(chatbotResponses.school_info.history);
+                    return;
+                }
+                
+                if (input.match(/vision|mission|motto|values/)) {
+                    let response = `<strong>Vision:</strong> ${chatbotResponses.school_info.vision}<br><br>`;
+                    response += `<strong>Mission:</strong> ${chatbotResponses.school_info.mission}<br><br>`;
+                    response += `<strong>Motto:</strong> ${chatbotResponses.school_info.motto}<br><br>`;
+                    response += `<strong>Core Values:</strong> ${chatbotResponses.school_info.values}`;
+                    addBotMessage(response);
+                    return;
+                }
+                
+                // Check for academics
+                if (input.match(/subjects|curriculum|syllabus/)) {
+                    if (input.match(/o.level|o level|s1|s2|s3|s4/)) {
+                        addBotMessage(chatbotResponses.academics.subjects_olevel);
+                    } else if (input.match(/a.level|a level|s5|s6/)) {
+                        addBotMessage(chatbotResponses.academics.subjects_alevel);
+                    } else {
+                        addBotMessage("We offer both O-Level and A-Level programs. Could you specify which level you're interested in?");
+                    }
+                    return;
+                }
+                
+                // Check for admissions
+                if (input.match(/admission|apply|how to join|requirements/)) {
+                    let response = `<strong>Admission Requirements:</strong> ${chatbotResponses.admissions.requirements}<br><br>`;
+                    response += `<strong>Application Process:</strong> ${chatbotResponses.admissions.process}<br><br>`;
+                    response += `<strong>Fee Structure:</strong> ${chatbotResponses.admissions.fees}<br><br>`;
+                    response += `<strong>Scholarships:</strong> ${chatbotResponses.admissions.scholarships}`;
+                    addBotMessage(response);
+                    return;
+                }
+                
+                // Check for fees
+                if (input.match(/fees|payment|cost|fee structure|how much/)) {
+                    addBotMessage(chatbotResponses.admissions.fees + " For exact figures, please contact the finance office.");
+                    return;
+                }
+                
+                // Check for parents/students info
+                if (input.match(/visiting|parents day|visit/)) {
+                    addBotMessage(chatbotResponses.parents_students.visiting);
+                    return;
+                }
+                
+                if (input.match(/discipline|rules|regulations/)) {
+                    addBotMessage(chatbotResponses.parents_students.discipline);
+                    return;
+                }
+                
+                if (input.match(/opening|closing|term begins|when does school open/)) {
+                    addBotMessage(chatbotResponses.parents_students.opening);
+                    return;
+                }
+                
+                // Check for contact info
+                if (input.match(/contact|phone|email|address|location/)) {
+                    let response = `<strong>Phone:</strong> ${chatbotResponses.contact.phone}<br><br>`;
+                    response += `<strong>Email:</strong> ${chatbotResponses.contact.email}<br><br>`;
+                    response += `<strong>Address:</strong> ${chatbotResponses.contact.address}<br><br>`;
+                    response += `<strong>Office Hours:</strong> ${chatbotResponses.contact.office}`;
+                    addBotMessage(response);
+                    return;
+                }
+                
+                // Check for navigation
+                if (input.match(/admissions page|apply online/)) {
+                    addBotMessage(chatbotResponses.navigation.admissions_page);
+                    return;
+                }
+                
+                if (input.match(/contact page|contacts/)) {
+                    addBotMessage(chatbotResponses.navigation.contact_page);
+                    return;
+                }
+                
+                if (input.match(/gallery|photos|pictures/)) {
+                    addBotMessage(chatbotResponses.navigation.gallery);
+                    return;
+                }
+                
+                // Fallback response
+                const fallback = chatbotResponses.fallbacks[Math.floor(Math.random() * chatbotResponses.fallbacks.length)];
+                addBotMessage(fallback);
+                
+            }, 1000 + Math.random() * 1000); // Random delay for realism
+        }
+
+        // Show quick options after response
+        function showQuickOptions() {
+            setTimeout(() => {
+                const options = [
+                    "School History",
+                    "Admission Requirements",
+                    "Fee Structure",
+                    "Contact Information",
+                    "Academic Calendar"
+                ];
+                
+                let optionsHTML = '<div class="options-container">';
+                options.forEach(option => {
+                    optionsHTML += `<button class="option-btn" onclick="handleQuickOption('${option}')">${option}</button>`;
+                });
+                optionsHTML += '</div>';
+                
+                addBotMessage("Here are some common questions:");
+                // Add options to the last bot message
+                const lastBotMessage = document.querySelectorAll('.bot-message');
+                if (lastBotMessage.length > 0) {
+                    lastBotMessage[lastBotMessage.length - 1].innerHTML += optionsHTML;
+                }
+            }, 300);
+        }
+
+        // Handle quick option selection
+        window.handleQuickOption = function(option) {
+            addUserMessage(option);
+            processUserInput(option);
+        }
+
+        // Event Listeners
+        sendButton.addEventListener('click', () => {
+            const message = userInput.value.trim();
+            if (message) {
+                addUserMessage(message);
+                userInput.value = '';
+                processUserInput(message);
+            }
+        });
+
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('active');
+            if (chatbotContainer.classList.contains('active') && chatHistory.length === 0) {
+                initChatbot();
+            }
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
+
+        quickButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const intent = e.target.dataset.intent;
+                addUserMessage(e.target.textContent);
+                processUserInput(intent);
+            });
+        });
+
+        // Initialize chatbot on page load
+        window.addEventListener('load', () => {
+            // Auto-open chatbot on first visit (check via localStorage)
+            const hasVisited = localStorage.getItem('mabss_chatbot_visited');
+            if (!hasVisited) {
+                setTimeout(() => {
+                    chatbotContainer.classList.add('active');
+                    initChatbot();
+                    localStorage.setItem('mabss_chatbot_visited', 'true');
+                }, 5000); // Show after 5 seconds
+            }
+        });
     </script>
 </body>
 </html>
