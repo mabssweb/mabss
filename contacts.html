@@ -698,7 +698,7 @@
             nav.classList.toggle('show');
         });
 
-        // WhatsApp Integration
+        // WhatsApp Integration - YOUR NUMBER: 256782096231
         const phoneNumber = "256782096231"; // Your WhatsApp number
         
         // Form elements
@@ -759,7 +759,7 @@
         // Open WhatsApp directly with default message
         directWhatsAppBtn.addEventListener('click', function() {
             const defaultMessage = "Hello MABSS, I would like to inquire about...";
-            const whatsappUrl = `https://wa.me/${256782096231}?text=${encodeURIComponent(defaultMessage)}`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
             window.open(whatsappUrl, '_blank');
         });
         
@@ -772,8 +772,7 @@
             const message = document.getElementById('message').value.trim();
             
             // Create formatted message for WhatsApp
-            const whatsappMessage = `
-*MABSS CONTACT FORM MESSAGE*
+            const whatsappMessage = `*MABSS CONTACT FORM MESSAGE*
 
 *From:* ${name}
 *Phone:* ${phone}
@@ -784,11 +783,10 @@
 ${message}
 
 *Sent via:* MABSS Website Contact Form
-*Time:* ${new Date().toLocaleString()}
-            `.trim();
+*Time:* ${new Date().toLocaleString()}`;
             
-            // Create WhatsApp URL
-            const whatsappUrl = `https://wa.me/${256782096231}?text=${encodeURIComponent(whatsappMessage)}`;
+            // Create WhatsApp URL - CORRECT FORMAT
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
             
             // Open WhatsApp in new tab
             window.open(whatsappUrl, '_blank');
@@ -796,7 +794,7 @@ ${message}
             // Show success message
             alert('WhatsApp is opening with your message. Please click send to complete the process.');
             
-            // Optional: Clear form after sending
+            // Clear form after sending (optional)
             // contactForm.reset();
             // messagePreview.classList.remove('show');
         });
@@ -816,8 +814,15 @@ ${message}
             }
         });
         
-        // Add the WhatsApp number to the contact card (already added in HTML)
-        console.log("WhatsApp integration ready. Messages will be sent to: +256 782 096231");
+        // Add form validation
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            previewMessageBtn.click();
+        });
+        
+        // Debug log to verify phone number
+        console.log("WhatsApp integration ready. Messages will be sent to: +" + phoneNumber);
+        console.log("Test link: https://wa.me/" + phoneNumber + "?text=Test%20message");
     </script>
 </body>
 </html>
