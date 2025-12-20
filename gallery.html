@@ -16,6 +16,10 @@
     <title>Mbarara Army Boarding SS - Gallery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Swiper CSS (Lightweight Carousel Library) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
     <style>
         :root {
             --navy: #1a237e;
@@ -31,6 +35,9 @@
             --accent-light: #4895ef;
             --army-green: #0e7704;
             --army-green-dark: #004d33;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            --card-shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         * {
@@ -335,144 +342,404 @@
             font-size: 0.9rem;
         }
 
-        /* Alumni Section */
+        /* =========================================== */
+        /* REDESIGNED ALUMNI SECTION - MODERN & RESPONSIVE */
+        /* =========================================== */
+        
         .alumni-section {
-            padding: 2rem 15px;
-            background: linear-gradient(135deg, var(--gray-light), var(--white));
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            position: relative;
+            overflow: hidden;
         }
 
+        .alumni-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .alumni-title-container {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .alumni-title {
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .alumni-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Swiper Carousel Container */
         .alumni-carousel-container {
             position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            height: 350px;
+            padding: 20px 0 60px;
         }
 
-        .alumni-carousel {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
+        /* Swiper Custom Styling */
+        .alumni-swiper {
+            width: 100%;
+            height: auto;
+            padding: 20px 10px 50px;
         }
 
+        /* Alumni Card Styling */
         .alumni-card {
-            min-width: 100%;
-            padding: 20px;
             background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            height: 100%;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: calc(var(--card-index) * 0.1s);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .alumni-card {
+                animation: none;
+                opacity: 1;
+            }
+        }
+
+        /* Card Hover Effects (Desktop only) */
+        @media (min-width: 768px) {
+            .alumni-card:hover {
+                transform: translateY(-10px);
+                box-shadow: var(--card-shadow-hover);
+            }
+        }
+
+        /* FIXED: Smaller Image Container with Circular Frame */
+        .alumni-image-container {
+            width: 120px;
+            height: 120px;
+            margin: 1.5rem auto 1rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            border: 4px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .alumni-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.7s ease;
+        }
+
+        /* Hover zoom effect for desktop */
+        @media (min-width: 768px) {
+            .alumni-card:hover .alumni-image {
+                transform: scale(1.1);
+            }
+            
+            /* Slightly larger on desktop */
+            .alumni-image-container {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 375px) {
+            .alumni-image-container {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Card Content */
+        .alumni-content {
+            padding: 0 1.5rem 1.5rem;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            height: 100%;
-            justify-content: center;
-        }
-
-        .alumni-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 3px solid var(--gold);
         }
 
         .alumni-name {
+            font-size: 1.2rem;
             color: var(--navy);
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            text-align: center;
         }
 
         .alumni-position {
             display: inline-block;
             background: linear-gradient(to right, var(--accent), var(--accent-light));
-            color: var(--white);
-            padding: 5px 12px;
+            color: white;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 8px rgba(67, 97, 238, 0.2);
+            text-align: center;
         }
 
         .alumni-desc {
             color: var(--text-light);
-            max-width: 500px;
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            text-align: center;
+        }
+
+        /* Read More Button */
+        .alumni-read-more {
+            color: var(--accent);
+            font-weight: 600;
             font-size: 0.9rem;
-            line-height: 1.5;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            text-align: center;
         }
 
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            gap: 12px;
+        .alumni-read-more:hover {
+            color: var(--navy);
+            transform: translateX(5px);
         }
 
-        .carousel-btn {
-            background: linear-gradient(to right, var(--navy), var(--accent));
-            color: var(--white);
-            border: none;
-            width: 40px;
-            height: 40px;
+        .alumni-read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .alumni-read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Swiper Navigation Buttons */
+        .alumni-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: white;
             border-radius: 50%;
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            opacity: 0.9;
         }
 
-        .carousel-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+        .alumni-nav-btn:hover {
+            background: var(--accent);
+            color: white;
+            opacity: 1;
+            transform: translateY(-50%) scale(1.05);
         }
 
-        .carousel-indicators {
+        .alumni-nav-btn.prev {
+            left: -10px;
+        }
+
+        .alumni-nav-btn.next {
+            right: -10px;
+        }
+
+        /* Hide arrows on mobile */
+        @media (max-width: 767px) {
+            .alumni-nav-btn {
+                display: none;
+            }
+        }
+
+        /* Swiper Pagination */
+        .alumni-pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
             display: flex;
             justify-content: center;
-            margin-top: 15px;
-            gap: 8px;
+            z-index: 10;
+            margin-top: 20px;
         }
 
-        .indicator {
+        .swiper-pagination-bullet {
             width: 10px;
             height: 10px;
+            background: #ccc;
             border-radius: 50%;
-            background-color: #ccc;
+            margin: 0 6px;
             cursor: pointer;
             transition: all 0.3s ease;
+            opacity: 0.7;
         }
 
-        .indicator.active {
-            background-color: var(--accent);
+        .swiper-pagination-bullet-active {
+            background: var(--accent);
             transform: scale(1.2);
+            opacity: 1;
         }
 
-        .view-more {
+        /* View More Button */
+        .alumni-view-more {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
-        .view-more-btn {
-            display: inline-block;
+        .alumni-view-more-btn {
+            display: inline-flex;
+            align-items: center;
             background: linear-gradient(to right, var(--accent), var(--accent-light));
-            color: var(--white);
-            padding: 10px 24px;
-            border-radius: 25px;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.25);
+            border: none;
+            cursor: pointer;
         }
 
-        .view-more-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
+        .alumni-view-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.35);
+        }
+
+        .alumni-view-more-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .alumni-view-more-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 767px) {
+            .alumni-section {
+                padding: 2rem 0;
+            }
+            
+            .alumni-title {
+                font-size: 1.8rem;
+            }
+            
+            .alumni-subtitle {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            .alumni-card {
+                margin: 0 10px;
+            }
+            
+            .alumni-content {
+                padding: 0 1.2rem 1.2rem;
+            }
+            
+            .alumni-name {
+                font-size: 1.1rem;
+            }
+            
+            .alumni-swiper {
+                padding: 10px 5px 40px;
+            }
+            
+            .alumni-image-container {
+                width: 100px;
+                height: 100px;
+                margin: 1.2rem auto 0.8rem;
+                border-width: 3px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .alumni-swiper {
+                padding: 20px 30px 50px;
+            }
+            
+            .alumni-card {
+                margin: 0 10px;
+            }
+            
+            .alumni-image-container {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .alumni-swiper {
+                padding: 20px 40px 50px;
+            }
+            
+            .alumni-card {
+                margin: 0 15px;
+            }
+            
+            .alumni-nav-btn.prev {
+                left: -25px;
+            }
+            
+            .alumni-nav-btn.next {
+                right: -25px;
+            }
+            
+            .alumni-image-container {
+                width: 140px;
+                height: 140px;
+                margin: 1.8rem auto 1.2rem;
+            }
         }
 
         /* Footer */
@@ -640,15 +907,6 @@
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .alumni-carousel-container {
-                height: 380px;
-            }
-            
-            .alumni-image {
-                width: 120px;
-                height: 120px;
-            }
         }
         
         @media (min-width: 768px) {
@@ -685,10 +943,6 @@
             .gallery-link {
                 padding: 8px 16px;
                 font-size: 0.9rem;
-            }
-            
-            .alumni-carousel-container {
-                height: 400px;
             }
             
             .footer-container {
@@ -741,27 +995,6 @@
             
             .section-title {
                 font-size: 2rem;
-            }
-            
-            .alumni-carousel-container {
-                height: 420px;
-            }
-            
-            .alumni-card {
-                padding: 30px;
-            }
-            
-            .alumni-image {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .alumni-name {
-                font-size: 1.4rem;
-            }
-            
-            .alumni-desc {
-                font-size: 1rem;
             }
         }
         
@@ -884,77 +1117,219 @@
         </div>
     </section>
     
-    <!-- Alumni Gallery -->
-    <section class="alumni-section">
-        <h2 class="section-title">OB's & OG's Success Stories</h2>
-        
-        <div class="alumni-carousel-container">
-            <div class="alumni-carousel" id="alumniCarousel">
-                <div class="alumni-card">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" alt="MR.TUMWESIGYE RONALD" class="alumni-image">
-                    <h3 class="alumni-name">MR.TUMWESIGYE RONALD</h3>
-                    <p class="alumni-position">He was our Ob</p>
-                    <p class="alumni-desc">Once a student, now a teacher at my alma mater. Mbarara Army Boarding Secondary School instilled in me the discipline and passion I now bring to my History and Divinity classes.</p>
-                </div>
-                <div class="alumni-card">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Miss KABAHINDA SHANNITAH" class="alumni-image">
-                    <h3 class="alumni-name">Miss KABAHINDA SHANNITAH</h3>
-                    <p class="alumni-position">Social Worker</p>
-                    <p class="alumni-desc">At MABSS, education is more than academics, it is a lifelong connection. Our alumni remain united by shared values, unforgettable memories, and a commitment to excellence wherever life leads them. #now pursuing Bachelors of Social Work at Kabale University.</p>
-                </div>
-                
-                <div class="alumni-card">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345616/tr_foxrgt.jpg" alt="Miss ABAASA NANCY PATRA" class="alumni-image">
-                    <h3 class="alumni-name">Miss ABAASA NANCY PATRA</h3>
-                    <p class="alumni-position">MENTOR</p>
-                    <p class="alumni-desc">Beyond the gates of MABSS lies a world of opportunity, and our alumni are rising to meet it. Their achievements remind us that strong beginnings create powerful futures.</p>
-                </div>
-                
-                <div class="alumni-card">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345080/MS_p4tfnj.jpg" alt="MR. TWIJUKYE EDSON" class="alumni-image">
-                    <h3 class="alumni-name">MR. TWIJUKYE EDSON</h3>
-                    <p class="alumni-position">GRC of COMPUTER SCIENCE at YMCA</p>
-                    <p class="alumni-desc">Former H.P (2022-2023). MABSS shaped the minds, character, and ambition of its students. Today, our alumni stand tall as ambassadors of the school’s vision, proving that the MABSS journey never truly ends</p>
-                </div>
-                
-                <div class="alumni-card">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/brita_fw5x7j.jpg" alt="MR. AMWINE FRANKLINE" class="alumni-image">
-                    <h3 class="alumni-name">MISS ASHABA BRITAH</h3>
-                    <p class="alumni-position">OG (2023-2024)</p>
-                    <p class="alumni-desc">Once a MABSS student, always a part of the MABSS family. Our alumni carry forward the values, discipline, and excellence learned within these walls, shaping communities and inspiring future generations wherever they go. #Student at MUST pursuing Information Technology.</p>
-                </div>
-
-                <div class="alumni-card">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345091/no_ytbaub.jpg" alt="MR. AMWINE FRANKLINE" class="alumni-image">
-                    <h3 class="alumni-name">MR. AMWINE FRANKLINE</h3>
-                    <p class="alumni-position">OB (2017-2023)</p>
-                    <p class="alumni-desc">7 Years of Transformation & Triumph! Every success story that begins at MABSS strengthens our legacy. We proudly recognize our alumni who carry the school spirit forward and inspire current students to dream bigger #Student at KABALE UNIVERSITY pursuing Information Technology.</p>
-                </div>
-                
-                <div class="alumni-card">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/KATO_rb7fvj.jpg" alt="MR. KATO SURAIMAN" class="alumni-image">
-                    <h3 class="alumni-name">MR. KATO SURAIMAN</h3>
-                    <p class="alumni-position">OB (2017-2023)</p>
-                    <p class="alumni-desc">From classrooms to careers, MABSS alumni continue to shine. We celebrate the achievements of our former students whose dedication and hard work reflect the strong foundation built at MABSS.#Pursuing BSC.COMPUTER SCIENCE at KABALE UNIVERSITY.</p>
-                </div>
-                <div class="alumni-card">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/hawali_ehkfkn.jpg" alt="MR. KATO SURAIMAN" class="alumni-image">
-                    <h3 class="alumni-name">MR.KYARIKUNDA HAWALI</h3>
-                    <p class="alumni-position">OB (2017-2023)</p>
-                    <p class="alumni-desc">The journey may take you far, but MABSS will always be home. Our alumni stand as living proof that the lessons, friendships, and memories formed here continue to guide success beyond the classroom.#Pursuing BSC.INFORMATION TECHNOLOGY at BISHOP STUART UNIVERSITY.</p>
-                </div>
+    <!-- =========================================== -->
+    <!-- REDESIGNED ALUMNI SECTION -->
+    <!-- =========================================== -->
+    <section class="alumni-section" aria-labelledby="alumni-heading">
+        <div class="alumni-container">
+            <div class="alumni-title-container">
+                <h2 id="alumni-heading" class="alumni-title">OB's & OG's Success Stories</h2>
+                <p class="alumni-subtitle">Celebrating the achievements of our alumni who continue to excel in various fields, carrying forward the values and discipline instilled at MABSS.</p>
             </div>
-            <div class="carousel-indicators" id="carouselIndicators">
-                <!-- Indicators will be added dynamically -->
+            
+            <div class="alumni-carousel-container">
+                <!-- Swiper Carousel -->
+                <div class="swiper alumni-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Alumni Card 1 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 0">
+                                <div class="alumni-image-container">
+                                    <img 
+                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" 
+                                        alt="MR.TUMWESIGYE RONALD" 
+                                        class="alumni-image"
+                                        loading="lazy"
+                                    >
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR.TUMWESIGYE RONALD</h3>
+                                    <span class="alumni-position">He was our Ob</span>
+                                    <p class="alumni-desc">Once a student, now a teacher at my alma mater. MABSS instilled in me the discipline and passion I now bring to my History and Divinity classes.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Alumni Card 2 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 1">
+                                <div class="alumni-image-container">
+                                    <img 
+                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1766224445/og_zhjemi.jpg" 
+                                        alt="MISS. Karungi Regina carol" 
+                                        class="alumni-image"
+                                        loading="lazy"
+                                    >
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MISS. Karungi Regina Carol</h3>
+                                    <span class="alumni-position">Midwife</span>
+                                    <p class="alumni-desc">Proud to have studied at MABSS (2004–2007). We were the pioneers who started and shaped the school.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Alumni Card 3 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 2">
+                                <div class="alumni-image-container">
+                                    <img 
+                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" 
+                                        alt="Miss KABAHINDA SHANNITAH" 
+                                        class="alumni-image"
+                                        loading="lazy"
+                                    >
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">Miss KABAHINDA SHANNITAH</h3>
+                                    <span class="alumni-position">Social Worker</span>
+                                    <p class="alumni-desc">At MABSS, education is more than academics,Withut hesitation, I attest to the excellence of MABSS as an institution. It provided me with.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Alumni Card 4 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 3">
+                                <div class="alumni-image-container">
+                                    <img 
+                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345616/tr_foxrgt.jpg" 
+                                        alt="Miss ABAASA NANCY PATRA" 
+                                        class="alumni-image"
+                                        loading="lazy"
+                                    >
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">Miss ABAASA NANCY PATRA</h3>
+                                    <span class="alumni-position">MENTOR</span>
+                                    <p class="alumni-desc">Beyond the gates of MABSS lies a world of opportunity, and our alumni are rising to meet it.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Alumni Card 5 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 4">
+                                <div class="alumni-image-container">
+                                    <img 
+                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345080/MS_p4tfnj.jpg" 
+                                        alt="MR. TWIJUKYE EDSON" 
+                                        class="alumni-image"
+                                        loading="lazy"
+                                    >
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR. TWIJUKYE EDSON</h3>
+                                    <span class="alumni-position">GRC of COMPUTER SCIENCE at YMCA</span>
+                                    <p class="alumni-desc">Former H.P (2022-2023). MABSS has shaped  my mind, character, and ambition. Today, our alumni stand tall as ambassadors of the school's vision.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Alumni Card 6 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 5">
+                                <div class="alumni-image-container">
+                                    <img 
+                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/brita_fw5x7j.jpg" 
+                                        alt="MISS ASHABA BRITAH" 
+                                        class="alumni-image"
+                                        loading="lazy"
+                                    >
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MISS ASHABA BRITAH</h3>
+                                    <span class="alumni-position">OG (2023-2024)</span>
+                                    <p class="alumni-desc">Once a MABSS student, always a part of the MABSS family. Our alumni carry forward the values, discipline, and excellence learned within these walls.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Alumni Card 7 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 6">
+                                <div class="alumni-image-container">
+                                    <img 
+                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345091/no_ytbaub.jpg" 
+                                        alt="MR. AMWINE FRANKLINE" 
+                                        class="alumni-image"
+                                        loading="lazy"
+                                    >
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR. AMWINE FRANKLINE</h3>
+                                    <span class="alumni-position">OB (2017-2023)</span>
+                                    <p class="alumni-desc">7 Years of Transformation & Triumph! Every success story that begins at MABSS strengthens our legacy.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Alumni Card 8 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 7">
+                                <div class="alumni-image-container">
+                                    <img 
+                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/KATO_rb7fvj.jpg" 
+                                        alt="MR. KATO SURAIMAN" 
+                                        class="alumni-image"
+                                        loading="lazy"
+                                    >
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR. KATO SURAIMAN</h3>
+                                    <span class="alumni-position">OB (2017-2023)</span>
+                                    <p class="alumni-desc">From classrooms to careers, MABSS alumni continue to shine.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Alumni Card 9 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 8">
+                                <div class="alumni-image-container">
+                                    <img 
+                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/hawali_ehkfkn.jpg" 
+                                        alt="MR.KYARIKUNDA HAWALI" 
+                                        class="alumni-image"
+                                        loading="lazy"
+                                    >
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR.KYARIKUNDA HAWALI</h3>
+                                    <span class="alumni-position">OB (2017-2023)</span>
+                                    <p class="alumni-desc">The journey may take you far, but MABSS will always be home.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination dots -->
+                    <div class="swiper-pagination alumni-pagination"></div>
+                </div>
+                
+                <!-- Navigation buttons -->
+                <button class="alumni-nav-btn prev" aria-label="Previous alumni stories">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="alumni-nav-btn next" aria-label="Next alumni stories">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
-            <div class="carousel-controls">
-                <button class="carousel-btn prev-btn" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next-btn" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+            
+            <div class="alumni-view-more">
+                <a href="alumni.html" class="alumni-view-more-btn">
+                    View More Success Stories <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-        </div>
-        
-        <div class="view-more">
-            <a href="alumni.html" class="view-more-btn">View More Success Stories</a>
         </div>
     </section>
 
@@ -1005,6 +1380,9 @@
         </div>
     </footer>
 
+    <!-- Swiper JS (Lightweight Carousel Library) -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
     <script>
         // Mobile menu toggle
         document.getElementById('menuToggle').addEventListener('click', function() {
@@ -1022,91 +1400,120 @@
             }
         });
 
-        // Alumni Carousel Functionality
+        // Initialize Swiper Carousel for Alumni Section
         document.addEventListener('DOMContentLoaded', function() {
-            const alumniCarousel = document.getElementById('alumniCarousel');
-            const alumniCards = document.querySelectorAll('.alumni-card');
-            const alumniPrevBtn = document.querySelector('.alumni-section .prev-btn');
-            const alumniNextBtn = document.querySelector('.alumni-section .next-btn');
-            const carouselIndicators = document.getElementById('carouselIndicators');
+            // Check if Swiper is available
+            if (typeof Swiper === 'undefined') {
+                console.error('Swiper library not loaded. Loading from CDN...');
+                initFallbackCarousel();
+                return;
+            }
             
-            if (!alumniCarousel || alumniCards.length === 0) return;
+            // Initialize Swiper with responsive settings
+            const alumniSwiper = new Swiper('.alumni-swiper', {
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        spaceBetween: 15
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 25
+                    }
+                },
+                
+                loop: true,
+                speed: 600,
+                grabCursor: true,
+                centeredSlides: false,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                
+                navigation: {
+                    nextEl: '.alumni-nav-btn.next',
+                    prevEl: '.alumni-nav-btn.prev',
+                },
+                
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: true
+                },
+                
+                a11y: {
+                    prevSlideMessage: 'Previous alumni story',
+                    nextSlideMessage: 'Next alumni story',
+                    firstSlideMessage: 'This is the first alumni story',
+                    lastSlideMessage: 'This is the last alumni story',
+                    paginationBulletMessage: 'Go to alumni story {{index}}'
+                },
+                
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true
+                },
+                
+                touchRatio: 1,
+                touchAngle: 45,
+                simulateTouch: true,
+                shortSwipes: true,
+                longSwipes: true,
+                longSwipesRatio: 0.5,
+                longSwipesMs: 300,
+                followFinger: true,
+                allowTouchMove: true
+            });
             
-            let currentAlumniSlide = 0;
-            let carouselInterval;
-
-            // Create indicators
-            alumniCards.forEach((_, index) => {
-                const indicator = document.createElement('div');
-                indicator.className = 'indicator';
-                if (index === 0) indicator.classList.add('active');
-                indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
-                indicator.addEventListener('click', () => {
-                    showAlumniSlide(index);
-                });
-                carouselIndicators.appendChild(indicator);
+            // Add card index for staggered animation
+            const cards = document.querySelectorAll('.alumni-card');
+            cards.forEach((card, index) => {
+                card.style.setProperty('--card-index', index % 9);
             });
-
-            const indicators = document.querySelectorAll('.indicator');
-
-            function showAlumniSlide(index) {
-                if (index < 0) index = alumniCards.length - 1;
-                if (index >= alumniCards.length) index = 0;
-                
-                // Update carousel position
-                alumniCarousel.style.transform = `translateX(-${index * 100}%)`;
-                
-                // Update active indicator
-                indicators.forEach(indicator => {
-                    indicator.classList.remove('active');
-                });
-                if (indicators[index]) {
-                    indicators[index].classList.add('active');
-                }
-                
-                currentAlumniSlide = index;
-            }
-
-            // Add event listeners for carousel controls
-            if (alumniPrevBtn && alumniNextBtn) {
-                alumniPrevBtn.addEventListener('click', () => {
-                    showAlumniSlide(currentAlumniSlide - 1);
-                });
-                
-                alumniNextBtn.addEventListener('click', () => {
-                    showAlumniSlide(currentAlumniSlide + 1);
-                });
-            }
-
-            // Initialize the first slide
-            showAlumniSlide(0);
-
-            // Auto-advance carousel
-            function startAutoAdvance() {
-                carouselInterval = setInterval(() => {
-                    showAlumniSlide(currentAlumniSlide + 1);
-                }, 5000);
-            }
-
-            startAutoAdvance();
-
-            // Pause auto-advance on hover
-            alumniCarousel.addEventListener('mouseenter', () => {
-                clearInterval(carouselInterval);
-            });
-
-            alumniCarousel.addEventListener('mouseleave', () => {
-                startAutoAdvance();
-            });
-
-            // Pause auto-advance when tab is not visible
+            
+            // Pause autoplay when tab is not visible
             document.addEventListener('visibilitychange', function() {
                 if (document.hidden) {
-                    clearInterval(carouselInterval);
+                    alumniSwiper.autoplay.stop();
                 } else {
-                    startAutoAdvance();
+                    alumniSwiper.autoplay.start();
                 }
             });
+            
+            // Respect reduced motion preference
+            const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (mediaQuery.matches) {
+                alumniSwiper.params.speed = 0;
+                alumniSwiper.params.autoplay = false;
+                alumniSwiper.update();
+            }
+            
+            function initFallbackCarousel() {
+                console.log('Initializing fallback carousel');
+                const cards = document.querySelectorAll('.alumni-card');
+                if (cards.length === 0) return;
+                
+                const swiperContainer = document.querySelector('.alumni-swiper');
+                if (swiperContainer) {
+                    swiperContainer.style.overflow = 'visible';
+                    swiperContainer.style.display = 'grid';
+                    swiperContainer.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+                    swiperContainer.style.gap = '20px';
+                    swiperContainer.style.padding = '0';
+                    
+                    document.querySelectorAll('.alumni-nav-btn, .alumni-pagination').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                }
+            }
         });
     </script>
 </body>
