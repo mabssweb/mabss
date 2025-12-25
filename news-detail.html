@@ -335,7 +335,9 @@
                     <div class="news-detail-meta">
                         <span class="news-detail-date">${formatDate(news.date)}</span>
                     </div>
-                    <div class="news-detail-body">${news.content}</div>
+                    <div class="news-detail-body">
+                        ${news.content || `<p>${news.summary}</p>`}
+                    </div>
                 </div>
             `;
         }
