@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     // Verify Auth for non-GET methods
     if (req.method === 'PUT' || req.method === 'DELETE') {
         const authHeader = req.headers.authorization;
-        consttoken = authHeader && authHeader.split(' ')[1];
+        const token = authHeader && authHeader.split(' ')[1];
         if (!token || token !== process.env.ADMIN_PASSWORD) {
             return res.status(401).json({ error: 'Unauthorized' });
         }
