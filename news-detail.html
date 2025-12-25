@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <title>Mbarara Army Boarding Secondary School - News Detail</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding-top: 90px;
+        }
+
+        .header {
+            background-color: #0e7704;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .helo {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
+        .school-name {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding-left: 200px;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            margin: 0;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .news-detail-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .news-detail-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-detail-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .news-detail-content {
+            padding: 2rem;
+        }
+
+        .news-detail-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #006341;
+            line-height: 1.3;
+        }
+
+        .news-detail-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-detail-date {
+            background-color: #0e7704;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .news-detail-body {
+            line-height: 1.8;
+            color: #444;
+            font-size: 1.1rem;
+        }
+
+        .news-detail-body h1,
+        .news-detail-body h2,
+        .news-detail-body h3,
+        .news-detail-body h4,
+        .news-detail-body h5,
+        .news-detail-body h6 {
+            color: #006341;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .news-detail-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .news-detail-body ul,
+        .news-detail-body ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .news-detail-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .news-detail-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .news-detail-body blockquote {
+            border-left: 4px solid #0e7704;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #666;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: #006341;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background-color: #004d33;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 3rem;
+            color: #d32f2f;
+            background-color: #ffebee;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .news-detail-title {
+                font-size: 1.5rem;
+            }
+
+            .nav-list {
+                padding-left: 100px;
+            }
+
+            .news-detail-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media print {
+
+            .header,
+            .back-btn {
+                display: none;
+            }
+
+            body {
+                padding-top: 0;
+            }
+
+            .news-detail-section {
+                max-width: none;
+                margin: 0;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                    alt="MABSS Logo" class="helo">
+                <h1 class="school-name">MABSS</h1>
+            </div>
+            <nav class="nav-menu" id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
+                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="news-detail-section">
+        <a href="news.html" class="back-btn">← Back to News</a>
+        <div id="loading" class="loading">Loading news article...</div>
+        <div id="error" class="error" style="display: none;"></div>
+        <div class="news-detail-card" id="news-detail-content" style="display: none;"></div>
+    </section>
+
+    <script>
+        // Load news detail
+        document.addEventListener('DOMContentLoaded', async function () {
+            // Priority: URL Param -> LocalStorage
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlId = urlParams.get('id');
+            const selectedNewsId = urlId || localStorage.getItem('selectedNewsId');
+
+            if (!selectedNewsId) {
+                // If no news ID, redirect to news page
+                window.location.href = 'news.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/news/${selectedNewsId}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch news');
+                }
+
+                const newsItem = await response.json();
+                displayNewsDetail(newsItem);
+
+            } catch (error) {
+                console.error('Error loading news detail:', error);
+                // Fallback: try to get from localStorage (from news page) if fetching failed
+                // This is useful if the user came from the list page but the API is temporarily down for single items
+                const fallbackNews = localStorage.getItem('selectedNews');
+                if (fallbackNews && (!urlId || JSON.parse(fallbackNews).id == urlId)) {
+                    displayNewsDetail(JSON.parse(fallbackNews));
+                } else {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('error').style.display = 'block';
+                    document.getElementById('error').textContent = 'News article not found. Please go back to the news page.';
+                }
+            }
+        });
+
+        // Display news detail
+        function displayNewsDetail(news) {
+            const loading = document.getElementById('loading');
+            const content = document.getElementById('news-detail-content');
+
+            loading.style.display = 'none';
+            content.style.display = 'block';
+
+            content.innerHTML = `
+                ${news.image ? `<img src="${news.image}" alt="${news.title}" class="news-detail-image" onerror="this.style.display='none'">` : ''}
+                <div class="news-detail-content">
+                    <h1 class="news-detail-title">${news.title}</h1>
+                    <div class="news-detail-meta">
+                        <span class="news-detail-date">${formatDate(news.date)}</span>
+                    </div>
+                    <div class="news-detail-body">${news.content}</div>
+                </div>
+            `;
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "mabss-news-system",
+  "version": "1.0.0",
+  "description": "MABSS News System with Vercel Serverless Functions and Neon PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx vercel@latest dev",
+    "build": "echo 'No build step required'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "pg": "^8.11.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "mabss",
+    "news",
+    "vercel",
+    "postgresql",
+    "neon"
+  ],
+  "author": "MABSS Development Team",
+  "license": "MIT"
+}
