@@ -4,14 +4,16 @@
   "description": "MABSS News System with Vercel Serverless Functions and Neon PostgreSQL",
   "main": "index.js",
   "scripts": {
-    "dev": "npx vercel@latest dev",
+    "start-local": "vercel dev",
     "build": "echo 'No build step required'",
     "start": "vercel dev"
   },
   "dependencies": {
     "pg": "^8.11.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "vercel": "^50.1.3"
+  },
   "keywords": [
     "mabss",
     "news",
