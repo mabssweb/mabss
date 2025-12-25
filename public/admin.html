@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <title>MABSS Admin - News Management</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding-top: 90px;
+        }
+
+        .header {
+            background-color: #0e7704;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .helo {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
+        .school-name {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding-left: 50px;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .admin-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .admin-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .admin-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #0e7704;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #006341;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .image-upload {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .image-upload:hover {
+            border-color: #0e7704;
+        }
+
+        .image-upload i {
+            font-size: 3rem;
+            color: #0e7704;
+            margin-bottom: 1rem;
+        }
+
+        .image-upload p {
+            color: #666;
+        }
+
+        .submit-btn {
+            background-color: #0e7704;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            background-color: #004d33;
+        }
+
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .rich-editor {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0.5rem;
+            min-height: 200px;
+        }
+
+        .editor-toolbar {
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+            padding: 0.5rem;
+        }
+
+        .editor-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .editor-btn:hover {
+            background-color: #e9f7e9;
+        }
+
+        .editor-btn.active {
+            background-color: #0e7704;
+            color: white;
+        }
+
+        /* Tab Styles */
+        .tabs-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            color: #0e7704;
+            background-color: #f0f0f0;
+        }
+
+        .tab-btn.active {
+            color: #0e7704;
+            border-bottom-color: #0e7704;
+        }
+
+        /* Table Styles */
+        .news-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .news-table th,
+        .news-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-table th {
+            background-color: #f9f9f9;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .news-thumb {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .edit-btn:hover {
+            background-color: #e0a800;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        .logout-btn {
+            background-color: #d32f2f;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background-color: #b71c1c;
+        }
+
+        /* Login Styles */
+        .login-container {
+            max-width: 400px;
+            margin: 5rem auto;
+            text-align: center;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            background-color: #ffebee;
+            padding: 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .admin-section {
+                padding: 2rem 1rem;
+            }
+
+            .admin-card {
+                padding: 1.5rem;
+            }
+
+            .admin-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                    alt="MABSS Logo" class="helo">
+                <h1 class="school-name">MABSS Admin</h1>
+            </div>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li class="nav-item" id="logout-item" style="display: none;">
+                        <button onclick="logout()" class="logout-btn">Logout</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section id="login-section" class="admin-section login-container">
+        <div class="admin-card">
+            <h2 class="admin-title">Admin Login</h2>
+            <div id="login-error" class="error-message"></div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="Enter Admin Password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="main-container" style="display: none;">
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="switchTab('add-news')">Add News</button>
+            <button class="tab-btn" onclick="switchTab('manage-news')">Manage News</button>
+        </div>
+
+        <!-- Add News Section -->
+        <section id="add-news-section" class="admin-section">
+            <div class="admin-card">
+                <h2 class="admin-title" id="form-title">Add New News Article</h2>
+                <form id="news-form">
+                    <input type="hidden" id="edit-id">
+                    <div class="form-group">
+                        <label class="form-label" for="title">News Title</label>
+                        <input type="text" id="title" class="form-input" placeholder="Enter news title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="summary">Summary</label>
+                        <textarea id="summary" class="form-textarea" placeholder="Brief summary of the news article"
+                            required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Content</label>
+                        <div class="editor-toolbar">
+                            <button type="button" class="editor-btn" onclick="formatText('bold')" title="Bold"><i
+                                    class="fas fa-bold"></i></button>
+                            <button type="button" class="editor-btn" onclick="formatText('italic')" title="Italic"><i
+                                    class="fas fa-italic"></i></button>
+                            <button type="button" class="editor-btn" onclick="formatHeading()" title="Heading"><i
+                                    class="fas fa-heading"></i></button>
+                            <button type="button" class="editor-btn" onclick="insertLink()" title="Insert Link"><i
+                                    class="fas fa-link"></i></button>
+                            <button type="button" class="editor-btn" onclick="insertImage()" title="Insert Image"><i
+                                    class="fas fa-image"></i></button>
+                        </div>
+                        <div class="rich-editor" id="content-editor" contenteditable="true"
+                            placeholder="Write your news content here..."></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Featured Image</label>
+                        <div class="image-upload" onclick="document.getElementById('image-input').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload image or enter image URL</p>
+                            <input type="file" id="image-input" accept="image/*" style="display: none;">
+                            <input type="url" id="image-url" class="form-input" placeholder="Or paste image URL here"
+                                style="margin-top: 1rem;">
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="button" id="cancel-edit-btn" class="submit-btn"
+                            style="background-color: #666; display: none;" onclick="resetForm()">Cancel</button>
+                        <button type="submit" class="submit-btn" disabled>Publish News Article</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Manage News Section -->
+        <section id="manage-news-section" class="admin-section" style="display: none;">
+            <div class="admin-card">
+                <h2 class="admin-title">Manage Published News</h2>
+                <div id="loading-news" style="text-align: center;">Loading...</div>
+                <table class="news-table" id="news-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="news-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Check Auth Status on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('adminToken');
+            if (token) {
+                showDashboard();
+            } else {
+                showLogin();
+            }
+        });
+
+        function showLogin() {
+            document.getElementById('login-section').style.display = 'block';
+            document.querySelector('.main-container').style.display = 'none';
+            document.getElementById('logout-item').style.display = 'none';
+        }
+
+        function showDashboard() {
+            document.getElementById('login-section').style.display = 'none';
+            document.querySelector('.main-container').style.display = 'block';
+            document.getElementById('logout-item').style.display = 'block';
+
+            // Check which tab should be active, default to first if hidden
+            if (document.getElementById('manage-news-section').style.display === 'block') {
+                loadAllNews();
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('adminToken');
+            showLogin();
+        }
+
+        // --- Tabs ---
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if (tabName === 'add-news') document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            if (tabName === 'manage-news') document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+
+            if (tabName === 'add-news') {
+                document.getElementById('add-news-section').style.display = 'block';
+                document.getElementById('manage-news-section').style.display = 'none';
+            } else {
+                document.getElementById('add-news-section').style.display = 'none';
+                document.getElementById('manage-news-section').style.display = 'block';
+                loadAllNews();
+            }
+        }
+
+        // --- Manage News ---
+        async function loadAllNews() {
+            const tableBody = document.getElementById('news-table-body');
+            const loading = document.getElementById('loading-news');
+            const table = document.getElementById('news-table');
+
+            loading.style.display = 'block';
+            table.style.display = 'none';
+            tableBody.innerHTML = '';
+
+            try {
+                const response = await fetch('/api/news?limit=50');
+                const data = await response.json();
+                const newsItems = data.news || [];
+
+                loading.style.display = 'none';
+                table.style.display = 'table';
+
+                if (newsItems.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No news articles found.</td></tr>';
+                    return;
+                }
+
+                tableBody.innerHTML = newsItems.map(item => `
+                    <tr>
+                        <td><img src="${item.image || '/placeholder-news.png'}" alt="Thumb" class="news-thumb"></td>
+                        <td>${item.title}</td>
+                        <td>${formatDate(item.date)}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn edit-btn" onclick="editNews('${item.id}')"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn" onclick="deleteNews('${item.id}')"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+
+            } catch (error) {
+                console.error(error);
+                loading.textContent = 'Error loading news.';
+            }
+        }
+
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        }
+
+        async function deleteNews(id) {
+            if (!confirm('Are you sure you want to permanently delete this article?')) return;
+
+            const token = localStorage.getItem('adminToken');
+            try {
+                const response = await fetch(`/api/news/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (response.ok) {
+                    loadAllNews();
+                } else {
+                    alert('Failed to delete.');
+                }
+            } catch (err) {
+                alert('Error: ' + err.message);
+            }
+        }
+
+        async function editNews(id) {
+            try {
+                const response = await fetch(`/api/news/${id}`);
+                const data = await response.json();
+
+                document.getElementById('title').value = data.title;
+                document.getElementById('summary').value = data.summary;
+                document.getElementById('content-editor').innerHTML = data.content;
+                document.getElementById('image-url').value = data.image;
+                document.getElementById('edit-id').value = data.id;
+
+                document.getElementById('form-title').textContent = 'Edit News Article';
+                const submitBtn = document.querySelector('#news-form button[type="submit"]');
+                submitBtn.textContent = 'Update News Article';
+                submitBtn.disabled = false;
+                document.getElementById('cancel-edit-btn').style.display = 'inline-block';
+
+                switchTab('add-news');
+            } catch (error) {
+                alert('Could not load details.');
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('news-form').reset();
+            document.getElementById('content-editor').innerHTML = '';
+            document.getElementById('edit-id').value = '';
+            document.getElementById('form-title').textContent = 'Add New News Article';
+            const submitBtn = document.querySelector('#news-form button[type="submit"]');
+            submitBtn.textContent = 'Publish News Article';
+            document.getElementById('cancel-edit-btn').style.display = 'none';
+        }
+
+        // Login Handler
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('login-error');
+            const submitBtn = e.target.querySelector('button');
+
+            submitBtn.textContent = 'Verifying...';
+            submitBtn.disabled = true;
+            errorDiv.style.display = 'none';
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password })
+                });
+
+                if (response.ok) {
+                    localStorage.setItem('adminToken', password);
+                    showDashboard();
+                    document.getElementById('password').value = '';
+                } else {
+                    const data = await response.json();
+                    throw new Error(data.error || 'Login failed');
+                }
+            } catch (err) {
+                errorDiv.textContent = err.message;
+                errorDiv.style.display = 'block';
+            } finally {
+                submitBtn.textContent = 'Login';
+                submitBtn.disabled = false;
+            }
+        });
+
+
+        // Editor Functions
+        function formatText(command) {
+            document.execCommand(command, false, null);
+        }
+
+        function formatHeading() {
+            document.execCommand('formatBlock', false, 'h3');
+        }
+
+        function insertLink() {
+            const url = prompt('Enter URL:');
+            if (url) {
+                document.execCommand('createLink', false, url);
+            }
+        }
+
+        function insertImage() {
+            const url = prompt('Enter image URL:');
+            if (url) {
+                document.execCommand('insertImage', false, url);
+            }
+        }
+
+        // Enable submit button
+        document.getElementById('news-form').addEventListener('input', function () {
+            if (document.querySelector('.submit-btn').textContent.includes('...')) return;
+            const title = document.getElementById('title').value.trim();
+            const summary = document.getElementById('summary').value.trim();
+            const content = document.getElementById('content-editor').innerHTML.trim();
+            const submitBtn = document.querySelector('#news-form .submit-btn');
+            submitBtn.disabled = !(title && summary && content);
+        });
+
+        // Handle news submission
+        document.getElementById('news-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value.trim();
+            const summary = document.getElementById('summary').value.trim();
+            const content = document.getElementById('content-editor').innerHTML.trim();
+            const imageUrl = document.getElementById('image-url').value.trim();
+            const editId = document.getElementById('edit-id').value;
+            const submitBtn = document.querySelector('#news-form .submit-btn');
+
+            const token = localStorage.getItem('adminToken');
+            if (!token) { logout(); return; }
+
+            if (title && summary && content) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = editId ? 'Updating...' : 'Publishing...';
+
+                try {
+                    const method = editId ? 'PUT' : 'POST';
+                    const url = editId ? `/api/news/${editId}` : '/api/news';
+
+                    const response = await fetch(url, {
+                        method: method,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({
+                            title, summary, content, featuredImageUrl: imageUrl
+                        })
+                    });
+
+                    if (!response.ok) throw new Error('Failed to save');
+
+                    const result = await response.json();
+                    alert(editId ? 'Updated!' : 'Published!');
+                    resetForm();
+
+                } catch (error) {
+                    alert(`Error: ${error.message}`);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Publish News Article';
+                }
+            }
+        });
+
+        document.getElementById('image-input').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.querySelector('.image-upload p').textContent = `Selected: ${file.name}`;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -551,7 +551,7 @@
             </div>
             <nav class="nav-menu" id="mainNav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="login.html" class="nav-link">Academics</a></li>
                     <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
                     <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
@@ -634,6 +634,10 @@
             <div class="news-card" style="grid-column: 1 / -1; text-align: center; padding: 20px;">
                 <p>Loading news...</p>
             </div>
+        </div>
+        <h2 class="section-title"><i>Two-months ago</i></h2>
+        <div id="older-news-container" class="news-grid">
+            <div class="loading" style="grid-column: 1/-1; text-align: center;">Loading older news...</div>
         </div>
         <div class="button-section">
             <a href="news.html" class="learn-button">View All News</a>
@@ -724,61 +728,52 @@
 
         async function loadLatestNews() {
             try {
-                const response = await fetch('/api/news/latest');
+                // Fetch more news to populate both sections (e.g., top 6)
+                // Since /api/news/latest gets 3, we might want to use /api/news?limit=6 instead
+                const response = await fetch('/api/news?limit=6');
                 if (!response.ok) {
                     throw new Error('Failed to fetch news');
                 }
                 const data = await response.json();
 
-                const container = document.getElementById('latest-news-container');
-                if (data.news && data.news.length > 0) {
-                    container.innerHTML = data.news.map(news => `
-                        <div class="news-card">
-                            <img src="${news.image || '/placeholder-news.png'}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">
-                            <div class="news-content">
-                                <h3 class="news-title">${news.title}</h3>
-                                <p class="news-summary">${news.summary}</p>
-                                <div class="news-meta">
-                                    <span class="news-date">${formatDate(news.date)}</span>
-                                </div>
-                            </div>
-                        </div>
-                    `).join('');
+                // If the API returns { news: [], pagination: {} }, use data.news
+                const newsItems = data.news || [];
+
+                const latestContainer = document.getElementById('latest-news-container');
+                const olderContainer = document.getElementById('older-news-container');
+
+                // Split news: First 3 for "Latest", rest for "Older"
+                const latestNews = newsItems.slice(0, 3);
+                const olderNews = newsItems.slice(3, 6);
+
+                // Render Latest
+                if (latestNews.length > 0) {
+                    latestContainer.innerHTML = latestNews.map(news => createNewsCard(news)).join('');
                 } else {
-                    container.innerHTML = '<p>No news available at the moment.</p>';
+                    latestContainer.innerHTML = '<p>No news available at the moment.</p>';
                 }
+
+                // Render Older
+                if (olderNews.length > 0) {
+                    olderContainer.innerHTML = olderNews.map(news => createNewsCard(news)).join('');
+                } else {
+                    olderContainer.innerHTML = '<p>No older news available.</p>';
+                }
+
             } catch (error) {
                 console.error('Error loading latest news:', error);
-                loadStaticLatestNews();
+                const latestContainer = document.getElementById('latest-news-container');
+                const olderContainer = document.getElementById('older-news-container');
+
+                latestContainer.innerHTML = '<p>Unable to load news at the moment.</p>';
+                if (olderContainer) olderContainer.innerHTML = '';
             }
         }
 
-        function loadStaticLatestNews() {
-            const staticNews = [
-                {
-                    title: "End-of-Term Exams Begin Monday",
-                    summary: "Next week marks the start of the End-of-Term Examinations for students in S.1, S.2, S.3, and S.5.",
-                    image: "https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346644/exams_ptspgl.jpg",
-                    date: "2024-12-20"
-                },
-                {
-                    title: "Capacity Building Workshop 2025",
-                    summary: "Promoting Academic Excellence for Holistic Growth.",
-                    image: "https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345625/workshop_tubika.jpg",
-                    date: "2024-12-18"
-                },
-                {
-                    title: "School Administrators",
-                    summary: "HeadTeacher & Deputy together with Brigadier Gen Richard Karemire.",
-                    image: "https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346697/hod_vcreb7.jpg",
-                    date: "2024-12-15"
-                }
-            ];
-
-            const container = document.getElementById('latest-news-container');
-            container.innerHTML = staticNews.map(news => `
+        function createNewsCard(news) {
+            return `
                 <div class="news-card">
-                    <img src="${news.image}" alt="${news.title}" class="news-image">
+                    <img src="${news.image || '/placeholder-news.png'}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">
                     <div class="news-content">
                         <h3 class="news-title">${news.title}</h3>
                         <p class="news-summary">${news.summary}</p>
@@ -787,8 +782,10 @@
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `;
         }
+
+
 
         function formatDate(dateString) {
             const date = new Date(dateString);
