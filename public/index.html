@@ -1943,7 +1943,7 @@
 
                 // Split news: First 3 for "Latest", rest for "Older"
                 const latestNews = newsItems.slice(0, 3);
-                // const olderNews = newsItems.slice(3, 6);
+                const olderNews = newsItems.slice(3, 6);
 
                 // Render Latest
                 if (latestNews.length > 0) {
@@ -1952,9 +1952,9 @@
                     latestContainer.innerHTML = '<p>No news available at the moment.</p>';
                 }
 
-                // Render Older
-                if (olderNews && olderNews.length > 0) {
-                    // logic for older news if needed
+                // Render Older (if container exists)
+                if (olderContainer && olderNews.length > 0) {
+                    olderContainer.innerHTML = olderNews.map(news => createNewsCard(news)).join('');
                 }
 
             } catch (error) {
@@ -2308,24 +2308,9 @@
             createChristmasDecorations();
             setTimeout(animateChristmasWords, 1000);
 
-            // Add a continuous subtle animation to the Christmas text
-            setInterval(() => {
-                // Randomly wiggle one word
-                const randomIndex = Math.floor(Math.random() * words.length);
-                const randomWord = words[randomIndex];
-
-                // Add a wiggle animation
-                randomWord.style.transform = 'rotate(3deg)';
-
-                // Reset after a short time
-                setTimeout(() => {
-                    if (randomWord.classList.contains('animated')) {
-                        randomWord.style.transform = 'rotate(0deg)';
-                    }
-                }, 300);
-            }, 3000);
         });
-        type = "application/ld+json" >
+    </script>
+    <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Person",
