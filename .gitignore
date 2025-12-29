@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 node_modules/
 .env
 .vercel/
 .DS_Store
 .vercel
 .env*.local
+=======
+node_modules/
+>>>>>>> 0b3dba47205f69662184f6e337b7259b34a9bb01
