@@ -229,16 +229,81 @@
             cursor: not-allowed;
         }
 
-        @media (max-width: 768px) {
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: none;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 992px) {
             .header-container {
                 flex-direction: column;
+                padding: 0.5rem 1rem;
+            }
+
+            .logo-container {
+                width: 100%;
+                justify-content: space-between;
+                margin-bottom: 0.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+                background-color: #0e7704;
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            .nav-menu.show {
+                display: block;
             }
 
             .nav-list {
+                flex-direction: column;
+                gap: 0.5rem;
                 padding-left: 0;
-                flex-wrap: wrap;
-                justify-content: center;
-                margin-top: 1rem;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 0.8rem;
+                text-align: center;
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 130px;
+            }
+
+            .helo {
+                height: 50px;
+                width: 50px;
+            }
+
+            .school-name {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
             }
 
             .news-grid {
@@ -256,6 +321,7 @@
                     alt="MABSS Logo" class="helo">
                 <h1 class="school-name">MABSS</h1>
             </div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
             <nav class="nav-menu" id="mainNav">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
@@ -378,6 +444,12 @@
                 day: 'numeric'
             });
         }
+
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('show');
+        });
     </script>
 </body>
 
