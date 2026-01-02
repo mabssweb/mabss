@@ -4,10 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest News | Mbarara Army Boarding Secondary School</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/favicon.ico" sizes="any">
-    <title>Mbarara Army Boarding Secondary School - News</title>
     <style>
+        :root {
+            --primary-color: #0e7704;
+            --primary-dark: #004d33;
+            --secondary-color: #ffd700;
+            --text-color: #333;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-500: #64748b;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,299 +32,434 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            padding-top: 90px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* Navigation */
         .header {
-            background-color: #0e7704;
+            background-color: var(--primary-color);
             color: white;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            width: 100%;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 0.5rem 0;
+            box-shadow: var(--shadow-md);
+            padding: 0.75rem 0;
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
             gap: 1rem;
+            text-decoration: none;
+            color: white;
         }
 
         .helo {
-            height: 70px;
-            width: 70px;
+            height: 50px;
+            width: 50px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid white;
+            border: 2px solid white;
         }
 
         .school-name {
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: bold;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
         }
 
         .nav-menu {
             display: flex;
-            align-items: center;
+            gap: 1rem;
         }
 
         .nav-list {
             display: flex;
             list-style: none;
-            margin: 0;
-            padding-left: 200px;
-            gap: 1.5rem;
-        }
-
-        .nav-item {
-            margin: 0;
+            gap: 0.5rem;
         }
 
         .nav-link {
             color: white;
             text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 0.8rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            transition: var(--transition);
+            font-size: 0.9375rem;
         }
 
         .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .news-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 1rem;
+        .nav-link.admin-link {
+            color: var(--secondary-color);
         }
 
-        .section-title {
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Banner */
+        .page-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346805/walking_fjcrzy.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            margin-bottom: 3rem;
-            color: #006341;
-            font-size: 2.5rem;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .banner-title {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* News Section */
+        .news-section {
+            max-width: 1280px;
+            margin: -50px auto 4rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
         }
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
         }
 
         .news-card {
-            background-color: white;
-            border-radius: 8px;
+            background: var(--white);
+            border-radius: 1rem;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
+            border: 1px solid var(--gray-200);
         }
 
         .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .news-image-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
         }
 
         .news-image {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+
+        .category-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         .news-content {
             padding: 1.5rem;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .news-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: #006341;
-            line-height: 1.4;
         }
 
         .news-meta {
             display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 1rem;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+            margin-bottom: 0.75rem;
+        }
+
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .news-summary {
-            color: #555;
-            line-height: 1.6;
+            font-size: 0.9375rem;
+            color: var(--gray-500);
             margin-bottom: 1.5rem;
+            line-height: 1.5;
             flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .read-more-btn {
-            display: inline-block;
-            background-color: #0e7704;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+        .read-more {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
             text-decoration: none;
-            font-weight: bold;
-            align-self: flex-start;
-            transition: background-color 0.3s;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: var(--transition);
             margin-top: auto;
+            border: none;
+            background: none;
+            cursor: pointer;
+            width: fit-content;
         }
 
-        .read-more-btn:hover {
-            background-color: #004d33;
+        .read-more:hover {
+            gap: 0.75rem;
+            color: var(--primary-dark);
         }
 
-        .loading {
-            text-align: center;
-            padding: 3rem;
-            color: #666;
-            grid-column: 1 / -1;
-        }
-
-        .error {
-            text-align: center;
-            padding: 3rem;
-            color: #d32f2f;
-            background-color: #ffebee;
-            border-radius: 8px;
-            grid-column: 1 / -1;
-        }
-
+        /* Pagination */
         .pagination {
             display: flex;
             justify-content: center;
-            margin-top: 3rem;
+            align-items: center;
             gap: 0.5rem;
+            margin-top: 4rem;
         }
 
         .page-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid #ddd;
-            background-color: white;
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            color: var(--text-color);
+            font-weight: 600;
             cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s;
+            transition: var(--transition);
+            text-decoration: none;
+            padding: 0 0.75rem;
         }
 
         .page-btn:hover:not(:disabled) {
-            background-color: #f0f0f0;
-            border-color: #ccc;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: var(--gray-100);
         }
 
         .page-btn.active {
-            background-color: #0e7704;
+            background-color: var(--primary-color);
             color: white;
-            border-color: #0e7704;
+            border-color: var(--primary-color);
         }
 
         .page-btn:disabled {
-            color: #ccc;
+            opacity: 0.5;
             cursor: not-allowed;
         }
 
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            display: none;
-            padding: 0.5rem;
+        /* Loading & Error */
+        .status-container {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 5rem 0;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-sm);
         }
 
-        @media (max-width: 992px) {
-            .header-container {
-                flex-direction: column;
-                padding: 0.5rem 1rem;
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--gray-200);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
             }
 
-            .logo-container {
-                width: 100%;
-                justify-content: space-between;
-                margin-bottom: 0.5rem;
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 4rem 1.5rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 3rem;
+        }
+
+        .footer-heading {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 0.25rem;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 2rem auto 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .nav-link {
+                padding: 0.75rem 1rem;
+                display: block;
             }
 
             .menu-toggle {
                 display: block;
             }
 
-            .nav-menu {
-                display: none;
-                width: 100%;
-                margin-top: 1rem;
-                background-color: #0e7704;
-                padding: 1rem;
-                border-radius: 8px;
-            }
-
-            .nav-menu.show {
-                display: block;
-            }
-
-            .nav-list {
-                flex-direction: column;
-                gap: 0.5rem;
-                padding-left: 0;
-            }
-
-            .nav-item {
-                width: 100%;
-            }
-
-            .nav-link {
-                display: block;
-                padding: 0.8rem;
-                text-align: center;
-                background-color: rgba(255, 255, 255, 0.05);
+            .banner-title {
+                font-size: 2.25rem;
             }
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding-top: 130px;
-            }
-
-            .helo {
-                height: 50px;
-                width: 50px;
-            }
-
-            .school-name {
-                font-size: 1.4rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2rem;
-            }
-
+        @media (max-width: 640px) {
             .news-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .banner-title {
+                font-size: 1.75rem;
+            }
+
+            .page-banner {
+                height: 200px;
+            }
+
+            .news-section {
+                margin-top: -30px;
             }
         }
     </style>
@@ -316,37 +468,79 @@
 <body>
     <header class="header">
         <div class="header-container">
-            <div class="logo-container">
+            <a href="/" class="logo-container">
                 <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
                     alt="MABSS Logo" class="helo">
-                <h1 class="school-name">MABSS</h1>
-            </div>
-            <button class="menu-toggle" id="menuToggle">☰</button>
+                <span class="school-name">MABSS</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav class="nav-menu" id="mainNav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
-                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
-                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
-                    <li class="nav-item"><a href="admin.html" class="nav-link" style="color: #ffeb3b;">Admin</a></li>
+                    <li><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li><a href="sports.html" class="nav-link">Sports</a></li>
+                    <li><a href="welfare.html" class="nav-link">Welfare</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="contacts.html" class="nav-link">Contacts</a></li>
+                    <li><a href="admin.html" class="nav-link admin-link">Admin</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <div class="page-banner">
+        <h1 class="banner-title">School News</h1>
+    </div>
+
     <section class="news-section">
-        <h2 class="section-title">Latest School News</h2>
         <div id="news-grid" class="news-grid">
-            <div class="loading">Loading news...</div>
+            <div class="status-container">
+                <div class="spinner"></div>
+                <p>Curating latest updates...</p>
+            </div>
         </div>
         <div id="pagination" class="pagination"></div>
     </section>
 
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3 class="footer-heading">MABSS</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9375rem;">Mbarara Army Boarding Secondary School is
+                    committed to academic excellence and character building through creativity and discipline.</p>
+            </div>
+            <div>
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="login.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="contacts.html">Get in Touch</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-heading">Connect</h3>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <a href="#" style="color: white; font-size: 1.25rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: white; font-size: 1.25rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 1.25rem;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
     <script>
         const NEWS_PER_PAGE = 6;
         let currentPage = 1;
+
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('show');
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             loadNews(currentPage);
@@ -356,100 +550,111 @@
             const grid = document.getElementById('news-grid');
             const pagination = document.getElementById('pagination');
 
-            // Show loading state
-            grid.innerHTML = '<div class="loading">Loading news...</div>';
+            grid.innerHTML = `
+                <div class="status-container">
+                    <div class="spinner"></div>
+                    <p>Curating latest updates...</p>
+                </div>
+            `;
             pagination.innerHTML = '';
 
             try {
                 const response = await fetch(`/api/news?page=${page}&limit=${NEWS_PER_PAGE}`);
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch news');
-                }
+                if (!response.ok) throw new Error('Failed to fetch');
 
                 const data = await response.json();
                 renderNews(data.news);
                 renderPagination(data.pagination);
-
             } catch (error) {
-                console.error('Error loading news:', error);
-                grid.innerHTML = '<div class="error">Unable to load news. Please try again later.</div>';
-                // Fallback to static data for demo if API fails
-                // renderStaticNews(); // Uncomment to use static fallback
+                console.error('Error:', error);
+                grid.innerHTML = `
+                    <div class="status-container" style="color: #ef4444; border: 1px solid #fee2e2; background: #fef2f2;">
+                        <i class="fas fa-exclamation-circle" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+                        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Connection Issue</h2>
+                        <p>We're unable to load news right now. Please check back shortly.</p>
+                    </div>
+                `;
             }
         }
 
         function renderNews(newsItems) {
             const grid = document.getElementById('news-grid');
-
             if (!newsItems || newsItems.length === 0) {
-                grid.innerHTML = '<div class="loading">No news articles found.</div>';
+                grid.innerHTML = `
+                    <div class="status-container">
+                        <i class="fas fa-newspaper" style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--gray-200);"></i>
+                        <p>No announcements at this time.</p>
+                    </div>
+                `;
                 return;
             }
 
             grid.innerHTML = newsItems.map(news => `
-                <div class="news-card">
-                    <img src="${news.image || '/placeholder-news.png'}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">
-                    <div class="news-content">
-                        <h3 class="news-title">${news.title}</h3>
-                        <div class="news-meta">
-                            <span class="news-date"><i class="far fa-calendar-alt"></i> ${formatDate(news.date)}</span>
-                        </div>
-                        <p class="news-summary">${news.summary}</p>
-                        <button class="read-more-btn" onclick="viewNewsDetail(${news.id}, ${JSON.stringify(news).replace(/"/g, '&quot;')})">Read More</button>
+                <article class="news-card">
+                    <div class="news-image-wrapper">
+                        <span class="category-tag">Update</span>
+                        <img src="${news.image || '/placeholder-news.png'}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">
                     </div>
-                </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> ${formatDate(news.date)}</span>
+                        </div>
+                        <h2 class="news-title">${news.title}</h2>
+                        <p class="news-summary">${news.summary}</p>
+                        <button class="read-more" onclick="viewNewsDetail(${news.id}, ${JSON.stringify(news).replace(/"/g, '&quot;')})">
+                            Read Full Article <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </article>
             `).join('');
         }
 
-        function renderPagination(paginationData) {
+        function renderPagination(pageData) {
             const pagination = document.getElementById('pagination');
-            if (paginationData.totalPages <= 1) return;
+            if (!pageData || pageData.totalPages <= 1) return;
 
-            let html = '';
+            let html = `
+                <button class="page-btn" ${!pageData.hasPrev ? 'disabled' : ''} onclick="changePage(${pageData.currentPage - 1})">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            `;
 
-            // Previous button
-            html += `<button class="page-btn" ${!paginationData.hasPrev ? 'disabled' : ''} onclick="changePage(${paginationData.currentPage - 1})">Previous</button>`;
-
-            // Page numbers
-            for (let i = 1; i <= paginationData.totalPages; i++) {
-                html += `<button class="page-btn ${i === paginationData.currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            for (let i = 1; i <= pageData.totalPages; i++) {
+                html += `
+                    <button class="page-btn ${i === pageData.currentPage ? 'active' : ''}" onclick="changePage(${i})">
+                        ${i}
+                    </button>
+                `;
             }
 
-            // Next button
-            html += `<button class="page-btn" ${!paginationData.hasNext ? 'disabled' : ''} onclick="changePage(${paginationData.currentPage + 1})">Next</button>`;
+            html += `
+                <button class="page-btn" ${!pageData.hasNext ? 'disabled' : ''} onclick="changePage(${pageData.currentPage + 1})">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `;
 
             pagination.innerHTML = html;
         }
 
-        function changePage(newPage) {
-            currentPage = newPage;
-            loadNews(currentPage);
-            // Scroll to top of news section
-            document.querySelector('.news-section').scrollIntoView({ behavior: 'smooth' });
+        function changePage(page) {
+            currentPage = page;
+            loadNews(page);
+            window.scrollTo({ top: 400, behavior: 'smooth' });
         }
 
         function viewNewsDetail(id, newsObj) {
-            // Save to local storage for fallback/speed and redirect
             localStorage.setItem('selectedNewsId', id);
             localStorage.setItem('selectedNews', JSON.stringify(newsObj));
             window.location.href = 'news-detail.html';
         }
 
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', {
+        function formatDate(dateStr) {
+            return new Date(dateStr).toLocaleDateString('en-US', {
                 year: 'numeric',
-                month: 'long',
+                month: 'short',
                 day: 'numeric'
             });
         }
-
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function () {
-            const nav = document.getElementById('mainNav');
-            nav.classList.toggle('show');
-        });
     </script>
 </body>
 

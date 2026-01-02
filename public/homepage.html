@@ -226,7 +226,13 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            display: center;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
         }
 
         .news-image {
@@ -621,7 +627,7 @@
     <!-- News Section -->
 
     <section class="news-section">
-        <h2 class="section-title">Latest News & Events</h2>
+        <h2 class="section-title">New Announcements</h2>
         <div id="latest-news-container" class="news-grid">
             <div class="loading" style="grid-column: 1/-1; text-align: center;">Loading news...</div>
         </div>
@@ -631,7 +637,7 @@
         </div>
     </section>
     <section class="news-section">
-        <h2 class="section-title"><i>Two-months ago</i></h2>
+        <h2 class="section-title"><i>Recent Past Announcements</i></h2>
         <div id="older-news-container" class="news-grid">
             <div class="loading" style="grid-column: 1/-1; text-align: center;">Loading older news...</div>
         </div>
@@ -774,8 +780,9 @@
                         <h3 class="news-title">${news.title}</h3>
                         <p class="news-summary">${news.summary}</p>
                         <div class="news-meta">
-                            <span class="news-date">${formatDate(news.date)}</span>
+                            <span class="news-date"><i class="far fa-calendar-alt"></i> ${formatDate(news.date)}</span>
                         </div>
+                        <a href="news.html" class="news-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             `;

@@ -1,30 +1,27 @@
 import pg from 'pg';
+import formidable from 'formidable';
+import { uploadToOCI } from '../_lib/oci.js';
+
 const { Pool } = pg;
 
-// Neon PostgreSQL connection
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
+    ssl: { rejectUnauthorized: false }
 });
 
+export const config = {
+    api: { bodyParser: false },
+};
+
 export default async function handler(req, res) {
-    // Enable CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-    if (req.method === 'OPTIONS') {
-        res.status(200).end();
-        return;
-    }
+    if (req.method === 'OPTIONS') return res.status(200).end();
 
     const { id } = req.query;
-
-    if (!id) {
-        return res.status(400).json({ error: 'News ID is required' });
-    }
+    if (!id) return res.status(400).json({ error: 'News ID is required' });
 
     // Verify Auth for non-GET methods
     if (req.method === 'PUT' || req.method === 'DELETE') {
@@ -35,74 +32,67 @@ export default async function handler(req, res) {
         }
     }
 
-    if (req.method === 'GET') {
-        try {
-            console.log('Fetching news ID:', id);
-            console.log('Query Params:', req.query);
-
+    try {
+        if (req.method === 'GET') {
             const result = await pool.query('SELECT * FROM news WHERE id = $1', [id]);
+            if (result.rows.length === 0) return res.status(404).json({ error: 'News article not found' });
 
-            if (result.rows.length === 0) {
-                console.log('News not found for ID:', id);
-                return res.status(404).json({ error: 'News article not found' });
-            }
             const item = result.rows[0];
-            const news = {
+            res.status(200).json({
                 id: item.id,
                 title: item.title,
                 summary: item.summary,
                 content: item.content,
                 image: item.featured_image_url,
                 date: item.created_at.toISOString().split('T')[0]
-            };
-            res.status(200).json(news);
-        } catch (error) {
-            console.error('Database error details:', error);
-            res.status(500).json({ error: 'Internal server error: ' + error.message });
+            });
         }
-        return;
-    }
-
-    if (req.method === 'DELETE') {
-        try {
+        else if (req.method === 'DELETE') {
             const result = await pool.query('DELETE FROM news WHERE id = $1 RETURNING id', [id]);
-            if (result.rowCount === 0) {
-                return res.status(404).json({ error: 'News article not found' });
-            }
+            if (result.rowCount === 0) return res.status(404).json({ error: 'News article not found' });
             res.status(200).json({ success: true, message: 'News article deleted' });
-        } catch (error) {
-            console.error('Database error:', error);
-            res.status(500).json({ error: 'Internal server error' });
         }
-        return;
-    }
+        else if (req.method === 'PUT') {
+            const form = formidable({ multiples: false, maxFileSize: 5 * 1024 * 1024 });
+            const [fields, files] = await new Promise((resolve, reject) => {
+                form.parse(req, (err, fields, files) => {
+                    if (err) return reject(err);
+                    resolve([fields, files]);
+                });
+            });
 
-    if (req.method === 'PUT') {
-        const { title, summary, content, featuredImageUrl } = req.body;
+            const title = Array.isArray(fields.title) ? fields.title[0] : fields.title;
+            const summary = Array.isArray(fields.summary) ? fields.summary[0] : fields.summary;
+            const content = Array.isArray(fields.content) ? fields.content[0] : fields.content;
+            const imageFile = Array.isArray(files.image) ? files.image[0] : (files.image || null);
 
-        if (!title || !summary || !content) {
-            return res.status(400).json({ error: 'Title, summary, and content are required' });
-        }
+            if (!title || !summary || !content) {
+                return res.status(400).json({ error: 'Title, summary, and content are required' });
+            }
 
-        try {
+            // Get current news to keep old image if no new one is uploaded
+            const currentResult = await pool.query('SELECT featured_image_url FROM news WHERE id = $1', [id]);
+            if (currentResult.rowCount === 0) return res.status(404).json({ error: 'News article not found' });
+
+            let imageUrl = currentResult.rows[0].featured_image_url;
+            if (imageFile) {
+                imageUrl = await uploadToOCI(imageFile);
+            }
+
             const query = `
                 UPDATE news 
                 SET title = $1, summary = $2, content = $3, featured_image_url = $4
                 WHERE id = $5
                 RETURNING id
             `;
-            const result = await pool.query(query, [title, summary, content, featuredImageUrl, id]);
-
-            if (result.rowCount === 0) {
-                return res.status(404).json({ error: 'News article not found' });
-            }
+            const result = await pool.query(query, [title.trim(), summary.trim(), content.trim(), imageUrl, id]);
             res.status(200).json({ success: true, message: 'News article updated' });
-        } catch (error) {
-            console.error('Database error:', error);
-            res.status(500).json({ error: 'Internal server error' });
         }
-        return;
+        else {
+            res.status(405).json({ error: 'Method not allowed' });
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: error.message });
     }
-
-    return res.status(405).json({ error: 'Method not allowed' });
 }

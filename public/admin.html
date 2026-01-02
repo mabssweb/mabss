@@ -429,12 +429,17 @@
 
                     <div class="form-group">
                         <label class="form-label">Featured Image</label>
-                        <div class="image-upload" onclick="document.getElementById('image-input').click()">
+                        <div class="image-upload" id="upload-zone"
+                            onclick="document.getElementById('image-input').click()">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Click to upload image or enter image URL</p>
-                            <input type="file" id="image-input" accept="image/*" style="display: none;">
-                            <input type="url" id="image-url" class="form-input" placeholder="Or paste image URL here"
-                                style="margin-top: 1rem;">
+                            <p id="upload-status">Click to upload image (JPG, PNG, WebP. Max 5MB)</p>
+                            <input type="file" id="image-input" name="image" accept="image/jpeg,image/png,image/webp"
+                                style="display: none;">
+                        </div>
+                        <div id="image-preview" style="display: none; margin-top: 1rem; text-align: center;">
+                            <img id="preview-img" src="" alt="Preview"
+                                style="max-width: 100%; max-height: 200px; border-radius: 8px;">
+                            <p id="file-name" style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;"></p>
                         </div>
                     </div>
 
@@ -489,7 +494,6 @@
             document.querySelector('.main-container').style.display = 'block';
             document.getElementById('logout-item').style.display = 'block';
 
-            // Check which tab should be active, default to first if hidden
             if (document.getElementById('manage-news-section').style.display === 'block') {
                 loadAllNews();
             }
@@ -592,8 +596,17 @@
                 document.getElementById('title').value = data.title;
                 document.getElementById('summary').value = data.summary;
                 document.getElementById('content-editor').innerHTML = data.content;
-                document.getElementById('image-url').value = data.image;
                 document.getElementById('edit-id').value = data.id;
+
+                // Handle image preview for edit
+                if (data.image) {
+                    const preview = document.getElementById('image-preview');
+                    const previewImg = document.getElementById('preview-img');
+                    const fileName = document.getElementById('file-name');
+                    previewImg.src = data.image;
+                    fileName.textContent = 'Current Image';
+                    preview.style.display = 'block';
+                }
 
                 document.getElementById('form-title').textContent = 'Edit News Article';
                 const submitBtn = document.querySelector('#news-form button[type="submit"]');
@@ -611,6 +624,8 @@
             document.getElementById('news-form').reset();
             document.getElementById('content-editor').innerHTML = '';
             document.getElementById('edit-id').value = '';
+            document.getElementById('image-preview').style.display = 'none';
+            document.getElementById('upload-status').textContent = 'Click to upload image (JPG, PNG, WebP. Max 5MB)';
             document.getElementById('form-title').textContent = 'Add New News Article';
             const submitBtn = document.querySelector('#news-form button[type="submit"]');
             submitBtn.textContent = 'Publish News Article';
@@ -678,12 +693,51 @@
 
         // Enable submit button
         document.getElementById('news-form').addEventListener('input', function () {
-            if (document.querySelector('.submit-btn').textContent.includes('...')) return;
+            validateSubmit();
+        });
+
+        document.getElementById('content-editor').addEventListener('input', function () {
+            validateSubmit();
+        });
+
+        function validateSubmit() {
+            if (document.querySelector('#news-form button[type="submit"]').textContent.includes('...')) return;
             const title = document.getElementById('title').value.trim();
             const summary = document.getElementById('summary').value.trim();
             const content = document.getElementById('content-editor').innerHTML.trim();
-            const submitBtn = document.querySelector('#news-form .submit-btn');
+            const submitBtn = document.querySelector('#news-form button[type="submit"]');
             submitBtn.disabled = !(title && summary && content);
+        }
+
+        // Handle Image Selection and Preview
+        document.getElementById('image-input').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const status = document.getElementById('upload-status');
+            const preview = document.getElementById('image-preview');
+            const previewImg = document.getElementById('preview-img');
+            const fileNameDisplay = document.getElementById('file-name');
+
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File is too large! Max 5MB allowed.');
+                    this.value = '';
+                    return;
+                }
+
+                status.textContent = `Selected: ${file.name}`;
+                fileNameDisplay.textContent = `${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImg.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                status.textContent = 'Click to upload image (JPG, PNG, WebP. Max 5MB)';
+                preview.style.display = 'none';
+            }
+            validateSubmit();
         });
 
         // Handle news submission
@@ -693,43 +747,55 @@
             const title = document.getElementById('title').value.trim();
             const summary = document.getElementById('summary').value.trim();
             const content = document.getElementById('content-editor').innerHTML.trim();
-            const imageUrl = document.getElementById('image-url').value.trim();
+            const fileInput = document.getElementById('image-input');
             const editId = document.getElementById('edit-id').value;
-            const submitBtn = document.querySelector('#news-form .submit-btn');
+            const submitBtn = document.querySelector('#news-form button[type="submit"]');
 
             const token = localStorage.getItem('adminToken');
             if (!token) { logout(); return; }
 
             if (title && summary && content) {
                 submitBtn.disabled = true;
+                const originalBtnText = submitBtn.textContent;
                 submitBtn.textContent = editId ? 'Updating...' : 'Publishing...';
 
                 try {
+                    const formData = new FormData();
+                    formData.append('title', title);
+                    formData.append('summary', summary);
+                    formData.append('content', content);
+
+                    if (fileInput.files[0]) {
+                        formData.append('image', fileInput.files[0]);
+                    }
+
                     const method = editId ? 'PUT' : 'POST';
+                    // Note: If PUT doesn't support FormData yet, we might need to update that too.
                     const url = editId ? `/api/news/${editId}` : '/api/news';
 
                     const response = await fetch(url, {
                         method: method,
                         headers: {
-                            'Content-Type': 'application/json',
                             'Authorization': `Bearer ${token}`
                         },
-                        body: JSON.stringify({
-                            title, summary, content, featuredImageUrl: imageUrl
-                        })
+                        body: formData
                     });
 
-                    if (!response.ok) throw new Error('Failed to save');
+                    if (!response.ok) {
+                        const errData = await response.json();
+                        throw new Error(errData.error || 'Failed to save article');
+                    }
 
-                    const result = await response.json();
-                    alert(editId ? 'Updated!' : 'Published!');
+                    alert(editId ? 'News article updated successfully!' : 'News article published successfully!');
                     resetForm();
+                    if (editId) switchTab('manage-news');
 
                 } catch (error) {
+                    console.error('Submission error:', error);
                     alert(`Error: ${error.message}`);
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Publish News Article';
+                    submitBtn.textContent = originalBtnText;
                 }
             }
         });

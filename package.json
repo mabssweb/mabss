@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "dotenv": "^17.2.3",
-    "pg": "^8.11.0"
+    "formidable": "^3.5.4",
+    "oci-common": "^2.122.2",
+    "oci-objectstorage": "^2.122.2",
+    "pg": "^8.11.0",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "vercel": "^50.1.3"
