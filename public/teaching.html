@@ -1,20 +1,22 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teaching Staff | Mbarara Army Boarding Secondary School</title>
     <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
+        type="image/x-icon">
     <style>
         * {
             box-sizing: border-box;
@@ -22,14 +24,14 @@
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
             padding-top: 80px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -56,7 +58,7 @@
             vertical-align: middle;
             margin-right: 5px;
         }
-        
+
         /* Page Header */
         .page-header {
             background-color: #006341;
@@ -68,25 +70,25 @@
             background-size: cover;
             background-position: center;
         }
-        
+
         .page-title {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
-        
+
         .page-subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
             font-style: italic;
         }
-        
+
         /* Department Filter */
         .department-filter {
             text-align: center;
             margin: 2rem 0;
         }
-        
+
         .filter-button {
             display: inline-block;
             padding: 0.6rem 1.2rem;
@@ -98,12 +100,13 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        
-        .filter-button:hover, .filter-button.active {
+
+        .filter-button:hover,
+        .filter-button.active {
             background-color: #006341;
             color: white;
         }
-        
+
         /* Staff Grid */
         .staff-grid {
             display: grid;
@@ -111,7 +114,7 @@
             gap: 2rem;
             margin-bottom: 3rem;
         }
-        
+
         .staff-card {
             background: white;
             border-radius: 10px;
@@ -121,7 +124,7 @@
             cursor: pointer;
             text-align: center;
         }
-        
+
         .staff-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
@@ -133,7 +136,7 @@
             display: flex;
             justify-content: center;
         }
-        
+
         .staff-img {
             width: 180px;
             height: 180px;
@@ -142,36 +145,36 @@
             border: 5px solid #f5f5f5;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
+
         .staff-info {
             padding: 1.5rem;
         }
-        
+
         .staff-name {
             color: #006341;
             margin-bottom: 0.5rem;
             font-size: 1.3rem;
         }
-        
+
         .staff-title {
             font-weight: 600;
             margin-bottom: 0.8rem;
             font-size: 1rem;
         }
-        
+
         .staff-department {
             font-size: 0.85rem;
             color: #868e96;
             font-style: italic;
             margin-bottom: 0.5rem;
         }
-        
+
         .staff-subjects {
             font-size: 0.9rem;
             color: #495057;
             margin-top: 0.8rem;
         }
-        
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -187,12 +190,12 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .modal.active {
             display: flex;
             opacity: 1;
         }
-        
+
         .modal-content {
             background: white;
             border-radius: 12px;
@@ -204,11 +207,11 @@
             transform: translateY(20px);
             transition: transform 0.3s ease;
         }
-        
+
         .modal.active .modal-content {
             transform: translateY(0);
         }
-        
+
         .close-modal {
             position: absolute;
             top: 15px;
@@ -220,7 +223,7 @@
             border: none;
             z-index: 10;
         }
-        
+
         .modal-header {
             height: 250px;
             position: relative;
@@ -230,7 +233,7 @@
             align-items: center;
             background-color: #006341;
         }
-        
+
         .modal-header img {
             width: 200px;
             height: 200px;
@@ -239,7 +242,7 @@
             border: 6px solid white;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        
+
         .modal-header-overlay {
             position: absolute;
             bottom: 0;
@@ -250,25 +253,25 @@
             color: white;
             text-align: center;
         }
-        
+
         .modal-name {
             font-size: 1.8rem;
             margin-bottom: 0.3rem;
         }
-        
+
         .modal-title {
             font-size: 1.1rem;
             opacity: 0.9;
         }
-        
+
         .modal-body {
             padding: 2rem;
         }
-        
+
         .modal-section {
             margin-bottom: 1.5rem;
         }
-        
+
         .modal-section h3 {
             color: #006341;
             margin-bottom: 0.8rem;
@@ -276,36 +279,36 @@
             border-bottom: 2px solid #e9ecef;
             padding-bottom: 0.5rem;
         }
-        
+
         .modal-bio {
             line-height: 1.7;
         }
-        
+
         .modal-contact {
             margin-top: 1rem;
         }
-        
+
         .contact-item {
             display: flex;
             align-items: center;
             margin-bottom: 0.5rem;
         }
-        
+
         .contact-icon {
             margin-right: 0.8rem;
             color: #006341;
         }
-        
+
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .staff-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
-            
+
             .modal-content {
                 width: 95%;
             }
-            
+
             .modal-name {
                 font-size: 1.5rem;
             }
@@ -320,12 +323,12 @@
                 height: 160px;
             }
         }
-        
+
         @media (max-width: 480px) {
             .staff-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .page-title {
                 font-size: 2rem;
             }
@@ -339,7 +342,7 @@
                 width: 140px;
                 height: 140px;
             }
-            
+
             .filter-button {
                 padding: 0.5rem 1rem;
                 font-size: 0.9rem;
@@ -347,12 +350,14 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Back Button -->
     <div class="container">
         <a href="Staff.html" class="back-button">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                <path fill-rule="evenodd"
+                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
             </svg>
             Back to Staff
         </a>
@@ -365,7 +370,7 @@
             <p class="page-subtitle">Our dedicated educators shaping the future of our students</p>
         </div>
     </header>
-    
+
     <div class="container">
         <!-- Department Filter -->
         <div class="department-filter">
@@ -375,14 +380,15 @@
             <button class="filter-button" data-department="languages">Languages</button>
             <button class="filter-button" data-department="vocational">Vocational</button>
         </div>
-        
+
         <!-- Staff Grid -->
         <div class="staff-grid">
             <!-- Science Teachers -->
 
             <div class="staff-card" data-department="sciences" onclick="openModal('kyabalongo')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345569/dp2_sdemeu.jpg" alt="Kyabalongo Yunusu" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345569/dp2_sdemeu.jpg"
+                        alt="Kyabalongo Yunusu" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR. KYABALONGO YUNUSU</h3>
@@ -394,7 +400,8 @@
 
             <div class="staff-card" data-department="sciences" onclick="openModal('amanya')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345594/RB_czlsyq.jpg" alt="Robert Amanya" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345594/RB_czlsyq.jpg"
+                        alt="Robert Amanya" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">Mr. AMANYA ROBERT</h3>
@@ -406,7 +413,8 @@
 
             <div class="staff-card" data-department="sciences" onclick="openModal('krusumu')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346420/KULUTHUM_cd3yv9.jpg" alt="MS . NAKIWANUKA KRUSUMU" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346420/KULUTHUM_cd3yv9.jpg"
+                        alt="MS . NAKIWANUKA KRUSUMU" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MS . NAKIWANUKA KRUSUMU</h3>
@@ -418,7 +426,8 @@
 
             <div class="staff-card" data-department="sciences" onclick="openModal('ABAYO')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346365/EDRINE_es9zlq.jpg" alt="BAYO" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346365/EDRINE_es9zlq.jpg"
+                        alt="BAYO" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MS. ABAYO EDRINE TUMSIIME</h3>
@@ -431,7 +440,8 @@
 
             <div class="staff-card" data-department="sciences" onclick="openModal('enos')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346372/enos_ghcear.jpg" alt="rurema enos" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346372/enos_ghcear.jpg"
+                        alt="rurema enos" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR. RUREMA ENOS</h3>
@@ -439,12 +449,13 @@
                     <p class="staff-department">Science Department</p>
                     <p class="staff-subjects">CHEMISTRY & BIOLOGY</p>
                 </div>
-                
+
             </div>
 
             <div class="staff-card" data-department="sciences" onclick="openModal('ISAA')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346398/ISAA_ebxzpn.jpg" alt="ISAA" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346398/ISAA_ebxzpn.jpg" alt="ISAA"
+                        class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">L/CPL OMIOLOKO ISAAC</h3>
@@ -456,7 +467,8 @@
 
             <div class="staff-card" data-department="sciences" onclick="openModal('moses')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346431/moses_zi7kjc.jpg" alt="ainomugisha moses" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346431/moses_zi7kjc.jpg"
+                        alt="ainomugisha moses" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR. AINOMUGISHA MOSES</h3>
@@ -468,7 +480,8 @@
 
             <div class="staff-card" data-department="sciences" onclick="openModal('DOMINIC')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346364/DOMINIC_dzdml3.jpg" alt="RUGOGOMA" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346364/DOMINIC_dzdml3.jpg"
+                        alt="RUGOGOMA" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR.TUHIMBISE DOMINIC RUGOGOMA</h3>
@@ -480,7 +493,8 @@
 
             <div class="staff-card" data-department="sciences" onclick="openModal('medard')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346429/medard_xxiaze.jpg" alt="nabimanya medard" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346429/medard_xxiaze.jpg"
+                        alt="nabimanya medard" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR. NABIMANYA MEDARD</h3>
@@ -492,7 +506,8 @@
 
             <div class="staff-card" data-department="sciences" onclick="openModal('ASIIMWE')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="ASIIMWE" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png"
+                        alt="ASIIMWE" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR. ASIIMWE ISAAC</h3>
@@ -504,7 +519,8 @@
 
             <div class="staff-card" data-department="sciences" onclick="openModal('isaac')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346289/balu_zbmoue.jpg" alt="balu isaac" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346289/balu_zbmoue.jpg"
+                        alt="balu isaac" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">PTE. BALU ISAAC</h3>
@@ -513,10 +529,11 @@
                     <p class="staff-subjects">BIOLOGY</p>
                 </div>
             </div>
-    
+
             <div class="staff-card" data-department="sciences" onclick="openModal('benjamin')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346296/beja_jeqbcc.jpg" alt="kasawa benjamin" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346296/beja_jeqbcc.jpg"
+                        alt="kasawa benjamin" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">L/CPL KASAWA BENJAMIN</h3>
@@ -525,10 +542,11 @@
                     <p class="staff-subjects">PHYSICS & MTC</p>
                 </div>
             </div>
-            
+
             <div class="staff-card" data-department="sciences" onclick="openModal('micheal')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346430/micheal_gc1ob3.jpg" alt="ongwech micheal" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346430/micheal_gc1ob3.jpg"
+                        alt="ongwech micheal" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">L/CPL ONGWECH MICHEAL</h3>
@@ -542,7 +560,8 @@
             <!-- Humanities Teachers -->
             <div class="staff-card" data-department="humanities" onclick="openModal('mujurizi')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345574/LAUBEN_cukqqu.jpg" alt="Mujurizi Lauben" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345574/LAUBEN_cukqqu.jpg"
+                        alt="Mujurizi Lauben" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">WO1. MUJURIZI LAUBEN</h3>
@@ -554,7 +573,8 @@
 
             <div class="staff-card" data-department="humanities" onclick="openModal('Angella')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346281/Angella_1_qymbeq.jpg" alt="Angella" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346281/Angella_1_qymbeq.jpg"
+                        alt="Angella" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MS. BYEGANJE ANGELLA</h3>
@@ -566,7 +586,8 @@
 
             <div class="staff-card" data-department="Humanities" onclick="openModal('ABEL')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346269/ABEL_ioiij1.jpg" alt="ABEL" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346269/ABEL_ioiij1.jpg" alt="ABEL"
+                        class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">TANDEKA ABEL</h3>
@@ -578,7 +599,8 @@
 
             <div class="staff-card" data-department="Humanities" onclick="openModal('Baseeta')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346290/baseeta_qi7obi.jpg" alt="baseeta johnson" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346290/baseeta_qi7obi.jpg"
+                        alt="baseeta johnson" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">L/CPL. BASEETA JOHNWILSON </h3>
@@ -590,7 +612,8 @@
 
             <div class="staff-card" data-department="Humanities" onclick="openModal('Humbly')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346380/humbly_rtl706.jpg" alt="Tumushabe Humbly" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346380/humbly_rtl706.jpg"
+                        alt="Tumushabe Humbly" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">WO1. TUMUSHABE HUMBLY</h3>
@@ -602,7 +625,8 @@
 
             <div class="staff-card" data-department="Humanities" onclick="openModal('Innocent')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346388/innocent_t7deuw.jpg" alt="mbabazi innocent" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346388/innocent_t7deuw.jpg"
+                        alt="mbabazi innocent" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">L/CPL. MBABAZI INNOCENT</h3>
@@ -615,7 +639,8 @@
             <!-- Humanities Teachers -->
             <div class="staff-card" data-department="humanities" onclick="openModal('ronald')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" alt="ronald" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" alt="ronald"
+                        class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR. TUMWESIGYE RONALD</h3>
@@ -627,7 +652,8 @@
 
             <div class="staff-card" data-department="humanities" onclick="openModal('bosco')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346306/bosco_qzoze5.jpg" alt="ngabirano bosco" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346306/bosco_qzoze5.jpg"
+                        alt="ngabirano bosco" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">SGT. NGABIRANO BOSCO</h3>
@@ -639,7 +665,8 @@
 
             <div class="staff-card" data-department="humanities" onclick="openModal('james')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346402/Kariisa_ek3tm0.jpg" alt="ngabirano bosco" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346402/Kariisa_ek3tm0.jpg"
+                        alt="ngabirano bosco" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name"> WO1. KARIISA JAMES</h3>
@@ -651,7 +678,8 @@
 
             <div class="staff-card" data-department="humanities" onclick="openModal('jMR. KAWAFU BENEDICT')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346411/KAWAFU_wvfvv3.jpg" alt="ngabirano bosco" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346411/KAWAFU_wvfvv3.jpg"
+                        alt="ngabirano bosco" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">CPL. KAWAFU BENEDICT</h3>
@@ -663,7 +691,8 @@
 
             <div class="staff-card" data-department="humanities" onclick="openModal('WASWA')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346356/DERRICK_n99psw.jpg" alt="WASWA" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346356/DERRICK_n99psw.jpg"
+                        alt="WASWA" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name"> WASWA DERRICK </h3>
@@ -675,7 +704,8 @@
 
             <div class="staff-card" data-department="humanities" onclick="openModal('ALLEN')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346279/allen_uitgzy.jpg" alt="ALLEN" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346279/allen_uitgzy.jpg"
+                        alt="ALLEN" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name"> MS.NABASA ALLEN </h3>
@@ -687,7 +717,8 @@
 
             <div class="staff-card" data-department="humanities" onclick="openModal('IKOBA')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="IKOBA" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png"
+                        alt="IKOBA" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name"> MR. IKOBA FRANCIS</h3>
@@ -699,7 +730,8 @@
 
             <div class="staff-card" data-department="humanities" onclick="openModal('OJOK')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346446/OJOK_jowf3q.jpg" alt="OJOK" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346446/OJOK_jowf3q.jpg" alt="OJOK"
+                        class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name"> L/CPL. OJOK EMMANUEL</h3>
@@ -711,7 +743,8 @@
 
             <div class="staff-card" data-department="humanities" onclick="openModal('gerald')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346373/GERALD_gmjefa.jpg" alt="gerald" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346373/GERALD_gmjefa.jpg"
+                        alt="gerald" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">PTE. ARINATWE GERALD</h3>
@@ -720,10 +753,11 @@
                     <p class="staff-subjects">HISTORY</p>
                 </div>
             </div>
-            
+
             <div class="staff-card" data-department="humanities" onclick="openModal('anosiate')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346282/anosiate_wev8mk.jpg" alt="kyarimpa anosiate" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346282/anosiate_wev8mk.jpg"
+                        alt="kyarimpa anosiate" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MS. KYARIMPA ANOSIATE</h3>
@@ -732,12 +766,13 @@
                     <p class="staff-subjects">CRE</p>
                 </div>
             </div>
-            
+
             <!-- Languages Teachers -->
 
             <div class="staff-card" data-department="languages" onclick="openModal('muhindo')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Muhindo Johnson" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png"
+                        alt="Muhindo Johnson" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR. MUHINDO JOHNSON</h3>
@@ -749,7 +784,8 @@
 
             <div class="staff-card" data-department="languages" onclick="openModal('natukunda')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345573/LIBERTY_hdsb0a.jpg" alt="Natukunda Sarah Liberty" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345573/LIBERTY_hdsb0a.jpg"
+                        alt="Natukunda Sarah Liberty" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">Ms NATUKUNDA SARAH LIBERTY</h3>
@@ -758,10 +794,11 @@
                     <p class="staff-subjects">English & Literature</p>
                 </div>
             </div>
-            
-             <div class="staff-card" data-department="languages" onclick="openModal('deneth')">
+
+            <div class="staff-card" data-department="languages" onclick="openModal('deneth')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346355/deneth_wvfis0.jpg" alt="ainomugisha deneth" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346355/deneth_wvfis0.jpg"
+                        alt="ainomugisha deneth" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">PTE. AINOMUGISHA DENETH</h3>
@@ -771,9 +808,10 @@
                 </div>
             </div>
 
-             <div class="staff-card" data-department="languages" onclick="openModal('moses')">
+            <div class="staff-card" data-department="languages" onclick="openModal('moses')">
                 <div class="staff-img-container">
-                    <img src=https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346292/BATA_rjy4u2.jpg" alt="ainomugisha deneth" class="staff-img">
+                    <img src=https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346292/BATA_rjy4u2.jpg"
+                        alt="ainomugisha deneth" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">L/CPL. BATARINGAYA MOSES</h3>
@@ -785,7 +823,8 @@
 
             <div class="staff-card" data-department="languages" onclick="openModal('adrine')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346270/adrine_dc8lij.jpg" alt="Busingye Adrine" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346270/adrine_dc8lij.jpg"
+                        alt="Busingye Adrine" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MS BUSINGYE ADRINE</h3>
@@ -796,7 +835,8 @@
             </div>
             <div class="staff-card" data-department="languages" onclick="openModal('Naome')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346433/naome_plqu29.jpg" alt="natukunda naome" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346433/naome_plqu29.jpg"
+                        alt="natukunda naome" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MS NATUKUNDA NAOME</h3>
@@ -805,11 +845,12 @@
                     <p class="staff-subjects">Kiswahili</p>
                 </div>
             </div>
-            
+
             <!-- Vocational Teachers -->
             <div class="staff-card" data-department="vocational" onclick="openModal('bright')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345157/Bright_yds3et.jpg" alt="Bright Mugisha" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345157/Bright_yds3et.jpg"
+                        alt="Bright Mugisha" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">LT. BRIGHT MUGISHA RWAKASIMBA</h3>
@@ -818,10 +859,11 @@
                     <p class="staff-subjects">Agriculture</p>
                 </div>
             </div>
-            
+
             <div class="staff-card" data-department="vocational" onclick="openModal('vicent')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346481/vicent_kp2cdk.jpg" alt="sabiti vicent" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346481/vicent_kp2cdk.jpg"
+                        alt="sabiti vicent" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">L/CPL. SABITI VICENT</h3>
@@ -833,7 +875,8 @@
 
             <div class="staff-card" data-department="vocational" onclick="openModal('albert')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346273/ALBERT_caggbl.jpg" alt="Tumushabe albert" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346273/ALBERT_caggbl.jpg"
+                        alt="Tumushabe albert" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">PTE. TUMUSHABE ALBERT</h3>
@@ -845,7 +888,8 @@
 
             <div class="staff-card" data-department="vocational" onclick="openModal('Richard')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345594/rich_r01ouu.jpg" alt="aheebwa richard" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345594/rich_r01ouu.jpg"
+                        alt="aheebwa richard" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">L/CPL. AHEEBWA RICHARD</h3>
@@ -857,7 +901,8 @@
 
             <div class="staff-card" data-department="vocational" onclick="openModal('MUGERWA LOYCE')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346766/LOYCE_xfdipt.jpg" alt="MUGEGWA LOYCE" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346766/LOYCE_xfdipt.jpg"
+                        alt="MUGEGWA LOYCE" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">Mss. ARINAITWE MUGERWA LOYCE</h3>
@@ -868,9 +913,10 @@
             </div>
 
 
-             <div class="staff-card" data-department="vocational" onclick="openModal('albert')">
+            <div class="staff-card" data-department="vocational" onclick="openModal('albert')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346482/VICKY_oo422n.jpg" alt="VICKY" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346482/VICKY_oo422n.jpg"
+                        alt="VICKY" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">L/CPL.MUKAZI VICKY NASASA</h3>
@@ -883,7 +929,8 @@
 
             <div class="staff-card" data-department="vocational" onclick="openModal('martin')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346426/martin_zbtvr8.jpg" alt="bakwatanisa martin" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346426/martin_zbtvr8.jpg"
+                        alt="bakwatanisa martin" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">SGT. BAKWATANISA MARTIN</h3>
@@ -895,7 +942,8 @@
 
             <div class="staff-card" data-department="vocational" onclick="openModal('simon')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346455/olaki_jhyou7.jpg" alt="olaki simon" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346455/olaki_jhyou7.jpg"
+                        alt="olaki simon" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">L/CPL. OLAKI SIMON KOKAS</h3>
@@ -906,7 +954,8 @@
             </div>
             <div class="staff-card" data-department="vocational" onclick="openModal('ELIJA')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346372/ELIJA_vqdqp2.jpg" alt="ELIJA" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346372/ELIJA_vqdqp2.jpg"
+                        alt="ELIJA" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">2LT ELIJA ASIIMWE</h3>
@@ -918,7 +967,8 @@
 
             <div class="staff-card" data-department="vocational" onclick="openModal('arinaitwe')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345623/wa_m5veif.jpg" alt="Arinaitwe Slatter" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345623/wa_m5veif.jpg"
+                        alt="Arinaitwe Slatter" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR. ARINAITWE SLATTER</h3>
@@ -930,7 +980,8 @@
 
             <div class="staff-card" data-department="vocational" onclick="openModal('ABRAHAM')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346271/ABRAHAM_yxy9bd.jpg" alt="ABRAHAM" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346271/ABRAHAM_yxy9bd.jpg"
+                        alt="ABRAHAM" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR. ATWIJUKIRE ABRAHAM</h3>
@@ -939,11 +990,12 @@
                     <p class="staff-subjects">ART & DESIGN</p>
                 </div>
             </div>
-            
+
 
             <div class="staff-card" data-department="vocational" onclick="openModal('joan')">
                 <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346398/JOAN_dzsrpi.jpg" alt="natukunda joan" class="staff-img">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346398/JOAN_dzsrpi.jpg"
+                        alt="natukunda joan" class="staff-img">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MS. NATUKUNDA JOAN</h3>
@@ -955,7 +1007,7 @@
 
         </div>
     </div>
-    
+
     <!-- Modal -->
     <div class="modal" id="staffModal">
         <div class="modal-content">
@@ -974,30 +1026,30 @@
                     <p id="modalStaffQualification"></p>
                     <p id="modalStaffExperience"></p>
                 </div>
-                
+
                 <div class="modal-section">
                     <h3>Subjects Taught</h3>
                     <p class="modal-bio" id="modalStaffSubjects"></p>
                 </div>
-                
+
                 <div class="modal-section">
                     <h3>Teaching Philosophy</h3>
                     <p class="modal-bio" id="modalStaffPhilosophy"></p>
                 </div>
-                
+
                 <div class="modal-section">
                     <h3>Contact Information</h3>
                     <div class="modal-contact">
                         <div class="contact-item">
-                            <span class="contact-icon">ðŸ“ž</span>
+                            <span class="contact-icon"><i class="fas fa-phone"></i></span>
                             <span id="modalStaffPhone"></span>
                         </div>
                         <div class="contact-item">
-                            <span class="contact-icon"><i class="fas fa-bars"></i>œ‰ï¸</span>
+                            <span class="contact-icon"><i class="fas fa-envelope"></i></span>
                             <span id="modalStaffEmail"></span>
                         </div>
                         <div class="contact-item">
-                            <span class="contact-icon">ðŸ¢</span>
+                            <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
                             <span id="modalStaffOffice"></span>
                         </div>
                     </div>
@@ -1005,7 +1057,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         // Staff data
         const teachingStaffData = {
@@ -1117,16 +1169,16 @@
                 subjects: 'MATHEMATICS',
                 philosophy: '',
                 image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346364/DOMINIC_dzdml3.jpg',
-                phone:'+256 772 608514',
-                email:'tuhimbisedominic@gmail.com',
+                phone: '+256 772 608514',
+                email: 'tuhimbisedominic@gmail.com',
             }
         };
-        
+
         // Modal functions
         function openModal(staffId) {
             const staff = teachingStaffData[staffId];
             if (!staff) return;
-            
+
             document.getElementById('modalStaffImg').src = staff.image;
             document.getElementById('modalStaffName').textContent = staff.name;
             document.getElementById('modalStaffTitle').textContent = staff.title;
@@ -1138,18 +1190,18 @@
             document.getElementById('modalStaffPhone').textContent = staff.phone;
             document.getElementById('modalStaffEmail').textContent = staff.email;
             document.getElementById('modalStaffOffice').textContent = staff.office;
-            
+
             const modal = document.getElementById('staffModal');
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
+
         function closeModal() {
             const modal = document.getElementById('staffModal');
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        
+
         // Close modal when clicking outside content
         window.addEventListener('click', (e) => {
             const modal = document.getElementById('staffModal');
@@ -1157,14 +1209,14 @@
                 closeModal();
             }
         });
-        
+
         // Close modal with ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
-        
+
         // Department filter functionality
         document.querySelectorAll('.filter-button').forEach(button => {
             button.addEventListener('click', () => {
@@ -1173,11 +1225,11 @@
                     btn.classList.remove('active');
                 });
                 button.classList.add('active');
-                
+
                 // Filter staff
                 const department = button.dataset.department;
                 const staffCards = document.querySelectorAll('.staff-card');
-                
+
                 staffCards.forEach(card => {
                     if (department === 'all' || card.dataset.department === department) {
                         card.style.display = 'block';
@@ -1189,7 +1241,5 @@
         });
     </script>
 </body>
+
 </html>
-
-
-
