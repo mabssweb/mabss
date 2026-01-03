@@ -1,19 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
+        type="image/x-icon">
     <title>Mbarara Army Boarding SS - Gallery</title>
     <style>
         * {
@@ -21,22 +23,23 @@
             margin: 0;
             padding: 0;
         }
-        
+
         body.here {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
             color: #333;
-            padding-top: 80px; /* Space for fixed header */
+            padding-top: 80px;
+            /* Space for fixed header */
         }
-        
+
         /* Navigation Bar */
         .header {
             background-color: #0e7704;
             color: white;
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             position: fixed;
             top: 0;
             left: 0;
@@ -44,7 +47,7 @@
             z-index: 100;
             width: 100%;
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -54,13 +57,13 @@
             padding: 0 1rem;
             flex-wrap: wrap;
         }
-        
+
         .logo-container {
             display: flex;
             align-items: center;
             flex-grow: 1;
         }
-        
+
         .logo-img {
             height: 60px;
             width: 60px;
@@ -69,18 +72,19 @@
             border: 2px solid white;
             margin-right: 1rem;
         }
-        
+
         .school-name {
             margin: 0;
             font-size: 1.2rem;
             white-space: nowrap;
         }
-        
+
         nav {
-            display: none; /* Hidden by default on mobile */
+            display: none;
+            /* Hidden by default on mobile */
             width: 100%;
         }
-        
+
         .nav-list {
             display: flex;
             list-style: none;
@@ -89,11 +93,11 @@
             padding: 0;
             margin: 0;
         }
-        
+
         .nav-item {
             margin: 0.5rem;
         }
-        
+
         .nav-link {
             color: white;
             text-decoration: none;
@@ -102,7 +106,7 @@
             border-radius: 4px;
             display: block;
         }
-        
+
         .menu-toggle {
             background: none;
             border: none;
@@ -111,10 +115,10 @@
             cursor: pointer;
             display: block;
         }
-        
+
         /* Hero Section */
         .hero {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('image/school/get.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('image/school/get.jpg');
             background-size: cover;
             background-position: center top;
             height: 300px;
@@ -124,32 +128,32 @@
             text-align: center;
             color: white;
         }
-        
+
         .hero-content {
             max-width: 800px;
             padding: 2rem;
         }
-        
+
         .hero-content h1 {
             font-size: 2rem;
             margin-bottom: 1rem;
         }
-        
+
         .hero-content p {
             font-size: 1.1rem;
         }
-        
+
         /* Gallery Navigation */
         .gallery-nav {
             padding: 1rem;
             background-color: #006341;
         }
-        
+
         .gallery-nav-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .gallery-buttons {
             display: flex;
             overflow-x: auto;
@@ -157,9 +161,9 @@
             justify-content: center;
             padding: 0.5rem 0;
         }
-        
+
         .gallery-button {
-            background-color: rgba(255,255,255,0.2);
+            background-color: rgba(255, 255, 255, 0.2);
             color: white;
             border: none;
             padding: 0.8rem 1.5rem;
@@ -168,80 +172,80 @@
             cursor: pointer;
             white-space: nowrap;
         }
-        
+
         /* Photo Gallery */
         .photo-gallery {
             padding: 2rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .gallery-item {
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .gallery-img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
-        
+
         .gallery-caption {
             padding: 1rem;
             margin: 0;
             font-size: 0.9rem;
             color: #666;
         }
-        
+
         /* Video Gallery */
         .video-gallery {
             padding: 2rem 1rem;
             background-color: #f0f0f0;
         }
-        
+
         .video-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .video-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .video-item {
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         video {
             width: 100%;
             display: block;
         }
-        
+
         .video-info {
             padding: 1rem;
         }
-        
+
         /* Footer */
         .footer {
             background-color: #006341;
             color: white;
             padding: 2rem 1rem;
         }
-        
+
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -249,95 +253,97 @@
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .footer-section {
             min-width: 250px;
         }
-        
+
         .footer-heading {
             border-bottom: 2px solid #006341;
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .footer-list {
             list-style: none;
             padding: 0;
         }
-        
+
         .footer-item {
             margin-bottom: 0.5rem;
         }
-        
+
         .footer-link {
             color: white;
             text-decoration: none;
         }
-        
+
         .footer-bottom {
             text-align: center;
             margin-top: 2rem;
             padding-top: 1rem;
             border-top: 1px solid #006341;
         }
-        
+
         /* Responsive Adjustments */
         @media (min-width: 768px) {
             .menu-toggle {
                 display: none;
             }
-            
+
             nav {
                 display: block;
                 width: auto;
             }
-            
+
             .nav-list {
                 flex-wrap: nowrap;
             }
-            
+
             .hero {
                 height: 400px;
             }
-            
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            
+
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .video-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .school-name {
                 font-size: 1.5rem;
             }
         }
-        
+
         @media (min-width: 992px) {
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .footer-container {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-    .come{
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        color: rgb(12, 39, 39);
-        padding-top: 25px;
-        font-size: 30px;
-    }
+
+        .come {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgb(12, 39, 39);
+            padding-top: 25px;
+            font-size: 30px;
+        }
     </style>
 </head>
+
 <body class="here">
     <!-- Navigation Bar -->
     <div class="header">
@@ -346,18 +352,18 @@
                 <img src="image/logo mabss.jpg" alt="logo mabss" class="logo-img">
                 <h1 class="school-name">Mbarara Army Boarding SS</h1>
             </div>
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i>˜°</button>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
             <nav id="mainNav">
                 <ul class="nav-list">
                     <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="login.html" class="nav-link">Academics</a></li>
-                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
-                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
-                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
-                </ul>
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="login.html" class="nav-link">Academics</a></li>
+                        <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
+                        <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                        <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
+                    </ul>
                 </ul>
             </nav>
         </div>
@@ -371,7 +377,9 @@
         </div>
     </section>
     <div class="come">
-            <p><center>School Photos & Vidoes </video></center></p>
+        <p>
+            <center>School Photos & Vidoes </video></center>
+        </p>
 
     </div>
 
@@ -425,7 +433,7 @@
     <section class="video-gallery">
         <div class="video-container">
             <h2>Videos</h2>
-            
+
             <div class="video-grid">
                 <div class="video-item">
                     <video controls poster="video-poster.jpg">
@@ -437,7 +445,7 @@
                         <p>Highlights from our events</p>
                     </div>
                 </div>
-                
+
                 <div class="video-item">
                     <video controls poster="video-poster.jpg">
                         <source src="image/school/CC.mp4" type="video/mp4">
@@ -448,7 +456,7 @@
                         <p>Memorable moments</p>
                     </div>
                 </div>
-                
+
                 <div class="video-item">
                     <video controls poster="video-poster.jpg">
                         <source src="image/school/worship.mp4" type="video/mp4">
@@ -469,7 +477,7 @@
             <div class="footer-section">
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-list">
-                <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
+                    <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
                     <li class="footer-item"><a href="login.html" class="footer-link">Academics</a></li>
                     <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
                     <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
@@ -478,7 +486,7 @@
                     <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
                 </ul>
             </div>
-<div class="footer-section">
+            <div class="footer-section">
                 <h3 class="footer-heading">Contact Us</h3>
                 <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
                 <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
@@ -495,15 +503,13 @@
             <p>&copy; 2025 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
         </div>
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            const nav = document.getElementById('mainNav');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-        });
-    </script>
+        <script>
+            // Mobile menu toggle
+            document.getElementById('menuToggle').addEventListener('click', function () {
+                const nav = document.getElementById('mainNav');
+                nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+            });
+        </script>
 </body>
+
 </html>
-
-
-

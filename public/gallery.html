@@ -1,25 +1,27 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <title>Mbarara Army Boarding SS - Gallery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Swiper CSS (Lightweight Carousel Library) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    
+
     <style>
         :root {
             --navy: #1a237e;
@@ -74,14 +76,14 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             width: 100%;
         }
-        
+
         .logo-container {
             display: flex;
             align-items: center;
             flex: 1;
             min-width: 0;
         }
-        
+
         .logo {
             height: 40px;
             width: 40px;
@@ -91,7 +93,7 @@
             border: 2px solid white;
             margin-right: 10px;
         }
-        
+
         .school-name {
             margin: 0;
             font-size: 0.9rem;
@@ -99,7 +101,7 @@
             font-weight: 600;
             line-height: 1.2;
         }
-        
+
         .menu-toggle {
             background: none;
             border: none;
@@ -110,7 +112,7 @@
             margin-left: 10px;
             flex-shrink: 0;
         }
-        
+
         .nav-menu {
             display: none;
             background-color: var(--army-green);
@@ -122,11 +124,11 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             z-index: 999;
         }
-        
+
         .nav-menu.show {
             display: block;
         }
-        
+
         .nav-list {
             list-style: none;
             padding: 0;
@@ -134,11 +136,11 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .nav-item {
             margin: 0.3rem 0;
         }
-        
+
         .nav-link {
             color: white;
             text-decoration: none;
@@ -157,8 +159,8 @@
 
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, rgba(18, 75, 141, 0.8), rgba(42, 63, 44, 0.9)), 
-                        url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345190/of_b6iiqx.jpg');
+            background: linear-gradient(135deg, rgba(18, 75, 141, 0.8), rgba(42, 63, 44, 0.9)),
+                url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345190/of_b6iiqx.jpg');
             background-size: cover;
             background-position: center;
             color: var(--white);
@@ -194,13 +196,13 @@
             background-color: var(--army-green-dark);
             width: 100%;
         }
-        
+
         .gallery-nav-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 10px;
         }
-        
+
         .gallery-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -208,9 +210,9 @@
             padding: 10px 0;
             justify-content: center;
         }
-        
+
         .gallery-link {
-            background-color: rgba(255,255,255,0.2);
+            background-color: rgba(255, 255, 255, 0.2);
             color: white;
             padding: 6px 12px;
             border-radius: 4px;
@@ -223,7 +225,7 @@
 
         .gallery-link:hover,
         .gallery-link.active {
-            background-color: rgba(255,255,255,0.3);
+            background-color: rgba(255, 255, 255, 0.3);
         }
 
         /* Photo Gallery */
@@ -251,17 +253,17 @@
             margin: 10px auto;
             border-radius: 5px;
         }
-        
+
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1rem;
         }
-        
+
         .gallery-item {
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
             background-color: var(--white);
         }
@@ -269,7 +271,7 @@
         .gallery-item:hover {
             transform: translateY(-3px);
         }
-        
+
         .gallery-image {
             width: 100%;
             height: 250px;
@@ -281,7 +283,7 @@
         .gallery-item:hover .gallery-image {
             transform: scale(1.05);
         }
-        
+
         .gallery-caption {
             margin: 0;
             padding: 0.8rem;
@@ -295,47 +297,47 @@
             padding: 2rem 15px;
             background-color: var(--gray-light);
         }
-        
+
         .video-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .video-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.2rem;
         }
-        
+
         .video-card {
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
         }
 
         .video-card:hover {
             transform: translateY(-3px);
         }
-        
+
         .video-player {
             width: 100%;
             height: 200px;
             object-fit: cover;
             display: block;
         }
-        
+
         .video-info {
             padding: 1rem;
         }
-        
+
         .video-card-title {
             color: var(--navy);
             margin: 0;
             font-size: 1.1rem;
         }
-        
+
         .video-card-desc {
             margin: 0.5rem 0 0;
             color: var(--text-light);
@@ -345,7 +347,7 @@
         /* =========================================== */
         /* REDESIGNED ALUMNI SECTION - MODERN & RESPONSIVE */
         /* =========================================== */
-        
+
         .alumni-section {
             padding: 3rem 0;
             background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
@@ -417,6 +419,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -469,7 +472,7 @@
             .alumni-card:hover .alumni-image {
                 transform: scale(1.1);
             }
-            
+
             /* Slightly larger on desktop */
             .alumni-image-container {
                 width: 140px;
@@ -669,32 +672,32 @@
             .alumni-section {
                 padding: 2rem 0;
             }
-            
+
             .alumni-title {
                 font-size: 1.8rem;
             }
-            
+
             .alumni-subtitle {
                 font-size: 1rem;
                 padding: 0 15px;
             }
-            
+
             .alumni-card {
                 margin: 0 10px;
             }
-            
+
             .alumni-content {
                 padding: 0 1.2rem 1.2rem;
             }
-            
+
             .alumni-name {
                 font-size: 1.1rem;
             }
-            
+
             .alumni-swiper {
                 padding: 10px 5px 40px;
             }
-            
+
             .alumni-image-container {
                 width: 100px;
                 height: 100px;
@@ -707,11 +710,11 @@
             .alumni-swiper {
                 padding: 20px 30px 50px;
             }
-            
+
             .alumni-card {
                 margin: 0 10px;
             }
-            
+
             .alumni-image-container {
                 width: 130px;
                 height: 130px;
@@ -722,19 +725,19 @@
             .alumni-swiper {
                 padding: 20px 40px 50px;
             }
-            
+
             .alumni-card {
                 margin: 0 15px;
             }
-            
+
             .alumni-nav-btn.prev {
                 left: -25px;
             }
-            
+
             .alumni-nav-btn.next {
                 right: -25px;
             }
-            
+
             .alumni-image-container {
                 width: 140px;
                 height: 140px;
@@ -748,23 +751,23 @@
             color: var(--white);
             padding: 2rem 15px;
         }
-        
+
         .social-media {
             margin-top: 1rem;
         }
-        
+
         .social-heading {
             font-size: 1.1rem;
             margin-bottom: 0.8rem;
             color: #fff;
         }
-        
+
         .social-icons {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
         }
-        
+
         .social-icon {
             display: inline-flex;
             align-items: center;
@@ -778,40 +781,40 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-        
+
         .social-icon:hover {
             transform: translateY(-2px);
             background-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         .social-icon.facebook:hover {
             background-color: #3b5998;
         }
-        
+
         .social-icon.twitter:hover {
             background-color: #1da1f2;
         }
-        
+
         .social-icon.youtube:hover {
             background-color: #ff0000;
         }
-        
+
         .social-icon.pinterest:hover {
             background-color: #bd081c;
         }
-        
+
         .social-icon.instagram:hover {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
         }
-        
+
         .social-icon.whatsapp:hover {
             background-color: #25d366;
         }
-        
+
         .social-icon.linkedin:hover {
             background-color: #0077b5;
         }
-        
+
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -819,27 +822,27 @@
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .footer-section {
             min-width: 0;
         }
-        
+
         .footer-heading {
             border-bottom: 2px solid var(--army-green);
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
             font-size: 1.1rem;
         }
-        
+
         .footer-list {
             list-style: none;
             padding: 0;
         }
-        
+
         .footer-item {
             margin-bottom: 0.6rem;
         }
-        
+
         .footer-link {
             color: var(--white);
             text-decoration: none;
@@ -851,7 +854,7 @@
             color: var(--gold-light);
             padding-left: 3px;
         }
-        
+
         .footer-bottom {
             text-align: center;
             margin-top: 1.5rem;
@@ -862,8 +865,15 @@
 
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive Design */
@@ -871,7 +881,7 @@
             .menu-toggle {
                 display: none;
             }
-            
+
             .nav-menu {
                 display: flex;
                 position: static;
@@ -880,143 +890,147 @@
                 width: auto;
                 box-shadow: none;
             }
-            
+
             .nav-list {
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: flex-end;
             }
-            
+
             .nav-item {
                 margin: 0 0.4rem;
             }
-            
+
             .nav-link {
                 padding: 0.4rem 0.6rem;
                 font-size: 0.9rem;
             }
-            
+
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .video-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        
+
         @media (min-width: 768px) {
             .nav-container {
                 padding: 10px 20px;
             }
-            
+
             .logo {
                 height: 45px;
                 width: 45px;
             }
-            
+
             .school-name {
                 font-size: 1rem;
             }
-            
+
             header {
                 padding: 50px 0;
             }
-            
+
             header h1 {
                 font-size: 2.5rem;
             }
-            
+
             header p {
                 font-size: 1.1rem;
             }
-            
+
             .nav-link {
                 font-size: 1rem;
                 padding: 0.5rem 0.8rem;
             }
-            
+
             .gallery-link {
                 padding: 8px 16px;
                 font-size: 0.9rem;
             }
-            
+
             .footer-container {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-        
+
         @media (min-width: 992px) {
             .nav-container {
                 padding: 12px 30px;
             }
-            
+
             .logo {
                 height: 50px;
                 width: 50px;
             }
-            
+
             .school-name {
                 font-size: 1.1rem;
             }
-            
+
             header {
                 padding: 70px 0;
             }
-            
+
             header h1 {
                 font-size: 3rem;
             }
-            
+
             header p {
                 font-size: 1.2rem;
             }
-            
+
             .nav-item {
                 margin: 0 0.8rem;
             }
-            
+
             .nav-link {
                 font-size: 1rem;
                 padding: 0.5rem 1rem;
             }
-            
+
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .video-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
         }
-        
+
         @media (min-width: 1200px) {
             .school-name {
                 font-size: 1.2rem;
             }
-            
+
             header h1 {
                 font-size: 3.5rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <div class="nav-container">
         <div class="logo-container">
-            <a href="index.html" style="text-decoration:none"><img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" alt="MABSS Logo" class="logo"></a>
+            <a href="index.html" style="text-decoration:none"><img
+                    src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                    alt="MABSS Logo" class="logo"></a>
             <h1 class="school-name">Mbarara Army Boarding<br> Secondary School</h1>
         </div>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu"><i class="fas fa-bars"></i>˜°</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu"><i
+                class="fas fa-bars"></i></button>
         <nav class="nav-menu" id="mainNav">
             <ul class="nav-list">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -1046,15 +1060,18 @@
         <h2 class="section-title">Photo Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345613/SPRTS_wawnzd.jpg" alt="School Sports Day" class="gallery-image">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345613/SPRTS_wawnzd.jpg"
+                    alt="School Sports Day" class="gallery-image">
                 <p class="gallery-caption">Annual Sports Day 2023 - Students showcasing their athletic talents</p>
             </div>
             <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345159/COMP_c1x933.jpg" alt="Computer Lab" class="gallery-image">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345159/COMP_c1x933.jpg"
+                    alt="Computer Lab" class="gallery-image">
                 <p class="gallery-caption">Computer Laboratory - Equipped with modern technology</p>
             </div>
             <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346648/allll_aoxw55.jpg" alt="School Building" class="gallery-image">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346648/allll_aoxw55.jpg"
+                    alt="School Building" class="gallery-image">
                 <p class="gallery-caption">Main School Building - A conducive learning environment</p>
             </div>
         </div>
@@ -1064,47 +1081,54 @@
     <section class="video-section">
         <div class="video-container">
             <h2 class="section-title">Video Gallery</h2>
-            
+
             <div class="video-grid">
                 <!-- Video 1 -->
                 <div class="video-card">
-                    <video controls class="video-player" poster="https://via.placeholder.com/400x225/1a237e/ffffff?text=Video+Thumbnail">
-                        <source src="https://res.cloudinary.com/dr7bzccrr/video/upload/v1765345602/sports_hyslbm.mp4" type="video/mp4">
+                    <video controls class="video-player"
+                        poster="https://via.placeholder.com/400x225/1a237e/ffffff?text=Video+Thumbnail">
+                        <source src="https://res.cloudinary.com/dr7bzccrr/video/upload/v1765345602/sports_hyslbm.mp4"
+                            type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-info">
                         <h3 class="video-card-title">School Sports Day 2025</h3>
-                        <p class="video-card-desc">Highlights from our annual sports competition featuring various track and field events</p>
+                        <p class="video-card-desc">Highlights from our annual sports competition featuring various track
+                            and field events</p>
                     </div>
                 </div>
-                
+
                 <!-- Video 2 -->
                 <div class="video-card">
-                    <video controls class="video-player" poster="https://via.placeholder.com/400x225/1a237e/ffffff?text=Video+Thumbnail">
+                    <video controls class="video-player"
+                        poster="https://via.placeholder.com/400x225/1a237e/ffffff?text=Video+Thumbnail">
                         <source src="" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-info">
                         <h3 class="video-card-title">End of Term Ceremony</h3>
-                        <p class="video-card-desc">Memorable moments from our End of Term 2024 celebrations and award ceremonies</p>
+                        <p class="video-card-desc">Memorable moments from our End of Term 2024 celebrations and award
+                            ceremonies</p>
                     </div>
                 </div>
-                
+
                 <!-- Video 3 -->
                 <div class="video-card">
-                    <video controls class="video-player" poster="https://via.placeholder.com/400x225/1a237e/ffffff?text=Video+Thumbnail">
+                    <video controls class="video-player"
+                        poster="https://via.placeholder.com/400x225/1a237e/ffffff?text=Video+Thumbnail">
                         <source src="" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <div class="video-info">
                         <h3 class="video-card-title">Campus Tour</h3>
-                        <p class="video-card-desc">Explore our facilities, classrooms, and beautiful campus environment</p>
+                        <p class="video-card-desc">Explore our facilities, classrooms, and beautiful campus environment
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- =========================================== -->
     <!-- REDESIGNED ALUMNI SECTION -->
     <!-- =========================================== -->
@@ -1112,9 +1136,10 @@
         <div class="alumni-container">
             <div class="alumni-title-container">
                 <h2 id="alumni-heading" class="alumni-title">OB's & OG's Success Stories</h2>
-                <p class="alumni-subtitle">Celebrating the achievements of our alumni who continue to excel in various fields, carrying forward the values and discipline instilled at MABSS.</p>
+                <p class="alumni-subtitle">Celebrating the achievements of our alumni who continue to excel in various
+                    fields, carrying forward the values and discipline instilled at MABSS.</p>
             </div>
-            
+
             <div class="alumni-carousel-container">
                 <!-- Swiper Carousel -->
                 <div class="swiper alumni-swiper">
@@ -1123,187 +1148,173 @@
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 0">
                                 <div class="alumni-image-container">
-                                    <img 
-                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" 
-                                        alt="MR.TUMWESIGYE RONALD" 
-                                        class="alumni-image"
-                                        loading="lazy"
-                                    >
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg"
+                                        alt="MR.TUMWESIGYE RONALD" class="alumni-image" loading="lazy">
                                 </div>
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MR.TUMWESIGYE RONALD</h3>
                                     <span class="alumni-position">He was our Ob</span>
-                                    <p class="alumni-desc">Once a student, now a teacher at my alma mater. MABSS instilled in me the discipline and passion I now bring to my History and Divinity classes.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">Once a student, now a teacher at my alma mater. MABSS
+                                        instilled in me the discipline and passion I now bring to my History and
+                                        Divinity classes.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
-                        
+
                         <!-- Alumni Card 2 -->
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 1">
                                 <div class="alumni-image-container">
-                                    <img 
-                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1766224445/og_zhjemi.jpg" 
-                                        alt="MISS. Karungi Regina carol" 
-                                        class="alumni-image"
-                                        loading="lazy"
-                                    >
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1766224445/og_zhjemi.jpg"
+                                        alt="MISS. Karungi Regina carol" class="alumni-image" loading="lazy">
                                 </div>
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MISS. Karungi Regina Carol</h3>
                                     <span class="alumni-position">Midwife</span>
-                                    <p class="alumni-desc">Proud to have studied at MABSS (2004<i class="fas fa-bars"></i>€“2007). We were the pioneers who started and shaped the school.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">Proud to have studied at MABSS (2004<i
+                                            class="fas fa-bars"></i>€“2007). We were the pioneers who started and shaped
+                                        the school.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
-                        
+
                         <!-- Alumni Card 3 -->
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 2">
                                 <div class="alumni-image-container">
-                                    <img 
-                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" 
-                                        alt="Miss KABAHINDA SHANNITAH" 
-                                        class="alumni-image"
-                                        loading="lazy"
-                                    >
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png"
+                                        alt="Miss KABAHINDA SHANNITAH" class="alumni-image" loading="lazy">
                                 </div>
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">Miss KABAHINDA SHANNITAH</h3>
                                     <span class="alumni-position">Social Worker</span>
-                                    <p class="alumni-desc">At MABSS, education is more than academics,Withut hesitation, I attest to the excellence of MABSS as an institution. It provided me with.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">At MABSS, education is more than academics,Withut hesitation,
+                                        I attest to the excellence of MABSS as an institution. It provided me with.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
-                        
+
                         <!-- Alumni Card 4 -->
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 3">
                                 <div class="alumni-image-container">
-                                    <img 
-                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345616/tr_foxrgt.jpg" 
-                                        alt="Miss ABAASA NANCY PATRA" 
-                                        class="alumni-image"
-                                        loading="lazy"
-                                    >
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345616/tr_foxrgt.jpg"
+                                        alt="Miss ABAASA NANCY PATRA" class="alumni-image" loading="lazy">
                                 </div>
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">Miss ABAASA NANCY PATRA</h3>
                                     <span class="alumni-position">MENTOR</span>
-                                    <p class="alumni-desc">Beyond the gates of MABSS lies a world of opportunity, and our alumni are rising to meet it.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">Beyond the gates of MABSS lies a world of opportunity, and
+                                        our alumni are rising to meet it.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
-                        
+
                         <!-- Alumni Card 5 -->
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 4">
                                 <div class="alumni-image-container">
-                                    <img 
-                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345080/MS_p4tfnj.jpg" 
-                                        alt="MR. TWIJUKYE EDSON" 
-                                        class="alumni-image"
-                                        loading="lazy"
-                                    >
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345080/MS_p4tfnj.jpg"
+                                        alt="MR. TWIJUKYE EDSON" class="alumni-image" loading="lazy">
                                 </div>
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MR. TWIJUKYE EDSON</h3>
                                     <span class="alumni-position">GRC of COMPUTER SCIENCE at YMCA</span>
-                                    <p class="alumni-desc">Former H.P (2022-2023). MABSS has shaped  my mind, character, and ambition. Today, our alumni stand tall as ambassadors of the school's vision.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">Former H.P (2022-2023). MABSS has shaped my mind, character,
+                                        and ambition. Today, our alumni stand tall as ambassadors of the school's
+                                        vision.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
-                        
+
                         <!-- Alumni Card 6 -->
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 5">
                                 <div class="alumni-image-container">
-                                    <img 
-                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/brita_fw5x7j.jpg" 
-                                        alt="MISS ASHABA BRITAH" 
-                                        class="alumni-image"
-                                        loading="lazy"
-                                    >
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/brita_fw5x7j.jpg"
+                                        alt="MISS ASHABA BRITAH" class="alumni-image" loading="lazy">
                                 </div>
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MISS ASHABA BRITAH</h3>
                                     <span class="alumni-position">OG (2023-2024)</span>
-                                    <p class="alumni-desc">Once a MABSS student, always a part of the MABSS family. Our alumni carry forward the values, discipline, and excellence learned within these walls.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">Once a MABSS student, always a part of the MABSS family. Our
+                                        alumni carry forward the values, discipline, and excellence learned within these
+                                        walls.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
-                        
+
                         <!-- Alumni Card 7 -->
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 6">
                                 <div class="alumni-image-container">
-                                    <img 
-                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345091/no_ytbaub.jpg" 
-                                        alt="MR. AMWINE FRANKLINE" 
-                                        class="alumni-image"
-                                        loading="lazy"
-                                    >
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345091/no_ytbaub.jpg"
+                                        alt="MR. AMWINE FRANKLINE" class="alumni-image" loading="lazy">
                                 </div>
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MR. AMWINE FRANKLINE</h3>
                                     <span class="alumni-position">OB (2017-2023)</span>
-                                    <p class="alumni-desc">7 Years of Transformation & Triumph! Every success story that begins at MABSS strengthens our legacy.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">7 Years of Transformation & Triumph! Every success story that
+                                        begins at MABSS strengthens our legacy.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
-                        
+
                         <!-- Alumni Card 8 -->
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 7">
                                 <div class="alumni-image-container">
-                                    <img 
-                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/KATO_rb7fvj.jpg" 
-                                        alt="MR. KATO SURAIMAN" 
-                                        class="alumni-image"
-                                        loading="lazy"
-                                    >
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/KATO_rb7fvj.jpg"
+                                        alt="MR. KATO SURAIMAN" class="alumni-image" loading="lazy">
                                 </div>
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MR. KATO SURAIMAN</h3>
                                     <span class="alumni-position">OB (2017-2023)</span>
-                                    <p class="alumni-desc">From classrooms to careers, MABSS alumni continue to shine.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">From classrooms to careers, MABSS alumni continue to shine.
+                                    </p>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
-                        
+
                         <!-- Alumni Card 9 -->
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 8">
                                 <div class="alumni-image-container">
-                                    <img 
-                                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/hawali_ehkfkn.jpg" 
-                                        alt="MR.KYARIKUNDA HAWALI" 
-                                        class="alumni-image"
-                                        loading="lazy"
-                                    >
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/hawali_ehkfkn.jpg"
+                                        alt="MR.KYARIKUNDA HAWALI" class="alumni-image" loading="lazy">
                                 </div>
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MR.KYARIKUNDA HAWALI</h3>
                                     <span class="alumni-position">OB (2017-2023)</span>
-                                    <p class="alumni-desc">The journey may take you far, but MABSS will always be home.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">The journey may take you far, but MABSS will always be home.
+                                    </p>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
                     </div>
-                    
+
                     <!-- Pagination dots -->
                     <div class="swiper-pagination alumni-pagination"></div>
                 </div>
-                
+
                 <!-- Navigation buttons -->
                 <button class="alumni-nav-btn prev" aria-label="Previous alumni stories">
                     <i class="fas fa-chevron-left"></i>
@@ -1312,7 +1323,7 @@
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-            
+
             <div class="alumni-view-more">
                 <a href="alumni.html" class="alumni-view-more-btn">
                     View More Success Stories <i class="fas fa-arrow-right"></i>
@@ -1346,13 +1357,21 @@
                 <div class="social-media">
                     <h4 class="social-heading">Follow Us</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2004?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
+                            class="social-icon facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"
+                            aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"
+                            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"
+                            aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2004?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
+                            class="social-icon instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
+                            target="_blank" class="social-icon whatsapp" aria-label="WhatsApp"><i
+                                class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"><i
+                                class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -1370,33 +1389,33 @@
 
     <!-- Swiper JS (Lightweight Carousel Library) -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
+
     <script>
         // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('menuToggle').addEventListener('click', function () {
             const nav = document.getElementById('mainNav');
             nav.classList.toggle('show');
         });
 
         // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const nav = document.getElementById('mainNav');
             const toggle = document.getElementById('menuToggle');
-            
+
             if (!nav.contains(event.target) && !toggle.contains(event.target) && nav.classList.contains('show')) {
                 nav.classList.remove('show');
             }
         });
 
         // Initialize Swiper Carousel for Alumni Section
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Check if Swiper is available
             if (typeof Swiper === 'undefined') {
                 console.error('Swiper library not loaded. Loading from CDN...');
                 initFallbackCarousel();
                 return;
             }
-            
+
             // Initialize Swiper with responsive settings
             const alumniSwiper = new Swiper('.alumni-swiper', {
                 breakpoints: {
@@ -1413,7 +1432,7 @@
                         spaceBetween: 25
                     }
                 },
-                
+
                 loop: true,
                 speed: 600,
                 grabCursor: true,
@@ -1423,20 +1442,20 @@
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true
                 },
-                
+
                 easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                
+
                 navigation: {
                     nextEl: '.alumni-nav-btn.next',
                     prevEl: '.alumni-nav-btn.prev',
                 },
-                
+
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
                     dynamicBullets: true
                 },
-                
+
                 a11y: {
                     prevSlideMessage: 'Previous alumni story',
                     nextSlideMessage: 'Next alumni story',
@@ -1444,12 +1463,12 @@
                     lastSlideMessage: 'This is the last alumni story',
                     paginationBulletMessage: 'Go to alumni story {{index}}'
                 },
-                
+
                 keyboard: {
                     enabled: true,
                     onlyInViewport: true
                 },
-                
+
                 touchRatio: 1,
                 touchAngle: 45,
                 simulateTouch: true,
@@ -1460,22 +1479,22 @@
                 followFinger: true,
                 allowTouchMove: true
             });
-            
+
             // Add card index for staggered animation
             const cards = document.querySelectorAll('.alumni-card');
             cards.forEach((card, index) => {
                 card.style.setProperty('--card-index', index % 9);
             });
-            
+
             // Pause autoplay when tab is not visible
-            document.addEventListener('visibilitychange', function() {
+            document.addEventListener('visibilitychange', function () {
                 if (document.hidden) {
                     alumniSwiper.autoplay.stop();
                 } else {
                     alumniSwiper.autoplay.start();
                 }
             });
-            
+
             // Respect reduced motion preference
             const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
             if (mediaQuery.matches) {
@@ -1483,12 +1502,12 @@
                 alumniSwiper.params.autoplay = false;
                 alumniSwiper.update();
             }
-            
+
             function initFallbackCarousel() {
                 console.log('Initializing fallback carousel');
                 const cards = document.querySelectorAll('.alumni-card');
                 if (cards.length === 0) return;
-                
+
                 const swiperContainer = document.querySelector('.alumni-swiper');
                 if (swiperContainer) {
                     swiperContainer.style.overflow = 'visible';
@@ -1496,7 +1515,7 @@
                     swiperContainer.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
                     swiperContainer.style.gap = '20px';
                     swiperContainer.style.padding = '0';
-                    
+
                     document.querySelectorAll('.alumni-nav-btn, .alumni-pagination').forEach(el => {
                         el.style.display = 'none';
                     });
@@ -1505,7 +1524,5 @@
         });
     </script>
 </body>
+
 </html>
-
-
-

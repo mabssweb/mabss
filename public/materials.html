@@ -1,42 +1,45 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <title>Mbarara Army Boarding SS - Learning Materials</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico" type="image/x-icon">
+    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
+        type="image/x-icon">
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
+
         body.here {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0; 
-            padding: 0; 
-            background-color: #f5f5f5; 
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
             color: #333;
             padding-top: 80px;
         }
+
         .header {
             background-color: #0e7704;
             color: white;
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             position: fixed;
             top: 0;
             left: 0;
@@ -44,7 +47,7 @@
             z-index: 100;
             width: 100%;
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -54,13 +57,13 @@
             padding: 0 1rem;
             flex-wrap: wrap;
         }
-        
+
         .logo-container {
             display: flex;
             align-items: center;
             flex-grow: 1;
         }
-        
+
         .logo {
             height: 60px;
             width: 60px;
@@ -69,29 +72,29 @@
             border: 2px solid white;
             margin-right: 1rem;
         }
-        
+
         .school-name {
             margin: 0;
             font-size: 1.2rem;
             white-space: nowrap;
         }
-        
+
         nav {
             display: none;
             width: 100%;
         }
-        
+
         .nav-list {
             display: flex;
             list-style: none;
             flex-wrap: wrap;
             justify-content: center;
         }
-        
+
         .nav-item {
             margin: 0.5rem;
         }
-        
+
         .nav-link {
             color: white;
             text-decoration: none;
@@ -100,7 +103,7 @@
             border-radius: 4px;
             display: block;
         }
-        
+
         .menu-toggle {
             background: none;
             border: none;
@@ -119,18 +122,18 @@
             border: 2px solid #3498db;
             border-radius: 5px;
         }
-        
+
         .dropdown-container {
             margin: 20px 0;
         }
-        
+
         h2 {
             color: #2c3e50;
             border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
             margin-bottom: 1rem;
         }
-        
+
         .hidden {
             display: none;
         }
@@ -141,7 +144,7 @@
             overflow: hidden;
             width: 100%;
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 2;
@@ -153,55 +156,55 @@
             justify-content: center;
             padding: 0 1rem;
         }
-        
+
         .hero-content h1 {
             font-size: 2rem;
             margin-bottom: 1rem;
         }
-        
+
         .hero-content p {
             font-size: 1.1rem;
         }
-        
+
         .materials-section {
             padding: 2rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .materials-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .material-card {
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
         }
-        
+
         .material-card:hover {
             transform: translateY(-5px);
         }
-        
+
         .material-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
-        
+
         .material-content {
             padding: 1.5rem;
         }
-        
+
         .material-content h3 {
             margin-top: 0;
             color: #006341;
         }
-        
+
         .material-link {
             display: inline-block;
             background-color: #006341;
@@ -211,95 +214,96 @@
             text-decoration: none;
             margin-top: 1rem;
         }
-        
+
         .olevel-section {
             background-color: #f0f0f0;
             padding: 2rem 1rem;
         }
-        
+
         .olevel-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .subject-container {
             background-color: white;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 1.5rem;
         }
-        
+
         .subject-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1rem;
         }
-        
+
         .subject-box {
             background-color: #f9f9f9;
             padding: 1rem;
             border-radius: 4px;
         }
-        
+
         .subject-box h4 {
             margin-top: 0;
             color: #006341;
         }
-        
+
         .subject-box ul {
             padding-left: 1.2rem;
         }
-        
+
         .subject-box li {
             margin-bottom: 0.3rem;
         }
-        
+
         .subject-box a {
             color: #006341;
             text-decoration: none;
         }
-        
+
         .alevel-section {
             padding: 2rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .alevel-container {
             background-color: white;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .combination-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .footer {
             background-color: #004d33;
             color: white;
             padding: 2rem 1rem;
         }
-         .social-media {
+
+        .social-media {
             margin-top: 1.5rem;
         }
-        
+
         .social-heading {
             font-size: 1.2rem;
             margin-bottom: 1rem;
             color: #fff;
         }
-        
+
         .social-icons {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
         }
-        
+
         .social-icon {
             display: inline-flex;
             align-items: center;
@@ -313,40 +317,40 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-        
+
         .social-icon:hover {
             transform: translateY(-3px);
             background-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         .social-icon.facebook:hover {
             background-color: #3b5998;
         }
-        
+
         .social-icon.twitter:hover {
             background-color: #1da1f2;
         }
-        
+
         .social-icon.youtube:hover {
             background-color: #ff0000;
         }
-        
+
         .social-icon.pinterest:hover {
             background-color: #bd081c;
         }
-        
+
         .social-icon.instagram:hover {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
         }
-        
+
         .social-icon.whatsapp:hover {
             background-color: #25d366;
         }
-        
+
         .social-icon.linkedin:hover {
             background-color: #0077b5;
         }
-        
+
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -354,107 +358,110 @@
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .footer-section {
             min-width: 250px;
         }
-        
+
         .footer-heading {
             border-bottom: 2px solid #006341;
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .footer-list {
             list-style: none;
             padding: 0;
         }
-        
+
         .footer-item {
             margin-bottom: 0.5rem;
         }
-        
+
         .footer-link {
             color: white;
             text-decoration: none;
         }
-        
+
         .footer-bottom {
             text-align: center;
             margin-top: 2rem;
             padding-top: 1rem;
             border-top: 1px solid #006341;
         }
-        
+
         @media (min-width: 768px) {
             .menu-toggle {
                 display: none;
             }
-            
+
             nav {
                 display: block;
                 width: auto;
             }
-            
+
             .nav-list {
                 flex-wrap: nowrap;
             }
-            
+
             .materials-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .subject-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .combination-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             #hero-slideshow {
                 height: 400px;
             }
-            
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
         }
-        
+
         @media (min-width: 992px) {
             .materials-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .subject-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .footer-container {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .school-name {
                 font-size: 1.5rem;
             }
         }
     </style>
 </head>
+
 <body class="here">
     <div class="header">
         <div class="header-container">
             <div class="logo-container">
-                <a href="index.html" style="text-decoration:none"><img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" alt="logo mabss" class="logo"></a>
+                <a href="index.html" style="text-decoration:none"><img
+                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                        alt="logo mabss" class="logo"></a>
                 <h1 class="school-name">Mbarara Army Boarding SS</h1>
             </div>
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i>˜°</button>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
             <nav id="mainNav">
                 <ul class="nav-list">
-                   <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="login.html" class="nav-link">Academics</a></li>
                     <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
                     <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
@@ -482,44 +489,47 @@
             'url("https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/lib_aisnni.jpg")'
         ];
         let current = 0;
-    
+
         function changeBackground() {
             hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), ${images[current]}`;
             hero.style.backgroundSize = 'cover';
             hero.style.backgroundPosition = 'center';
             hero.style.transition = 'background-image 1s ease-in-out';
-            
+
             current = (current + 1) % images.length;
         }
-    
+
         setInterval(changeBackground, 4000);
         changeBackground();
     </script>
 
     <section class="materials-section">
         <h2>Learning Resources by Category</h2>
-        
+
         <div class="materials-grid">
             <div class="material-card">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346768/lab_jij9wz.jpg" alt="Science block">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346768/lab_jij9wz.jpg"
+                    alt="Science block">
                 <div class="material-content">
                     <h3>Science Block</h3>
                     <p>Resources for Physics, Chemistry, Biology and Mathematics</p>
                     <a href="#" class="material-link">View Resources</a>
                 </div>
             </div>
-            
+
             <div class="material-card">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345078/art_zthpzo.jpg" alt="Arts Materials">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345078/art_zthpzo.jpg"
+                    alt="Arts Materials">
                 <div class="material-content">
                     <h3>Arts & Humanities Block</h3>
                     <p>Resources for History, Geography, Literature, CRE, and other arts subjects</p>
                     <a href="#" class="material-link">View Resources</a>
                 </div>
             </div>
-            
+
             <div class="material-card">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/lib_aisnni.jpg" alt="Vocational Materials">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/lib_aisnni.jpg"
+                    alt="Vocational Materials">
                 <div class="material-content">
                     <h3>LIBARAY</h3>
                     <p>Resources for Computer Studies, Entrepreneurship, Home Economics, and more</p>
@@ -532,7 +542,7 @@
     <section class="olevel-section">
         <div class="olevel-container">
             <h2>Ordinary Level (O-Level) Materials</h2>
-            
+
             <div class="subject-container">
                 <h3>S1-S4 Syllabus & Notes</h3>
                 <div class="subject-grid">
@@ -663,10 +673,10 @@
                         </ul>
                     </div>
 
-                    
+
                 </div>
             </div>
-            
+
             <div class="subject-container">
                 <h3>Past Papers & Revision Materials</h3>
                 <div class="subject-grid">
@@ -704,7 +714,7 @@
 
     <section class="alevel-section">
         <h2>Advanced Level (A-Level) Materials</h2>
-        
+
         <div class="alevel-container">
             <div class="combination-grid">
                 <div>
@@ -717,13 +727,13 @@
                             <option value="BAM">BAM (Biology, Agriculture, Mathematics)</option>
                             <option value="PAM">PAM (Physics, Agriculture, Mathematics)</option>
                         </select>
-                    
+
                         <select id="scienceSubject" class="hidden" onchange="goToScienceNotes()">
                             <option value="">-- Select Subject --</option>
                         </select>
                     </div>
                 </div>
-                
+
                 <div>
                     <h3>Arts Combinations</h3>
                     <div class="dropdown-container">
@@ -736,7 +746,7 @@
                             <option value="DAG">DAG (Divinity,Art,Geography)</option>
                             <option value="LAG">LAG (Literature,Art,Geography)</option>
                         </select>
-                    
+
                         <select id="subject" class="hidden" onchange="goToNotes()">
                             <option value="">-- Select Subject --</option>
                         </select>
@@ -803,7 +813,7 @@
                         "Geography1": "geography-notes.html",
                         "Geography2": "geography-notes.html"
                     },
-                    "DAG":{
+                    "DAG": {
                         "Divinity1": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
                         "Divinity2": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
                         "Divinity4": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
@@ -814,7 +824,7 @@
                         "Geography1": "geography-notes.html",
                         "Geography2": "geography-notes.html"
                     },
-                    "HLD":{
+                    "HLD": {
                         "History1": "history.pdf",
                         "History3": "histpory.pdf",
                         "Literature1": "literature",
@@ -849,14 +859,14 @@
                 function showScienceSubjects() {
                     const comboSelect = document.getElementById("scienceCombination");
                     const subjectSelect = document.getElementById("scienceSubject");
-                    
+
                     subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
-                    
+
                     const selectedCombo = comboSelect.value;
-                    
+
                     if (selectedCombo) {
                         subjectSelect.classList.remove("hidden");
-                        
+
                         for (const subject in scienceCombinations[selectedCombo]) {
                             const option = document.createElement("option");
                             option.value = scienceCombinations[selectedCombo][subject];
@@ -878,14 +888,14 @@
                 function showSubjects() {
                     const comboSelect = document.getElementById("combination");
                     const subjectSelect = document.getElementById("subject");
-                    
+
                     subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
-                    
+
                     const selectedCombo = comboSelect.value;
-                    
+
                     if (selectedCombo) {
                         subjectSelect.classList.remove("hidden");
-                        
+
                         for (const subject in combinations[selectedCombo]) {
                             const option = document.createElement("option");
                             option.value = combinations[selectedCombo][subject];
@@ -940,7 +950,7 @@
     </section>
 
     <footer class="footer">
-           <div class="footer-container">
+        <div class="footer-container">
             <div class="footer-section">
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-list">
@@ -950,7 +960,7 @@
                     <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
                     <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
                     <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
-                    
+
                 </ul>
             </div>
             <div class="footer-section">
@@ -962,13 +972,19 @@
                 <div class="social-media">
                     <h4 class="social-heading">Follow Us</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2004" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z"  target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"   target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
+                            class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2004" class="social-icon twitter" target="_blank"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i
+                                class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
+                            class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
+                            target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -986,13 +1002,11 @@
 
     <script>
 
-        document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('menuToggle').addEventListener('click', function () {
             const nav = document.getElementById('mainNav');
             nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
         });
     </script>
 </body>
+
 </html>
-
-
-

@@ -1,20 +1,22 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
+        type="image/x-icon">
     <title>Mbarara Army Boarding SS - Student Welfare</title>
     <style>
         * {
@@ -22,22 +24,23 @@
             margin: 0;
             padding: 0;
         }
-        
+
         body.here {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0; 
-            padding: 0; 
-            background-color: #f5f5f5; 
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
             color: #333;
-            padding-top: 80px; /* Space for fixed header */
+            padding-top: 80px;
+            /* Space for fixed header */
         }
-        
+
         /* Navigation Bar */
         .header {
             background-color: #0e7704;
             color: white;
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             position: fixed;
             top: 0;
             left: 0;
@@ -45,7 +48,7 @@
             z-index: 100;
             width: 100%;
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -55,13 +58,13 @@
             padding: 0 1rem;
             flex-wrap: wrap;
         }
-        
+
         .logo-container {
             display: flex;
             align-items: center;
             flex-grow: 1;
         }
-        
+
         .logo {
             height: 60px;
             width: 60px;
@@ -70,29 +73,30 @@
             border: 2px solid white;
             margin-right: 1rem;
         }
-        
+
         .school-name {
             margin: 0;
             font-size: 1.2rem;
             white-space: nowrap;
         }
-        
+
         nav {
-            display: none; /* Hidden by default on mobile */
+            display: none;
+            /* Hidden by default on mobile */
             width: 100%;
         }
-        
+
         .nav-list {
             display: flex;
             list-style: none;
             flex-wrap: wrap;
             justify-content: center;
         }
-        
+
         .nav-item {
             margin: 0.5rem;
         }
-        
+
         .nav-link {
             color: white;
             text-decoration: none;
@@ -101,7 +105,7 @@
             border-radius: 4px;
             display: block;
         }
-        
+
         .menu-toggle {
             background: none;
             border: none;
@@ -110,18 +114,18 @@
             cursor: pointer;
             display: block;
         }
-        
+
         /* Hero Section */
         #welfare-hero {
             position: relative;
             height: 500px;
             overflow: hidden;
             width: 100%;
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345214/font_okmvgv.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345214/font_okmvgv.jpg');
             background-size: cover;
             background-position: center to top;
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 2;
@@ -133,59 +137,59 @@
             justify-content: center;
             padding: 0 1rem;
         }
-        
+
         .hero-content h1 {
             font-size: 2rem;
             margin-bottom: 1rem;
         }
-        
+
         .hero-content p {
             font-size: 1.1rem;
         }
-        
+
         /* Welfare Services */
         .welfare-section {
             padding: 2rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .section-title {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 2rem;
             color: #006341;
         }
-        
+
         .services-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .service-card {
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .service-card.green {
             background-color: rgb(13, 184, 70);
             color: #f0f0f0;
         }
-        
+
         .service-content {
             padding: 1.5rem;
         }
-        
+
         .service-content h3 {
             color: #006341;
             display: flex;
             align-items: center;
             margin-top: 0;
         }
-        
+
         .service-number {
             background-color: #006341;
             color: white;
@@ -197,41 +201,41 @@
             justify-content: center;
             margin-right: 1rem;
         }
-        
+
         .service-card.green h3 {
             color: white;
         }
-        
+
         .service-card.green .service-number {
             background-color: white;
             color: #006341;
         }
-        
+
         /* Welfare Team */
         .team-section {
             background-color: #f0f0f0;
             padding: 2rem 1rem;
         }
-        
+
         .team-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .team-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .team-card {
             background-color: white;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-        
+
         .team-card img {
             width: 150px;
             height: 150px;
@@ -241,46 +245,46 @@
             border: 3px solid #006341;
             object-position: center top;
         }
-        
+
         .team-card h3 {
             margin: 0;
             color: #006341;
         }
-        
+
         .team-card p.position {
             font-weight: bold;
             margin: 0.5rem 0;
         }
-        
+
         /* Policies Section */
         .policies-section {
             padding: 2rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .policies-container {
             background-color: white;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .policy-item {
             margin-bottom: 1.5rem;
         }
-        
+
         .policy-item h3 {
             color: #006341;
         }
-        
+
         /* Footer */
         .footer {
             background-color: #004d33;
             color: white;
             padding: 2rem 1rem;
         }
-        
+
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -288,31 +292,31 @@
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .footer-section {
             min-width: 250px;
         }
-        
+
         .footer-heading {
             border-bottom: 2px solid #006341;
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .footer-list {
             list-style: none;
             padding: 0;
         }
-        
+
         .footer-item {
             margin-bottom: 0.5rem;
         }
-        
+
         .footer-link {
             color: white;
             text-decoration: none;
         }
-        
+
         .footer-bottom {
             text-align: center;
             margin-top: 2rem;
@@ -320,22 +324,22 @@
             border-top: 1px solid #006341;
         }
 
-           .social-media {
+        .social-media {
             margin-top: 1.5rem;
         }
-        
+
         .social-heading {
             font-size: 1.2rem;
             margin-bottom: 1rem;
             color: #fff;
         }
-        
+
         .social-icons {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
         }
-        
+
         .social-icon {
             display: inline-flex;
             align-items: center;
@@ -349,111 +353,118 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-        
+
         .social-icon:hover {
             transform: translateY(-3px);
             background-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         .social-icon.facebook:hover {
             background-color: #3b5998;
         }
-        
+
         .social-icon.twitter:hover {
             background-color: #1da1f2;
         }
-        
+
         .social-icon.youtube:hover {
             background-color: #ff0000;
         }
-        
+
         .social-icon.pinterest:hover {
             background-color: #bd081c;
         }
-        
+
         .social-icon.instagram:hover {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
         }
-        
+
         .social-icon.whatsapp:hover {
             background-color: #25d366;
         }
-        
+
         .social-icon.linkedin:hover {
             background-color: #0077b5;
         }
-        
+
         /*for mobile phones*/
-        @media(max-width:767px){
-            #welfare-hero{
-            background-position:center 30%;}
-        
+        @media(max-width:767px) {
+            #welfare-hero {
+                background-position: center 30%;
+            }
+
         }
-                /*for desktop*/
-        @media(min-width:768px){
-            #welfare-hero{
-            background-position:center 20%;}
-       }
+
+        /*for desktop*/
+        @media(min-width:768px) {
+            #welfare-hero {
+                background-position: center 20%;
+            }
+        }
+
         /* Responsive Adjustments */
         @media (min-width: 768px) {
             .menu-toggle {
                 display: none;
             }
-            
+
             nav {
                 display: block;
                 width: auto;
             }
-            
+
             .nav-list {
                 flex-wrap: nowrap;
             }
-            
+
             #welfare-hero {
                 height: 400px;
             }
-            
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            
+
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .school-name {
                 font-size: 1.5rem;
             }
         }
-        
+
         @media (min-width: 992px) {
             .team-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .footer-container {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
 </head>
+
 <body class="here">
     <!-- Navigation Bar -->
     <div class="header">
         <div class="header-container">
             <div class="logo-container">
-                <a href="index.html" style="text-decoration:none"><img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" alt="logo mabss" class="logo"></a>
+                <a href="index.html" style="text-decoration:none"><img
+                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                        alt="logo mabss" class="logo"></a>
                 <h1 class="school-name">Mbarara Army Boarding<br> Secondary School</h1>
             </div>
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i>˜°</button>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
             <nav id="mainNav">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -481,7 +492,7 @@
     <!-- Welfare Services -->
     <section class="welfare-section">
         <h2 class="section-title">Our Welfare Services</h2>
-        
+
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-content">
@@ -497,7 +508,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="service-card">
                 <div class="service-content">
                     <h3>
@@ -515,7 +526,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="service-card">
                 <div class="service-content">
                     <h3>
@@ -539,11 +550,12 @@
     <!-- Policies -->
     <section class="policies-section">
         <h2 class="section-title">Welfare Policies</h2>
-        
+
         <div class="policies-container">
             <div class="policy-item">
                 <h3>Anti-Bullying Policy</h3>
-                <p>We maintain a zero-tolerance policy towards bullying in any form. Our anti-bullying measures include:</p>
+                <p>We maintain a zero-tolerance policy towards bullying in any form. Our anti-bullying measures include:
+                </p>
                 <ul>
                     <li>Clear reporting procedures</li>
                     <li>Education programs on bullying prevention</li>
@@ -551,7 +563,7 @@
                     <li>Restorative justice approaches</li>
                 </ul>
             </div>
-            
+
             <div class="policy-item">
                 <h3>Child Protection Policy</h3>
                 <p>We are committed to safeguarding all students with:</p>
@@ -562,7 +574,7 @@
                     <li>Confidential reporting mechanisms</li>
                 </ul>
             </div>
-            
+
             <div class="policy-item">
                 <h3>Discipline Policy</h3>
                 <p>Our discipline system focuses on positive behavior reinforcement with:</p>
@@ -596,17 +608,23 @@
                 <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
                 <p><strong>Email:</strong> mabss2014@gmail.com</p>
 
-                 <!-- Social Media Icons -->
+                <!-- Social Media Icons -->
                 <div class="social-media">
                     <h4 class="social-heading">Follow Us</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2004" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z"  target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"   target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
+                            class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2004" class="social-icon youtube" target="_blank"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i
+                                class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
+                            class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
+                            target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -624,13 +642,11 @@
 
     <script>
         // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('menuToggle').addEventListener('click', function () {
             const nav = document.getElementById('mainNav');
             nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
         });
     </script>
 </body>
+
 </html>
-
-
-
