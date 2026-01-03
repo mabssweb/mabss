@@ -1911,7 +1911,9 @@
                 // Since /api/news/latest gets 3, we might want to use /api/news?limit=6 instead
                 const response = await fetch('/api/news?limit=6');
                 if (!response.ok) {
-                    throw new Error('Failed to fetch news');
+                    const errText = await response.text();
+                    console.error('Server Error Details:', errText);
+                    throw new Error(`Failed to fetch news: ${response.status} ${response.statusText}`);
                 }
                 const data = await response.json();
 

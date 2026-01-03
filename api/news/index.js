@@ -20,6 +20,11 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
+  if (!process.env.DATABASE_URL) {
+    console.error("Configuration Error: DATABASE_URL is not set.");
+    return res.status(500).json({ error: "Server Configuration Error: DATABASE_URL is missing. Please check Vercel Environment Variables." });
+  }
+
   try {
     if (req.method === 'GET') {
       const page = parseInt(req.query.page) || 1;
