@@ -4,10 +4,20 @@ import { uploadToOCI } from '../_lib/oci.js';
 
 const { Pool } = pg;
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
-});
+let pool;
+
+function getPool() {
+  if (!pool) {
+    if (!process.env.DATABASE_URL) {
+      throw new Error("DATABASE_URL is missing from environment variables");
+    }
+    pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    });
+  }
+  return pool;
+}
 
 export const config = {
   api: { bodyParser: false },
@@ -31,10 +41,10 @@ export default async function handler(req, res) {
       const limit = parseInt(req.query.limit) || 6;
       const offset = (page - 1) * limit;
 
-      const countResult = await pool.query('SELECT COUNT(*) as total FROM news');
+      const countResult = await getPool().query('SELECT COUNT(*) as total FROM news');
       const total = parseInt(countResult.rows[0].total);
 
-      const result = await pool.query(`
+      const result = await getPool().query(`
         SELECT id, title, summary, featured_image_url, created_at
         FROM news ORDER BY created_at DESC LIMIT $1 OFFSET $2
       `, [limit, offset]);
@@ -75,7 +85,7 @@ export default async function handler(req, res) {
 
       const sanitizedContent = content.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
 
-      const result = await pool.query(`
+      const result = await getPool().query(`
         INSERT INTO news (title, summary, content, featured_image_url)
         VALUES ($1, $2, $3, $4) RETURNING id, title, summary, featured_image_url, created_at
       `, [title.trim(), summary.trim(), sanitizedContent, imageUrl]);

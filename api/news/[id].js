@@ -4,10 +4,20 @@ import { uploadToOCI, deleteFromOCI } from '../_lib/oci.js';
 
 const { Pool } = pg;
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
-});
+let pool;
+
+function getPool() {
+    if (!pool) {
+        if (!process.env.DATABASE_URL) {
+            throw new Error("DATABASE_URL is missing from environment variables");
+        }
+        pool = new Pool({
+            connectionString: process.env.DATABASE_URL,
+            ssl: { rejectUnauthorized: false }
+        });
+    }
+    return pool;
+}
 
 export const config = {
     api: { bodyParser: false },
@@ -34,7 +44,7 @@ export default async function handler(req, res) {
 
     try {
         if (req.method === 'GET') {
-            const result = await pool.query('SELECT * FROM news WHERE id = $1', [id]);
+            const result = await getPool().query('SELECT * FROM news WHERE id = $1', [id]);
             if (result.rows.length === 0) return res.status(404).json({ error: 'News article not found' });
 
             const item = result.rows[0];
@@ -49,13 +59,13 @@ export default async function handler(req, res) {
         }
         else if (req.method === 'DELETE') {
             // 1. Fetch the image URL before deleting
-            const getResult = await pool.query('SELECT featured_image_url FROM news WHERE id = $1', [id]);
+            const getResult = await getPool().query('SELECT featured_image_url FROM news WHERE id = $1', [id]);
             if (getResult.rowCount === 0) return res.status(404).json({ error: 'News article not found' });
 
             const oldImageUrl = getResult.rows[0].featured_image_url;
 
             // 2. Delete from database
-            await pool.query('DELETE FROM news WHERE id = $1', [id]);
+            await getPool().query('DELETE FROM news WHERE id = $1', [id]);
 
             // 3. Delete from OCI if exists
             if (oldImageUrl) {
@@ -83,7 +93,7 @@ export default async function handler(req, res) {
             }
 
             // Get current news to handle image update
-            const currentResult = await pool.query('SELECT featured_image_url FROM news WHERE id = $1', [id]);
+            const currentResult = await getPool().query('SELECT featured_image_url FROM news WHERE id = $1', [id]);
             if (currentResult.rowCount === 0) return res.status(404).json({ error: 'News article not found' });
 
             const oldImageUrl = currentResult.rows[0].featured_image_url;
@@ -104,7 +114,7 @@ export default async function handler(req, res) {
                 SET title = $1, summary = $2, content = $3, featured_image_url = $4
                 WHERE id = $5
             `;
-            await pool.query(query, [title.trim(), summary.trim(), content.trim(), finalImageUrl, id]);
+            await getPool().query(query, [title.trim(), summary.trim(), content.trim(), finalImageUrl, id]);
             res.status(200).json({ success: true, message: 'News article updated' });
         }
         else {
