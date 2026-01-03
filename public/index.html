@@ -362,7 +362,7 @@
 
         /* Swirls and decorative elements around text */
         .banner-text::after {
-            content: "âœ»";
+            content: "<i class="fas fa-bars"></i>œ»";
             position: absolute;
             top: -20px;
             right: -20px;
@@ -1739,7 +1739,7 @@
                 </div>
                 <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/4th_aojuc3.png"
                     class="division-logo" alt="Division Logo">
-                <button class="menu-toggle" id="menuToggle">â˜°</button>
+                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i>˜°</button>
             </div>
 
             <!-- Navigation Menu -->
@@ -2130,7 +2130,7 @@
                 for (let i = 0; i < 20; i++) {
                     const snowflake = document.createElement('div');
                     snowflake.classList.add('snowflake');
-                    snowflake.innerHTML = 'â„';
+                    snowflake.innerHTML = '<i class="fas fa-bars"></i>„';
                     snowflake.style.left = `${Math.random() * 100}%`;
                     snowflake.style.animationDuration = `${5 + Math.random() * 10}s`;
                     snowflake.style.animationDelay = `${Math.random() * 5}s`;
@@ -2201,7 +2201,7 @@
                 }, 10);
 
                 // Add a sparkle effect
-                const sparkles = ['âœ¨', 'ðŸŽ„', 'ðŸŽ', 'â­', 'â„'];
+                const sparkles = ['<i class="fas fa-bars"></i>œ¨', 'ðŸŽ„', 'ðŸŽ', '<i class="fas fa-bars"></i>­', '<i class="fas fa-bars"></i>„'];
                 for (let i = 0; i < 10; i++) {
                     const sparkle = document.createElement('span');
                     sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
