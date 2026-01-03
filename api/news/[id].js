@@ -1,6 +1,6 @@
 import pg from 'pg';
 import formidable from 'formidable';
-import { uploadToOCI } from '../_lib/oci.js';
+import { uploadToOCI, deleteFromOCI } from '../_lib/oci.js';
 
 const { Pool } = pg;
 
@@ -48,8 +48,20 @@ export default async function handler(req, res) {
             });
         }
         else if (req.method === 'DELETE') {
-            const result = await pool.query('DELETE FROM news WHERE id = $1 RETURNING id', [id]);
-            if (result.rowCount === 0) return res.status(404).json({ error: 'News article not found' });
+            // 1. Fetch the image URL before deleting
+            const getResult = await pool.query('SELECT featured_image_url FROM news WHERE id = $1', [id]);
+            if (getResult.rowCount === 0) return res.status(404).json({ error: 'News article not found' });
+
+            const oldImageUrl = getResult.rows[0].featured_image_url;
+
+            // 2. Delete from database
+            await pool.query('DELETE FROM news WHERE id = $1', [id]);
+
+            // 3. Delete from OCI if exists
+            if (oldImageUrl) {
+                await deleteFromOCI(oldImageUrl);
+            }
+
             res.status(200).json({ success: true, message: 'News article deleted' });
         }
         else if (req.method === 'PUT') {
@@ -70,22 +82,29 @@ export default async function handler(req, res) {
                 return res.status(400).json({ error: 'Title, summary, and content are required' });
             }
 
-            // Get current news to keep old image if no new one is uploaded
+            // Get current news to handle image update
             const currentResult = await pool.query('SELECT featured_image_url FROM news WHERE id = $1', [id]);
             if (currentResult.rowCount === 0) return res.status(404).json({ error: 'News article not found' });
 
-            let imageUrl = currentResult.rows[0].featured_image_url;
+            const oldImageUrl = currentResult.rows[0].featured_image_url;
+            let finalImageUrl = oldImageUrl;
+
             if (imageFile) {
-                imageUrl = await uploadToOCI(imageFile);
+                // Upload new image
+                finalImageUrl = await uploadToOCI(imageFile);
+
+                // Clean up old image if different
+                if (oldImageUrl && oldImageUrl !== finalImageUrl) {
+                    await deleteFromOCI(oldImageUrl);
+                }
             }
 
             const query = `
                 UPDATE news 
                 SET title = $1, summary = $2, content = $3, featured_image_url = $4
                 WHERE id = $5
-                RETURNING id
             `;
-            const result = await pool.query(query, [title.trim(), summary.trim(), content.trim(), imageUrl, id]);
+            await pool.query(query, [title.trim(), summary.trim(), content.trim(), finalImageUrl, id]);
             res.status(200).json({ success: true, message: 'News article updated' });
         }
         else {

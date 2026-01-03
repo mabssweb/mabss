@@ -355,13 +355,15 @@
     <header class="header">
         <div class="header-container">
             <div class="logo-container">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
-                    alt="MABSS Logo" class="helo">
+                <a href="index.html" style="text-decoration:none">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                        alt="MABSS Logo" class="helo">
+                </a>
                 <h1 class="school-name">MABSS Admin</h1>
             </div>
             <nav class="nav-menu">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                     <li class="nav-item" id="logout-item" style="display: none;">
                         <button onclick="logout()" class="logout-btn">Logout</button>
                     </li>
@@ -428,11 +430,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Featured Image</label>
+                        <label class="form-label">Featured Image (Optional)</label>
                         <div class="image-upload" id="upload-zone"
                             onclick="document.getElementById('image-input').click()">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <p id="upload-status">Click to upload image (JPG, PNG, WebP. Max 5MB)</p>
+                            <p id="upload-status">Click to upload image (Optional. JPG, PNG, WebP. Max 5MB)</p>
                             <input type="file" id="image-input" name="image" accept="image/jpeg,image/png,image/webp"
                                 style="display: none;">
                         </div>

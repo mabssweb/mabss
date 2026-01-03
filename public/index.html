@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-UG">
 
 <head>
@@ -362,7 +362,7 @@
 
         /* Swirls and decorative elements around text */
         .banner-text::after {
-            content: "✻";
+            content: "âœ»";
             position: absolute;
             top: -20px;
             right: -20px;
@@ -1731,19 +1731,21 @@
         <div class="header-container">
             <div class="logo-container">
                 <div class="logo-wrapper">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
-                        alt="MABSS Logo" class="helo" id="schoolLogo">
+                    <a href="index.html" style="text-decoration:none">
+                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                            alt="MABSS Logo" class="helo" id="schoolLogo">
+                    </a>
                     <h1 class="school-name">MABSS</h1>
                 </div>
                 <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/4th_aojuc3.png"
                     class="division-logo" alt="Division Logo">
-                <button class="menu-toggle" id="menuToggle">☰</button>
+                <button class="menu-toggle" id="menuToggle">â˜°</button>
             </div>
 
             <!-- Navigation Menu -->
             <nav class="nav-menu" id="mainNav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
                     <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
                     <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
@@ -1786,41 +1788,19 @@
 
     <!-- Button Section -->
     <div class="button-section">
-        <a href="homepage.html" class="learn-button">Learn More</a>
+        <a href="index.html" class="learn-button">Learn More</a>
     </div>
 
     <!-- NOTICEBOARD Section -->
     <section class="noticeboard-section">
         <h2 class="section-title">NOTICEBOARD</h2>
 
-        <div class="noticeboard-container">
-            <div class="notice-card">
-                <div class="notice-date">February 02nd, 2026</div>
-                <h3 class="notice-title">First Term begins</h3>
-                <p class="notice-content">This is to notify the entire MABSS community that the First Term of the 2026
-                    academic year will commence on 2nd February 2026. We encourage all students to arrive promptly and
-                    ready for learning as we continue our commitment to academic excellence.</p>
-            </div>
-
-            <div class="notice-card">
-                <div class="notice-date">March 28th, 2026</div>
-                <h3 class="notice-title">PTA AGM Meeting & Vistation Day</h3>
-                <p class="notice-content">MABSS will host its PTA Annual General Meeting and Visitation Day on March
-                    28th, 2026. This event is vital for sharing ideas, addressing key school matters, and reinforcing
-                    parent-teacher partnerships. All parents and guardians are requested to attend and contribute
-                    positively.</p>
+        <div id="latest-news-container" class="noticeboard-container">
+            <div style="text-align: center; width: 100%;">
+                <p>Loading updates...</p>
             </div>
         </div>
-    </section>
 
-    <!-- News Section -->
-    <section class="news-section">
-        <h2 class="section-title">Latest Updates</h2>
-        <div id="latest-news-container" class="news-grid">
-            <div class="news-card" style="grid-column: 1 / -1; text-align: center; padding: 20px;">
-                <p>Loading news...</p>
-            </div>
-        </div>
         <div class="button-section">
             <a href="news.html" class="learn-button">View All News</a>
         </div>
@@ -1874,7 +1854,7 @@
             <div class="footer-section">
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-list">
-                    <li class="footer-item"><a href="homepage.html" class="footer-link">Home</a></li>
+                    <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
                     <li class="footer-item"><a href="login.html" class="footer-link">Academics</a></li>
                     <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
                     <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
@@ -2148,7 +2128,7 @@
                 for (let i = 0; i < 20; i++) {
                     const snowflake = document.createElement('div');
                     snowflake.classList.add('snowflake');
-                    snowflake.innerHTML = '❄';
+                    snowflake.innerHTML = 'â„';
                     snowflake.style.left = `${Math.random() * 100}%`;
                     snowflake.style.animationDuration = `${5 + Math.random() * 10}s`;
                     snowflake.style.animationDelay = `${Math.random() * 5}s`;
@@ -2219,7 +2199,7 @@
                 }, 10);
 
                 // Add a sparkle effect
-                const sparkles = ['✨', '🎄', '🎁', '⭐', '❄'];
+                const sparkles = ['âœ¨', 'ðŸŽ„', 'ðŸŽ', 'â­', 'â„'];
                 for (let i = 0; i < 10; i++) {
                     const sparkle = document.createElement('span');
                     sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
