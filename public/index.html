@@ -1948,8 +1948,8 @@
 
         function createNewsCard(news) {
             return `
-                <div class="news-card">
-                    <img src="${news.image || '/placeholder-news.png'}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">
+                <div class="news-card ${!news.image ? 'no-image' : ''}">
+                    ${news.image ? `<img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">` : ''}
                     <div class="news-content">
                         <h3 class="news-title">${news.title}</h3>
                         <p class="news-summary">${news.summary}</p>

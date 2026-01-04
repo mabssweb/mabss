@@ -468,7 +468,7 @@
 <body>
     <header class="header">
         <div class="header-container">
-            <a href="/" class="logo-container">
+            <a href="index.html" class="logo-container">
                 <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
                     alt="MABSS Logo" class="helo">
                 <span class="school-name">MABSS</span>
@@ -478,7 +478,7 @@
             </button>
             <nav class="nav-menu" id="mainNav">
                 <ul class="nav-list">
-                    <li><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="sports.html" class="nav-link">Sports</a></li>
                     <li><a href="welfare.html" class="nav-link">Welfare</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
@@ -514,7 +514,7 @@
             <div>
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="login.html">Academics</a></li>
                     <li><a href="sports.html">Co-curricular</a></li>
                     <li><a href="contacts.html">Get in Touch</a></li>
@@ -590,11 +590,13 @@
             }
 
             grid.innerHTML = newsItems.map(news => `
-                <article class="news-card">
+                <article class="news-card ${!news.image ? 'no-image' : ''}">
+                    ${news.image ? `
                     <div class="news-image-wrapper">
                         <span class="category-tag">Update</span>
-                        <img src="${news.image || '/placeholder-news.png'}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">
+                        <img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">
                     </div>
+                    ` : ''}
                     <div class="news-content">
                         <div class="news-meta">
                             <span><i class="far fa-calendar"></i> ${formatDate(news.date)}</span>
