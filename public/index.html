@@ -681,6 +681,202 @@
         .learn-button:hover {
             background-color: #004d33;
         }
+        /* Toast Notification - Compact Right Center */
+.toast-container {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    right: 20px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.toast {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    padding: 16px;
+    width: 320px;
+    position: relative;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: all;
+    border-left: 4px solid #d4af37;
+}
+
+.toast.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #1a365d 0%, #2d4a8a 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(26, 54, 93, 0.2);
+}
+
+.toast-content {
+    margin-left: 12px;
+    flex: 1;
+}
+
+.toast-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.toast-title {
+    color: #1a365d;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.toast-subtitle {
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.toast-message {
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.toast-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 300;
+    transition: all 0.2s ease;
+    line-height: 1;
+    padding: 0;
+}
+
+.toast-close:hover {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.toast-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.toast-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.btn-download {
+    background: linear-gradient(135deg, #d4af37 0%, #f7d154 100%);
+    color: #1a365d;
+    box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
+}
+
+.btn-download:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(212, 175, 55, 0.25);
+}
+
+.btn-close {
+    background: #f1f5f9;
+    color: #64748b;
+    min-width: 60px;
+}
+
+.btn-close:hover {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .toast-container {
+        right: 10px;
+        left: 10px;
+        justify-content: center;
+        align-items: flex-end;
+        padding-bottom: 20px;
+    }
+    
+    .toast {
+        width: 100%;
+        max-width: 400px;
+        transform: translateY(100%);
+        border-left: none;
+        border-top: 4px solid #d4af37;
+    }
+    
+    .toast.visible {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .toast {
+        padding: 14px;
+        max-width: 100%;
+    }
+    
+    .toast-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+    
+    .toast-title {
+        font-size: 14px;
+    }
+    
+    .toast-message {
+        font-size: 12px;
+    }
+    
+    .toast-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
 
         /* NOTICEBOARD Section */
         .noticeboard-section {
@@ -1792,6 +1988,38 @@
         </div>
     </section>
 
+    <!-- Compact Toast Notification -->
+<div class="toast-container">
+    <div class="toast" id="admissionToast">
+        <button class="toast-close" id="toastClose">×</button>
+        
+        <div class="toast-header">
+            <div class="toast-icon">
+                <span>📘</span>
+            </div>
+            <div class="toast-content">
+                <div class="toast-title">
+                    <span>🎓</span>
+                    2026 Admissions <br>Now Open
+                </div>
+                <div class="toast-subtitle">Download Now</div>
+            </div>
+        </div>
+        
+        <p class="toast-message">Get the latest information about admission .</p>
+        
+        <div class="toast-actions">
+            <a href="leaflet/Admision leaflet .html" class="toast-btn btn-download" id="downloadBtn">
+                View
+            </a>
+            <button class="toast-btn btn-close" id="closeBtn">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+
+
     <!-- Counter Section -->
     <section class="counter-section">
         <div class="counter-container">
@@ -2276,6 +2504,120 @@
             }
         }
     </script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Franklin Amwine",
+            "jobTitle": "Web Developer",
+            "telephone": "+256200928601",
+            "url": "https://www.mabss.ac.ug",
+            "sameAs": [
+
+            ],
+            "worksFor": {
+                "@type": "Organization",
+                "name": "MBARARA ARMY BOARDING SECONDARY SCHOOL"
+            }
+        }
+    </script>
+    <!-- Add this JavaScript right before closing </body> tag -->
+<script>
+// Compact Toast Notification
+class ToastNotification {
+    constructor() {
+        this.toast = document.getElementById('admissionToast');
+        this.closeBtn = document.getElementById('closeBtn');
+        this.toastClose = document.getElementById('toastClose');
+        
+        this.isVisible = false;
+        this.autoHideTimeout = null;
+        this.scrollTimeout = null;
+        this.lastScrollPosition = 0;
+        this.hasBeenClosed = false;
+        
+        this.init();
+    }
+    
+    init() {
+        // Show toast after 1 second
+        setTimeout(() => this.show(), 1000);
+        
+        // Event listeners
+        this.closeBtn.addEventListener('click', () => this.hide());
+        this.toastClose.addEventListener('click', () => this.hide());
+        
+        // Scroll listener
+        let scrollThrottle;
+        window.addEventListener('scroll', () => {
+            if (!scrollThrottle) {
+                scrollThrottle = setTimeout(() => {
+                    this.handleScroll();
+                    scrollThrottle = null;
+                }, 100);
+            }
+        });
+    }
+    
+    show() {
+        if (this.isVisible || this.hasBeenClosed) return;
+        
+        this.toast.classList.add('visible');
+        this.isVisible = true;
+        
+        // Auto-hide after 5 seconds
+        this.autoHideTimeout = setTimeout(() => {
+            if (this.isVisible) this.hide();
+        }, 5000);
+    }
+    
+    hide() {
+        if (!this.isVisible) return;
+        
+        this.toast.classList.remove('visible');
+        this.isVisible = false;
+        this.hasBeenClosed = true;
+        
+        if (this.autoHideTimeout) {
+            clearTimeout(this.autoHideTimeout);
+            this.autoHideTimeout = null;
+        }
+    }
+    
+    handleScroll() {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Show toast when scrolling down after it was hidden
+        if (!this.isVisible && !this.hasBeenClosed && 
+            currentScroll > this.lastScrollPosition &&
+            currentScroll - this.lastScrollPosition > 20) {
+            
+            // Show with delay
+            setTimeout(() => {
+                if (!this.isVisible && !this.hasBeenClosed) {
+                    this.show();
+                    
+                    // Reset auto-hide
+                    if (this.autoHideTimeout) {
+                        clearTimeout(this.autoHideTimeout);
+                    }
+                    this.autoHideTimeout = setTimeout(() => this.hide(), 5000);
+                }
+            }, 300);
+        }
+        
+        this.lastScrollPosition = currentScroll;
+    }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    new ToastNotification();
+});
+</script>
+
 </body>
+
 
 </html>
