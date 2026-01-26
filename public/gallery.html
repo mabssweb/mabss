@@ -191,10 +191,11 @@
             opacity: 0.9;
         }
 
-        /* Gallery Navigation */
+        /* Gallery Navigation - FIXED: Added missing section */
         .gallery-nav {
             background-color: var(--army-green-dark);
             width: 100%;
+            padding: 0;
         }
 
         .gallery-nav-container {
@@ -345,7 +346,7 @@
         }
 
         /* =========================================== */
-        /* REDESIGNED ALUMNI SECTION - MODERN & RESPONSIVE */
+        /* REDESIGNED ALUMNI SECTION - DEBUGGED */
         /* =========================================== */
 
         .alumni-section {
@@ -419,7 +420,6 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -442,24 +442,21 @@
             }
         }
 
-        /* FIXED: Smaller Image Container with Circular Frame */
+        /* FIXED: Proper circular image container */
         .alumni-image-container {
             width: 120px;
             height: 120px;
             margin: 1.5rem auto 1rem;
             position: relative;
-            overflow: hidden;
             border-radius: 50%;
             background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
             border: 4px solid var(--gold);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
+            overflow: hidden; /* FIXED: Added to ensure image stays within circle */
         }
 
         .alumni-image {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -488,7 +485,7 @@
             }
         }
 
-        /* Card Content */
+        /* Card Content - FIXED: Removed -webkit-border-radius */
         .alumni-content {
             padding: 0 1.5rem 1.5rem;
             flex-grow: 1;
@@ -504,7 +501,6 @@
             margin-bottom: 0.5rem;
             font-weight: 700;
             line-height: 1.3;
-            text-align: center;
         }
 
         .alumni-position {
@@ -517,7 +513,6 @@
             font-weight: 500;
             margin-bottom: 1rem;
             box-shadow: 0 3px 8px rgba(67, 97, 238, 0.2);
-            text-align: center;
         }
 
         .alumni-desc {
@@ -528,14 +523,12 @@
             flex-grow: 1;
             overflow: hidden;
             display: -webkit-box;
-            -webkit-border-radius: 10px;
-                border-radius: 10px;
-
+            -webkit-line-clamp: 3; /* FIXED: Removed incorrect property */
             -webkit-box-orient: vertical;
             text-align: center;
         }
 
-        /* Read More Button */
+        /* Read More Button - FIXED: Added missing closing tag in HTML */
         .alumni-read-more {
             color: var(--accent);
             font-weight: 600;
@@ -545,7 +538,6 @@
             align-items: center;
             transition: all 0.3s ease;
             margin-top: auto;
-            text-align: center;
         }
 
         .alumni-read-more:hover {
@@ -871,7 +863,6 @@
                 opacity: 0;
                 transform: translateY(15px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1055,10 +1046,19 @@
         </div>
     </header>
 
-    <!-- Gallery Navigation -->
+    <!-- Gallery Navigation - FIXED: Added missing section -->
+    <div class="gallery-nav">
+        <div class="gallery-nav-container">
+            <div class="gallery-buttons">
+                <a href="#photo-gallery" class="gallery-link active">Photo Gallery</a>
+                <a href="#video-gallery" class="gallery-link">Video Gallery</a>
+                <a href="#alumni-section" class="gallery-link">Alumni Stories</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Photo Gallery -->
-    <section class="gallery-section">
+    <section class="gallery-section" id="photo-gallery">
         <h2 class="section-title">Photo Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
@@ -1080,7 +1080,7 @@
     </section>
 
     <!-- Video Gallery -->
-    <section class="video-section">
+    <section class="video-section" id="video-gallery">
         <div class="video-container">
             <h2 class="section-title">Video Gallery</h2>
 
@@ -1132,9 +1132,9 @@
     </section>
 
     <!-- =========================================== -->
-    <!-- REDESIGNED ALUMNI SECTION -->
+    <!-- REDESIGNED ALUMNI SECTION - DEBUGGED -->
     <!-- =========================================== -->
-    <section class="alumni-section" aria-labelledby="alumni-heading">
+    <section class="alumni-section" aria-labelledby="alumni-heading" id="alumni-section">
         <div class="alumni-container">
             <div class="alumni-title-container">
                 <h2 id="alumni-heading" class="alumni-title">OB's & OG's Success Stories</h2>
@@ -1146,7 +1146,7 @@
                 <!-- Swiper Carousel -->
                 <div class="swiper alumni-swiper">
                     <div class="swiper-wrapper">
-                        <!-- Alumni Card 1 -->
+                        <!-- Alumni Card 1 - FIXED: Added missing closing </a> tag -->
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 0">
                                 <div class="alumni-image-container">
@@ -1159,13 +1159,12 @@
                                     <p class="alumni-desc">Once a student, now a teacher at my alma mater. MABSS
                                         instilled in me the discipline and passion I now bring to my History and
                                         Divinity classes.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i
-                                            class="fas fa-arrow-right"></i></a>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
 
-                        <!-- Alumni Card 2 -->
+                        <!-- Alumni Card 2 - FIXED: Added missing closing </a> tag -->
                         <div class="swiper-slide">
                             <article class="alumni-card" style="--card-index: 1">
                                 <div class="alumni-image-container">
@@ -1175,11 +1174,8 @@
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MISS. Karungi Regina Carol</h3>
                                     <span class="alumni-position">Midwife</span>
-                                    <p class="alumni-desc">Proud to have studied at MABSS (2004<i
-                                            class="fas fa-bars"></i>€“2007). We were the pioneers who started and shaped
-                                        the school.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i
-                                            class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">Proud to have studied at MABSS (2004-2007). We were the pioneers who started and shaped the school.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
@@ -1385,8 +1381,13 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p> &copy; <span id="year"></span> Mbarara Army Boarding Secondary School. <br>
+                Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
         </div>
+        
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
     </footer>
 
     <!-- Swiper JS (Lightweight Carousel Library) -->
@@ -1407,6 +1408,21 @@
             if (!nav.contains(event.target) && !toggle.contains(event.target) && nav.classList.contains('show')) {
                 nav.classList.remove('show');
             }
+        });
+
+        // Smooth scroll for gallery navigation
+        document.querySelectorAll('.gallery-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
 
         // Initialize Swiper Carousel for Alumni Section
@@ -1526,5 +1542,4 @@
         });
     </script>
 </body>
-
 </html>

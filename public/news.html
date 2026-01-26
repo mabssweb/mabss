@@ -529,10 +529,16 @@
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+       <div class="footer-bottom">
+            <p> &copy; <span id="year"></span> Mbarara Army Boarding Secondary School. <br>
+    Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
         </div>
+        
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
     </footer>
+
 
     <script>
         const NEWS_PER_PAGE = 6;
