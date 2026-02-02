@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login Portal - Mbarara Army Boarding Secondary School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --army-green: #1a5f23;
+            --army-green-light: #2a7d32;
+            --army-green-dark: #0f4a17;
+            --gold-accent: #d4af37;
+            --gold-light: #e6c158;
+            --soft-green: #4caf50;
+            --white: #ffffff;
+            --gray-light: #f7faf7;
+            --gray-border: #d1e7d1;
+            --gray-text: #5a725a;
+            --shadow: 0 4px 12px rgba(26, 95, 35, 0.1);
+            --shadow-soft: 0 2px 8px rgba(26, 95, 35, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f7f0 0%, #e8f5e9 100%);
+            color: var(--army-green-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        
+        .login-container {
+            width: 100%;
+            max-width: 460px;
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--gray-border);
+        }
+        
+        .login-header {
+            padding: 36px 36px 20px;
+            text-align: center;
+            background: linear-gradient(to right, var(--army-green), var(--army-green-light));
+            color: white;
+            position: relative;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="rgba(255,255,255,0.05)" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .logo-container {
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo-img {
+            max-height: 85px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+        
+        .logo-fallback {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .school-name-fallback {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .school-motto-fallback {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-style: italic;
+        }
+        
+        .login-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .login-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+        
+        .login-form {
+            padding: 36px;
+        }
+        
+        .form-group {
+            margin-bottom: 26px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--army-green);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-label i {
+            margin-right: 8px;
+            color: var(--gold-accent);
+        }
+        
+        .input-wrapper {
+            position: relative;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px 18px;
+            border: 2px solid var(--gray-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            color: var(--army-green-dark);
+            transition: all 0.3s;
+            background-color: var(--white);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--army-green-light);
+            box-shadow: 0 0 0 3px rgba(42, 125, 50, 0.15);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray-text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .password-toggle:hover {
+            color: var(--army-green);
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(to right, var(--army-green), var(--army-green-light));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+        
+        .login-button:hover {
+            background: linear-gradient(to right, var(--army-green-light), var(--soft-green));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(42, 125, 50, 0.25);
+        }
+        
+        .login-button:active {
+            transform: translateY(0);
+        }
+        
+        .login-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42, 125, 50, 0.3);
+        }
+        
+        .login-button:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .login-button:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        .divider-line {
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gray-border), transparent);
+        }
+        
+        .divider-text {
+            padding: 0 18px;
+            color: var(--gray-text);
+            font-size: 0.95rem;
+            font-weight: 500;
+            background-color: white;
+            z-index: 1;
+        }
+        
+        .google-button {
+            width: 100%;
+            padding: 16px 18px;
+            background-color: white;
+            border: 2px solid var(--gray-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--army-green);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+        
+        .google-button:hover {
+            background-color: #f8fff8;
+            border-color: var(--army-green-light);
+            transform: translateY(-1px);
+        }
+        
+        .google-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42, 125, 50, 0.15);
+        }
+        
+        .google-icon {
+            width: 22px;
+            height: 22px;
+            margin-right: 14px;
+        }
+        
+        .security-notice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            background: linear-gradient(to right, #f0fff0, #e8f5e9);
+            border-radius: 10px;
+            margin-top: 26px;
+            font-size: 0.9rem;
+            color: var(--army-green);
+            border-left: 5px solid var(--gold-accent);
+        }
+        
+        .security-icon {
+            color: var(--army-green);
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .whatsapp-section {
+            margin-top: 24px;
+            background-color: #f7fff7;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #e0f7e0;
+        }
+        
+        .whatsapp-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--army-green);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .whatsapp-title i {
+            color: #25D366;
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .whatsapp-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background-color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--army-green);
+            border: 2px solid #e0f7e0;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #f0fff0;
+            border-color: #25D366;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.15);
+        }
+        
+        .whatsapp-icon {
+            background-color: #25D366;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        .whatsapp-info {
+            flex: 1;
+        }
+        
+        .whatsapp-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        
+        .whatsapp-number {
+            font-size: 0.95rem;
+            color: var(--gray-text);
+            font-weight: 500;
+        }
+        
+        .whatsapp-description {
+            font-size: 0.85rem;
+            color: var(--army-green-light);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        
+        .whatsapp-action {
+            color: var(--gold-accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 22px 36px;
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--gray-border);
+            background-color: #f8fff8;
+        }
+        
+        .footer-link {
+            color: var(--army-green-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
+            color: var(--army-green);
+        }
+        
+        @media (max-width: 500px) {
+            .login-container {
+                border-radius: 12px;
+            }
+            
+            .login-header, .login-form {
+                padding: 28px;
+            }
+            
+            .logo-img {
+                max-height: 75px;
+            }
+            
+            .school-name-fallback {
+                font-size: 1.6rem;
+            }
+            
+            .login-title {
+                font-size: 1.4rem;
+            }
+            
+            .whatsapp-buttons {
+                flex-direction: column;
+            }
+            
+            .footer {
+                padding: 20px 28px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .login-header, .login-form {
+                padding: 24px;
+            }
+            
+            .logo-img {
+                max-height: 65px;
+            }
+            
+            .whatsapp-button {
+                padding: 14px;
+            }
+            
+            .whatsapp-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                margin-right: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="header-overlay"></div>
+            
+            <div class="logo-container">
+                <!-- MABSS Official Logo -->
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" 
+                     alt="MABSS Logo" 
+                     class="logo-img" 
+                     onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block';">
+                
+                <div id="logo-fallback" class="logo-fallback" style="display: none;">
+                    <div class="school-name-fallback">Mbarara Army Boarding Secondary School</div>
+                    <div class="school-motto-fallback">Excellence in Education & Discipline</div>
+                </div>
+            </div>
+            
+            <h1 class="login-title">MABSS ONLINE ADMISSIONS</h1>
+            <p class="login-subtitle">Secure access for registered MABSS students</p>
+        </div>
+        
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="email" class="form-label">
+                    <i class="fas fa-envelope"></i> Student Email Address
+                </label>
+                <div class="input-wrapper">
+                    <input type="email" id="email" class="form-input" placeholder="student.name@mabss.ac.ug" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="form-label">
+                    <i class="fas fa-lock"></i> Password
+                </label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                    <button type="button" class="password-toggle" id="togglePassword">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button type="submit" class="login-button">
+                <i class="fas fa-sign-in-alt"></i> LOGIN
+            </button>
+            
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-text">Alternative Login</div>
+                <div class="divider-line"></div>
+            </div>
+            
+            <button type="button" class="google-button" id="googleSignIn">
+                <!-- Official Google G logo with proper colors -->
+                <svg class="google-icon" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Sign in with Google
+            </button>
+            
+            <!-- WhatsApp Support Section -->
+            <div class="whatsapp-section">
+                <div class="whatsapp-title">
+                    <i class="fab fa-whatsapp"></i> Need Login Help? WhatsApp Support
+                </div>
+                
+                <div class="whatsapp-buttons">
+                    <a href="https://wa.me/256200928601?text=Hello%20MABSS%20Support%2C%20I%20need%20help%20with%20student%20portal%20login." 
+                       class="whatsapp-button" 
+                       target="_blank"
+                       id="whatsappPrimary">
+                        <div class="whatsapp-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="whatsapp-info">
+                            <div class="whatsapp-name">Primary IT Support</div>
+                            <div class="whatsapp-number"></div>
+                            <div class="whatsapp-description">For login assistance and technical issues</div>
+                        </div>
+                        <div class="whatsapp-action">Chat Now →</div>
+                    </a>
+                    
+                    <a href="https://wa.me/256777930357?text=Hello%20MABSS%20Support%2C%20I%20need%20help%20with%20student%20portal%20login." 
+                       class="whatsapp-button" 
+                       target="_blank"
+                       id="whatsappSecondary">
+                        <div class="whatsapp-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="whatsapp-info">
+                            <div class="whatsapp-name">Secondary Support</div>
+                            <div class="whatsapp-number"></div>
+                            <div class="whatsapp-description">Alternative contact for <br>how to apply</div>
+                        </div>
+                        <div class="whatsapp-action">Chat Now →</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="security-notice">
+                <i class="fas fa-shield-alt security-icon"></i>
+                <span>Your data is encrypted and protected by MABSS</span>
+            </div>
+        </form>
+        
+        <div class="footer">
+            <p>© 2026 Mbarara Army Boarding Secondary School (MABSS). All rights reserved.</p>
+            <p>Visit our official website: <a href="https://www.mabss.ac.ug" class="footer-link" target="_blank">www.mabss.ac.ug</a></p>
+            <p style="margin-top: 8px; font-size: 0.85rem; color: var(--army-green-light);">
+                <i class="fas fa-phone-alt"></i> General Inquiries: Contact the school office at <br>+256 782 096231 | +256 782 371824 | +256 779 927775
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = togglePassword.querySelector('i');
+        
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            // Toggle eye icon
+            if (type === 'text') {
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+                this.style.backgroundColor = 'rgba(42, 125, 50, 0.1)';
+            } else {
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+                this.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+            }
+        });
+        
+        // Form submission (UI only, no backend logic)
+        const loginForm = document.getElementById('loginForm');
+        
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            
+            // Simple frontend validation
+            if (!email || !password) {
+                // Visual feedback for empty fields
+                const inputs = document.querySelectorAll('.form-input');
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        input.style.borderColor = '#d32f2f';
+                        input.style.boxShadow = '0 0 0 3px rgba(211, 47, 47, 0.1)';
+                        
+                        // Reset after 2 seconds
+                        setTimeout(() => {
+                            input.style.borderColor = '';
+                            input.style.boxShadow = '';
+                        }, 2000);
+                    }
+                });
+                
+                // Focus on first empty field
+                if (!email) {
+                    document.getElementById('email').focus();
+                } else {
+                    document.getElementById('password').focus();
+                }
+                return;
+            }
+            
+            // Validate email format (MABSS domain preferred but not required)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                const emailInput = document.getElementById('email');
+                emailInput.style.borderColor = '#d32f2f';
+                emailInput.style.boxShadow = '0 0 0 3px rgba(211, 47, 47, 0.1)';
+                
+                setTimeout(() => {
+                    emailInput.style.borderColor = '';
+                    emailInput.style.boxShadow = '';
+                }, 2000);
+                
+                emailInput.focus();
+                return;
+            }
+            
+            // Check if it's a MABSS email (optional)
+            const isMabssEmail = email.toLowerCase().endsWith('@mabss.ac.ug');
+            
+            // In a real implementation, this would send data to backend
+            // For UI purposes only, we'll show a brief visual feedback
+            const loginButton = document.querySelector('.login-button');
+            const originalHTML = loginButton.innerHTML;
+            const originalWidth = loginButton.offsetWidth;
+            
+            // Set fixed width to prevent button from resizing
+            loginButton.style.width = originalWidth + 'px';
+            loginButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+            loginButton.disabled = true;
+            loginButton.style.cursor = 'wait';
+            
+            // Simulate network request delay
+            setTimeout(() => {
+                // Reset button
+                loginButton.innerHTML = originalHTML;
+                loginButton.disabled = false;
+                loginButton.style.cursor = 'pointer';
+                loginButton.style.width = '';
+                
+                // Show success visual feedback
+                loginButton.style.background = 'linear-gradient(to right, #2a7d32, #388e3c)';
+                loginButton.innerHTML = '<i class="fas fa-check-circle"></i> Login Successful!';
+                
+                // In production, redirect or show success message
+                console.log('Login attempt with:', { 
+                    email, 
+                    isMabssEmail, 
+                    passwordLength: password.length 
+                });
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    loginButton.style.background = '';
+                    loginButton.innerHTML = originalHTML;
+                }, 2000);
+            }, 1800);
+        });
+        
+        // Google sign-in button (UI only)
+        const googleSignIn = document.getElementById('googleSignIn');
+        
+        googleSignIn.addEventListener('click', function() {
+            // In a real implementation, this would trigger OAuth flow
+            // For UI purposes, we show visual feedback
+            const originalHTML = googleSignIn.innerHTML;
+            googleSignIn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting to Google...';
+            googleSignIn.disabled = true;
+            
+            // Simulate redirect delay
+            setTimeout(() => {
+                googleSignIn.innerHTML = originalHTML;
+                googleSignIn.disabled = false;
+                
+                // In production, redirect to Google OAuth
+                console.log('Google OAuth flow would initiate in production');
+                
+                // Visual feedback
+                googleSignIn.style.borderColor = '#2a7d32';
+                googleSignIn.style.color = '#2a7d32';
+                googleSignIn.style.backgroundColor = '#f0fff0';
+                
+                setTimeout(() => {
+                    googleSignIn.style.borderColor = '';
+                    googleSignIn.style.color = '';
+                    googleSignIn.style.backgroundColor = '';
+                }, 1500);
+            }, 1500);
+        });
+        
+        // Focus state improvements for accessibility
+        const inputs = document.querySelectorAll('.form-input, .login-button, .google-button, .whatsapp-button');
+        
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.outline = '3px solid rgba(42, 125, 50, 0.5)';
+                this.style.outlineOffset = '2px';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.outline = 'none';
+            });
+        });
+        
+        // Handle logo loading error
+        const logoImg = document.querySelector('.logo-img');
+        logoImg.addEventListener('error', function() {
+            const fallback = document.getElementById('logo-fallback');
+            if (fallback) {
+                fallback.style.display = 'block';
+            }
+        });
+        
+        // WhatsApp button click tracking
+        const whatsappButtons = document.querySelectorAll('.whatsapp-button');
+        whatsappButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const buttonType = this.id === 'whatsappPrimary' ? 'Primary' : 'Secondary';
+                console.log(`WhatsApp ${buttonType} support clicked`);
+                
+                // In production, you might want to track this event in analytics
+                // Example: trackEvent('whatsapp_support_click', { type: buttonType });
+            });
+        });
+        
+        // Success console message
+        console.log('%c MABSS Student Login Portal', 'color: #1a5f23; font-size: 16px; font-weight: bold;');
+        console.log('%c WhatsApp Support Integrated:', 'color: #25D366; font-weight: bold;');
+        console.log('1. Primary: +256 200 928601');
+        console.log('2. Secondary: +256 777 930357');
+        console.log('%c Ready for production deployment', 'color: #2a7d32; font-weight: bold;');
+    </script>
+</body>
+</html>
