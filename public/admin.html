@@ -415,6 +415,74 @@
                 font-size: 1rem;
             }
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: black;
+        }
+
+        .detail-row {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            width: 200px;
+            color: #006400;
+        }
+
+        .app-status {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .status-pending {
+            background: #ff9800;
+        }
+
+        .status-accepted {
+            background: #4caf50;
+        }
+
+        .status-rejected {
+            background: #f44336;
+        }
     </style>
 </head>
 
@@ -448,11 +516,20 @@
             <div id="login-error" class="error-message"></div>
             <form id="login-form">
                 <div class="form-group">
-                    <label class="form-label" for="password">Password</label>
-                    <input type="password" id="password" class="form-input" placeholder="Enter Admin Password" required>
+                    <label class="form-label" for="admin-password">Password</label>
+                    <input type="password" id="admin-password" class="form-input" placeholder="Enter Admin Password"
+                        required>
                 </div>
                 <button type="submit" class="submit-btn">Login</button>
             </form>
+            <div style="text-align: center; margin-top: 20px;">
+                <p>OR</p>
+                <a href="/api/auth/google-login?redirect=/admin.html" class="submit-btn"
+                    style="background: white; color: #333; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; gap: 10px; max-width: 250px; margin: 0 auto;">
+                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" style="width: 20px;">
+                    Login with Google
+                </a>
+            </div>
         </div>
     </section>
 
@@ -461,6 +538,7 @@
         <div class="tabs-container">
             <button class="tab-btn active" onclick="switchTab('add-news')">Add News</button>
             <button class="tab-btn" onclick="switchTab('manage-news')">Manage News</button>
+            <button class="tab-btn" onclick="switchTab('admissions')">Admissions</button>
         </div>
 
         <!-- Add News Section -->
@@ -541,17 +619,73 @@
                 </table>
             </div>
         </section>
+
+        <!-- Admissions Section -->
+        <section id="admissions-section" class="admin-section" style="display: none;">
+            <div class="admin-card">
+                <h2 class="admin-title">Admissions Management</h2>
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem;">
+                    <button class="submit-btn" style="width: auto; padding: 0.5rem 1rem;"
+                        onclick="loadApplications('all')">All</button>
+                    <button class="submit-btn" style="width: auto; padding: 0.5rem 1rem; background: #ff9800;"
+                        onclick="loadApplications('pending')">Pending</button>
+                    <button class="submit-btn" style="width: auto; padding: 0.5rem 1rem; background: #4caf50;"
+                        onclick="loadApplications('accepted')">Accepted</button>
+                </div>
+                <div id="loading-apps" style="text-align: center; display: none;">Loading Applications...</div>
+                <table class="news-table" id="apps-table">
+                    <thead>
+                        <tr>
+                            <th>App No</th>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="apps-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Application Detail Modal -->
+        <div id="appModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <h2 class="admin-title" style="margin-bottom: 1rem;">Application Details</h2>
+                <div id="modal-body"></div>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+                    <button id="approveBtn" class="submit-btn" style="width: auto; background: #4caf50;">Approve & Send
+                        Email</button>
+                    <button id="rejectBtn" class="submit-btn" style="width: auto; background: #f44336;">Reject</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
         // Check Auth Status on Load
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 1. Check Legacy Token
             const token = localStorage.getItem('adminToken');
             if (token) {
-                showDashboard();
-            } else {
-                showLogin();
+                return showDashboard();
             }
+
+            // 2. Check Session Cookie
+            try {
+                const res = await fetch('/api/auth/me');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.user && data.user.role === 'admin') {
+                        return showDashboard();
+                    }
+                }
+            } catch (e) {
+                console.log('Session check failed', e);
+            }
+
+            showLogin();
         });
 
         function showLogin() {
@@ -577,18 +711,28 @@
 
         // --- Tabs ---
         function switchTab(tabName) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if (tabName === 'add-news') document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
-            if (tabName === 'manage-news') document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
-
+            // Update Section Visibility
             if (tabName === 'add-news') {
                 document.getElementById('add-news-section').style.display = 'block';
                 document.getElementById('manage-news-section').style.display = 'none';
-            } else {
+                document.getElementById('admissions-section').style.display = 'none';
+            } else if (tabName === 'manage-news') {
                 document.getElementById('add-news-section').style.display = 'none';
                 document.getElementById('manage-news-section').style.display = 'block';
+                document.getElementById('admissions-section').style.display = 'none';
                 loadAllNews();
+            } else if (tabName === 'admissions') {
+                document.getElementById('add-news-section').style.display = 'none';
+                document.getElementById('manage-news-section').style.display = 'none';
+                document.getElementById('admissions-section').style.display = 'block';
+                loadApplications('all');
             }
+
+            // Update Tab Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if (tabName === 'add-news') document.querySelectorAll('.tab-btn')[0].classList.add('active');
+            if (tabName === 'manage-news') document.querySelectorAll('.tab-btn')[1].classList.add('active');
+            if (tabName === 'admissions') document.querySelectorAll('.tab-btn')[2].classList.add('active');
         }
 
         // --- Manage News ---
@@ -883,6 +1027,149 @@
             const nav = document.getElementById('mainNav');
             nav.classList.toggle('show');
         });
+        // --- Admissions Logic ---
+        async function loadApplications(status) {
+            const tableBody = document.getElementById('apps-table-body');
+            const loading = document.getElementById('loading-apps');
+
+            loading.style.display = 'block';
+            tableBody.innerHTML = '';
+
+            try {
+                const token = localStorage.getItem('adminToken');
+                const res = await fetch(`/api/admin/actions?status=${status || 'all'}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+
+                loading.style.display = 'none';
+
+                if (!data.applications || data.applications.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center">No applications found.</td></tr>';
+                    return;
+                }
+
+                tableBody.innerHTML = data.applications.map(app => `
+                    <tr>
+                        <td>${app.application_number}</td>
+                        <td>${app.surname} ${app.other_names}</td>
+                        <td>${app.class_applying}</td>
+                        <td><span class="app-status status-${app.status}">${app.status}</span></td>
+                        <td>
+                            <button class="action-btn edit-btn" onclick="viewApplication(${app.id})"><i class="fas fa-eye"></i></button>
+                        </td>
+                    </tr>
+                `).join('');
+
+            } catch (error) {
+                loading.textContent = 'Error loading data';
+                console.error(error);
+            }
+        }
+
+        let currentAppId = null;
+
+        async function viewApplication(id) {
+            currentAppId = id;
+            const modal = document.getElementById('appModal');
+            const body = document.getElementById('modal-body');
+            const token = localStorage.getItem('adminToken');
+
+            // For simplicity, we filter from the already loaded list or fetch single? 
+            // Let's refetch list or use global cache. 
+            // Easier: just make a GET call to list filtered by ID effectively or find in DOM?
+            // Cleanest: We'll just re-fetch the list logic or store data. 
+            // Actually, we can fetch all details via the List endpoint if it returns everything (it does).
+            // Let's just find it in the DOM or re-fetch.
+            // Let's re-fetch list is expensive. I'll rely on the table data for now? No, table data is minimal.
+            // I'll assume the list endpoint returned full details (it did: SELECT *).
+            // So I need to find the object in memory. 
+            // Optimally: Store in window.applicationsCache
+
+            // Quick fix: Re-fetch is safer for consistency.
+            // But we don't have a GET /api/admin/application/:id endpoint.
+            // We have GET /api/admin/actions which lists.
+            // I will store the last fetched applications in a global var.
+
+            // Implementing store:
+            // Fetch list again? Or just add global variable.
+            // Let's modify loadApplications to store data globally.
+            // For now, I will hack it by fetching "all" again inside here? No that's bad.
+            // I'll add `window.lastApps` in loadApplications.
+
+            // ACTUALLY, I will just iterate the rows? No.
+            // I'll update loadApplications to save to a variable.
+            // Since I can't easily modify loadApplications *and* this function in one go without duplicate code issues...
+            // I will modify loadApplications in the previous replacement chunk?
+            // No, I'll just do a hack: fetch all again. It's an admin dashboard, traffic is low.
+
+            try {
+                const res = await fetch(`/api/admin/actions?status=all&limit=1000`, { // Fetch all for lookup
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+                const app = data.applications.find(a => a.id == id);
+
+                if (!app) return alert('Application not found');
+
+                // Build Modal HTML
+                body.innerHTML = `
+                    <div class="detail-row"><div class="detail-label">Name:</div><div>${app.surname} ${app.other_names}</div></div>
+                    <div class="detail-row"><div class="detail-label">App Number:</div><div>${app.application_number}</div></div>
+                    <div class="detail-row"><div class="detail-label">Class:</div><div>${app.class_applying}</div></div>
+                    <div class="detail-row"><div class="detail-label">Previous School:</div><div>${app.former_school}</div></div>
+                    <div class="detail-row"><div class="detail-label">PLE Aggregates:</div><div>${app.total_aggregates} (Div ${app.division})</div></div>
+                    <div class="detail-row"><div class="detail-label">Parent:</div><div>${app.parent_category}</div></div>
+                    <div class="detail-row"><div class="detail-label">Contact:</div><div>${app.guardian_contact} (${app.guardian_name})</div></div>
+                    <div class="detail-row"><div class="detail-label">Status:</div><div>${app.status}</div></div>
+                    <br>
+                    <div style="display:flex; gap:10px;">
+                        ${app.documents ? app.documents.map(d => `<a href="${d.url}" target="_blank" class="submit-btn" style="width:auto; padding:5px 10px; font-size:0.8rem;">View ${d.type}</a>`).join('') : 'No documents'}
+                    </div>
+                `;
+
+                // Configure Buttons
+                document.getElementById('approveBtn').onclick = () => updateStatus(id, 'accepted');
+                document.getElementById('rejectBtn').onclick = () => updateStatus(id, 'rejected');
+
+                modal.style.display = 'block';
+            } catch (e) { console.error(e); }
+        }
+
+        function closeModal() {
+            document.getElementById('appModal').style.display = 'none';
+        }
+
+        async function updateStatus(id, status) {
+            if (!confirm(`Are you sure you want to mark this application as ${status}?`)) return;
+
+            const btn = status === 'accepted' ? document.getElementById('approveBtn') : document.getElementById('rejectBtn');
+            const original = btn.textContent;
+            btn.textContent = 'Processing...';
+            btn.disabled = true;
+
+            try {
+                const token = localStorage.getItem('adminToken');
+                const res = await fetch(`/api/admin/actions?id=${id}`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status })
+                });
+
+                if (res.ok) {
+                    alert(`Application ${status} successfully! Email sent.`);
+                    closeModal();
+                    loadApplications('all');
+                } else {
+                    alert('Failed to update status.');
+                }
+            } catch (e) {
+                alert('Error: ' + e.message);
+            } finally {
+                btn.textContent = original;
+                btn.disabled = false;
+            }
+        }
     </script>
 </body>
 

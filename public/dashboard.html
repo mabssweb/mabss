@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MABSS Learner Dashboard</title>
+    <!-- Reusing styles from admission/index.html but scoped/cleaned -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .dashboard-header {
+            background-color: #006400;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logout-btn {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background-color: #b71c1c;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Status Card Styles */
+        .status-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .status-header {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .status-pending {
+            background-color: #ff9800;
+        }
+
+        .status-accepted {
+            background-color: #4caf50;
+        }
+
+        .status-rejected {
+            background-color: #f44336;
+        }
+
+        .app-details {
+            text-align: left;
+            margin-top: 1.5rem;
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        /* Reuse Form Styles */
+        .form-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 100, 0, 0.15);
+            border: 2px solid #006400;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid #006400;
+        }
+
+        .section-title {
+            color: #006400;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .form-field {
+            flex: 1 1 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .radio-group {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .radio-option input {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 40px auto;
+            padding: 18px;
+            background-color: #006400;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #004d00;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="dashboard-header">
+        <h1>MABSS Dashboard</h1>
+        <div class="user-info">
+            <span id="user-name">Loading...</span>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    <div class="container" id="main-content">
+        <div style="text-align: center; margin-top: 50px;">
+            <h2>Loading your information...</h2>
+        </div>
+    </div>
+
+    <!-- Templates -->
+    <template id="status-pending-tpl">
+        <div class="status-card">
+            <div class="status-header">Application Status</div>
+            <div class="status-badge status-pending">Under Review</div>
+            <p>Your application has been received and is currently being reviewed by the administration.</p>
+            <p><strong>Application No:</strong> <span class="app-no"></span></p>
+            <div class="app-details">
+                <p><strong>Submitted on:</strong> <span class="app-date"></span></p>
+                <p>We will notify you via email once a decision has been made.</p>
+            </div>
+        </div>
+    </template>
+
+    <template id="status-accepted-tpl">
+        <div class="status-card">
+            <div class="status-header">Congratulations!</div>
+            <div class="status-badge status-accepted">Admitted</div>
+            <p>We are pleased to offer you admission to Mbarara Army Boarding Secondary School.</p>
+            <p><strong>Application No:</strong> <span class="app-no"></span></p>
+            <button class="submit-btn" onclick="alert('Admission Letter download coming soon!')">Download Admission
+                Letter</button>
+        </div>
+    </template>
+
+    <template id="status-rejected-tpl">
+        <div class="status-card">
+            <div class="status-header">Application Update</div>
+            <div class="status-badge status-rejected">Not Admitted</div>
+            <p>Thank you for your interest in MABSS. Unfortunately, we are unable to offer you admission at this time.
+            </p>
+        </div>
+    </template>
+
+    <template id="submission-form-tpl">
+        <div class="form-container">
+            <h2 style="text-align: center; color: #006400; margin-bottom: 2rem;">Admission Form 2026</h2>
+            <form id="admissionForm" onsubmit="submitApplication(event)">
+                <!-- Reuse the form fields structure here, simplified for brevity but matching DB schema -->
+                <div class="form-section">
+                    <div class="section-title">Personal Information</div>
+                    <div class="form-row">
+                        <div class="form-field"><label>Surname *</label><input type="text" name="surname" required>
+                        </div>
+                        <div class="form-field"><label>Other Names *</label><input type="text" name="other_names"
+                                required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field"><label>LIN *</label><input type="text" name="lin" required></div>
+                        <div class="form-field"><label>Date of Birth *</label><input type="date" name="dob" required>
+                        </div>
+                        <div class="form-field">
+                            <label>Sex *</label>
+                            <select name="sex" required>
+                                <option value="">Select</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Academic Details</div>
+                    <div class="form-row">
+                        <div class="form-field"><label>Class Applying For *</label><input type="text" name="class"
+                                placeholder="e.g. S.1" required></div>
+                        <div class="form-field"><label>Former School *</label><input type="text" name="former_school"
+                                required></div>
+                        <div class="form-field"><label>Age *</label><input type="number" name="age" required></div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Location & Origin</div>
+                    <div class="form-row">
+                        <div class="form-field"><label>Country *</label><input type="text" name="country" required>
+                        </div>
+                        <div class="form-field"><label>District *</label><input type="text" name="district" required>
+                        </div>
+                        <div class="form-field"><label>County *</label><input type="text" name="county" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field"><label>Parish *</label><input type="text" name="parish" required></div>
+                        <div class="form-field"><label>Village *</label><input type="text" name="village" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Category</div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>Parent Category *</label>
+                            <select name="parent_category" required>
+                                <option value="CIVILIAN'S CHILD">Civilian</option>
+                                <option value="SOLDIER'S CHILD">Soldier</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label>Admission Mode *</label>
+                            <select name="admission_mode" required>
+                                <option value="NEW(TRANSITIONAL)">New (Transitional)</option>
+                                <option value="NEW (TRANSFER)">New (Transfer)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>Day/Boarding *</label>
+                            <select name="boarding_status" required>
+                                <option value="BOARDER CIVILIAN">Boarder</option>
+                                <option value="DAY CIVILIAN">Day Scholar</option>
+                            </select>
+                        </div>
+                        <!-- Hidden Day Status field for simple mapping -->
+                        <input type="hidden" name="day_status" value="DAY CIVILIAN">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">PLE Results</div>
+                    <div class="form-row">
+                        <div class="form-field"><label>Year *</label><input type="number" name="ple_year" required>
+                        </div>
+                        <div class="form-field"><label>Index No *</label><input type="text" name="ple_index" required>
+                        </div>
+                        <div class="form-field"><label>Total Aggregates *</label><input type="text"
+                                name="total_aggregates" required></div>
+                        <div class="form-field"><label>Division *</label><input type="text" name="division" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field"><label>Eng Agg *</label><input type="text" name="english_agg" required>
+                        </div>
+                        <div class="form-field"><label>Math Agg *</label><input type="text" name="maths_agg" required>
+                        </div>
+                        <div class="form-field"><label>Sci Agg *</label><input type="text" name="science_agg" required>
+                        </div>
+                        <div class="form-field"><label>SST Agg *</label><input type="text" name="social_agg" required>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label>Attach PLE Slip (PDF/Image) *</label>
+                        <input type="file" name="ple_slip" accept=".pdf,.jpg,.png" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">UCE Results (Optional for S1)</div>
+                    <div class="form-row">
+                        <div class="form-field"><label>Year</label><input type="number" name="uce_year"></div>
+                        <div class="form-field"><label>Index No</label><input type="text" name="uce_index"></div>
+                    </div>
+                    <div class="form-field"><label>Results Summary</label><textarea name="uce_results"></textarea></div>
+                    <div class="form-field">
+                        <label>Attach UCE Slip (If applicable)</label>
+                        <input type="file" name="uce_slip" accept=".pdf,.jpg,.png">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Personal Needs</div>
+                    <div class="form-field"><label>Health Needs *</label><textarea name="health_needs"
+                            required></textarea></div>
+                    <div class="form-field"><label>Talents *</label><textarea name="talents" required></textarea></div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Parent/Guardian Info</div>
+                    <div class="form-row">
+                        <div class="form-field"><label>Father's Name</label><input type="text" name="father_name"></div>
+                        <div class="form-field"><label>Contact</label><input type="text" name="father_contact"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field"><label>Mother's Name</label><input type="text" name="mother_name"></div>
+                        <div class="form-field"><label>Contact</label><input type="text" name="mother_contact"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field"><label>Guardian's Name *</label><input type="text" name="guardian_name"
+                                required></div>
+                        <div class="form-field"><label>Contact *</label><input type="text" name="guardian_contact"
+                                required></div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <label><input type="checkbox" name="declaration" required> I certify that the information provided
+                        is true.</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </template>
+
+    <script>
+        // --- Auth & Init ---
+        let currentUser = null;
+
+        async function init() {
+            try {
+                // 1. Get User
+                const authRes = await fetch('/api/auth/me');
+                if (authRes.status === 401) {
+                    window.location.replace('login.html?redirect=dashboard.html');
+                    return;
+                }
+                const authData = await authRes.json();
+                currentUser = authData.user;
+                document.getElementById('user-name').textContent = currentUser.name || currentUser.email;
+
+                // 2. Get Application Status
+                const appRes = await fetch('/api/application/manage');
+                const appData = await appRes.json();
+
+                renderDashboard(appData);
+
+            } catch (error) {
+                console.error('Init Error:', error);
+                alert('Session expired or error occurred. Please login again.');
+                window.location.replace('login.html');
+            }
+        }
+
+        function renderDashboard(data) {
+            const container = document.getElementById('main-content');
+            container.innerHTML = '';
+
+            if (data.hasApplication) {
+                const app = data.application;
+                let tplId = 'status-pending-tpl';
+                if (app.status === 'accepted') tplId = 'status-accepted-tpl';
+                if (app.status === 'rejected') tplId = 'status-rejected-tpl';
+
+                const clone = document.getElementById(tplId).content.cloneNode(true);
+
+                // Populate details
+                const noEl = clone.querySelector('.app-no');
+                if (noEl) noEl.textContent = app.application_number;
+
+                const dateEl = clone.querySelector('.app-date');
+                if (dateEl) dateEl.textContent = new Date(app.created_at).toLocaleDateString();
+
+                container.appendChild(clone);
+            } else {
+                // Show Form
+                const clone = document.getElementById('submission-form-tpl').content.cloneNode(true);
+                container.appendChild(clone);
+            }
+        }
+
+        async function submitApplication(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Submitting...';
+            btn.disabled = true;
+
+            const formData = new FormData(e.target);
+
+            try {
+                const res = await fetch('/api/application/manage', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    alert('Application Submitted Successfully!');
+                    window.location.reload();
+                } else {
+                    alert('Error: ' + (data.error || 'Submission failed'));
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Network error. Please try again.');
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        function logout() {
+            // Call logout endpoint if exists, else just clear local state/redirect
+            fetch('/api/auth/logout', { method: 'POST' }).finally(() => {
+                window.location.href = 'index.html';
+            });
+        }
+
+        window.onload = init;
+    </script>
+</body>
+
+</html>
