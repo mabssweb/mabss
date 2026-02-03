@@ -55,9 +55,28 @@ export default async function handler(req, res) {
     const db = getPool();
 
     try {
-        // 2. GET: List Applications
+        // 2. GET: List Applications (or single application by ID)
         if (req.method === 'GET') {
-            const { status, limit = 50, page = 1 } = req.query;
+            const { id, status, limit = 50, page = 1 } = req.query;
+
+            // If ID is provided, fetch single application
+            if (id) {
+                const result = await db.query(
+                    `SELECT a.*, u.email as user_email
+                     FROM applications a
+                     JOIN users u ON a.user_id = u.id
+                     WHERE a.id = $1`,
+                    [id]
+                );
+
+                if (result.rows.length === 0) {
+                    return res.status(404).json({ error: 'Application not found' });
+                }
+
+                return res.status(200).json({ application: result.rows[0] });
+            }
+
+            // Otherwise, list all applications with filters
             const offset = (page - 1) * limit;
 
             let query = `

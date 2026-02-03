@@ -892,8 +892,8 @@
 
                 if (!res.ok) throw new Error('Failed to fetch application details');
 
-                const apps = await res.json();
-                const app = apps.applications?.find(a => a.id === id);
+                const data = await res.json();
+                const app = data.application; // API returns { application: {...} } when ID is provided
 
                 if (!app) throw new Error('Application not found');
 
