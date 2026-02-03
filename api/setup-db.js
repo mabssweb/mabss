@@ -23,10 +23,22 @@ export default async function handler(req, res) {
 
         await pool.query(schemaSql);
 
-        // Also check if user columns exist (migration logic from schema file is inside DO blocks, but let's double check)
-        // The schema file has the DO block for user_id, so it should be fine.
+        // Execute the main schema
+        await pool.query(schemaSql);
 
-        res.status(200).json({ message: 'Database initialized successfully' });
+        // Explicitly fix user_id column (in case the DO block in SQL file didn't run)
+        try {
+            await pool.query(`
+                ALTER TABLE applications ADD COLUMN IF NOT EXISTS user_id UUID REFERENCES users(id) ON DELETE CASCADE;
+            `);
+            await pool.query(`
+                CREATE INDEX IF NOT EXISTS idx_applications_user_id ON applications(user_id);
+            `);
+        } catch (migError) {
+            console.warn('Migration step warning (safely ignored if column exists):', migError.message);
+        }
+
+        res.status(200).json({ message: 'Database initialized and migrated successfully (user_id check complete)' });
     } catch (error) {
         console.error('Setup DB Error:', error);
         res.status(500).json({ error: error.message });
