@@ -78,7 +78,11 @@ export default async function handler(req, res) {
                 return res.status(400).json({ error: 'You have already submitted an application.' });
             }
 
-            const form = formidable({ multiples: true, maxFileSize: 10 * 1024 * 1024 }); // 10MB limit
+            const form = formidable({
+                multiples: true,
+                maxFileSize: 10 * 1024 * 1024, // 10MB limit
+                allowEmptyFiles: true // Allow optional file uploads
+            });
 
             const [fields, files] = await new Promise((resolve, reject) => {
                 form.parse(req, (err, fields, files) => {
