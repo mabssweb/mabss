@@ -143,27 +143,45 @@ export default async function handler(req, res) {
                 val('declaration') === 'on' || val('declaration') === 'true', new Date()
             ];
 
-            const appResult = await db.query(insertQuery, values);
-            const applicationId = appResult.rows[0].id;
+            // Insert Application
+            let applicationId;
+            try {
+                const appResult = await db.query(insertQuery, values);
+                applicationId = appResult.rows[0].id;
+            } catch (dbError) {
+                console.error('Database Insert Error:', dbError);
+                return res.status(500).json({ error: 'Database Error: ' + dbError.message });
+            }
 
             // Handle File Uploads (PLE Slip, UCE Slip, Guardian ID)
             const uploadDoc = async (fileKey, docType) => {
                 const file = Array.isArray(files[fileKey]) ? files[fileKey][0] : files[fileKey];
                 if (file) {
-                    const url = await uploadToOCI(file);
-                    if (url) {
-                        await db.query(
-                            'INSERT INTO application_documents (application_id, document_type, file_path, file_url, mime_type, size_bytes) VALUES ($1, $2, $3, $4, $5, $6)',
-                            [applicationId, docType, url, url, file.mimetype, file.size]
-                        );
+                    try {
+                        const url = await uploadToOCI(file);
+                        if (url) {
+                            await db.query(
+                                'INSERT INTO application_documents (application_id, document_type, file_path, file_url, mime_type, size_bytes) VALUES ($1, $2, $3, $4, $5, $6)',
+                                [applicationId, docType, url, url, file.mimetype, file.size]
+                            );
+                        }
+                    } catch (ociError) {
+                        console.error(`OCI Upload Error (${fileKey}):`, ociError);
+                        throw new Error(`File Upload Failed (${fileKey}): ${ociError.message}`);
                     }
                 }
             };
 
-            await uploadDoc('ple_slip', 'ple_slip');
-            await uploadDoc('uce_slip', 'uce_slip');
-            // Check if there is a guardian_id file input in the form (was not explicitly in schema but good to have)
-            // If the form has it, add: await uploadDoc('guardian_id', 'guardian_id');
+            try {
+                await uploadDoc('ple_slip', 'ple_slip');
+                await uploadDoc('uce_slip', 'uce_slip');
+            } catch (uploadError) {
+                // If upload fails, maybe we should delete the application? 
+                // For now, just report error but keep partial app (or delete it for atomicity).
+                // Let's delete it to keep state clean.
+                await db.query('DELETE FROM applications WHERE id = $1', [applicationId]);
+                return res.status(500).json({ error: uploadError.message });
+            }
 
             return res.status(201).json({
                 success: true,
