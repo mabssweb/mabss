@@ -8,10 +8,11 @@ let client = null;
 
 function getGoogleClient() {
     if (!client) {
-        if (!process.env.GOOGLE_CLIENT_ID) {
+        const clientId = process.env.GOOGLE_CLIENT_ID || '1066040941987-6fotl7k1qvcgtb3snt87lr4i1ujm21oj.apps.googleusercontent.com';
+        if (!clientId) {
             throw new Error('GOOGLE_CLIENT_ID environment variable is not set');
         }
-        client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+        client = new OAuth2Client(clientId);
     }
     return client;
 }
@@ -19,9 +20,10 @@ function getGoogleClient() {
 export async function verifyGoogleToken(token) {
     try {
         const googleClient = getGoogleClient();
+        const clientId = process.env.GOOGLE_CLIENT_ID || '1066040941987-6fotl7k1qvcgtb3snt87lr4i1ujm21oj.apps.googleusercontent.com';
         const ticket = await googleClient.verifyIdToken({
             idToken: token,
-            audience: process.env.GOOGLE_CLIENT_ID,
+            audience: clientId,
         });
         const payload = ticket.getPayload();
         return {
