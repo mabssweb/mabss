@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - MABSS Admission</title>
+    <title>Sign Up - MABSS Admission</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -129,7 +129,7 @@
 
 <body>
     <div class="auth-card">
-        <h1>Student Login</h1>
+        <h1>Create Account</h1>
         <div id="error" class="error"></div>
         <div id="success" class="success"></div>
 
@@ -155,13 +155,13 @@
             <span>OR</span>
         </div>
 
-        <form id="loginForm">
+        <form id="signupForm">
             <input type="email" id="email" placeholder="Email Address" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+            <input type="password" id="password" placeholder="Password (Min 6 chars)" required minlength="6">
+            <button type="submit">Sign Up</button>
         </form>
         <div class="links">
-            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            <p>Already have an account? <a href="login.html">Login</a></p>
             <p><a href="index.html">Back to Home</a></p>
         </div>
     </div>
@@ -187,23 +187,19 @@
 
                 if (res.ok) {
                     if (data.isNewUser) {
-                        successDiv.textContent = 'Account created successfully! Redirecting...';
+                        successDiv.textContent = '✓ Account created successfully! Redirecting to admission form...';
+                        successDiv.style.display = 'block';
+                    } else {
+                        successDiv.textContent = '✓ Welcome back! Account already exists. Logging you in...';
                         successDiv.style.display = 'block';
                     }
 
-                    // Redirect based on role
+                    // Redirect to admission
                     setTimeout(() => {
                         const urlParams = new URLSearchParams(window.location.search);
                         const redirect = urlParams.get('redirect');
-
-                        if (data.user.role === 'admin') {
-                            window.location.href = 'admin/admissions.html';
-                        } else if (redirect === 'admission') {
-                            window.location.href = 'admission/index.html';
-                        } else {
-                            window.location.href = 'admission/index.html';
-                        }
-                    }, 1000);
+                        window.location.href = redirect === 'admission' ? 'admission/index.html' : 'admission/index.html';
+                    }, 1500);
                 } else {
                     throw new Error(data.error);
                 }
@@ -222,8 +218,8 @@
             google.accounts.id.prompt();
         });
 
-        // Regular form login
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        // Regular form signup
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -231,11 +227,11 @@
             const btn = e.target.querySelector('button');
 
             btn.disabled = true;
-            btn.innerText = 'Logging in...';
+            btn.innerText = 'Creating Account...';
             errorDiv.style.display = 'none';
 
             try {
-                const res = await fetch('/api/auth/login', {
+                const res = await fetch('/api/auth/signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
@@ -247,14 +243,8 @@
                     const urlParams = new URLSearchParams(window.location.search);
                     const redirect = urlParams.get('redirect');
 
-                    // Role-based redirect
-                    if (data.user.role === 'admin') {
-                        window.location.href = 'admin/admissions.html';
-                    } else if (redirect === 'admission') {
-                        window.location.href = 'admission/index.html';
-                    } else {
-                        window.location.href = 'admission/index.html';
-                    }
+                    // Auto-redirect to admission
+                    window.location.href = redirect === 'admission' ? 'admission/index.html' : 'admission/index.html';
                 } else {
                     throw new Error(data.error);
                 }
@@ -262,7 +252,7 @@
                 errorDiv.textContent = err.message;
                 errorDiv.style.display = 'block';
                 btn.disabled = false;
-                btn.innerText = 'Login';
+                btn.innerText = 'Sign Up';
             }
         });
     </script>

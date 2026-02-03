@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Management - MABSS Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reuse core admin styles or simplified version */
+        :root {
+            --primary-color: #0e7704;
+            --secondary-color: #2c3e50;
+            --bg-color: #f4f6f9;
+            --white: #ffffff;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .admin-header {
+            background-color: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-title {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .dashboard-card {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-accepted {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-under_review {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .action-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item strong {
+            display: block;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .docs-list {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .doc-link {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .doc-link i {
+            margin-right: 8px;
+        }
+
+        .status-actions {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-accept {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-reject {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-review {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .nav-back {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="admin-header">
+        <h1 class="admin-title">MABSS Admission Management</h1>
+        <a href="../admin.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        <div class="dashboard-card">
+            <h2>Applications</h2>
+            <div id="loading">Loading applications...</div>
+            <table id="applicationsTable" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>App Number</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="applicationsBody">
+                    <!-- Rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Application Detail Modal -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Application Details</h2>
+
+            <div id="modalLoading">Loading details...</div>
+            <div id="modalBody" style="display: none;">
+                <h3>Personal Info</h3>
+                <div class="detail-grid" id="personalInfo"></div>
+
+                <h3>Academic Info</h3>
+                <div class="detail-grid" id="academicInfo"></div>
+
+                <h3>Documents</h3>
+                <div class="docs-list" id="docsList"></div>
+
+                <div class="status-actions">
+                    <button class="btn-review" onclick="updateStatus('under_review')">Mark Under Review</button>
+                    <button class="btn-accept" onclick="updateStatus('accepted')">Accept Application</button>
+                    <button class="btn-reject" onclick="updateStatus('rejected')">Reject Application</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentAppId = null;
+
+        // Check Admin Auth on Load
+        async function checkAuth() {
+            try {
+                const res = await fetch('/api/auth/me');
+                if (res.status === 401) {
+                    window.location.href = '../login.html'; // Redirect to login
+                    return false;
+                }
+                const data = await res.json();
+                if (data.user.role !== 'admin') {
+                    alert('Access Denied: Admins only.');
+                    window.location.href = '../admission/index.html'; // Redirect to student area
+                    return false;
+                }
+                return true;
+            } catch (e) {
+                window.location.href = '../login.html';
+                return false;
+            }
+        }
+
+        // Fetch List
+        async function fetchApplications() {
+            const isAuth = await checkAuth();
+            if (!isAuth) return;
+
+            try {
+                const response = await fetch('/api/admin/applications');
+                if (!response.ok) throw new Error('Failed to fetch');
+                const apps = await response.json();
+
+                const tbody = document.getElementById('applicationsBody');
+                tbody.innerHTML = apps.map(app => `
+                    <tr>
+                        <td>${new Date(app.created_at).toLocaleDateString()}</td>
+                        <td>${app.application_number}</td>
+                        <td>${app.surname} ${app.other_names}</td>
+                        <td>${app.class_applying}</td>
+                        <td><span class="status-badge status-${app.status}">${app.status}</span></td>
+                        <td>
+                            <button class="action-btn" onclick="viewApplication('${app.id}')">View</button>
+                        </td>
+                    </tr>
+                `).join('');
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('applicationsTable').style.display = 'table';
+            } catch (error) {
+                document.getElementById('loading').innerHTML = 'Error loading applications';
+                console.error(error);
+            }
+        }
+
+        // View Detail
+        async function viewApplication(id) {
+            currentAppId = id;
+            document.getElementById('detailModal').style.display = 'flex';
+            document.getElementById('modalLoading').style.display = 'block';
+            document.getElementById('modalBody').style.display = 'none';
+
+            try {
+                const response = await fetch(`/api/admin/applications/${id}`);
+                const app = await response.json();
+
+                document.getElementById('modalTitle').textContent = `Application ${app.application_number}`;
+
+                // Populate Info
+                const personalHtml = `
+                    <div class="detail-item"><strong>Name:</strong> ${app.surname} ${app.other_names}</div>
+                    <div class="detail-item"><strong>Gender:</strong> ${app.sex}</div>
+                    <div class="detail-item"><strong>DOB:</strong> ${app.dob}</div>
+                    <div class="detail-item"><strong>LIN:</strong> ${app.lin}</div>
+                    <div class="detail-item"><strong>Parent Category:</strong> ${app.parent_category}</div>
+                `;
+                document.getElementById('personalInfo').innerHTML = personalHtml;
+
+                const academicHtml = `
+                    <div class="detail-item"><strong>Class:</strong> ${app.class_applying}</div>
+                    <div class="detail-item"><strong>Former School:</strong> ${app.former_school}</div>
+                    <div class="detail-item"><strong>PLE Aggregates:</strong> ${app.total_aggregates} (Div ${app.division})</div>
+                    <div class="detail-item"><strong>Admission Mode:</strong> ${app.admission_mode}</div>
+                `;
+                document.getElementById('academicInfo').innerHTML = academicHtml;
+
+                // Documents
+                // Note: file_path/url handling depends on privacy. 
+                // If using Signed URLs generated on fly, the API should return them.
+                // Assuming API returns 'file_url' or we construct a download link.
+                // For now, if we don't have public URLs, we might need a download API.
+                // Let's assume file_url is populated or we link to storage (if public).
+                // Or use a proxy endpoint.
+
+                const docsHtml = app.application_documents.map(doc => `
+                    <a href="${doc.file_url || '#'}" target="_blank" class="doc-link">
+                        <i class="fas fa-file"></i> ${doc.document_type}
+                    </a>
+                `).join('');
+                document.getElementById('docsList').innerHTML = docsHtml || 'No documents found';
+
+                document.getElementById('modalLoading').style.display = 'none';
+                document.getElementById('modalBody').style.display = 'block';
+
+            } catch (error) {
+                document.getElementById('modalLoading').innerHTML = 'Error loading details';
+            }
+        }
+
+        // Update Status
+        async function updateStatus(newStatus) {
+            if (!confirm(`Are you sure you want to mark this application as ${newStatus}?`)) return;
+
+            try {
+                const response = await fetch(`/api/admin/applications/${currentAppId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: newStatus })
+                });
+
+                if (response.ok) {
+                    alert('Status updated successfully');
+                    closeModal();
+                    fetchApplications();
+                } else {
+                    alert('Failed to update status');
+                }
+            } catch (error) {
+                alert('Error updating status');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        fetchApplications();
+    </script>
+</body>
+
+</html>
