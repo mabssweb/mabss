@@ -182,115 +182,110 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ credential: response.credential })
                 });
-                try {
-                    const res = await fetch('/api/auth/google', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ credential: response.credential })
-                    });
 
-                    let data;
-                    const contentType = res.headers.get("content-type");
-                    if (contentType && contentType.indexOf("application/json") !== -1) {
-                        data = await res.json();
-                    } else {
-                        // If backend crashes and returns html/text
-                        const text = await res.text();
-                        console.error("Non-JSON Response:", text);
-                        throw new Error("Server Error (Not JSON): " + (text.substring(0, 100) || "Unknown error"));
-                    }
-
-                    if (res.ok) {
-                        if (data.isNewUser) {
-                            successDiv.textContent = '✓ Account created successfully! Redirecting to admission form...';
-                            successDiv.style.display = 'block';
-                        } else {
-                            successDiv.textContent = '✓ Welcome back! Account already exists. Logging you in...';
-                            successDiv.style.display = 'block';
-                        }
-
-                        // Redirect to admission
-                        setTimeout(() => {
-                            const urlParams = new URLSearchParams(window.location.search);
-                            const redirect = urlParams.get('redirect');
-                            window.location.href = redirect === 'admission' ? 'admission/index.html' : 'admission/index.html';
-                        }, 1500);
-                    } else {
-                        // Try to parse detailed error from backend
-                        const errorDetail = data.details || data.error || 'Unknown error';
-                        const errorStep = data.step ? ` [Step: ${data.step}]` : '';
-                        throw new Error(errorDetail + errorStep);
-                    }
-                } catch (err) {
-                    console.error('Full Sign-In Error:', err);
-                    errorDiv.innerText = `Error: ${err.message}. Check console for details.`;
-                    errorDiv.style.display = 'block';
+                let data;
+                const contentType = res.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    data = await res.json();
+                } else {
+                    // If backend crashes and returns html/text
+                    const text = await res.text();
+                    console.error("Non-JSON Response:", text);
+                    const safeText = (text.substring(0, 100) || "Unknown error").replace(/<[^>]*>/g, '');
+                    throw new Error("Server Error: " + safeText);
                 }
+
+                if (res.ok) {
+                    if (data.isNewUser) {
+                        successDiv.textContent = '✓ Account created successfully! Redirecting to admission form...';
+                        successDiv.style.display = 'block';
+                    } else {
+                        successDiv.textContent = '✓ Welcome back! Account already exists. Logging you in...';
+                        successDiv.style.display = 'block';
+                    }
+
+                    // Redirect to admission
+                    setTimeout(() => {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const redirect = urlParams.get('redirect');
+                        window.location.href = redirect === 'admission' ? 'admission/index.html' : 'admission/index.html';
+                    }, 1500);
+                } else {
+                    // Try to parse detailed error from backend
+                    const errorDetail = data.details || data.error || 'Unknown error';
+                    const errorStep = data.step ? ` [Step: ${data.step}]` : '';
+                    throw new Error(errorDetail + errorStep);
+                }
+            } catch (err) {
+                console.error('Full Sign-In Error:', err);
+                errorDiv.innerText = `Error: ${err.message}. Check console for details.`;
+                errorDiv.style.display = 'block';
             }
+        }
 
         // Initialize Google Sign-In
         async function initGoogleSignIn() {
-                try {
-                    const configRes = await fetch('/api/auth/config');
-                    const config = await configRes.json();
-                    const clientId = config.googleClientId;
+            try {
+                const configRes = await fetch('/api/auth/config');
+                const config = await configRes.json();
+                const clientId = config.googleClientId;
 
-                    google.accounts.id.initialize({
-                        client_id: clientId,
-                        callback: handleGoogleCallback,
-                        use_fedcm_for_prompt: false // Disable FedCM to fix localhost network errors
-                    });
+                google.accounts.id.initialize({
+                    client_id: clientId,
+                    callback: handleGoogleCallback,
+                    use_fedcm_for_prompt: false // Disable FedCM to fix localhost network errors
+                });
 
-                    // Attach click handler to our custom button
-                    document.getElementById('googleSignIn').addEventListener('click', () => {
-                        google.accounts.id.prompt();
-                    });
+                // Attach click handler to our custom button
+                document.getElementById('googleSignIn').addEventListener('click', () => {
+                    google.accounts.id.prompt();
+                });
 
-                } catch (error) {
-                    console.error('Failed to initialize Google Sign-In:', error);
-                }
+            } catch (error) {
+                console.error('Failed to initialize Google Sign-In:', error);
             }
+        }
 
-            window.onload = initGoogleSignIn;
+        window.onload = initGoogleSignIn;
 
 
-            // Regular form signup
-            document.getElementById('signupForm').addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                const errorDiv = document.getElementById('error');
-                const btn = e.target.querySelector('button');
+        // Regular form signup
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+            const btn = e.target.querySelector('button');
 
-                btn.disabled = true;
-                btn.innerText = 'Creating Account...';
-                errorDiv.style.display = 'none';
+            btn.disabled = true;
+            btn.innerText = 'Creating Account...';
+            errorDiv.style.display = 'none';
 
-                try {
-                    const res = await fetch('/api/auth/signup', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email, password })
-                    });
-                    const data = await res.json();
+            try {
+                const res = await fetch('/api/auth/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
 
-                    if (res.ok) {
-                        // Check for redirect parameter
-                        const urlParams = new URLSearchParams(window.location.search);
-                        const redirect = urlParams.get('redirect');
+                if (res.ok) {
+                    // Check for redirect parameter
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const redirect = urlParams.get('redirect');
 
-                        // Auto-redirect to admission
-                        window.location.href = redirect === 'admission' ? 'admission/index.html' : 'admission/index.html';
-                    } else {
-                        throw new Error(data.error);
-                    }
-                } catch (err) {
-                    errorDiv.textContent = err.message;
-                    errorDiv.style.display = 'block';
-                    btn.disabled = false;
-                    btn.innerText = 'Sign Up';
+                    // Auto-redirect to admission
+                    window.location.href = redirect === 'admission' ? 'admission/index.html' : 'admission/index.html';
+                } else {
+                    throw new Error(data.error);
                 }
-            });
+            } catch (err) {
+                errorDiv.textContent = err.message;
+                errorDiv.style.display = 'block';
+                btn.disabled = false;
+                btn.innerText = 'Sign Up';
+            }
+        });
     </script>
 </body>
 
