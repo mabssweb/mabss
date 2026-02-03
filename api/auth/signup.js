@@ -1,7 +1,7 @@
 
-import * as db from '../_lib/db';
+import * as db from '../_lib/db.js';
 import bcrypt from 'bcryptjs';
-import { signToken, setAuthCookie } from '../_lib/auth';
+import { signToken, setAuthCookie } from '../_lib/auth.js';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {

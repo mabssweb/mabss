@@ -1,7 +1,7 @@
 
 import { OAuth2Client } from 'google-auth-library';
-import * as db from './db';
-import { signToken, setAuthCookie } from './auth';
+import * as db from './db.js';
+import { signToken, setAuthCookie } from './auth.js';
 
 // Lazy initialization to avoid crashes if env vars aren't set
 let client = null;

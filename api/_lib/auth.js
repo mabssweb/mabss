@@ -1,8 +1,7 @@
 
 import jwt from 'jsonwebtoken';
-import jwt from 'jsonwebtoken';
 import { parse, serialize } from 'cookie';
-import * as db from './db';
+import * as db from './db.js';
 
 // Secret key should be in env, fallback for dev
 const JWT_SECRET = process.env.JWT_SECRET || 'mabss-super-secret-key-change-me';
