@@ -87,8 +87,11 @@ export default async function handler(req, res) {
                 });
             });
 
-            // Helper to get single value from array/string
-            const val = (k) => Array.isArray(fields[k]) ? fields[k][0] : fields[k];
+            // Helper to get single value from array/string, defaulting to null
+            const val = (k) => {
+                const v = Array.isArray(fields[k]) ? fields[k][0] : fields[k];
+                return (v === undefined || v === '') ? null : v;
+            };
 
             // Generate Application Number (MABSS-YYYY-XXXX)
             const year = new Date().getFullYear();
@@ -172,7 +175,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
 
     } catch (error) {
-        console.error('Application API Error:', error);
-        return res.status(500).json({ error: 'Internal Server Error', details: error.message });
+        console.error('Manage API Error:', error);
+        return res.status(500).json({ error: 'Internal Server Error: ' + error.message });
     }
 }
