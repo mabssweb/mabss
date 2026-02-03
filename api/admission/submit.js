@@ -16,67 +16,103 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+    // GET: Check application status by application number or LIN
+    if (req.method === 'GET') {
+        const { ref } = req.query;
+
+        if (!ref) {
+            return res.status(400).json({ error: 'Application Number or LIN is required' });
+        }
+
+        try {
+            const query = `
+        SELECT application_number, status, surname, other_names, created_at 
+        FROM applications 
+        WHERE application_number = $1 OR lin = $1
+      `;
+
+            const { rows } = await db.query(query, [ref]);
+
+            if (rows.length === 0) {
+                return res.status(404).json({ error: 'Application not found' });
+            }
+
+            return res.status(200).json({
+                found: true,
+                application: rows[0]
+            });
+
+        } catch (error) {
+            console.error('Status check error:', error);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+    }
+
+    // POST: Submit new application
+    if (req.method !== 'POST') {
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
+
     // 1. Authenticate Request
     const user = await getCurrentUser(req);
     if (!user || user.role !== 'student') {
         return res.status(401).json({ error: 'Unauthorized. Please login as a student.' });
     }
 
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
+}
+
+try {
+    const data = await new Promise((resolve, reject) => {
+        const form = new IncomingForm({ keepExtensions: true });
+        form.parse(req, (err, fields, files) => {
+            if (err) return reject(err);
+            resolve({ fields, files });
+        });
+    });
+
+    const { fields, files } = data;
+
+    // Normalize fields
+    const normalizedFields = {};
+    for (const key in fields) {
+        normalizedFields[key] = Array.isArray(fields[key]) ? fields[key][0] : fields[key];
     }
 
-    try {
-        const data = await new Promise((resolve, reject) => {
-            const form = new IncomingForm({ keepExtensions: true });
-            form.parse(req, (err, fields, files) => {
-                if (err) return reject(err);
-                resolve({ fields, files });
-            });
-        });
+    const appYear = new Date().getFullYear();
+    const uniqueSuffix = Math.floor(1000 + Math.random() * 9000);
+    const appNumber = `MABSS-${appYear}-${uniqueSuffix}`;
 
-        const { fields, files } = data;
+    const uploadedDocs = [];
+    const fileKeys = ['ple_slip', 'uce_slip', 'guardian_id'];
 
-        // Normalize fields
-        const normalizedFields = {};
-        for (const key in fields) {
-            normalizedFields[key] = Array.isArray(fields[key]) ? fields[key][0] : fields[key];
-        }
+    console.log('Starting file uploads...');
 
-        const appYear = new Date().getFullYear();
-        const uniqueSuffix = Math.floor(1000 + Math.random() * 9000);
-        const appNumber = `MABSS-${appYear}-${uniqueSuffix}`;
+    for (const key of fileKeys) {
+        if (files[key]) {
+            const file = Array.isArray(files[key]) ? files[key][0] : files[key];
 
-        const uploadedDocs = [];
-        const fileKeys = ['ple_slip', 'uce_slip', 'guardian_id'];
+            try {
+                const publicUrl = await uploadToOCI(file);
 
-        console.log('Starting file uploads...');
-
-        for (const key of fileKeys) {
-            if (files[key]) {
-                const file = Array.isArray(files[key]) ? files[key][0] : files[key];
-
-                try {
-                    const publicUrl = await uploadToOCI(file);
-
-                    if (publicUrl) {
-                        uploadedDocs.push({
-                            document_type: key,
-                            file_url: publicUrl,
-                            mime_type: file.mimetype,
-                            size_bytes: file.size
-                        });
-                    }
-                } catch (uploadError) {
-                    console.error(`Upload failed for ${key}:`, uploadError);
-                    throw new Error(`Failed to upload ${key}: ${uploadError.message}`);
+                if (publicUrl) {
+                    uploadedDocs.push({
+                        document_type: key,
+                        file_url: publicUrl,
+                        mime_type: file.mimetype,
+                        size_bytes: file.size
+                    });
                 }
+            } catch (uploadError) {
+                console.error(`Upload failed for ${key}:`, uploadError);
+                throw new Error(`Failed to upload ${key}: ${uploadError.message}`);
             }
         }
+    }
 
-        console.log('Inserting application record...');
+    console.log('Inserting application record...');
 
-        const insertAppQuery = `
+    const insertAppQuery = `
       INSERT INTO applications (
         application_number, status, user_id, surname, other_names, lin, dob, sex, 
         class_applying, age, former_school, birth_country, birth_district, 
@@ -94,53 +130,53 @@ export default async function handler(req, res) {
       ) RETURNING id
     `;
 
-        const appValues = [
-            appNumber, 'pending', user.id, normalizedFields.surname, normalizedFields.other_names,
-            normalizedFields.lin, normalizedFields.dob, normalizedFields.sex,
-            normalizedFields.class, parseInt(normalizedFields.age), normalizedFields.former_school,
-            normalizedFields.country, normalizedFields.district, normalizedFields.county,
-            normalizedFields.parish, normalizedFields.village, normalizedFields.admission_mode,
-            normalizedFields.parent_category, normalizedFields.day_status, normalizedFields.boarding_status,
-            parseInt(normalizedFields.ple_year), normalizedFields.ple_index, normalizedFields.english_agg,
-            normalizedFields.maths_agg, normalizedFields.science_agg, normalizedFields.social_agg,
-            normalizedFields.total_aggregates, normalizedFields.division,
-            normalizedFields.uce_year ? parseInt(normalizedFields.uce_year) : null,
-            normalizedFields.uce_index || null,
-            normalizedFields.uce_results || null,
-            normalizedFields.health_needs, normalizedFields.talents,
-            normalizedFields.father_name, normalizedFields.father_nin, normalizedFields.father_contact,
-            normalizedFields.father_occupation, normalizedFields.father_district,
-            normalizedFields.mother_name, normalizedFields.mother_nin, normalizedFields.mother_contact,
-            normalizedFields.mother_occupation, normalizedFields.mother_district,
-            normalizedFields.guardian_name, normalizedFields.guardian_nin, normalizedFields.guardian_contact,
-            normalizedFields.guardian_occupation, normalizedFields.guardian_district,
-            normalizedFields.declaration_agree === 'on', normalizedFields.declaration_date
-        ];
+    const appValues = [
+        appNumber, 'pending', user.id, normalizedFields.surname, normalizedFields.other_names,
+        normalizedFields.lin, normalizedFields.dob, normalizedFields.sex,
+        normalizedFields.class, parseInt(normalizedFields.age), normalizedFields.former_school,
+        normalizedFields.country, normalizedFields.district, normalizedFields.county,
+        normalizedFields.parish, normalizedFields.village, normalizedFields.admission_mode,
+        normalizedFields.parent_category, normalizedFields.day_status, normalizedFields.boarding_status,
+        parseInt(normalizedFields.ple_year), normalizedFields.ple_index, normalizedFields.english_agg,
+        normalizedFields.maths_agg, normalizedFields.science_agg, normalizedFields.social_agg,
+        normalizedFields.total_aggregates, normalizedFields.division,
+        normalizedFields.uce_year ? parseInt(normalizedFields.uce_year) : null,
+        normalizedFields.uce_index || null,
+        normalizedFields.uce_results || null,
+        normalizedFields.health_needs, normalizedFields.talents,
+        normalizedFields.father_name, normalizedFields.father_nin, normalizedFields.father_contact,
+        normalizedFields.father_occupation, normalizedFields.father_district,
+        normalizedFields.mother_name, normalizedFields.mother_nin, normalizedFields.mother_contact,
+        normalizedFields.mother_occupation, normalizedFields.mother_district,
+        normalizedFields.guardian_name, normalizedFields.guardian_nin, normalizedFields.guardian_contact,
+        normalizedFields.guardian_occupation, normalizedFields.guardian_district,
+        normalizedFields.declaration_agree === 'on', normalizedFields.declaration_date
+    ];
 
-        const { rows } = await db.query(insertAppQuery, appValues);
-        const appId = rows[0].id;
+    const { rows } = await db.query(insertAppQuery, appValues);
+    const appId = rows[0].id;
 
-        if (uploadedDocs.length > 0) {
-            for (const doc of uploadedDocs) {
-                const insertDocQuery = `
+    if (uploadedDocs.length > 0) {
+        for (const doc of uploadedDocs) {
+            const insertDocQuery = `
             INSERT INTO application_documents (
                 application_id, document_type, file_path, file_url, mime_type, size_bytes
             ) VALUES ($1, $2, $3, $4, $5, $6)
         `;
-                await db.query(insertDocQuery, [
-                    appId, doc.document_type, doc.file_url, doc.file_url, doc.mime_type, doc.size_bytes
-                ]);
-            }
+            await db.query(insertDocQuery, [
+                appId, doc.document_type, doc.file_url, doc.file_url, doc.mime_type, doc.size_bytes
+            ]);
         }
-
-        return res.status(200).json({
-            success: true,
-            message: 'Application submitted successfully',
-            applicationNumber: appNumber
-        });
-
-    } catch (error) {
-        console.error('Submission error:', error);
-        return res.status(500).json({ error: error.message || 'Internal Server Error' });
     }
+
+    return res.status(200).json({
+        success: true,
+        message: 'Application submitted successfully',
+        applicationNumber: appNumber
+    });
+
+} catch (error) {
+    console.error('Submission error:', error);
+    return res.status(500).json({ error: error.message || 'Internal Server Error' });
+}
 }

@@ -115,7 +115,7 @@
             resultDiv.className = 'result';
 
             try {
-                const response = await fetch(`/api/admission/status?ref=${encodeURIComponent(ref)}`);
+                const response = await fetch(`/api/admission/submit?ref=${encodeURIComponent(ref)}`);
                 const data = await response.json();
 
                 resultDiv.style.display = 'block';
