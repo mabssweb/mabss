@@ -81,7 +81,8 @@ export default async function handler(req, res) {
             const form = formidable({
                 multiples: true,
                 maxFileSize: 10 * 1024 * 1024, // 10MB limit
-                allowEmptyFiles: true // Allow optional file uploads
+                allowEmptyFiles: true, // Allow optional file uploads
+                minFileSize: 0 // Allow empty files (0 bytes)
             });
 
             const [fields, files] = await new Promise((resolve, reject) => {
