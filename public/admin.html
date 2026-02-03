@@ -904,6 +904,7 @@
         let currentModalAppId = null;
 
         async function openAppModal(id) {
+            console.log('openAppModal called with id:', id);
             currentModalAppId = id;
             const modal = document.getElementById('appModal');
             const modalBody = document.getElementById('modal-body');
