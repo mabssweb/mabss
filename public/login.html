@@ -200,16 +200,20 @@
         }
 
         // Initialize Google Sign-In when page has loaded
+        // Initialize Google Sign-In when page has loaded
         window.onload = function () {
             google.accounts.id.initialize({
                 client_id: "1066040941987-6fotl7k1qvcgtb3snt87lr4i1ujm21oj.apps.googleusercontent.com",
-                callback: handleGoogleCallback
+                callback: handleGoogleCallback,
+                // FedCM is enabled by default, so we don't need to explicitly set it to true
+                // We definitely do NOT want use_fedcm_for_prompt: false if the user wants it enabled
             });
 
             // Render the button in the div
+            // Width must be an integer (pixels), "100%" is invalid
             google.accounts.id.renderButton(
                 document.getElementById("googleButtonDiv"),
-                { theme: "outline", size: "large", width: "100%" }
+                { theme: "outline", size: "large", width: 350 }
             );
 
             google.accounts.id.prompt();

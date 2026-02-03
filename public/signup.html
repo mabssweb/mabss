@@ -214,11 +214,12 @@
         document.getElementById('googleSignIn').addEventListener('click', () => {
             google.accounts.id.initialize({
                 client_id: document.querySelector('[data-client_id]').getAttribute('data-client_id'),
-                callback: handleGoogleCallback,
-                use_fedcm_for_prompt: false // Disable FedCM to fix localhost network errors
+                callback: handleGoogleCallback
             });
+            // Render hidden button to init functionality if needed, or just prompt
+            // Actually, for manual click we usually just prompt, but let's stick to prompt()
             google.accounts.id.prompt();
-        });
+        }); // Disable FedCM to fix localhost network errors
 
         // Regular form signup
         document.getElementById('signupForm').addEventListener('submit', async (e) => {
