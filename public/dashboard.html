@@ -5,142 +5,208 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MABSS Learner Dashboard</title>
-    <!-- Reusing styles from admission/index.html but scoped/cleaned -->
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            color: #333;
+        :root {
+            --primary-color: #006400;
+            --primary-dark: #004d00;
+            --secondary-color: #8B0000;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --input-border: #ccd0d5;
+            --focus-ring: rgba(0, 100, 0, 0.15);
         }
 
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Header --- */
         .dashboard-header {
-            background-color: #006400;
+            background-color: var(--primary-color);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .dashboard-header h1 {
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
 
         .user-info {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .logout-btn {
-            background-color: #d32f2f;
+            background-color: rgba(255, 255, 255, 0.15);
             color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
 
         .logout-btn:hover {
-            background-color: #b71c1c;
+            background-color: rgba(255, 255, 255, 0.25);
         }
 
+        /* --- Main Layout --- */
         .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
         }
 
-        /* Status Card Styles */
+        /* --- Status Cards --- */
         .status-card {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             text-align: center;
-            margin-bottom: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
         }
 
         .status-header {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
-            font-weight: bold;
+            font-weight: 700;
+            color: var(--primary-color);
         }
 
         .status-badge {
             display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: bold;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
             color: white;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .status-pending {
-            background-color: #ff9800;
+            background-color: #f59e0b;
         }
 
         .status-accepted {
-            background-color: #4caf50;
+            background-color: #10b981;
         }
 
         .status-rejected {
-            background-color: #f44336;
+            background-color: #ef4444;
         }
 
         .app-details {
             text-align: left;
-            margin-top: 1.5rem;
-            background: #f9f9f9;
-            padding: 1rem;
+            margin-top: 2rem;
+            background: #f8fafc;
+            padding: 1.5rem;
             border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
         }
 
-        /* Reuse Form Styles */
+        .app-details p {
+            margin: 0.5rem 0;
+        }
+
+        /* --- Form Styling --- */
         .form-container {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 100, 0, 0.15);
-            border: 2px solid #006400;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .form-header h2 {
+            color: var(--primary-color);
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+        }
+
+        .form-header p {
+            color: #666;
+            margin: 0;
+            font-size: 1.1rem;
         }
 
         .form-section {
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            border-left: 4px solid #006400;
+            margin-bottom: 2.5rem;
+            padding: 0;
+            border: none;
+            background: transparent;
         }
 
         .section-title {
-            color: #006400;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-
-        .form-row {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #eee;
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 15px;
+            align-items: center;
         }
 
-        .form-field {
-            flex: 1 1 300px;
+        /* Grid System */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-grid.thirds {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
             font-weight: 600;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        label span.required {
+            color: var(--secondary-color);
+            margin-left: 2px;
         }
 
         input[type="text"],
@@ -149,79 +215,164 @@
         input[type="tel"],
         input[type="email"],
         select,
-        textarea {
+        textarea,
+        input[type="file"] {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--input-border);
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 1rem;
+            background-color: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+            /* Critical for grid */
         }
 
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px var(--focus-ring);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Radio & Checkbox Groups */
         .radio-group {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            border: 2px solid #e0e0e0;
+            display: flex;
+            gap: 1.5rem;
+            padding: 0.5rem 0;
+            flex-wrap: wrap;
         }
 
         .radio-option {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            gap: 0.5rem;
+            cursor: pointer;
+            background: #f8fafc;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
         }
 
-        .radio-option input {
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
+        .radio-option:hover {
+            border-color: var(--primary-color);
+            background: #fff;
         }
 
+        .radio-option input[type="radio"] {
+            accent-color: var(--primary-color);
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
+        input[type="checkbox"] {
+            accent-color: var(--primary-color);
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
+        /* File Upload */
+        input[type="file"] {
+            padding: 0.6rem;
+            background: #f8fafc;
+            border: 2px dashed var(--input-border);
+        }
+
+        input[type="file"]:hover {
+            border-color: var(--primary-color);
+            background: #fff;
+        }
+
+        /* Submit Button */
         .submit-btn {
             display: block;
             width: 100%;
-            max-width: 300px;
-            margin: 40px auto;
-            padding: 18px;
-            background-color: #006400;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .submit-btn:hover {
-            background-color: #004d00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 100, 0, 0.3);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+
+            .form-grid,
+            .form-grid.thirds {
+                grid-template-columns: 1fr;
+                /* Stack everything on mobile */
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
         }
     </style>
 </head>
 
 <body>
     <header class="dashboard-header">
-        <h1>MABSS Dashboard</h1>
+        <h1>MABSS Learner Dashboard</h1>
         <div class="user-info">
-            <span id="user-name">Loading...</span>
+            <span>Welcome, <strong id="user-name">Loading...</strong></span>
             <button onclick="logout()" class="logout-btn">Logout</button>
         </div>
     </header>
 
     <div class="container" id="main-content">
         <div style="text-align: center; margin-top: 50px;">
-            <h2>Loading your information...</h2>
+            <h3>Loading application data...</h3>
         </div>
     </div>
 
-    <!-- Templates -->
+    <!-- TEMPLATES -->
+
     <template id="status-pending-tpl">
         <div class="status-card">
             <div class="status-header">Application Status</div>
             <div class="status-badge status-pending">Under Review</div>
-            <p>Your application has been received and is currently being reviewed by the administration.</p>
-            <p><strong>Application No:</strong> <span class="app-no"></span></p>
+            <p>Your application has been successfully submitted and is currently being processed by the admissions
+                committee.</p>
+
             <div class="app-details">
-                <p><strong>Submitted on:</strong> <span class="app-date"></span></p>
-                <p>We will notify you via email once a decision has been made.</p>
+                <p><strong>Application Number:</strong> <span class="app-no"
+                        style="font-family: monospace; font-size: 1.1rem;"></span></p>
+                <p><strong>Submission Date:</strong> <span class="app-date"></span></p>
+                <hr style="border: 0; border-top: 1px solid #ddd; margin: 1rem 0;">
+                <p style="font-size: 0.9rem; color: #666;">We will notify you via email as soon as a decision is made.
+                    Please check your inbox regularly.</p>
             </div>
         </div>
     </template>
@@ -230,180 +381,271 @@
         <div class="status-card">
             <div class="status-header">Congratulations!</div>
             <div class="status-badge status-accepted">Admitted</div>
-            <p>We are pleased to offer you admission to Mbarara Army Boarding Secondary School.</p>
-            <p><strong>Application No:</strong> <span class="app-no"></span></p>
-            <button class="submit-btn" onclick="alert('Admission Letter download coming soon!')">Download Admission
-                Letter</button>
+            <p>We are pleased to offer you admission to Mbarara Army Boarding Secondary School for the academic year
+                2026.</p>
+
+            <div class="app-details">
+                <p><strong>Ref Number:</strong> <span class="app-no"></span></p>
+            </div>
+
+            <button class="submit-btn" style="margin-top: 2rem;"
+                onclick="alert('Admission Letter download is not yet available.')">Download Admission Letter</button>
         </div>
     </template>
 
     <template id="status-rejected-tpl">
         <div class="status-card">
             <div class="status-header">Application Update</div>
-            <div class="status-badge status-rejected">Not Admitted</div>
-            <p>Thank you for your interest in MABSS. Unfortunately, we are unable to offer you admission at this time.
-            </p>
+            <div class="status-badge status-rejected">Not Selected</div>
+            <p>Thank you for your interest in MABSS. After careful review, we regret to inform you that we are unable to
+                offer you admission at this time.</p>
         </div>
     </template>
 
     <template id="submission-form-tpl">
         <div class="form-container">
-            <h2 style="text-align: center; color: #006400; margin-bottom: 2rem;">Admission Form 2026</h2>
+            <div class="form-header">
+                <h2>Admission Form 2026</h2>
+                <p>Please fill out all details carefully. Fields with <span style="color:red">*</span> are required.</p>
+            </div>
+
             <form id="admissionForm" onsubmit="submitApplication(event)">
-                <!-- Reuse the form fields structure here, simplified for brevity but matching DB schema -->
+
+                <!-- Personal Info -->
                 <div class="form-section">
                     <div class="section-title">Personal Information</div>
-                    <div class="form-row">
-                        <div class="form-field"><label>Surname *</label><input type="text" name="surname" required>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Surname <span class="required">*</span></label>
+                            <input type="text" name="surname" required>
                         </div>
-                        <div class="form-field"><label>Other Names *</label><input type="text" name="other_names"
-                                required></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-field"><label>LIN *</label><input type="text" name="lin" required></div>
-                        <div class="form-field"><label>Date of Birth *</label><input type="date" name="dob" required>
+                        <div class="form-group">
+                            <label>Other Names <span class="required">*</span></label>
+                            <input type="text" name="other_names" required>
                         </div>
-                        <div class="form-field">
-                            <label>Sex *</label>
+                        <div class="form-group">
+                            <label>LIN <span class="required">*</span></label>
+                            <input type="text" name="lin" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth <span class="required">*</span></label>
+                            <input type="date" name="dob" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Sex <span class="required">*</span></label>
                             <select name="sex" required>
-                                <option value="">Select</option>
+                                <option value="">Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>Age <span class="required">*</span></label>
+                            <input type="number" name="age" required>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Academic Details -->
                 <div class="form-section">
                     <div class="section-title">Academic Details</div>
-                    <div class="form-row">
-                        <div class="form-field"><label>Class Applying For *</label><input type="text" name="class"
-                                placeholder="e.g. S.1" required></div>
-                        <div class="form-field"><label>Former School *</label><input type="text" name="former_school"
-                                required></div>
-                        <div class="form-field"><label>Age *</label><input type="number" name="age" required></div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Class Applying For <span class="required">*</span></label>
+                            <input type="text" name="class" placeholder="e.g. S.1" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Former School <span class="required">*</span></label>
+                            <input type="text" name="former_school" required>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Location -->
                 <div class="form-section">
                     <div class="section-title">Location & Origin</div>
-                    <div class="form-row">
-                        <div class="form-field"><label>Country *</label><input type="text" name="country" required>
+                    <div class="form-grid thirds">
+                        <div class="form-group">
+                            <label>Country <span class="required">*</span></label>
+                            <input type="text" name="country" required>
                         </div>
-                        <div class="form-field"><label>District *</label><input type="text" name="district" required>
+                        <div class="form-group">
+                            <label>District <span class="required">*</span></label>
+                            <input type="text" name="district" required>
                         </div>
-                        <div class="form-field"><label>County *</label><input type="text" name="county" required></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-field"><label>Parish *</label><input type="text" name="parish" required></div>
-                        <div class="form-field"><label>Village *</label><input type="text" name="village" required>
+                        <div class="form-group">
+                            <label>County <span class="required">*</span></label>
+                            <input type="text" name="county" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Parish <span class="required">*</span></label>
+                            <input type="text" name="parish" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Village <span class="required">*</span></label>
+                            <input type="text" name="village" required>
                         </div>
                     </div>
                 </div>
 
+                <!-- Category -->
                 <div class="form-section">
-                    <div class="section-title">Category</div>
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label>Parent Category *</label>
-                            <select name="parent_category" required>
-                                <option value="CIVILIAN'S CHILD">Civilian</option>
-                                <option value="SOLDIER'S CHILD">Soldier</option>
-                            </select>
+                    <div class="section-title">Learner's Category</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Parent Category <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="parent_category" value="CIVILIAN'S CHILD" required>
+                                    Civilian
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="parent_category" value="SOLDIER'S CHILD"> Soldier
+                                </label>
+                            </div>
                         </div>
-                        <div class="form-field">
-                            <label>Admission Mode *</label>
+                        <div class="form-group">
+                            <label>Admission Mode <span class="required">*</span></label>
                             <select name="admission_mode" required>
                                 <option value="NEW(TRANSITIONAL)">New (Transitional)</option>
                                 <option value="NEW (TRANSFER)">New (Transfer)</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label>Day/Boarding *</label>
-                            <select name="boarding_status" required>
-                                <option value="BOARDER CIVILIAN">Boarder</option>
-                                <option value="DAY CIVILIAN">Day Scholar</option>
-                            </select>
+                        <div class="form-group">
+                            <label>Boarding Status <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="boarding_status" value="BOARDER CIVILIAN" required>
+                                    Boarding
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="boarding_status" value="DAY CIVILIAN"> Day Scholar
+                                </label>
+                            </div>
                         </div>
-                        <!-- Hidden Day Status field for simple mapping -->
+                        <!-- Hidden Day Status field for backend compatibility -->
                         <input type="hidden" name="day_status" value="DAY CIVILIAN">
                     </div>
                 </div>
 
+                <!-- PLE Results -->
                 <div class="form-section">
                     <div class="section-title">PLE Results</div>
-                    <div class="form-row">
-                        <div class="form-field"><label>Year *</label><input type="number" name="ple_year" required>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Year <span class="required">*</span></label>
+                            <input type="number" name="ple_year" required>
                         </div>
-                        <div class="form-field"><label>Index No *</label><input type="text" name="ple_index" required>
+                        <div class="form-group">
+                            <label>Index No <span class="required">*</span></label>
+                            <input type="text" name="ple_index" required>
                         </div>
-                        <div class="form-field"><label>Total Aggregates *</label><input type="text"
-                                name="total_aggregates" required></div>
-                        <div class="form-field"><label>Division *</label><input type="text" name="division" required>
+                        <div class="form-group">
+                            <label>Total Aggregates <span class="required">*</span></label>
+                            <input type="text" name="total_aggregates" required>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-field"><label>Eng Agg *</label><input type="text" name="english_agg" required>
-                        </div>
-                        <div class="form-field"><label>Math Agg *</label><input type="text" name="maths_agg" required>
-                        </div>
-                        <div class="form-field"><label>Sci Agg *</label><input type="text" name="science_agg" required>
-                        </div>
-                        <div class="form-field"><label>SST Agg *</label><input type="text" name="social_agg" required>
+                        <div class="form-group">
+                            <label>Division <span class="required">*</span></label>
+                            <input type="text" name="division" required>
                         </div>
                     </div>
-                    <div class="form-field">
-                        <label>Attach PLE Slip (PDF/Image) *</label>
+
+                    <div class="form-grid thirds" style="margin-top: 1rem;">
+                        <div class="form-group"><label>English <span class="required">*</span></label><input type="text"
+                                name="english_agg" required></div>
+                        <div class="form-group"><label>Math <span class="required">*</span></label><input type="text"
+                                name="maths_agg" required></div>
+                        <div class="form-group"><label>Science <span class="required">*</span></label><input type="text"
+                                name="science_agg" required></div>
+                        <div class="form-group"><label>Social Studies <span class="required">*</span></label><input
+                                type="text" name="social_agg" required></div>
+                    </div>
+
+                    <div class="form-group full-width" style="margin-top: 1rem;">
+                        <label>Attach PLE Slip (PDF/Image) <span class="required">*</span></label>
                         <input type="file" name="ple_slip" accept=".pdf,.jpg,.png" required>
+                        <small style="color:#666; margin-top:5px;">Max file size: 5MB</small>
                     </div>
                 </div>
 
+                <!-- UCE Results -->
                 <div class="form-section">
-                    <div class="section-title">UCE Results (Optional for S1)</div>
-                    <div class="form-row">
-                        <div class="form-field"><label>Year</label><input type="number" name="uce_year"></div>
-                        <div class="form-field"><label>Index No</label><input type="text" name="uce_index"></div>
+                    <div class="section-title">UCE Results (Optional)</div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Year</label><input type="number" name="uce_year"></div>
+                        <div class="form-group"><label>Index No</label><input type="text" name="uce_index"></div>
                     </div>
-                    <div class="form-field"><label>Results Summary</label><textarea name="uce_results"></textarea></div>
-                    <div class="form-field">
+                    <div class="form-group full-width" style="margin-top: 1rem;">
+                        <label>Results Summary/Grades</label>
+                        <textarea name="uce_results" placeholder="Enter subject grades..."></textarea>
+                    </div>
+                    <div class="form-group full-width" style="margin-top: 1rem;">
                         <label>Attach UCE Slip (If applicable)</label>
                         <input type="file" name="uce_slip" accept=".pdf,.jpg,.png">
                     </div>
                 </div>
 
+                <!-- Extra Info -->
                 <div class="form-section">
-                    <div class="section-title">Personal Needs</div>
-                    <div class="form-field"><label>Health Needs *</label><textarea name="health_needs"
-                            required></textarea></div>
-                    <div class="form-field"><label>Talents *</label><textarea name="talents" required></textarea></div>
-                </div>
-
-                <div class="form-section">
-                    <div class="section-title">Parent/Guardian Info</div>
-                    <div class="form-row">
-                        <div class="form-field"><label>Father's Name</label><input type="text" name="father_name"></div>
-                        <div class="form-field"><label>Contact</label><input type="text" name="father_contact"></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-field"><label>Mother's Name</label><input type="text" name="mother_name"></div>
-                        <div class="form-field"><label>Contact</label><input type="text" name="mother_contact"></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-field"><label>Guardian's Name *</label><input type="text" name="guardian_name"
-                                required></div>
-                        <div class="form-field"><label>Contact *</label><input type="text" name="guardian_contact"
-                                required></div>
+                    <div class="section-title">Additional Information</div>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Health Needs / Medical Condition <span class="required">*</span></label>
+                            <textarea name="health_needs" required
+                                placeholder="Describe any medical conditions we should be aware of..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Talents & Interests <span class="required">*</span></label>
+                            <textarea name="talents" required placeholder="Sports, Music, Leadership..."></textarea>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Parent Info -->
                 <div class="form-section">
-                    <label><input type="checkbox" name="declaration" required> I certify that the information provided
-                        is true.</label>
+                    <div class="section-title">Parent/Guardian Information</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Father's Name</label>
+                            <input type="text" name="father_name">
+                        </div>
+                        <div class="form-group">
+                            <label>Father's Contact</label>
+                            <input type="tel" name="father_contact">
+                        </div>
+                        <div class="form-group">
+                            <label>Mother's Name</label>
+                            <input type="text" name="mother_name">
+                        </div>
+                        <div class="form-group">
+                            <label>Mother's Contact</label>
+                            <input type="tel" name="mother_contact">
+                        </div>
+                        <div class="form-group">
+                            <label>Guardian's Name <span class="required">*</span></label>
+                            <input type="text" name="guardian_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Guardian's Contact <span class="required">*</span></label>
+                            <input type="tel" name="guardian_contact" required>
+                        </div>
+                    </div>
                 </div>
 
-                <button type="submit" class="submit-btn">Submit Application</button>
+                <!-- Declaration -->
+                <div class="form-section"
+                    style="background: #fff3cd; border: 1px solid #ffeeba; border-radius: 8px; padding: 1.5rem;">
+                    <div class="form-group" style="flex-direction: row; align-items: center; gap: 1rem;">
+                        <input type="checkbox" name="declaration" id="declaration" required
+                            style="width: 20px; height: 20px;">
+                        <label for="declaration" style="margin: 0; font-weight: 500;">
+                            I hereby certify that the information provided in this application is true and correct to
+                            the best of my knowledge.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
             </form>
         </div>
     </template>
@@ -414,7 +656,7 @@
 
         async function init() {
             try {
-                // 1. Get User
+                // 1. Get User Session
                 const authRes = await fetch('/api/auth/me');
                 if (authRes.status === 401) {
                     window.location.replace('login.html?redirect=dashboard.html');
@@ -422,7 +664,7 @@
                 }
                 const authData = await authRes.json();
                 currentUser = authData.user;
-                document.getElementById('user-name').textContent = currentUser.name || currentUser.email;
+                document.getElementById('user-name').textContent = currentUser.name || currentUser.email.split('@')[0];
 
                 // 2. Get Application Status
                 const appRes = await fetch('/api/application/manage');
@@ -432,8 +674,8 @@
 
             } catch (error) {
                 console.error('Init Error:', error);
-                alert('Session expired or error occurred. Please login again.');
-                window.location.replace('login.html');
+                // alert('Session expired or error occurred. Please login again.');
+                // window.location.replace('login.html');
             }
         }
 
@@ -449,7 +691,7 @@
 
                 const clone = document.getElementById(tplId).content.cloneNode(true);
 
-                // Populate details
+                // Populate details if placeholders exist
                 const noEl = clone.querySelector('.app-no');
                 if (noEl) noEl.textContent = app.application_number;
 
@@ -466,10 +708,13 @@
 
         async function submitApplication(e) {
             e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
+            const btn = document.getElementById('submitBtn');
             const originalText = btn.textContent;
+
+            // Basic UI Feedback
             btn.textContent = 'Submitting...';
             btn.disabled = true;
+            btn.style.opacity = '0.7';
 
             const formData = new FormData(e.target);
 
@@ -482,22 +727,33 @@
                 const data = await res.json();
 
                 if (res.ok) {
-                    alert('Application Submitted Successfully!');
-                    window.location.reload();
+                    // Success - Scroll to top and reload
+                    window.scrollTo(0, 0);
+                    // Show a quick success message then reload
+                    document.getElementById('main-content').innerHTML = `
+                        <div class="status-card" style="border-color: #4caf50;">
+                            <h2 style="color: #4caf50;">Success!</h2>
+                            <p>Application submitted successfully.</p>
+                            <p>Redirecting...</p>
+                        </div>`;
+
+                    setTimeout(() => window.location.reload(), 2000);
                 } else {
                     alert('Error: ' + (data.error || 'Submission failed'));
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                    btn.style.opacity = '1';
                 }
             } catch (error) {
                 console.error(error);
                 alert('Network error. Please try again.');
-            } finally {
-                btn.textContent = originalText;
                 btn.disabled = false;
+                btn.textContent = originalText;
+                btn.style.opacity = '1';
             }
         }
 
         function logout() {
-            // Call logout endpoint if exists, else just clear local state/redirect
             fetch('/api/auth/logout', { method: 'POST' }).finally(() => {
                 window.location.href = 'index.html';
             });
