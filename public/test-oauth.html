@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Google OAuth Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .test-section {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            cursor: pointer;
+        }
+
+        .result {
+            background: #f5f5f5;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        .error {
+            background: #fee;
+            color: #c00;
+        }
+
+        .success {
+            background: #efe;
+            color: #060;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🧪 Google OAuth Test Page</h1>
+
+    <div class="test-section">
+        <h2>Test 1: Check if server is running</h2>
+        <button onclick="testServer()">Test Server</button>
+        <div id="server-result" class="result" style="display:none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Test /api/auth/me endpoint</h2>
+        <button onclick="testAuthMe()">Test Auth Me</button>
+        <div id="auth-me-result" class="result" style="display:none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Test Google OAuth endpoint (with fake token)</h2>
+        <button onclick="testGoogleAuth()">Test Google Auth</button>
+        <div id="google-auth-result" class="result" style="display:none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Check environment variables</h2>
+        <p>Client ID in HTML: <code>1066040941987-6fotl7k1qvcgtb3snt87lr4i1ujm21oj.apps.googleusercontent.com</code></p>
+        <p>Check if this matches your .env file</p>
+    </div>
+
+    <script>
+        async function testServer() {
+            const resultDiv = document.getElementById('server-result');
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = 'Testing...';
+
+            try {
+                const response = await fetch('/');
+                resultDiv.className = 'result success';
+                resultDiv.textContent = `✅ Server is running!\nStatus: ${response.status}\nURL: ${response.url}`;
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = `❌ Server test failed:\n${error.message}`;
+            }
+        }
+
+        async function testAuthMe() {
+            const resultDiv = document.getElementById('auth-me-result');
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = 'Testing...';
+
+            try {
+                const response = await fetch('/api/auth/me');
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.textContent = `✅ Auth endpoint works!\n${JSON.stringify(data, null, 2)}`;
+                } else {
+                    resultDiv.className = 'result';
+                    resultDiv.textContent = `⚠️ Expected response (no auth):\nStatus: ${response.status}\n${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = `❌ Auth test failed:\n${error.message}`;
+            }
+        }
+
+        async function testGoogleAuth() {
+            const resultDiv = document.getElementById('google-auth-result');
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = 'Testing with fake token...';
+
+            try {
+                const response = await fetch('/api/auth/google', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ credential: 'fake_test_token_12345' })
+                });
+
+                const contentType = response.headers.get('content-type');
+                let data;
+
+                if (contentType && contentType.includes('application/json')) {
+                    data = await response.json();
+                    resultDiv.className = 'result';
+                    resultDiv.textContent = `Status: ${response.status}\nContent-Type: ${contentType}\nResponse:\n${JSON.stringify(data, null, 2)}`;
+                } else {
+                    const text = await response.text();
+                    resultDiv.className = 'result error';
+                    resultDiv.textContent = `❌ NOT JSON! Got HTML instead:\nStatus: ${response.status}\nContent-Type: ${contentType}\n\nFirst 500 chars:\n${text.substring(0, 500)}`;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = `❌ Google auth test failed:\n${error.message}\n${error.stack}`;
+            }
+        }
+    </script>
+</body>
+
+</html>
