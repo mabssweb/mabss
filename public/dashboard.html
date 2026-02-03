@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MABSS Learner Dashboard</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #006400;
@@ -13,9 +15,7 @@
             --bg-color: #f4f7f6;
             --card-bg: #ffffff;
             --text-color: #333;
-            --border-color: #e0e0e0;
-            --input-border: #ccd0d5;
-            --focus-ring: rgba(0, 100, 0, 0.15);
+            --sidebar-width: 260px;
         }
 
         body {
@@ -24,58 +24,170 @@
             margin: 0;
             padding: 0;
             color: var(--text-color);
-            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
         }
 
-        /* --- Header --- */
-        .dashboard-header {
+        /* --- Sidebar --- */
+        .sidebar {
+            width: var(--sidebar-width);
             background-color: var(--primary-color);
             color: white;
-            padding: 1rem 5%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            transition: transform 0.3s ease;
+            z-index: 1000;
         }
 
-        .dashboard-header h1 {
+        .sidebar-header {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--primary-dark);
+        }
+
+        .sidebar-header h2 {
             margin: 0;
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
-
-        .user-info {
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            font-size: 0.95rem;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .user-profile {
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            padding: 0;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border-left: 4px solid transparent;
+        }
+
+        .nav-link i {
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: #ffd700;
+        }
+
+        .logout-section {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logout-btn {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: white;
+            width: 100%;
+            padding: 0.8rem;
+            background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0.5rem 1.2rem;
+            color: white;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: 500;
-            transition: all 0.2s ease;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .logout-btn:hover {
-            background-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        /* --- Main Layout --- */
-        .container {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
+        /* --- Main Content --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            padding: 2rem;
+            transition: margin 0.3s ease;
+            width: 100%;
         }
 
+        .top-bar {
+            display: none;
+            /* Desktop hidden */
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Sections --- */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2.section-heading {
+            color: var(--primary-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Reuse existing form/card styles... */
         /* --- Status Cards --- */
         .status-card {
             background: var(--card-bg);
@@ -85,7 +197,7 @@
             text-align: center;
             max-width: 600px;
             margin: 0 auto;
-            border: 1px solid var(--border-color);
+            border: 1px solid #e0e0e0;
         }
 
         .status-header {
@@ -102,9 +214,6 @@
             font-weight: 600;
             color: white;
             margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .status-pending {
@@ -119,20 +228,34 @@
             background-color: #ef4444;
         }
 
-        .app-details {
-            text-align: left;
-            margin-top: 2rem;
-            background: #f8fafc;
-            padding: 1.5rem;
+        /* Table Styles for "Pending Applications" list */
+        .app-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
             border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .app-details p {
-            margin: 0.5rem 0;
+        .app-table th,
+        .app-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
         }
 
-        /* --- Form Styling --- */
+        .app-table th {
+            background: #f8fafc;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .app-table tr:hover {
+            background: #fafafa;
+        }
+
+        /* --- Form Styling from previous Step --- */
         .form-container {
             background: var(--card-bg);
             padding: 3rem;
@@ -152,17 +275,8 @@
             font-size: 2rem;
         }
 
-        .form-header p {
-            color: #666;
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
         .form-section {
             margin-bottom: 2.5rem;
-            padding: 0;
-            border: none;
-            background: transparent;
         }
 
         .section-title {
@@ -176,7 +290,6 @@
             align-items: center;
         }
 
-        /* Grid System */
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -219,13 +332,10 @@
         input[type="file"] {
             width: 100%;
             padding: 0.8rem 1rem;
-            border: 1px solid var(--input-border);
+            border: 1px solid #ccd0d5;
             border-radius: 8px;
             font-size: 1rem;
-            background-color: #fff;
-            transition: border-color 0.2s, box-shadow 0.2s;
             box-sizing: border-box;
-            /* Critical for grid */
         }
 
         input:focus,
@@ -233,15 +343,9 @@
         textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px var(--focus-ring);
+            box-shadow: 0 0 0 4px rgba(0, 100, 0, 0.15);
         }
 
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        /* Radio & Checkbox Groups */
         .radio-group {
             display: flex;
             gap: 1.5rem;
@@ -257,40 +361,9 @@
             background: #f8fafc;
             padding: 0.5rem 1rem;
             border-radius: 6px;
-            border: 1px solid var(--border-color);
-            transition: all 0.2s;
+            border: 1px solid #e0e0e0;
         }
 
-        .radio-option:hover {
-            border-color: var(--primary-color);
-            background: #fff;
-        }
-
-        .radio-option input[type="radio"] {
-            accent-color: var(--primary-color);
-            width: 1.2rem;
-            height: 1.2rem;
-        }
-
-        input[type="checkbox"] {
-            accent-color: var(--primary-color);
-            width: 1.2rem;
-            height: 1.2rem;
-        }
-
-        /* File Upload */
-        input[type="file"] {
-            padding: 0.6rem;
-            background: #f8fafc;
-            border: 2px dashed var(--input-border);
-        }
-
-        input[type="file"]:hover {
-            border-color: var(--primary-color);
-            background: #fff;
-        }
-
-        /* Submit Button */
         .submit-btn {
             display: block;
             width: 100%;
@@ -302,106 +375,127 @@
             font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
             margin-top: 2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 100, 0, 0.3);
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 280px;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            }
 
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
+            .sidebar.show {
+                transform: translateX(0);
+            }
 
-            .form-grid,
-            .form-grid.thirds {
-                grid-template-columns: 1fr;
-                /* Stack everything on mobile */
+            .main-content {
+                margin-left: 0;
+                padding-top: 80px;
+            }
+
+            .top-bar {
+                display: flex;
             }
 
             .form-container {
                 padding: 1.5rem;
             }
 
-            .dashboard-header {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+            .form-grid,
+            .form-grid.thirds {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 
 <body>
-    <header class="dashboard-header">
-        <h1>MABSS Learner Dashboard</h1>
-        <div class="user-info">
-            <span>Welcome, <strong id="user-name">Loading...</strong></span>
-            <button onclick="logout()" class="logout-btn">Logout</button>
-        </div>
-    </header>
 
-    <div class="container" id="main-content">
-        <div style="text-align: center; margin-top: 50px;">
-            <h3>Loading application data...</h3>
-        </div>
+    <!-- Mobile Top Bar -->
+    <div class="top-bar">
+        <button class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <h3>MABSS Dashboard</h3>
+        <div style="width: 24px;"></div> <!-- Spacer -->
     </div>
 
-    <!-- TEMPLATES -->
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-graduation-cap"></i> MABSS</h2>
+        </div>
+        <div class="user-profile">
+            <div class="user-avatar" id="user-initials">U</div>
+            <div id="user-name">Loading...</div>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a class="nav-link active" onclick="showSection('apply')">
+                    <i class="fas fa-file-pen"></i> Apply
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('status')">
+                    <i class="fas fa-info-circle"></i> Application Status
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('pending')">
+                    <i class="fas fa-clock"></i> Pending Applications
+                </a>
+            </li>
+        </ul>
+        <div class="logout-section">
+            <button onclick="logout()" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
 
-    <template id="status-pending-tpl">
-        <div class="status-card">
-            <div class="status-header">Application Status</div>
-            <div class="status-badge status-pending">Under Review</div>
-            <p>Your application has been successfully submitted and is currently being processed by the admissions
-                committee.</p>
+    <!-- Main Content -->
+    <main class="main-content">
 
-            <div class="app-details">
-                <p><strong>Application Number:</strong> <span class="app-no"
-                        style="font-family: monospace; font-size: 1.1rem;"></span></p>
-                <p><strong>Submission Date:</strong> <span class="app-date"></span></p>
-                <hr style="border: 0; border-top: 1px solid #ddd; margin: 1rem 0;">
-                <p style="font-size: 0.9rem; color: #666;">We will notify you via email as soon as a decision is made.
-                    Please check your inbox regularly.</p>
+        <!-- SECTION: APPLY -->
+        <div id="section-apply" class="content-section active">
+            <div id="apply-content">
+                <!-- Form or "Already Applied" message will go here -->
             </div>
         </div>
-    </template>
 
-    <template id="status-accepted-tpl">
-        <div class="status-card">
-            <div class="status-header">Congratulations!</div>
-            <div class="status-badge status-accepted">Admitted</div>
-            <p>We are pleased to offer you admission to Mbarara Army Boarding Secondary School for the academic year
-                2026.</p>
-
-            <div class="app-details">
-                <p><strong>Ref Number:</strong> <span class="app-no"></span></p>
+        <!-- SECTION: STATUS -->
+        <div id="section-status" class="content-section">
+            <h2 class="section-heading">Application Status</h2>
+            <div id="status-content">
+                <p>Loading status...</p>
             </div>
-
-            <button class="submit-btn" style="margin-top: 2rem;"
-                onclick="alert('Admission Letter download is not yet available.')">Download Admission Letter</button>
         </div>
-    </template>
 
-    <template id="status-rejected-tpl">
-        <div class="status-card">
-            <div class="status-header">Application Update</div>
-            <div class="status-badge status-rejected">Not Selected</div>
-            <p>Thank you for your interest in MABSS. After careful review, we regret to inform you that we are unable to
-                offer you admission at this time.</p>
+        <!-- SECTION: PENDING (History) -->
+        <div id="section-pending" class="content-section">
+            <h2 class="section-heading">Pending Applications</h2>
+            <div id="pending-content">
+                <!-- Table of applications -->
+            </div>
         </div>
-    </template>
 
+    </main>
+
+    <!-- Templates -->
     <template id="submission-form-tpl">
         <div class="form-container">
             <div class="form-header">
@@ -651,112 +745,191 @@
     </template>
 
     <script>
-        // --- Auth & Init ---
         let currentUser = null;
+        let currentApp = null;
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('show');
+        }
+
+        // Close sidebar on mobile click outside (optional refinement)
+        document.addEventListener('click', (e) => {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.querySelector('.menu-toggle');
+            if (window.innerWidth <= 768 &&
+                !sidebar.contains(e.target) &&
+                !toggle.contains(e.target) &&
+                sidebar.classList.contains('show')) {
+                sidebar.classList.remove('show');
+            }
+        });
+
+        function showSection(sectionId) {
+            // Update UI
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('section-' + sectionId).classList.add('active');
+
+            // Update Nav
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            document.querySelector(`.nav-link[onclick="showSection('${sectionId}')"]`).classList.add('active');
+
+            // Mobile: close sidebar after click
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('show');
+            }
+
+            // Refresh content if needed
+            if (sectionId === 'apply') renderApply();
+            if (sectionId === 'status') renderStatus();
+            if (sectionId === 'pending') renderPending();
+        }
 
         async function init() {
             try {
-                // 1. Get User Session
                 const authRes = await fetch('/api/auth/me');
-                if (authRes.status === 401) {
-                    window.location.replace('login.html?redirect=dashboard.html');
-                    return;
-                }
+                if (!authRes.ok) throw new Error('Auth failed');
                 const authData = await authRes.json();
                 currentUser = authData.user;
-                document.getElementById('user-name').textContent = currentUser.name || currentUser.email.split('@')[0];
 
-                // 2. Get Application Status
+                document.getElementById('user-name').textContent = currentUser.name || 'Student';
+                document.getElementById('user-initials').textContent = (currentUser.name || 'U').charAt(0).toUpperCase();
+
                 const appRes = await fetch('/api/application/manage');
                 const appData = await appRes.json();
 
-                renderDashboard(appData);
+                if (appData.hasApplication) {
+                    currentApp = appData.application;
+                    showSection('status'); // Default to status if applied
+                } else {
+                    showSection('apply'); // Default to apply if new
+                }
 
-            } catch (error) {
-                console.error('Init Error:', error);
-                // alert('Session expired or error occurred. Please login again.');
-                // window.location.replace('login.html');
+            } catch (e) {
+                console.error(e);
+                window.location.replace('login.html');
             }
         }
 
-        function renderDashboard(data) {
-            const container = document.getElementById('main-content');
+        function renderApply() {
+            const container = document.getElementById('apply-content');
             container.innerHTML = '';
 
-            if (data.hasApplication) {
-                const app = data.application;
-                let tplId = 'status-pending-tpl';
-                if (app.status === 'accepted') tplId = 'status-accepted-tpl';
-                if (app.status === 'rejected') tplId = 'status-rejected-tpl';
-
-                const clone = document.getElementById(tplId).content.cloneNode(true);
-
-                // Populate details if placeholders exist
-                const noEl = clone.querySelector('.app-no');
-                if (noEl) noEl.textContent = app.application_number;
-
-                const dateEl = clone.querySelector('.app-date');
-                if (dateEl) dateEl.textContent = new Date(app.created_at).toLocaleDateString();
-
-                container.appendChild(clone);
+            if (currentApp) {
+                container.innerHTML = `
+                    <div class="status-card">
+                        <div class="status-header">Application Submitted</div>
+                        <p>You have already submitted an application.</p>
+                        <button class="submit-btn" onclick="showSection('status')" style="width: auto; margin: 20px auto;">View Status</button>
+                    </div>
+                `;
             } else {
-                // Show Form
-                const clone = document.getElementById('submission-form-tpl').content.cloneNode(true);
-                container.appendChild(clone);
+                const tpl = document.getElementById('submission-form-tpl').content.cloneNode(true);
+                container.appendChild(tpl);
             }
+        }
+
+        function renderStatus() {
+            const container = document.getElementById('status-content');
+            container.innerHTML = '';
+
+            if (!currentApp) {
+                container.innerHTML = '<p>You have not applied yet. Go to the <strong>Apply</strong> tab to start.</p>';
+                return;
+            }
+
+            const app = currentApp;
+            let badgeClass = 'status-pending';
+            let badgeText = 'Under Review';
+            let msg = 'Your application is being reviewed.';
+
+            if (app.status === 'accepted') {
+                badgeClass = 'status-accepted';
+                badgeText = 'Admitted';
+                msg = 'Congratulations! You have been offered admission.';
+            } else if (app.status === 'rejected') {
+                badgeClass = 'status-rejected';
+                badgeText = 'Not Admitted';
+                msg = 'We regret to inform you that you have not been selected.';
+            }
+
+            container.innerHTML = `
+                <div class="status-card">
+                    <div class="status-header">${badgeText}</div>
+                    <div class="status-badge ${badgeClass}">${badgeText}</div>
+                    <p>${msg}</p>
+                    <div class="app-details">
+                        <p><strong>App Number:</strong> ${app.application_number || 'N/A'}</p>
+                        <p><strong>Date:</strong> ${new Date(app.created_at).toLocaleDateString()}</p>
+                        <p><strong>Class:</strong> ${app.class_applied || 'N/A'}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPending() {
+            const container = document.getElementById('pending-content');
+            container.innerHTML = '';
+
+            if (!currentApp) {
+                container.innerHTML = '<p>No applications found.</p>';
+                return;
+            }
+
+            // Simple table view for "Pending Applications" list
+            container.innerHTML = `
+                <table class="app-table">
+                    <thead>
+                        <tr>
+                            <th>Ref No</th>
+                            <th>Class</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>${currentApp.application_number || 'N/A'}</td>
+                            <td>${currentApp.class_applied || 'N/A'}</td>
+                            <td>${new Date(currentApp.created_at).toLocaleDateString()}</td>
+                            <td><span style="font-weight:bold; color: ${getModelColor(currentApp.status)}">${currentApp.status.toUpperCase()}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function getModelColor(status) {
+            if (status === 'accepted') return 'green';
+            if (status === 'rejected') return 'red';
+            return 'orange';
         }
 
         async function submitApplication(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            const originalText = btn.textContent;
-
-            // Basic UI Feedback
             btn.textContent = 'Submitting...';
             btn.disabled = true;
-            btn.style.opacity = '0.7';
 
             const formData = new FormData(e.target);
-
             try {
-                const res = await fetch('/api/application/manage', {
-                    method: 'POST',
-                    body: formData
-                });
-
+                const res = await fetch('/api/application/manage', { method: 'POST', body: formData });
                 const data = await res.json();
-
                 if (res.ok) {
-                    // Success - Scroll to top and reload
-                    window.scrollTo(0, 0);
-                    // Show a quick success message then reload
-                    document.getElementById('main-content').innerHTML = `
-                        <div class="status-card" style="border-color: #4caf50;">
-                            <h2 style="color: #4caf50;">Success!</h2>
-                            <p>Application submitted successfully.</p>
-                            <p>Redirecting...</p>
-                        </div>`;
-
-                    setTimeout(() => window.location.reload(), 2000);
+                    alert('Submitted!');
+                    window.location.reload();
                 } else {
-                    alert('Error: ' + (data.error || 'Submission failed'));
-                    btn.disabled = false;
-                    btn.textContent = originalText;
-                    btn.style.opacity = '1';
+                    alert('Error: ' + data.error);
                 }
-            } catch (error) {
-                console.error(error);
-                alert('Network error. Please try again.');
+            } catch (err) {
+                alert('Network Error');
+            } finally {
+                btn.textContent = 'Submit Application';
                 btn.disabled = false;
-                btn.textContent = originalText;
-                btn.style.opacity = '1';
             }
         }
 
         function logout() {
-            fetch('/api/auth/logout', { method: 'POST' }).finally(() => {
-                window.location.href = 'index.html';
-            });
+            fetch('/api/auth/logout', { method: 'POST' }).finally(() => window.location.href = 'index.html');
         }
 
         window.onload = init;
