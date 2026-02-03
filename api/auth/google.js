@@ -1,3 +1,4 @@
+
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
@@ -6,8 +7,9 @@ export default async function handler(req, res) {
     try {
         console.log('1. Handler started. Loading dependencies dynamically...');
 
-        // Dynamic import to catch initialization errors (e.g. missing connection string, module errors)
-        const { verifyGoogleToken, handleGoogleAuth } = await import('../../_lib/google-auth.js');
+        // Dynamic import with CORRECT relative request path (siblings in 'api')
+        // Path matches api/auth/google.js -> ../_lib/google-auth.js -> api/_lib/google-auth.js
+        const { verifyGoogleToken, handleGoogleAuth } = await import('../_lib/google-auth.js');
         console.log('2. Dependencies loaded successfully.');
 
         const { credential } = req.body;
