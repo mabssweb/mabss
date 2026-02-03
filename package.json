@@ -13,7 +13,7 @@
     "cookie": "^1.1.1",
     "dotenv": "^17.2.3",
     "formidable": "^3.5.4",
-    "google-auth-library": "^10.5.0",
+    "google-auth-library": "^9.0.0",
     "jsonwebtoken": "^9.0.3",
     "nodemailer": "^7.0.13",
     "oci-common": "^2.122.2",
