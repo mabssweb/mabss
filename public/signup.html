@@ -200,25 +200,43 @@
                         window.location.href = redirect === 'admission' ? 'admission/index.html' : 'admission/index.html';
                     }, 1500);
                 } else {
-                    throw new Error(data.error);
+                    // Try to parse detailed error from backend
+                    const errorDetail = data.details || data.error || 'Unknown error';
+                    const errorStep = data.step ? ` [Step: ${data.step}]` : '';
+                    throw new Error(errorDetail + errorStep);
                 }
             } catch (err) {
-                errorDiv.textContent = err.message || 'Google sign-in failed';
+                console.error('Full Sign-In Error:', err);
+                errorDiv.innerText = `Error: ${err.message}. Check console for details.`;
                 errorDiv.style.display = 'block';
             }
         }
 
-        // Manual Google Sign-In button click
-        document.getElementById('googleSignIn').addEventListener('click', () => {
-            google.accounts.id.initialize({
-                client_id: "1066040941987-6fotl7k1qvcgtb3snt87lr4i1ujm21oj.apps.googleusercontent.com",
-                callback: handleGoogleCallback,
-                use_fedcm_for_prompt: false // Disable FedCM to fix localhost network errors
-            });
-            // Render hidden button to init functionality if needed, or just prompt
-            // Actually, for manual click we usually just prompt, but let's stick to prompt()
-            google.accounts.id.prompt();
-        });
+        // Initialize Google Sign-In
+        async function initGoogleSignIn() {
+            try {
+                const configRes = await fetch('/api/auth/config');
+                const config = await configRes.json();
+                const clientId = config.googleClientId;
+
+                google.accounts.id.initialize({
+                    client_id: clientId,
+                    callback: handleGoogleCallback,
+                    use_fedcm_for_prompt: false // Disable FedCM to fix localhost network errors
+                });
+
+                // Attach click handler to our custom button
+                document.getElementById('googleSignIn').addEventListener('click', () => {
+                    google.accounts.id.prompt();
+                });
+
+            } catch (error) {
+                console.error('Failed to initialize Google Sign-In:', error);
+            }
+        }
+
+        window.onload = initGoogleSignIn;
+
 
         // Regular form signup
         document.getElementById('signupForm').addEventListener('submit', async (e) => {
