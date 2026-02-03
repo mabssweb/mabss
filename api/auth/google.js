@@ -37,13 +37,19 @@ export default async function handler(req, res) {
         return res.status(200).json(result);
 
     } catch (error) {
-        console.error('Google auth error full stack:', error);
-        // Return actual error message for debugging "root cause"
+        console.error('CRITICAL Google auth error:', error);
+
+        // Safety: Ensure we don't crash while reporting a crash
+        const safeError = error || {};
+        const message = safeError.message || safeError.toString() || 'Unknown error';
+        const stack = safeError.stack || 'No stack trace';
+        const step = (typeof message === 'string' && message.includes('Token')) ? 'Verification' : 'Database/Other';
+
         return res.status(500).json({
-            error: 'Authentication failed',
-            details: error.message,
-            step: error.message.includes('Token') ? 'Verification' : 'Database',
-            stack: process.env.NODE_ENV === 'development' || true ? error.stack : undefined // Force stack for now
+            error: 'Authentication failed (Critical)',
+            details: message,
+            step: step,
+            stack: stack
         });
     }
 }
