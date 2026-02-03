@@ -135,7 +135,8 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(255) UNIQUE NOT NULL,
     password_hash TEXT, -- Nullable for Google Auth users
     google_id VARCHAR(255) UNIQUE, -- Store Google Subject ID
-    avatar_url TEXT,
+    name VARCHAR(255), -- Store full name from Google
+    picture TEXT, -- Store Google Profile Picture URL
     role VARCHAR(50) NOT NULL DEFAULT 'student' CHECK (role IN ('student', 'admin')),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
