@@ -873,6 +873,76 @@
             }
         }
 
+        // Modal Functions
+        let currentModalAppId = null;
+
+        async function openAppModal(id) {
+            currentModalAppId = id;
+            const modal = document.getElementById('appModal');
+            const modalBody = document.getElementById('modal-body');
+
+            try {
+                const token = localStorage.getItem('adminToken');
+                const res = await fetch(`/api/admin/actions?id=${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!res.ok) throw new Error('Failed to fetch application details');
+
+                const apps = await res.json();
+                const app = apps.applications?.find(a => a.id === id);
+
+                if (!app) throw new Error('Application not found');
+
+                // Render application details
+                modalBody.innerHTML = `
+                    <div class="detail-row"><div class="detail-label">Application Number:</div><div>${app.application_number}</div></div>
+                    <div class="detail-row"><div class="detail-label">Name:</div><div>${app.surname} ${app.other_names}</div></div>
+                    <div class="detail-row"><div class="detail-label">LIN:</div><div>${app.lin}</div></div>
+                    <div class="detail-row"><div class="detail-label">DOB:</div><div>${app.dob}</div></div>
+                    <div class="detail-row"><div class="detail-label">Sex:</div><div>${app.sex}</div></div>
+                    <div class="detail-row"><div class="detail-label">Class Applying:</div><div>${app.class_applying}</div></div>
+                    <div class="detail-row"><div class="detail-label">Former School:</div><div>${app.former_school}</div></div>
+                    <div class="detail-row"><div class="detail-label">PLE Index:</div><div>${app.ple_index}</div></div>
+                    <div class="detail-row"><div class="detail-label">Total Aggregates:</div><div>${app.total_aggregates}</div></div>
+                    <div class="detail-row"><div class="detail-label">Division:</div><div>${app.division}</div></div>
+                    <div class="detail-row"><div class="detail-label">Guardian:</div><div>${app.guardian_name} (${app.guardian_contact})</div></div>
+                    <div class="detail-row"><div class="detail-label">Status:</div><div><span class="app-status status-${app.status}">${app.status.toUpperCase()}</span></div></div>
+                `;
+
+                // Update modal buttons
+                document.getElementById('approveBtn').onclick = () => {
+                    closeModal();
+                    updateStatus(id, 'accepted');
+                };
+                document.getElementById('rejectBtn').onclick = () => {
+                    closeModal();
+                    updateStatus(id, 'rejected');
+                };
+
+                modal.style.display = 'block';
+            } catch (error) {
+                console.error('Error loading application:', error);
+                alert('Failed to load application details: ' + error.message);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('appModal').style.display = 'none';
+            currentModalAppId = null;
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const modal = document.getElementById('appModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
         function formatDate(dateString) {
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             return new Date(dateString).toLocaleDateString(undefined, options);
