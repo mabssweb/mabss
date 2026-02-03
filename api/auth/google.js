@@ -27,6 +27,11 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error('Google auth error:', error);
-        return res.status(500).json({ error: 'Authentication failed' });
+        // Return actual error message for debugging "root cause"
+        return res.status(500).json({
+            error: 'Authentication failed',
+            details: error.message,
+            stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+        });
     }
 }
