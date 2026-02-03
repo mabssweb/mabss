@@ -138,6 +138,15 @@ export default async function handler(req, res) {
             return res.status(200).json({ success: true, application });
         }
 
+        // 4. DELETE: Permanently Delete Application
+        if (req.method === 'DELETE') {
+            const { id } = req.query;
+            if (!id) return res.status(400).json({ error: 'Missing ID' });
+
+            await db.query('DELETE FROM applications WHERE id = $1', [id]);
+            return res.status(200).json({ message: 'Application deleted permanently' });
+        }
+
         return res.status(405).json({ error: 'Method not allowed' });
 
     } catch (error) {
