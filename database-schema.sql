@@ -117,15 +117,12 @@ ALTER TABLE applications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE application_documents ENABLE ROW LEVEL SECURITY;
 
 -- Policy: INSERT (Public/Anon can insert)
--- Ideally authenticated user, but for open admission form, anon is okay if restricted.
+-- Drop existing policies if they exist, then recreate
+DROP POLICY IF EXISTS "Enable insert for everyone" ON applications;
+DROP POLICY IF EXISTS "Enable insert for everyone" ON application_documents;
+
 CREATE POLICY "Enable insert for everyone" ON applications FOR INSERT WITH CHECK (true);
 CREATE POLICY "Enable insert for everyone" ON application_documents FOR INSERT WITH CHECK (true);
-
--- Policy: SELECT (Admin only or Own Application)
--- Since we don't have user auth for applicants yet (just app number),
--- we restrict SELECT to service_role (backend) or maybe implicit based on some token.
--- For now, allow service_role key to bypass RLS, default deny for anon on SELECT.
--- (No explicitly permissive SELECT policy for anon users to prevent scraping)
 
 
 
