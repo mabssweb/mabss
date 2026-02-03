@@ -161,7 +161,7 @@ export default async function handler(req, res) {
             // Handle File Uploads (PLE Slip, UCE Slip, Guardian ID)
             const uploadDoc = async (fileKey, docType) => {
                 const file = Array.isArray(files[fileKey]) ? files[fileKey][0] : files[fileKey];
-                if (file) {
+                if (file && file.size > 0) { // Only upload if file exists and has content
                     try {
                         const url = await uploadToOCI(file);
                         if (url) {
