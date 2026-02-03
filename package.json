@@ -2,6 +2,7 @@
   "name": "mabss-news-system",
   "version": "1.0.0",
   "description": "MABSS News System with Vercel Serverless Functions and Neon PostgreSQL",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start-local": "vercel dev",
