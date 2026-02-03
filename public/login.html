@@ -183,11 +183,9 @@
                         const redirect = urlParams.get('redirect');
 
                         if (data.user.role === 'admin') {
-                            window.location.href = 'admin/admissions.html';
-                        } else if (redirect === 'admission') {
-                            window.location.href = 'admission/index.html';
+                            window.location.href = 'admin.html';
                         } else {
-                            window.location.href = 'admission/index.html';
+                            window.location.href = 'dashboard.html';
                         }
                     }, 1000);
                 } else {
@@ -254,11 +252,9 @@
 
                     // Role-based redirect
                     if (data.user.role === 'admin') {
-                        window.location.href = 'admin/admissions.html';
-                    } else if (redirect === 'admission') {
-                        window.location.href = 'admission/index.html';
+                        window.location.href = 'admin.html';
                     } else {
-                        window.location.href = 'admission/index.html';
+                        window.location.href = 'dashboard.html';
                     }
                 } else {
                     throw new Error(data.error);
