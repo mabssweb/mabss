@@ -135,9 +135,7 @@
         <div id="success" class="success"></div>
 
         <!-- Google Sign-In Button -->
-        <div id="g_id_onload" data-client_id="1066040941987-6fotl7k1qvcgtb3snt87lr4i1ujm21oj.apps.googleusercontent.com"
-            data-callback="handleGoogleCallback" data-auto_prompt="false">
-        </div>
+        <!-- Removed g_id_onload div to use manual JS initialization below -->
         <button class="google-btn" id="googleSignIn">
             <svg width="20" height="20" viewBox="0 0 24 24">
                 <path fill="#4285F4"
@@ -213,13 +211,14 @@
         // Manual Google Sign-In button click
         document.getElementById('googleSignIn').addEventListener('click', () => {
             google.accounts.id.initialize({
-                client_id: document.querySelector('[data-client_id]').getAttribute('data-client_id'),
-                callback: handleGoogleCallback
+                client_id: "1066040941987-6fotl7k1qvcgtb3snt87lr4i1ujm21oj.apps.googleusercontent.com",
+                callback: handleGoogleCallback,
+                use_fedcm_for_prompt: false // Disable FedCM to fix localhost network errors
             });
             // Render hidden button to init functionality if needed, or just prompt
             // Actually, for manual click we usually just prompt, but let's stick to prompt()
             google.accounts.id.prompt();
-        }); // Disable FedCM to fix localhost network errors
+        });
 
         // Regular form signup
         document.getElementById('signupForm').addEventListener('submit', async (e) => {

@@ -206,7 +206,7 @@
                 client_id: "1066040941987-6fotl7k1qvcgtb3snt87lr4i1ujm21oj.apps.googleusercontent.com",
                 callback: handleGoogleCallback,
                 // FedCM is enabled by default, so we don't need to explicitly set it to true
-                // We definitely do NOT want use_fedcm_for_prompt: false if the user wants it enabled
+                use_fedcm_for_prompt: false // Disable FedCM to fix localhost network errors
             });
 
             // Render the button in the div
