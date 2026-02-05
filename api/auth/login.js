@@ -10,6 +10,15 @@ export default async function handler(req, res) {
 
     const { email, password } = req.body;
 
+    // Admin constant password login support
+    if (!email && password && password === process.env.ADMIN_PASSWORD) {
+        // Return a mock admin user object to issue a token
+        const adminUser = { id: 'admin', email: 'admin@mabss.ac.ug', role: 'admin' };
+        const token = signToken(adminUser);
+        setAuthCookie(res, token);
+        return res.status(200).json({ success: true, user: adminUser });
+    }
+
     if (!email || !password) {
         return res.status(400).json({ error: 'Email and password are required' });
     }
