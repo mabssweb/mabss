@@ -49,6 +49,7 @@ export default async function handler(req, res) {
     }
 
     if (!isAdmin) {
+        console.log('Admin Auth Failed for:', req.method, req.url);
         return res.status(401).json({ error: 'Unauthorized: Admin access required' });
     }
 
@@ -127,6 +128,7 @@ export default async function handler(req, res) {
             );
 
             if (updateRes.rows.length === 0) {
+                console.log(`[Admin API] Application with ID ${id} not found for status update.`);
                 return res.status(404).json({ error: 'Application not found' });
             }
 
@@ -145,7 +147,7 @@ export default async function handler(req, res) {
                         subject: 'MABSS Admission - Application Accepted',
                         html: EMAIL_TEMPLATES.ADMISSION_LETTER(name, application.application_number)
                     });
-                    console.log(`Email notification (Accepted) for ${email}: ${sent ? 'SUCCESS' : 'SKIPPED/FAILED'}`);
+                    console.log(`[Admin API] Email notification (Accepted) for ${email}: ${sent ? 'SUCCESS' : 'SKIPPED/FAILED'}`);
                 } else if (status === 'rejected') {
                     const sent = await sendEmail({
                         to: email,

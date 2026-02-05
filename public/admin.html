@@ -883,8 +883,13 @@
             tbody.innerHTML = '';
 
             try {
-                // CORRECTED ROUTE
-                const response = await fetch(`/api/admin/actions?status=${filter}`);
+                const token = localStorage.getItem('adminToken');
+                const headers = {};
+                if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                const response = await fetch(`/api/admin/actions?status=${filter}`, {
+                    headers: headers
+                });
                 const data = await response.json();
                 const applications = data.applications || [];
 
