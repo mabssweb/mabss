@@ -62,9 +62,9 @@ export default async function handler(req, res) {
             // If ID is provided, fetch single application
             if (id) {
                 const result = await db.query(
-                    `SELECT a.*, u.email as user_email
+                    `SELECT a.*, COALESCE(u.email, 'Deleted User') as user_email
                      FROM applications a
-                     JOIN users u ON a.user_id = u.id
+                     LEFT JOIN users u ON a.user_id = u.id
                      WHERE a.id = $1`,
                     [id]
                 );
@@ -80,9 +80,9 @@ export default async function handler(req, res) {
             const offset = (page - 1) * limit;
 
             let query = `
-                SELECT a.*, u.email as user_email
+                SELECT a.*, COALESCE(u.email, 'Deleted User') as user_email
                 FROM applications a
-                JOIN users u ON a.user_id = u.id
+                LEFT JOIN users u ON a.user_id = u.id
             `;
             const params = [];
 
