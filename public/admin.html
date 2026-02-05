@@ -547,20 +547,11 @@
             <div id="login-error" class="error-message"></div>
             <form id="login-form">
                 <div class="form-group">
-                    <label class="form-label" for="admin-password">Password</label>
-                    <input type="password" id="admin-password" class="form-input" placeholder="Enter Admin Password"
-                        required>
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="Enter Admin Password" required>
                 </div>
-                <button type="submit" class="submit-btn">Login</button>
+                <button type="submit" class="submit-btn" id="login-btn">Login</button>
             </form>
-            <div style="text-align: center; margin-top: 20px;">
-                <p>OR</p>
-                <a href="/api/auth/google-login?redirect=/admin.html" class="submit-btn"
-                    style="background: white; color: #333; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; gap: 10px; max-width: 250px; margin: 0 auto;">
-                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" style="width: 20px;">
-                    Login with Google
-                </a>
-            </div>
         </div>
     </section>
 
@@ -1047,7 +1038,13 @@
         // Login Handler
         document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const password = document.getElementById('password').value;
+            const passwordEl = document.getElementById('password');
+            if (!passwordEl) {
+                console.error('Password input not found!');
+                alert('Fatal Error: Login form is broken. Please refresh.');
+                return;
+            }
+            const password = passwordEl.value;
             const errorDiv = document.getElementById('login-error');
             const submitBtn = e.target.querySelector('button');
 
