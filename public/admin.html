@@ -251,6 +251,14 @@
             border-bottom-color: #0e7704;
         }
 
+        /* Responsive Table Container */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 1rem;
+        }
+
         /* Table Styles */
         .news-table {
             width: 100%;
@@ -303,6 +311,17 @@
 
         .edit-btn:hover {
             background-color: #e0a800;
+            transform: scale(1.05);
+        }
+
+        .view-btn {
+            background-color: #0e7704;
+            color: white;
+        }
+
+        .view-btn:hover {
+            background-color: #0b5e03;
+            transform: scale(1.05);
         }
 
         .delete-btn {
@@ -445,6 +464,30 @@
                 padding: 0.8rem 1rem;
                 font-size: 1rem;
             }
+
+            .detail-row {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+
+            .detail-label {
+                width: 100%;
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 15px;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-footer button {
+                width: 100% !important;
+            }
         }
 
         /* Modal Styles */
@@ -495,12 +538,12 @@
         }
 
         .app-status {
-            padding: 5px 10px;
-            border-radius: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
             font-weight: bold;
             color: white;
-            text-transform: uppercase;
-            font-size: 0.8rem;
+            text-transform: capitalize;
+            font-size: 0.85rem;
         }
 
         .status-pending {
@@ -513,6 +556,24 @@
 
         .status-rejected {
             background: #f44336;
+        }
+
+        .modal-footer {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+
+        .modal-footer button {
+            transition: transform 0.2s;
+        }
+
+        .modal-footer button:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -531,7 +592,8 @@
             <nav class="nav-menu" id="mainNav">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="admin/admissions.html" class="nav-link">Admissions</a></li>
+                    <li class="nav-item" id="admissions-nav" style="display: none;"><a href="#"
+                            onclick="switchTab('admissions')" class="nav-link">Admissions</a></li>
                     <li class="nav-item" id="logout-item" style="display: none;">
                         <button onclick="logout()" class="logout-btn">Logout</button>
                     </li>
@@ -628,17 +690,19 @@
             <div class="admin-card">
                 <h2 class="admin-title">Manage Published News</h2>
                 <div id="loading-news" style="text-align: center;">Loading...</div>
-                <table class="news-table" id="news-table" style="display: none;">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="news-table-body"></tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="news-table" id="news-table" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="news-table-body"></tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
@@ -646,7 +710,7 @@
         <section id="admissions-section" class="admin-section" style="display: none;">
             <div class="admin-card">
                 <h2 class="admin-title">Admissions Management</h2>
-                <div style="margin-bottom: 1rem; display: flex; gap: 1rem;">
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
                     <button class="submit-btn" style="width: auto; padding: 0.5rem 1rem;"
                         onclick="loadApplications('all')">All</button>
                     <button class="submit-btn" style="width: auto; padding: 0.5rem 1rem; background: #ff9800;"
@@ -655,18 +719,20 @@
                         onclick="loadApplications('accepted')">Accepted</button>
                 </div>
                 <div id="loading-apps" style="text-align: center; display: none;">Loading Applications...</div>
-                <table class="news-table" id="apps-table">
-                    <thead>
-                        <tr>
-                            <th>App No</th>
-                            <th>Name</th>
-                            <th>Class</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="apps-table-body"></tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="news-table" id="apps-table">
+                        <thead>
+                            <tr>
+                                <th>App No</th>
+                                <th>Name</th>
+                                <th>Class</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="apps-table-body"></tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
@@ -676,10 +742,12 @@
                 <span class="close-modal" onclick="closeModal()">&times;</span>
                 <h2 class="admin-title" style="margin-bottom: 1rem;">Application Details</h2>
                 <div id="modal-body"></div>
-                <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
-                    <button id="approveBtn" class="submit-btn" style="width: auto; background: #4caf50;">Approve & Send
-                        Email</button>
+                <div class="modal-footer">
+                    <button id="approveBtn" class="submit-btn"
+                        style="width: auto; background: #4caf50;">Approve</button>
                     <button id="rejectBtn" class="submit-btn" style="width: auto; background: #f44336;">Reject</button>
+                    <button id="deleteBtn" class="submit-btn" style="width: auto; background: #333;">Delete
+                        Application</button>
                 </div>
             </div>
         </div>
@@ -720,6 +788,7 @@
             document.getElementById('login-section').style.display = 'none';
             document.querySelector('.main-container').style.display = 'block';
             document.getElementById('logout-item').style.display = 'block';
+            document.getElementById('admissions-nav').style.display = 'block';
 
             if (document.getElementById('manage-news-section').style.display === 'block') {
                 loadAllNews();
@@ -748,6 +817,12 @@
                 document.getElementById('manage-news-section').style.display = 'none';
                 document.getElementById('admissions-section').style.display = 'block';
                 loadApplications('all');
+            }
+
+            // Close mobile menu if open
+            const nav = document.getElementById('mainNav');
+            if (nav.classList.contains('show')) {
+                nav.classList.remove('show');
             }
 
             // Update Tab Buttons
@@ -818,17 +893,12 @@
                 if (applications.length > 0) {
                     tbody.innerHTML = applications.map(app => `
                         <tr>
-                            <td>${app.application_number}</td> <!-- Fixed camelCase to snake_case if DB returns snake_case, checking backend -->
+                            <td>${app.application_number}</td>
                             <td>${app.surname} ${app.other_names}</td>
-                            <td>${app.class_applied || app.class}</td>
-                            <td><span class="status-badge status-${app.status.toLowerCase()}">${app.status}</span></td>
+                            <td>${app.class_applying || app.class}</td>
+                            <td><span class="app-status status-${app.status.toLowerCase()}">${app.status}</span></td>
                             <td>
-                                <div class="action-buttons">
-                                    <button class="action-btn" onclick="openAppModal('${app.id}')" title="View Details"><i class="fas fa-eye"></i></button>
-                                    <button class="action-btn" onclick="updateStatus('${app.id}', 'accepted')" style="background:#4caf50; color:white;">Approve</button>
-                                    <button class="action-btn" onclick="updateStatus('${app.id}', 'rejected')" style="background:#f44336; color:white;">Reject</button>
-                                    <button class="action-btn" onclick="deleteApplication('${app.id}')" style="background:#333; color:white; margin-left: 5px;" title="Delete Permanently"><i class="fas fa-trash-alt"></i></button>
-                                </div>
+                                <button class="action-btn view-btn" onclick="openAppModal('${app.id}')" title="View Details"><i class="fas fa-eye"></i></button>
                             </td>
                         </tr>
                     `).join('');
@@ -944,6 +1014,10 @@
                 document.getElementById('rejectBtn').onclick = () => {
                     closeModal();
                     updateStatus(id, 'rejected');
+                };
+                document.getElementById('deleteBtn').onclick = () => {
+                    closeModal();
+                    deleteApplication(id);
                 };
 
                 modal.style.display = 'block';
