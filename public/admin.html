@@ -1110,11 +1110,11 @@
         });
 
         function validateSubmit() {
-            if (document.querySelector('#news-form button[type="submit"]').textContent.includes('...')) return;
+            const submitBtn = document.querySelector('#news-form button[type="submit"]');
+            if (!submitBtn || submitBtn.textContent.includes('...')) return;
             const title = document.getElementById('title').value.trim();
             const summary = document.getElementById('summary').value.trim();
             const content = document.getElementById('content-editor').innerHTML.trim();
-            const submitBtn = document.querySelector('#news-form button[type="submit"]');
             submitBtn.disabled = !(title && summary && content);
         }
 
@@ -1179,7 +1179,6 @@
                     }
 
                     const method = editId ? 'PUT' : 'POST';
-                    // Note: If PUT doesn't support FormData yet, we might need to update that too.
                     const url = editId ? `/api/news/${editId}` : '/api/news';
 
                     const response = await fetch(url, {
@@ -1209,161 +1208,11 @@
             }
         });
 
-        document.getElementById('image-input').addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
-                document.querySelector('.image-upload p').textContent = `Selected: ${file.name}`;
-            }
-        });
-
         // Mobile menu toggle
         document.getElementById('menuToggle').addEventListener('click', function () {
             const nav = document.getElementById('mainNav');
             nav.classList.toggle('show');
         });
-        // --- Admissions Logic ---
-        async function loadApplications(status) {
-            const tableBody = document.getElementById('apps-table-body');
-            const loading = document.getElementById('loading-apps');
-
-            loading.style.display = 'block';
-            tableBody.innerHTML = '';
-
-            try {
-                const token = localStorage.getItem('adminToken');
-                const res = await fetch(`/api/admin/actions?status=${status || 'all'}`, {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                const data = await res.json();
-
-                loading.style.display = 'none';
-
-                if (!data.applications || data.applications.length === 0) {
-                    tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center">No applications found.</td></tr>';
-                    return;
-                }
-
-                tableBody.innerHTML = data.applications.map(app => `
-                    <tr>
-                        <td>${app.application_number}</td>
-                        <td>${app.surname} ${app.other_names}</td>
-                        <td>${app.class_applying}</td>
-                        <td><span class="app-status status-${app.status}">${app.status}</span></td>
-                        <td>
-                            <button class="action-btn edit-btn" onclick="viewApplication(${app.id})"><i class="fas fa-eye"></i></button>
-                        </td>
-                    </tr>
-                `).join('');
-
-            } catch (error) {
-                loading.textContent = 'Error loading data';
-                console.error(error);
-            }
-        }
-
-        let currentAppId = null;
-
-        async function viewApplication(id) {
-            currentAppId = id;
-            const modal = document.getElementById('appModal');
-            const body = document.getElementById('modal-body');
-            const token = localStorage.getItem('adminToken');
-
-            // For simplicity, we filter from the already loaded list or fetch single? 
-            // Let's refetch list or use global cache. 
-            // Easier: just make a GET call to list filtered by ID effectively or find in DOM?
-            // Cleanest: We'll just re-fetch the list logic or store data. 
-            // Actually, we can fetch all details via the List endpoint if it returns everything (it does).
-            // Let's just find it in the DOM or re-fetch.
-            // Let's re-fetch list is expensive. I'll rely on the table data for now? No, table data is minimal.
-            // I'll assume the list endpoint returned full details (it did: SELECT *).
-            // So I need to find the object in memory. 
-            // Optimally: Store in window.applicationsCache
-
-            // Quick fix: Re-fetch is safer for consistency.
-            // But we don't have a GET /api/admin/application/:id endpoint.
-            // We have GET /api/admin/actions which lists.
-            // I will store the last fetched applications in a global var.
-
-            // Implementing store:
-            // Fetch list again? Or just add global variable.
-            // Let's modify loadApplications to store data globally.
-            // For now, I will hack it by fetching "all" again inside here? No that's bad.
-            // I'll add `window.lastApps` in loadApplications.
-
-            // ACTUALLY, I will just iterate the rows? No.
-            // I'll update loadApplications to save to a variable.
-            // Since I can't easily modify loadApplications *and* this function in one go without duplicate code issues...
-            // I will modify loadApplications in the previous replacement chunk?
-            // No, I'll just do a hack: fetch all again. It's an admin dashboard, traffic is low.
-
-            try {
-                const res = await fetch(`/api/admin/actions?status=all&limit=1000`, { // Fetch all for lookup
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                const data = await res.json();
-                const app = data.applications.find(a => a.id == id);
-
-                if (!app) return alert('Application not found');
-
-                // Build Modal HTML
-                body.innerHTML = `
-                    <div class="detail-row"><div class="detail-label">Name:</div><div>${app.surname} ${app.other_names}</div></div>
-                    <div class="detail-row"><div class="detail-label">App Number:</div><div>${app.application_number}</div></div>
-                    <div class="detail-row"><div class="detail-label">Class:</div><div>${app.class_applying}</div></div>
-                    <div class="detail-row"><div class="detail-label">Previous School:</div><div>${app.former_school}</div></div>
-                    <div class="detail-row"><div class="detail-label">PLE Aggregates:</div><div>${app.total_aggregates} (Div ${app.division})</div></div>
-                    <div class="detail-row"><div class="detail-label">Parent:</div><div>${app.parent_category}</div></div>
-                    <div class="detail-row"><div class="detail-label">Contact:</div><div>${app.guardian_contact} (${app.guardian_name})</div></div>
-                    <div class="detail-row"><div class="detail-label">Status:</div><div>${app.status}</div></div>
-                    <br>
-                    <div style="display:flex; gap:10px;">
-                        ${app.documents ? app.documents.map(d => `<a href="${d.url}" target="_blank" class="submit-btn" style="width:auto; padding:5px 10px; font-size:0.8rem;">View ${d.type}</a>`).join('') : 'No documents'}
-                    </div>
-                `;
-
-                // Configure Buttons
-                document.getElementById('approveBtn').onclick = () => updateStatus(id, 'accepted');
-                document.getElementById('rejectBtn').onclick = () => updateStatus(id, 'rejected');
-
-                modal.style.display = 'block';
-            } catch (e) { console.error(e); }
-        }
-
-        function closeModal() {
-            document.getElementById('appModal').style.display = 'none';
-        }
-
-        async function updateStatus(id, status) {
-            if (!confirm(`Are you sure you want to mark this application as ${status}?`)) return;
-
-            const btn = status === 'accepted' ? document.getElementById('approveBtn') : document.getElementById('rejectBtn');
-            const original = btn.textContent;
-            btn.textContent = 'Processing...';
-            btn.disabled = true;
-
-            try {
-                const token = localStorage.getItem('adminToken');
-                const res = await fetch(`/api/admin/actions?id=${id}`, {
-                    method: 'PUT',
-                    headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ status })
-                });
-
-                if (res.ok) {
-                    alert(`Application ${status} successfully! Email sent.`);
-                    closeModal();
-                    loadApplications('all');
-                } else {
-                    alert('Failed to update status.');
-                }
-            } catch (e) {
-                alert('Error: ' + e.message);
-            } finally {
-                btn.textContent = original;
-                btn.disabled = false;
-            }
-        }
     </script>
 </body>
 
