@@ -140,17 +140,19 @@ export default async function handler(req, res) {
 
                 // Send Email Notification
                 if (status === 'accepted') {
-                    await sendEmail({
+                    const sent = await sendEmail({
                         to: email,
                         subject: 'MABSS Admission - Application Accepted',
                         html: EMAIL_TEMPLATES.ADMISSION_LETTER(name, application.application_number)
                     });
+                    console.log(`Email notification (Accepted) for ${email}: ${sent ? 'SUCCESS' : 'SKIPPED/FAILED'}`);
                 } else if (status === 'rejected') {
-                    await sendEmail({
+                    const sent = await sendEmail({
                         to: email,
                         subject: 'MABSS Admission - Application Update',
                         html: EMAIL_TEMPLATES.REJECTION_NOTICE(name)
                     });
+                    console.log(`Email notification (Rejected) for ${email}: ${sent ? 'SUCCESS' : 'SKIPPED/FAILED'}`);
                 }
             }
 
