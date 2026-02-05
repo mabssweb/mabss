@@ -676,6 +676,10 @@
             display: block;
         }
 
+        .no-print {
+            display: block;
+        }
+
         /* Print Header Only visible on print */
         #print-header {
             display: none;
@@ -702,8 +706,16 @@
 
         /* Print Styles */
         @media print {
+            @page {
+                margin: 0.5cm;
+            }
+
             body * {
                 visibility: hidden;
+            }
+
+            .no-print {
+                display: none !important;
             }
 
             #appModal,
@@ -1316,7 +1328,6 @@
                                 `;
                 }).join('') || '<p style="color: #888;">No electronic documents were attached to this application.</p>'}
                         </div>
-                        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">* Documents are stored securely and can be viewed by clicking the tags or previewing images above.</p>
                     </div>
 
                     <div style="display: flex; justify-content: space-between; align-items: flex-end; padding: 20px; background: #eee; border-radius: 8px;">
