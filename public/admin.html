@@ -666,6 +666,16 @@
             color: white;
         }
 
+        .image-preview {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+
         /* Print Header Only visible on print */
         #print-header {
             display: none;
@@ -676,15 +686,18 @@
         }
 
         #print-header h1 {
-            font-size: 24pt;
-            margin-bottom: 5px;
+            font-size: 26pt;
+            margin-bottom: 8px;
             color: #000;
+            font-weight: 900;
+            letter-spacing: 1px;
         }
 
         #print-header p {
-            font-size: 11pt;
-            margin: 2px 0;
+            font-size: 12pt;
+            margin: 4px 0;
             color: #333;
+            font-weight: 500;
         }
 
         /* Print Styles */
@@ -736,6 +749,16 @@
                 margin-bottom: 15pt;
                 padding: 15pt;
                 page-break-inside: avoid;
+            }
+
+            .image-preview {
+                width: 100% !important;
+                max-width: none !important;
+                height: auto !important;
+                border: none !important;
+                box-shadow: none !important;
+                image-rendering: auto;
+                margin: 20px 0 !important;
             }
 
             .modal-section-title {
@@ -940,10 +963,10 @@
 
                 <!-- Print Header -->
                 <div id="print-header">
-                    <h1>MABSS EDUCATION CENTER</h1>
-                    <p>Building a brighter future through excellence</p>
-                    <p>P.O. Box 12345, Kampala, Uganda</p>
-                    <p>Contact: +256 123 456 789 | Email: info@mabss.edu</p>
+                    <h1>MABSS Creativity For Excellence</h1>
+                    <p>Address: P.O. Box 521, Mbarara, Uganda</p>
+                    <p>Phone: +256 782 096231 | +256 782 371824 | +256 779 927775</p>
+                    <p>Email: mabss2014@gmail.com</p>
                     <h2 style="margin-top: 15px; text-decoration: underline;">OFFICIAL STUDENT ADMISSION FORM</h2>
                 </div>
 
@@ -1281,13 +1304,19 @@
                     <div class="modal-section">
                         <h3 class="modal-section-title"><i class="fas fa-paperclip"></i> Attached Supporting Documents</h3>
                         <div class="docs-container" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
-                            ${(app.documents || []).map(doc => `
-                                <a href="${doc.url}" target="_blank" class="document-tag">
-                                    <i class="fas fa-file-pdf"></i> <strong>${doc.type.replace(/_/g, ' ').toUpperCase()}</strong>
-                                </a>
-                            `).join('') || '<p style="color: #888;">No electronic documents were attached to this application.</p>'}
+                            ${(app.documents || []).map(doc => {
+                    const isImage = ['jpg', 'jpeg', 'png', 'webp'].some(ext => doc.url.toLowerCase().endsWith(ext));
+                    return `
+                                <div style="width: 100%; margin-bottom: 20px;">
+                                    <a href="${doc.url}" target="_blank" class="document-tag">
+                                        <i class="fas fa-file-pdf"></i> <strong>${doc.type.replace(/_/g, ' ').toUpperCase()}</strong>
+                                    </a>
+                                    ${isImage ? `<img src="${doc.url}" class="image-preview" alt="${doc.type}">` : ''}
+                                </div>
+                                `;
+                }).join('') || '<p style="color: #888;">No electronic documents were attached to this application.</p>'}
                         </div>
-                        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">* Documents are stored securely and can be viewed by clicking the tags above.</p>
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">* Documents are stored securely and can be viewed by clicking the tags or previewing images above.</p>
                     </div>
 
                     <div style="display: flex; justify-content: space-between; align-items: flex-end; padding: 20px; background: #eee; border-radius: 8px;">
