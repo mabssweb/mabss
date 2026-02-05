@@ -63,7 +63,14 @@ export default async function handler(req, res) {
             // If ID is provided, fetch single application
             if (id) {
                 const result = await db.query(
-                    `SELECT a.*, COALESCE(u.email, 'Deleted User') as user_email
+                    `SELECT 
+                        a.*, 
+                        COALESCE(u.email, 'Deleted User') as user_email,
+                        (
+                            SELECT json_agg(json_build_object('type', d.document_type, 'url', d.file_url))
+                            FROM application_documents d
+                            WHERE d.application_id = a.id
+                        ) as documents
                      FROM applications a
                      LEFT JOIN users u ON a.user_id = u.id
                      WHERE a.id = $1`,
