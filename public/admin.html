@@ -577,46 +577,114 @@
         }
 
         /* Modal Content Layout Enhancements */
+        .modal-body-content {
+            padding: 10px;
+        }
+
         .modal-section {
-            margin-bottom: 2rem;
+            background: #fbfbfb;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            page-break-inside: avoid;
         }
 
         .modal-section-title {
             color: #0e7704;
             border-bottom: 2px solid #0e7704;
-            padding-bottom: 5px;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            padding-bottom: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-section-title i {
+            margin-right: 12px;
+            font-size: 1.1rem;
         }
 
         .modal-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .detail-card {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px 0;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .detail-value {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
         }
 
         .document-tag {
             display: inline-flex;
             align-items: center;
-            background: #f0f0f0;
-            padding: 8px 12px;
-            border-radius: 4px;
+            background: #fff;
+            padding: 10px 15px;
+            border-radius: 6px;
             text-decoration: none;
             color: #333;
-            margin-right: 10px;
-            margin-bottom: 10px;
+            margin-right: 15px;
+            margin-bottom: 15px;
             border: 1px solid #ddd;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
         .document-tag:hover {
-            background: #e0e0e0;
+            background: #0e7704;
+            color: white !important;
+            border-color: #0e7704;
+            transform: translateY(-2px);
         }
 
         .document-tag i {
-            margin-right: 8px;
+            margin-right: 10px;
             color: #0e7704;
+        }
+
+        .document-tag:hover i {
+            color: white;
+        }
+
+        /* Print Header Only visible on print */
+        #print-header {
+            display: none;
+            text-align: center;
+            border-bottom: 3px double #000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        #print-header h1 {
+            font-size: 24pt;
+            margin-bottom: 5px;
+            color: #000;
+        }
+
+        #print-header p {
+            font-size: 11pt;
+            margin: 2px 0;
+            color: #333;
         }
 
         /* Print Styles */
@@ -636,6 +704,8 @@
                 top: 0;
                 width: 100%;
                 background: white;
+                height: auto;
+                overflow: visible;
             }
 
             .modal-content {
@@ -645,6 +715,13 @@
                 max-width: none;
                 margin: 0;
                 padding: 0;
+                height: auto;
+                overflow: visible;
+                display: block !important;
+            }
+
+            #print-header {
+                display: block;
             }
 
             .close-modal,
@@ -653,13 +730,40 @@
                 display: none !important;
             }
 
+            .modal-section {
+                border: 1px solid #ccc;
+                background: white;
+                margin-bottom: 15pt;
+                padding: 15pt;
+                page-break-inside: avoid;
+            }
+
             .modal-section-title {
                 color: black;
                 border-color: black;
             }
 
             .detail-label {
-                color: black;
+                color: #555;
+            }
+
+            .detail-value {
+                color: #000;
+            }
+
+            /* Force black text for better contrast on paper */
+            * {
+                color: black !important;
+            }
+
+            /* Links don't print well unless we show URL or just hide them */
+            .document-tag i {
+                display: none;
+            }
+
+            .document-tag {
+                border: 1px solid #000;
+                padding: 5px;
             }
         }
     </style>
@@ -830,8 +934,19 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                     <h2 class="admin-title" style="margin: 0;">Application Details</h2>
                     <button onclick="window.print()" class="submit-btn print-btn"
-                        style="width: auto; background: #2196f3;"><i class="fas fa-print"></i> Print Form</button>
+                        style="width: auto; background: #2196f3; box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3);"><i
+                            class="fas fa-print"></i> Print Application</button>
                 </div>
+
+                <!-- Print Header -->
+                <div id="print-header">
+                    <h1>MABSS EDUCATION CENTER</h1>
+                    <p>Building a brighter future through excellence</p>
+                    <p>P.O. Box 12345, Kampala, Uganda</p>
+                    <p>Contact: +256 123 456 789 | Email: info@mabss.edu</p>
+                    <h2 style="margin-top: 15px; text-decoration: underline;">OFFICIAL STUDENT ADMISSION FORM</h2>
+                </div>
+
                 <div id="modal-body"></div>
                 <div class="modal-footer">
                     <button id="approveBtn" class="submit-btn"
@@ -1086,93 +1201,106 @@
 
                 if (!app) throw new Error('Application not found');
 
-                // Render application details in sections
+                // Render application details in professional sections
                 modalBody.innerHTML = `
+                <div class="modal-body-content">
                     <div class="modal-section">
-                        <h3 class="modal-section-title">Personal Information</h3>
+                        <h3 class="modal-section-title"><i class="fas fa-user-circle"></i> Student Information</h3>
                         <div class="modal-grid">
-                            <div class="detail-row"><div class="detail-label">App Number:</div><div>${app.application_number}</div></div>
-                            <div class="detail-row"><div class="detail-label">Full Name:</div><div>${app.surname} ${app.other_names}</div></div>
-                            <div class="detail-row"><div class="detail-label">DOB / Age:</div><div>${app.dob} (${app.age} years)</div></div>
-                            <div class="detail-row"><div class="detail-label">Sex:</div><div>${app.sex}</div></div>
-                            <div class="detail-row"><div class="detail-label">LIN:</div><div>${app.lin || 'N/A'}</div></div>
-                            <div class="detail-row"><div class="detail-label">Former School:</div><div>${app.former_school}</div></div>
+                            <div class="detail-card"><span class="detail-label">Application Number</span><span class="detail-value">${app.application_number}</span></div>
+                            <div class="detail-card"><span class="detail-label">Full Name</span><span class="detail-value" style="font-size: 1.2rem; color: #0e7704; font-weight: bold;">${app.surname} ${app.other_names}</span></div>
+                            <div class="detail-card"><span class="detail-label">Date of Birth / Age</span><span class="detail-value">${app.dob} (${app.age} years)</span></div>
+                            <div class="detail-card"><span class="detail-label">Gender / Sex</span><span class="detail-value">${app.sex}</span></div>
+                            <div class="detail-card"><span class="detail-label">Learner ID (LIN)</span><span class="detail-value">${app.lin || 'No LIN Provided'}</span></div>
+                            <div class="detail-card"><span class="detail-label">District of Origin</span><span class="detail-value">${app.birth_district}, ${app.birth_country}</span></div>
                         </div>
                     </div>
 
                     <div class="modal-section">
-                        <h3 class="modal-section-title">Birth & Origin Details</h3>
+                        <h3 class="modal-section-title"><i class="fas fa-graduation-cap"></i> Academic Background</h3>
+                        <div style="background: #f0f7f0; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+                            <h4 style="margin: 0 0 10px 0; color: #2e7d32;">Primary Leaving Examination (PLE)</h4>
+                            <div class="modal-grid">
+                                <div class="detail-card"><span class="detail-label">School attended</span><span class="detail-value">${app.former_school}</span></div>
+                                <div class="detail-card"><span class="detail-label">Year / Index</span><span class="detail-value">${app.ple_year} / ${app.ple_index}</span></div>
+                            </div>
+                            <div class="modal-grid" style="margin-top: 15px;">
+                                <div class="detail-card"><span class="detail-label">English</span><span class="detail-value">${app.english_agg}</span></div>
+                                <div class="detail-card"><span class="detail-label">Maths</span><span class="detail-value">${app.maths_agg}</span></div>
+                                <div class="detail-card"><span class="detail-label">Science</span><span class="detail-value">${app.science_agg}</span></div>
+                                <div class="detail-card"><span class="detail-label">S.S.T</span><span class="detail-value">${app.social_agg}</span></div>
+                                <div class="detail-card" style="border-left: 2px solid #0e7704; padding-left: 15px;">
+                                    <span class="detail-label" style="color: #0e7704;">Total Aggregate / Division</span>
+                                    <span class="detail-value" style="font-size: 1.1rem; font-weight: bold;">${app.total_aggregates} (Div ${app.division})</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        ${app.uce_year ? `
+                        <div style="background: #f0f7f0; padding: 15px; border-radius: 6px;">
+                            <h4 style="margin: 0 0 10px 0; color: #2e7d32;">Ordinary Level (UCE) Results</h4>
+                            <div class="modal-grid">
+                                <div class="detail-card"><span class="detail-label">Year / Index No</span><span class="detail-value">${app.uce_year} / ${app.uce_index}</span></div>
+                            </div>
+                            <div style="margin-top:10px; padding: 10px; background: white; border: 1px solid #ddd; borderRadius: 4px; font-family: monospace;">${app.uce_results}</div>
+                        </div>
+                        ` : ''}
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title"><i class="fas fa-info-circle"></i> Enrollment Details</h3>
                         <div class="modal-grid">
-                            <div class="detail-row"><div class="detail-label">Country:</div><div>${app.birth_country}</div></div>
-                            <div class="detail-row"><div class="detail-label">District:</div><div>${app.birth_district}</div></div>
-                            <div class="detail-row"><div class="detail-label">County:</div><div>${app.birth_county}</div></div>
-                            <div class="detail-row"><div class="detail-label">Parish/Village:</div><div>${app.birth_parish} / ${app.birth_village}</div></div>
+                            <div class="detail-card"><span class="detail-label">Class Applied For</span><span class="detail-value" style="font-weight: 700;">${app.class_applying}</span></div>
+                            <div class="detail-card"><span class="detail-label">Admission Mode</span><span class="detail-value">${app.admission_mode}</span></div>
+                            <div class="detail-card"><span class="detail-label">Residential Status</span><span class="detail-value">${app.boarding_status} / ${app.day_status}</span></div>
+                            <div class="detail-card"><span class="detail-label">Student Category</span><span class="detail-value">${app.parent_category}</span></div>
                         </div>
                     </div>
 
                     <div class="modal-section">
-                        <h3 class="modal-section-title">Admission & Preferences</h3>
+                        <h3 class="modal-section-title"><i class="fas fa-users-cog"></i> Family & Guardian Information</h3>
                         <div class="modal-grid">
-                            <div class="detail-row"><div class="detail-label">Class Applying:</div><div>${app.class_applying}</div></div>
-                            <div class="detail-row"><div class="detail-label">Admission Mode:</div><div>${app.admission_mode}</div></div>
-                            <div class="detail-row"><div class="detail-label">Parent Category:</div><div>${app.parent_category}</div></div>
-                            <div class="detail-row"><div class="detail-label">Status:</div><div>${app.boarding_status} / ${app.day_status}</div></div>
+                            <div class="detail-card"><span class="detail-label">Father's Name (Contact)</span><span class="detail-value">${app.father_name || 'N/A'} (${app.father_contact || ''})</span></div>
+                            <div class="detail-card"><span class="detail-label">Mother's Name (Contact)</span><span class="detail-value">${app.mother_name || 'N/A'} (${app.mother_contact || ''})</span></div>
+                            <div class="detail-card" style="background:#e8f5e9; padding: 10px; border-radius: 4px;">
+                                <span class="detail-label" style="color: #2e7d32;">Guardian Name (Primary Contact)</span>
+                                <span class="detail-value" style="font-weight: bold;">${app.guardian_name} (${app.guardian_contact})</span>
+                            </div>
+                            <div class="detail-card"><span class="detail-label">Guardian Occupation / NIN</span><span class="detail-value">${app.guardian_occupation} / ${app.guardian_nin}</span></div>
                         </div>
                     </div>
 
                     <div class="modal-section">
-                        <h3 class="modal-section-title">Academic Background (PLE)</h3>
-                        <p style="margin-bottom: 10px;"><strong>Year:</strong> ${app.ple_year} | <strong>Index:</strong> ${app.ple_index}</p>
+                        <h3 class="modal-section-title"><i class="fas fa-heartbeat"></i> Health & Talents</h3>
                         <div class="modal-grid">
-                            <div class="detail-row"><div class="detail-label">English:</div><div>${app.english_agg}</div></div>
-                            <div class="detail-row"><div class="detail-label">Maths:</div><div>${app.maths_agg}</div></div>
-                            <div class="detail-row"><div class="detail-label">Science:</div><div>${app.science_agg}</div></div>
-                            <div class="detail-row"><div class="detail-label">Social Studies:</div><div>${app.social_agg}</div></div>
-                            <div class="detail-row" style="background:#f9f9f9; font-weight:bold;"><div class="detail-label">Total / Div:</div><div>${app.total_aggregates} / Div ${app.division}</div></div>
-                        </div>
-                    </div>
-
-                    ${app.uce_year ? `
-                    <div class="modal-section">
-                        <h3 class="modal-section-title">Academic Background (UCE)</h3>
-                        <p><strong>Year:</strong> ${app.uce_year} | <strong>Index:</strong> ${app.uce_index}</p>
-                        <div style="margin-top:5px; white-space: pre-wrap; font-size: 0.9rem;">${app.uce_results}</div>
-                    </div>
-                    ` : ''}
-
-                    <div class="modal-section">
-                        <h3 class="modal-section-title">Health & Talents</h3>
-                        <div class="detail-row"><div class="detail-label">Health Needs:</div><div>${app.health_needs || 'None reported'}</div></div>
-                        <div class="detail-row"><div class="detail-label">Talents:</div><div>${app.talents || 'None reported'}</div></div>
-                    </div>
-
-                    <div class="modal-section">
-                        <h3 class="modal-section-title">Parent/Guardian Information</h3>
-                        <div class="modal-grid">
-                            <div class="detail-row"><div class="detail-label">Father:</div><div>${app.father_name || 'N/A'} (${app.father_contact || ''})</div></div>
-                            <div class="detail-row"><div class="detail-label">Father NIN/Occ:</div><div>${app.father_nin || ''} / ${app.father_occupation || ''}</div></div>
-                            <div class="detail-row"><div class="detail-label">Mother:</div><div>${app.mother_name || 'N/A'} (${app.mother_contact || ''})</div></div>
-                            <div class="detail-row"><div class="detail-label">Mother NIN/Occ:</div><div>${app.mother_nin || ''} / ${app.mother_occupation || ''}</div></div>
-                            <div class="detail-row" style="background:#e8f5e9;"><div class="detail-label">Guardian:</div><div>${app.guardian_name} (${app.guardian_contact})</div></div>
-                            <div class="detail-row" style="background:#e8f5e9;"><div class="detail-label">Guardian NIN/Occ:</div><div>${app.guardian_nin} / ${app.guardian_occupation}</div></div>
+                            <div class="detail-card"><span class="detail-label">Health Needs / Allergies</span><span class="detail-value">${app.health_needs || 'None reported'}</span></div>
+                            <div class="detail-card"><span class="detail-label">Special Talents / Hobbies</span><span class="detail-value">${app.talents || 'None reported'}</span></div>
                         </div>
                     </div>
 
                     <div class="modal-section">
-                        <h3 class="modal-section-title">Attached Documents</h3>
-                        <div class="docs-container">
+                        <h3 class="modal-section-title"><i class="fas fa-paperclip"></i> Attached Supporting Documents</h3>
+                        <div class="docs-container" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
                             ${(app.documents || []).map(doc => `
                                 <a href="${doc.url}" target="_blank" class="document-tag">
-                                    <i class="fas fa-file-pdf"></i> ${doc.type.replace(/_/g, ' ').toUpperCase()}
+                                    <i class="fas fa-file-pdf"></i> <strong>${doc.type.replace(/_/g, ' ').toUpperCase()}</strong>
                                 </a>
-                            `).join('') || '<p>No documents attached.</p>'}
+                            `).join('') || '<p style="color: #888;">No electronic documents were attached to this application.</p>'}
                         </div>
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">* Documents are stored securely and can be viewed by clicking the tags above.</p>
                     </div>
 
-                    <div class="modal-section" style="text-align: right; border-top: 1px solid #eee; padding-top: 10px;">
-                        <small>Submitted on: ${new Date(app.created_at).toLocaleString()}</small><br>
-                        <div class="detail-row" style="justify-content: flex-end; border:none;"><div class="detail-label">Current Status:</div><div><span class="app-status status-${app.status}">${app.status.toUpperCase()}</span></div></div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end; padding: 20px; background: #eee; border-radius: 8px;">
+                        <div>
+                            <p style="margin:0; font-size: 0.85rem; color: #555;">Application Submitted on:</p>
+                            <p style="margin:0; font-weight: bold;">${new Date(app.created_at).toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="detail-label">Current Processing Status</span>
+                            <div style="margin-top: 5px;"><span class="app-status status-${app.status}" style="font-size: 1rem; padding: 8px 20px;">${app.status.toUpperCase()}</span></div>
+                        </div>
                     </div>
+                </div>
                 `;
 
                 // Update modal buttons
