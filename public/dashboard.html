@@ -850,7 +850,6 @@
                 currentUser = authData.user;
 
                 document.getElementById('user-name').textContent = currentUser.name || 'Student';
-                document.getElementById('user-initials').textContent = (currentUser.name || 'U').charAt(0).toUpperCase();
 
                 const appRes = await fetch('/api/application/manage');
                 const appData = await appRes.json();
