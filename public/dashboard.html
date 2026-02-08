@@ -640,7 +640,7 @@
                     </div>
                 </div>
 
-                <!-- UCE Results (Optional - for A-level applicants) -->
+                <!-- UCE Results (For A-level applicants) -->
                 <div class="form-section" id="uce-section" style="display: none;">
                     <div class="section-title">UCE Results (For S.5 Applicants Only)</div>
                     <div class="form-grid">
@@ -653,13 +653,22 @@
                             <input type="text" name="uce_index" id="uce_index">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>UCE Results Summary (e.g., "5 Distinctions, 3 Credits")</label>
-                        <textarea name="uce_results" id="uce_results" rows="3"></textarea>
+
+                    <div style="margin-top: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">UCE Subject Grades <span
+                                class="required">*</span></label>
+                        <div id="uce-subjects-container">
+                            <!-- Dynamic rows will be added here -->
+                        </div>
+                        <button type="button" onclick="addUceSubject()" class="nav-link"
+                            style="margin-top: 10px; width: auto; padding: 8px 15px; background: #e9f5e9; border: 1px solid var(--primary-color); color: var(--primary-color); border-radius: 6px; cursor: pointer;">
+                            <i class="fas fa-plus"></i> Add Subject Grade
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label>UCE Slip (Optional)</label>
-                        <input type="file" name="uce_slip" accept="image/*,.pdf">
+
+                    <div class="form-group full-width" style="margin-top: 1.5rem;">
+                        <label>Attach UCE Slip (Optional)</label>
+                        <input type="file" name="uce_slip" accept=".pdf,.jpg,.png">
                     </div>
                 </div>
 
@@ -703,22 +712,6 @@
                     </div>
                 </div>
 
-                <!-- UCE Results -->
-                <div class="form-section">
-                    <div class="section-title">UCE Results (Optional)</div>
-                    <div class="form-grid">
-                        <div class="form-group"><label>Year</label><input type="number" name="uce_year"></div>
-                        <div class="form-group"><label>Index No</label><input type="text" name="uce_index"></div>
-                    </div>
-                    <div class="form-group full-width" style="margin-top: 1rem;">
-                        <label>Results Summary/Grades</label>
-                        <textarea name="uce_results" placeholder="Enter subject grades..."></textarea>
-                    </div>
-                    <div class="form-group full-width" style="margin-top: 1rem;">
-                        <label>Attach UCE Slip (If applicable)</label>
-                        <input type="file" name="uce_slip" accept=".pdf,.jpg,.png">
-                    </div>
-                </div>
 
                 <!-- Extra Info -->
                 <div class="form-section">
@@ -1028,13 +1021,21 @@
                         // Make UCE fields required for A-level
                         document.getElementById('uce_year')?.setAttribute('required', 'required');
                         document.getElementById('uce_index')?.setAttribute('required', 'required');
-                        document.getElementById('uce_results')?.setAttribute('required', 'required');
+
+                        // Initialize with at least one subject row if empty
+                        const container = document.getElementById('uce-subjects-container');
+                        if (container && container.children.length === 0) {
+                            addUceSubject();
+                        }
                     } else {
                         uceSection.style.display = 'none';
                         // Remove required attribute for O-level
                         document.getElementById('uce_year')?.removeAttribute('required');
                         document.getElementById('uce_index')?.removeAttribute('required');
-                        document.getElementById('uce_results')?.removeAttribute('required');
+
+                        // Clear subjects for O-level
+                        const container = document.getElementById('uce-subjects-container');
+                        if (container) container.innerHTML = '';
                     }
                 });
 
@@ -1043,6 +1044,39 @@
             }
         });
 
+        // Dynamic UCE Subjects Logic
+        function addUceSubject(subject = '', grade = '') {
+            const container = document.getElementById('uce-subjects-container');
+            const row = document.createElement('div');
+            row.className = 'uce-subject-row';
+            row.style = 'display: flex; gap: 10px; margin-bottom: 10px; align-items: center;';
+            row.innerHTML = `
+                <div style="flex: 2;">
+                    <input type="text" placeholder="Subject (e.g. Mathematics)" class="uce-sbj-name" value="${subject}" style="width: 100%; padding: 8px;">
+                </div>
+                <div style="flex: 1;">
+                    <input type="text" placeholder="Grade (e.g. D1)" class="uce-sbj-grade" value="${grade}" style="width: 100%; padding: 8px;">
+                </div>
+                <button type="button" onclick="this.parentElement.remove()" style="background: #fee2e2; color: #dc2626; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            `;
+            container.appendChild(row);
+        }
+
+        function getUceResultsString() {
+            const rows = document.querySelectorAll('.uce-subject-row');
+            let results = [];
+            rows.forEach(row => {
+                const subject = row.querySelector('.uce-sbj-name').value.trim();
+                const grade = row.querySelector('.uce-sbj-grade').value.trim();
+                if (subject && grade) {
+                    results.push(`${subject}: ${grade}`);
+                }
+            });
+            return results.join(', ');
+        }
+
         async function submitApplication(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
@@ -1050,6 +1084,20 @@
             btn.disabled = true;
 
             const formData = new FormData(e.target);
+
+            // Special handling for dynamic UCE subjects
+            const classVal = formData.get('class');
+            if (classVal === 'S.5' || classVal === 'S.6') {
+                const uceResultsString = getUceResultsString();
+                if (!uceResultsString) {
+                    alert('Please add at least one UCE subject and grade.');
+                    btn.textContent = 'Submit Application';
+                    btn.disabled = false;
+                    return;
+                }
+                formData.set('uce_results', uceResultsString);
+            }
+
             try {
                 const res = await fetch('/api/application/manage', { method: 'POST', body: formData });
                 const data = await res.json();

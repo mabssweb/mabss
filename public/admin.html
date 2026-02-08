@@ -1277,7 +1277,10 @@
                             <div class="modal-grid">
                                 <div class="detail-card"><span class="detail-label">Year / Index No</span><span class="detail-value">${app.uce_year} / ${app.uce_index}</span></div>
                             </div>
-                            <div style="margin-top:10px; padding: 10px; background: white; border: 1px solid #ddd; borderRadius: 4px; font-family: monospace;">${app.uce_results}</div>
+                            <div style="margin-top:10px;">
+                                <label class="detail-label">Subject Grades</label>
+                                ${renderUceResultsHtml(app.uce_results)}
+                            </div>
                         </div>
                         ` : ''}
                     </div>
@@ -1384,6 +1387,22 @@
             if (event.target === modal) {
                 closeModal();
             }
+        }
+        function renderUceResultsHtml(uceResultsStr) {
+            if (!uceResultsStr) return '<p style="color: #888;">No structured results provided.</p>';
+            if (uceResultsStr.indexOf(': ') === -1) return `<div style="padding: 10px; background: white; border: 1px solid #ddd; border-radius: 4px;">${uceResultsStr}</div>`;
+
+            const pairs = uceResultsStr.split(', ');
+            let html = '<table style="width: 100%; border-collapse: collapse; margin-top: 5px; background: white; border: 1px solid #ddd; border-radius: 4px; overflow: hidden;">';
+            html += '<tr style="background: #f1f8f1;"><th style="padding: 10px; border: 1px solid #ddd; text-align: left; font-size: 0.85rem; color: #2e7d32;">Subject</th><th style="padding: 10px; border: 1px solid #ddd; text-align: left; font-size: 0.85rem; color: #2e7d32; width: 80px;">Grade</th></tr>';
+            pairs.forEach(pair => {
+                const parts = pair.split(': ');
+                if (parts.length === 2) {
+                    html += `<tr><td style="padding: 8px 10px; border: 1px solid #ddd; font-size: 0.95rem;">${parts[0]}</td><td style="padding: 8px 10px; border: 1px solid #ddd; font-weight: bold; text-align: center; color: #0e7704;">${parts[1]}</td></tr>`;
+                }
+            });
+            html += '</table>';
+            return html;
         }
 
         function formatDate(dateString) {
