@@ -640,9 +640,9 @@
                     </div>
                 </div>
 
-                <!-- UCE Results (For A-level applicants) -->
-                <div class="form-section" id="uce-section" style="display: none;">
-                    <div class="section-title">UCE Results (For S.5 Applicants Only)</div>
+                <!-- UCE Results (Optional) -->
+                <div class="form-section" id="uce-section">
+                    <div class="section-title">UCE Results (Optional)</div>
                     <div class="form-grid">
                         <div class="form-group">
                             <label>UCE Year</label>
@@ -928,6 +928,34 @@
             } else {
                 const tpl = document.getElementById('submission-form-tpl').content.cloneNode(true);
                 container.appendChild(tpl);
+                setupFormToggles();
+            }
+        }
+
+        function setupFormToggles() {
+            const classSelect = document.querySelector('select[name="class"]');
+            const uceSection = document.getElementById('uce-section');
+
+            if (classSelect && uceSection) {
+                // Initialize with at least one subject row if empty
+                const container = document.getElementById('uce-subjects-container');
+                if (container && container.children.length === 0) {
+                    addUceSubject();
+                }
+
+                classSelect.addEventListener('change', function () {
+                    const selectedClass = this.value;
+                    // Make UCE fields required ONLY for S.5 and S.6
+                    if (selectedClass === 'S.5' || selectedClass === 'S.6') {
+                        document.getElementById('uce_year')?.setAttribute('required', 'required');
+                        document.getElementById('uce_index')?.setAttribute('required', 'required');
+                    } else {
+                        document.getElementById('uce_year')?.removeAttribute('required');
+                        document.getElementById('uce_index')?.removeAttribute('required');
+                    }
+                });
+                // Initial check
+                classSelect.dispatchEvent(new Event('change'));
             }
         }
 
@@ -1007,42 +1035,6 @@
             return 'orange';
         }
 
-        // Toggle UCE section based on class selection
-        document.addEventListener('DOMContentLoaded', () => {
-            const classSelect = document.querySelector('select[name="class"]');
-            const uceSection = document.getElementById('uce-section');
-
-            if (classSelect && uceSection) {
-                classSelect.addEventListener('change', function () {
-                    const selectedClass = this.value;
-                    // Show UCE section only for S.5 and S.6
-                    if (selectedClass === 'S.5' || selectedClass === 'S.6') {
-                        uceSection.style.display = 'block';
-                        // Make UCE fields required for A-level
-                        document.getElementById('uce_year')?.setAttribute('required', 'required');
-                        document.getElementById('uce_index')?.setAttribute('required', 'required');
-
-                        // Initialize with at least one subject row if empty
-                        const container = document.getElementById('uce-subjects-container');
-                        if (container && container.children.length === 0) {
-                            addUceSubject();
-                        }
-                    } else {
-                        uceSection.style.display = 'none';
-                        // Remove required attribute for O-level
-                        document.getElementById('uce_year')?.removeAttribute('required');
-                        document.getElementById('uce_index')?.removeAttribute('required');
-
-                        // Clear subjects for O-level
-                        const container = document.getElementById('uce-subjects-container');
-                        if (container) container.innerHTML = '';
-                    }
-                });
-
-                // Trigger on page load
-                classSelect.dispatchEvent(new Event('change'));
-            }
-        });
 
         // Dynamic UCE Subjects Logic
         function addUceSubject(subject = '', grade = '') {
@@ -1086,16 +1078,17 @@
             const formData = new FormData(e.target);
 
             // Special handling for dynamic UCE subjects
-            const classVal = formData.get('class');
-            if (classVal === 'S.5' || classVal === 'S.6') {
-                const uceResultsString = getUceResultsString();
-                if (!uceResultsString) {
+            const uceResultsString = getUceResultsString();
+            if (uceResultsString) {
+                formData.set('uce_results', uceResultsString);
+            } else {
+                const classVal = formData.get('class');
+                if (classVal === 'S.5' || classVal === 'S.6') {
                     alert('Please add at least one UCE subject and grade.');
                     btn.textContent = 'Submit Application';
                     btn.disabled = false;
                     return;
                 }
-                formData.set('uce_results', uceResultsString);
             }
 
             try {
