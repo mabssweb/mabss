@@ -744,43 +744,96 @@
                         style="color:#666; font-size: 0.95rem; margin-bottom: 10px; border-bottom: 1px dashed #ccc; padding-bottom: 5px;">
                         Father's Details</h4>
                     <div class="form-grid">
-                        <div class="form-group"><label>Name</label><input type="text" name="father_name"></div>
-                        <div class="form-group"><label>NIN</label><input type="text" name="father_nin"></div>
-                        <div class="form-group"><label>Contact</label><input type="tel" name="father_contact"></div>
-                        <div class="form-group"><label>Occupation</label><input type="text" name="father_occupation">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="father_name">
                         </div>
-                        <div class="form-group"><label>District of Residence</label><input type="text"
-                                name="father_district"></div>
+                        <div class="form-group">
+                            <label>NIN (14 Alphanumeric Characters)</label>
+                            <input type="text" name="father_nin" pattern="[A-Z0-9]{14}"
+                                title="Ugandan NIN must be exactly 14 characters long and contain only letters and numbers."
+                                oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 14)">
+                        </div>
+                        <div class="form-group">
+                            <label>National ID Copy (Image/PDF)</label>
+                            <input type="file" name="father_id_card" accept=".jpg,.jpeg,.png,.pdf">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact</label>
+                            <input type="tel" name="father_contact">
+                        </div>
+                        <div class="form-group">
+                            <label>Occupation</label>
+                            <input type="text" name="father_occupation">
+                        </div>
+                        <div class="form-group">
+                            <label>District of Residence</label>
+                            <input type="text" name="father_district">
+                        </div>
                     </div>
 
                     <h4
                         style="color:#666; font-size: 0.95rem; margin: 20px 0 10px 0; border-bottom: 1px dashed #ccc; padding-bottom: 5px;">
                         Mother's Details</h4>
                     <div class="form-grid">
-                        <div class="form-group"><label>Name</label><input type="text" name="mother_name"></div>
-                        <div class="form-group"><label>NIN</label><input type="text" name="mother_nin"></div>
-                        <div class="form-group"><label>Contact</label><input type="tel" name="mother_contact"></div>
-                        <div class="form-group"><label>Occupation</label><input type="text" name="mother_occupation">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="mother_name">
                         </div>
-                        <div class="form-group"><label>District of Residence</label><input type="text"
-                                name="mother_district"></div>
+                        <div class="form-group">
+                            <label>NIN (14 Alphanumeric Characters)</label>
+                            <input type="text" name="mother_nin" pattern="[A-Z0-9]{14}"
+                                title="Ugandan NIN must be exactly 14 characters long and contain only letters and numbers."
+                                oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 14)">
+                        </div>
+                        <div class="form-group">
+                            <label>National ID Copy (Image/PDF)</label>
+                            <input type="file" name="mother_id_card" accept=".jpg,.jpeg,.png,.pdf">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact</label>
+                            <input type="tel" name="mother_contact">
+                        </div>
+                        <div class="form-group">
+                            <label>Occupation</label>
+                            <input type="text" name="mother_occupation">
+                        </div>
+                        <div class="form-group">
+                            <label>District of Residence</label>
+                            <input type="text" name="mother_district">
+                        </div>
                     </div>
 
                     <h4
                         style="color:#666; font-size: 0.95rem; margin: 20px 0 10px 0; border-bottom: 1px dashed #ccc; padding-bottom: 5px;">
                         Guardian's Details (Required)</h4>
                     <div class="form-grid">
-                        <div class="form-group"><label>Name <span class="required">*</span></label><input type="text"
-                                name="guardian_name" required></div>
-                        <div class="form-group"><label>NIN <span class="required">*</span></label><input type="text"
-                                name="guardian_nin" required></div>
-                        <div class="form-group"><label>Contact <span class="required">*</span></label><input type="tel"
-                                name="guardian_contact" required></div>
-                        <div class="form-group"><label>Occupation <span class="required">*</span></label><input
-                                type="text" name="guardian_occupation" required></div>
-                        <div class="form-group"><label>District of Residence <span
-                                    class="required">*</span></label><input type="text" name="guardian_district"
-                                required></div>
+                        <div class="form-group">
+                            <label>Name <span class="required">*</span></label>
+                            <input type="text" name="guardian_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>NIN <span class="required">*</span> (14 Characters)</label>
+                            <input type="text" name="guardian_nin" required pattern="[A-Z0-9]{14}"
+                                title="Ugandan NIN must be exactly 14 characters long and contain only letters and numbers."
+                                oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 14)">
+                        </div>
+                        <div class="form-group">
+                            <label>National ID Copy <span class="required">*</span></label>
+                            <input type="file" name="guardian_id_card" accept=".jpg,.jpeg,.png,.pdf" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact <span class="required">*</span></label>
+                            <input type="tel" name="guardian_contact" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Occupation <span class="required">*</span></label>
+                            <input type="text" name="guardian_occupation" required>
+                        </div>
+                        <div class="form-group">
+                            <label>District of Residence <span class="required">*</span></label>
+                            <input type="text" name="guardian_district" required>
+                        </div>
                     </div>
                 </div>
 

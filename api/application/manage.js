@@ -148,6 +148,17 @@ export default async function handler(req, res) {
                 val('declaration') === 'on' || val('declaration') === 'true', new Date()
             ];
 
+            // Server-side NIN Validation
+            const ninRegex = /^[A-Z0-9]{14}$/;
+            const nins = [val('father_nin'), val('mother_nin'), val('guardian_nin')];
+            for (const nin of nins) {
+                if (nin && !ninRegex.test(nin)) {
+                    return res.status(400).json({
+                        error: 'Invalid NIN format. A Ugandan NIN must be 14 characters long and contain only letters and numbers.'
+                    });
+                }
+            }
+
             // Insert Application
             let applicationId;
             try {
@@ -158,10 +169,10 @@ export default async function handler(req, res) {
                 return res.status(500).json({ error: 'Database Error: ' + dbError.message });
             }
 
-            // Handle File Uploads (PLE Slip, UCE Slip, Guardian ID)
+            // Handle File Uploads
             const uploadDoc = async (fileKey, docType) => {
                 const file = Array.isArray(files[fileKey]) ? files[fileKey][0] : files[fileKey];
-                if (file && file.size > 0) { // Only upload if file exists and has content
+                if (file && file.size > 0) {
                     try {
                         const url = await uploadToOCI(file);
                         if (url) {
@@ -180,10 +191,10 @@ export default async function handler(req, res) {
             try {
                 await uploadDoc('ple_slip', 'ple_slip');
                 await uploadDoc('uce_slip', 'uce_slip');
+                await uploadDoc('father_id_card', 'father_id_card');
+                await uploadDoc('mother_id_card', 'mother_id_card');
+                await uploadDoc('guardian_id_card', 'guardian_id_card');
             } catch (uploadError) {
-                // If upload fails, maybe we should delete the application? 
-                // For now, just report error but keep partial app (or delete it for atomicity).
-                // Let's delete it to keep state clean.
                 await db.query('DELETE FROM applications WHERE id = $1', [applicationId]);
                 return res.status(500).json({ error: uploadError.message });
             }

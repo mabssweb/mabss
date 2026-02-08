@@ -1295,13 +1295,22 @@
                     <div class="modal-section">
                         <h3 class="modal-section-title"><i class="fas fa-users-cog"></i> Family & Guardian Information</h3>
                         <div class="modal-grid">
-                            <div class="detail-card"><span class="detail-label">Father's Name (Contact)</span><span class="detail-value">${app.father_name || 'N/A'} (${app.father_contact || ''})</span></div>
-                            <div class="detail-card"><span class="detail-label">Mother's Name (Contact)</span><span class="detail-value">${app.mother_name || 'N/A'} (${app.mother_contact || ''})</span></div>
+                            <div class="detail-card">
+                                <span class="detail-label">Father's Name (Contact)</span>
+                                <span class="detail-value">${app.father_name || 'N/A'} (${app.father_contact || ''})</span>
+                                <div style="margin-top:5px; font-size:0.85rem; color:#666;">NIN: ${app.father_nin || 'N/A'}</div>
+                            </div>
+                            <div class="detail-card">
+                                <span class="detail-label">Mother's Name (Contact)</span>
+                                <span class="detail-value">${app.mother_name || 'N/A'} (${app.mother_contact || ''})</span>
+                                <div style="margin-top:5px; font-size:0.85rem; color:#666;">NIN: ${app.mother_nin || 'N/A'}</div>
+                            </div>
                             <div class="detail-card" style="background:#e8f5e9; padding: 10px; border-radius: 4px;">
                                 <span class="detail-label" style="color: #2e7d32;">Guardian Name (Primary Contact)</span>
                                 <span class="detail-value" style="font-weight: bold;">${app.guardian_name} (${app.guardian_contact})</span>
+                                <div style="margin-top:5px; font-size:0.85rem; color:#2e7d32;">NIN: ${app.guardian_nin}</div>
                             </div>
-                            <div class="detail-card"><span class="detail-label">Guardian Occupation / NIN</span><span class="detail-value">${app.guardian_occupation} / ${app.guardian_nin}</span></div>
+                            <div class="detail-card"><span class="detail-label">Guardian Occupation</span><span class="detail-value">${app.guardian_occupation}</span></div>
                         </div>
                     </div>
 
