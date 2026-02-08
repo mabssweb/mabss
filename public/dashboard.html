@@ -76,6 +76,14 @@
             font-size: 2rem;
             margin: 0 auto 1rem;
             font-weight: bold;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .nav-links {
@@ -440,7 +448,9 @@
             <h2><i class="fas fa-graduation-cap"></i> MABSS</h2>
         </div>
         <div class="user-profile">
-            <div class="user-avatar" id="user-initials">U</div>
+            <div class="user-avatar" id="user-initials">
+                <img src="/default-avatar.jpg" alt="User Avatar">
+            </div>
             <div id="user-name">Loading...</div>
         </div>
         <ul class="nav-links">
