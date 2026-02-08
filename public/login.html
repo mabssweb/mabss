@@ -7,148 +7,333 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     <title>Login - MABSS Admission</title>
     <style>
+        :root {
+            --army-green: #1a5f23;
+            --army-green-light: #2a7d32;
+            --army-green-dark: #0f4a17;
+            --gold-accent: #d4af37;
+            --white: #ffffff;
+            --gray-light: #f7faf7;
+            --gray-border: #d1e7d1;
+            --gray-text: #5a725a;
+            --shadow: 0 4px 12px rgba(26, 95, 35, 0.1);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
+            background: linear-gradient(135deg, #f0f7f0 0%, #e8f5e9 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
         }
 
         .auth-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
             width: 100%;
-            max-width: 400px;
-            text-align: center;
-            border-top: 5px solid #006400;
+            max-width: 460px;
+            overflow: hidden;
+            border: 1px solid var(--gray-border);
         }
 
-        h1 {
-            color: #006400;
-            margin-bottom: 1.5rem;
+        .login-header {
+            padding: 30px 30px 20px;
+            text-align: center;
+            background: linear-gradient(to right, var(--army-green), var(--army-green-light));
+            color: white;
+            position: relative;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-img {
+            max-height: 80px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .login-subtitle {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .login-form-container {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--army-green);
+            margin-bottom: 8px;
         }
 
         input {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 14px 16px;
+            border: 2px solid var(--gray-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
             box-sizing: border-box;
         }
 
-        button {
+        input:focus {
+            outline: none;
+            border-color: var(--army-green-light);
+            box-shadow: 0 0 0 3px rgba(42, 125, 50, 0.15);
+        }
+
+        button[type="submit"] {
             width: 100%;
-            padding: 12px;
-            background: #006400;
+            padding: 16px;
+            background: linear-gradient(to right, var(--army-green), var(--army-green-light));
             color: white;
             border: none;
-            border-radius: 4px;
-            font-size: 16px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
             cursor: pointer;
+            transition: all 0.3s;
             margin-top: 10px;
         }
 
-        button:hover {
-            background: #004d00;
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(42, 125, 50, 0.25);
+        }
+
+        button[type="submit"]:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .error {
-            color: red;
-            margin-bottom: 10px;
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
             display: none;
+            border-left: 4px solid #c62828;
         }
 
         .success {
-            color: green;
-            margin-bottom: 10px;
-            display: none;
-        }
-
-        .links {
-            margin-top: 20px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
             font-size: 0.9rem;
-        }
-
-        a {
-            color: #006400;
-            text-decoration: none;
+            display: none;
+            border-left: 4px solid #2e7d32;
         }
 
         .divider {
             display: flex;
             align-items: center;
-            text-align: center;
-            margin: 20px 0;
-            color: #666;
+            margin: 25px 0;
+            color: var(--gray-text);
+            font-size: 0.9rem;
         }
 
         .divider::before,
         .divider::after {
             content: '';
             flex: 1;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid var(--gray-border);
         }
 
         .divider span {
-            padding: 0 10px;
-            font-size: 0.9rem;
+            padding: 0 12px;
         }
 
-        .google-btn {
-            width: 100%;
-            padding: 12px;
-            background: white;
-            color: #444;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
+        /* WhatsApp Support Section */
+        .whatsapp-section {
+            margin-top: 25px;
+            background-color: #f7fff7;
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid #e0f7e0;
+        }
+
+        .whatsapp-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--army-green);
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            gap: 8px;
+        }
+
+        .whatsapp-title i {
+            color: #25D366;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background-color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--army-green);
+            border: 1px solid #e0f7e0;
             transition: all 0.3s;
             margin-bottom: 10px;
         }
 
-        .google-btn:hover {
-            background: #f8f8f8;
-            border-color: #ccc;
+        .whatsapp-button:hover {
+            border-color: #25D366;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.1);
         }
 
-        .google-btn svg {
-            flex-shrink: 0;
+        .whatsapp-icon {
+            background-color: #25D366;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            margin-right: 12px;
+        }
+
+        .whatsapp-info {
+            flex: 1;
+        }
+
+        .whatsapp-name {
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .whatsapp-description {
+            font-size: 0.75rem;
+            color: var(--gray-text);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray-text);
+            font-size: 0.85rem;
+            background-color: #f8fff8;
+            border-top: 1px solid var(--gray-border);
+        }
+
+        .footer-link {
+            color: var(--army-green-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .links {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--army-green);
+            text-decoration: none;
+            font-weight: 600;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
     <div class="auth-card">
-        <h1>Student Login</h1>
-        <div id="error" class="error"></div>
-        <div id="success" class="success"></div>
-
-        <!-- Google Sign-In Button Container -->
-        <div id="googleButtonDiv" style="margin-bottom: 20px;"></div>
-
-        <div class="divider">
-            <span>OR</span>
+        <div class="login-header">
+            <div class="logo-container">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                    alt="MABSS Logo" class="logo-img">
+            </div>
+            <h1 class="login-title">Student Login Portal</h1>
+            <p class="login-subtitle">Secure access for registered MABSS applicants</p>
         </div>
 
-        <form id="loginForm">
-            <input type="email" id="email" placeholder="Email Address" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <div class="links">
-            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
-            <p><a href="index.html">Back to Home</a></p>
+        <div class="login-form-container">
+            <div id="error" class="error"></div>
+            <div id="success" class="success"></div>
+
+            <!-- Google Sign-In -->
+            <div id="googleButtonDiv" style="display: flex; justify-content: center; margin-bottom: 20px;"></div>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="student@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit">LOGIN</button>
+            </form>
+
+            <div class="links">
+                <p>Don't have an account? <a href="signup.html">Sign Up Now</a></p>
+                <p style="margin-top: 10px;"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+            </div>
+
+            <!-- WhatsApp Support (Registration Support) -->
+            <div class="whatsapp-section">
+                <div class="whatsapp-title">
+                    <i class="fab fa-whatsapp"></i> Registration Support
+                </div>
+                <a href="https://wa.me/256200928601?text=Hello%20MABSS%20Support%2C%20I%20need%20help%20with%20my%20admission%20registration."
+                    class="whatsapp-button" target="_blank">
+                    <div class="whatsapp-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div class="whatsapp-info">
+                        <div class="whatsapp-name">How To Apply / Technical Support</div>
+                        <div class="whatsapp-description">Instant help with your registration</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Mbarara Army Boarding Secondary School (MABSS).<br>All rights reserved.</p>
+            <p style="margin-top: 8px;"><a href="https://www.mabss.ac.ug" class="footer-link"
+                    target="_blank">www.mabss.ac.ug</a></p>
+            <p style="margin-top: 10px; font-size: 0.75rem;">
+                <i class="fas fa-phone-alt"></i> School Office: +256 782096231
+            </p>
         </div>
     </div>
 
