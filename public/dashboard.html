@@ -640,38 +640,6 @@
                     </div>
                 </div>
 
-                <!-- UCE Results -->
-                <div class="form-section" id="uce-section">
-                    <div class="section-title">UCE Results</div>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>UCE Year</label>
-                            <input type="number" name="uce_year" id="uce_year" min="2000" max="2030">
-                        </div>
-                        <div class="form-group">
-                            <label>UCE Index Number</label>
-                            <input type="text" name="uce_index" id="uce_index">
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">UCE Subject Grades <span
-                                class="required">*</span></label>
-                        <div id="uce-subjects-container">
-                            <!-- Dynamic rows will be added here -->
-                        </div>
-                        <button type="button" onclick="addUceSubject()" class="nav-link"
-                            style="margin-top: 10px; width: auto; padding: 8px 15px; background: #e9f5e9; border: 1px solid var(--primary-color); color: var(--primary-color); border-radius: 6px; cursor: pointer;">
-                            <i class="fas fa-plus"></i> Add Subject Grade
-                        </button>
-                    </div>
-
-                    <div class="form-group full-width" style="margin-top: 1.5rem;">
-                        <label>Attach UCE Slip (Optional)</label>
-                        <input type="file" name="uce_slip" accept=".pdf,.jpg,.png">
-                    </div>
-                </div>
-
                 <!-- PLE Results -->
                 <div class="form-section">
                     <div class="section-title">PLE Results</div>
@@ -709,6 +677,38 @@
                         <label>Attach PLE Slip (PDF/Image) <span class="required">*</span></label>
                         <input type="file" name="ple_slip" accept=".pdf,.jpg,.png" required>
                         <small style="color:#666; margin-top:5px;">Max file size: 5MB</small>
+                    </div>
+                </div>
+
+                <!-- UCE Results -->
+                <div class="form-section" id="uce-section">
+                    <div class="section-title">UCE Results</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>UCE Year</label>
+                            <input type="number" name="uce_year" id="uce_year" min="2000" max="2030">
+                        </div>
+                        <div class="form-group">
+                            <label>UCE Index Number</label>
+                            <input type="text" name="uce_index" id="uce_index">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">UCE Subject Grades <span
+                                class="required">*</span></label>
+                        <div id="uce-subjects-container">
+                            <!-- Dynamic rows will be added here -->
+                        </div>
+                        <button type="button" onclick="addUceSubject()" class="nav-link"
+                            style="margin-top: 10px; width: auto; padding: 8px 15px; background: #e9f5e9; border: 1px solid var(--primary-color); color: var(--primary-color); border-radius: 6px; cursor: pointer;">
+                            <i class="fas fa-plus"></i> Add Subject Grade
+                        </button>
+                    </div>
+
+                    <div class="form-group full-width" style="margin-top: 1.5rem;">
+                        <label>Attach UCE Slip (Optional)</label>
+                        <input type="file" name="uce_slip" accept=".pdf,.jpg,.png">
                     </div>
                 </div>
 
