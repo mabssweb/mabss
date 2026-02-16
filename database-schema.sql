@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS applications (
     uce_year INTEGER,
     uce_index VARCHAR(50),
     uce_results TEXT, -- JSON string or text summary
+    preferred_combination VARCHAR(100),
     
     -- Personal Needs
     health_needs TEXT,
@@ -150,5 +151,8 @@ BEGIN
     IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='applications' AND column_name='user_id') THEN
         ALTER TABLE applications ADD COLUMN user_id UUID REFERENCES users(id) ON DELETE CASCADE;
         CREATE INDEX idx_applications_user_id ON applications(user_id);
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='applications' AND column_name='preferred_combination') THEN
+        ALTER TABLE applications ADD COLUMN preferred_combination VARCHAR(100);
     END IF;
 END $$;

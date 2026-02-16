@@ -92,11 +92,13 @@ export default async function handler(req, res) {
                 });
             });
 
-            // Helper to get single value from array/string, defaulting to null
             const val = (k) => {
                 const v = Array.isArray(fields[k]) ? fields[k][0] : fields[k];
                 return (v === undefined || v === '') ? null : v;
             };
+
+            console.log('Received fields:', Object.keys(fields));
+            console.log('Preferred Combination:', val('preferred_combination'));
 
             // Generate Application Number (MABSS-YYYY-XXXX)
             const year = new Date().getFullYear();
@@ -112,7 +114,7 @@ export default async function handler(req, res) {
                     birth_country, birth_district, birth_county, birth_parish, birth_village,
                     admission_mode, parent_category, day_status, boarding_status,
                     ple_year, ple_index, english_agg, maths_agg, science_agg, social_agg, total_aggregates, division,
-                    uce_year, uce_index, uce_results,
+                    uce_year, uce_index, uce_results, preferred_combination,
                     health_needs, talents,
                     father_name, father_nin, father_contact, father_occupation, father_district,
                     mother_name, mother_nin, mother_contact, mother_occupation, mother_district,
@@ -124,12 +126,12 @@ export default async function handler(req, res) {
                     $11, $12, $13, $14, $15,
                     $16, $17, $18, $19,
                     $20, $21, $22, $23, $24, $25, $26, $27,
-                    $28, $29, $30,
-                    $31, $32,
-                    $33, $34, $35, $36, $37,
-                    $38, $39, $40, $41, $42,
-                    $43, $44, $45, $46, $47,
-                    $48, $49
+                    $28, $29, $30, $31,
+                    $32, $33,
+                    $34, $35, $36, $37, $38,
+                    $39, $40, $41, $42, $43,
+                    $44, $45, $46, $47, $48,
+                    $49, $50
                 ) RETURNING id
             `;
 
@@ -140,7 +142,7 @@ export default async function handler(req, res) {
                 val('country'), val('district'), val('county'), val('parish'), val('village'),
                 val('admission_mode'), val('parent_category'), val('day_status'), val('boarding_status'),
                 val('ple_year'), val('ple_index'), val('english_agg'), val('maths_agg'), val('science_agg'), val('social_agg'), val('total_aggregates'), val('division'),
-                val('uce_year') || null, val('uce_index') || null, val('uce_results') || null,
+                val('uce_year') || null, val('uce_index') || null, val('uce_results') || null, val('preferred_combination') || null,
                 val('health_needs'), val('talents'),
                 val('father_name'), val('father_nin'), val('father_contact'), val('father_occupation'), val('father_district'),
                 val('mother_name'), val('mother_nin'), val('mother_contact'), val('mother_occupation'), val('mother_district'),
