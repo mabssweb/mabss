@@ -707,7 +707,14 @@
                     </div>
 
                     <div class="form-group full-width" style="margin-top: 1.5rem;">
-                        <label id="uce_slip_label">Attach UCE Slip (Optional)</label>
+                        <label id="preferred_combination_label">Preferred Combination (must have obtained A, B,
+                            C)</label>
+                        <input type="text" name="preferred_combination" id="preferred_combination"
+                            placeholder="e.g. PCM/ICT, BCM/SubMath">
+                    </div>
+
+                    <div class="form-group full-width" style="margin-top: 1.5rem;">
+                        <label id="uce_slip_label">Attach UCE Slip (provisional results)</label>
                         <input type="file" name="uce_slip" id="uce_slip" accept=".pdf,.jpg,.png">
                     </div>
                 </div>
@@ -949,17 +956,29 @@
                     if (selectedClass === 'S.5' || selectedClass === 'S.6') {
                         document.getElementById('uce_year')?.setAttribute('required', 'required');
                         document.getElementById('uce_index')?.setAttribute('required', 'required');
+
                         const slipInput = document.getElementById('uce_slip');
                         const slipLabel = document.getElementById('uce_slip_label');
                         if (slipInput) slipInput.setAttribute('required', 'required');
-                        if (slipLabel) slipLabel.innerHTML = 'Attach UCE Slip <span class="required">*</span>';
+                        if (slipLabel) slipLabel.innerHTML = 'Attach UCE Slip (provisional results) <span class="required">*</span>';
+
+                        const combInput = document.getElementById('preferred_combination');
+                        const combLabel = document.getElementById('preferred_combination_label');
+                        if (combInput) combInput.setAttribute('required', 'required');
+                        if (combLabel) combLabel.innerHTML = 'Preferred Combination (must have obtained A, B, C) <span class="required">*</span>';
                     } else {
                         document.getElementById('uce_year')?.removeAttribute('required');
                         document.getElementById('uce_index')?.removeAttribute('required');
+
                         const slipInput = document.getElementById('uce_slip');
                         const slipLabel = document.getElementById('uce_slip_label');
                         if (slipInput) slipInput.removeAttribute('required');
-                        if (slipLabel) slipLabel.textContent = 'Attach UCE Slip (Optional)';
+                        if (slipLabel) slipLabel.textContent = 'Attach UCE Slip (provisional results)';
+
+                        const combInput = document.getElementById('preferred_combination');
+                        const combLabel = document.getElementById('preferred_combination_label');
+                        if (combInput) combInput.removeAttribute('required');
+                        if (combLabel) combLabel.textContent = 'Preferred Combination (must have obtained A, B, C)';
                     }
                 });
                 // Initial check

@@ -1276,6 +1276,7 @@
                             <h4 style="margin: 0 0 10px 0; color: #2e7d32;">Ordinary Level (UCE) Results</h4>
                             <div class="modal-grid">
                                 <div class="detail-card"><span class="detail-label">Year / Index No</span><span class="detail-value">${app.uce_year} / ${app.uce_index}</span></div>
+                                ${app.preferred_combination ? `<div class="detail-card"><span class="detail-label">Preferred Combination</span><span class="detail-value" style="font-weight: bold; color: #d32f2f;">${app.preferred_combination}</span></div>` : ''}
                             </div>
                             <div style="margin-top:10px;">
                                 <label class="detail-label">Subject Grades</label>
