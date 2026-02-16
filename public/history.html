@@ -1,33 +1,41 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <title>Mbarara Army Boarding Secondary School - History</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico" type="image/x-icon">
+    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
+        type="image/x-icon">
     <style>
         /* CSS Variables for School Colors - Matched with index.html */
         :root {
-            --army-green: #0e7704;          /* Matches homepage header */
-            --dark-green: #004d33;          /* Matches homepage footer */
-            --medium-green: #006341;        /* Matches homepage accents */
+            --army-green: #0e7704;
+            /* Matches homepage header */
+            --dark-green: #004d33;
+            /* Matches homepage footer */
+            --medium-green: #006341;
+            /* Matches homepage accents */
             --white: #ffffff;
             --black: #000000;
-            --light-gray: #f5f5f5;          /* Matches homepage background */
-            --dark-gray: #333333;           /* Matches homepage text */
-            --section-title: #006341;       /* Matches homepage section titles */
+            --light-gray: #f5f5f5;
+            /* Matches homepage background */
+            --dark-gray: #333333;
+            /* Matches homepage text */
+            --section-title: #006341;
+            /* Matches homepage section titles */
         }
 
         /* Base Styles */
@@ -41,12 +49,17 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--dark-gray);
-            background-color: var(--light-gray); /* Matches homepage */
+            background-color: var(--light-gray);
+            /* Matches homepage */
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             margin-bottom: 1rem;
-            color: var(--section-title); /* Matches homepage */
+            color: var(--section-title);
+            /* Matches homepage */
         }
 
         p {
@@ -69,7 +82,8 @@
             margin-bottom: 3rem;
             position: relative;
             color: var(--section-title);
-            font-size: 1.5rem; /* Matches homepage */
+            font-size: 1.5rem;
+            /* Matches homepage */
         }
 
         .section-title::after {
@@ -86,18 +100,23 @@
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background-color: var(--medium-green); /* Matches homepage buttons */
+            background-color: var(--medium-green);
+            /* Matches homepage buttons */
             color: var(--white);
             text-decoration: none;
-            border-radius: 4px; /* Matches homepage button style */
-            font-weight: bold; /* Matches homepage */
-            transition: background-color 0.3s; /* Matches homepage */
+            border-radius: 4px;
+            /* Matches homepage button style */
+            font-weight: bold;
+            /* Matches homepage */
+            transition: background-color 0.3s;
+            /* Matches homepage */
             border: none;
             cursor: pointer;
         }
 
         .btn:hover {
-            background-color: var(--dark-green); /* Matches homepage button hover */
+            background-color: var(--dark-green);
+            /* Matches homepage button hover */
             transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -111,7 +130,8 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Matches homepage */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Matches homepage */
         }
 
         .header-container {
@@ -127,18 +147,23 @@
 
         .logo img {
             height: 50px;
-            width: 50px; /* Matches homepage logo dimensions */
-            border-radius: 50%; /* Matches homepage logo */
+            width: 50px;
+            /* Matches homepage logo dimensions */
+            border-radius: 50%;
+            /* Matches homepage logo */
             object-fit: cover;
-            border: 2px solid white; /* Matches homepage */
+            border: 2px solid white;
+            /* Matches homepage */
             margin-right: 10px;
         }
 
         .logo h1 {
-            font-size: 1rem; /* Adjusted to match homepage */
+            font-size: 1rem;
+            /* Adjusted to match homepage */
             color: var(--white);
             margin: 0;
-            white-space: nowrap; /* Matches homepage */
+            white-space: nowrap;
+            /* Matches homepage */
         }
 
         nav ul {
@@ -153,7 +178,8 @@
         nav ul li a {
             color: var(--white);
             text-decoration: none;
-            font-weight: bold; /* Matches homepage */
+            font-weight: bold;
+            /* Matches homepage */
             transition: color 0.3s ease;
         }
 
@@ -194,12 +220,14 @@
             font-size: 1.5rem;
             margin-bottom: 2rem;
             font-style: italic;
-            color: #f0f0f0; /* Lighter for contrast */
+            color: #f0f0f0;
+            /* Lighter for contrast */
         }
 
         /* School Background Section */
         .background {
-            background-color: var(--white); /* Changed to match homepage sections */
+            background-color: var(--white);
+            /* Changed to match homepage sections */
         }
 
         .background-content {
@@ -212,7 +240,8 @@
         .background-image {
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Matches homepage cards */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Matches homepage cards */
         }
 
         .background-image img {
@@ -228,56 +257,68 @@
 
         /* Mission, Vision, and Core Values */
         .mission-vision {
-            background-color: var(--light-gray); /* Matches homepage sections */
+            background-color: var(--light-gray);
+            /* Matches homepage sections */
         }
 
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem; /* Matches homepage grid gap */
+            gap: 1.5rem;
+            /* Matches homepage grid gap */
         }
 
         .value-card {
             background-color: var(--white);
-            border-radius: 8px; /* Matches homepage cards */
-            padding: 1.5rem; /* Matches homepage card padding */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Matches homepage cards */
+            border-radius: 8px;
+            /* Matches homepage cards */
+            padding: 1.5rem;
+            /* Matches homepage card padding */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Matches homepage cards */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid var(--medium-green); /* Matches homepage accent */
+            border-top: 4px solid var(--medium-green);
+            /* Matches homepage accent */
         }
 
         .value-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .value-icon {
             font-size: 3rem;
-            color: var(--medium-green); /* Matches homepage accents */
+            color: var(--medium-green);
+            /* Matches homepage accents */
             margin-bottom: 1.5rem;
         }
 
         .value-card h3 {
             margin-bottom: 1rem;
-            color: var(--section-title); /* Matches homepage card titles */
+            color: var(--section-title);
+            /* Matches homepage card titles */
         }
 
         /* Leadership Section */
         .leadership {
-            background-color: var(--white); /* Matches homepage sections */
+            background-color: var(--white);
+            /* Matches homepage sections */
         }
 
         .leadership-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem; /* Matches homepage grid gap */
+            gap: 1.5rem;
+            /* Matches homepage grid gap */
         }
 
         .leader-card {
             background-color: var(--white);
-            border-radius: 8px; /* Matches homepage cards */
+            border-radius: 8px;
+            /* Matches homepage cards */
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Matches homepage cards */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Matches homepage cards */
             transition: transform 0.3s ease;
             text-align: center;
         }
@@ -308,16 +349,19 @@
         }
 
         .leader-info {
-            padding: 0 1.5rem 1.5rem; /* Matches homepage card padding */
+            padding: 0 1.5rem 1.5rem;
+            /* Matches homepage card padding */
         }
 
         .leader-info h3 {
             margin-bottom: 0.5rem;
-            color: var(--section-title); /* Matches homepage card titles */
+            color: var(--section-title);
+            /* Matches homepage card titles */
         }
 
         .leader-position {
-            color: var(--medium-green); /* Matches homepage accents */
+            color: var(--medium-green);
+            /* Matches homepage accents */
             font-weight: 600;
             margin-bottom: 1rem;
             font-size: 0.9rem;
@@ -325,7 +369,8 @@
 
         /* Student Life & Achievements */
         .student-life {
-            background-color: var(--light-gray); /* Matches homepage sections */
+            background-color: var(--light-gray);
+            /* Matches homepage sections */
         }
 
         .life-tabs {
@@ -347,7 +392,8 @@
         }
 
         .tab-btn.active {
-            color: var(--medium-green); /* Matches homepage accents */
+            color: var(--medium-green);
+            /* Matches homepage accents */
         }
 
         .tab-btn.active::after {
@@ -357,7 +403,8 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background-color: var(--medium-green); /* Matches homepage accents */
+            background-color: var(--medium-green);
+            /* Matches homepage accents */
         }
 
         .tab-content {
@@ -370,22 +417,32 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .achievement-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem; /* Matches homepage grid gap */
+            gap: 1.5rem;
+            /* Matches homepage grid gap */
         }
 
         .achievement-card {
-            background-color: var(--white); /* Matches homepage cards */
-            border-radius: 8px; /* Matches homepage cards */
-            padding: 1.5rem; /* Matches homepage card padding */
+            background-color: var(--white);
+            /* Matches homepage cards */
+            border-radius: 8px;
+            /* Matches homepage cards */
+            padding: 1.5rem;
+            /* Matches homepage card padding */
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Matches homepage cards */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Matches homepage cards */
             transition: transform 0.3s ease;
         }
 
@@ -395,17 +452,20 @@
 
         .achievement-icon {
             font-size: 2.5rem;
-            color: var(--medium-green); /* Matches homepage accents */
+            color: var(--medium-green);
+            /* Matches homepage accents */
             margin-bottom: 1rem;
         }
 
         .achievement-card h3 {
-            color: var(--section-title); /* Matches homepage card titles */
+            color: var(--section-title);
+            /* Matches homepage card titles */
         }
 
         /* Slideshow Section */
         .slideshow {
-            background-color: var(--white); /* Matches homepage sections */
+            background-color: var(--white);
+            /* Matches homepage sections */
         }
 
         .slideshow-container {
@@ -445,8 +505,13 @@
         }
 
         @keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
         }
 
         /* Footer - Exactly matches index.html */
@@ -455,7 +520,7 @@
             color: white;
             padding: 2rem 1rem;
         }
-        
+
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -463,54 +528,54 @@
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        
+
         .footer-section {
             min-width: 250px;
         }
-        
+
         .footer-heading {
             border-bottom: 2px solid #006341;
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .footer-list {
             list-style: none;
             padding: 0;
         }
-        
+
         .footer-item {
             margin-bottom: 0.5rem;
         }
-        
+
         .footer-link {
             color: white;
             text-decoration: none;
         }
-        
+
         .footer-bottom {
             text-align: center;
             margin-top: 2rem;
             padding-top: 1rem;
             border-top: 1px solid #006341;
         }
-        
+
         .social-media {
             margin-top: 1.5rem;
         }
-        
+
         .social-heading {
             font-size: 1.2rem;
             margin-bottom: 1rem;
             color: #fff;
         }
-        
+
         .social-icons {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
         }
-        
+
         .social-icon {
             display: inline-flex;
             align-items: center;
@@ -524,36 +589,36 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-        
+
         .social-icon:hover {
             transform: translateY(-3px);
             background-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         .social-icon.facebook:hover {
             background-color: #3b5998;
         }
-        
+
         .social-icon.twitter:hover {
             background-color: #1da1f2;
         }
-        
+
         .social-icon.youtube:hover {
             background-color: #ff0000;
         }
-        
+
         .social-icon.pinterest:hover {
             background-color: #bd081c;
         }
-        
+
         .social-icon.instagram:hover {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
         }
-        
+
         .social-icon.whatsapp:hover {
             background-color: #25d366;
         }
-        
+
         .social-icon.linkedin:hover {
             background-color: #0077b5;
         }
@@ -597,17 +662,18 @@
             .background-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .hero h1 {
                 font-size: 2.8rem;
             }
-            
+
             .hero p {
                 font-size: 1.3rem;
             }
-            
+
             .footer-container {
-                grid-template-columns: repeat(2, 1fr); /* Matches homepage */
+                grid-template-columns: repeat(2, 1fr);
+                /* Matches homepage */
             }
 
             .governance-group {
@@ -654,27 +720,29 @@
             .hero h1 {
                 font-size: 2.2rem;
             }
-            
+
             .hero p {
                 font-size: 1.1rem;
             }
-            
+
             section {
                 padding: 3rem 0;
             }
-            
+
             .slide img {
                 height: 300px;
             }
-            
+
             .values-grid,
             .leadership-grid,
             .achievement-grid {
-                grid-template-columns: 1fr; /* Stack on mobile like homepage */
+                grid-template-columns: 1fr;
+                /* Stack on mobile like homepage */
             }
-            
+
             .footer-container {
-                grid-template-columns: 1fr; /* Stack on mobile */
+                grid-template-columns: 1fr;
+                /* Stack on mobile */
             }
 
             .governance-group {
@@ -694,30 +762,35 @@
 
         @media (min-width: 768px) {
             nav ul {
-                display: flex !important; /* Force show on larger screens */
+                display: flex !important;
+                /* Force show on larger screens */
             }
-            
+
             .mobile-menu {
                 display: none;
             }
-            
+
             .footer-container {
-                grid-template-columns: repeat(2, 1fr); /* Matches homepage */
+                grid-template-columns: repeat(2, 1fr);
+                /* Matches homepage */
             }
         }
 
         @media (min-width: 992px) {
             .footer-container {
-                grid-template-columns: repeat(3, 1fr); /* Matches homepage */
+                grid-template-columns: repeat(3, 1fr);
+                /* Matches homepage */
             }
-            
+
             .logo h1 {
-                font-size: 1.5rem; /* Matches homepage desktop size */
+                font-size: 1.5rem;
+                /* Matches homepage desktop size */
             }
-            
+
             .logo img {
                 height: 50px;
-                width: 50px; /* Matches homepage desktop */
+                width: 50px;
+                /* Matches homepage desktop */
             }
         }
 
@@ -725,20 +798,20 @@
             .hero h1 {
                 font-size: 1.8rem;
             }
-            
+
             .hero p {
                 font-size: 1rem;
             }
-            
+
             .btn {
                 padding: 10px 20px;
             }
-            
+
             .tab-btn {
                 padding: 0.8rem 1.2rem;
                 font-size: 0.9rem;
             }
-            
+
             .section-title {
                 font-size: 1.3rem;
             }
@@ -759,13 +832,15 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
                 <div>
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" alt="MABSS Logo">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                        alt="MABSS Logo">
                 </div>
                 <h1>Mbarara Army Boarding<br>Secondary School</h1>
             </div>
@@ -801,13 +876,23 @@
             <h2 class="section-title">School Background</h2>
             <div class="background-content">
                 <div class="background-text">
-                    <p>Mbarara Army Boarding Secondary School was established in 2004 with the vision of providing quality education infused with military discipline and patriotic values. Founded by the Uganda People's Defence Forces (UPDF), the school aimed to create an institution that would nurture future leaders with strong moral character and academic excellence.</p>
-                    <p>Located on the scenic hills of Makenke,Mbarara, Western Uganda, Along Mbarara-Masaka highway road. The school began with just 120 students and 15 staff members. Over the years, it has grown significantly, now accommodating over 2000+ students from various regions of Uganda.</p>
-                    <p>The school's unique approach combines rigorous academic training with military-style discipline, producing graduates who excel not only in academics but also in character development and leadership skills.</p>
-                    <p>Today, Mbarara Army Boarding Secondary School stands as one of the premier educational institutions in the region, consistently ranking among the top schools in national examinations and producing citizens who contribute meaningfully to Uganda's development.</p>
+                    <p>Mbarara Army Boarding Secondary School was established in 2004 with the vision of providing
+                        quality education infused with military discipline and patriotic values. Founded by the Uganda
+                        People's Defence Forces (UPDF), the school aimed to create an institution that would nurture
+                        future leaders with strong moral character and academic excellence.</p>
+                    <p>Located on the scenic hills of Makenke,Mbarara, Western Uganda, Along Mbarara-Masaka highway
+                        road. The school began with just 120 students and 15 staff members. Over the years, it has grown
+                        significantly, now accommodating over 2000+ students from various regions of Uganda.</p>
+                    <p>The school's unique approach combines rigorous academic training with military-style discipline,
+                        producing graduates who excel not only in academics but also in character development and
+                        leadership skills.</p>
+                    <p>Today, Mbarara Army Boarding Secondary School stands as one of the premier educational
+                        institutions in the region, consistently ranking among the top schools in national examinations
+                        and producing citizens who contribute meaningfully to Uganda's development.</p>
                 </div>
                 <div class="background-image">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345625/view_yjubte.jpg" alt="School Compound">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345625/view_yjubte.jpg"
+                        alt="School Compound">
                 </div>
             </div>
         </div>
@@ -818,7 +903,7 @@
         <div class="container">
             <h2 class="section-title">Vision,Mission & Core Values</h2>
             <div class="values-grid">
-                
+
                 <div class="value-card">
                     <div class="value-icon">
                         <i class="fas fa-eye"></i>
@@ -836,14 +921,15 @@
                     <h3>Our Mission</h3>
                     <p>To impart skills, knowledge, attitude and values through team work.</p>
                 </div>
-                
-                 
+
+
                 <div class="value-card">
                     <div class="value-icon">
                         <i class="fas fa-gem"></i>
                     </div>
                     <h3>Core Values</h3>
-                    <p>Discipline, Creativity, Punctuality, Patriotism, Team spirit, God fearing. These values form the foundation of our educational philosophy and guide our students' development.</p>
+                    <p>Discipline, Creativity, Punctuality, Patriotism, Team spirit, God fearing. These values form the
+                        foundation of our educational philosophy and guide our students' development.</p>
                 </div>
             </div>
         </div>
@@ -853,19 +939,21 @@
     <section class="leadership" id="leadership">
         <div class="container">
             <h2 class="section-title">School Governance</h2>
-            
+
             <!-- Chairperson -->
             <div class="governance-group">
                 <h3>Chairperson BOG</h3>
                 <div class="leadership-grid">
                     <div class="leader-card">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765376993/2nd_div_vbhop9.jpg" alt="Maj. Gen. Paul Muhaguzi">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765376993/2nd_div_vbhop9.jpg"
+                                alt="Maj. Gen. Paul Muhaguzi">
                         </div>
                         <div class="leader-info">
                             <h3>Maj. Gen. Paul Muhaguzi</h3>
                             <div class="leader-position">Chairperson, Board of Governors</div>
-                            <p>2nd Division Commander providing strategic leadership and oversight for the school's development and discipline standards.</p>
+                            <p>2nd Division Commander providing strategic leadership and oversight for the school's
+                                development and discipline standards.</p>
                         </div>
                     </div>
                 </div>
@@ -877,33 +965,37 @@
                 <div class="leadership-grid">
                     <div class="leader-card">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765461772/WhatsApp_Image_2025-12-11_at_16.51.35_cfd0222a_sksn3g.jpg" alt="Col. W.M.Kakuru">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765461772/WhatsApp_Image_2025-12-11_at_16.51.35_cfd0222a_sksn3g.jpg"
+                                alt="Col. W.M.Kakuru">
                         </div>
                         <div class="leader-info">
                             <h3>Col. W.M. Kakuru</h3>
                             <div class="leader-position">Vice Chairperson, Board of Governors</div>
-                            <p>2nd Division Administrative Officer supporting the Chairperson in governance and operational oversight of school affairs.</p>
+                            <p>2nd Division Administrative Officer supporting the Chairperson in governance and
+                                operational oversight of school affairs.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            
+
             <!-- PTA Representatives -->
             <div class="governance-group">
                 <h3>PTA</h3>
                 <div class="leadership-grid">
                     <div class="leader-card">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765396272/CP_jhjl7i.jpg" alt="PTA Representative 1">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765396272/CP_jhjl7i.jpg"
+                                alt="PTA Representative 1">
                         </div>
                         <div class="leader-info">
                             <h3>Mr.TWESIGYE HANNINGTON</h3>
                             <div class="leader-position">PTA Chairperson</div>
-                            <p>Represents parent interests and facilitates communication between parents and school administration.</p>
+                            <p>Represents parent interests and facilitates communication between parents and school
+                                administration.</p>
                         </div>
                     </div>
-                 </div>
+                </div>
             </div>
 
             <!-- Governance in Action -->
@@ -912,31 +1004,37 @@
                 <div class="leadership-grid">
                     <div class="leader-card governance-action">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346638/bog_ssijce.jpg" alt="Board of Governors Meeting">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346638/bog_ssijce.jpg"
+                                alt="Board of Governors Meeting">
                         </div>
                         <div class="leader-info">
                             <h3>Strategic Planning Session</h3>
-                            <p>The Board of Governors engaged in strategic discussions on 04th December 2025, charting the school's future development path.</p>
+                            <p>The Board of Governors engaged in strategic discussions on 04th December 2025, charting
+                                the school's future development path.</p>
                         </div>
                     </div>
-                    
+
                     <div class="leader-card governance-action">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346639/cos1_soooxz.jpg" alt="Construction Site Inspection">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346639/cos1_soooxz.jpg"
+                                alt="Construction Site Inspection">
                         </div>
                         <div class="leader-info">
                             <h3>Infrastructure Oversight</h3>
-                            <p>Board members conducting on-site inspection of ongoing construction projects to ensure quality and timely completion.</p>
+                            <p>Board members conducting on-site inspection of ongoing construction projects to ensure
+                                quality and timely completion.</p>
                         </div>
                     </div>
-                    
+
                     <div class="leader-card governance-action">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346640/cons2_vmsser.jpg" alt="Site Progress Review">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346640/cons2_vmsser.jpg"
+                                alt="Site Progress Review">
                         </div>
                         <div class="leader-info">
                             <h3>Progress Assessment</h3>
-                            <p>Governance team reviewing construction progress and providing guidance for future development phases.</p>
+                            <p>Governance team reviewing construction progress and providing guidance for future
+                                development phases.</p>
                         </div>
                     </div>
                 </div>
@@ -955,7 +1053,7 @@
                 <button class="tab-btn" data-tab="activities">Co-curricular Activities</button>
                 <button class="tab-btn" data-tab="achievements">Notable Achievements</button>
             </div>
-            
+
             <div class="tab-content active" id="academics">
                 <div class="achievement-grid">
                     <div class="achievement-card">
@@ -963,25 +1061,28 @@
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <h3>Consistent Top Performance</h3>
-                        <p>Our students consistently rank among the top performers in national examinations, with over 85% qualifying for university education.</p>
+                        <p>Our students consistently rank among the top performers in national examinations, with over
+                            85% qualifying for university education.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-flask"></i>
                         </div>
                         <h3>Science & Technology Focus</h3>
-                        <p>We emphasize STEM education with well-equipped laboratories and specialized teaching in sciences and mathematics.</p>
+                        <p>We emphasize STEM education with well-equipped laboratories and specialized teaching in
+                            sciences and mathematics.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-book"></i>
                         </div>
                         <h3>Comprehensive Curriculum</h3>
-                        <p>We offer a balanced curriculum covering sciences, arts, and vocational subjects to cater to diverse student interests and talents.</p>
+                        <p>We offer a balanced curriculum covering sciences, arts, and vocational subjects to cater to
+                            diverse student interests and talents.</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="tab-content" id="discipline">
                 <div class="achievement-grid">
                     <div class="achievement-card">
@@ -989,25 +1090,28 @@
                             <i class="fas fa-medal"></i>
                         </div>
                         <h3>Character Development</h3>
-                        <p>Our military-style discipline program instills values of responsibility, respect, and integrity in all students.</p>
+                        <p>Our military-style discipline program instills values of responsibility, respect, and
+                            integrity in all students.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-flag"></i>
                         </div>
                         <h3>Patriotic Education</h3>
-                        <p>Students participate in regular patriotic activities and learn about Uganda's history and national values.</p>
+                        <p>Students participate in regular patriotic activities and learn about Uganda's history and
+                            national values.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-users"></i>
                         </div>
                         <h3>Leadership Training</h3>
-                        <p>All students undergo leadership training programs that prepare them for future roles in society.</p>
+                        <p>All students undergo leadership training programs that prepare them for future roles in
+                            society.</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="tab-content" id="activities">
                 <div class="achievement-grid">
                     <div class="achievement-card">
@@ -1015,25 +1119,28 @@
                             <i class="fas fa-futbol"></i>
                         </div>
                         <h3>Sports & Athletics</h3>
-                        <p>We offer a wide range of sports including football, athletics, basketball, and volleyball with modern facilities.</p>
+                        <p>We offer a wide range of sports including football, athletics, basketball, and volleyball
+                            with modern facilities.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-music"></i>
                         </div>
                         <h3>Music & Arts</h3>
-                        <p>Our vibrant music, dance, and drama program allows students to explore and develop their artistic talents.</p>
+                        <p>Our vibrant music, dance, and drama program allows students to explore and develop their
+                            artistic talents.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-robot"></i>
                         </div>
                         <h3>Clubs & Societies</h3>
-                        <p>Students can join various clubs including debate, science, journalism, and conservation clubs.</p>
+                        <p>Students can join various clubs including debate, science, journalism, and conservation
+                            clubs.</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="tab-content" id="achievements">
                 <div class="achievement-grid">
                     <div class="achievement-card">
@@ -1068,20 +1175,25 @@
             <h2 class="section-title">School Gallery</h2>
             <div class="slideshow-container">
                 <div class="slide fade">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345614/student_nrjtde.jpg" alt="Classroom">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345614/student_nrjtde.jpg"
+                        alt="Classroom">
                     <div class="slide-caption">DURING DEDICATION</div>
                 </div>
                 <div class="slide fade">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345615/TRIP_fpcly2.jpg" alt="Science Lab">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345615/TRIP_fpcly2.jpg"
+                        alt="Science Lab">
                     <div class="slide-caption">Some of students having a trip tour</div>
                 </div>
                 <div class="slide fade">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345578/mdd_zcgotv.jpg" alt="School Event">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345578/mdd_zcgotv.jpg"
+                        alt="School Event">
                     <div class="slide-caption">Annual Sports Day</div>
                 </div>
                 <div class="slide fade">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345206/class_aveqk3.jpg" alt="Students">
-                    <div class="slide-caption">Dedicated Students demonstrating some Chemistry practicals in laboratory</div>
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345206/class_aveqk3.jpg"
+                        alt="Students">
+                    <div class="slide-caption">Dedicated Students demonstrating some Chemistry practicals in laboratory
+                    </div>
                 </div>
             </div>
         </div>
@@ -1093,7 +1205,7 @@
             <div class="footer-section">
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-list">
-                    <li class="footer-item"><a href="access.html" class="footer-link">Academics</a></li>
+                    <li class="footer-item"><a href="materials.html" class="footer-link">Academics</a></li>
                     <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
                     <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
                     <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
@@ -1111,12 +1223,18 @@
                 <div class="social-media">
                     <h4 class="social-heading">Follow Us</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2004" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..." target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
+                            class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/mabss2004" class="social-icon twitter" target="_blank"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i
+                                class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
+                            class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
+                            target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
                         <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
@@ -1130,18 +1248,18 @@
         </div>
         <div class="footer-bottom">
             <p> &copy; <span id="year"></span> Mbarara Army Boarding Secondary School. <br>
-    Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
+                Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
         </div>
-        
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
     </footer>
 
 
     <script>
         // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
+        document.querySelector('.mobile-menu').addEventListener('click', function () {
             document.querySelector('nav ul').classList.toggle('active');
         });
 
@@ -1154,10 +1272,10 @@ document.getElementById("year").textContent = new Date().getFullYear();
                 // Remove active class from all buttons and contents
                 tabBtns.forEach(b => b.classList.remove('active'));
                 tabContents.forEach(c => c.classList.remove('active'));
-                
+
                 // Add active class to clicked button
                 btn.classList.add('active');
-                
+
                 // Show corresponding content
                 const tabId = btn.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
@@ -1170,17 +1288,17 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
         function showSlides() {
             let slides = document.getElementsByClassName("slide");
-            
+
             for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
+                slides[i].style.display = "none";
             }
-            
+
             slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}
-            
-            slides[slideIndex-1].style.display = "block";  
-            slides[slideIndex-1].classList.add("fade");
-            
+            if (slideIndex > slides.length) { slideIndex = 1 }
+
+            slides[slideIndex - 1].style.display = "block";
+            slides[slideIndex - 1].classList.add("fade");
+
             setTimeout(showSlides, 5000); // Change image every 5 seconds
         }
 
@@ -1188,17 +1306,17 @@ document.getElementById("year").textContent = new Date().getFullYear();
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
+                if (targetId === '#') return;
+
                 const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 70,
                         behavior: 'smooth'
                     });
-                    
+
                     // Close mobile menu if open
                     document.querySelector('nav ul').classList.remove('active');
                 }
@@ -1206,7 +1324,5 @@ document.getElementById("year").textContent = new Date().getFullYear();
         });
     </script>
 </body>
+
 </html>
-
-
-

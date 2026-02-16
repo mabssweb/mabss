@@ -420,6 +420,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -453,7 +454,8 @@
             border: 4px solid var(--gold);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
-            overflow: hidden; /* FIXED: Added to ensure image stays within circle */
+            overflow: hidden;
+            /* FIXED: Added to ensure image stays within circle */
         }
 
         .alumni-image {
@@ -523,7 +525,8 @@
             flex-grow: 1;
             overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* FIXED: Removed incorrect property */
+            -webkit-line-clamp: 3;
+            /* FIXED: Removed incorrect property */
             -webkit-box-orient: vertical;
             text-align: center;
         }
@@ -863,6 +866,7 @@
                 opacity: 0;
                 transform: translateY(15px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1159,7 +1163,8 @@
                                     <p class="alumni-desc">Once a student, now a teacher at my alma mater. MABSS
                                         instilled in me the discipline and passion I now bring to my History and
                                         Divinity classes.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
@@ -1174,8 +1179,10 @@
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MISS. Karungi Regina Carol</h3>
                                     <span class="alumni-position">Midwife</span>
-                                    <p class="alumni-desc">Proud to have studied at MABSS (2004-2007). We were the pioneers who started and shaped the school.</p>
-                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                    <p class="alumni-desc">Proud to have studied at MABSS (2004-2007). We were the
+                                        pioneers who started and shaped the school.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
                                 </div>
                             </article>
                         </div>
@@ -1188,7 +1195,8 @@
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MR. TWESIGYE KELLY</h3>
                                     <span class="alumni-position">OB (2017-2023)</span>
-                                    <p class="alumni-desc">Stand firm in character, sharo in mind, and disciplined in action. This is how great leaders are forged</p>
+                                    <p class="alumni-desc">Stand firm in character, sharo in mind, and disciplined in
+                                        action. This is how great leaders are forged</p>
                                     <a href="#" class="alumni-read-more">Read More <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
@@ -1331,7 +1339,8 @@
                                 <div class="alumni-content">
                                     <h3 class="alumni-name">MR.MPIRWE ROBERT KELLY</h3>
                                     <span class="alumni-position">OB (2017-2020)</span>
-                                    <p class="alumni-desc">The trust in what you want will never stop unless you stop pushing towards your goals. Keep believing & have trust</p>
+                                    <p class="alumni-desc">The trust in what you want will never stop unless you stop
+                                        pushing towards your goals. Keep believing & have trust</p>
                                     <a href="#" class="alumni-read-more">Read More <i
                                             class="fas fa-arrow-right"></i></a>
                                 </div>
@@ -1367,7 +1376,7 @@
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-list">
                     <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
-                    <li class="footer-item"><a href="access.html" class="footer-link">Academics</a></li>
+                    <li class="footer-item"><a href="materials.html" class="footer-link">Academics</a></li>
                     <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
                     <li class="footer-item"><a href="discipline.html" class="footer-link">Discipline</a></li>
                     <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
@@ -1414,7 +1423,7 @@
             <p> &copy; <span id="year"></span> Mbarara Army Boarding Secondary School. <br> All Rights Reserved.<br>
                 Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
         </div>
-        
+
         <script>
             document.getElementById("year").textContent = new Date().getFullYear();
         </script>
@@ -1442,7 +1451,7 @@
 
         // Smooth scroll for gallery navigation
         document.querySelectorAll('.gallery-link').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
@@ -1572,4 +1581,5 @@
         });
     </script>
 </body>
+
 </html>
