@@ -1290,7 +1290,7 @@
                         <div class="modal-grid">
                             <div class="detail-card"><span class="detail-label">Class Applied For</span><span class="detail-value" style="font-weight: 700;">${app.class_applying}</span></div>
                             <div class="detail-card"><span class="detail-label">Admission Mode</span><span class="detail-value">${app.admission_mode}</span></div>
-                            <div class="detail-card"><span class="detail-label">Residential Status</span><span class="detail-value">${app.boarding_status} / ${app.day_status}</span></div>
+                            <div class="detail-card"><span class="detail-label">Residential Status</span><span class="detail-value">${app.boarding_status === 'BOARDER CIVILIAN' ? 'Boarding' : (app.boarding_status === 'DAY CIVILIAN' ? 'Day Scholar' : app.boarding_status)}</span></div>
                             <div class="detail-card"><span class="detail-label">Student Category</span><span class="detail-value">${app.parent_category}</span></div>
                         </div>
                     </div>
