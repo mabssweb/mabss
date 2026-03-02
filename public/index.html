@@ -1707,8 +1707,7 @@
         </div>
     </div>
 
-    <!-- ===== SCRIPTS ===== -->
-     <script>
+    <script>
         // Load latest news
         document.addEventListener('DOMContentLoaded', loadLatestNews);
 
@@ -2099,28 +2098,212 @@
 
         });
     </script>
-
-
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "EducationalOrganization",
-        "name": "Mbarara Army Boarding Secondary School",
-        "url": "https://www.mabss.ac.ug",
-        "logo": "https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg",
-        "foundingDate": "2004",
-        "founder": {
-            "@type": "Organization",
-            "name": "Uganda People's Defence Forces (UPDF)"
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Mbarara",
-            "addressRegion": "Western Uganda",
-            "addressCountry": "UG"
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Amwine Frankline",
+            "jobTitle": "Web Developer",
+            "telephone": "+256200928601",
+            "url": "https://www.mabss.ac.ug",
+            "sameAs": [
+
+            ],
+            "worksFor": {
+                "@type": "Organization",
+                "name": "MBARARA ARMY BOARDING SECONDARY SCHOOL"
+            }
         }
-    }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": " Amwine Frankline",
+            "jobTitle": "Web Developer",
+            "telephone": "+256200928601",
+            "url": "https://www.mabss.ac.ug",
+            "sameAs": [
+
+            ],
+            "worksFor": {
+                "@type": "Organization",
+                "name": "MBARARA ARMY BOARDING SECONDARY SCHOOL"
+            }
+        }
+    </script>
+    <!-- Add this JavaScript right before closing </body> tag -->
+    <script>
+        // Compact Toast Notification - 10 SECOND DURATION
+        class ToastNotification {
+            constructor() {
+                this.toast = document.getElementById('admissionToast');
+                this.closeBtn = document.getElementById('closeBtn');
+                this.toastClose = document.getElementById('toastClose');
+
+                this.isVisible = false;
+                this.autoHideTimeout = null;
+                this.scrollTimeout = null;
+                this.lastScrollPosition = 0;
+                this.hasBeenClosed = false;
+
+                this.init();
+            }
+
+            init() {
+                // Show toast after 1 second
+                setTimeout(() => this.show(), 1000);
+
+                // Event listeners
+                this.closeBtn.addEventListener('click', () => this.hide());
+                this.toastClose.addEventListener('click', () => this.hide());
+
+                // Scroll listener
+                let scrollThrottle;
+                window.addEventListener('scroll', () => {
+                    if (!scrollThrottle) {
+                        scrollThrottle = setTimeout(() => {
+                            this.handleScroll();
+                            scrollThrottle = null;
+                        }, 100);
+                    }
+                });
+            }
+
+            show() {
+                if (this.isVisible || this.hasBeenClosed) return;
+
+                this.toast.classList.add('visible');
+                this.isVisible = true;
+
+                // AUTO-HIDE AFTER 10 SECONDS (10000 milliseconds)
+                this.autoHideTimeout = setTimeout(() => {
+                    if (this.isVisible) this.hide();
+                }, 10000);  // THIS IS THE KEY CHANGE - 10000ms = 10 seconds
+            }
+
+            hide() {
+                if (!this.isVisible) return;
+
+                this.toast.classList.remove('visible');
+                this.isVisible = false;
+                this.hasBeenClosed = true;
+
+                if (this.autoHideTimeout) {
+                    clearTimeout(this.autoHideTimeout);
+                    this.autoHideTimeout = null;
+                }
+            }
+
+            handleScroll() {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+                // Show toast when scrolling down after it was hidden
+                if (!this.isVisible && !this.hasBeenClosed &&
+                    currentScroll > this.lastScrollPosition &&
+                    currentScroll - this.lastScrollPosition > 20) {
+
+                    // Show with delay
+                    setTimeout(() => {
+                        if (!this.isVisible && !this.hasBeenClosed) {
+                            this.show();
+
+                            // RESET AUTO-HIDE TO 10 SECONDS FOR SCROLL-TRIGGERED APPEARANCE
+                            if (this.autoHideTimeout) {
+                                clearTimeout(this.autoHideTimeout);
+                            }
+                            this.autoHideTimeout = setTimeout(() => this.hide(), 10000); // Also 10 seconds
+                        }
+                    }, 300);
+                }
+
+                this.lastScrollPosition = currentScroll;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            new ToastNotification();
+        });
+
+
+        // Enhance card interaction with additional hover effects mission vision
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.info-card');
+
+            // Add click interaction for accessibility
+            cards.forEach(card => {
+                card.setAttribute('tabindex', '0');
+
+                card.addEventListener('click', function () {
+                    this.classList.toggle('active');
+                });
+
+                // Keyboard support for accessibility
+                card.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Optional: Add a subtle pulsing animation to icons on hover
+            const icons = document.querySelectorAll('.card-icon');
+            icons.forEach(icon => {
+                icon.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.1)';
+                });
+
+                icon.addEventListener('mouseleave', function () {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+
+        // CORE VALUES
+        document.addEventListener('DOMContentLoaded', function () {
+            const card = document.querySelector('.values-card');
+            const valueItems = document.querySelectorAll('.value-item');
+
+            // Add tabindex for keyboard accessibility
+            card.setAttribute('tabindex', '0');
+
+            // Add click interaction to value items
+            valueItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    // Remove active class from all items
+                    valueItems.forEach(i => i.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                });
+
+                // Keyboard support
+                item.setAttribute('tabindex', '0');
+                item.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+
+            // Animate items on page load with staggered delay
+            setTimeout(() => {
+                valueItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(25px)';
+
+                    setTimeout(() => {
+                        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }, 300);
+        });
+
     </script>
 </body>
 
