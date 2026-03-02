@@ -1646,260 +1646,397 @@
 
     <!-- ===== SCRIPTS ===== -->
      <script>
-    // Load latest news with proper error handling and timeout
-    async function loadLatestNews() {
-        const latestContainer = document.getElementById('latest-news-container');
-        
-        // Show loading state
-        latestContainer.innerHTML = '<div style="text-align: center; width: 100%;"><p>Loading updates...</p></div>';
-        
-        try {
-            // Create abort controller for timeout
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
-            
-            // Try to fetch real news
-            const response = await fetch('/api/news?limit=6', {
-                signal: controller.signal,
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+        // Load latest news
+        document.addEventListener('DOMContentLoaded', loadLatestNews);
+
+        async function loadLatestNews() {
+            try {
+                // Fetch more news to populate both sections (e.g., top 6)
+                // Since /api/news/latest gets 3, we might want to use /api/news?limit=6 instead
+                const response = await fetch('/api/news?limit=6');
+                if (!response.ok) {
+                    const errText = await response.text();
+                    console.error('Server Error Details:', errText);
+                    throw new Error(`Failed to fetch news: ${response.status} ${response.statusText}`);
                 }
-            }).catch(error => {
-                console.log('Fetch error:', error);
-                return null;
-            });
-            
-            clearTimeout(timeoutId);
-            
-            // If we got a response, process it
-            if (response && response.ok) {
                 const data = await response.json();
-                const newsItems = data.news || data || [];
-                
-                if (newsItems.length > 0) {
-                    // Create news cards from API data
-                    latestContainer.innerHTML = newsItems.slice(0, 3).map(news => `
-                        <div class="notice-card">
-                            <span class="notice-date">${formatDate(news.date || news.published_at || new Date())}</span>
-                            <h3>${news.title || 'News Update'}</h3>
-                            <p>${news.summary || news.description || news.content || 'Click to read more...'}</p>
-                        </div>
-                    `).join('');
+
+                // If the API returns { news: [], pagination: {} }, use data.news
+                const newsItems = data.news || [];
+
+                const latestContainer = document.getElementById('latest-news-container');
+                const olderContainer = document.getElementById('older-news-container');
+
+                // Split news: First 3 for "Latest", rest for "Older"
+                const latestNews = newsItems.slice(0, 3);
+                const olderNews = newsItems.slice(3, 6);
+
+                // Render Latest
+                if (latestNews.length > 0) {
+                    latestContainer.innerHTML = latestNews.map(news => createNewsCard(news)).join('');
                 } else {
-                    // No news from API, show empty state
-                    latestContainer.innerHTML = '<div style="text-align: center; width: 100%;"><p>No news available at the moment.</p></div>';
+                    latestContainer.innerHTML = '<p>No news available at the moment.</p>';
                 }
-            } else {
-                // API failed, show message but don't freeze
-                console.log('API unavailable, showing empty state');
-                latestContainer.innerHTML = '<div style="text-align: center; width: 100%;"><p>News temporarily unavailable. Check back later.</p></div>';
-            }
-            
-        } catch (error) {
-            console.log('Error loading news:', error);
-            
-            // Check if it's an abort error (timeout)
-            if (error.name === 'AbortError') {
-                latestContainer.innerHTML = '<div style="text-align: center; width: 100%;"><p>News loading timed out. Please refresh.</p></div>';
-            } else {
-                latestContainer.innerHTML = '<div style="text-align: center; width: 100%;"><p>Unable to load news. Please try again later.</p></div>';
+
+                // Render Older (if container exists)
+                if (olderContainer && olderNews.length > 0) {
+                    olderContainer.innerHTML = olderNews.map(news => createNewsCard(news)).join('');
+                }
+
+            } catch (error) {
+                console.error('Error loading latest news:', error);
+                const latestContainer = document.getElementById('latest-news-container');
+                latestContainer.innerHTML = '<p>Unable to load news at the moment.</p>';
             }
         }
-    }
 
-    function formatDate(dateString) {
-        try {
+        function createNewsCard(news) {
+            return `
+                <div class="news-card ${!news.image ? 'no-image' : ''}">
+                    ${news.image ? `<img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">` : ''}
+                    <div class="news-content">
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-summary">${news.summary}</p>
+                        <div class="news-meta">
+                            <span class="news-date">${formatDate(news.date)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function formatDate(dateString) {
             const date = new Date(dateString);
             return date.toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
             });
-        } catch (e) {
-            return new Date().toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-        }
-    }
-
-    // Mobile Menu Toggle
-    function initializeMobileMenu() {
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const overlay = document.getElementById('overlay');
-        
-        if (!hamburger || !mobileMenu || !overlay) return;
-
-        function openMenu() {
-            mobileMenu.classList.add('active');
-            overlay.classList.add('active');
-            hamburger.classList.add('active');
-            document.body.style.overflow = 'hidden';
         }
 
-        function closeMenu() {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('show');
+        });
 
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (mobileMenu.classList.contains('active')) {
-                closeMenu();
+        // Typewriter Effect
+        const texts = [
+            "Welcome to!",
+            "MBARARA ARMY BOARDING SECONDARY SCHOOL",
+            "Contact us for more details",
+            "Creativity For Excellence."
+        ];
+
+        let textIndex = 0;
+        let charIndex = 0;
+        let currentText = '';
+        const typewriter = document.getElementById('typewriter');
+
+        function type() {
+            if (charIndex < texts[textIndex].length) {
+                currentText += texts[textIndex].charAt(charIndex);
+                typewriter.textContent = currentText;
+                charIndex++;
+                setTimeout(type, 100);
             } else {
-                openMenu();
+                setTimeout(erase, 2000); // Wait before erasing
             }
-        });
-
-        overlay.addEventListener('click', closeMenu);
-
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                closeMenu();
-            }
-        });
-    }
-
-    // Hero Slideshow
-    function startSlideshow() {
-        const slides = document.querySelectorAll('.hero-slide');
-        if (slides.length === 0) return;
-        
-        let currentSlide = 0;
-
-        // Ensure first slide is active
-        slides.forEach((slide, index) => {
-            if (index === 0) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.remove('active');
-            }
-        });
-
-        function showNextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
         }
 
-        setInterval(showNextSlide, 5000);
-    }
+        function erase() {
+            if (charIndex > 0) {
+                currentText = currentText.slice(0, -1);
+                typewriter.textContent = currentText;
+                charIndex--;
+                setTimeout(erase, 50);
+            } else {
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(type, 500);
+            }
+        }
 
-    // Counter Animation
-    function initializeCounters() {
-        function animateCounter(elementId, target) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-            
-            let current = 0;
-            const increment = target / 60;
+        type(); // Start typing
+
+        // Adjust typewriter for mobile
+        function adjustTypewriter() {
+            if (window.innerWidth <= 768) {
+                typewriter.style.whiteSpace = 'normal';
+                typewriter.style.borderRight = 'none';
+            } else {
+                typewriter.style.whiteSpace = 'nowrap';
+                typewriter.style.borderRight = '2px solid white';
+            }
+        }
+
+        window.addEventListener('resize', adjustTypewriter);
+        adjustTypewriter(); // Initial check
+
+        // Counter Animation
+        function animateCounter(id, target, duration = 2000) {
+            const element = document.getElementById(id);
+            const spanElement = element.querySelector('span');
+            const start = 0;
+            const increment = target / (duration / 16); // 60fps
+            let current = start;
+
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
                     clearInterval(timer);
-                    element.textContent = target + '+';
-                } else {
-                    element.textContent = Math.floor(current) + '+';
+                    current = target;
                 }
-            }, 30);
+                element.firstChild.textContent = Math.floor(current);
+            }, 16);
         }
 
-        const counterSection = document.querySelector('.counter-section');
-        if (!counterSection) return;
-
+        // Start counters when section is in view
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateCounter('student-counter', 2000);
-                    animateCounter('subject-counter', 21);
-                    animateCounter('staff-counter', 85);
-                    animateCounter('nonstaff-counter', 26);
-                    animateCounter('support-counter', 14);
+                    animateCounter('student-counter', 2); // Counts to 3 for 4K
+                    animateCounter('subject-counter', 21); // Counts to 21 for 21+
                     observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.5 });
 
-        observer.observe(counterSection);
-    }
+        observer.observe(document.querySelector('.counter-section'));
 
-    // Toast Notification
-    class ToastNotification {
-        constructor() {
-            this.toast = document.getElementById('admissionToast');
-            this.closeBtn = document.getElementById('closeBtn');
-            this.toastClose = document.getElementById('toastClose');
-            this.isVisible = false;
-            this.hasBeenClosed = false;
-            
-            if (!this.toast) return;
-            
-            const toastClosed = sessionStorage.getItem('toastClosed');
-            if (toastClosed) {
-                this.hasBeenClosed = true;
+        // Hero Slideshow Animation
+        function startSlideshow() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+
+            function showNextSlide() {
+                // Remove active class from current slide
+                slides[currentSlide].classList.remove('active');
+
+                // Move to next slide
+                currentSlide = (currentSlide + 1) % slides.length;
+
+                // Add active class to new slide
+                slides[currentSlide].classList.add('active');
             }
-            
-            this.init();
+
+            // Change slide every 5 seconds
+            setInterval(showNextSlide, 5000);
         }
 
-        init() {
-            setTimeout(() => this.show(), 2000);
+        // Start slideshow when page loads
+        window.addEventListener('load', startSlideshow);
 
-            this.closeBtn?.addEventListener('click', () => this.hide());
-            this.toastClose?.addEventListener('click', () => this.hide());
-        }
+        // CHRISTMAS ANIMATIONS
+        document.addEventListener('DOMContentLoaded', function () {
+            const schoolLogo = document.getElementById('schoolLogo');
+            const christmasBanner = document.getElementById('christmasBanner');
+            const christmasText = document.getElementById('christmasText');
+            const words = document.querySelectorAll('.word');
+            const bannerDecorations = document.getElementById('bannerDecorations');
+            const christmasDecorations = document.getElementById('christmasDecorations');
 
-        show() {
-            if (this.isVisible || this.hasBeenClosed || !this.toast) return;
-            
-            this.toast.classList.add('visible');
-            this.isVisible = true;
+            // Make school logo spin for Christmas celebration
+            schoolLogo.classList.add('christmas-spin');
 
-            setTimeout(() => this.hide(), 10000);
-        }
+            // Animate the calligraphy banner text
+            setTimeout(() => {
+                christmasBanner.classList.add('animate-in');
+            }, 500);
 
-        hide() {
-            if (!this.isVisible || !this.toast) return;
-            
-            this.toast.classList.remove('visible');
-            this.isVisible = false;
-            this.hasBeenClosed = true;
-            sessionStorage.setItem('toastClosed', 'true');
-        }
-    }
+            // Create Christmas banner decorations (holly leaves and berries)
+            function createBannerDecorations() {
+                // Create holly leaves
+                for (let i = 0; i < 15; i++) {
+                    const hollyLeaf = document.createElement('div');
+                    hollyLeaf.classList.add('holly-leaf');
+                    hollyLeaf.style.left = `${Math.random() * 100}%`;
+                    hollyLeaf.style.top = `${Math.random() * 100}%`;
+                    hollyLeaf.style.animationDelay = `${Math.random() * 3}s`;
+                    hollyLeaf.style.transform = `scale(${0.5 + Math.random()})`;
+                    bannerDecorations.appendChild(hollyLeaf);
+                }
 
-    // Initialize everything
-    document.addEventListener('DOMContentLoaded', () => {
-        // Set current year
-        const yearElement = document.getElementById('year');
-        if (yearElement) {
-            yearElement.textContent = new Date().getFullYear();
-        }
-        
-        // Initialize all features
-        startSlideshow();
-        initializeMobileMenu();
-        initializeCounters();
-        new ToastNotification();
-        
-        // Load news (this won't freeze the page)
-        loadLatestNews();
-    });
+                // Create holly berries
+                for (let i = 0; i < 10; i++) {
+                    const hollyBerry = document.createElement('div');
+                    hollyBerry.classList.add('holly-berry');
+                    hollyBerry.style.left = `${Math.random() * 100}%`;
+                    hollyBerry.style.top = `${Math.random() * 100}%`;
+                    hollyBerry.style.animationDelay = `${Math.random() * 2}s`;
+                    hollyBerry.style.transform = `scale(${0.8 + Math.random() * 0.4})`;
+                    bannerDecorations.appendChild(hollyBerry);
+                }
+            }
 
-    // Remove the problematic menuToggle code
-    // The line: document.getElementById('menuToggle').addEventListener... is now removed
-</script>
+            // Create Christmas decorations (snowflakes and ornaments)
+            function createChristmasDecorations() {
+                // Create snowflakes
+                for (let i = 0; i < 20; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.classList.add('snowflake');
+                    snowflake.innerHTML = '<i class="fas fa-bars"></i>„';
+                    snowflake.style.left = `${Math.random() * 100}%`;
+                    snowflake.style.animationDuration = `${5 + Math.random() * 10}s`;
+                    snowflake.style.animationDelay = `${Math.random() * 5}s`;
+                    snowflake.style.fontSize = `${1 + Math.random()}rem`;
+                    christmasDecorations.appendChild(snowflake);
+                }
+
+                // Create Christmas ornaments
+                const colors = ['#d4af37', '#c41e3a', '#0e7704', '#ffffff', '#ffd700'];
+                for (let i = 0; i < 10; i++) {
+                    const ornament = document.createElement('div');
+                    ornament.classList.add('ornament');
+                    ornament.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    ornament.style.left = `${Math.random() * 100}%`;
+                    ornament.style.top = `${10 + Math.random() * 80}%`;
+                    ornament.style.animationDuration = `${4 + Math.random() * 8}s`;
+                    ornament.style.animationDelay = `${Math.random() * 3}s`;
+                    ornament.style.width = `${20 + Math.random() * 20}px`;
+                    ornament.style.height = ornament.style.width;
+                    christmasDecorations.appendChild(ornament);
+                }
+            }
+
+            // Animate words to slide from different directions and form the sentence
+            function animateChristmasWords() {
+                // Set initial positions based on data-direction attribute
+                words.forEach(word => {
+                    const direction = word.getAttribute('data-direction');
+                    let transform = '';
+
+                    switch (direction) {
+                        case 'left':
+                            transform = 'translateX(-100vw)';
+                            break;
+                        case 'right':
+                            transform = 'translateX(100vw)';
+                            break;
+                        case 'up':
+                            transform = 'translateY(-100vh)';
+                            break;
+                        case 'down':
+                            transform = 'translateY(100vh)';
+                            break;
+                        default:
+                            transform = 'translateY(100px)';
+                    }
+
+                    word.style.transform = transform;
+                    word.style.opacity = '0';
+                });
+
+                // Animate words into position with staggered delays
+                setTimeout(() => {
+                    words.forEach((word, index) => {
+                        setTimeout(() => {
+                            word.classList.add('animated');
+                        }, index * 300); // Stagger animation
+                    });
+                }, 1500); // Wait for banner animation to complete
+            }
+
+            // Make banner text interactive
+            christmasBanner.addEventListener('click', function () {
+                // Add a pulse animation on click
+                this.style.animation = 'none';
+                setTimeout(() => {
+                    this.style.animation = 'writeBanner 1s ease-out, festiveGlow 3s ease-in-out infinite';
+                }, 10);
+
+                // Add a sparkle effect
+                const sparkles = ['<i class="fas fa-bars"></i>œ¨', 'ðŸŽ„', 'ðŸŽ', '<i class="fas fa-bars"></i>­', '<i class="fas fa-bars"></i>„'];
+                for (let i = 0; i < 10; i++) {
+                    const sparkle = document.createElement('span');
+                    sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                    sparkle.style.position = 'absolute';
+                    sparkle.style.left = `${Math.random() * 100}%`;
+                    sparkle.style.top = `${Math.random() * 100}%`;
+                    sparkle.style.fontSize = `${1 + Math.random()}rem`;
+                    sparkle.style.opacity = '0.8';
+                    sparkle.style.animation = 'fadeOut 1s forwards';
+                    this.appendChild(sparkle);
+
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 1000);
+                }
+            });
+
+            // Make words interactive on hover
+            words.forEach(word => {
+                word.addEventListener('mouseenter', function () {
+                    // Add a subtle bounce effect on hover
+                    this.style.transform = 'scale(1.2) rotate(5deg)';
+                });
+
+                word.addEventListener('mouseleave', function () {
+                    // Return to normal position
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Make the entire Christmas text clickable to replay animation
+            christmasText.addEventListener('click', function () {
+                // Remove animated class from all words
+                words.forEach(word => {
+                    word.classList.remove('animated');
+                });
+
+                // Reset positions
+                words.forEach(word => {
+                    const direction = word.getAttribute('data-direction');
+                    let transform = '';
+
+                    switch (direction) {
+                        case 'left':
+                            transform = 'translateX(-100vw)';
+                            break;
+                        case 'right':
+                            transform = 'translateX(100vw)';
+                            break;
+                        case 'up':
+                            transform = 'translateY(-100vh)';
+                            break;
+                        case 'down':
+                            transform = 'translateY(100vh)';
+                            break;
+                        default:
+                            transform = 'translateY(100px)';
+                    }
+
+                    word.style.transform = transform;
+                    word.style.opacity = '0';
+                });
+
+                // Replay animation
+                setTimeout(() => {
+                    words.forEach((word, index) => {
+                        setTimeout(() => {
+                            word.classList.add('animated');
+                        }, index * 300);
+                    });
+                }, 100);
+            });
+
+            // Add keyframe for sparkle fade out
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = `
+                @keyframes fadeOut {
+                    0% { opacity: 0.8; transform: translateY(0) scale(1); }
+                    100% { opacity: 0; transform: translateY(-20px) scale(0.5); }
+                }
+            `;
+            document.head.appendChild(styleSheet);
+
+            // Initialize Christmas animations
+            createBannerDecorations();
+            createChristmasDecorations();
+            setTimeout(animateChristmasWords, 1000);
+
+        });
     </script>
+
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
