@@ -1,1551 +1,388 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-UG">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
-        type="image/x-icon">
-    <!-- Author meta tag -->
+
+    <!-- Meta Tags -->
     <meta name="author" content="Amwine Frankline / CodeMatrix">
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Mbarara Army Boarding Secondary School",
-    "url": "https://www.mabss.ac.ug",
-    "founder": {
-      "@type": "Organization",
-      "name": "Uganda People's Defence Forces (UPDF)"
-    },
-    "creator": {
-      "@type": "Person",
-      "name": "Amwine Frankline / CodeMatrix"
-    }
-  }
-  </script>
-
-    <!-- Website Developer Information -->
-    <meta name="author" content="Amwine Frankline ">
-    <meta name="creator" content=" Amwine Frankline ">
-    <meta name="developer" content="Amwine Frankline - Web Developer">
-    <meta name="designer" content=" Amwine Frankline ">
-    <meta name="contact" content="0200928601">
-    <meta name="keywords"
-        content="Amwine Frankline, Web Developer Uganda, School Website Developer, MBARARA ARMY BOARDING SECONDARY SCHOOL Developer">
     <meta name="description"
-        content="This school website was designed and developed by Amwine Frankline, a professional web developer specializing in school management systems and programming. Contact: 0200928601">
-
-    <!-- SEO Metadata -->
-    <title>Mbarara Army Boarding Secondary School | Home</title>
-    <meta name="description"
-        content="Mbarara Army Boarding Secondary School, in Uganda offers quality O-Level & A-Level education with discipline, patriotism & academic excellence. Join us today., mabss, mabss.ac, mabss.ac.ug">
+        content="Mbarara Army Boarding Secondary School - Quality education with discipline, patriotism and academic excellence. O-Level & A-Level education in Uganda.">
     <meta name="keywords"
-        content="mabss, mabss.ac, mabss.ac.ug, Mbarara Army Boarding Secondary School, One of the Main boarding schools in Uganda, O-Level Uganda, A-Level Uganda, quality education, discipline, patriotism, academic excellence, Mbarara schools, national service, Makenke Barracks, secondary education Uganda">
-    <meta name="author" content="Mbarara Army Boarding Secondary School | Designed by Amwine Frankline">
+        content="MABSS, Mbarara Army Boarding Secondary School, boarding school Uganda, O-Level Uganda, A-Level Uganda, quality education, discipline, patriotism">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Mbarara Army Boarding School | Excellence & Discipline">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mbarara Army Boarding Secondary School | Excellence & Discipline">
     <meta property="og:description"
-        content="Premier Ugandan boarding school in Mbarara offering O-Level & A-Level education with strong values, discipline & academic excellence.">
+        content="Premier Ugandan boarding school offering O-Level & A-Level education with strong values, discipline & academic excellence.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.mabss.ac.ug/">
-    <meta property="og:image" content="https://www.mabarass.ug/images/og-school-campus.jpg">
+    <meta property="og:url" content="https://www.mabss.ac.ug">
+    <meta property="og:image" content="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346792/three_rqyuym.jpg">
     <meta property="og:site_name" content="Mbarara Army Boarding Secondary School">
     <meta property="og:locale" content="en_UG">
 
+    <!-- Title -->
+    <title>Mbarara Army Boarding Secondary School | Home</title>
+
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Christmas Greeting Font - Added more calligraphy fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Pacifico&family=Playball&family=Satisfy&family=Allura&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+
     <style>
+        /* ===== RESET & VARIABLES ===== */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
+        :root {
+            --primary-navy: #0b2c4d;
+            --primary-blue: #1a4fa3;
+            --accent-green: #2e8b57;
+            --accent-red: #d62828;
+            --sky-blue: #4da8da;
+            --text-dark: #333;
+            --text-light: #555;
+            --bg-light: #f5f7fb;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 20, 30, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
 
-        body.here {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            padding-top: 90px;
-            /* Space for fixed header */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* IMPROVED HEADER & NAVIGATION */
-        .header {
-            background-color: #0e7704;
-            color: white;
+        /* ===== STICKY NAVBAR ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: #0e7704;
+            box-shadow: var(--shadow);
+            z-index: 1200;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.7rem 2rem;
+        }
+
+        .logo {
+            height: 65px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #02f7ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2.5px;
+            background: #ffffff;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .apply-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .apply-btn:hover {
+            background-color: #0b3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.25);
+            padding: 10px 15px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1300;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--primary-blue);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--primary-blue);
+        }
+
+        /* ===== RESPONSIVE NAVBAR ===== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .apply-btn {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-container {
+                padding: 0.7rem 1.5rem;
+            }
+
+            .logo span {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 70px;
+                gap: 8px;
+            }
+
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .logo span {
+                font-size: 2.4rem;
+            }
+
+            .nav-container {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo span {
+                font-size: 2.2rem;
+            }
+
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.8rem;
+            transition: right 0.35s ease-in-out;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .mobile-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid green;
+        }
+
+        .mobile-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #1f2a44;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 14px 10px;
+            border-radius: 14px;
+            transition: 0.2s;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-menu a i {
+            width: 28px;
+            color: green;
+            font-size: 1.3rem;
+        }
+
+        .mobile-menu a:hover {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu .apply-btn {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 1.1rem;
+            background-color: green;
+            color: white
+        }
+
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            z-index: 1000;
             width: 100%;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 0.5rem 0;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            width: 100%;
-            flex-wrap: wrap;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-grow: 1;
-            min-width: 0;
-            /* Allow shrinking */
-        }
-
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex: 1;
-            min-width: 0;
-            /* Allow text to wrap */
-        }
-
-        .helo {
-            height: 70px;
-            width: 70px;
-            min-width: 70px;
-            /* Prevent logo from shrinking */
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid white;
-            transition: transform 1s ease;
-        }
-
-
-        /* ============================================
-           ABOUT SCHOOL SECTION
-           ============================================ */
-        .about-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            background-color: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(11, 44, 77, 0.08);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Military-inspired decorative border */
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #0b2c4d 0%, #4da8da 50%, #2e8b57 100%);
-        }
-
-        /* Section header with UPDF theme */
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-header h1 {
-            color: #0b2c4d;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .section-subtitle {
-            color: #4da8da;
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin-bottom: 25px;
-        }
-
-        .updf-badge {
-            display: inline-flex;
-            align-items: center;
-            background-color: rgba(11, 44, 77, 0.08);
-            padding: 10px 25px;
-            border-radius: 30px;
-            color: #0b2c4d;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            border-left: 4px solid #d62828;
-            /* Military red accent */
-        }
-
-        .updf-badge i {
-            margin-right: 10px;
-            color: #d62828;
-        }
-
-        /* Two-column layout for larger screens */
-        .about-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            align-items: flex-start;
-        }
-
-        .about-content {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-sidebar {
-            flex: 0 0 300px;
-            background-color: #f1f7fc;
-            border-radius: 12px;
-            padding: 25px;
-            border-top: 4px solid #2e8b57;
-        }
-
-        /* Main content paragraphs */
-        .about-text {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: #333;
-        }
-
-        .about-text p {
-            margin-bottom: 25px;
-        }
-
-        /* Highlight key terms */
-        .highlight {
-            background-color: rgba(77, 168, 218, 0.1);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-            color: #0b2c4d;
-        }
-
-        .highlight.updf {
-            background-color: rgba(11, 44, 77, 0.1);
-            color: #0b2c4d;
-        }
-
-        .highlight.year {
-            background-color: rgba(46, 139, 87, 0.1);
-            color: #2e8b57;
-        }
-
-        .highlight.discipline {
-            background-color: rgba(214, 40, 40, 0.1);
-            color: #d62828;
-        }
-
-        /* Sidebar quick facts */
-        .quick-facts h3 {
-            color: #0b2c4d;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #4da8da;
-        }
-
-        .fact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #ddd;
-        }
-
-        .fact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: #0b2c4d;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-
-        .fact-text h4 {
-            color: #0b2c4d;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .fact-text p {
-            color: #555;
-            font-size: 1rem;
-        }
-
-        /* Values display */
-        .values-display {
-            margin-top: 30px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 25px;
-            border: 1px solid #e6efff;
-        }
-
-        .values-display h3 {
-            color: #0b2c4d;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .values-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .value-tag {
-            background-color: #f1f7fc;
-            color: #0b2c4d;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-left: 3px solid #4da8da;
-        }
-
-        .value-tag.discipline {
-            border-left-color: #d62828;
-        }
-
-        .value-tag.patriotism {
-            border-left-color: #2e8b57;
-        }
-
-        /* Call to action */
-        .about-cta {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-        }
-
-        .about-cta p {
-            font-size: 1.1rem;
-            color: #0b2c4d;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #0b2c4d;
-            color: white;
-            padding: 14px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: 2px solid #0b2c4d;
-        }
-
-        .cta-button:hover {
-            background-color: white;
-            color: #0b2c4d;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(11, 44, 77, 0.2);
-        }
-
-        /* Fade-in animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .about-section {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        /* ============================================
-           RESPONSIVE DESIGN
-           ============================================ */
-        /* Tablet and smaller screens */
-        @media (max-width: 992px) {
-            .about-container {
-                flex-direction: column;
-            }
-
-            .about-sidebar {
-                width: 100%;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .section-header h1 {
-                font-size: 2.4rem;
-            }
-        }
-
-        /* Mobile devices */
-        @media (max-width: 768px) {
-            .about-section {
-                padding: 40px 20px;
-            }
-
-            .section-header h1 {
-                font-size: 2rem;
-            }
-
-            .section-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .about-text {
-                font-size: 1.05rem;
-            }
-
-            .updf-badge {
-                font-size: 1rem;
-                padding: 8px 20px;
-            }
-
-            .values-list {
-                justify-content: flex-start;
-            }
-        }
-
-        /* Small mobile devices */
-        @media (max-width: 480px) {
-            .about-section {
-                padding: 30px 15px;
-                border-radius: 12px;
-            }
-
-            .section-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .fact-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .fact-icon {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-
-            .cta-button {
-                padding: 12px 24px;
-                font-size: 1rem;
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        /* ============================================
-           CORE VALUES CARD STYLES
-           ============================================ */
-        .acting {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-            color: #0b2c4d;
-            line-height: 1.6;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .values-card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            padding: 35px;
-            width: 100%;
-            max-width: 850px;
-            transition: all 0.3s ease;
-            border-top: 4px solid #2e8b57;
-            /* Green top border */
-            position: relative;
-            overflow: hidden;
-            padding-left: 100px;
-        }
-
-        /* Decorative corner accents */
-        .values-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60px;
-            height: 60px;
-            background-color: rgba(11, 44, 77, 0.1);
-            /* Navy blue with opacity */
-            border-bottom-left-radius: 100%;
-            z-index: 1;
-        }
-
-        .values-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 60px;
-            background-color: rgba(46, 139, 87, 0.1);
-            /* Green with opacity */
-            border-top-right-radius: 100%;
-            z-index: 1;
-        }
-
-        /* Card header */
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .card-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #0b2c4d, #2e8b57);
-            /* Navy to green gradient */
-            border-radius: 50%;
-            margin-right: 20px;
-            color: white;
-            font-size: 28px;
-            box-shadow: 0 4px 12px rgba(11, 44, 77, 0.25);
-        }
-
-        .card-title {
-            color: #0b2c4d;
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-
-        .card-subtitle {
-            color: #4da8da;
-            font-size: 1.1rem;
-            margin-top: 5px;
-            font-weight: 500;
-        }
-
-        /* Values grid container */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 10px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Individual value item */
-        .value-item {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 22px;
-            transition: all 0.3s ease;
-            border-left: 4px solid;
-            display: flex;
-            flex-direction: column;
             height: 100%;
-        }
-
-        .value-item:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-            background-color: white;
-        }
-
-        /* Color coding for each value */
-        .discipline {
-            border-left-color: #0b2c4d;
-            /* Navy blue */
-        }
-
-        .creativity {
-            border-left-color: #4da8da;
-            /* Sky blue */
-        }
-
-        .punctuality {
-            border-left-color: #2e8b57;
-            /* Green */
-        }
-
-        .patriotism {
-            border-left-color: #d62828;
-            /* Red accent for patriotism */
-        }
-
-        .team-spirit {
-            border-left-color: #f77f00;
-            /* Orange accent for team spirit */
-        }
-
-        .god-fearing {
-            border-left-color: #7209b7;
-            /* Purple accent for reverence */
-        }
-
-        .value-name {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            color: #0b2c4d;
-            font-weight: 700;
-            font-size: 1.3rem;
-        }
-
-        .value-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 12px;
-            color: white;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        /* Icon background colors matching border colors */
-        .discipline .value-icon {
-            background-color: #0b2c4d;
-            /* Navy blue */
-        }
-
-        .creativity .value-icon {
-            background-color: #4da8da;
-            /* Sky blue */
-        }
-
-        .punctuality .value-icon {
-            background-color: #2e8b57;
-            /* Green */
-        }
-
-        .patriotism .value-icon {
-            background-color: #d62828;
-            /* Red */
-        }
-
-        .team-spirit .value-icon {
-            background-color: #f77f00;
-            /* Orange */
-        }
-
-        .god-fearing .value-icon {
-            background-color: #7209b7;
-            /* Purple */
-        }
-
-        .value-description {
-            color: #555;
-            font-size: 1rem;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        /* Card footer */
-        .card-footer {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #666;
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        /* Hover effect for entire card */
-        .values-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Subtle animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .values-card {
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        /* ============================================
-           RESPONSIVE DESIGN
-           ============================================ */
-        @media (max-width: 900px) {
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .values-card {
-                padding: 25px;
-                max-width: 95%;
-            }
-
-            .card-header {
-                flex-direction: column;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-
-            .card-icon {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .card-title {
-                font-size: 1.9rem;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
-
-            .values-card {
-                padding: 20px;
-            }
-
-            .card-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 24px;
-            }
-
-            .card-title {
-                font-size: 1.7rem;
-            }
-
-            .value-item {
-                padding: 18px;
-            }
-
-            .value-name {
-                font-size: 1.2rem;
-            }
-
-            .value-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
-            }
-        }
-
-        /* ============================================
-           SECTION STYLES
-           ============================================ */
-        .school-info-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        /* Section header */
-        .section-headers {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-headers h1 {
-            color: #0b2c4d;
-            /* Navy blue */
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-headers h1::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background-color: #2e8b57;
-            /* Green accent */
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .section-headers p {
-            color: #555;
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 25px auto 0;
-        }
-
-        /* ============================================
-           CARDS CONTAINER & LAYOUT
-           ============================================ */
-        .cards-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        /* ============================================
-           INDIVIDUAL CARD STYLES
-           ============================================ */
-        .info-card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            /* Rounded corners */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            /* Soft shadow */
-            padding: 30px;
-            width: 100%;
-            max-width: 350px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border-top: 4px solid;
-            /* Top border - color set per card */
-        }
-
-        /* Different colored top borders for each card */
-        .vision-card {
-            border-top-color: #4da8da;
-            /* Sky blue */
-        }
-
-        .mission-card {
-            border-top-color: #2e8b57;
-            /* Green */
-        }
-
-        .motto-card {
-            border-top-color: #0b2c4d;
-            /* Navy blue */
-        }
-
-        /* Card icons */
-        .card-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            font-size: 28px;
-            color: white;
-        }
-
-        /* Icon background colors */
-        .vision-card .card-icon {
-            background-color: #4da8da;
-            /* Sky blue */
-        }
-
-        .mission-card .card-icon {
-            background-color: #2e8b57;
-            /* Green */
-        }
-
-        .motto-card .card-icon {
-            background-color: #0b2c4d;
-            /* Navy blue */
-        }
-
-        /* Card titles */
-        .card-title {
-            color: #0b2c4d;
-            /* Navy blue */
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        /* Card content */
-        .card-content {
-            color: #333;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        /* Special styling for motto card */
-        .motto-card .card-content {
-            font-style: italic;
-            font-weight: 600;
-            font-size: 1.4rem;
-            color: #0b2c4d;
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        /* ============================================
-           HOVER EFFECTS & ANIMATIONS
-           ============================================ */
-        /* Hover effect: slight lift and color glow */
-        .info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Color glow on hover based on card type */
-        .vision-card:hover {
-            box-shadow: 0 15px 30px rgba(77, 168, 218, 0.2);
-        }
-
-        .mission-card:hover {
-            box-shadow: 0 15px 30px rgba(46, 139, 87, 0.2);
-        }
-
-        .motto-card:hover {
-            box-shadow: 0 15px 30px rgba(11, 44, 77, 0.2);
-        }
-
-        /* Subtle entrance animation for cards */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .info-card {
-            animation: fadeInUp 0.6s ease-out forwards;
+            background: rgba(11, 44, 77, 0.5);
+            backdrop-filter: blur(3px);
             opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1300;
         }
 
-        /* Stagger the animations for visual interest */
-        .vision-card {
-            animation-delay: 0.1s;
-        }
-
-        .mission-card {
-            animation-delay: 0.3s;
-        }
-
-        .motto-card {
-            animation-delay: 0.5s;
-        }
-
-        /* ============================================
-           RESPONSIVE DESIGN
-           ============================================ */
-        /* Desktop: 3 cards in a row */
-        @media (min-width: 992px) {
-            .info-card {
-                flex: 1;
-                min-width: 300px;
-                max-width: 350px;
-            }
-        }
-
-        /* Tablet: 2 cards in a row */
-        @media (min-width: 768px) and (max-width: 991px) {
-            .info-card {
-                max-width: 48%;
-                min-width: 300px;
-            }
-
-            .cards-container {
-                justify-content: space-around;
-            }
-        }
-
-        /* Mobile: Stack vertically */
-        @media (max-width: 767px) {
-            .cards-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .info-card {
-                max-width: 100%;
-                margin-bottom: 30px;
-            }
-
-            .section-header h1 {
-                font-size: 2rem;
-            }
-
-            .card-title {
-                font-size: 1.6rem;
-            }
-        }
-
-        /* Small mobile adjustments */
-        @media (max-width: 480px) {
-            .school-info-section {
-                padding: 40px 15px;
-            }
-
-            .info-card {
-                padding: 25px;
-            }
-
-            .card-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 24px;
-            }
-        }
-
-        /* Christmas spinning animation for logo */
-        .helochristmas-spin {
-            animation: christmasSpin 3s ease-in-out infinite;
-            border-color: #d4af37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
-        }
-
-        @keyframes christmasSpin {
-            0% {
-                transform: rotate(0deg) scale(1);
-            }
-
-            25% {
-                transform: rotate(90deg) scale(1.1);
-            }
-
-            50% {
-                transform: rotate(180deg) scale(1);
-            }
-
-            75% {
-                transform: rotate(270deg) scale(1.1);
-            }
-
-            100% {
-                transform: rotate(360deg) scale(1);
-            }
-        }
-
-        .school-name {
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: bold;
-            line-height: 1.2;
-            text-align: left;
-            flex-grow: 1;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-        }
-
-        .division-logo {
-            height: 40px;
-            margin-left: 1rem;
-            flex-shrink: 0;
-        }
-
-        /* Navigation Styles */
-        .menu-toggle {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            display: none;
-            padding: 0.5rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-list {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding-left: 200px;
-            gap: 1.5rem;
-        }
-
-        .nav-item {
-            margin: 0;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 0.8rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-        }
-
-        /* Typewriter Effect */
-        .typewriter {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 2rem;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 2px solid white;
-            width: fit-content;
-            margin: 0 auto;
-            color: white;
-            padding: 0 1rem;
-            text-align: center;
-        }
-
-        /* CHRISTMAS BANNER SECTION - Calligraphy Style */
-        .christmas-banner {
-            position: relative;
-            width: 100%;
-            background: linear-gradient(135deg,
-                    rgba(14, 119, 4, 0.9) 0%,
-                    rgba(0, 77, 51, 0.9) 50%,
-                    rgba(12, 94, 3, 0.9) 100%);
-            padding: 4rem 1rem;
-            text-align: center;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            border-bottom: 8px solid #d4af37;
-            border-top: 8px solid #c41e3a;
-        }
-
-        /* Banner decorative elements */
-        .banner-decoration {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .holly-leaf {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background-color: #0e7704;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            opacity: 0.6;
-            animation: floatLeaf 8s ease-in-out infinite;
-        }
-
-        .holly-berry {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: #c41e3a;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: floatBerry 6s ease-in-out infinite;
-        }
-
-        @keyframes floatLeaf {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
-        }
-
-        @keyframes floatBerry {
-
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-            }
-
-            50% {
-                transform: translateY(-15px) scale(1.2);
-            }
-        }
-
-        /* Calligraphy Banner Text */
-        .banner-container {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            z-index: 2;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.3),
-                inset 0 0 30px rgba(212, 175, 55, 0.1);
-        }
-
-        .banner-text {
-            font-family: 'Great Vibes', 'Allura', 'Dancing Script', cursive;
-            font-size: 5rem;
-            font-weight: normal;
-            color: #d4af37;
-            text-align: center;
-            line-height: 1.2;
-            text-shadow:
-                3px 3px 0 #c41e3a,
-                6px 6px 0 rgba(0, 0, 0, 0.2),
-                0 0 30px rgba(212, 175, 55, 0.8);
-            background: linear-gradient(to right,
-                    #d4af37 0%,
-                    #ffd700 25%,
-                    #fff8dc 50%,
-                    #ffd700 75%,
-                    #d4af37 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            padding: 1rem;
-            margin: 0;
-            letter-spacing: 2px;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        /* Banner text shadow effect */
-        .banner-text::before {
-            content: attr(data-text);
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right,
-                    rgba(196, 30, 58, 0.5) 0%,
-                    rgba(196, 30, 58, 0.3) 50%,
-                    rgba(196, 30, 58, 0.5) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            z-index: -1;
-            filter: blur(5px);
-        }
-
-        /* Swirls and decorative elements around text */
-        .banner-text::after {
-            content: "<i class=" fas fa-bars"></i>œ»";
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 3rem;
-            color: #c41e3a;
-            opacity: 0.7;
-            animation: spin 10s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Banner text animation - calligraphy writing effect */
-        @keyframes writeBanner {
-            0% {
-                opacity: 0;
-                transform: translateY(50px) scale(0.8);
-                filter: blur(10px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-                filter: blur(0);
-            }
-        }
-
-        .banner-text.animate-in {
-            animation: writeBanner 2s ease-out forwards;
-        }
-
-        /* Banner subtext */
-        .banner-subtext {
-            font-family: 'Satisfy', 'Dancing Script', cursive;
-            font-size: 2rem;
-            color: #fff8dc;
-            text-align: center;
-            margin-top: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease-out 1.5s forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Enhanced Christmas Greeting Section */
-        .christmas-greeting {
-            background: linear-gradient(135deg, #0c5e03 0%, #003b26 100%);
-            padding: 5rem 1rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Christmas Festival Background */
-        .christmas-greeting::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 20px;
-            background: repeating-linear-gradient(90deg,
-                    #d4af37 0px,
-                    #d4af37 20px,
-                    #c41e3a 20px,
-                    #c41e3a 40px);
-            z-index: 1;
-        }
-
-        .christmas-greeting::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
-            pointer-events: none;
-        }
-
-        /* Christmas decorations */
-        .christmas-decoration {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .snowflake {
-            position: absolute;
-            color: white;
-            font-size: 1.5rem;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-
-        .ornament {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-        }
-
-        .christmas-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Interactive Christmas Text */
-        .christmas-text {
-            font-family: 'Pacifico', 'Playball', 'Great Vibes', cursive;
-            font-size: 4rem;
-            color: #d4af37;
-            /* Gold color */
-            text-align: center;
-            line-height: 1.2;
-            text-shadow:
-                2px 2px 0 #c41e3a,
-                4px 4px 0 rgba(0, 0, 0, 0.1),
-                0 0 20px rgba(212, 175, 55, 0.5);
-            background: linear-gradient(to right, #d4af37 0%, #ffd700 50%, #d4af37 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            padding: 1rem;
-            margin: 0;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        /* Individual word containers for animation */
-        .word-container {
-            display: inline-block;
-            position: relative;
-            margin: 0 5px;
-        }
-
-        .word {
-            display: inline-block;
-            position: relative;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-
-        .word.animated {
+        .overlay.active {
             opacity: 1;
-            transform: translateY(0);
+            visibility: visible;
         }
 
-        .word:hover {
-            transform: scale(1.2) rotate(5deg);
-            text-shadow:
-                0 0 10px #ffd700,
-                0 0 20px #ffd700,
-                0 0 30px #ffd700;
-            transition: transform 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .christmas-text::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
-        }
-
-        /* Add a subtle glow animation */
-        @keyframes festiveGlow {
-
-            0%,
-            100% {
-                text-shadow:
-                    2px 2px 0 #c41e3a,
-                    4px 4px 0 rgba(0, 0, 0, 0.1),
-                    0 0 20px rgba(212, 175, 55, 0.5);
-            }
-
-            50% {
-                text-shadow:
-                    2px 2px 0 #c41e3a,
-                    4px 4px 0 rgba(0, 0, 0, 0.1),
-                    0 0 30px rgba(212, 175, 55, 0.8),
-                    0 0 40px rgba(212, 175, 55, 0.4);
-            }
-        }
-
-        .christmas-text {
-            animation: festiveGlow 3s ease-in-out infinite;
-        }
-
-        /* Hero Section with Slideshow */
+        /* ===== IMPROVED HERO SECTION WITH PROFESSIONAL FADE ===== */
         .hero {
             position: relative;
-            min-height: 500px;
+            min-height: 600px;
+            height: 100vh;
+            max-height: 800px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: var(--white);
             padding: 2rem 1rem;
             width: 100%;
             overflow: hidden;
@@ -1568,11 +405,17 @@
             background-position: center;
             background-repeat: no-repeat;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: opacity;
         }
 
         .hero-slide.active {
             opacity: 1;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            z-index: 0;
         }
 
         .hero-slide::after {
@@ -1582,253 +425,98 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.6);
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            z-index: 1;
-        }
-
-        /* Button Section */
-        .button-section {
-            max-width: 1600px;
-            padding: 3rem 1rem;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .learn-button {
-            background-color: #006341;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            display: inline-block;
-        }
-
-        .learn-button:hover {
-            background-color: #004d33;
-        }
-
-        /* Toast Notification - Compact Right Center */
-        .toast-container {
-            position: fixed;
-            z-index: 10000;
-            top: 0;
-            right: 20px;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            pointer-events: none;
-        }
-
-        .toast {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            padding: 16px;
-            width: 320px;
+            z-index: 2;
             position: relative;
-            transform: translateX(100%);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: all;
-            border-left: 4px solid #d4af37;
+            animation: fadeInUp 1s ease-out;
         }
 
-        .toast.visible {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .toast-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #1a365d 0%, #2d4a8a 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            flex-shrink: 0;
-            box-shadow: 0 4px 8px rgba(26, 54, 93, 0.2);
-        }
-
-        .toast-content {
-            margin-left: 12px;
-            flex: 1;
-        }
-
-        .toast-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .toast-title {
-            color: #1a365d;
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 2px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .toast-subtitle {
-            color: #64748b;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .toast-message {
-            color: #475569;
-            font-size: 13px;
-            line-height: 1.4;
-            margin-bottom: 12px;
-        }
-
-        .toast-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #f1f5f9;
-            border: none;
-            color: #64748b;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: 300;
-            transition: all 0.2s ease;
-            line-height: 1;
-            padding: 0;
-        }
-
-        .toast-close:hover {
-            background: #e2e8f0;
-            color: #475569;
-        }
-
-        .toast-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .toast-btn {
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-        }
-
-        .btn-download {
-            background: linear-gradient(135deg, #d4af37 0%, #f7d154 100%);
-            color: #1a365d;
-            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
-        }
-
-        .btn-download:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 12px rgba(212, 175, 55, 0.25);
-        }
-
-        .btn-close {
-            background: #f1f5f9;
-            color: #64748b;
-            min-width: 60px;
-        }
-
-        .btn-close:hover {
-            background: #e2e8f0;
-            color: #475569;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .toast-container {
-                right: 10px;
-                left: 10px;
-                justify-content: center;
-                align-items: flex-end;
-                padding-bottom: 20px;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
 
-            .toast {
-                width: 100%;
-                max-width: 400px;
-                transform: translateY(100%);
-                border-left: none;
-                border-top: 4px solid #d4af37;
-            }
-
-            .toast.visible {
+            to {
+                opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        @media (max-width: 480px) {
-            .toast {
-                padding: 14px;
-                max-width: 100%;
-            }
-
-            .toast-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
-            }
-
-            .toast-title {
-                font-size: 14px;
-            }
-
-            .toast-message {
-                font-size: 12px;
-            }
-
-            .toast-btn {
-                padding: 8px 12px;
-                font-size: 12px;
-            }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.5px;
         }
 
-        /* NOTICEBOARD Section */
-        .noticeboard-section {
-            background-color: white;
-            padding: 3rem 1rem;
-            max-width: 1200px;
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .hero-btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.4);
+        }
+
+        .hero-btn-primary:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.5);
+        }
+
+        .hero-btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .hero-btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-navy);
+            transform: translateY(-3px);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .container {
+            max-width: 1300px;
             margin: 0 auto;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-            margin-bottom: 3rem;
+            padding: 4rem 2rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #0e7704;
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 1rem;
         }
 
         .section-title::after {
@@ -1838,132 +526,386 @@
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
-            background-color: #006341;
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .vision-card {
+            border-top-color: var(--sky-blue);
+        }
+
+        .mission-card {
+            border-top-color: var(--accent-green);
+        }
+
+        .motto-card {
+            border-top-color: var(--primary-navy);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto 1rem;
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        .vision-card .card-icon {
+            background: var(--sky-blue);
+        }
+
+        .mission-card .card-icon {
+            background: var(--accent-green);
+        }
+
+        .motto-card .card-icon {
+            background: var(--primary-navy);
+        }
+
+        .card-content {
+            padding: 1.5rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            color: var(--primary-navy);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .motto-card .card-content p {
+            font-size: 1.6rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--primary-navy);
+        }
+
+        /* ===== VALUES SECTION ===== */
+        .values-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 4rem 2rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 3rem auto 0;
+        }
+
+        .value-item {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid;
+            height: 100%;
+        }
+
+        .value-item:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .value-item.discipline {
+            border-left-color: var(--primary-navy);
+        }
+
+        .value-item.creativity {
+            border-left-color: var(--sky-blue);
+        }
+
+        .value-item.punctuality {
+            border-left-color: var(--accent-green);
+        }
+
+        .value-item.patriotism {
+            border-left-color: var(--accent-red);
+        }
+
+        .value-item.team-spirit {
+            border-left-color: #f77f00;
+        }
+
+        .value-item.god-fearing {
+            border-left-color: #7209b7;
+        }
+
+        .value-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.3rem;
+        }
+
+        .discipline .value-icon {
+            background: var(--primary-navy);
+        }
+
+        .creativity .value-icon {
+            background: var(--sky-blue);
+        }
+
+        .punctuality .value-icon {
+            background: var(--accent-green);
+        }
+
+        .patriotism .value-icon {
+            background: var(--accent-red);
+        }
+
+        .team-spirit .value-icon {
+            background: #f77f00;
+        }
+
+        .god-fearing .value-icon {
+            background: #7209b7;
+        }
+
+        .value-header h3 {
+            color: var(--primary-navy);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .value-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+        }
+
+        .about-text h2 {
+            color: var(--primary-navy);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: rgba(77, 168, 218, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        .updf-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(11, 44, 77, 0.08);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            color: var(--primary-navy);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .updf-badge i {
+            margin-right: 10px;
+            color: var(--accent-red);
+        }
+
+        .facts-sidebar {
+            background: #f1f7fc;
+            border-radius: 16px;
+            padding: 2rem;
+            border-top: 4px solid var(--accent-green);
+        }
+
+        .fact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .fact-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .fact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-navy);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .fact-text h4 {
+            color: var(--primary-navy);
+            margin-bottom: 0.3rem;
+        }
+
+        .fact-text p {
+            color: var(--text-light);
+        }
+
+        /* ===== NOTICEBOARD ===== */
+        .noticeboard-section {
+            background: var(--white);
+            padding: 4rem 2rem;
         }
 
         .noticeboard-container {
+            max-width: 1300px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .notice-card {
-            background-color: #f9f9f9;
-            border-left: 4px solid #0e7704;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #f9f9f9;
+            border-left: 4px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
         }
 
         .notice-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-hover);
         }
 
         .notice-date {
             display: inline-block;
-            background-color: #0e7704;
-            color: white;
-            padding: 0.3rem 0.8rem;
+            background: var(--accent-green);
+            color: var(--white);
+            padding: 0.3rem 1rem;
             border-radius: 20px;
             font-size: 0.85rem;
             margin-bottom: 1rem;
         }
 
-        .notice-title {
-            font-size: 1.3rem;
+        .notice-card h3 {
+            color: var(--primary-navy);
             margin-bottom: 0.8rem;
-            color: #006341;
+            font-size: 1.3rem;
         }
 
-        .notice-content {
-            color: #555;
+        .notice-card p {
+            color: var(--text-light);
             line-height: 1.6;
         }
 
-        .notice-marquee {
-            background-color: #f0f7f0;
-            border: 1px solid #d0e6d0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            overflow: hidden;
-        }
-
-        .marquee-title {
-            color: #0e7704;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .marquee-content {
-            display: flex;
-            animation: marquee 25s linear infinite;
-        }
-
-        .marquee-item {
-            padding: 0 2rem;
-            color: #006341;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(100%);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Counter Section */
+        /* ===== COUNTER SECTION ===== */
         .counter-section {
-            background-color: #0e7704;
-            color: white;
-            padding: 4rem 1rem;
+            background: rgba(3, 139, 22, 0.993);
+            color: var(--white);
+            padding: 4rem 2rem;
             text-align: center;
         }
 
         .counter-container {
+            max-width: 1300px;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 2rem;
+            flex-wrap: nowrap;
         }
 
         .counter-item {
             flex: 1;
-            min-width: 200px;
+            min-width: 150px;
         }
 
         .counter-number {
-            font-size: 3rem;
-            font-weight: bold;
+            font-size: 4rem;
+            font-weight: 800;
             margin-bottom: 0.5rem;
-        }
-
-        .counter-number sup {
-            font-size: 1.5rem;
-            vertical-align: super;
         }
 
         .counter-label {
             font-size: 1.5rem;
+            font-weight: 500;
         }
 
-        /* Apply Online Section */
+        /* ===== APPLY SECTION ===== */
         .apply-section {
-            background: linear-gradient(135deg, #0e7704 0%, #004d33 100%);
-            padding: 4rem 1rem;
+            background: linear-gradient(135deg, var(--accent-green) 0%, #004d33 100%);
+            padding: 5rem 2rem;
             text-align: center;
-            color: white;
+            color: var(--white);
         }
 
         .apply-container {
@@ -1971,61 +913,35 @@
             margin: 0 auto;
         }
 
-        .apply-heading {
-            font-size: 2.5rem;
+        .apply-container h2 {
+            font-size: 3rem;
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .apply-text {
+        .apply-container p {
             font-size: 1.2rem;
             margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
+            opacity: 0.95;
         }
 
         .apply-button {
             display: inline-block;
-            background: linear-gradient(to right, #00ffff, #20393d);
-            color: white;
+            background: var(--white);
+            color: var(--primary-navy);
             font-size: 1.3rem;
-            font-weight: bold;
-            padding: 1.2rem 3rem;
+            font-weight: 700;
+            padding: 1.2rem 3.5rem;
             border-radius: 50px;
             text-decoration: none;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .apply-button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, #f80000, #00ff00);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
         .apply-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .apply-button:hover:before {
-            opacity: 1;
-        }
-
-        .apply-button:active {
-            transform: translateY(1px);
+            background: #f8f8f8;
         }
 
         .apply-button i {
@@ -2037,623 +953,333 @@
             transform: translateX(5px);
         }
 
-        /* Footer */
+        /* ===== FOOTER ===== */
         .footer {
-            background-color: #004d33;
-            color: white;
-            padding: 2rem 1rem;
-            width: 100%;
+            background: #004d33;
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
         }
 
         .footer-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
 
-        .footer-section {
-            min-width: 250px;
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
         }
 
-        .footer-heading {
-            border-bottom: 2px solid #006341;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--sky-blue);
         }
 
-        .footer-list {
+        .footer-section ul {
             list-style: none;
-            padding: 0;
         }
 
-        .footer-item {
+        .footer-section ul li {
             margin-bottom: 0.8rem;
         }
 
-        .footer-link {
-            color: white;
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: color 0.3s;
         }
 
-        .footer-link:hover {
-            color: #f0f0f0;
+        .footer-section ul li a:hover {
+            color: var(--white);
             text-decoration: underline;
         }
 
-        .social-media {
-            margin-top: 1.5rem;
-        }
-
-        .social-heading {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #fff;
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .social-icons {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
         }
 
         .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 45px;
             height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
             text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
         .social-icon:hover {
             transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .social-icon.facebook:hover {
-            background-color: #3b5998;
-        }
-
-        .social-icon.twitter:hover {
-            background-color: #1da1f2;
-        }
-
-        .social-icon.youtube:hover {
-            background-color: #ff0000;
-        }
-
-        .social-icon.pinterest:hover {
-            background-color: #bd081c;
-        }
-
-        .social-icon.instagram:hover {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-
-        .social-icon.whatsapp:hover {
-            background-color: #25d366;
-        }
-
-        .social-icon.linkedin:hover {
-            background-color: #0077b5;
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .footer-bottom {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #006341;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
         }
 
-        /* CHATBOT STYLES */
-        /* Chatbot Toggle Button */
-        .chatbot-toggle-btn {
+        /* ===== IMPROVED TOAST NOTIFICATION FOR ALL DEVICES ===== */
+        .toast-container {
             position: fixed;
+            z-index: 10000;
             bottom: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #0e7704 0%, #004d33 100%);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .chatbot-toggle-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Chatbot Container */
-        .chatbot-container {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            display: none;
-            flex-direction: column;
-            z-index: 1001;
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
-        }
-
-        .chatbot-container.active {
+            left: auto;
+            height: auto;
             display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            pointer-events: none;
         }
 
-        /* Chatbot Header */
-        .chatbot-header {
-            background: linear-gradient(135deg, #0e7704 0%, #004d33 100%);
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .toast {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            width: 360px;
+            position: relative;
+            transform: translateX(0) translateY(20px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: all;
+            border-left: 4px solid #d4af37;
+            margin-bottom: 20px;
         }
 
-        .chatbot-logo {
+        .toast.visible {
+            transform: translateX(0) translateY(0);
+            opacity: 1;
+        }
+
+        .toast-header {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .chatbot-logo img {
-            width: 30px;
-            height: 30px;
+        .toast-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
             border-radius: 50%;
-            border: 2px solid white;
-        }
-
-        .chatbot-logo span {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .chatbot-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            padding: 0;
-            width: 30px;
-            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s;
+            color: var(--white);
+            font-size: 1.5rem;
+            flex-shrink: 0;
         }
 
-        .chatbot-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Chat Messages Area */
-        .chatbot-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            background: #f8f9fa;
-        }
-
-        .message {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 18px;
+        .toast-title {
+            color: var(--primary-navy);
+            font-weight: 700;
+            font-size: 1.1rem;
             line-height: 1.4;
-            word-wrap: break-word;
-            animation: fadeIn 0.3s ease;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .toast-message {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
         }
 
-        .bot-message {
-            background: #e9f7e9;
-            color: #333;
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-            border: 1px solid #d0e6d0;
+        .toast-actions {
+            display: flex;
+            gap: 0.8rem;
         }
 
-        .user-message {
-            background: #0e7704;
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 5px;
+        .toast-btn {
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
         }
 
-        .typing-indicator {
+        .btn-download {
+            background: linear-gradient(135deg, #d4af37, #f7d154);
+            color: var(--primary-navy);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-close {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .btn-close:hover {
+            background: #e2e8f0;
+        }
+
+        .toast-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 5px;
-            padding: 10px 15px;
-            background: #e9f7e9;
-            border-radius: 18px;
-            width: fit-content;
-            border: 1px solid #d0e6d0;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
         }
 
-        .typing-indicator span {
-            width: 8px;
-            height: 8px;
-            background: #0e7704;
-            border-radius: 50%;
-            animation: typing 1.4s infinite ease-in-out;
+        .toast-close:hover {
+            background: #e2e8f0;
+            color: #475569;
         }
 
-        .typing-indicator span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-indicator span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes typing {
-
-            0%,
-            60%,
-            100% {
-                transform: translateY(0);
-            }
-
-            30% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /* Quick Action Buttons */
-        .quick-actions {
-            padding: 10px 15px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            border-top: 1px solid #e0e0e0;
-            border-bottom: 1px solid #e0e0e0;
-            background: white;
-        }
-
-        .quick-btn {
-            padding: 6px 12px;
-            background: #f0f7f0;
-            border: 1px solid #d0e6d0;
-            border-radius: 20px;
-            color: #0e7704;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .quick-btn:hover {
-            background: #0e7704;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* User Input Area */
-        .chatbot-input-area {
-            padding: 15px;
-            display: flex;
-            gap: 10px;
-            background: white;
-        }
-
-        .chatbot-input-area input {
-            flex: 1;
-            padding: 10px 15px;
-            border: 1px solid #d0e6d0;
-            border-radius: 25px;
-            outline: none;
-            font-size: 0.95rem;
-            transition: border 0.3s;
-        }
-
-        .chatbot-input-area input:focus {
-            border-color: #0e7704;
-        }
-
-        .chatbot-input-area button {
-            padding: 10px 20px;
-            background: #0e7704;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .chatbot-input-area button:hover {
-            background: #004d33;
-        }
-
-        /* Disclaimer */
-        .chatbot-disclaimer {
-            padding: 8px 15px;
-            background: #f8f9fa;
-            text-align: center;
-            border-top: 1px solid #e0e0e0;
-            font-size: 0.75rem;
-            color: #666;
-        }
-
-        /* Option Buttons */
-        .options-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .option-btn {
-            padding: 6px 12px;
-            background: white;
-            border: 1px solid #0e7704;
-            border-radius: 15px;
-            color: #0e7704;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .option-btn:hover {
-            background: #0e7704;
-            color: white;
-        }
-
-        /* RESPONSIVE ADJUSTMENTS */
-        @media (max-width: 992px) {
-            .header-container {
-                flex-direction: column;
-                padding: 0.5rem 1rem;
-            }
-
-            .logo-container {
-                width: 100%;
-                justify-content: space-between;
-                margin-bottom: 0.5rem;
-            }
-
-            .logo-wrapper {
-                justify-content: flex-start;
-                text-align: left;
-            }
-
-            .division-logo {
-                margin: 0.5rem 0;
-                height: 35px;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-menu {
+        /* ===== IMPROVED RESPONSIVE STYLES ===== */
+        @media (max-width: 900px) {
+            .nav-links {
                 display: none;
-                width: 100%;
-                margin-top: 1rem;
-
             }
 
-            .nav-menu.show {
-                display: block;
+            .hamburger {
+                display: flex;
             }
 
-            .nav-list {
-                flex-direction: column;
-                gap: 0.5rem;
-                padding-left: 100px;
+            .nav-container {
+                padding: 0.7rem 1.5rem;
             }
 
-            .nav-item {
-                width: 100%;
+            .hero {
+                min-height: 500px;
+                height: 80vh;
             }
 
-            .nav-link {
-                display: block;
-                padding: 0.8rem;
-                text-align: center;
-                border-radius: 4px;
-                background-color: rgba(255, 255, 255, 0.05);
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
 
-            .typewriter {
-                font-size: 1.5rem;
+            .hero-content p {
+                font-size: 1.1rem;
             }
 
-            .noticeboard-container {
+            .about-container {
                 grid-template-columns: 1fr;
-            }
-
-            /* Christmas banner responsive */
-            .banner-text {
-                font-size: 4rem;
-            }
-
-            .christmas-text {
-                font-size: 3.2rem;
             }
         }
 
         @media (max-width: 768px) {
-            body.here {
-                padding-top: 100px;
-                /* More space for taller header on mobile */
+            .container {
+                padding: 3rem 1.5rem;
             }
 
-            .header {
-                padding: 0.3rem 0;
-            }
-
-            .logo-wrapper {
-                flex-direction: row;
-                gap: 0.5rem;
-                text-align: left;
-            }
-
-            .helo {
-                height: 60px;
-                width: 60px;
-                min-width: 60px;
-            }
-
-            .school-name {
-                font-size: 1.4rem;
-                text-align: left;
-                line-height: 1.1;
-            }
-
-            .division-logo {
-                height: 30px;
-                margin-left: 0;
-            }
-
-            .typewriter {
-                font-size: 1.3rem;
-                white-space: normal;
-                border-right: none;
-                padding: 0 0.5rem;
-            }
-
-            .hero {
-                min-height: 400px;
+            .section-title {
+                font-size: 2rem;
             }
 
             .counter-number {
-                font-size: 2.5rem;
-            }
-
-            .counter-number sup {
-                font-size: 1.2rem;
+                font-size: 3rem;
             }
 
             .counter-label {
                 font-size: 1.2rem;
             }
 
-            .apply-heading {
-                font-size: 2rem;
+            .apply-container h2 {
+                font-size: 2.2rem;
             }
 
-            .apply-text {
-                font-size: 1.1rem;
-            }
-
-            .apply-button {
-                font-size: 1.1rem;
-                padding: 1rem 2rem;
-            }
-
-            /* Christmas Banner Responsive */
-            .banner-text {
-                font-size: 3rem;
-            }
-
-            .banner-subtext {
-                font-size: 1.5rem;
-            }
-
-            /* Christmas Greeting Responsive */
-            .christmas-text {
-                font-size: 2.5rem;
-                line-height: 1.2;
-            }
-
-            .christmas-greeting {
-                padding: 4rem 1rem;
-                min-height: 350px;
-            }
-
-            .social-icons {
+            .toast-container {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
                 justify-content: center;
             }
 
-            .marquee-content {
-                animation: marquee 15s linear infinite;
+            .toast {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
             }
 
-            /* Chatbot Responsive */
-            .chatbot-container {
-                width: 90%;
-                right: 5%;
-                height: 450px;
-                bottom: 90px;
+            .hero {
+                min-height: 450px;
+                height: 70vh;
+                padding: 1rem;
             }
 
-            .chatbot-toggle-btn {
-                width: 55px;
-                height: 55px;
-                bottom: 25px;
-                right: 25px;
+            .hero-slide {
+                background-position: center center;
             }
         }
 
         @media (max-width: 480px) {
-            body.here {
-                padding-top: 110px;
-                /* Even more space for very small screens */
+            .hero {
+                min-height: 400px;
+                height: 60vh;
             }
 
-            .header {
-                padding: 0.2rem 0;
+            .hero-content h1 {
+                font-size: 1.8rem;
+                line-height: 1.3;
             }
 
-            .header-container {
-                padding: 0.5rem;
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
 
-            .helo {
-                height: 50px;
-                width: 50px;
-                min-width: 50px;
-                border-width: 2px;
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
             }
 
-            .school-name {
-                font-size: 1.2rem;
-                line-height: 1;
-            }
-
-            .division-logo {
-                height: 25px;
-            }
-
-            .typewriter {
-                font-size: 1.1rem;
-                line-height: 1.4;
+            .hero-btn {
+                width: 100%;
+                text-align: center;
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
             }
 
             .counter-container {
@@ -2661,183 +1287,187 @@
                 gap: 2rem;
             }
 
-            .apply-heading {
-                font-size: 1.8rem;
+            .toast-container {
+                bottom: 15px;
+                right: 15px;
+                left: 15px;
             }
 
-            .apply-button {
-                font-size: 1rem;
-                padding: 0.8rem 1.5rem;
+            .toast {
+                padding: 1.2rem;
             }
 
-            /* Christmas Banner Mobile */
-            .banner-text {
-                font-size: 2.2rem;
-                padding: 0.5rem;
+            .toast-header {
+                gap: 0.8rem;
             }
 
-            .banner-subtext {
+            .toast-icon {
+                width: 40px;
+                height: 40px;
                 font-size: 1.2rem;
             }
 
-            .christmas-banner {
-                padding: 3rem 1rem;
+            .toast-title {
+                font-size: 1rem;
             }
 
-            /* Christmas Greeting Mobile */
-            .christmas-text {
+            .toast-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Landscape mode optimization */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: 350px;
+                height: 100vh;
+            }
+
+            .hero-content h1 {
                 font-size: 2rem;
-                line-height: 1.1;
-                text-shadow:
-                    1px 1px 0 #c41e3a,
-                    2px 2px 0 rgba(0, 0, 0, 0.1),
-                    0 0 15px rgba(212, 175, 55, 0.5);
             }
 
-            .christmas-greeting {
-                padding: 3rem 1rem;
-                min-height: 300px;
+            .hero-content p {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
             }
 
-            .section-title {
-                font-size: 1.7rem;
+            .hero-buttons {
+                gap: 1rem;
             }
 
-            /* Chatbot Mobile */
-            .chatbot-container {
-                width: 95%;
-                right: 2.5%;
-                height: 400px;
-            }
-
-            .quick-actions {
-                justify-content: center;
-            }
-
-            .quick-btn {
-                font-size: 0.8rem;
-                padding: 5px 10px;
+            .hero-btn {
+                padding: 0.7rem 1.8rem;
+                font-size: 0.95rem;
             }
         }
 
-        @media (min-width: 1200px) {
-            .school-name {
-                font-size: 2.2rem;
-            }
-
-            .typewriter {
-                font-size: 2.5rem;
-            }
-
-            /* Christmas Banner Large Screen */
-            .banner-text {
-                font-size: 5.5rem;
-            }
-
-            /* Christmas Greeting Large Screen */
-            .christmas-text {
-                font-size: 4.5rem;
-            }
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Small tablet adjustments */
-        @media (min-width: 481px) and (max-width: 600px) {
-            .school-name {
-                font-size: 1.3rem;
-            }
-
-            .helo {
-                height: 55px;
-                width: 55px;
-            }
-
-            .banner-text {
-                font-size: 2.5rem;
-            }
-
-            .christmas-text {
-                font-size: 2.2rem;
-            }
-        }
-
-        /* Medium tablet adjustments */
-        @media (min-width: 601px) and (max-width: 768px) {
-            .logo-wrapper {
-                flex-direction: row;
-                text-align: left;
-            }
-
-            .school-name {
-                font-size: 1.5rem;
-                text-align: left;
-            }
-
-            .banner-text {
-                font-size: 3.5rem;
-            }
-
-            .christmas-text {
-                font-size: 2.8rem;
-            }
-        }
-
-        /* News Section CSS */
+        /* News Section CSS (Aligned with news.html) */
         .news-section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
+            padding: 4rem 1.5rem;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
         .news-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            justify-content: center;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
         .news-card {
-            background-color: white;
-            border-radius: 8px;
+            background: var(--white);
+            border-radius: 1rem;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            border: 1px solid #e2e8f0;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-image-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
         }
 
         .news-image {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+
+        .category-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: #0e7704;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         .news-content {
             padding: 1.5rem;
-            flex: 1;
-        }
-
-        .news-title {
-            margin-top: 0;
-            color: #006341;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .news-meta {
-            color: #666;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            color: #64748b;
+            margin-bottom: 0.75rem;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .news-summary {
-            color: #444;
+            font-size: 0.9375rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
             line-height: 1.5;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .news-link {
-            color: #006341;
-            font-weight: bold;
+        .read-more {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0e7704;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .read-more:hover {
+            gap: 0.75rem;
+            color: #004d33;
         }
 
         @media (min-width: 768px) {
@@ -2854,42 +1484,56 @@
     </style>
 </head>
 
-<body class="here">
-    <!-- IMPROVED HEADER -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo-container">
-                <div class="logo-wrapper">
-                    <a href="index.html" style="text-decoration:none">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
-                            alt="MABSS Logo" class="helo" id="schoolLogo">
-                    </a>
-                    <h1 class="school-name">MABSS</h1>
-                </div>
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/4th_aojuc3.png"
-                    class="division-logo" alt="Division Logo">
-                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+<body>
+
+    <!-- ===== MODERN NAVBAR ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png"
+                    alt="MABSS Logo">
+                <span>MABSS</span>
             </div>
 
-            <!-- Navigation Menu -->
-            <nav class="nav-menu" id="mainNav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="materials.html" class="nav-link">Academics</a></li>
-                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
-                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
-                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
-                </ul>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="materials.html">Academics</a>
+                <a href="sports.html">Co-curricular</a>
+                <a href="welfare.html">Welfare</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contacts.html">Contact</a>
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
             </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
-    <!-- CHRISTMAS BANNER - Calligraphy Style -->
+    <!-- Mobile Menu (with scroll enabled) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-header">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
+            <h3>Mbarara Army<br>Boarding SS</h3>
+        </div>
 
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="materials.html"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
+        <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
+        <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+        <a href="contacts.html"><i class="fas fa-users"></i> Our Staff</a>
+        <a href="contacts.html"><i class="fas fa-address-book"></i> Directorate</a>
+        <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+    </div>
 
-    <!-- Hero Section with Slideshow -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== IMPROVED HERO SECTION ===== -->
     <section class="hero">
         <div class="hero-slides">
             <div class="hero-slide active"
@@ -2903,7 +1547,14 @@
             </div>
         </div>
         <div class="hero-content">
-            <div class="typewriter" id="typewriter"></div>
+            <h1>Mbarara Army Boarding<br>Secondary School</h1>
+            <p>CREATIVITY FOR EXCELLENCE</p>
+            <p>Excellence Through Discipline, Leadership, and Patriotism</p>
+            <div class="hero-buttons">
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" target="_blank"
+                    class="hero-btn hero-btn-primary">Apply Now</a>
+                <a href="#about" class="hero-btn hero-btn-secondary">Learn More</a>
+            </div>
         </div>
     </section>
 
@@ -2911,1001 +1562,563 @@
     <section class="noticeboard-section">
         <h2 class="section-title">NOTICEBOARD</h2>
 
-        <div id="latest-news-container" class="noticeboard-container">
+        <div id="latest-news-container" class="news-grid">
             <div style="text-align: center; width: 100%;">
                 <p>Loading updates...</p>
             </div>
         </div>
 
-        <div class="button-section">
-            <a href="news.html" class="learn-button">View All News</a>
+        <div class="button-section" style="text-align: center; margin-top: 2rem;">
+            <a href="news.html" class="learn-button"
+                style="display: inline-block; padding: 0.8rem 2rem; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 40px; font-weight: 600;">View
+                All News</a>
         </div>
     </section>
 
-    <!-- Main Content Section -->
-    <section class="school-info-section" aria-labelledby="section-title">
-        <!-- Section Header -->
-        <header class="section-headers">
-            <h1 id="section-title">Our Guiding Principles</h1>
-            <p>At Mbarara Army Boarding Secondary School, we are committed to excellence in education, character
-                development, and preparing students for a successful future.</p>
-        </header>
+    <!-- ===== GUIDING PRINCIPLES ===== -->
+    <section class="container">
+        <h2 class="section-title">Our Guiding Principles</h2>
+        <p class="section-subtitle">At Mbarara Army Boarding Secondary School, we are committed to excellence in
+            education, character development, and preparing students for a successful future.</p>
 
-        <!-- Cards Container -->
-        <div class="cards-container">
-            <!-- Vision Card -->
-            <article class="info-card vision-card" aria-labelledby="vision-title">
+        <div class="cards-grid">
+            <div class="card vision-card">
                 <div class="card-icon">
-                    <i class="fas fa-eye" aria-hidden="true"></i>
+                    <i class="fas fa-eye"></i>
                 </div>
-                <h2 id="vision-title" class="card-title">Our Vision</h2>
                 <div class="card-content">
+                    <h3>Our Vision</h3>
                     <p>To empower humanity for self reliance.</p>
                 </div>
-            </article>
+            </div>
 
-            <!-- Mission Card -->
-            <article class="info-card mission-card" aria-labelledby="mission-title">
+            <div class="card mission-card">
                 <div class="card-icon">
-                    <i class="fas fa-bullseye" aria-hidden="true"></i>
+                    <i class="fas fa-bullseye"></i>
                 </div>
-                <h2 id="mission-title" class="card-title">Our Mission</h2>
                 <div class="card-content">
+                    <h3>Our Mission</h3>
                     <p>To impart skills, knowledge, attitude and values through team work.</p>
                 </div>
-            </article>
+            </div>
 
-            <!-- Motto Card -->
-            <article class="info-card motto-card" aria-labelledby="motto-title">
+            <div class="card motto-card">
                 <div class="card-icon">
-                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <h2 id="motto-title" class="card-title">Our Motto</h2>
                 <div class="card-content">
+                    <h3>Our Motto</h3>
                     <p>"Creativity For Excellence."</p>
                 </div>
-            </article>
-
+            </div>
         </div>
     </section>
 
-    <!-- Core Values Card -->
-    <div class="acting">
-        <article class="values-card" aria-labelledby="values-title">
-            <header class="card-header">
-                <div class="card-icon">
-                    <i class="fas fa-gem" aria-hidden="true"></i>
-                </div>
-                <div>
-                    <h1 id="values-title" class="card-title">Our Core Values</h1>
-                    <p class="card-subtitle">The Foundation of Character at MABSS</p>
-                </div>
-            </header>
+    <!-- ===== CORE VALUES ===== -->
+    <section class="values-section">
+        <h2 class="section-title">Our Core Values</h2>
+        <p class="section-subtitle">The Foundation of Character at MABSS</p>
 
-            <div class="values-grid">
-                <!-- Discipline -->
-                <div class="value-item discipline">
-                    <div class="value-name">
-                        <div class="value-icon">
-                            <i class="fas fa-user-check" aria-hidden="true"></i>
-                        </div>
-                        Discipline
-                    </div>
-                    <p class="value-description">
-                        Cultivating self-control, orderliness, and responsible behavior in academic and personal life to
-                        build strong character and achieve excellence.
-                    </p>
+        <div class="values-grid">
+            <div class="value-item discipline">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-user-check"></i></div>
+                    <h3>Discipline</h3>
                 </div>
-
-                <!-- Creativity -->
-                <div class="value-item creativity">
-                    <div class="value-name">
-                        <div class="value-icon">
-                            <i class="fas fa-lightbulb" aria-hidden="true"></i>
-                        </div>
-                        Creativity
-                    </div>
-                    <p class="value-description">
-                        Encouraging innovative thinking, original expression, and imaginative problem-solving to foster
-                        adaptability and prepare for future challenges.
-                    </p>
-                </div>
-
-                <!-- Punctuality -->
-                <div class="value-item punctuality">
-                    <div class="value-name">
-                        <div class="value-icon">
-                            <i class="fas fa-clock" aria-hidden="true"></i>
-                        </div>
-                        Punctuality
-                    </div>
-                    <p class="value-description">
-                        Valuing time as a precious resource, respecting schedules, and demonstrating commitment through
-                        timely attendance and task completion.
-                    </p>
-                </div>
-
-                <!-- Patriotism -->
-                <div class="value-item patriotism">
-                    <div class="value-name">
-                        <div class="value-icon">
-                            <i class="fas fa-flag" aria-hidden="true"></i>
-                        </div>
-                        Patriotism
-                    </div>
-                    <p class="value-description">
-                        Instilling love for country, respect for national heritage, and commitment to contributing
-                        positively to society and national development.
-                    </p>
-                </div>
-
-                <!-- Team Spirit -->
-                <div class="value-item team-spirit">
-                    <div class="value-name">
-                        <div class="value-icon">
-                            <i class="fas fa-users" aria-hidden="true"></i>
-                        </div>
-                        Team Spirit
-                    </div>
-                    <p class="value-description">
-                        Promoting collaboration, mutual support, and collective achievement through effective
-                        communication and shared responsibility.
-                    </p>
-                </div>
-
-                <!-- God Fearing -->
-                <div class="value-item god-fearing">
-                    <div class="value-name">
-                        <div class="value-icon">
-                            <i class="fas fa-hands-praying" aria-hidden="true"></i>
-                        </div>
-                        God Fearing
-                    </div>
-                    <p class="value-description">
-                        Nurturing spiritual awareness, moral integrity, and reverence for the divine as the foundation
-                        for ethical living and service to others.
-                    </p>
-                </div>
+                <p>Cultivating self-control, orderliness, and responsible behavior in academic and personal life to
+                    build strong character and achieve excellence.</p>
             </div>
-        </article>
 
-    </div>
-
-    <!-- About MABSS Section -->
-    <section class="about-section" id="about-mabss" aria-labelledby="about-title">
-        <!-- Section Header -->
-        <header class="section-header">
-            <div class="updf-badge">
-                <i class="fas fa-shield-alt"></i>
-                Founded by Uganda People's Defence Forces (UPDF)
+            <div class="value-item creativity">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Creativity</h3>
+                </div>
+                <p>Encouraging innovative thinking, original expression, and imaginative problem-solving to foster
+                    adaptability and prepare for future challenges.</p>
             </div>
-            <h1 id="about-title">About Mbarara Army Boarding Secondary School</h1>
-            <p class="section-subtitle">Excellence Through Discipline, Leadership, and Patriotism</p>
-        </header>
 
-        <!-- Main Content Container -->
+            <div class="value-item punctuality">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Punctuality</h3>
+                </div>
+                <p>Valuing time as a precious resource, respecting schedules, and demonstrating commitment through
+                    timely attendance and task completion.</p>
+            </div>
+
+            <div class="value-item patriotism">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-flag"></i></div>
+                    <h3>Patriotism</h3>
+                </div>
+                <p>Instilling love for country, respect for national heritage, and commitment to contributing positively
+                    to society and national development.</p>
+            </div>
+
+            <div class="value-item team-spirit">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-users"></i></div>
+                    <h3>Team Spirit</h3>
+                </div>
+                <p>Promoting collaboration, mutual support, and collective achievement through effective communication
+                    and shared responsibility.</p>
+            </div>
+
+            <div class="value-item god-fearing">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-hands-praying"></i></div>
+                    <h3>God Fearing</h3>
+                </div>
+                <p>Nurturing spiritual awareness, moral integrity, and reverence for the divine as the foundation for
+                    ethical living and service to others.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about-section" id="about">
         <div class="about-container">
-            <!-- Main Content Area -->
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        <span class="highlight updf">Mbarara Army Boarding Secondary School (MABSS)</span> was
-                        established in <span class="highlight year">2004</span> with the aim of providing quality
-                        education to children of fallen & serving soldiers with <span
-                            class="highlight discipline">military discipline</span> and patriotic values, but all
-                        children are admitted . Founded by the <span class="highlight updf">Uganda People's Defence
-                            Forces (UPDF)</span>, the school was created to nurture future leaders with strong moral
-                        character, discipline, and academic excellence.
-                    </p>
-
-                    <p>
-                        Located on the scenic hills of Makenke, Mbarara, in Western Uganda, along the Mbarara Masaka
-                        Highway, the school began with 120 students and 15 staff members. Over the years, it has grown
-                        steadily and now accommodates over <strong>2,000 students</strong> drawn from various regions of
-                        Uganda.
-                    </p>
-
-                    <p>
-                        The school's unique approach combines <strong>rigorous academic training</strong> with <span
-                            class="highlight discipline">military-style discipline</span>, leadership development, and
-                        patriotism. This model has consistently produced graduates who excel academically while
-                        demonstrating integrity, responsibility, and service to the nation.
-                    </p>
-
-                    <p>
-                        Today, Mbarara Army Boarding Secondary School stands as one of the premier educational
-                        institutions in the region, recognized for strong performance in national examinations and for
-                        shaping disciplined citizens who contribute meaningfully to Uganda's development.
-                    </p>
+            <div class="about-text">
+                <div class="updf-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    Founded by Uganda People's Defence Forces (UPDF)
                 </div>
-
-                <!-- Call to Action -->
-                <div class="about-cta">
-                    <p>Discover how MABSS can shape your child's future with discipline and excellence</p>
-                    <a href="leaflet/index.html" target="_blank" class="cta-button">Explore Admissions</a>
-                </div>
+                <h2>About Mbarara Army Boarding Secondary School</h2>
+                <p><span class="highlight">Mbarara Army Boarding Secondary School (MABSS)</span> was established in
+                    <span class="highlight">2004</span> with the aim of providing quality education to children of
+                    fallen & serving soldiers with <span class="highlight">military discipline</span> and patriotic
+                    values. All children are admitted regardless of background.
+                </p>
+                <p>Located on the scenic hills of Makenke, Mbarara, along the Mbarara-Masaka Highway, the school began
+                    with 120 students and 15 staff members. Today, it accommodates over <strong>2,000 students</strong>
+                    drawn from various regions of Uganda.</p>
+                <p>The school's unique approach combines <strong>rigorous academic training</strong> with military-style
+                    discipline, leadership development, and patriotism. This model consistently produces graduates who
+                    excel academically while demonstrating integrity and service to the nation.</p>
+                <p>MABSS stands as one of the premier educational institutions in the region, recognized for strong
+                    performance in national examinations and shaping disciplined citizens.</p>
             </div>
 
-            <!-- Sidebar with Quick Facts -->
-            <aside class="about-sidebar" aria-labelledby="facts-title">
-                <div class="quick-facts">
-                    <h3 id="facts-title">Quick Facts</h3>
+            <div class="facts-sidebar">
+                <h3 style="color: var(--primary-navy); margin-bottom: 1.5rem; font-size: 1.5rem;">Quick Facts</h3>
 
-                    <!-- Fact 1: Founded -->
-                    <div class="fact-item">
-                        <div class="fact-icon">
-                            <i class="fas fa-calendar-star"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h4>Founded</h4>
-                            <p>Established in 2004 by UPDF</p>
-                        </div>
-                    </div>
-
-                    <!-- Fact 2: School Type -->
-                    <div class="fact-item">
-                        <div class="fact-icon">
-                            <i class="fas fa-school-flag"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h4>School Type</h4>
-                            <p>Army Boarding Secondary School</p>
-                        </div>
-                    </div>
-
-                    <!-- Fact 3: Location -->
-                    <div class="fact-item">
-                        <div class="fact-icon">
-                            <i class="fas fa-location-dot"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h4>Location</h4>
-                            <p>Makenke, Mbarara, Western Uganda</p>
-                        </div>
-                    </div>
-
-                    <!-- Fact 4: Student Body -->
-                    <div class="fact-item">
-                        <div class="fact-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h4>Student Body</h4>
-                            <p>Over 2,000 students nationwide</p>
-                        </div>
+                <div class="fact-item">
+                    <div class="fact-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="fact-text">
+                        <h4>Founded</h4>
+                        <p>Established in 2004 by UPDF</p>
                     </div>
                 </div>
 
-                <!-- Core Values Display -->
-                <div class="values-display" aria-labelledby="values-title">
-                    <h3 id="values-title">Core Values</h3>
-                    <div class="values-list">
-                        <span class="value-tag discipline">Discipline</span>
-                        <span class="value-tag">Excellence</span>
-                        <span class="value-tag patriotism">Patriotism</span>
-                        <span class="value-tag">Leadership</span>
-                        <span class="value-tag">Integrity</span>
-                        <span class="value-tag">Service</span>
+                <div class="fact-item">
+                    <div class="fact-icon"><i class="fas fa-school"></i></div>
+                    <div class="fact-text">
+                        <h4>School Type</h4>
+                        <p>Army Day & Boarding Secondary School</p>
                     </div>
                 </div>
-            </aside>
+
+                <div class="fact-item">
+                    <div class="fact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="fact-text">
+                        <h4>Location</h4>
+                        <p>Makenke, Mbarara, Western Uganda</p>
+                    </div>
+                </div>
+
+                <div class="fact-item">
+                    <div class="fact-icon"><i class="fas fa-users"></i></div>
+                    <div class="fact-text">
+                        <h4>Student Body</h4>
+                        <p>Over 2,000 students nationwide</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h4 style="color: var(--primary-navy); margin-bottom: 1rem;">Core Values</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Discipline</span>
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Excellence</span>
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Patriotism</span>
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Leadership</span>
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Integrity</span>
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Service</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Compact Toast Notification -->
-    <div class="toast-container">
-        <div class="toast" id="admissionToast">
-            <button class="toast-close" id="toastClose">×</button>
-
-            <div class="toast-header">
-                <div class="toast-icon">
-                    <span>📘</span>
-                </div>
-                <div class="toast-content">
-                    <div class="toast-title">
-                        <span>🎓</span>
-                        2026 Admissions For <br> [S.1,S.2,S.3 & S.5 "ONLY"] <br> Now Open
-                    </div>
-                    <div class="toast-subtitle">Download Now</div>
-                </div>
-            </div>
-
-            <p class="toast-message">Get the latest information about admission. </p>
-
-            <div class="toast-actions">
-                <a href="leaflet/index.html" class="toast-btn btn-download" id="downloadBtn" target="_blank">
-                    View</a>
-            </div>
-
-            <button class="toast-btn btn-close" id="closeBtn">
-                Close
-            </button>
-        </div>
-    </div>
-    </div>
-
-
-    <!-- Counter Section -->
+    <!-- ===== COUNTER SECTION ===== -->
     <section class="counter-section">
         <div class="counter-container">
             <div class="counter-item">
-                <div class="counter-number" id="student-counter">0<span>K<sup>+</sup></span></div>
+                <div class="counter-number" id="student-counter">0+</div>
                 <div class="counter-label">Students</div>
             </div>
             <div class="counter-item">
-                <div class="counter-number" id="subject-counter">0<span><sup>+</sup></span></div>
+                <div class="counter-number" id="subject-counter">0+</div>
                 <div class="counter-label">Subjects Taught</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-number" id="staff-counter">0+</div>
+                <div class="counter-label">Staff Members</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-number" id="nonstaff-counter">0+</div>
+                <div class="counter-label">Non Teaching Staff</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-number" id="support-counter">0+</div>
+                <div class="counter-label">Support staff</div>
             </div>
         </div>
     </section>
-    <!-- Apply Online Section -->
+
+    <!-- ===== APPLY SECTION ===== -->
     <section class="apply-section">
         <div class="apply-container">
-            <h2 class="apply-heading">Ready to Join Our Community?</h2>
-            <p class="apply-text">Become part of the Mbarara Army Boarding Secondary School family. Apply now to secure
-                your spot for the upcoming academic year and embark on an educational journey of excellence.</p>
-            <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-button" target="_blank">Apply
-                Online <i class="fas fa-arrow-right"></i></a>
+            <h2>Ready to Join Our Community?</h2>
+            <p>Become part of the Mbarara Army Boarding Secondary School family. Apply now to secure your spot for the
+                upcoming academic year.</p>
+            <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-button">Apply Online <i
+                    class="fas fa-arrow-right"></i></a>
         </div>
     </section>
-    <!-- Footer -->
+
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <h3 class="footer-heading">Quick Links</h3>
-                <ul class="footer-list">
-                    <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
-                    <li class="footer-item"><a href="materials.html" class="footer-link">Academics</a></li>
-                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
-                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
-                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
-                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
-                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="discpline.html">Discipline</a></li>
+                    <li><a href="welfare.html">Welfare</a></li>
+                    <li><a href="Staff.html">Staff</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">Contact Us</h3>
-                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
-                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
-                <p><strong>Email:</strong> mabss2014@gmail.com</p>
 
-                <!-- Social Media Icons -->
-                <div class="social-media">
-                    <h4 class="social-heading">Follow Us</h4>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
-                            class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2004" class="social-icon twitter" target="_blank"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i
-                                class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
-                            class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
-                            target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> P.O. Box 521, Mbarara, Uganda</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 782 096231</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 782 371824</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 779 927775</p>
+                <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> mabss2014@gmail.com</p>
+
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
+                        class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
+
             <div class="footer-section">
-                <h3 class="footer-heading">School Hours</h3>
-                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
+                <h3>School Hours</h3>
+                <p><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</p>
                 <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
-                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+                <p><strong>Sunday:</strong> Closed (Boarders only)</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p> &copy; <span id="year"></span> Mbarara Army Boarding Secondary School. <br> All Rights Reserved. <br>
-                Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
-        </div>
 
-        <script>
-            document.getElementById("year").textContent = new Date().getFullYear();
-        </script>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p>Powered by <strong>Amwine Frankline / CodeMatrix</strong></p>
+        </div>
     </footer>
 
+    <!-- ===== IMPROVED TOAST NOTIFICATION ===== -->
+    <div class="toast-container">
+        <div class="toast" id="admissionToast">
+            <button class="toast-close" id="toastClose">×</button>
+            <div class="toast-header">
+                <div class="toast-icon">📘</div>
+                <div class="toast-title">2026 Admissions Now Open<br><span style="font-size: 0.9rem; color: #666;">S.1,
+                        S.2, S.3 & S.5</span></div>
+            </div>
+            <p class="toast-message">Secure your spot at MABSS. Download the admission leaflet for more information.</p>
+            <div class="toast-actions">
+                <a href="leaflet/index.html" class="toast-btn btn-download" target="_blank">View Leaflet</a>
+                <button class="toast-btn btn-close" id="closeBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
     <script>
         // Load latest news
-        document.addEventListener('DOMContentLoaded', loadLatestNews);
-
         async function loadLatestNews() {
+            const latestContainer = document.getElementById('latest-news-container');
+            if (!latestContainer) return;
+
             try {
-                // Fetch more news to populate both sections (e.g., top 6)
-                // Since /api/news/latest gets 3, we might want to use /api/news?limit=6 instead
-                const response = await fetch('/api/news?limit=6');
-                if (!response.ok) {
-                    const errText = await response.text();
-                    console.error('Server Error Details:', errText);
-                    throw new Error(`Failed to fetch news: ${response.status} ${response.statusText}`);
-                }
+                const response = await fetch('/api/news?limit=3');
+                if (!response.ok) throw new Error('API failed');
+
                 const data = await response.json();
+                const newsItems = data.news || (Array.isArray(data) ? data : []);
 
-                // If the API returns { news: [], pagination: {} }, use data.news
-                const newsItems = data.news || [];
-
-                const latestContainer = document.getElementById('latest-news-container');
-                const olderContainer = document.getElementById('older-news-container');
-
-                // Split news: First 3 for "Latest", rest for "Older"
-                const latestNews = newsItems.slice(0, 3);
-                const olderNews = newsItems.slice(3, 6);
-
-                // Render Latest
-                if (latestNews.length > 0) {
-                    latestContainer.innerHTML = latestNews.map(news => createNewsCard(news)).join('');
+                if (newsItems.length > 0) {
+                    latestContainer.innerHTML = newsItems.slice(0, 3).map(news => `
+                        <article class="news-card">
+                            ${news.image ? `
+                            <div class="news-image-wrapper">
+                                <span class="category-tag">Update</span>
+                                <img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">
+                            </div>
+                            ` : ''}
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar"></i> ${formatDate(news.date)}</span>
+                                </div>
+                                <h2 class="news-title">${news.title}</h2>
+                                <p class="news-summary">${news.summary}</p>
+                                <button class="read-more" onclick="viewNewsDetail(${news.id}, ${JSON.stringify(news).replace(/"/g, '&quot;')})">
+                                    Read Full Article <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    `).join('');
                 } else {
-                    latestContainer.innerHTML = '<p>No news available at the moment.</p>';
+                    latestContainer.innerHTML = '<div style="text-align: center; width: 100%;"><p>No news available at the moment.</p></div>';
                 }
-
-                // Render Older (if container exists)
-                if (olderContainer && olderNews.length > 0) {
-                    olderContainer.innerHTML = olderNews.map(news => createNewsCard(news)).join('');
-                }
-
             } catch (error) {
-                console.error('Error loading latest news:', error);
-                const latestContainer = document.getElementById('latest-news-container');
-                latestContainer.innerHTML = '<p>Unable to load news at the moment.</p>';
+                console.error('Error loading news:', error);
+                latestContainer.innerHTML = '<div style="text-align: center; width: 100%;"><p>Unable to load updates. Please refresh the page.</p></div>';
             }
         }
 
-        function createNewsCard(news) {
-            return `
-                <div class="news-card ${!news.image ? 'no-image' : ''}">
-                    ${news.image ? `<img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">` : ''}
-                    <div class="news-content">
-                        <h3 class="news-title">${news.title}</h3>
-                        <p class="news-summary">${news.summary}</p>
-                        <div class="news-meta">
-                            <span class="news-date">${formatDate(news.date)}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
+        function viewNewsDetail(id, newsObj) {
+            localStorage.setItem('selectedNewsId', id);
+            localStorage.setItem('selectedNews', JSON.stringify(newsObj));
+            window.location.href = 'news-detail.html';
         }
 
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-        }
-
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function () {
-            const nav = document.getElementById('mainNav');
-            nav.classList.toggle('show');
-        });
-
-        // Typewriter Effect
-        const texts = [
-            "Welcome to!",
-            "MBARARA ARMY BOARDING SECONDARY SCHOOL",
-            "Contact us for more details",
-            "Creativity For Excellence."
-        ];
-
-        let textIndex = 0;
-        let charIndex = 0;
-        let currentText = '';
-        const typewriter = document.getElementById('typewriter');
-
-        function type() {
-            if (charIndex < texts[textIndex].length) {
-                currentText += texts[textIndex].charAt(charIndex);
-                typewriter.textContent = currentText;
-                charIndex++;
-                setTimeout(type, 100);
-            } else {
-                setTimeout(erase, 2000); // Wait before erasing
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            try {
+                return new Date(dateStr).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            } catch (e) {
+                return dateStr;
             }
         }
 
-        function erase() {
-            if (charIndex > 0) {
-                currentText = currentText.slice(0, -1);
-                typewriter.textContent = currentText;
-                charIndex--;
-                setTimeout(erase, 50);
-            } else {
-                textIndex = (textIndex + 1) % texts.length;
-                setTimeout(type, 500);
+        // Mobile Menu Toggle
+        function initializeMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+
+            if (!hamburger || !mobileMenu || !overlay) return;
+
+            function openMenu() {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                hamburger.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-        }
 
-        type(); // Start typing
-
-        // Adjust typewriter for mobile
-        function adjustTypewriter() {
-            if (window.innerWidth <= 768) {
-                typewriter.style.whiteSpace = 'normal';
-                typewriter.style.borderRight = 'none';
-            } else {
-                typewriter.style.whiteSpace = 'nowrap';
-                typewriter.style.borderRight = '2px solid white';
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
             }
-        }
 
-        window.addEventListener('resize', adjustTypewriter);
-        adjustTypewriter(); // Initial check
-
-        // Counter Animation
-        function animateCounter(id, target, duration = 2000) {
-            const element = document.getElementById(id);
-            const spanElement = element.querySelector('span');
-            const start = 0;
-            const increment = target / (duration / 16); // 60fps
-            let current = start;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    clearInterval(timer);
-                    current = target;
-                }
-                element.firstChild.textContent = Math.floor(current);
-            }, 16);
-        }
-
-        // Start counters when section is in view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter('student-counter', 2); // Counts to 3 for 4K
-                    animateCounter('subject-counter', 21); // Counts to 21 for 21+
-                    observer.unobserve(entry.target);
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
                 }
             });
-        }, { threshold: 0.5 });
 
-        observer.observe(document.querySelector('.counter-section'));
+            overlay.addEventListener('click', closeMenu);
 
-        // Hero Slideshow Animation
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        }
+
+        // Hero Slideshow
         function startSlideshow() {
             const slides = document.querySelectorAll('.hero-slide');
+            if (slides.length === 0) return;
+
             let currentSlide = 0;
 
+            // Ensure first slide is active
+            slides.forEach((slide, index) => {
+                if (index === 0) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
             function showNextSlide() {
-                // Remove active class from current slide
                 slides[currentSlide].classList.remove('active');
-
-                // Move to next slide
                 currentSlide = (currentSlide + 1) % slides.length;
-
-                // Add active class to new slide
                 slides[currentSlide].classList.add('active');
             }
 
-            // Change slide every 5 seconds
             setInterval(showNextSlide, 5000);
         }
 
-        // Start slideshow when page loads
-        window.addEventListener('load', startSlideshow);
+        // Counter Animation
+        function initializeCounters() {
+            function animateCounter(elementId, target) {
+                const element = document.getElementById(elementId);
+                if (!element) return;
 
-        // CHRISTMAS ANIMATIONS
-        document.addEventListener('DOMContentLoaded', function () {
-            const schoolLogo = document.getElementById('schoolLogo');
-            const christmasBanner = document.getElementById('christmasBanner');
-            const christmasText = document.getElementById('christmasText');
-            const words = document.querySelectorAll('.word');
-            const bannerDecorations = document.getElementById('bannerDecorations');
-            const christmasDecorations = document.getElementById('christmasDecorations');
+                let current = 0;
+                const duration = 2000; // 2 seconds
+                const frames = 60;
+                const increment = target / frames;
+                const interval = duration / frames;
 
-            // Make school logo spin for Christmas celebration
-            schoolLogo.classList.add('christmas-spin');
-
-            // Animate the calligraphy banner text
-            setTimeout(() => {
-                christmasBanner.classList.add('animate-in');
-            }, 500);
-
-            // Create Christmas banner decorations (holly leaves and berries)
-            function createBannerDecorations() {
-                // Create holly leaves
-                for (let i = 0; i < 15; i++) {
-                    const hollyLeaf = document.createElement('div');
-                    hollyLeaf.classList.add('holly-leaf');
-                    hollyLeaf.style.left = `${Math.random() * 100}%`;
-                    hollyLeaf.style.top = `${Math.random() * 100}%`;
-                    hollyLeaf.style.animationDelay = `${Math.random() * 3}s`;
-                    hollyLeaf.style.transform = `scale(${0.5 + Math.random()})`;
-                    bannerDecorations.appendChild(hollyLeaf);
-                }
-
-                // Create holly berries
-                for (let i = 0; i < 10; i++) {
-                    const hollyBerry = document.createElement('div');
-                    hollyBerry.classList.add('holly-berry');
-                    hollyBerry.style.left = `${Math.random() * 100}%`;
-                    hollyBerry.style.top = `${Math.random() * 100}%`;
-                    hollyBerry.style.animationDelay = `${Math.random() * 2}s`;
-                    hollyBerry.style.transform = `scale(${0.8 + Math.random() * 0.4})`;
-                    bannerDecorations.appendChild(hollyBerry);
-                }
-            }
-
-            // Create Christmas decorations (snowflakes and ornaments)
-            function createChristmasDecorations() {
-                // Create snowflakes
-                for (let i = 0; i < 20; i++) {
-                    const snowflake = document.createElement('div');
-                    snowflake.classList.add('snowflake');
-                    snowflake.innerHTML = '<i class="fas fa-bars"></i>„';
-                    snowflake.style.left = `${Math.random() * 100}%`;
-                    snowflake.style.animationDuration = `${5 + Math.random() * 10}s`;
-                    snowflake.style.animationDelay = `${Math.random() * 5}s`;
-                    snowflake.style.fontSize = `${1 + Math.random()}rem`;
-                    christmasDecorations.appendChild(snowflake);
-                }
-
-                // Create Christmas ornaments
-                const colors = ['#d4af37', '#c41e3a', '#0e7704', '#ffffff', '#ffd700'];
-                for (let i = 0; i < 10; i++) {
-                    const ornament = document.createElement('div');
-                    ornament.classList.add('ornament');
-                    ornament.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    ornament.style.left = `${Math.random() * 100}%`;
-                    ornament.style.top = `${10 + Math.random() * 80}%`;
-                    ornament.style.animationDuration = `${4 + Math.random() * 8}s`;
-                    ornament.style.animationDelay = `${Math.random() * 3}s`;
-                    ornament.style.width = `${20 + Math.random() * 20}px`;
-                    ornament.style.height = ornament.style.width;
-                    christmasDecorations.appendChild(ornament);
-                }
-            }
-
-            // Animate words to slide from different directions and form the sentence
-            function animateChristmasWords() {
-                // Set initial positions based on data-direction attribute
-                words.forEach(word => {
-                    const direction = word.getAttribute('data-direction');
-                    let transform = '';
-
-                    switch (direction) {
-                        case 'left':
-                            transform = 'translateX(-100vw)';
-                            break;
-                        case 'right':
-                            transform = 'translateX(100vw)';
-                            break;
-                        case 'up':
-                            transform = 'translateY(-100vh)';
-                            break;
-                        case 'down':
-                            transform = 'translateY(100vh)';
-                            break;
-                        default:
-                            transform = 'translateY(100px)';
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        clearInterval(timer);
+                        element.textContent = target + '+';
+                    } else {
+                        element.textContent = Math.floor(current) + '+';
                     }
-
-                    word.style.transform = transform;
-                    word.style.opacity = '0';
-                });
-
-                // Animate words into position with staggered delays
-                setTimeout(() => {
-                    words.forEach((word, index) => {
-                        setTimeout(() => {
-                            word.classList.add('animated');
-                        }, index * 300); // Stagger animation
-                    });
-                }, 1500); // Wait for banner animation to complete
+                }, interval);
             }
 
-            // Make banner text interactive
-            christmasBanner.addEventListener('click', function () {
-                // Add a pulse animation on click
-                this.style.animation = 'none';
-                setTimeout(() => {
-                    this.style.animation = 'writeBanner 1s ease-out, festiveGlow 3s ease-in-out infinite';
-                }, 10);
+            const counterSection = document.querySelector('.counter-section');
+            if (!counterSection) return;
 
-                // Add a sparkle effect
-                const sparkles = ['<i class="fas fa-bars"></i>œ¨', 'ðŸŽ„', 'ðŸŽ', '<i class="fas fa-bars"></i>­', '<i class="fas fa-bars"></i>„'];
-                for (let i = 0; i < 10; i++) {
-                    const sparkle = document.createElement('span');
-                    sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
-                    sparkle.style.position = 'absolute';
-                    sparkle.style.left = `${Math.random() * 100}%`;
-                    sparkle.style.top = `${Math.random() * 100}%`;
-                    sparkle.style.fontSize = `${1 + Math.random()}rem`;
-                    sparkle.style.opacity = '0.8';
-                    sparkle.style.animation = 'fadeOut 1s forwards';
-                    this.appendChild(sparkle);
-
-                    setTimeout(() => {
-                        sparkle.remove();
-                    }, 1000);
-                }
-            });
-
-            // Make words interactive on hover
-            words.forEach(word => {
-                word.addEventListener('mouseenter', function () {
-                    // Add a subtle bounce effect on hover
-                    this.style.transform = 'scale(1.2) rotate(5deg)';
-                });
-
-                word.addEventListener('mouseleave', function () {
-                    // Return to normal position
-                    this.style.transform = 'scale(1) rotate(0deg)';
-                });
-            });
-
-            // Make the entire Christmas text clickable to replay animation
-            christmasText.addEventListener('click', function () {
-                // Remove animated class from all words
-                words.forEach(word => {
-                    word.classList.remove('animated');
-                });
-
-                // Reset positions
-                words.forEach(word => {
-                    const direction = word.getAttribute('data-direction');
-                    let transform = '';
-
-                    switch (direction) {
-                        case 'left':
-                            transform = 'translateX(-100vw)';
-                            break;
-                        case 'right':
-                            transform = 'translateX(100vw)';
-                            break;
-                        case 'up':
-                            transform = 'translateY(-100vh)';
-                            break;
-                        case 'down':
-                            transform = 'translateY(100vh)';
-                            break;
-                        default:
-                            transform = 'translateY(100px)';
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter('student-counter', 2000);
+                        animateCounter('subject-counter', 21);
+                        animateCounter('staff-counter', 85);
+                        animateCounter('nonstaff-counter', 26);
+                        animateCounter('support-counter', 14);
+                        observer.unobserve(entry.target);
                     }
-
-                    word.style.transform = transform;
-                    word.style.opacity = '0';
                 });
+            }, { threshold: 0.5 });
 
-                // Replay animation
-                setTimeout(() => {
-                    words.forEach((word, index) => {
-                        setTimeout(() => {
-                            word.classList.add('animated');
-                        }, index * 300);
-                    });
-                }, 100);
-            });
-
-            // Add keyframe for sparkle fade out
-            const styleSheet = document.createElement('style');
-            styleSheet.textContent = `
-                @keyframes fadeOut {
-                    0% { opacity: 0.8; transform: translateY(0) scale(1); }
-                    100% { opacity: 0; transform: translateY(-20px) scale(0.5); }
-                }
-            `;
-            document.head.appendChild(styleSheet);
-
-            // Initialize Christmas animations
-            createBannerDecorations();
-            createChristmasDecorations();
-            setTimeout(animateChristmasWords, 1000);
-
-        });
-    </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Amwine Frankline",
-            "jobTitle": "Web Developer",
-            "telephone": "+256200928601",
-            "url": "https://www.mabss.ac.ug",
-            "sameAs": [
-
-            ],
-            "worksFor": {
-                "@type": "Organization",
-                "name": "MBARARA ARMY BOARDING SECONDARY SCHOOL"
-            }
+            observer.observe(counterSection);
         }
-    </script>
 
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": " Amwine Frankline",
-            "jobTitle": "Web Developer",
-            "telephone": "+256200928601",
-            "url": "https://www.mabss.ac.ug",
-            "sameAs": [
-
-            ],
-            "worksFor": {
-                "@type": "Organization",
-                "name": "MBARARA ARMY BOARDING SECONDARY SCHOOL"
-            }
-        }
-    </script>
-    <!-- Add this JavaScript right before closing </body> tag -->
-    <script>
-        // Compact Toast Notification - 10 SECOND DURATION
+        // Toast Notification
         class ToastNotification {
             constructor() {
                 this.toast = document.getElementById('admissionToast');
                 this.closeBtn = document.getElementById('closeBtn');
                 this.toastClose = document.getElementById('toastClose');
-
                 this.isVisible = false;
-                this.autoHideTimeout = null;
-                this.scrollTimeout = null;
-                this.lastScrollPosition = 0;
                 this.hasBeenClosed = false;
+
+                if (!this.toast) return;
+
+                const toastClosed = sessionStorage.getItem('toastClosed');
+                if (toastClosed) {
+                    this.hasBeenClosed = true;
+                }
 
                 this.init();
             }
 
             init() {
-                // Show toast after 1 second
-                setTimeout(() => this.show(), 1000);
-
-                // Event listeners
-                this.closeBtn.addEventListener('click', () => this.hide());
-                this.toastClose.addEventListener('click', () => this.hide());
-
-                // Scroll listener
-                let scrollThrottle;
-                window.addEventListener('scroll', () => {
-                    if (!scrollThrottle) {
-                        scrollThrottle = setTimeout(() => {
-                            this.handleScroll();
-                            scrollThrottle = null;
-                        }, 100);
-                    }
-                });
+                setTimeout(() => this.show(), 2000);
+                this.closeBtn?.addEventListener('click', () => this.hide());
+                this.toastClose?.addEventListener('click', () => this.hide());
             }
 
             show() {
-                if (this.isVisible || this.hasBeenClosed) return;
-
+                if (this.isVisible || this.hasBeenClosed || !this.toast) return;
                 this.toast.classList.add('visible');
                 this.isVisible = true;
-
-                // AUTO-HIDE AFTER 10 SECONDS (10000 milliseconds)
-                this.autoHideTimeout = setTimeout(() => {
-                    if (this.isVisible) this.hide();
-                }, 10000);  // THIS IS THE KEY CHANGE - 10000ms = 10 seconds
+                setTimeout(() => this.hide(), 10000);
             }
 
             hide() {
-                if (!this.isVisible) return;
-
+                if (!this.isVisible || !this.toast) return;
                 this.toast.classList.remove('visible');
                 this.isVisible = false;
                 this.hasBeenClosed = true;
-
-                if (this.autoHideTimeout) {
-                    clearTimeout(this.autoHideTimeout);
-                    this.autoHideTimeout = null;
-                }
-            }
-
-            handleScroll() {
-                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-                // Show toast when scrolling down after it was hidden
-                if (!this.isVisible && !this.hasBeenClosed &&
-                    currentScroll > this.lastScrollPosition &&
-                    currentScroll - this.lastScrollPosition > 20) {
-
-                    // Show with delay
-                    setTimeout(() => {
-                        if (!this.isVisible && !this.hasBeenClosed) {
-                            this.show();
-
-                            // RESET AUTO-HIDE TO 10 SECONDS FOR SCROLL-TRIGGERED APPEARANCE
-                            if (this.autoHideTimeout) {
-                                clearTimeout(this.autoHideTimeout);
-                            }
-                            this.autoHideTimeout = setTimeout(() => this.hide(), 10000); // Also 10 seconds
-                        }
-                    }, 300);
-                }
-
-                this.lastScrollPosition = currentScroll;
+                sessionStorage.setItem('toastClosed', 'true');
             }
         }
 
-        // Initialize
+        // Initialize everything
         document.addEventListener('DOMContentLoaded', () => {
+            // Load news (this won't freeze the page)
+            loadLatestNews();
+
+            // Set current year
+            const yearElement = document.getElementById('year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+            // Initialize all other features
+            startSlideshow();
+            initializeMobileMenu();
+            initializeCounters();
             new ToastNotification();
         });
-
-
-        // Enhance card interaction with additional hover effects mission vision
-        document.addEventListener('DOMContentLoaded', function () {
-            const cards = document.querySelectorAll('.info-card');
-
-            // Add click interaction for accessibility
-            cards.forEach(card => {
-                card.setAttribute('tabindex', '0');
-
-                card.addEventListener('click', function () {
-                    this.classList.toggle('active');
-                });
-
-                // Keyboard support for accessibility
-                card.addEventListener('keydown', function (e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        this.classList.toggle('active');
-                    }
-                });
-            });
-
-            // Optional: Add a subtle pulsing animation to icons on hover
-            const icons = document.querySelectorAll('.card-icon');
-            icons.forEach(icon => {
-                icon.addEventListener('mouseenter', function () {
-                    this.style.transform = 'scale(1.1)';
-                });
-
-                icon.addEventListener('mouseleave', function () {
-                    this.style.transform = 'scale(1)';
-                });
-            });
-        });
-
-        // CORE VALUES
-        document.addEventListener('DOMContentLoaded', function () {
-            const card = document.querySelector('.values-card');
-            const valueItems = document.querySelectorAll('.value-item');
-
-            // Add tabindex for keyboard accessibility
-            card.setAttribute('tabindex', '0');
-
-            // Add click interaction to value items
-            valueItems.forEach(item => {
-                item.addEventListener('click', function () {
-                    // Remove active class from all items
-                    valueItems.forEach(i => i.classList.remove('active'));
-                    // Add active class to clicked item
-                    this.classList.add('active');
-                });
-
-                // Keyboard support
-                item.setAttribute('tabindex', '0');
-                item.addEventListener('keydown', function (e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        this.click();
-                    }
-                });
-            });
-
-            // Animate items on page load with staggered delay
-            setTimeout(() => {
-                valueItems.forEach((item, index) => {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(25px)';
-
-                    setTimeout(() => {
-                        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, index * 100);
-                });
-            }, 300);
-        });
-
     </script>
 
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Mbarara Army Boarding Secondary School",
+        "url": "https://www.mabss.ac.ug",
+        "logo": "https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg",
+        "foundingDate": "2004",
+        "founder": {
+            "@type": "Organization",
+            "name": "Uganda People's Defence Forces (UPDF)"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mbarara",
+            "addressRegion": "Western Uganda",
+            "addressCountry": "UG"
+        }
+    }
+    </script>
 </body>
-
 
 </html>
