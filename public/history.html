@@ -1,247 +1,521 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-UG">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <title>Mbarara Army Boarding Secondary School - History</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
-        type="image/x-icon">
-    <style>
-        /* CSS Variables for School Colors - Matched with index.html */
-        :root {
-            --army-green: #0e7704;
-            /* Matches homepage header */
-            --dark-green: #004d33;
-            /* Matches homepage footer */
-            --medium-green: #006341;
-            /* Matches homepage accents */
-            --white: #ffffff;
-            --black: #000000;
-            --light-gray: #f5f5f5;
-            /* Matches homepage background */
-            --dark-gray: #333333;
-            /* Matches homepage text */
-            --section-title: #006341;
-            /* Matches homepage section titles */
-        }
 
-        /* Base Styles */
+    <!-- Meta Tags -->
+    <meta name="author" content="Amwine Frankline / CodeMatrix">
+    <meta name="description" content="Mbarara Army Boarding Secondary School - Our history, mission, vision, core values, leadership, and journey since 2004.">
+    <meta name="keywords" content="MABSS, history, school background, mission, vision, values, leadership, UPDF">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MABSS - Our History">
+    <meta property="og:description" content="Discover the rich history of Mbarara Army Boarding Secondary School - Discipline, Excellence, Patriotism">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mabss.ac.ug/history.html">
+    <meta property="og:image" content="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345625/view_yjubte.jpg">
+    <meta property="og:site_name" content="Mbarara Army Boarding Secondary School">
+
+    <title>MABSS - Our History</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET & VARIABLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-navy: #0b2c4d;
+            --primary-blue: #1a4fa3;
+            --accent-green: #2e8b57;
+            --accent-red: #d62828;
+            --sky-blue: #4da8da;
+            --text-dark: #333;
+            --text-light: #555;
+            --bg-light: #f5f7fb;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 20, 30, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --navbar-green: #0e7704;
+            --army-green-dark: #004d33;
+            --gold: #ffd700;
+            --gold-light: #ffecb3;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
             line-height: 1.6;
-            color: var(--dark-gray);
-            background-color: var(--light-gray);
-            /* Matches homepage */
         }
 
-        h1,
-        h2,
-        h3,
-        h4 {
-            margin-bottom: 1rem;
-            color: var(--section-title);
-            /* Matches homepage */
+        /* ===== STICKY NAVBAR (MATCHING MATERIALS.HTML) ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: var(--navbar-green);
+            box-shadow: var(--shadow);
+            z-index: 1200;
         }
 
-        p {
-            margin-bottom: 1rem;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0.7rem 2rem;
         }
 
-        section {
-            padding: 5rem 0;
+        .logo {
+            height: 88px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.25s ease;
+            padding: 0.4rem 0;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #02f7ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2.5px;
+            background: #ffffff;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .apply-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.25);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1300;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--primary-blue);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--primary-blue);
+        }
+
+        /* ===== RESPONSIVE NAVBAR ===== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .apply-btn {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-container {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .logo span {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 70px;
+                gap: 8px;
+            }
+            
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo span {
+                font-size: 1.4rem;
+            }
+            
+            .nav-container {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo span {
+                font-size: 1.2rem;
+            }
+            
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.8rem;
+            transition: right 0.35s ease-in-out;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .mobile-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--navbar-green);
+        }
+
+        .mobile-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #1f2a44;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 14px 10px;
+            border-radius: 14px;
+            transition: 0.2s;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-menu a i {
+            width: 28px;
+            color: var(--navbar-green);
+            font-size: 1.3rem;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu a:hover i,
+        .mobile-menu a.active i {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu .apply-btn {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            font-size: 1.1rem;
+            background-color: var(--navbar-green);
+            color: white;
+        }
+
+        .mobile-menu .apply-btn i {
+            color: white;
+        }
+
+        .mobile-menu .apply-btn:hover {
+            background-color: #0a5a03;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 44, 77, 0.5);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1300;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 3rem 1rem;
+            width: 100%;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(11, 44, 77, 0.9), rgba(26, 79, 163, 0.8)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346648/danc_tglfvv.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-weight: 600;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.4);
+        }
+
+        .hero-btn:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.5);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
             position: relative;
-            color: var(--section-title);
-            font-size: 1.5rem;
-            /* Matches homepage */
+            padding-bottom: 1rem;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
-            background-color: var(--section-title);
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 2px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--medium-green);
-            /* Matches homepage buttons */
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 4px;
-            /* Matches homepage button style */
-            font-weight: bold;
-            /* Matches homepage */
-            transition: background-color 0.3s;
-            /* Matches homepage */
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--dark-green);
-            /* Matches homepage button hover */
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Header Styles - Matches homepage navigation style */
-        header {
-            background-color: var(--army-green);
-            color: var(--white);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            /* Matches homepage */
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px;
-            width: 50px;
-            /* Matches homepage logo dimensions */
-            border-radius: 50%;
-            /* Matches homepage logo */
-            object-fit: cover;
-            border: 2px solid white;
-            /* Matches homepage */
-            margin-right: 10px;
-        }
-
-        .logo h1 {
-            font-size: 1rem;
-            /* Adjusted to match homepage */
-            color: var(--white);
-            margin: 0;
-            white-space: nowrap;
-            /* Matches homepage */
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            /* Matches homepage */
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #d4d4d4;
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346648/danc_tglfvv.jpg') no-repeat center center/cover;
-            color: var(--white);
-            display: flex;
-            align-items: center;
+        .section-subtitle {
             text-align: center;
-            margin-top: 70px;
-        }
-
-        .hero-content {
+            color: var(--text-light);
+            font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 3rem;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-            color: #f0f0f0;
-            /* Lighter for contrast */
-        }
-
-        /* School Background Section */
-        .background {
-            background-color: var(--white);
-            /* Changed to match homepage sections */
+        /* ===== BACKGROUND SECTION ===== */
+        .background-section {
+            background: var(--white);
         }
 
         .background-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
         }
 
+        .background-text p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
         .background-image {
-            border-radius: 8px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            /* Matches homepage cards */
+            box-shadow: var(--shadow-hover);
         }
 
         .background-image img {
@@ -255,226 +529,315 @@
             transform: scale(1.05);
         }
 
-        /* Mission, Vision, and Core Values */
-        .mission-vision {
-            background-color: var(--light-gray);
-            /* Matches homepage sections */
+        .founding-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* ===== MISSION, VISION, VALUES ===== */
+        .mission-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
         }
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            /* Matches homepage grid gap */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .value-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            /* Matches homepage cards */
-            padding: 1.5rem;
-            /* Matches homepage card padding */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            /* Matches homepage cards */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid var(--medium-green);
-            /* Matches homepage accent */
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+            text-align: center;
         }
 
         .value-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .value-card.vision {
+            border-top-color: var(--sky-blue);
+        }
+
+        .value-card.mission {
+            border-top-color: var(--accent-green);
+        }
+
+        .value-card.values {
+            border-top-color: var(--accent-red);
         }
 
         .value-icon {
-            font-size: 3rem;
-            color: var(--medium-green);
-            /* Matches homepage accents */
-            margin-bottom: 1.5rem;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--white);
+            font-size: 2rem;
         }
 
         .value-card h3 {
+            color: var(--primary-navy);
+            font-size: 1.6rem;
             margin-bottom: 1rem;
-            color: var(--section-title);
-            /* Matches homepage card titles */
         }
 
-        /* Leadership Section */
-        .leadership {
-            background-color: var(--white);
-            /* Matches homepage sections */
+        .value-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .core-values-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .core-value-tag {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== LEADERSHIP SECTION ===== */
+        .leadership-section {
+            background: var(--white);
+        }
+
+        .governance-group {
+            margin-bottom: 4rem;
+        }
+
+        .governance-group h3 {
+            text-align: center;
+            color: var(--primary-navy);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .governance-group h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-green);
         }
 
         .leadership-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            /* Matches homepage grid gap */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .leader-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            /* Matches homepage cards */
+            background: var(--white);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            /* Matches homepage cards */
-            transition: transform 0.3s ease;
-            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--sky-blue);
+            height: 100%;
         }
 
         .leader-card:hover {
             transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
         }
 
         .leader-image {
-            height: 200px;
-            width: 200px;
-            margin: 2rem auto 1rem;
-            overflow: hidden;
-            border-radius: 50%;
-            border: 5px solid var(--medium-green);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            padding: 2rem 2rem 1rem;
+            display: flex;
+            justify-content: center;
         }
 
         .leader-image img {
-            width: 100%;
-            height: 100%;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
             object-fit: cover;
+            border: 4px solid var(--gold);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.5s ease;
         }
 
         .leader-card:hover .leader-image img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .leader-info {
-            padding: 0 1.5rem 1.5rem;
-            /* Matches homepage card padding */
+            padding: 0 2rem 2rem;
+            text-align: center;
         }
 
         .leader-info h3 {
+            color: var(--primary-navy);
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: var(--section-title);
-            /* Matches homepage card titles */
         }
 
         .leader-position {
-            color: var(--medium-green);
-            /* Matches homepage accents */
+            color: var(--primary-blue);
             font-weight: 600;
             margin-bottom: 1rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
-        /* Student Life & Achievements */
-        .student-life {
-            background-color: var(--light-gray);
-            /* Matches homepage sections */
+        .leader-info p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Governance Action Cards - Rectangular for photos */
+        .governance-action .leader-image {
+            padding: 0;
+        }
+
+        .governance-action .leader-image img {
+            width: 100%;
+            height: 220px;
+            border-radius: 0;
+            border: none;
+            object-fit: cover;
+        }
+
+        .governance-action .leader-info {
+            padding: 1.5rem;
+        }
+
+        /* ===== STUDENT LIFE TABS ===== */
+        .student-life-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
         }
 
         .life-tabs {
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid #ddd;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
 
         .tab-btn {
-            padding: 1rem 2rem;
-            background: none;
-            border: none;
-            cursor: pointer;
+            padding: 0.8rem 2rem;
+            background: var(--white);
+            border: 2px solid var(--primary-navy);
+            border-radius: 50px;
             font-weight: 600;
-            color: var(--dark-gray);
+            color: var(--primary-navy);
+            cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
+            font-size: 1rem;
         }
 
+        .tab-btn:hover,
         .tab-btn.active {
-            color: var(--medium-green);
-            /* Matches homepage accents */
-        }
-
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--medium-green);
-            /* Matches homepage accents */
+            background: var(--primary-navy);
+            color: var(--white);
         }
 
         .tab-content {
             display: none;
+            animation: fadeIn 0.5s ease;
         }
 
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.5s ease;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
         .achievement-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            /* Matches homepage grid gap */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .achievement-card {
-            background-color: var(--white);
-            /* Matches homepage cards */
-            border-radius: 8px;
-            /* Matches homepage cards */
-            padding: 1.5rem;
-            /* Matches homepage card padding */
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            /* Matches homepage cards */
-            transition: transform 0.3s ease;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-green);
         }
 
         .achievement-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
         .achievement-icon {
-            font-size: 2.5rem;
-            color: var(--medium-green);
-            /* Matches homepage accents */
-            margin-bottom: 1rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            font-size: 1.5rem;
         }
 
         .achievement-card h3 {
-            color: var(--section-title);
-            /* Matches homepage card titles */
+            color: var(--primary-navy);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
         }
 
-        /* Slideshow Section */
-        .slideshow {
-            background-color: var(--white);
-            /* Matches homepage sections */
+        .achievement-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== SLIDESHOW SECTION ===== */
+        .slideshow-section {
+            background: var(--white);
+            padding: 5rem 2rem;
         }
 
         .slideshow-container {
             max-width: 1000px;
+            margin: 0 auto;
             position: relative;
-            margin: auto;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-hover);
         }
 
         .slide {
@@ -493,452 +856,337 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(47, 79, 47, 0.8);
+            background: linear-gradient(to top, rgba(11, 44, 77, 0.9), transparent);
             color: var(--white);
-            padding: 1rem;
+            padding: 2rem;
             text-align: center;
+            font-size: 1.1rem;
         }
 
         .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
+            animation: slideFade 1.5s ease;
         }
 
-        @keyframes fade {
+        @keyframes slideFade {
             from {
-                opacity: .4
+                opacity: 0.4;
             }
-
             to {
-                opacity: 1
+                opacity: 1;
             }
         }
 
-        /* Footer - Exactly matches index.html */
+        .slideshow-dots {
+            text-align: center;
+            padding: 2rem 0 0;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 6px;
+            background: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary-blue);
+            transform: scale(1.2);
+        }
+
+        /* ===== FOOTER ===== */
         .footer {
-            background-color: #004d33;
-            color: white;
-            padding: 2rem 1rem;
+            background: var(--army-green-dark);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
         }
 
         .footer-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
 
-        .footer-section {
-            min-width: 250px;
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
         }
 
-        .footer-heading {
-            border-bottom: 2px solid #006341;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
         }
 
-        .footer-list {
+        .footer-section ul {
             list-style: none;
-            padding: 0;
         }
 
-        .footer-item {
-            margin-bottom: 0.5rem;
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
         }
 
-        .footer-link {
-            color: white;
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
+            transition: color 0.3s;
         }
 
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #006341;
+        .footer-section ul li a:hover {
+            color: var(--white);
+            text-decoration: underline;
         }
 
-        .social-media {
-            margin-top: 1.5rem;
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .social-heading {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #fff;
+        .footer-section p i {
+            color: var(--gold);
+            width: 20px;
         }
 
         .social-icons {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
         }
 
         .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 45px;
             height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
             text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
         .social-icon:hover {
             transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .social-icon.facebook:hover {
-            background-color: #3b5998;
-        }
-
-        .social-icon.twitter:hover {
-            background-color: #1da1f2;
-        }
-
-        .social-icon.youtube:hover {
-            background-color: #ff0000;
-        }
-
-        .social-icon.pinterest:hover {
-            background-color: #bd081c;
-        }
-
-        .social-icon.instagram:hover {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-
-        .social-icon.whatsapp:hover {
-            background-color: #25d366;
-        }
-
-        .social-icon.linkedin:hover {
-            background-color: #0077b5;
-        }
-
-        /* Governance Group Styles */
-        .governance-group {
-            margin-bottom: 4rem;
-        }
-
-        .governance-group h3 {
+        .footer-bottom {
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--section-title);
-            font-size: 1.3rem;
-            position: relative;
-            padding-bottom: 10px;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
         }
 
-        .governance-group h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 2px;
-            background-color: var(--medium-green);
-        }
-
-        /* Governance Action Cards - Keep rectangular for these */
-        .governance-action .leader-image {
-            border-radius: 8px;
-            height: 250px;
-            width: 100%;
-            margin: 0;
-            border: none;
-        }
-
-        /* Responsive Styles - Updated to match homepage breakpoints */
-        @media (max-width: 992px) {
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-content p {
+                font-size: 1.4rem;
+            }
             .background-content {
                 grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero p {
-                font-size: 1.3rem;
-            }
-
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-                /* Matches homepage */
-            }
-
-            .governance-group {
-                margin-bottom: 3rem;
-            }
-
-            .leader-image {
-                height: 180px;
-                width: 180px;
+                gap: 2rem;
             }
         }
 
         @media (max-width: 768px) {
-            .mobile-menu {
-                display: block;
+            .container {
+                padding: 3rem 1.5rem;
             }
-
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--army-green);
-                flex-direction: column;
-                padding: 1rem 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            .section-title {
+                font-size: 2rem;
             }
-
-            nav ul.active {
-                display: flex;
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
-
-            nav ul li {
-                margin: 0;
-                text-align: center;
+            .hero-content p {
+                font-size: 1.2rem;
             }
-
-            nav ul li a {
-                display: block;
-                padding: 0.8rem 0;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            section {
-                padding: 3rem 0;
-            }
-
-            .slide img {
-                height: 300px;
-            }
-
             .values-grid,
             .leadership-grid,
             .achievement-grid {
                 grid-template-columns: 1fr;
-                /* Stack on mobile like homepage */
             }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-                /* Stack on mobile */
+            .life-tabs {
+                flex-direction: column;
+                align-items: stretch;
             }
-
-            .governance-group {
-                margin-bottom: 2.5rem;
+            .tab-btn {
+                width: 100%;
             }
-
-            .governance-group h3 {
-                font-size: 1.2rem;
-                margin-bottom: 1.5rem;
+            .slide img {
+                height: 300px;
             }
-
-            .leader-image {
-                height: 160px;
-                width: 160px;
+            .leader-image img {
+                width: 150px;
+                height: 150px;
             }
         }
 
-        @media (min-width: 768px) {
-            nav ul {
-                display: flex !important;
-                /* Force show on larger screens */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
             }
-
-            .mobile-menu {
-                display: none;
-            }
-
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-                /* Matches homepage */
-            }
-        }
-
-        @media (min-width: 992px) {
-            .footer-container {
-                grid-template-columns: repeat(3, 1fr);
-                /* Matches homepage */
-            }
-
-            .logo h1 {
-                font-size: 1.5rem;
-                /* Matches homepage desktop size */
-            }
-
-            .logo img {
-                height: 50px;
-                width: 50px;
-                /* Matches homepage desktop */
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
+            .hero-content p {
                 font-size: 1rem;
             }
-
-            .btn {
-                padding: 10px 20px;
+            .value-card {
+                padding: 1.5rem;
             }
-
-            .tab-btn {
-                padding: 0.8rem 1.2rem;
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 1.3rem;
-            }
-
-            .governance-group h3 {
-                font-size: 1.1rem;
-            }
-
-            .leader-image {
-                height: 140px;
-                width: 140px;
-                margin: 1.5rem auto 1rem;
-            }
-
-            .leader-info {
-                padding: 0 1rem 1.5rem;
+            .slide img {
+                height: 250px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
+
+    <!-- ===== MODERN NAVBAR (MATCHING MATERIALS.HTML) ===== -->
+    <header class="navbar">
+        <div class="nav-container">
             <div class="logo">
-                <div>
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
-                        alt="MABSS Logo">
-                </div>
-                <h1>Mbarara Army Boarding<br>Secondary School</h1>
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS Logo">
+                <span>MABSS</span>
             </div>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#background">Background</a></li>
-                    <li><a href="#mission">Mission & Values</a></li>
-                    <li><a href="#leadership">Leadership</a></li>
-                    <li><a href="#student-life">Student Life</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="materials.html">Academics</a>
+                <a href="sports.html">Co-curricular</a>
+                <a href="welfare.html">Welfare</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contacts.html">Contact</a>
+                <a href="https://mabss.ac.ug/login.html?redirect=admission"class="apply-btn">Apply Now</a>
             </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Mbarara Army Boarding Secondary School</h1>
+    <!-- Mobile Menu (matching materials.html) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-header">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
+            <h3>Mbarara Army<br>Boarding SS</h3>
+        </div>
+
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="materials.html"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
+        <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
+        <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+        <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+        <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fas fa-history"></i> SINCE 2004</span>
+            <h1>Mbarara Army Boarding<br>Secondary School</h1>
             <p>"Discipline, Excellence, Patriotism"</p>
-            <a href="#background" class="btn">Discover Our Story</a>
+            <a href="#background" class="hero-btn">Discover Our Story</a>
         </div>
     </section>
 
-    <!-- School Background Section -->
-    <section class="background" id="background">
+    <!-- ===== SCHOOL BACKGROUND SECTION ===== -->
+    <section class="background-section" id="background">
         <div class="container">
             <h2 class="section-title">School Background</h2>
+            <p class="section-subtitle">A legacy of excellence since 2004</p>
+
             <div class="background-content">
                 <div class="background-text">
-                    <p>Mbarara Army Boarding Secondary School was established in 2004 with the vision of providing
-                        quality education infused with military discipline and patriotic values. Founded by the Uganda
-                        People's Defence Forces (UPDF), the school aimed to create an institution that would nurture
-                        future leaders with strong moral character and academic excellence.</p>
-                    <p>Located on the scenic hills of Makenke,Mbarara, Western Uganda, Along Mbarara-Masaka highway
-                        road. The school began with just 120 students and 15 staff members. Over the years, it has grown
-                        significantly, now accommodating over 2000+ students from various regions of Uganda.</p>
-                    <p>The school's unique approach combines rigorous academic training with military-style discipline,
-                        producing graduates who excel not only in academics but also in character development and
-                        leadership skills.</p>
-                    <p>Today, Mbarara Army Boarding Secondary School stands as one of the premier educational
-                        institutions in the region, consistently ranking among the top schools in national examinations
-                        and producing citizens who contribute meaningfully to Uganda's development.</p>
+                    <p>Mbarara Army Boarding Secondary School was established in <strong>2004</strong> with the vision of providing quality education infused with military discipline and patriotic values. Founded by the <strong>Uganda People's Defence Forces (UPDF)</strong>, the school aimed to create an institution that would nurture future leaders with strong moral character and academic excellence.</p>
+                    <p>Located on the scenic hills of <strong>Makenke, Mbarara, Western Uganda</strong>, along the Mbarara-Masaka highway, the school began with just 120 students and 15 staff members. Over the years, it has grown significantly, now accommodating over <strong>2,000+ students</strong> from various regions of Uganda.</p>
+                    <p>The school's unique approach combines rigorous academic training with military-style discipline, producing graduates who excel not only in academics but also in character development and leadership skills.</p>
+                    <p>Today, Mbarara Army Boarding Secondary School stands as one of the premier educational institutions in the region, consistently ranking among the top schools in national examinations and producing citizens who contribute meaningfully to Uganda's development.</p>
+                    <span class="founding-badge"><i class="fas fa-calendar-alt"></i> Founded 2004</span>
                 </div>
                 <div class="background-image">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345625/view_yjubte.jpg"
-                        alt="School Compound">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345625/view_yjubte.jpg" alt="School Compound">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mission, Vision, and Core Values Section -->
-    <section class="mission-vision" id="mission">
+    <!-- ===== MISSION, VISION, VALUES SECTION ===== -->
+    <section class="mission-section" id="mission">
         <div class="container">
-            <h2 class="section-title">Vision,Mission & Core Values</h2>
-            <div class="values-grid">
+            <h2 class="section-title">Vision, Mission & Core Values</h2>
+            <p class="section-subtitle">Guiding principles that shape our educational philosophy</p>
 
-                <div class="value-card">
+            <div class="values-grid">
+                <div class="value-card vision">
                     <div class="value-icon">
                         <i class="fas fa-eye"></i>
                     </div>
-
                     <h3>Our Vision</h3>
                     <p>To empower humanity for self reliance.</p>
                 </div>
 
-                <div class="value-card">
+                <div class="value-card mission">
                     <div class="value-icon">
                         <i class="fas fa-bullseye"></i>
                     </div>
-
                     <h3>Our Mission</h3>
                     <p>To impart skills, knowledge, attitude and values through team work.</p>
                 </div>
 
-
-                <div class="value-card">
+                <div class="value-card values">
                     <div class="value-icon">
                         <i class="fas fa-gem"></i>
                     </div>
                     <h3>Core Values</h3>
-                    <p>Discipline, Creativity, Punctuality, Patriotism, Team spirit, God fearing. These values form the
-                        foundation of our educational philosophy and guide our students' development.</p>
+                    <div class="core-values-list">
+                        <span class="core-value-tag">Discipline</span>
+                        <span class="core-value-tag">Creativity</span>
+                        <span class="core-value-tag">Punctuality</span>
+                        <span class="core-value-tag">Patriotism</span>
+                        <span class="core-value-tag">Team Spirit</span>
+                        <span class="core-value-tag">God Fearing</span>
+                    </div>
+                    <p style="margin-top: 1.5rem;">These values form the foundation of our educational philosophy and guide our students' development.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Leadership Section -->
-    <section class="leadership" id="leadership">
+    <!-- ===== LEADERSHIP SECTION ===== -->
+    <section class="leadership-section" id="leadership">
         <div class="container">
             <h2 class="section-title">School Governance</h2>
+            <p class="section-subtitle">Dedicated leaders guiding our institution</p>
 
             <!-- Chairperson -->
             <div class="governance-group">
@@ -946,14 +1194,12 @@
                 <div class="leadership-grid">
                     <div class="leader-card">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765376993/2nd_div_vbhop9.jpg"
-                                alt="Maj. Gen. Paul Muhaguzi">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765376993/2nd_div_vbhop9.jpg" alt="Maj. Gen. Paul Muhaguzi">
                         </div>
                         <div class="leader-info">
                             <h3>Maj. Gen. Paul Muhaguzi</h3>
                             <div class="leader-position">Chairperson, Board of Governors</div>
-                            <p>2nd Division Commander providing strategic leadership and oversight for the school's
-                                development and discipline standards.</p>
+                            <p>2nd Division Commander providing strategic leadership and oversight for the school's development and discipline standards.</p>
                         </div>
                     </div>
                 </div>
@@ -965,19 +1211,16 @@
                 <div class="leadership-grid">
                     <div class="leader-card">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765461772/WhatsApp_Image_2025-12-11_at_16.51.35_cfd0222a_sksn3g.jpg"
-                                alt="Col. W.M.Kakuru">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765461772/WhatsApp_Image_2025-12-11_at_16.51.35_cfd0222a_sksn3g.jpg" alt="Col. W.M. Kakuru">
                         </div>
                         <div class="leader-info">
                             <h3>Col. W.M. Kakuru</h3>
                             <div class="leader-position">Vice Chairperson, Board of Governors</div>
-                            <p>2nd Division Administrative Officer supporting the Chairperson in governance and
-                                operational oversight of school affairs.</p>
+                            <p>2nd Division Administrative Officer supporting the Chairperson in governance and operational oversight of school affairs.</p>
                         </div>
                     </div>
                 </div>
             </div>
-
 
             <!-- PTA Representatives -->
             <div class="governance-group">
@@ -985,14 +1228,12 @@
                 <div class="leadership-grid">
                     <div class="leader-card">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765396272/CP_jhjl7i.jpg"
-                                alt="PTA Representative 1">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765396272/CP_jhjl7i.jpg" alt="Mr. TWESIGYE HANNINGTON">
                         </div>
                         <div class="leader-info">
-                            <h3>Mr.TWESIGYE HANNINGTON</h3>
+                            <h3>Mr. TWESIGYE HANNINGTON</h3>
                             <div class="leader-position">PTA Chairperson</div>
-                            <p>Represents parent interests and facilitates communication between parents and school
-                                administration.</p>
+                            <p>Represents parent interests and facilitates communication between parents and school administration.</p>
                         </div>
                     </div>
                 </div>
@@ -1004,49 +1245,44 @@
                 <div class="leadership-grid">
                     <div class="leader-card governance-action">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346638/bog_ssijce.jpg"
-                                alt="Board of Governors Meeting">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346638/bog_ssijce.jpg" alt="Board of Governors Meeting">
                         </div>
                         <div class="leader-info">
                             <h3>Strategic Planning Session</h3>
-                            <p>The Board of Governors engaged in strategic discussions on 04th December 2025, charting
-                                the school's future development path.</p>
+                            <p>The Board of Governors engaged in strategic discussions on 04th December 2025, charting the school's future development path.</p>
                         </div>
                     </div>
 
                     <div class="leader-card governance-action">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346639/cos1_soooxz.jpg"
-                                alt="Construction Site Inspection">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346639/cos1_soooxz.jpg" alt="Construction Site Inspection">
                         </div>
                         <div class="leader-info">
                             <h3>Infrastructure Oversight</h3>
-                            <p>Board members conducting on-site inspection of ongoing construction projects to ensure
-                                quality and timely completion.</p>
+                            <p>Board members conducting on-site inspection of ongoing construction projects to ensure quality and timely completion.</p>
                         </div>
                     </div>
 
                     <div class="leader-card governance-action">
                         <div class="leader-image">
-                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346640/cons2_vmsser.jpg"
-                                alt="Site Progress Review">
+                            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346640/cons2_vmsser.jpg" alt="Site Progress Review">
                         </div>
                         <div class="leader-info">
                             <h3>Progress Assessment</h3>
-                            <p>Governance team reviewing construction progress and providing guidance for future
-                                development phases.</p>
+                            <p>Governance team reviewing construction progress and providing guidance for future development phases.</p>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Student Life & Achievements Section -->
-    <section class="student-life" id="student-life">
+    <!-- ===== STUDENT LIFE & ACHIEVEMENTS SECTION ===== -->
+    <section class="student-life-section" id="student-life">
         <div class="container">
             <h2 class="section-title">Student Life & Achievements</h2>
+            <p class="section-subtitle">Excellence in academics, discipline, and co-curricular activities</p>
+
             <div class="life-tabs">
                 <button class="tab-btn active" data-tab="academics">Academic Excellence</button>
                 <button class="tab-btn" data-tab="discipline">Discipline & Patriotism</button>
@@ -1061,24 +1297,21 @@
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <h3>Consistent Top Performance</h3>
-                        <p>Our students consistently rank among the top performers in national examinations, with over
-                            85% qualifying for university education.</p>
+                        <p>Our students consistently rank among the top performers in national examinations, with over 85% qualifying for university education.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-flask"></i>
                         </div>
                         <h3>Science & Technology Focus</h3>
-                        <p>We emphasize STEM education with well-equipped laboratories and specialized teaching in
-                            sciences and mathematics.</p>
+                        <p>We emphasize STEM education with well-equipped laboratories and specialized teaching in sciences and mathematics.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-book"></i>
                         </div>
                         <h3>Comprehensive Curriculum</h3>
-                        <p>We offer a balanced curriculum covering sciences, arts, and vocational subjects to cater to
-                            diverse student interests and talents.</p>
+                        <p>We offer a balanced curriculum covering sciences, arts, and vocational subjects to cater to diverse student interests and talents.</p>
                     </div>
                 </div>
             </div>
@@ -1090,24 +1323,21 @@
                             <i class="fas fa-medal"></i>
                         </div>
                         <h3>Character Development</h3>
-                        <p>Our military-style discipline program instills values of responsibility, respect, and
-                            integrity in all students.</p>
+                        <p>Our military-style discipline program instills values of responsibility, respect, and integrity in all students.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-flag"></i>
                         </div>
                         <h3>Patriotic Education</h3>
-                        <p>Students participate in regular patriotic activities and learn about Uganda's history and
-                            national values.</p>
+                        <p>Students participate in regular patriotic activities and learn about Uganda's history and national values.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-users"></i>
                         </div>
                         <h3>Leadership Training</h3>
-                        <p>All students undergo leadership training programs that prepare them for future roles in
-                            society.</p>
+                        <p>All students undergo leadership training programs that prepare them for future roles in society.</p>
                     </div>
                 </div>
             </div>
@@ -1119,24 +1349,21 @@
                             <i class="fas fa-futbol"></i>
                         </div>
                         <h3>Sports & Athletics</h3>
-                        <p>We offer a wide range of sports including football, athletics, basketball, and volleyball
-                            with modern facilities.</p>
+                        <p>We offer a wide range of sports including football, athletics, basketball, and volleyball with modern facilities.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-music"></i>
                         </div>
                         <h3>Music & Arts</h3>
-                        <p>Our vibrant music, dance, and drama program allows students to explore and develop their
-                            artistic talents.</p>
+                        <p>Our vibrant music, dance, and drama program allows students to explore and develop their artistic talents.</p>
                     </div>
                     <div class="achievement-card">
                         <div class="achievement-icon">
                             <i class="fas fa-robot"></i>
                         </div>
                         <h3>Clubs & Societies</h3>
-                        <p>Students can join various clubs including debate, science, journalism, and conservation
-                            clubs.</p>
+                        <p>Students can join various clubs including debate, science, journalism, and conservation clubs.</p>
                     </div>
                 </div>
             </div>
@@ -1169,98 +1396,130 @@
         </div>
     </section>
 
-    <!-- Slideshow Section -->
-    <section class="slideshow" id="gallery">
+    <!-- ===== SLIDESHOW SECTION ===== -->
+    <section class="slideshow-section" id="gallery">
         <div class="container">
             <h2 class="section-title">School Gallery</h2>
+            <p class="section-subtitle">Capturing moments of excellence and achievement</p>
+
             <div class="slideshow-container">
                 <div class="slide fade">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345614/student_nrjtde.jpg"
-                        alt="Classroom">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345614/student_nrjtde.jpg" alt="Classroom">
                     <div class="slide-caption">DURING DEDICATION</div>
                 </div>
                 <div class="slide fade">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345615/TRIP_fpcly2.jpg"
-                        alt="Science Lab">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345615/TRIP_fpcly2.jpg" alt="School Trip">
                     <div class="slide-caption">Some of students having a trip tour</div>
                 </div>
                 <div class="slide fade">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345578/mdd_zcgotv.jpg"
-                        alt="School Event">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345578/mdd_zcgotv.jpg" alt="School Event">
                     <div class="slide-caption">Annual Sports Day</div>
                 </div>
                 <div class="slide fade">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345206/class_aveqk3.jpg"
-                        alt="Students">
-                    <div class="slide-caption">Dedicated Students demonstrating some Chemistry practicals in laboratory
-                    </div>
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345206/class_aveqk3.jpg" alt="Science Lab">
+                    <div class="slide-caption">Dedicated Students demonstrating some Chemistry practicals in laboratory</div>
                 </div>
+            </div>
+
+            <div class="slideshow-dots">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <h3 class="footer-heading">Quick Links</h3>
-                <ul class="footer-list">
-                    <li class="footer-item"><a href="materials.html" class="footer-link">Academics</a></li>
-                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
-                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
-                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
-                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
-                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="welfare.html">Welfare</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">Contact Us</h3>
-                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
-                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
-                <p><strong>Email:</strong> mabss2014@gmail.com</p>
 
-                <!-- Social Media Icons -->
-                <div class="social-media">
-                    <h4 class="social-heading">Follow Us</h4>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
-                            class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2004" class="social-icon twitter" target="_blank"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i
-                                class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
-                            class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
-                            target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> P.O. Box 521, Mbarara, Uganda</p>
+                <p><i class="fas fa-phone"></i> +256 782 096231</p>
+                <p><i class="fas fa-phone"></i> +256 782 371824</p>
+                <p><i class="fas fa-phone"></i> +256 779 927775</p>
+                <p><i class="fas fa-envelope"></i> mabss2014@gmail.com</p>
+
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
+
             <div class="footer-section">
-                <h3 class="footer-heading">School Hours</h3>
-                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
-                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
-                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+                <h3>School Hours</h3>
+                <p><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p><i class="fas fa-clock"></i> Saturday: 8:00 AM - 4:00 PM</p>
+                <p><i class="fas fa-clock"></i> Sunday: Closed (Boarders only)</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p> &copy; <span id="year"></span> Mbarara Army Boarding Secondary School. <br>
-                Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
-        </div>
 
-        <script>
-            document.getElementById("year").textContent = new Date().getFullYear();
-        </script>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p>Powered by <strong>Amwine Frankline / CodeMatrix</strong></p>
+        </div>
     </footer>
 
-
+    <!-- ===== SCRIPTS ===== -->
     <script>
         // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function () {
-            document.querySelector('nav ul').classList.toggle('active');
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            hamburger.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
         });
 
         // Tab Functionality
@@ -1269,38 +1528,53 @@
 
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
                 tabBtns.forEach(b => b.classList.remove('active'));
                 tabContents.forEach(c => c.classList.remove('active'));
 
-                // Add active class to clicked button
                 btn.classList.add('active');
 
-                // Show corresponding content
                 const tabId = btn.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
             });
         });
 
         // Slideshow Functionality
-        let slideIndex = 0;
-        showSlides();
+        let slideIndex = 1;
+        let slideInterval;
 
-        function showSlides() {
+        function showSlides(n) {
             let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
 
             for (let i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
 
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
 
             slides[slideIndex - 1].style.display = "block";
-            slides[slideIndex - 1].classList.add("fade");
-
-            setTimeout(showSlides, 5000); // Change image every 5 seconds
+            dots[slideIndex - 1].className += " active";
         }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlides(slideIndex);
+        }
+
+        function startSlideshow() {
+            showSlides(slideIndex);
+            slideInterval = setInterval(() => {
+                slideIndex++;
+                showSlides(slideIndex);
+            }, 5000);
+        }
+
+        startSlideshow();
 
         // Smooth Scrolling for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1313,15 +1587,17 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 70,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
 
-                    // Close mobile menu if open
-                    document.querySelector('nav ul').classList.remove('active');
+                    closeMenu();
                 }
             });
         });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 
