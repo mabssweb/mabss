@@ -1,149 +1,572 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-UG">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Non-Teaching Staff | Mbarara Army Boarding Secondary School</title>
+    
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <!-- Meta Tags -->
+    <meta name="author" content="Amwine Frankline / CodeMatrix">
+    <meta name="description" content="Mbarara Army Boarding Secondary School - Our dedicated non-teaching staff who support school operations including administration, finance, IT, library, and health services.">
+    <meta name="keywords" content="MABSS, non-teaching staff, support staff, administration, bursar, librarian, nurse, technician">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MABSS - Non-Teaching Staff">
+    <meta property="og:description" content="The dedicated professionals who support our school's operations at Mbarara Army Boarding Secondary School">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mabss.ac.ug/non-teaching.html">
+    <meta property="og:image" content="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346448/OKULLO_a8bvxp.jpg">
+    <meta property="og:site_name" content="Mbarara Army Boarding Secondary School">
+
+    <title>MABSS - Non-Teaching Staff</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        /* ===== RESET & VARIABLES ===== */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f7fa;
-            color:  #00b327;
-            line-height: 1.6;
-            padding-top: 80px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            box-sizing: border-box;
         }
 
-        /* Back Button */
-        .back-button {
-            display: inline-block;
-            margin: 1rem 0 2rem;
-            padding: 0.6rem 1.2rem;
-            background-color: #0e7704;
-            color: white;
+        :root {
+            --primary-navy: #0b2c4d;
+            --primary-blue: #1a4fa3;
+            --accent-green: #2e8b57;
+            --accent-red: #d62828;
+            --sky-blue: #4da8da;
+            --text-dark: #333;
+            --text-light: #555;
+            --bg-light: #f5f7fb;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 20, 30, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --navbar-green: #0e7704;
+            --army-green-dark: #004d33;
+            --gold: #ffd700;
+            --gold-light: #ffecb3;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== STICKY NAVBAR (MATCHING MATERIALS.HTML) ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: var(--navbar-green);
+            box-shadow: var(--shadow);
+            z-index: 1200;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.7rem 2rem;
+        }
+
+        .logo {
+            height: 88px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
             text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.25s ease;
+            padding: 0.4rem 0;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #02f7ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2.5px;
+            background: #ffffff;
+            transition: width 0.3s ease;
             border-radius: 4px;
-            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .apply-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.25);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1300;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--primary-blue);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--primary-blue);
+        }
+
+        /* ===== RESPONSIVE NAVBAR ===== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .apply-btn {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-container {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .logo span {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 70px;
+                gap: 8px;
+            }
+            
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo span {
+                font-size: 2.4rem;
+            }
+            
+            .nav-container {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo span {
+                font-size: 2.2rem;
+            }
+            
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.8rem;
+            transition: right 0.35s ease-in-out;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .mobile-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--navbar-green);
+        }
+
+        .mobile-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #1f2a44;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 14px 10px;
+            border-radius: 14px;
+            transition: 0.2s;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-menu a i {
+            width: 28px;
+            color: var(--navbar-green);
+            font-size: 1.3rem;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu a:hover i,
+        .mobile-menu a.active i {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu .apply-btn {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            font-size: 1.1rem;
+            background-color: var(--navbar-green);
+            color: white;
+        }
+
+        .mobile-menu .apply-btn i {
+            color: white;
+        }
+
+        .mobile-menu .apply-btn:hover {
+            background-color: #0a5a03;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 44, 77, 0.5);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1300;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== BACK BUTTON ===== */
+        .back-button-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            color: var(--primary-navy);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
         }
 
         .back-button:hover {
-            background-color: #1a252f;
+            background: var(--primary-navy);
+            color: var(--white);
+            transform: translateX(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
-        .back-button svg {
-            vertical-align: middle;
-            margin-right: 5px;
+        .back-button i {
+            font-size: 1rem;
         }
-        
-        /* Header Styles */
-        .page-header {
-            background-color: #0e7704;
-            color: white;
-            padding: 3rem 1rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('image/support-bg.jpg');
-            background-size: cover;
-            background-position: center;
+
+        /* ===== STAFF GRID ===== */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
         }
-        
-        .page-title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        
-        .page-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            font-style: italic;
-        }
-        
-        /* Staff Grid */
+
         .staff-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
-        
+
         .staff-card {
-            background: white;
-            border-radius: 10px;
+            background: var(--white);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
             cursor: pointer;
-            text-align: center;
-        }
-        
-        .staff-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-left: 4px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .staff-img-container {
+        .staff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Color coding by department */
+        .staff-card[data-department="intelligence"] {
+            border-left-color: var(--primary-navy);
+        }
+        .staff-card[data-department="finance"] {
+            border-left-color: var(--accent-green);
+        }
+        .staff-card[data-department="administration"] {
+            border-left-color: var(--sky-blue);
+        }
+        .staff-card[data-department="laboratory"] {
+            border-left-color: var(--accent-red);
+        }
+        .staff-card[data-department="library"] {
+            border-left-color: var(--gold);
+        }
+        .staff-card[data-department="health"] {
+            border-left-color: var(--primary-blue);
+        }
+
+        .staff-image-container {
             width: 100%;
-            padding: 1.5rem 1.5rem 0;
+            padding: 2rem 2rem 1rem;
             display: flex;
             justify-content: center;
         }
-        
-        .staff-img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
+
+        .staff-image {
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            border: 5px solid #f5f5f5;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            border: 4px solid;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
         }
-        
+
+        .staff-card[data-department="intelligence"] .staff-image {
+            border-color: var(--primary-navy);
+        }
+        .staff-card[data-department="finance"] .staff-image {
+            border-color: var(--accent-green);
+        }
+        .staff-card[data-department="administration"] .staff-image {
+            border-color: var(--sky-blue);
+        }
+        .staff-card[data-department="laboratory"] .staff-image {
+            border-color: var(--accent-red);
+        }
+        .staff-card[data-department="library"] .staff-image {
+            border-color: var(--gold);
+        }
+        .staff-card[data-department="health"] .staff-image {
+            border-color: var(--primary-blue);
+        }
+
+        .staff-card:hover .staff-image {
+            transform: scale(1.05);
+        }
+
         .staff-info {
-            padding: 1.5rem;
+            padding: 0 1.5rem 2rem;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .staff-name {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
+            color: var(--primary-navy);
             font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
-        
+
         .staff-title {
             font-weight: 600;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             font-size: 1rem;
-            color: #e74c3c;
+            color: var(--primary-blue);
         }
-        
+
         .staff-department {
-            font-size: 0.85rem;
-            color: #868e96;
+            color: var(--text-light);
+            font-size: 0.9rem;
             font-style: italic;
+            padding: 0.3rem 0.8rem;
+            background: #f0f5fe;
+            border-radius: 20px;
+            display: inline-block;
+            align-self: center;
         }
-        
-        /* Modal Styles */
+
+        /* ===== MODAL ===== */
         .modal {
             display: none;
             position: fixed;
@@ -151,422 +574,677 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            padding: 1rem;
         }
-        
+
         .modal.active {
             display: flex;
-            opacity: 1;
+            animation: modalFadeIn 0.3s ease;
         }
-        
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         .modal-content {
-            background: white;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 700px;
-            max-height: 90vh;
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 85vh;
             overflow-y: auto;
+            box-shadow: var(--shadow-hover);
             position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
         }
-        
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-        
-        .close-modal {
+
+        .modal-close {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: #666;
-            background: none;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
             border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
             z-index: 10;
         }
-        
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
         .modal-header {
-            height: 250px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #2c3e50;
-        }
-        
-        .modal-header img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 6px solid white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .modal-header-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(44, 62, 80, 0.9), transparent);
-            padding: 2rem 1.5rem 1rem;
-            color: white;
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
+            padding: 2.5rem 2rem 2rem;
             text-align: center;
+            position: relative;
         }
-        
+
+        .modal-header img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--gold);
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
         .modal-name {
             font-size: 1.8rem;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
         }
-        
+
         .modal-title {
             font-size: 1.1rem;
             opacity: 0.9;
+            margin-bottom: 0.5rem;
         }
-        
+
+        .modal-department {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
         .modal-body {
             padding: 2rem;
         }
-        
+
         .modal-section {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
-        
+
         .modal-section h3 {
-            color: #2c3e50;
-            margin-bottom: 0.8rem;
+            color: var(--primary-navy);
             font-size: 1.2rem;
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 0.5rem;
-        }
-        
-        .modal-bio {
-            line-height: 1.7;
-        }
-        
-        .modal-contact {
-            margin-top: 1rem;
-        }
-        
-        .contact-item {
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            margin-bottom: 0.5rem;
+            gap: 10px;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
         }
-        
-        .contact-icon {
-            margin-right: 0.8rem;
-            color: #2c3e50;
+
+        .modal-section h3 i {
+            color: var(--primary-blue);
         }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
+
+        .modal-section p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .modal-responsibilities {
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--sky-blue);
+            line-height: 1.7;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--army-green-dark);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section p i {
+            color: var(--gold);
+            width: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
             .staff-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
-            
-            .modal-content {
-                width: 95%;
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 2rem 1rem;
             }
-            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            .page-header p {
+                font-size: 1rem;
+            }
+            .container {
+                padding: 0 1rem 3rem;
+            }
+            .staff-image {
+                width: 140px;
+                height: 140px;
+            }
+            .modal-header img {
+                width: 120px;
+                height: 120px;
+            }
             .modal-name {
                 font-size: 1.5rem;
             }
-
-            .staff-img {
-                width: 150px;
-                height: 150px;
-            }
-
-            .modal-header img {
-                width: 160px;
-                height: 160px;
-            }
         }
-        
+
         @media (max-width: 480px) {
             .staff-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .staff-img {
+            .staff-image {
                 width: 130px;
                 height: 130px;
             }
-
-            .modal-header img {
-                width: 140px;
-                height: 140px;
+            .modal-content {
+                max-height: 80vh;
+            }
+            .modal-body {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Back Button -->
-    <div class="container">
-        <a href="Staff.html" class="back-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-            </svg>
+
+    <!-- ===== MODERN NAVBAR (MATCHING MATERIALS.HTML) ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS Logo">
+                <span>MABSS</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="materials.html">Academics</a>
+                <a href="sports.html">Co-curricular</a>
+                <a href="welfare.html">Welfare</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contacts.html">Contact</a>
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (matching materials.html) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-header">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
+            <h3>Mbarara Army<br>Boarding SS</h3>
+        </div>
+
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="materials.html"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
+        <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
+        <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+        <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+        <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== BACK BUTTON ===== -->
+    <div class="back-button-container">
+        <a href="staff.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
             Back to Staff
         </a>
     </div>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container">
-            <h1 class="page-title">Non-Teaching Staff</h1>
-            <p class="page-subtitle">The dedicated professionals who support our school's operations</p>
-        </div>
-    </header>
-    
+    <!-- ===== PAGE HEADER ===== -->
+    <section class="page-header">
+        <h1>Non-Teaching Staff</h1>
+        <p>The dedicated professionals who support our school's operations</p>
+    </section>
+
+    <!-- ===== STAFF GRID ===== -->
     <div class="container">
-
         <div class="staff-grid">
-
-             <div class="staff-card" onclick="openModal('accountant')">
-                <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346396/IO_gzupcl.jpg" alt="Accountant" class="staff-img">
+            <!-- Intelligence Officer -->
+            <div class="staff-card" data-department="intelligence" onclick="openModal('intelligence')">
+                <div class="staff-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346396/IO_gzupcl.jpg" alt="SGT. TOO-LIT D LUKE" class="staff-image">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">SGT. TOO-LIT D LUKE</h3>
-                    <p class="staff-title"> SCHOOL I/O</p>
-                    <p class="staff-department">INTELLIGENCE</p>
+                    <p class="staff-title">SCHOOL I/O</p>
+                    <span class="staff-department">INTELLIGENCE</span>
                 </div>
             </div>
 
-            <!-- Office Manager -->
-            <div class="staff-card" onclick="openModal('office-manager')">
-                <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345622/ursar_eu8ean.jpg" alt="Office Manager" class="staff-img">
+            <!-- Bursar -->
+            <div class="staff-card" data-department="finance" onclick="openModal('bursar')">
+                <div class="staff-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345622/ursar_eu8ean.jpg" alt="MR. MURUHURA EDWARD" class="staff-image">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MR. MURUHURA EDWARD</h3>
                     <p class="staff-title">FINANCE</p>
-                    <p class="staff-department">BURSAR</p>
+                    <span class="staff-department">BURSAR</span>
                 </div>
             </div>
-            
-            <!-- Administrative Assistant -->
-            <div class="staff-card" onclick="openModal('admin-assistant')">
-                <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346413/KHASIKYE_2_zzms1y.jpg" alt="Administrative Assistant" class="staff-img">
+
+            <!-- Secretary -->
+            <div class="staff-card" data-department="administration" onclick="openModal('secretary')">
+                <div class="staff-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346413/KHASIKYE_2_zzms1y.jpg" alt="MS. ATWETA DEBORAH" class="staff-image">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MS. ATWETA DEBORAH</h3>
                     <p class="staff-title">SECRETARY</p>
-                    <p class="staff-department">ADMINISTRATION</p>
-                </div>
-            </div>
-            
-            <!-- IT Specialist -->
-            <div class="staff-card" onclick="openModal('it-specialist')">
-                <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346276/ALEX_lkekjl.jpg" alt="IT Specialist" class="staff-img">
-                </div>
-                <div class="staff-info">
-                    <h3 class="staff-name">MR. NATURINDA ALEX</h3>
-                    <p class="staff-title">TECHNICIAN(HEAD)</p>
-                    <p class="staff-department">SCI-LAB TECHNICIAN</p>
-                </div>
-            </div>
-            
-            <!-- Maintenance Supervisor -->
-            <div class="staff-card" onclick="openModal('maintenance')">
-                <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346320/DAN_yimm5n.jpg" alt="Maintenance Supervisor" class="staff-img">
-                </div>
-                <div class="staff-info">
-                    <h3 class="staff-name">MR. GUMISIRIZA DANIEL </h3>
-                    <p class="staff-title">TECHNICIAN</p>
-                    <p class="staff-department">COMPUTER LAB TECHNICIAN</p>
-                </div>
-            </div>
-            
-            <!-- Accountant -->
-            <div class="staff-card" onclick="openModal('accountant')">
-                <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346433/MOREEN_20250728_170249_497_dhxrah.jpg" alt="Accountant" class="staff-img">
-                </div>
-                <div class="staff-info">
-                    <h3 class="staff-name">MS.KABAJURIZI MOREEN</h3>
-                    <p class="staff-title">HEAD OF LIBRARY</p>
-                    <p class="staff-department">LIBRARIAN</p>
+                    <span class="staff-department">ADMINISTRATION</span>
                 </div>
             </div>
 
-            <div class="staff-card" onclick="openModal('accountant')">
-                <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346469/PERAN_phcfhr.jpg" alt="Accountant" class="staff-img">
+            <!-- Science Lab Technician -->
+            <div class="staff-card" data-department="laboratory" onclick="openModal('lab-technician')">
+                <div class="staff-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346276/ALEX_lkekjl.jpg" alt="MR. NATURINDA ALEX" class="staff-image">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR. NATURINDA ALEX</h3>
+                    <p class="staff-title">TECHNICIAN (HEAD)</p>
+                    <span class="staff-department">SCIENCE LAB</span>
+                </div>
+            </div>
+
+            <!-- Computer Lab Technician -->
+            <div class="staff-card" data-department="laboratory" onclick="openModal('computer-technician')">
+                <div class="staff-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346320/DAN_yimm5n.jpg" alt="MR. GUMISIRIZA DANIEL" class="staff-image">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MR. GUMISIRIZA DANIEL</h3>
+                    <p class="staff-title">TECHNICIAN</p>
+                    <span class="staff-department">COMPUTER LAB</span>
+                </div>
+            </div>
+
+            <!-- Head Librarian -->
+            <div class="staff-card" data-department="library" onclick="openModal('head-librarian')">
+                <div class="staff-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346433/MOREEN_20250728_170249_497_dhxrah.jpg" alt="MS. KABAJURIZI MOREEN" class="staff-image">
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">MS. KABAJURIZI MOREEN</h3>
+                    <p class="staff-title">HEAD OF LIBRARY</p>
+                    <span class="staff-department">LIBRARIAN</span>
+                </div>
+            </div>
+
+            <!-- Assistant Librarian -->
+            <div class="staff-card" data-department="library" onclick="openModal('assistant-librarian')">
+                <div class="staff-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346469/PERAN_phcfhr.jpg" alt="MS. NATUKUNDA PERAN KOZI" class="staff-image">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MS. NATUKUNDA PERAN KOZI</h3>
-                    <p class="staff-title"> DEPT.LIBRARY</p>
-                    <p class="staff-department">LIBRARIAN</p>
+                    <p class="staff-title">DEPARTMENT LIBRARY</p>
+                    <span class="staff-department">LIBRARIAN</span>
                 </div>
             </div>
-            
-            <!-- Receptionist -->
-            <div class="staff-card" onclick="openModal('receptionist')">
-                <div class="staff-img-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346446/nurse_rbdxdt.jpg" alt="Receptionist" class="staff-img">
+
+            <!-- Nurse -->
+            <div class="staff-card" data-department="health" onclick="openModal('nurse')">
+                <div class="staff-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346446/nurse_rbdxdt.jpg" alt="MIS. NASSUNA ESTHER CISSY" class="staff-image">
                 </div>
                 <div class="staff-info">
                     <h3 class="staff-name">MIS. NASSUNA ESTHER CISSY</h3>
-                    <p class="staff-title">Health Worker </p>
-                    <p class="staff-department">ENROLLED NURSE</p>
+                    <p class="staff-title">HEALTH WORKER</p>
+                    <span class="staff-department">ENROLLED NURSE</span>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Modal -->
+
+    <!-- ===== MODAL ===== -->
     <div class="modal" id="staffModal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
             <div class="modal-header">
-                <img id="modalStaffImg" src="" alt="Staff Photo">
-                <div class="modal-header-overlay">
-                    <h2 class="modal-name" id="modalStaffName"></h2>
-                    <p class="modal-title" id="modalStaffTitle"></p>
-                </div>
+                <img id="modalStaffImg" src="" alt="Staff">
+                <h2 class="modal-name" id="modalStaffName"></h2>
+                <p class="modal-title" id="modalStaffTitle"></p>
+                <span class="modal-department" id="modalStaffDepartment"></span>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
-                    <h3>Professional Information</h3>
-                    <p id="modalStaffDepartment"></p>
+                    <h3><i class="fas fa-briefcase"></i> Professional Information</h3>
                     <p id="modalStaffExperience"></p>
                 </div>
-                
                 <div class="modal-section">
-                    <h3>Responsibilities</h3>
-                    <p class="modal-bio" id="modalStaffResponsibilities"></p>
+                    <h3><i class="fas fa-tasks"></i> Responsibilities</h3>
+                    <p class="modal-responsibilities" id="modalStaffResponsibilities"></p>
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="welfare.html">Welfare</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> P.O. Box 521, Mbarara, Uganda</p>
+                <p><i class="fas fa-phone"></i> +256 782 096231</p>
+                <p><i class="fas fa-phone"></i> +256 782 371824</p>
+                <p><i class="fas fa-phone"></i> +256 779 927775</p>
+                <p><i class="fas fa-envelope"></i> mabss2014@gmail.com</p>
+
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>School Hours</h3>
+                <p><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p><i class="fas fa-clock"></i> Saturday: 8:00 AM - 4:00 PM</p>
+                <p><i class="fas fa-clock"></i> Sunday: Closed (Boarders only)</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p>Powered by <strong>Amwine Frankline / CodeMatrix</strong></p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
     <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            hamburger.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
         // Staff data
         const nonTeachingStaffData = {
-            'office-manager': {
-                name: 'John Doe',
-                title: 'Office Manager',
-                department: 'Administration Department',
-                experience: '9 years of administrative experience in educational institutions',
-                responsibilities: 'Oversees daily office operations, manages administrative staff, coordinates school events, and serves as liaison between staff and school administration. Handles complex scheduling and ensures efficient office workflows.',
-                
-                image: 'https://via.placeholder.com/150'
+            'intelligence': {
+                name: 'SGT. TOO-LIT D LUKE',
+                title: 'School Intelligence Officer',
+                department: 'Intelligence Department',
+                experience: 'Experienced intelligence officer responsible for school security and intelligence operations.',
+                responsibilities: 'Oversees school security operations, conducts intelligence gathering, manages security personnel, ensures safety of students and staff, and coordinates with external security agencies.',
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346396/IO_gzupcl.jpg'
             },
-            'admin-assistant': {
-                name: 'Jane Smith',
-                title: 'Administrative Assistant',
-                department: 'Administration Department',
-                experience: '5 years of experience in school administration',
-                responsibilities: 'Provides comprehensive administrative support including document preparation, record keeping, and correspondence management. Handles student records, assists with admissions processes, and supports front office operations.',
-                image: 'https://via.placeholder.com/150'
-            },
-            'it-specialist': {
-                name: 'Mike Johnson',
-                title: 'IT Specialist',
-                department: 'IT Support Department',
-                experience: '7 years of IT experience in educational settings',
-                responsibilities: 'Manages school network infrastructure, provides technical support to staff, maintains computer labs, and ensures smooth operation of all school technology systems. Conducts staff training on educational software.',
-                phone: '+256 782 345678',
-                email: 'm.johnson@mabss.edu.ug',
-                office: 'IT Office, Academic Block',
-                image: 'https://via.placeholder.com/150'
-            },
-            'maintenance': {
-                name: 'Robert Brown',
-                title: 'Maintenance Supervisor',
-                department: 'Facilities Department',
-                experience: '12 years of facilities management experience',
-                responsibilities: 'Oversees all school maintenance operations including buildings, grounds, and equipment. Manages maintenance staff, coordinates repairs, and ensures school facilities meet safety and operational standards.',
-                phone: '+256 782 456789',
-                email: 'r.brown@mabss.edu.ug',
-                office: 'Maintenance Office, Behind Dormitories',
-                image: 'https://via.placeholder.com/150'
-            },
-            'accountant': {
-                name: 'Sarah Williams',
-                title: 'Accountant',
+            'bursar': {
+                name: 'MR. MURUHURA EDWARD',
+                title: 'Bursar',
                 department: 'Finance Department',
-                experience: '10 years of accounting experience in schools',
-                responsibilities: 'Manages school finances including budgeting, payroll, and financial reporting. Handles fee collections, processes invoices, and ensures compliance with financial regulations. Provides financial analysis to school management.',
-                phone: '+256 782 567890',
-                email: 's.williams@mabss.edu.ug',
-                office: 'Accounts Office, Administration Block',
-                image: 'https://via.placeholder.com/150'
+                experience: 'Experienced financial manager with expertise in school financial operations.',
+                responsibilities: 'Manages school finances including budgeting, fee collection, payroll processing, financial reporting, and ensuring compliance with financial regulations.',
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345622/ursar_eu8ean.jpg'
             },
-            'receptionist': {
-                name: 'Emily Davis',
-                title: 'Receptionist',
+            'secretary': {
+                name: 'MS. ATWETA DEBORAH',
+                title: 'Secretary',
                 department: 'Administration Department',
-                experience: '6 years of front office experience',
-                responsibilities: 'Manages school reception area, handles incoming calls and visitors, provides information to parents and students, and performs general clerical duties. Serves as the first point of contact for the school.',
-                phone: '+256 782 678901',
-                email: 'e.davis@mabss.edu.ug',
-                office: 'Main Reception, Administration Block',
-                image: 'https://via.placeholder.com/150'
+                experience: 'Experienced administrative professional skilled in office management and communication.',
+                responsibilities: 'Handles correspondence, manages schedules, maintains records, coordinates meetings, assists visitors, and provides administrative support to school leadership.',
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346413/KHASIKYE_2_zzms1y.jpg'
+            },
+            'lab-technician': {
+                name: 'MR. NATURINDA ALEX',
+                title: 'Head Science Lab Technician',
+                department: 'Science Laboratory',
+                experience: 'Experienced laboratory technician with expertise in science lab operations.',
+                responsibilities: 'Manages science laboratory operations, prepares experiments, maintains equipment, ensures safety protocols, and assists teachers and students during practical sessions.',
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346276/ALEX_lkekjl.jpg'
+            },
+            'computer-technician': {
+                name: 'MR. GUMISIRIZA DANIEL',
+                title: 'Computer Lab Technician',
+                department: 'Computer Laboratory',
+                experience: 'Skilled IT professional with expertise in computer systems and network management.',
+                responsibilities: 'Maintains computer lab equipment, provides technical support, manages software installations, assists with ICT lessons, and ensures network connectivity.',
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346320/DAN_yimm5n.jpg'
+            },
+            'head-librarian': {
+                name: 'MS. KABAJURIZI MOREEN',
+                title: 'Head Librarian',
+                department: 'Library Department',
+                experience: 'Experienced librarian dedicated to promoting reading and research skills.',
+                responsibilities: 'Manages library operations, organizes resources, assists students with research, promotes reading culture, and maintains library collections.',
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346433/MOREEN_20250728_170249_497_dhxrah.jpg'
+            },
+            'assistant-librarian': {
+                name: 'MS. NATUKUNDA PERAN KOZI',
+                title: 'Assistant Librarian',
+                department: 'Library Department',
+                experience: 'Dedicated library professional committed to supporting student learning.',
+                responsibilities: 'Assists with library operations, helps students locate resources, manages book lending, maintains library records, and supports reading programs.',
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346469/PERAN_phcfhr.jpg'
+            },
+            'nurse': {
+                name: 'MIS. NASSUNA ESTHER CISSY',
+                title: 'School Nurse',
+                department: 'Health Services',
+                experience: 'Qualified enrolled nurse with experience in school health services.',
+                responsibilities: 'Provides first aid and medical care, manages health records, conducts health education, administers medications, and coordinates with healthcare providers.',
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346446/nurse_rbdxdt.jpg'
             }
         };
-        
+
         // Modal functions
         function openModal(staffId) {
             const staff = nonTeachingStaffData[staffId];
             if (!staff) return;
-            
+
             document.getElementById('modalStaffImg').src = staff.image;
             document.getElementById('modalStaffName').textContent = staff.name;
             document.getElementById('modalStaffTitle').textContent = staff.title;
             document.getElementById('modalStaffDepartment').textContent = staff.department;
             document.getElementById('modalStaffExperience').textContent = staff.experience;
             document.getElementById('modalStaffResponsibilities').textContent = staff.responsibilities;
-            document.getElementById('modalStaffPhone').textContent = staff.phone;
-            document.getElementById('modalStaffEmail').textContent = staff.email;
-            document.getElementById('modalStaffOffice').textContent = staff.office;
-            
+
             const modal = document.getElementById('staffModal');
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
+
         function closeModal() {
             const modal = document.getElementById('staffModal');
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        
-        // Close modal when clicking outside content
+
+        // Close modal when clicking outside
         window.addEventListener('click', (e) => {
             const modal = document.getElementById('staffModal');
             if (e.target === modal) {
                 closeModal();
             }
         });
-        
+
         // Close modal with ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
+
 </html>
-
-
-
