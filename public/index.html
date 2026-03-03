@@ -1044,136 +1044,6 @@
             font-size: 0.95rem;
         }
 
-        /* ===== IMPROVED TOAST NOTIFICATION FOR ALL DEVICES ===== */
-        .toast-container {
-            position: fixed;
-            z-index: 10000;
-            bottom: 30px;
-            right: 30px;
-            left: auto;
-            height: auto;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-end;
-            pointer-events: none;
-        }
-
-        .toast {
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            padding: 1.5rem;
-            width: 360px;
-            position: relative;
-            transform: translateX(0) translateY(20px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: all;
-            border-left: 4px solid #d4af37;
-            margin-bottom: 20px;
-        }
-
-        .toast.visible {
-            transform: translateX(0) translateY(0);
-            opacity: 1;
-        }
-
-        .toast-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .toast-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .toast-title {
-            color: var(--primary-navy);
-            font-weight: 700;
-            font-size: 1.1rem;
-            line-height: 1.4;
-        }
-
-        .toast-message {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.5;
-        }
-
-        .toast-actions {
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .toast-btn {
-            padding: 0.8rem 1.2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-        }
-
-        .btn-download {
-            background: linear-gradient(135deg, #d4af37, #f7d154);
-            color: var(--primary-navy);
-        }
-
-        .btn-download:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-close {
-            background: #f1f5f9;
-            color: #64748b;
-        }
-
-        .btn-close:hover {
-            background: #e2e8f0;
-        }
-
-        .toast-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #f1f5f9;
-            border: none;
-            color: #64748b;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.2s ease;
-        }
-
-        .toast-close:hover {
-            background: #e2e8f0;
-            color: #475569;
-        }
-
         /* ===== IMPROVED RESPONSIVE STYLES ===== */
       @media (max-width: 900px) {
             .nav-links {
@@ -1217,18 +1087,6 @@
             }
             .apply-container h2 {
                 font-size: 2.2rem;
-            }
-            
-            .toast-container {
-                bottom: 20px;
-                right: 20px;
-                left: 20px;
-                justify-content: center;
-            }
-            .toast {
-                width: 100%;
-                max-width: 400px;
-                margin: 0 auto;
             }
             
             .hero {
@@ -1276,35 +1134,6 @@
             .counter-container {
                 flex-direction: column;
                 gap: 2rem;
-            }
-            
-            .toast-container {
-                bottom: 15px;
-                right: 15px;
-                left: 15px;
-            }
-            
-            .toast {
-                padding: 1.2rem;
-            }
-            
-            .toast-header {
-                gap: 0.8rem;
-            }
-            
-            .toast-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
-            .toast-title {
-                font-size: 1rem;
-            }
-            
-            .toast-actions {
-                flex-direction: column;
-                gap: 0.5rem;
             }
         }
 
@@ -1840,23 +1669,6 @@
         </div>
     </footer>
 
-    <!-- ===== IMPROVED TOAST NOTIFICATION ===== -->
-    <div class="toast-container">
-        <div class="toast" id="admissionToast">
-            <button class="toast-close" id="toastClose">×</button>
-            <div class="toast-header">
-                <div class="toast-icon">📘</div>
-                <div class="toast-title">2026 Admissions Now Open<br><span style="font-size: 0.9rem; color: #666;">S.1,
-                        S.2, S.3 & S.5</span></div>
-            </div>
-            <p class="toast-message">Secure your spot at MABSS. Download the admission leaflet for more information.</p>
-            <div class="toast-actions">
-                <a href="leaflet/index.html" class="toast-btn btn-download" target="_blank">View Leaflet</a>
-                <button class="toast-btn btn-close" id="closeBtn">Close</button>
-            </div>
-        </div>
-    </div>
-
     <!-- ===== SCRIPTS ===== -->
     <script>
         // Load latest news
@@ -2031,46 +1843,6 @@
             observer.observe(counterSection);
         }
 
-        // Toast Notification
-        class ToastNotification {
-            constructor() {
-                this.toast = document.getElementById('admissionToast');
-                this.closeBtn = document.getElementById('closeBtn');
-                this.toastClose = document.getElementById('toastClose');
-                this.isVisible = false;
-                this.hasBeenClosed = false;
-
-                if (!this.toast) return;
-
-                const toastClosed = sessionStorage.getItem('toastClosed');
-                if (toastClosed) {
-                    this.hasBeenClosed = true;
-                }
-
-                this.init();
-            }
-
-            init() {
-                setTimeout(() => this.show(), 2000);
-                this.closeBtn?.addEventListener('click', () => this.hide());
-                this.toastClose?.addEventListener('click', () => this.hide());
-            }
-
-            show() {
-                if (this.isVisible || this.hasBeenClosed || !this.toast) return;
-                this.toast.classList.add('visible');
-                this.isVisible = true;
-                setTimeout(() => this.hide(), 10000);
-            }
-
-            hide() {
-                if (!this.isVisible || !this.toast) return;
-                this.toast.classList.remove('visible');
-                this.isVisible = false;
-                this.hasBeenClosed = true;
-                sessionStorage.setItem('toastClosed', 'true');
-            }
-        }
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', () => {
