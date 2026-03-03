@@ -1,656 +1,1221 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-UG">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
-        type="image/x-icon">
-    <title>Mbarara Army Boarding SS - Student Welfare</title>
+
+    <!-- Meta Tags -->
+    <meta name="author" content="Amwine Frankline / CodeMatrix">
+    <meta name="description" content="Mbarara Army Boarding Secondary School - Student Welfare services including boarding facilities, health services, counseling, and support for holistic student development.">
+    <meta name="keywords" content="MABSS, student welfare, boarding facilities, health services, counseling, child protection">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MABSS - Student Welfare Services">
+    <meta property="og:description" content="Ensuring the well-being and holistic development of every student at Mbarara Army Boarding Secondary School">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mabss.ac.ug/welfare.html">
+    <meta property="og:image" content="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345214/font_okmvgv.jpg">
+    <meta property="og:site_name" content="Mbarara Army Boarding Secondary School">
+
+    <title>MABSS - Student Welfare</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        /* ===== RESET & VARIABLES ===== */
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
-        body.here {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-            padding-top: 80px;
-            /* Space for fixed header */
+        :root {
+            --primary-navy: #0b2c4d;
+            --primary-blue: #1a4fa3;
+            --accent-green: #2e8b57;
+            --accent-red: #d62828;
+            --sky-blue: #4da8da;
+            --text-dark: #333;
+            --text-light: #555;
+            --bg-light: #f5f7fb;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 20, 30, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --navbar-green: #0e7704;
         }
 
-        /* Navigation Bar */
-        .header {
-            background-color: #0e7704;
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            position: fixed;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== STICKY NAVBAR (MATCHING MATERIALS.HTML) ===== */
+        .navbar {
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
             width: 100%;
+            background: var(--navbar-green);
+            box-shadow: var(--shadow);
+            z-index: 1200;
         }
 
-        .header-container {
+        .nav-container {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 1rem;
-            flex-wrap: wrap;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
+            padding: 0.7rem 2rem;
         }
 
         .logo {
-            height: 60px;
-            width: 60px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid white;
-            margin-right: 1rem;
+            height: 88px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
-        .school-name {
-            margin: 0;
-            font-size: 1.2rem;
+        .logo img {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
             white-space: nowrap;
         }
 
-        nav {
-            display: none;
-            /* Hidden by default on mobile */
-            width: 100%;
-        }
-
-        .nav-list {
+        .nav-links {
             display: flex;
-            list-style: none;
+            align-items: center;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-end;
         }
 
-        .nav-item {
-            margin: 0.5rem;
-        }
-
-        .nav-link {
-            color: white;
+        .nav-links a {
             text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.25s ease;
+            padding: 0.4rem 0;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #02f7ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2.5px;
+            background: #ffffff;
+            transition: width 0.3s ease;
             border-radius: 4px;
-            display: block;
         }
 
-        .menu-toggle {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: block;
-        }
-
-        /* Hero Section */
-        #welfare-hero {
-            position: relative;
-            height: 500px;
-            overflow: hidden;
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345214/font_okmvgv.jpg');
-            background-size: cover;
-            background-position: center to top;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            text-align: center;
+        .apply-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.25);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1300;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--primary-blue);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--primary-blue);
+        }
+
+        /* ===== RESPONSIVE NAVBAR ===== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .apply-btn {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-container {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .logo span {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 70px;
+                gap: 8px;
+            }
+            
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo span {
+                font-size: 2.4rem;
+            }
+            
+            .nav-container {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo span {
+                font-size: 2.2rem;
+            }
+            
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
             height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.8rem;
+            transition: right 0.35s ease-in-out;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .mobile-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--navbar-green);
+        }
+
+        .mobile-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #1f2a44;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 14px 10px;
+            border-radius: 14px;
+            transition: 0.2s;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-menu a i {
+            width: 28px;
+            color: var(--navbar-green);
+            font-size: 1.3rem;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu a:hover i,
+        .mobile-menu a.active i {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu .apply-btn {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            font-size: 1.1rem;
+            background-color: var(--navbar-green);
+            color: white;
+        }
+
+        .mobile-menu .apply-btn i {
+            color: white;
+        }
+
+        .mobile-menu .apply-btn:hover {
+            background-color: #0a5a03;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 44, 77, 0.5);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1300;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 1rem;
+            text-align: center;
+            color: var(--white);
+            padding: 3rem 1rem;
+            width: 100%;
+            overflow: hidden;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345214/font_okmvgv.jpg');
+            background-size: cover;
+            background-position: center 20%;
+            background-repeat: no-repeat;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 2;
+            position: relative;
         }
 
         .hero-content h1 {
-            font-size: 2rem;
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.5px;
         }
 
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        /* Welfare Services */
-        .welfare-section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .container {
+            max-width: 1300px;
             margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #006341;
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
         }
 
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ===== WELFARE SERVICES GRID ===== */
         .services-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .service-card {
-            background-color: white;
-            border-radius: 8px;
+            background: var(--white);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--sky-blue);
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
         }
 
         .service-card.green {
-            background-color: rgb(13, 184, 70);
-            color: #f0f0f0;
+            border-left-color: var(--accent-green);
         }
 
-        .service-content {
+        .service-card.green .service-icon {
+            background: var(--accent-green);
+        }
+
+        .service-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
             padding: 1.5rem;
-        }
-
-        .service-content h3 {
-            color: #006341;
             display: flex;
             align-items: center;
-            margin-top: 0;
+            gap: 1rem;
         }
 
         .service-number {
-            background-color: #006341;
-            color: white;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 1rem;
+            font-weight: 700;
+            font-size: 1.5rem;
         }
 
-        .service-card.green h3 {
-            color: white;
+        .service-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
         }
 
-        .service-card.green .service-number {
-            background-color: white;
-            color: #006341;
+        .service-content {
+            padding: 2rem;
         }
 
-        /* Welfare Team */
-        .team-section {
-            background-color: #f0f0f0;
-            padding: 2rem 1rem;
-        }
-
-        .team-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .team-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .team-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 3px solid #006341;
-            object-position: center top;
-        }
-
-        .team-card h3 {
-            margin: 0;
-            color: #006341;
-        }
-
-        .team-card p.position {
-            font-weight: bold;
-            margin: 0.5rem 0;
-        }
-
-        /* Policies Section */
-        .policies-section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .policies-container {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .policy-item {
+        .service-content p {
+            color: var(--text-light);
             margin-bottom: 1.5rem;
+            font-weight: 500;
         }
 
-        .policy-item h3 {
-            color: #006341;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #004d33;
-            color: white;
-            padding: 2rem 1rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .footer-section {
-            min-width: 250px;
-        }
-
-        .footer-heading {
-            border-bottom: 2px solid #006341;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-list {
+        .service-list {
             list-style: none;
             padding: 0;
         }
 
-        .footer-item {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-link {
-            color: white;
-            text-decoration: none;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #006341;
-        }
-
-        .social-media {
-            margin-top: 1.5rem;
-        }
-
-        .social-heading {
-            font-size: 1.2rem;
+        .service-list li {
             margin-bottom: 1rem;
-            color: #fff;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--text-light);
+        }
+
+        .service-list li i {
+            color: var(--accent-green);
+            font-size: 1.1rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* ===== POLICIES SECTION ===== */
+        .policies-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 4rem 2rem;
+        }
+
+        .policies-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .policies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .policy-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-red);
+            height: 100%;
+        }
+
+        .policy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .policy-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+
+        .policy-card h3 {
+            color: var(--primary-navy);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .policy-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--text-light);
+        }
+
+        .policy-list li i {
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            padding: 4rem 2rem;
+            background: var(--white);
+        }
+
+        .contact-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(26, 79, 163, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        .submit-btn:hover {
+            background: #0e3a7a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #004d33;
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--sky-blue);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section p i {
+            color: var(--sky-blue);
+            width: 20px;
         }
 
         .social-icons {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
         }
 
         .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 45px;
             height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
             text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
         .social-icon:hover {
             transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .social-icon.facebook:hover {
-            background-color: #3b5998;
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
         }
 
-        .social-icon.twitter:hover {
-            background-color: #1da1f2;
-        }
-
-        .social-icon.youtube:hover {
-            background-color: #ff0000;
-        }
-
-        .social-icon.pinterest:hover {
-            background-color: #bd081c;
-        }
-
-        .social-icon.instagram:hover {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-
-        .social-icon.whatsapp:hover {
-            background-color: #25d366;
-        }
-
-        .social-icon.linkedin:hover {
-            background-color: #0077b5;
-        }
-
-        /*for mobile phones*/
-        @media(max-width:767px) {
-            #welfare-hero {
-                background-position: center 30%;
-            }
-
-        }
-
-        /*for desktop*/
-        @media(min-width:768px) {
-            #welfare-hero {
-                background-position: center 20%;
-            }
-        }
-
-        /* Responsive Adjustments */
-        @media (min-width: 768px) {
-            .menu-toggle {
-                display: none;
-            }
-
-            nav {
-                display: block;
-                width: auto;
-            }
-
-            .nav-list {
-                flex-wrap: nowrap;
-            }
-
-            #welfare-hero {
-                height: 400px;
-            }
-
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .school-name {
-                font-size: 1.5rem;
+            .hero {
+                background-position: center 30%;
             }
         }
 
-        @media (min-width: 992px) {
-            .team-grid {
-                grid-template-columns: repeat(3, 1fr);
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 1.5rem;
             }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
 
-            .footer-container {
-                grid-template-columns: repeat(3, 1fr);
+        @media (max-width: 480px) {
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .policy-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Mobile background position adjustment */
+        @media (max-width: 767px) {
+            .hero {
+                background-position: center 30%;
             }
         }
     </style>
 </head>
 
-<body class="here">
-    <!-- Navigation Bar -->
-    <div class="header">
-        <div class="header-container">
-            <div class="logo-container">
-                <a href="index.html" style="text-decoration:none"><img
-                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
-                        alt="logo mabss" class="logo"></a>
-                <h1 class="school-name">Mbarara Army Boarding<br> Secondary School</h1>
+<body>
+
+    <!-- ===== MODERN NAVBAR (MATCHING MATERIALS.HTML) ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS Logo">
+                <span>MABSS</span>
             </div>
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-            <nav id="mainNav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="materials.html" class="nav-link">Academics</a></li>
-                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
-                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
-                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
-                </ul>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="materials.html">Academics</a>
+                <a href="sports.html">Co-curricular</a>
+                <a href="services.html">Services</a>
+                <a href="welfare.html" class="active">Welfare</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contacts.html">Contact</a>
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
             </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
+    </header>
+
+    <!-- Mobile Menu (matching materials.html) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-header">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
+            <h3>Mbarara Army<br>Boarding SS</h3>
+        </div>
+
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="materials.html"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
+        <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+        <a href="welfare.html" class="active"><i class="fas fa-heart"></i> Welfare</a>
+        <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+        <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
     </div>
 
-    <!-- Welfare Hero Section -->
-    <section id="welfare-hero">
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
         <div class="hero-content">
-            <div>
-                <h1>Services offered</h1>
-                <p>Ensuring the well-being and holistic development of every student</p>
-            </div>
+            <span class="hero-badge"><i class="fas fa-heart"></i> STUDENT WELFARE</span>
+            <h1>Services Offered</h1>
+            <p>Ensuring the well-being and holistic development of every student</p>
         </div>
     </section>
 
-    <!-- Welfare Services -->
-    <section class="welfare-section">
+    <!-- ===== WELFARE SERVICES ===== -->
+    <section class="container">
         <h2 class="section-title">Our Welfare Services</h2>
+        <p class="section-subtitle">Comprehensive support systems designed to nurture and protect our students</p>
 
         <div class="services-grid">
+            <!-- Boarding Facilities -->
             <div class="service-card">
+                <div class="service-header">
+                    <span class="service-number">1</span>
+                    <h3>Boarding Facilities</h3>
+                </div>
                 <div class="service-content">
-                    <h3>
-                        <span class="service-number">1</span>
-                        Boarding Facilities
-                    </h3>
                     <p>We provide comfortable and secure boarding facilities with:</p>
-                    <ul>
-                        <li>Spacious dormitories with bunk beds</li>
-                        <li>24/7 security and supervision beefed up by security cameras</li>
-                        <li>Regular dormitory inspections for cleanliness</li>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check-circle"></i> Spacious dormitories with bunk beds</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 security and supervision with security cameras</li>
+                        <li><i class="fas fa-check-circle"></i> Regular dormitory inspections for cleanliness</li>
+                        <li><i class="fas fa-check-circle"></i> Clean water and sanitation facilities</li>
+                        <li><i class="fas fa-check-circle"></i> Balanced meals provided by professional caterers</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="service-card">
+            <!-- Health Services -->
+            <div class="service-card green">
+                <div class="service-header">
+                    <span class="service-number">2</span>
+                    <h3>Health Services</h3>
+                </div>
                 <div class="service-content">
-                    <h3>
-                        <span class="service-number">2</span>
-                        Health Services
-                    </h3>
                     <p>Our health services include:</p>
-                    <ul>
-                        <li>Fully equipped school clinic</li>
-                        <li>Three qualified nurses on duty 24/7</li>
-                        <li>Partnership with 2DIV Military Hospital</li>
-                        <li>Regular health check-ups & Pregnancy tests</li>
-                        <li>Health education programs, Regular Seniorman & Seniorwoman talks</li>
-                        <li>First aid training for students & staff</li>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check-circle"></i> Fully equipped school clinic</li>
+                        <li><i class="fas fa-check-circle"></i> Three qualified nurses on duty 24/7</li>
+                        <li><i class="fas fa-check-circle"></i> Partnership with 2DIV Military Hospital</li>
+                        <li><i class="fas fa-check-circle"></i> Regular health check-ups & pregnancy tests</li>
+                        <li><i class="fas fa-check-circle"></i> Health education programs and Senior Man/Woman talks</li>
+                        <li><i class="fas fa-check-circle"></i> First aid training for students & staff</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- Career Guidance & Counseling -->
             <div class="service-card">
+                <div class="service-header">
+                    <span class="service-number">3</span>
+                    <h3>Career Guidance & Counseling</h3>
+                </div>
                 <div class="service-content">
-                    <h3>
-                        <span class="service-number">3</span>
-                        Career Guidance & Counseling Services
-                    </h3>
                     <p>Our Career guidance & Counseling department offers:</p>
-                    <ul>
-                        <li>Professional school counselors</li>
-                        <li>Confidential counseling sessions</li>
-                        <li>Career guidance for individual classess </li>
-                        <li>Peer counseling programs</li>
-                        <li>Stress management services</li>
-                        <li>Drug abuse prevention programs,etc. </li>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check-circle"></i> Professional school counselors</li>
+                        <li><i class="fas fa-check-circle"></i> Confidential counseling sessions</li>
+                        <li><i class="fas fa-check-circle"></i> Career guidance for individual classes</li>
+                        <li><i class="fas fa-check-circle"></i> Peer counseling programs</li>
+                        <li><i class="fas fa-check-circle"></i> Stress management services</li>
+                        <li><i class="fas fa-check-circle"></i> Drug abuse prevention programs</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Policies -->
+    <!-- ===== WELFARE POLICIES ===== -->
     <section class="policies-section">
-        <h2 class="section-title">Welfare Policies</h2>
-
         <div class="policies-container">
-            <div class="policy-item">
-                <h3>Anti-Bullying Policy</h3>
-                <p>We maintain a zero-tolerance policy towards bullying in any form. Our anti-bullying measures include:
-                </p>
-                <ul>
-                    <li>Clear reporting procedures</li>
-                    <li>Education programs on bullying prevention</li>
-                    <li>Support systems for victims</li>
-                    <li>Restorative justice approaches</li>
-                </ul>
-            </div>
+            <h2 class="section-title">Welfare Policies</h2>
+            <p class="section-subtitle">Our commitment to student safety and well-being</p>
 
-            <div class="policy-item">
-                <h3>Child Protection Policy</h3>
-                <p>We are committed to safeguarding all students with:</p>
-                <ul>
-                    <li>Rigorous staff vetting procedures</li>
-                    <li>Mandatory child protection training for all staff</li>
-                    <li>Clear guidelines for staff-student interactions</li>
-                    <li>Confidential reporting mechanisms</li>
-                </ul>
-            </div>
+            <div class="policies-grid">
+                <!-- Anti-Bullying Policy -->
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Anti-Bullying Policy</h3>
+                    <p>We maintain a zero-tolerance policy towards bullying in any form. Our anti-bullying measures include:</p>
+                    <ul class="policy-list">
+                        <li><i class="fas fa-chevron-right"></i> Clear reporting procedures</li>
+                        <li><i class="fas fa-chevron-right"></i> Education programs on bullying prevention</li>
+                        <li><i class="fas fa-chevron-right"></i> Support systems for victims</li>
+                        <li><i class="fas fa-chevron-right"></i> Restorative justice approaches</li>
+                    </ul>
+                </div>
 
-            <div class="policy-item">
-                <h3>Discipline Policy</h3>
-                <p>Our discipline system focuses on positive behavior reinforcement with:</p>
-                <ul>
-                    <li>Clear code of conduct</li>
-                    <li>Progressive discipline approach</li>
-                    <li>Opportunities for behavior improvement</li>
-                    <li>Parental involvement in serious cases</li>
-                </ul>
+                <!-- Child Protection Policy -->
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Child Protection Policy</h3>
+                    <p>We are committed to safeguarding all students with:</p>
+                    <ul class="policy-list">
+                        <li><i class="fas fa-chevron-right"></i> Rigorous staff vetting procedures</li>
+                        <li><i class="fas fa-chevron-right"></i> Mandatory child protection training for all staff</li>
+                        <li><i class="fas fa-chevron-right"></i> Clear guidelines for staff-student interactions</li>
+                        <li><i class="fas fa-chevron-right"></i> Confidential reporting mechanisms</li>
+                    </ul>
+                </div>
+
+                <!-- Discipline Policy -->
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Discipline Policy</h3>
+                    <p>Our discipline system focuses on positive behavior reinforcement with:</p>
+                    <ul class="policy-list">
+                        <li><i class="fas fa-chevron-right"></i> Clear code of conduct</li>
+                        <li><i class="fas fa-chevron-right"></i> Progressive discipline approach</li>
+                        <li><i class="fas fa-chevron-right"></i> Opportunities for behavior improvement</li>
+                        <li><i class="fas fa-chevron-right"></i> Parental involvement in serious cases</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3 class="footer-heading">Quick Links</h3>
-                <ul class="footer-list">
-                    <li class="footer-item"><a href="materials.html" class="footer-link">Academics</a></li>
-                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
-                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
-                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
-                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
-                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">Contact Us</h3>
-                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
-                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
-                <p><strong>Email:</strong> mabss2014@gmail.com</p>
+    <!-- ===== CONTACT WELFARE TEAM ===== -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Welfare Department</h3>
+                <p style="margin-bottom: 2rem; opacity: 0.9;">Our dedicated welfare team is always available to support students and parents. Reach out to us for any concerns or assistance.</p>
+                
+                <div class="contact-detail">
+                    <i class="fas fa-user"></i>
+                    <div>
+                        <strong>Head of Welfare</strong><br>
+                        Mr. 
+                    </div>
+                </div>
 
-                <!-- Social Media Icons -->
-                <div class="social-media">
-                    <h4 class="social-heading">Follow Us</h4>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
-                            class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2025" class="social-icon twitter" target="_blank"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2004" class="social-icon youtube" target="_blank"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i
-                                class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
-                            class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
-                            target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <div class="contact-detail">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Phone</strong><br>
+                        +256 782 096231
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        welfare@mabss.ac.ug
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Office Hours</strong><br>
+                        Mon - Fri: 8:00 AM - 5:00 PM<br>
+                        Saturday: 9:00 AM - 1:00 PM
                     </div>
                 </div>
             </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">School Hours</h3>
-                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
-                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
-                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+
+            <div class="contact-form">
+                <h3 style="color: var(--primary-navy); margin-bottom: 2rem;">Send us a message</h3>
+                <form id="welfareContactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p> &copy; <span id="year"></span> Mbarara Army Boarding Secondary School. <br> All Rights Reserved. <br>
-                Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="welfare.html">Welfare</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> P.O. Box 521, Mbarara, Uganda</p>
+                <p><i class="fas fa-phone"></i> +256 782 096231</p>
+                <p><i class="fas fa-phone"></i> +256 782 371824</p>
+                <p><i class="fas fa-phone"></i> +256 779 927775</p>
+                <p><i class="fas fa-envelope"></i> mabss2014@gmail.com</p>
+
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>School Hours</h3>
+                <p><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p><i class="fas fa-clock"></i> Saturday: 8:00 AM - 4:00 PM</p>
+                <p><i class="fas fa-clock"></i> Sunday: Closed (Boarders only)</p>
+            </div>
         </div>
 
-        <script>
-            document.getElementById("year").textContent = new Date().getFullYear();
-        </script>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p>Powered by <strong>Amwine Frankline / CodeMatrix</strong></p>
+        </div>
     </footer>
 
-
+    <!-- ===== SCRIPTS ===== -->
     <script>
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function () {
-            const nav = document.getElementById('mainNav');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            hamburger.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Form submission handler
+        document.getElementById('welfareContactForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message. Our welfare team will respond shortly.');
+            this.reset();
         });
     </script>
 </body>
