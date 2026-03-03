@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     
     <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -67,6 +67,8 @@
             color: var(--text-dark);
             overflow-x: hidden;
             line-height: 1.6;
+            width: 100%;
+            position: relative;
         }
 
         /* ===== STICKY NAVBAR (MATCHING MATERIALS.HTML) ===== */
@@ -211,7 +213,7 @@
             background: var(--primary-blue);
         }
 
-        /* ===== RESPONSIVE NAVBAR ===== */
+        /* ===== IMPROVED RESPONSIVE NAVBAR ===== */
         @media (max-width: 1024px) {
             .nav-links {
                 gap: 1rem;
@@ -237,17 +239,17 @@
             }
             
             .nav-container {
-                padding: 0.7rem 1.5rem;
+                padding: 0.7rem 1rem;
             }
             
             .logo span {
-                font-size: 2.8rem;
+                font-size: 2rem;
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .logo {
-                height: 70px;
+                height: auto;
                 gap: 8px;
             }
             
@@ -257,34 +259,72 @@
             }
             
             .logo span {
-                font-size: 2.4rem;
+                font-size: 1.5rem;
             }
             
             .nav-container {
-                padding: 0.5rem 1rem;
+                padding: 0.5rem 0.8rem;
+            }
+            
+            .hamburger {
+                width: 28px;
+                height: 20px;
             }
         }
 
-        @media (max-width: 360px) {
+        @media (max-width: 400px) {
             .logo span {
-                font-size: 2.2rem;
+                font-size: 1.2rem;
             }
             
             .logo img {
                 width: 50px;
                 height: 50px;
             }
+            
+            .hamburger {
+                width: 25px;
+                height: 18px;
+            }
+            
+            .hamburger span {
+                height: 2.5px;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        @media (max-width: 320px) {
+            .logo span {
+                font-size: 1rem;
+            }
+            
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .logo {
+                gap: 5px;
+            }
         }
 
         .mobile-menu {
             position: fixed;
             top: 0;
-            right: -320px;
-            width: 280px;
+            right: -100%;
+            width: 85%;
+            max-width: 320px;
             height: 100%;
             background: var(--white);
             box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
-            padding: 2rem 1.8rem;
+            padding: 2rem 1.5rem;
             transition: right 0.35s ease-in-out;
             z-index: 1400;
             display: flex;
@@ -300,7 +340,7 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             border-bottom: 1px solid #eef2f6;
             padding-bottom: 20px;
         }
@@ -310,34 +350,37 @@
             height: 48px;
             border-radius: 50%;
             border: 2px solid var(--navbar-green);
+            flex-shrink: 0;
         }
 
         .mobile-header h3 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary-navy);
-            line-height: 1.2;
+            line-height: 1.3;
+            word-break: break-word;
         }
 
         .mobile-menu a {
             text-decoration: none;
             color: #1f2a44;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            padding: 14px 10px;
+            padding: 12px 10px;
             border-radius: 14px;
             transition: 0.2s;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
             gap: 14px;
         }
 
         .mobile-menu a i {
-            width: 28px;
+            width: 24px;
             color: var(--navbar-green);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             transition: color 0.2s ease;
+            flex-shrink: 0;
         }
 
         .mobile-menu a:hover,
@@ -352,11 +395,11 @@
         }
 
         .mobile-menu .apply-btn {
-            margin-top: 30px;
+            margin-top: 20px;
             width: 100%;
             text-align: center;
-            padding: 14px;
-            font-size: 1.1rem;
+            padding: 12px;
+            font-size: 1rem;
             background-color: var(--navbar-green);
             color: white;
         }
@@ -388,16 +431,16 @@
             visibility: visible;
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== IMPROVED HERO SECTION ===== */
         .hero {
             position: relative;
-            min-height: 400px;
+            min-height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--white);
-            padding: 3rem 1rem;
+            padding: 2rem 1rem;
             width: 100%;
             overflow: hidden;
             background: linear-gradient(135deg, rgba(11, 44, 77, 0.9), rgba(26, 79, 163, 0.8)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345190/of_b6iiqx.jpg');
@@ -411,65 +454,91 @@
             margin: 0 auto;
             z-index: 2;
             position: relative;
+            width: 100%;
+            padding: 0 0.5rem;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
             font-weight: 800;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: -0.5px;
+            word-break: break-word;
         }
 
         .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            margin-bottom: 0.8rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            word-break: break-word;
         }
 
         .hero-badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1rem;
             border-radius: 40px;
             font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            margin-bottom: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         /* ===== GALLERY NAVIGATION ===== */
         .gallery-nav {
             background: var(--army-green-dark);
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             position: sticky;
-            top: 106px; /* Height of navbar */
+            top: 88px;
             z-index: 1100;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 900px) {
+            .gallery-nav {
+                top: 76px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-nav {
+                top: 60px;
+                padding: 0.6rem 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .gallery-nav {
+                top: 55px;
+            }
         }
 
         .gallery-nav-container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
+            width: 100%;
         }
 
         .gallery-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.8rem;
             justify-content: center;
         }
 
         .gallery-link {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            padding: 0.6rem 1.5rem;
+            padding: 0.5rem 1.2rem;
             border-radius: 40px;
             font-weight: 500;
+            font-size: clamp(0.85rem, 3vw, 1rem);
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.1);
+            white-space: nowrap;
         }
 
         .gallery-link:hover,
@@ -478,20 +547,46 @@
             color: var(--primary-navy);
         }
 
-        /* ===== SECTION STYLES ===== */
+        @media (max-width: 500px) {
+            .gallery-buttons {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 5px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+            
+            .gallery-buttons::-webkit-scrollbar {
+                height: 3px;
+            }
+            
+            .gallery-buttons::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 10px;
+            }
+            
+            .gallery-link {
+                flex: 0 0 auto;
+            }
+        }
+
+        /* ===== IMPROVED SECTION STYLES ===== */
         .container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+            width: 100%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
             color: var(--primary-navy);
             margin-bottom: 1rem;
             position: relative;
             padding-bottom: 1rem;
+            word-break: break-word;
         }
 
         .section-title::after {
@@ -500,7 +595,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: min(80px, 30%);
             height: 4px;
             background: var(--accent-green);
             border-radius: 2px;
@@ -509,16 +604,18 @@
         .section-subtitle {
             text-align: center;
             color: var(--text-light);
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
             max-width: 800px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+            word-break: break-word;
         }
 
-        /* ===== PHOTO GALLERY ===== */
+        /* ===== IMPROVED PHOTO GALLERY ===== */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 1.5rem;
         }
 
         .gallery-item {
@@ -528,17 +625,24 @@
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             position: relative;
+            width: 100%;
         }
 
         .gallery-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
         }
 
         .gallery-image-container {
             position: relative;
             overflow: hidden;
-            height: 250px;
+            height: 200px;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-image-container {
+                height: 250px;
+            }
         }
 
         .gallery-image {
@@ -561,9 +665,20 @@
             background: linear-gradient(to top, rgba(11, 44, 77, 0.9), transparent);
             display: flex;
             align-items: flex-end;
-            padding: 1.5rem;
+            padding: 1rem;
             opacity: 0;
             transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-overlay {
+                opacity: 1;
+                background: linear-gradient(to top, rgba(11, 44, 77, 0.8), transparent);
+            }
+            
+            .gallery-caption {
+                transform: translateY(0);
+            }
         }
 
         .gallery-item:hover .gallery-overlay {
@@ -572,7 +687,7 @@
 
         .gallery-caption {
             color: var(--white);
-            font-size: 1rem;
+            font-size: 0.9rem;
             transform: translateY(20px);
             transition: transform 0.3s ease;
         }
@@ -581,16 +696,17 @@
             transform: translateY(0);
         }
 
-        /* ===== VIDEO GALLERY ===== */
+        /* ===== IMPROVED VIDEO GALLERY ===== */
         .video-section {
             background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            padding: 4rem 2rem;
+            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+            width: 100%;
         }
 
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 1.5rem;
             max-width: 1300px;
             margin: 0 auto;
         }
@@ -602,50 +718,62 @@
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             border-top: 4px solid var(--sky-blue);
+            width: 100%;
         }
 
         .video-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
         }
 
         .video-player {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
             background: #000;
         }
 
+        @media (min-width: 768px) {
+            .video-player {
+                height: 200px;
+            }
+        }
+
         .video-info {
-            padding: 1.5rem;
+            padding: 1.2rem;
         }
 
         .video-info h3 {
             color: var(--primary-navy);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            margin-bottom: 0.4rem;
+            word-break: break-word;
         }
 
         .video-info p {
             color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            word-break: break-word;
         }
 
-        /* ===== ALUMNI SECTION ===== */
+        /* ===== IMPROVED ALUMNI SECTION ===== */
         .alumni-section {
-            padding: 4rem 2rem;
+            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
             background: var(--white);
+            width: 100%;
         }
 
         .alumni-container {
             max-width: 1300px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .alumni-swiper {
-            padding: 2rem 1rem 4rem;
+            padding: 1rem 1rem 3rem;
             overflow: visible;
+            width: 100%;
         }
 
         .alumni-card {
@@ -658,21 +786,31 @@
             display: flex;
             flex-direction: column;
             border-top: 4px solid var(--accent-green);
+            width: 100%;
         }
 
         .alumni-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
         }
 
         .alumni-image-container {
-            width: 120px;
-            height: 120px;
-            margin: 2rem auto 1rem;
+            width: 100px;
+            height: 100px;
+            margin: 1.5rem auto 0.5rem;
             border-radius: 50%;
             overflow: hidden;
             border: 4px solid var(--sky-blue);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .alumni-image-container {
+                width: 120px;
+                height: 120px;
+                margin: 2rem auto 1rem;
+            }
         }
 
         .alumni-image {
@@ -687,18 +825,26 @@
         }
 
         .alumni-content {
-            padding: 0 2rem 2rem;
+            padding: 0 1.2rem 1.5rem;
             text-align: center;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
+        @media (min-width: 768px) {
+            .alumni-content {
+                padding: 0 2rem 2rem;
+            }
+        }
+
         .alumni-name {
             color: var(--primary-navy);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            margin-bottom: 0.3rem;
             font-weight: 600;
+            word-break: break-word;
+            line-height: 1.3;
         }
 
         .alumni-position {
@@ -707,44 +853,53 @@
             color: var(--white);
             padding: 0.3rem 1rem;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             align-self: center;
+            word-break: break-word;
+            max-width: 100%;
         }
 
         .alumni-desc {
             color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
             flex-grow: 1;
+            word-break: break-word;
         }
 
         .alumni-read-more {
             color: var(--primary-blue);
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             transition: all 0.3s ease;
             margin-top: auto;
+            padding: 0.3rem 0;
         }
 
         .alumni-read-more:hover {
             color: var(--primary-navy);
-            gap: 12px;
+            gap: 10px;
         }
 
-        /* Swiper Navigation */
+        .alumni-read-more i {
+            font-size: 0.8rem;
+        }
+
+        /* Swiper Navigation - Improved for mobile */
         .alumni-nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: var(--white);
             border-radius: 50%;
             display: flex;
@@ -758,6 +913,13 @@
             color: var(--primary-navy);
         }
 
+        @media (min-width: 768px) {
+            .alumni-nav-btn {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
         .alumni-nav-btn:hover {
             background: var(--primary-blue);
             color: var(--white);
@@ -765,24 +927,46 @@
         }
 
         .alumni-nav-btn.prev {
-            left: -10px;
+            left: 0;
         }
 
         .alumni-nav-btn.next {
-            right: -10px;
+            right: 0;
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 640px) {
+            .alumni-nav-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .alumni-nav-btn.prev {
+                left: -5px;
+            }
+            
+            .alumni-nav-btn.next {
+                right: -5px;
+            }
+        }
+
+        @media (max-width: 480px) {
             .alumni-nav-btn {
                 display: none;
             }
         }
 
+        .swiper-pagination {
+            position: relative;
+            margin-top: 1rem;
+        }
+
         .swiper-pagination-bullet {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background: #ccc;
             opacity: 1;
+            margin: 0 4px !important;
         }
 
         .swiper-pagination-bullet-active {
@@ -792,49 +976,70 @@
 
         .alumni-view-more {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .alumni-view-more-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 8px;
             background: linear-gradient(135deg, var(--primary-blue), var(--sky-blue));
             color: var(--white);
-            padding: 1rem 2.5rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: clamp(0.9rem, 3vw, 1rem);
             transition: all 0.3s ease;
             box-shadow: 0 6px 14px rgba(26, 79, 163, 0.3);
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 480px) {
+            .alumni-view-more-btn {
+                width: 100%;
+                padding: 0.8rem 1rem;
+            }
         }
 
         .alumni-view-more-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 20px rgba(26, 79, 163, 0.4);
-            gap: 15px;
+            gap: 12px;
         }
 
-        /* ===== FOOTER ===== */
+        .alumni-view-more-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ===== IMPROVED FOOTER ===== */
         .footer {
             background: var(--army-green-dark);
             color: var(--white);
-            padding: 4rem 2rem 2rem;
+            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem) 1.5rem;
+            width: 100%;
         }
 
         .footer-container {
             max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section {
+            width: 100%;
         }
 
         .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
             position: relative;
-            padding-bottom: 0.8rem;
+            padding-bottom: 0.6rem;
+            word-break: break-word;
         }
 
         .footer-section h3::after {
@@ -842,7 +1047,7 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
+            width: 40px;
             height: 3px;
             background: var(--sky-blue);
         }
@@ -852,13 +1057,16 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
 
         .footer-section ul li a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: color 0.3s;
+            word-break: break-word;
+            display: inline-block;
+            padding: 0.2rem 0;
         }
 
         .footer-section ul li a:hover {
@@ -867,28 +1075,32 @@
         }
 
         .footer-section p {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
             color: rgba(255, 255, 255, 0.8);
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
+            word-break: break-word;
+            font-size: 0.9rem;
         }
 
         .footer-section p i {
             color: var(--sky-blue);
             width: 20px;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
         }
 
         .social-icons {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
             flex-wrap: wrap;
         }
 
         .social-icon {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -897,7 +1109,8 @@
             color: var(--white);
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
         }
 
         .social-icon:hover {
@@ -905,53 +1118,147 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
+        .social-icon:active {
+            transform: translateY(0);
+        }
+
         .footer-bottom {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
-            .gallery-nav {
-                top: 76px;
+        .footer-bottom p {
+            margin-bottom: 0.3rem;
+            word-break: break-word;
+        }
+
+        /* ===== ADDITIONAL RESPONSIVE FIXES ===== */
+        @media (max-width: 380px) {
+            .alumni-image-container {
+                width: 80px;
+                height: 80px;
             }
+            
+            .alumni-name {
+                font-size: 1rem;
+            }
+            
+            .alumni-position {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.8rem;
+            }
+            
+            .alumni-desc {
+                font-size: 0.85rem;
+            }
+            
+            .gallery-image-container {
+                height: 180px;
+            }
+            
+            .video-player {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 280px) {
+            .logo span {
+                font-size: 0.9rem;
+            }
+            
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 1.5rem;
             }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 3rem 1.5rem;
-            }
+            
             .section-title {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-            .gallery-grid,
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-            .gallery-nav {
-                top: 66px;
-            }
-            .gallery-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+            
             .gallery-link {
-                width: 100%;
-                text-align: center;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
             }
+            
+            .alumni-image-container {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .social-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .btn:hover,
+            .gallery-item:hover,
+            .video-card:hover,
+            .alumni-card:hover,
+            .social-icon:hover,
+            .alumni-view-more-btn:hover,
+            .alumni-nav-btn:hover {
+                transform: none;
+            }
+            
+            .btn:active,
+            .gallery-item:active,
+            .video-card:active,
+            .alumni-card:active,
+            .social-icon:active,
+            .alumni-view-more-btn:active,
+            .alumni-nav-btn:active {
+                transform: scale(0.98);
+            }
+            
+            .gallery-overlay {
+                opacity: 1;
+            }
+            
+            .gallery-caption {
+                transform: translateY(0);
+            }
+        }
+
+        /* Prevent text overflow */
+        a, p, h1, h2, h3, h4, span, div {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        @media (max-width: 900px) {
+            html {
+                scroll-padding-top: 80px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            html {
+                scroll-padding-top: 70px;
+            }
+        }
+
+        /* Image optimization */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
     </style>
 </head>
@@ -985,7 +1292,7 @@
         </div>
     </header>
 
-    <!-- Mobile Menu (matching materials.html) -->
+    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-header">
             <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
@@ -1013,6 +1320,17 @@
         </div>
     </section>
 
+    <!-- ===== GALLERY NAVIGATION ===== -->
+    <div class="gallery-nav">
+        <div class="gallery-nav-container">
+            <div class="gallery-buttons">
+                <a href="#photo-gallery" class="gallery-link active">Photo Gallery</a>
+                <a href="#video-gallery" class="gallery-link">Video Gallery</a>
+                <a href="#alumni-section" class="gallery-link">Alumni Stories</a>
+            </div>
+        </div>
+    </div>
+
     <!-- ===== PHOTO GALLERY ===== -->
     <section class="container" id="photo-gallery">
         <h2 class="section-title">Photo Gallery</h2>
@@ -1021,7 +1339,7 @@
         <div class="gallery-grid">
             <div class="gallery-item">
                 <div class="gallery-image-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345613/SPRTS_wawnzd.jpg" alt="School Sports Day" class="gallery-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345613/SPRTS_wawnzd.jpg" alt="School Sports Day" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <p class="gallery-caption">Annual Sports Day 2023 - Students showcasing their athletic talents</p>
                     </div>
@@ -1030,7 +1348,7 @@
 
             <div class="gallery-item">
                 <div class="gallery-image-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345159/COMP_c1x933.jpg" alt="Computer Lab" class="gallery-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345159/COMP_c1x933.jpg" alt="Computer Lab" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <p class="gallery-caption">Computer Laboratory - Equipped with modern technology</p>
                     </div>
@@ -1039,7 +1357,7 @@
 
             <div class="gallery-item">
                 <div class="gallery-image-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346648/allll_aoxw55.jpg" alt="School Building" class="gallery-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346648/allll_aoxw55.jpg" alt="School Building" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <p class="gallery-caption">Main School Building - A conducive learning environment</p>
                     </div>
@@ -1048,7 +1366,7 @@
 
             <div class="gallery-item">
                 <div class="gallery-image-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345593/r_hgadru.jpg" alt="Football Team" class="gallery-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345593/r_hgadru.jpg" alt="Football Team" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <p class="gallery-caption">Football Team - Champions on and off the field</p>
                     </div>
@@ -1057,7 +1375,7 @@
 
             <div class="gallery-item">
                 <div class="gallery-image-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346648/danc_tglfvv.jpg" alt="Music Performance" class="gallery-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346648/danc_tglfvv.jpg" alt="Music Performance" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <p class="gallery-caption">Music & Dance - Celebrating cultural diversity</p>
                     </div>
@@ -1066,7 +1384,7 @@
 
             <div class="gallery-item">
                 <div class="gallery-image-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346818/still_jpwvm7.jpg" alt="Patriotism" class="gallery-image">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346818/still_jpwvm7.jpg" alt="Patriotism" class="gallery-image" loading="lazy">
                     <div class="gallery-overlay">
                         <p class="gallery-caption">Patriotism Program - Instilling love for country</p>
                     </div>
@@ -1130,7 +1448,7 @@
                     <div class="swiper-slide">
                         <div class="alumni-card">
                             <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" alt="MR.TUMWESIGYE RONALD" class="alumni-image">
+                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" alt="MR.TUMWESIGYE RONALD" class="alumni-image" loading="lazy">
                             </div>
                             <div class="alumni-content">
                                 <h3 class="alumni-name">MR. TUMWESIGYE RONALD</h3>
@@ -1145,7 +1463,7 @@
                     <div class="swiper-slide">
                         <div class="alumni-card">
                             <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1766224445/og_zhjemi.jpg" alt="MISS. Karungi Regina carol" class="alumni-image">
+                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1766224445/og_zhjemi.jpg" alt="MISS. Karungi Regina carol" class="alumni-image" loading="lazy">
                             </div>
                             <div class="alumni-content">
                                 <h3 class="alumni-name">MISS. KARUNGI REGINA CAROL</h3>
@@ -1160,7 +1478,7 @@
                     <div class="swiper-slide">
                         <div class="alumni-card">
                             <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1769775575/KELLY1_gkaxvc.jpg" alt="MR. TWESIGYE KELLY" class="alumni-image">
+                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1769775575/KELLY1_gkaxvc.jpg" alt="MR. TWESIGYE KELLY" class="alumni-image" loading="lazy">
                             </div>
                             <div class="alumni-content">
                                 <h3 class="alumni-name">MR. TWESIGYE KELLY</h3>
@@ -1175,7 +1493,7 @@
                     <div class="swiper-slide">
                         <div class="alumni-card">
                             <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Miss KABAHINDA SHANNITAH" class="alumni-image">
+                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Miss KABAHINDA SHANNITAH" class="alumni-image" loading="lazy">
                             </div>
                             <div class="alumni-content">
                                 <h3 class="alumni-name">MISS KABAHINDA SHANNITAH</h3>
@@ -1190,7 +1508,7 @@
                     <div class="swiper-slide">
                         <div class="alumni-card">
                             <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345616/tr_foxrgt.jpg" alt="Miss ABAASA NANCY PATRA" class="alumni-image">
+                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345616/tr_foxrgt.jpg" alt="Miss ABAASA NANCY PATRA" class="alumni-image" loading="lazy">
                             </div>
                             <div class="alumni-content">
                                 <h3 class="alumni-name">MISS ABAASA NANCY PATRA</h3>
@@ -1205,7 +1523,7 @@
                     <div class="swiper-slide">
                         <div class="alumni-card">
                             <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345080/MS_p4tfnj.jpg" alt="MR. TWIJUKYE EDSON" class="alumni-image">
+                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345080/MS_p4tfnj.jpg" alt="MR. TWIJUKYE EDSON" class="alumni-image" loading="lazy">
                             </div>
                             <div class="alumni-content">
                                 <h3 class="alumni-name">MR. TWIJUKYE EDSON</h3>
@@ -1220,7 +1538,7 @@
                     <div class="swiper-slide">
                         <div class="alumni-card">
                             <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/brita_fw5x7j.jpg" alt="MISS ASHABA BRITAH" class="alumni-image">
+                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/brita_fw5x7j.jpg" alt="MISS ASHABA BRITAH" class="alumni-image" loading="lazy">
                             </div>
                             <div class="alumni-content">
                                 <h3 class="alumni-name">MISS ASHABA BRITAH</h3>
@@ -1235,7 +1553,7 @@
                     <div class="swiper-slide">
                         <div class="alumni-card">
                             <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345091/no_ytbaub.jpg" alt="MR. AMWINE FRANKLINE" class="alumni-image">
+                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345091/no_ytbaub.jpg" alt="MR. AMWINE FRANKLINE" class="alumni-image" loading="lazy">
                             </div>
                             <div class="alumni-content">
                                 <h3 class="alumni-name">MR. AMWINE FRANKLINE</h3>
@@ -1250,7 +1568,7 @@
                     <div class="swiper-slide">
                         <div class="alumni-card">
                             <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/KATO_rb7fvj.jpg" alt="MR. KATO SURAIMAN" class="alumni-image">
+                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/KATO_rb7fvj.jpg" alt="MR. KATO SURAIMAN" class="alumni-image" loading="lazy">
                             </div>
                             <div class="alumni-content">
                                 <h3 class="alumni-name">MR. KATO SURAIMAN</h3>
@@ -1388,8 +1706,10 @@
                     galleryLinks.forEach(l => l.classList.remove('active'));
                     link.classList.add('active');
                     
+                    const offset = window.innerWidth <= 600 ? 70 : (window.innerWidth <= 900 ? 80 : 100);
+                    
                     window.scrollTo({
-                        top: targetSection.offsetTop - 160,
+                        top: targetSection.offsetTop - offset,
                         behavior: 'smooth'
                     });
                 }
@@ -1398,7 +1718,8 @@
 
         // Update active state on scroll
         window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY + 170;
+            const offset = window.innerWidth <= 600 ? 70 : (window.innerWidth <= 900 ? 80 : 100);
+            const scrollPosition = window.scrollY + offset + 50;
 
             for (const [id, section] of Object.entries(sections)) {
                 if (section && section.offsetTop <= scrollPosition && 
@@ -1414,14 +1735,15 @@
             }
         });
 
-        // Initialize Swiper
+        // Initialize Swiper with improved mobile settings
         const swiper = new Swiper('.alumni-swiper', {
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 15,
             loop: true,
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
+                pauseOnMouseEnter: true,
             },
             pagination: {
                 el: '.swiper-pagination',
@@ -1433,6 +1755,14 @@
                 prevEl: '.alumni-nav-btn.prev',
             },
             breakpoints: {
+                480: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
                 768: {
                     slidesPerView: 2,
                     spaceBetween: 25,
@@ -1442,10 +1772,51 @@
                     spaceBetween: 30,
                 },
             },
+            on: {
+                init: function () {
+                    // Adjust navigation buttons position on mobile
+                    if (window.innerWidth <= 480) {
+                        document.querySelectorAll('.alumni-nav-btn').forEach(btn => {
+                            btn.style.display = 'none';
+                        });
+                    }
+                },
+                resize: function () {
+                    if (window.innerWidth <= 480) {
+                        document.querySelectorAll('.alumni-nav-btn').forEach(btn => {
+                            btn.style.display = 'none';
+                        });
+                    } else {
+                        document.querySelectorAll('.alumni-nav-btn').forEach(btn => {
+                            btn.style.display = 'flex';
+                        });
+                    }
+                }
+            }
         });
 
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Add loading="lazy" to all images for better performance
+        document.querySelectorAll('img').forEach(img => {
+            if (!img.hasAttribute('loading')) {
+                img.setAttribute('loading', 'lazy');
+            }
+        });
+
+        // Handle video playback on mobile
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.addEventListener('play', () => {
+                // Pause other videos when one starts playing
+                videos.forEach(otherVideo => {
+                    if (otherVideo !== video && !otherVideo.paused) {
+                        otherVideo.pause();
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
