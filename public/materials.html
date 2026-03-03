@@ -1,1016 +1,1597 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-UG">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <title>Mbarara Army Boarding SS - Learning Materials</title>
+    
+    <!-- Meta Tags -->
+    <meta name="author" content="Amwine Frankline / CodeMatrix">
+    <meta name="description" content="Mbarara Army Boarding Secondary School - Access quality learning materials, notes, past papers, and revision resources for O-Level and A-Level students.">
+    <meta name="keywords" content="MABSS, learning materials, O-Level notes, A-Level notes, past papers, UNEB, revision materials">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MABSS Learning Materials - My Library On Finger Tips">
+    <meta property="og:description" content="Access quality educational resources to support your academic journey at Mbarara Army Boarding Secondary School.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mabss.ac.ug/materials.html">
+    <meta property="og:image" content="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/lib_aisnni.jpg">
+    <meta property="og:site_name" content="Mbarara Army Boarding Secondary School">
+
+    <title>MABSS - Learning Materials</title>
+    
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
-        type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        /* ===== RESET & VARIABLES ===== */
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
-        body.here {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-            padding-top: 80px;
+        :root {
+            --primary-navy: #0b2c4d;
+            --primary-blue: #1a4fa3;
+            --accent-green: #2e8b57;
+            --accent-red: #d62828;
+            --sky-blue: #4da8da;
+            --text-dark: #333;
+            --text-light: #555;
+            --bg-light: #f5f7fb;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 20, 30, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --navbar-green: #0e7704;
         }
 
-        .header {
-            background-color: #0e7704;
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            position: fixed;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== STICKY NAVBAR (MATCHING INDEX.HTML) ===== */
+        .navbar {
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
             width: 100%;
+            background: var(--navbar-green);
+            box-shadow: var(--shadow);
+            z-index: 1200;
         }
 
-        .header-container {
+        .nav-container {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 1rem;
-            flex-wrap: wrap;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
+            padding: 0.7rem 2rem;
         }
 
         .logo {
-            height: 60px;
-            width: 60px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid white;
-            margin-right: 1rem;
+            height: 88px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
-        .school-name {
-            margin: 0;
-            font-size: 1.2rem;
+        .logo img {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
             white-space: nowrap;
         }
 
-        nav {
-            display: none;
-            width: 100%;
-        }
-
-        .nav-list {
+        .nav-links {
             display: flex;
-            list-style: none;
+            align-items: center;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-end;
         }
 
-        .nav-item {
-            margin: 0.5rem;
-        }
-
-        .nav-link {
-            color: white;
+        .nav-links a {
             text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.25s ease;
+            padding: 0.4rem 0;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #02f7ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2.5px;
+            background: #ffffff;
+            transition: width 0.3s ease;
             border-radius: 4px;
-            display: block;
         }
 
-        .menu-toggle {
-            background: none;
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .apply-btn {
+            background: var(--primary-blue);
+            color: var(--white);
             border: none;
-            color: white;
-            font-size: 1.5rem;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
-            display: block;
+            transition: 0.2s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
         }
 
-        select {
-            padding: 10px;
-            font-size: 16px;
-            margin: 5px;
-            width: 100%;
-            max-width: 300px;
-            border: 2px solid #3498db;
-            border-radius: 5px;
+        .apply-btn:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.25);
         }
 
-        .dropdown-container {
-            margin: 20px 0;
-        }
-
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 1rem;
-        }
-
-        .hidden {
+        .hamburger {
             display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1300;
+            flex-shrink: 0;
         }
 
-        #hero-slideshow {
-            position: relative;
-            height: 300px;
-            overflow: hidden;
+        .hamburger span {
+            display: block;
             width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            text-align: center;
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--primary-blue);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--primary-blue);
+        }
+
+        /* ===== RESPONSIVE NAVBAR ===== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .apply-btn {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-container {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .logo span {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 70px;
+                gap: 8px;
+            }
+            
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo span {
+                font-size: 2.8rem;
+            }
+            
+            .nav-container {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo span {
+                font-size: 2.2rem;
+            }
+            
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
             height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.8rem;
+            transition: right 0.35s ease-in-out;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .mobile-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--navbar-green);
+        }
+
+        .mobile-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #1f2a44;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 14px 10px;
+            border-radius: 14px;
+            transition: 0.2s;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-menu a i {
+            width: 28px;
+            color: var(--navbar-green);
+            font-size: 1.3rem;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu a:hover i,
+        .mobile-menu a.active i {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu .apply-btn {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            font-size: 1.1rem;
+            background-color: var(--navbar-green);
+            color: white;
+        }
+
+        .mobile-menu .apply-btn i {
+            color: white;
+        }
+
+        .mobile-menu .apply-btn:hover {
+            background-color: #0a5a03;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 44, 77, 0.5);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1300;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            min-height: 350px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 1rem;
+            text-align: center;
+            color: var(--white);
+            padding: 3rem 1rem;
+            width: 100%;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 1s ease-in-out;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(113, 161, 209, 0.8) 0%, rgba(147, 211, 163, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 2;
+            position: relative;
         }
 
         .hero-content h1 {
-            font-size: 2rem;
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.5px;
         }
 
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        .materials-section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .container {
+            max-width: 1300px;
             margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ===== MATERIALS GRID ===== */
         .materials-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .material-card {
-            background-color: white;
-            border-radius: 8px;
+            background: var(--white);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-blue);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .material-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
         }
 
-        .material-card img {
+        .material-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .material-card:hover .material-image {
+            transform: scale(1.05);
         }
 
         .material-content {
-            padding: 1.5rem;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .material-content h3 {
-            margin-top: 0;
-            color: #006341;
+            color: var(--primary-navy);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .material-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex-grow: 1;
         }
 
         .material-link {
-            display: inline-block;
-            background-color: #006341;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
             text-decoration: none;
-            margin-top: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            align-self: flex-start;
         }
 
-        .olevel-section {
-            background-color: #f0f0f0;
-            padding: 2rem 1rem;
+        .material-link:hover {
+            background: #0e3a7a;
+            transform: translateX(5px);
         }
 
-        .olevel-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .material-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .material-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* ===== SUBJECT SECTION ===== */
+        .subject-section {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
         }
 
         .subject-container {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .subject-tabs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .subject-tab {
+            background: transparent;
+            border: 2px solid var(--primary-navy);
+            color: var(--primary-navy);
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .subject-tab:hover,
+        .subject-tab.active {
+            background: var(--primary-navy);
+            color: var(--white);
         }
 
         .subject-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        .subject-box {
-            background-color: #f9f9f9;
-            padding: 1rem;
-            border-radius: 4px;
-        }
-
-        .subject-box h4 {
-            margin-top: 0;
-            color: #006341;
-        }
-
-        .subject-box ul {
-            padding-left: 1.2rem;
-        }
-
-        .subject-box li {
-            margin-bottom: 0.3rem;
-        }
-
-        .subject-box a {
-            color: #006341;
-            text-decoration: none;
-        }
-
-        .alevel-section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .alevel-container {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .combination-grid {
-            display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
 
-        .footer {
-            background-color: #004d33;
-            color: white;
-            padding: 2rem 1rem;
-        }
-
-        .social-media {
-            margin-top: 1.5rem;
-        }
-
-        .social-heading {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
+        .subject-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            text-decoration: none;
+            border-left: 4px solid transparent;
+            height: 100%;
         }
 
-        .social-icon:hover {
-            transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.2);
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
-        .social-icon.facebook:hover {
-            background-color: #3b5998;
+        .subject-card h4 {
+            color: var(--primary-navy);
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .social-icon.twitter:hover {
-            background-color: #1da1f2;
+        .subject-card h4 i {
+            color: var(--primary-blue);
         }
 
-        .social-icon.youtube:hover {
-            background-color: #ff0000;
-        }
-
-        .social-icon.pinterest:hover {
-            background-color: #bd081c;
-        }
-
-        .social-icon.instagram:hover {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-
-        .social-icon.whatsapp:hover {
-            background-color: #25d366;
-        }
-
-        .social-icon.linkedin:hover {
-            background-color: #0077b5;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .footer-section {
-            min-width: 250px;
-        }
-
-        .footer-heading {
-            border-bottom: 2px solid #006341;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-list {
+        .subject-card ul {
             list-style: none;
             padding: 0;
         }
 
-        .footer-item {
-            margin-bottom: 0.5rem;
+        .subject-card ul li {
+            margin-bottom: 0.8rem;
         }
 
-        .footer-link {
-            color: white;
+        .subject-card ul li a {
+            color: var(--text-light);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            padding: 0.3rem 0;
+        }
+
+        .subject-card ul li a:hover {
+            color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+
+        .subject-card ul li a i {
+            font-size: 0.8rem;
+            color: var(--accent-green);
+        }
+
+        /* ===== COMBINATION SELECTOR ===== */
+        .combination-section {
+            padding: 4rem 2rem;
+            background: var(--white);
+        }
+
+        .combination-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .combination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .combination-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--sky-blue);
+        }
+
+        .combination-card h3 {
+            color: var(--primary-navy);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .combination-card h3 i {
+            color: var(--sky-blue);
+        }
+
+        .custom-select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .custom-select:hover,
+        .custom-select:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 79, 163, 0.1);
+        }
+
+        .subject-select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 1rem;
+        }
+
+        .subject-select.hidden {
+            display: none;
+        }
+
+        .past-papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .paper-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .paper-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .paper-card h4 {
+            color: var(--primary-navy);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .paper-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .paper-card ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .paper-card ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .paper-card ul li a:hover {
+            color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #004d33;
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--sky-blue);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-section p i {
+            margin-right: 10px;
+            color: var(--sky-blue);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .footer-bottom {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #006341;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
         }
 
-        @media (min-width: 768px) {
-            .menu-toggle {
-                display: none;
-            }
-
-            nav {
-                display: block;
-                width: auto;
-            }
-
-            .nav-list {
-                flex-wrap: nowrap;
-            }
-
-            .materials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .subject-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .combination-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            #hero-slideshow {
-                height: 400px;
-            }
-
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
             }
         }
 
-        @media (min-width: 992px) {
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 1.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
             .materials-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: 1fr;
             }
-
-            .subject-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .combination-grid {
+                grid-template-columns: 1fr;
             }
+        }
 
-            .footer-container {
-                grid-template-columns: repeat(3, 1fr);
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
             }
-
-            .school-name {
-                font-size: 1.5rem;
+            .subject-tab {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 
-<body class="here">
-    <div class="header">
-        <div class="header-container">
-            <div class="logo-container">
-                <a href="index.html" style="text-decoration:none"><img
-                        src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
-                        alt="logo mabss" class="logo"></a>
-                <h1 class="school-name">Mbarara Army Boarding SS</h1>
+<body>
+
+    <!-- ===== MODERN NAVBAR (MATCHING INDEX.HTML) ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS Logo">
+                <span>MABSS</span>
             </div>
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-            <nav id="mainNav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="materials.html" class="nav-link">Academics</a></li>
-                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
-                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
-                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
-                </ul>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="materials.html" class="active">Academics</a>
+                <a href="sports.html">Co-curricular</a>
+                <a href="services.html">Services</a>
+                <a href="welfare.html">Welfare</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contacts.html">Contact</a>
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
             </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-header">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" alt="MABSS">
+            <h3>Mbarara Army<br>Boarding SS</h3>
+        </div>
+
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="materials.html" class="active"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
+        <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+        <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
+        <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+        <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
     </div>
-    <section id="hero-slideshow">
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== HERO SECTION WITH SLIDESHOW ===== -->
+    <section class="hero" id="heroSection">
         <div class="hero-content">
-            <div>
-                <h1>My Library On Finger Tips (MY-LOFT)</h1>
-                <p>Access quality educational resources to support your academic journey</p>
+            <span class="hero-badge"><i class="fas fa-graduation-cap"></i> MY-LOFT</span>
+            <h1>My Library On Finger Tips</h1>
+            <p>Access quality educational resources to support your academic journey</p>
+        </div>
+    </section>
+
+    <!-- ===== LEARNING RESOURCES CATEGORIES ===== -->
+    <section class="container">
+        <h2 class="section-title">Learning Resources by Category</h2>
+        <p class="section-subtitle">Comprehensive study materials organized by subject area to help you excel in your studies</p>
+
+        <div class="materials-grid">
+            <div class="material-card">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346768/lab_jij9wz.jpg" alt="Science block" class="material-image">
+                <div class="material-content">
+                    <h3>Science Block</h3>
+                    <p>Comprehensive resources for Physics, Chemistry, Biology and Mathematics including notes, practical guides, and revision materials.</p>
+                    <a href="#science" class="material-link">Browse Resources <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="material-card">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345078/art_zthpzo.jpg" alt="Arts & Humanities" class="material-image">
+                <div class="material-content">
+                    <h3>Arts & Humanities</h3>
+                    <p>Resources for History, Geography, Literature, CRE, and other arts subjects with detailed notes and analysis.</p>
+                    <a href="#arts" class="material-link">Browse Resources <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="material-card">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/lib_aisnni.jpg" alt="Library & Vocational" class="material-image">
+                <div class="material-content">
+                    <h3>Library & Vocational</h3>
+                    <p>Resources for Computer Studies, Entrepreneurship, Home Economics, and reference materials from our library.</p>
+                    <a href="#vocational" class="material-link">Browse Resources <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== O-LEVEL MATERIALS ===== -->
+    <section class="subject-section" id="olevel">
+        <div class="subject-container">
+            <h2 class="section-title">Ordinary Level (O-Level) Materials</h2>
+            <p class="section-subtitle">Complete notes and resources for S1 to S4 students following the Uganda syllabus</p>
+
+            <div class="subject-tabs">
+                <button class="subject-tab active" onclick="filterSubjects('all')">All Subjects</button>
+                <button class="subject-tab" onclick="filterSubjects('sciences')">Sciences</button>
+                <button class="subject-tab" onclick="filterSubjects('humanities')">Humanities</button>
+                <button class="subject-tab" onclick="filterSubjects('languages')">Languages</button>
+            </div>
+
+            <div class="subject-grid" id="olevelSubjects">
+                <!-- Mathematics -->
+                <div class="subject-card" data-category="sciences">
+                    <h4><i class="fas fa-calculator"></i> Mathematics</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 Mathematics Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 Mathematics Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 Mathematics Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 Mathematics Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Physics -->
+                <div class="subject-card" data-category="sciences">
+                    <h4><i class="fas fa-atom"></i> Physics</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 Physics Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 Physics Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 Physics Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 Physics Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Chemistry -->
+                <div class="subject-card" data-category="sciences">
+                    <h4><i class="fas fa-flask"></i> Chemistry</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 Chemistry Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 Chemistry Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 Chemistry Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 Chemistry Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Biology -->
+                <div class="subject-card" data-category="sciences">
+                    <h4><i class="fas fa-dna"></i> Biology</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 Biology Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 Biology Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 Biology Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 Biology Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- English -->
+                <div class="subject-card" data-category="languages">
+                    <h4><i class="fas fa-language"></i> English</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 English Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 English Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 English Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 English Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kiswahili -->
+                <div class="subject-card" data-category="languages">
+                    <h4><i class="fas fa-language"></i> Kiswahili</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 Kiswahili Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 Kiswahili Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 Kiswahili Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 Kiswahili Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Geography -->
+                <div class="subject-card" data-category="humanities">
+                    <h4><i class="fas fa-globe-africa"></i> Geography</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 Geography Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 Geography Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 Geography Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 Geography Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- History -->
+                <div class="subject-card" data-category="humanities">
+                    <h4><i class="fas fa-landmark"></i> History</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 History Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 History Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 History Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 History Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Literature -->
+                <div class="subject-card" data-category="humanities">
+                    <h4><i class="fas fa-book"></i> Literature</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 Literature Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 Literature Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 Literature Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 Literature Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Agriculture -->
+                <div class="subject-card" data-category="sciences">
+                    <h4><i class="fas fa-seedling"></i> Agriculture</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 Agriculture Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 Agriculture Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 Agriculture Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 Agriculture Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Entrepreneurship -->
+                <div class="subject-card" data-category="vocational">
+                    <h4><i class="fas fa-chart-line"></i> Entrepreneurship</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 Entrepreneurship Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 Entrepreneurship Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 Entrepreneurship Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 Entrepreneurship Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- CRE -->
+                <div class="subject-card" data-category="humanities">
+                    <h4><i class="fas fa-church"></i> CRE</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 CRE Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 CRE Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 CRE Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 CRE Notes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Computer Studies -->
+                <div class="subject-card" data-category="vocational">
+                    <h4><i class="fas fa-laptop"></i> Computer Studies</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S1 Computer Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S2 Computer Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S3 Computer Notes</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> S4 Computer Notes</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Past Papers Section -->
+            <div style="margin-top: 3rem;">
+                <h3 style="color: var(--primary-navy); font-size: 1.8rem; margin-bottom: 2rem; text-align: center;">O-Level Past Papers & Revision</h3>
+                <div class="past-papers-grid">
+                    <div class="paper-card">
+                        <h4><i class="fas fa-file-alt"></i> UNEB Past Papers</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-download"></i> 2022 Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> 2021 Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> 2020 Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> 2019 Past Papers</a></li>
+                        </ul>
+                    </div>
+                    <div class="paper-card">
+                        <h4><i class="fas fa-book"></i> Revision Guides</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-download"></i> Mathematics Revision</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Science Revision</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Humanities Revision</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Languages Revision</a></li>
+                        </ul>
+                    </div>
+                    <div class="paper-card">
+                        <h4><i class="fas fa-pencil-alt"></i> Mock Examinations</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-download"></i> Term 1 Mock Exams</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Term 2 Mock Exams</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Term 3 Mock Exams</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Pre-UNEB Mocks</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== A-LEVEL MATERIALS ===== -->
+    <section class="combination-section" id="alevel">
+        <div class="combination-container">
+            <h2 class="section-title">Advanced Level (A-Level) Materials</h2>
+            <p class="section-subtitle">Specialized resources for your chosen combination. Select your subjects below.</p>
+
+            <div class="combination-grid">
+                <!-- Science Combinations -->
+                <div class="combination-card">
+                    <h3><i class="fas fa-flask"></i> Science Combinations</h3>
+                    
+                    <select id="scienceCombination" class="custom-select" onchange="showScienceSubjects()">
+                        <option value="">-- Select Your Combination --</option>
+                        <option value="PCM">PCM (Physics, Chemistry, Mathematics)</option>
+                        <option value="PCB">PCB (Physics, Chemistry, Biology)</option>
+                        <option value="BAM">BAM (Biology, Agriculture, Mathematics)</option>
+                        <option value="PAM">PAM (Physics, Agriculture, Mathematics)</option>
+                    </select>
+
+                    <select id="scienceSubject" class="subject-select hidden" onchange="goToScienceNotes()">
+                        <option value="">-- Select Subject --</option>
+                    </select>
+                </div>
+
+                <!-- Arts Combinations -->
+                <div class="combination-card">
+                    <h3><i class="fas fa-palette"></i> Arts Combinations</h3>
+                    
+                    <select id="combination" class="custom-select" onchange="showSubjects()">
+                        <option value="">-- Select Your Combination --</option>
+                        <option value="DEG">DEG (Divinity, Entrepreneurship, Geography)</option>
+                        <option value="HEG">HEG (History, Economics, Geography)</option>
+                        <option value="HDG">HDG (History, Divinity, Geography)</option>
+                        <option value="HLD">HLD (History, Literature, Divinity)</option>
+                        <option value="DAG">DAG (Divinity, Art, Geography)</option>
+                        <option value="LAG">LAG (Literature, Art, Geography)</option>
+                    </select>
+
+                    <select id="subject" class="subject-select hidden" onchange="goToNotes()">
+                        <option value="">-- Select Subject --</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- A-Level Past Papers -->
+            <div style="margin-top: 3rem;">
+                <h3 style="color: var(--primary-navy); font-size: 1.8rem; margin-bottom: 2rem; text-align: center;">A-Level Past Papers</h3>
+                <div class="past-papers-grid">
+                    <div class="paper-card">
+                        <h4><i class="fas fa-flask"></i> Science Papers</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-download"></i> Physics Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Chemistry Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Biology Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Mathematics Past Papers</a></li>
+                        </ul>
+                    </div>
+                    <div class="paper-card">
+                        <h4><i class="fas fa-book"></i> Arts Papers</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-download"></i> History Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Geography Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Literature Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Economics Past Papers</a></li>
+                        </ul>
+                    </div>
+                    <div class="paper-card">
+                        <h4><i class="fas fa-laptop"></i> Additional Papers</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-download"></i> General Paper</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> ICT Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Sub Math Past Papers</a></li>
+                            <li><a href="#"><i class="fas fa-download"></i> Art Past Papers</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="welfare.html">Welfare</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> P.O. Box 521, Mbarara, Uganda</p>
+                <p><i class="fas fa-phone"></i> +256 782 096231</p>
+                <p><i class="fas fa-phone"></i> +256 782 371824</p>
+                <p><i class="fas fa-envelope"></i> mabss2014@gmail.com</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>School Hours</h3>
+                <p><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</p>
+                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
+                <p><strong>Sunday:</strong> Closed (Boarders only)</p>
+
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p>Powered by <strong>Amwine Frankline / CodeMatrix</strong></p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
     <script>
-        const hero = document.getElementById('hero-slideshow');
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            hamburger.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Hero Slideshow
+        const hero = document.getElementById('heroSection');
         const images = [
-            'url("https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/back4_ahj0q6.jpg)',
+            'url("https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/back4_ahj0q6.jpg")',
             'url("https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346697/ict_oc0fij.jpg")',
             'url("https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/lib_aisnni.jpg")'
         ];
         let current = 0;
 
         function changeBackground() {
-            hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), ${images[current]}`;
-            hero.style.backgroundSize = 'cover';
-            hero.style.backgroundPosition = 'center';
-            hero.style.transition = 'background-image 1s ease-in-out';
-
+            hero.style.backgroundImage = images[current];
             current = (current + 1) % images.length;
         }
 
         setInterval(changeBackground, 4000);
         changeBackground();
-    </script>
 
-    <section class="materials-section">
-        <h2>Learning Resources by Category</h2>
-
-        <div class="materials-grid">
-            <div class="material-card">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346768/lab_jij9wz.jpg"
-                    alt="Science block">
-                <div class="material-content">
-                    <h3>Science Block</h3>
-                    <p>Resources for Physics, Chemistry, Biology and Mathematics</p>
-                    <a href="#" class="material-link">View Resources</a>
-                </div>
-            </div>
-
-            <div class="material-card">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345078/art_zthpzo.jpg"
-                    alt="Arts Materials">
-                <div class="material-content">
-                    <h3>Arts & Humanities Block</h3>
-                    <p>Resources for History, Geography, Literature, CRE, and other arts subjects</p>
-                    <a href="#" class="material-link">View Resources</a>
-                </div>
-            </div>
-
-            <div class="material-card">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/lib_aisnni.jpg"
-                    alt="Vocational Materials">
-                <div class="material-content">
-                    <h3>LIBARAY</h3>
-                    <p>Resources for Computer Studies, Entrepreneurship, Home Economics, and more</p>
-                    <a href="#" class="material-link">View Resources</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="olevel-section">
-        <div class="olevel-container">
-            <h2>Ordinary Level (O-Level) Materials</h2>
-
-            <div class="subject-container">
-                <h3>S1-S4 Syllabus & Notes</h3>
-                <div class="subject-grid">
-                    <div class="subject-box">
-                        <h4>Mathematics</h4>
-                        <ul>
-                            <li><a href="#">S1 Mathematics Notes</a></li>
-                            <li><a href="#">S2 Mathematics Notes</a></li>
-                            <li><a href="#">S3 Mathematics Notes</a></li>
-                            <li><a href="#">S4 Mathematics Notes</a></li>
-                        </ul>
-                    </div>
-                    <div class="subject-box">
-                        <h4>Physics</h4>
-                        <ul>
-                            <li><a href="#">S1 Physics Notes</a></li>
-                            <li><a href="#">S2 Physics Notes</a></li>
-                            <li><a href="#">S3 Physics Notes</a></li>
-                            <li><a href="#">S4 Physics Notes</a></li>
-                        </ul>
-                    </div>
-                    <div class="subject-box">
-                        <h4>Chemistry</h4>
-                        <ul>
-                            <li><a href="#">S1 Chemistry Notes</a></li>
-                            <li><a href="#">S2 Chemistry Notes</a></li>
-                            <li><a href="#">S3 Chemistry Notes</a></li>
-                            <li><a href="#">S4 Chemistry Notes</a></li>
-                        </ul>
-                    </div>
-                    <div class="subject-box">
-                        <h4>Biology</h4>
-                        <ul>
-                            <li><a href="#">S1 Biology Notes</a></li>
-                            <li><a href="#">S2 Biology Notes</a></li>
-                            <li><a href="#">S3 Biology Notes</a></li>
-                            <li><a href="#">S4 Biology Notes</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject-box">
-                        <h4>English</h4>
-                        <ul>
-                            <li><a href="#">S1 English Notes</a></li>
-                            <li><a href="#">S2 English Notes</a></li>
-                            <li><a href="#">S3 English Notes</a></li>
-                            <li><a href="#">S4 English Notes</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject-box">
-                        <h4>Kiswahili</h4>
-                        <ul>
-                            <li><a href="#">S1 Kiswahili Notes</a></li>
-                            <li><a href="#">S2 Kiswahili Notes</a></li>
-                            <li><a href="#">S3 Kiswahili Notes</a></li>
-                            <li><a href="#">S4 Kiswahili Notes</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject-box">
-                        <h4>Geography</h4>
-                        <ul>
-                            <li><a href="#">S1 Geography Notes</a></li>
-                            <li><a href="#">S2 Geography Notes</a></li>
-                            <li><a href="#">S3 Geography Notes</a></li>
-                            <li><a href="#">S4 Geography Notes</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject-box">
-                        <h4>History</h4>
-                        <ul>
-                            <li><a href="#">S1 History Notes</a></li>
-                            <li><a href="#">S2 History Notes</a></li>
-                            <li><a href="#">S3 History Notes</a></li>
-                            <li><a href="#">S4 History Notes</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject-box">
-                        <h4>Literature</h4>
-                        <ul>
-                            <li><a href="#">S1 Literature Notes</a></li>
-                            <li><a href="#">S2 Literature Notes</a></li>
-                            <li><a href="#">S3 Literature Notes</a></li>
-                            <li><a href="#">S4 Literature Notes</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject-box">
-                        <h4>Agriculture</h4>
-                        <ul>
-                            <li><a href="#">S1 Agriculture Notes</a></li>
-                            <li><a href="#">S2 Agriculture Notes</a></li>
-                            <li><a href="#">S3 Agriculture Notes</a></li>
-                            <li><a href="#">S4 Agriculture Notes</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject-box">
-                        <h4>Entrepreneurship</h4>
-                        <ul>
-                            <li><a href="#">S1 Entrepreneurship Notes</a></li>
-                            <li><a href="#">S2 Entrepreneurship Notes</a></li>
-                            <li><a href="#">S3 Entrepreneurship Notes</a></li>
-                            <li><a href="#">S4 Entrepreneurship Notes</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject-box">
-                        <h4>CRE</h4>
-                        <ul>
-                            <li><a href="#">S1 CRE Notes</a></li>
-                            <li><a href="#">S2 CRE Notes</a></li>
-                            <li><a href="#">S3 CRE Notes</a></li>
-                            <li><a href="#">S4 CRE Notes</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="subject-box">
-                        <h4>Computer Studies</h4>
-                        <ul>
-                            <li><a href="#">S1 Computer Studies Notes</a></li>
-                            <li><a href="#">S2 Computer Studies Notes</a></li>
-                            <li><a href="#">S3 Computer Studies Notes</a></li>
-                            <li><a href="#">S4 Computer Studies Notes</a></li>
-                        </ul>
-                    </div>
-
-
-                </div>
-            </div>
-
-            <div class="subject-container">
-                <h3>Past Papers & Revision Materials</h3>
-                <div class="subject-grid">
-                    <div class="subject-box">
-                        <h4>UNEB Past Papers</h4>
-                        <ul>
-                            <li><a href="#">2022 Past Papers</a></li>
-                            <li><a href="#">2021 Past Papers</a></li>
-                            <li><a href="#">2020 Past Papers</a></li>
-                            <li><a href="#">2019 Past Papers</a></li>
-                        </ul>
-                    </div>
-                    <div class="subject-box">
-                        <h4>Revision Guides</h4>
-                        <ul>
-                            <li><a href="#">Mathematics Revision</a></li>
-                            <li><a href="#">Science Revision</a></li>
-                            <li><a href="#">Humanities Revision</a></li>
-                            <li><a href="#">Vocational Revision</a></li>
-                        </ul>
-                    </div>
-                    <div class="subject-box">
-                        <h4>Mock Examinations</h4>
-                        <ul>
-                            <li><a href="#">Term 1 Mock Exams</a></li>
-                            <li><a href="#">Term 2 Mock Exams</a></li>
-                            <li><a href="#">Term 3 Mock Exams</a></li>
-                            <li><a href="#">Pre-UNEB Mocks</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="alevel-section">
-        <h2>Advanced Level (A-Level) Materials</h2>
-
-        <div class="alevel-container">
-            <div class="combination-grid">
-                <div>
-                    <h3>Science Combinations</h3>
-                    <div class="dropdown-container">
-                        <select id="scienceCombination" onchange="showScienceSubjects()">
-                            <option value="">--Select Your Combination --</option>
-                            <option value="PCM">PCM (Physics, Chemistry, Mathematics)</option>
-                            <option value="PCB">PCB (Physics, Chemistry, Biology)</option>
-                            <option value="BAM">BAM (Biology, Agriculture, Mathematics)</option>
-                            <option value="PAM">PAM (Physics, Agriculture, Mathematics)</option>
-                        </select>
-
-                        <select id="scienceSubject" class="hidden" onchange="goToScienceNotes()">
-                            <option value="">-- Select Subject --</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <h3>Arts Combinations</h3>
-                    <div class="dropdown-container">
-                        <select id="combination" onchange="showSubjects()">
-                            <option value="">--Select Your Combination --</option>
-                            <option value="DEG">DEG (Divinity, Entrepreneurship, Geography)</option>
-                            <option value="HEG">HEG (History,Economics,Geography)</option>
-                            <option value="HDG">HDG (History,Divinity,Geography)</option>
-                            <option value="HLD">HLD (History,Literature,Divinity)</option>
-                            <option value="DAG">DAG (Divinity,Art,Geography)</option>
-                            <option value="LAG">LAG (Literature,Art,Geography)</option>
-                        </select>
-
-                        <select id="subject" class="hidden" onchange="goToNotes()">
-                            <option value="">-- Select Subject --</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-
-                const scienceCombinations = {
-                    "PCM": {
-                        "Physics1": "physics-notes.html",
-                        "Physics2": "physics-notes.html",
-                        "Physics3": "physics-notes.html",
-                        "Chemistry1": "chemistry-notes.html",
-                        "Chemistry2": "chemistry-notes.html",
-                        "Chemistry3": "chemistry-notes.html",
-                        "Mathematics1": "math-notes.html",
-                        "Mathematics2": "math-notes.html",
-                        "Mathematics3": "math-notes.html"
-                    },
-                    "PCB": {
-                        "Physics1": "physics-notes.html",
-                        "Physics2": "physics-notes.html",
-                        "Physics3": "physics-notes.html",
-                        "Chemistry1": "chemistry-notes.html",
-                        "Chemistry2": "chemistry-notes.html",
-                        "Chemistry3": "chemistry-notes.html",
-                        "Biology1": "biology-notes.html",
-                        "Biology2": "biology-notes.html",
-                        "Biology3": "biology-notes.html"
-                    },
-                    "BAM": {
-                        "Biology1": "biology-notes.html",
-                        "Biology2": "biology-notes.html",
-                        "Biology3": "biology-notes.html",
-                        "Agriculture1": "agriculture-notes.html",
-                        "Agriculture2": "agriculture-notes.html",
-                        "Agriculture3": "agriculture-notes.html",
-                        "Mathematics1": "math-notes.html",
-                        "Mathematics2": "math-notes.html",
-                        "Mathematics3": "math-notes.html"
-                    },
-                    "PAM": {
-                        "Physics1": "physics-notes.html",
-                        "Physics2": "physics-notes.html",
-                        "Physics3": "physics-notes.html",
-                        "Agriculture1": "agriculture-notes.html",
-                        "Agriculture2": "agriculture-notes.html",
-                        "Agriculture3": "agriculture-notes.html",
-                        "Mathematics1": "math-notes.html",
-                        "Mathematics2": "math-notes.html",
-                        "Mathematics3": "math-notes.html"
-                    }
-                };
-
-
-                const combinations = {
-                    "DEG": {
-                        "Divinity1": "BOOKS/DIVINITY/DIV 4 NOTES- prt.pdf",
-                        "Divinity2": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
-                        "Divinity4": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
-                        "Entrepreneurship": "entrepreneurship-notes.html",
-                        "Geography1": "geography-notes.html",
-                        "Geography2": "geography-notes.html"
-                    },
-                    "DAG": {
-                        "Divinity1": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
-                        "Divinity2": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
-                        "Divinity4": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
-                        "Art1": "artbook.dpf",
-                        "Art3": "artbook.dpf",
-                        "Art4": "artbook.dpf",
-                        "Art5": "artbook.dpf",
-                        "Geography1": "geography-notes.html",
-                        "Geography2": "geography-notes.html"
-                    },
-                    "HLD": {
-                        "History1": "history.pdf",
-                        "History3": "histpory.pdf",
-                        "Literature1": "literature",
-                        "Literature2": "literature",
-                        "Literature3": "literature",
-                        "Divinity1": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
-                        "Divinity2": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
-                        "Divinity4": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf"
-                    },
-                    "HEG": {
-                        "History1": "history-notes.html",
-                        "History3": "histpory.pdf",
-                        "Economics1": "economics-notes.html",
-                        "Economics2": "economics-notes.html",
-                        "Enterprenuership1": "ent",
-                        "Enterprenuership2": "ent",
-                        "Enterprenuership3": "ent",
-                        "Geography1": "geography-notes.html",
-                        "Geography2": "geography-notes.html"
-                    },
-                    "HDG": {
-                        "History1": "physics-notes.html",
-                        "History2": "history-notes.html",
-                        "Divinity1": "chemistry-notes.html",
-                        "Divinity2": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
-                        "Divinity4": "BOOKS/DIVINITY/DIV 4 NOTES- prt.dpf",
-                        "Geography1": "math-notes.html",
-                        "Geography2": "math-notes.html"
-                    }
-                };
-
-                function showScienceSubjects() {
-                    const comboSelect = document.getElementById("scienceCombination");
-                    const subjectSelect = document.getElementById("scienceSubject");
-
-                    subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
-
-                    const selectedCombo = comboSelect.value;
-
-                    if (selectedCombo) {
-                        subjectSelect.classList.remove("hidden");
-
-                        for (const subject in scienceCombinations[selectedCombo]) {
-                            const option = document.createElement("option");
-                            option.value = scienceCombinations[selectedCombo][subject];
-                            option.textContent = subject;
-                            subjectSelect.appendChild(option);
-                        }
-                    } else {
-                        subjectSelect.classList.add("hidden");
-                    }
+        // Subject Filtering
+        function filterSubjects(category) {
+            const subjects = document.querySelectorAll('#olevelSubjects .subject-card');
+            const tabs = document.querySelectorAll('.subject-tab');
+            
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent.toLowerCase().includes(category) || 
+                    (category === 'all' && tab.textContent === 'All Subjects')) {
+                    tab.classList.add('active');
                 }
+            });
 
-                function goToScienceNotes() {
-                    const subjectSelect = document.getElementById("scienceSubject");
-                    if (subjectSelect.value) {
-                        window.location.href = subjectSelect.value;
-                    }
+            subjects.forEach(subject => {
+                if (category === 'all' || subject.dataset.category === category) {
+                    subject.style.display = 'block';
+                } else {
+                    subject.style.display = 'none';
                 }
+            });
+        }
 
-                function showSubjects() {
-                    const comboSelect = document.getElementById("combination");
-                    const subjectSelect = document.getElementById("subject");
+        // A-Level Science Combinations
+        const scienceCombinations = {
+            "PCM": {
+                "Physics (Paper 1)": "#",
+                "Physics (Paper 2)": "#",
+                "Physics (Paper 3)": "#",
+                "Chemistry (Paper 1)": "#",
+                "Chemistry (Paper 2)": "#",
+                "Chemistry (Paper 3)": "#",
+                "Mathematics (Paper 1)": "#",
+                "Mathematics (Paper 2)": "#",
+                "Mathematics (Paper 3)": "#"
+            },
+            "PCB": {
+                "Physics (Paper 1)": "#",
+                "Physics (Paper 2)": "#",
+                "Physics (Paper 3)": "#",
+                "Chemistry (Paper 1)": "#",
+                "Chemistry (Paper 2)": "#",
+                "Chemistry (Paper 3)": "#",
+                "Biology (Paper 1)": "#",
+                "Biology (Paper 2)": "#",
+                "Biology (Paper 3)": "#"
+            },
+            "BAM": {
+                "Biology (Paper 1)": "#",
+                "Biology (Paper 2)": "#",
+                "Biology (Paper 3)": "#",
+                "Agriculture (Paper 1)": "#",
+                "Agriculture (Paper 2)": "#",
+                "Agriculture (Paper 3)": "#",
+                "Mathematics (Paper 1)": "#",
+                "Mathematics (Paper 2)": "#",
+                "Mathematics (Paper 3)": "#"
+            },
+            "PAM": {
+                "Physics (Paper 1)": "#",
+                "Physics (Paper 2)": "#",
+                "Physics (Paper 3)": "#",
+                "Agriculture (Paper 1)": "#",
+                "Agriculture (Paper 2)": "#",
+                "Agriculture (Paper 3)": "#",
+                "Mathematics (Paper 1)": "#",
+                "Mathematics (Paper 2)": "#",
+                "Mathematics (Paper 3)": "#"
+            }
+        };
 
-                    subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
+        // A-Level Arts Combinations
+        const combinations = {
+            "DEG": {
+                "Divinity (Paper 1)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Divinity (Paper 2)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Divinity (Paper 3)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Entrepreneurship (Paper 1)": "#",
+                "Entrepreneurship (Paper 2)": "#",
+                "Geography (Paper 1)": "#",
+                "Geography (Paper 2)": "#",
+                "Geography (Paper 3)": "#"
+            },
+            "HEG": {
+                "History (Paper 1)": "#",
+                "History (Paper 2)": "#",
+                "History (Paper 3)": "#",
+                "Economics (Paper 1)": "#",
+                "Economics (Paper 2)": "#",
+                "Economics (Paper 3)": "#",
+                "Geography (Paper 1)": "#",
+                "Geography (Paper 2)": "#",
+                "Geography (Paper 3)": "#"
+            },
+            "HDG": {
+                "History (Paper 1)": "#",
+                "History (Paper 2)": "#",
+                "History (Paper 3)": "#",
+                "Divinity (Paper 1)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Divinity (Paper 2)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Divinity (Paper 3)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Geography (Paper 1)": "#",
+                "Geography (Paper 2)": "#",
+                "Geography (Paper 3)": "#"
+            },
+            "HLD": {
+                "History (Paper 1)": "#",
+                "History (Paper 2)": "#",
+                "History (Paper 3)": "#",
+                "Literature (Paper 1)": "#",
+                "Literature (Paper 2)": "#",
+                "Literature (Paper 3)": "#",
+                "Divinity (Paper 1)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Divinity (Paper 2)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Divinity (Paper 3)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf"
+            },
+            "DAG": {
+                "Divinity (Paper 1)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Divinity (Paper 2)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Divinity (Paper 3)": "BOOKS/DIVINITY/DIV%204%20NOTES-%20prt.pdf",
+                "Art (Paper 1)": "#",
+                "Art (Paper 2)": "#",
+                "Art (Paper 3)": "#",
+                "Geography (Paper 1)": "#",
+                "Geography (Paper 2)": "#",
+                "Geography (Paper 3)": "#"
+            },
+            "LAG": {
+                "Literature (Paper 1)": "#",
+                "Literature (Paper 2)": "#",
+                "Literature (Paper 3)": "#",
+                "Art (Paper 1)": "#",
+                "Art (Paper 2)": "#",
+                "Art (Paper 3)": "#",
+                "Geography (Paper 1)": "#",
+                "Geography (Paper 2)": "#",
+                "Geography (Paper 3)": "#"
+            }
+        };
 
-                    const selectedCombo = comboSelect.value;
+        function showScienceSubjects() {
+            const comboSelect = document.getElementById("scienceCombination");
+            const subjectSelect = document.getElementById("scienceSubject");
+            subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
+            const selectedCombo = comboSelect.value;
 
-                    if (selectedCombo) {
-                        subjectSelect.classList.remove("hidden");
-
-                        for (const subject in combinations[selectedCombo]) {
-                            const option = document.createElement("option");
-                            option.value = combinations[selectedCombo][subject];
-                            option.textContent = subject;
-                            subjectSelect.appendChild(option);
-                        }
-                    } else {
-                        subjectSelect.classList.add("hidden");
-                    }
+            if (selectedCombo) {
+                subjectSelect.classList.remove("hidden");
+                for (const subject in scienceCombinations[selectedCombo]) {
+                    const option = document.createElement("option");
+                    option.value = scienceCombinations[selectedCombo][subject];
+                    option.textContent = subject;
+                    subjectSelect.appendChild(option);
                 }
+            } else {
+                subjectSelect.classList.add("hidden");
+            }
+        }
 
-                function goToNotes() {
-                    const subjectSelect = document.getElementById("subject");
-                    if (subjectSelect.value) {
-                        window.location.href = subjectSelect.value;
-                    }
+        function goToScienceNotes() {
+            const subjectSelect = document.getElementById("scienceSubject");
+            if (subjectSelect.value) {
+                window.location.href = subjectSelect.value;
+            }
+        }
+
+        function showSubjects() {
+            const comboSelect = document.getElementById("combination");
+            const subjectSelect = document.getElementById("subject");
+            subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
+            const selectedCombo = comboSelect.value;
+
+            if (selectedCombo) {
+                subjectSelect.classList.remove("hidden");
+                for (const subject in combinations[selectedCombo]) {
+                    const option = document.createElement("option");
+                    option.value = combinations[selectedCombo][subject];
+                    option.textContent = subject;
+                    subjectSelect.appendChild(option);
                 }
-            </script>
-            <div style="margin-top: 2rem;">
-                <h3>A-Level Past Papers</h3>
-                <div class="subject-grid">
-                    <div class="subject-box">
-                        <h4>Science Papers</h4>
-                        <ul>
-                            <li><a href="#">Physics Past Papers</a></li>
-                            <li><a href="#">Chemistry Past Papers</a></li>
-                            <li><a href="#">Biology Past Papers</a></li>
-                            <li><a href="#">Mathematics Past Papers</a></li>
-                        </ul>
-                    </div>
-                    <div class="subject-box">
-                        <h4>Arts Papers</h4>
-                        <ul>
-                            <li><a href="#">History Past Papers</a></li>
-                            <li><a href="#">Geography Past Papers</a></li>
-                            <li><a href="#">Literature Past Papers</a></li>
-                            <li><a href="#">Economics Past Papers</a></li>
-                        </ul>
-                    </div>
-                    <div class="subject-box">
-                        <h4>More papers</h4>
-                        <ul>
-                            <li><a href="#">General Paper Past Papers</a></li>
-                            <li><a href="#"> ICT Past Papers</a></li>
-                            <li><a href="#">Sub Math Past Papers</a></li>
-                            <li><a href="#"> Art Past Papers</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            } else {
+                subjectSelect.classList.add("hidden");
+            }
+        }
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3 class="footer-heading">Quick Links</h3>
-                <ul class="footer-list">
-                    <li class="footer-item"><a href="materials.html" class="footer-link">Academics</a></li>
-                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
-                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
-                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
-                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
-                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+        function goToNotes() {
+            const subjectSelect = document.getElementById("subject");
+            if (subjectSelect.value) {
+                window.location.href = subjectSelect.value;
+            }
+        }
 
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">Contact Us</h3>
-                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
-                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
-                <p><strong>Email:</strong> mabss2014@gmail.com</p>
-
-                <div class="social-media">
-                    <h4 class="social-heading">Follow Us</h4>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
-                            class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2004" class="social-icon twitter" target="_blank"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i
-                                class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
-                            class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
-                            target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">School Hours</h3>
-                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
-                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
-                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p> &copy; <span id="year"></span> Mbarara Army Boarding Secondary School. <br> All Rights Reserved. <br>
-                Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
-        </div>
-
-        <script>
-            document.getElementById("year").textContent = new Date().getFullYear();
-        </script>
-    </footer>
-
-    <script>
-
-        document.getElementById('menuToggle').addEventListener('click', function () {
-            const nav = document.getElementById('mainNav');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-        });
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 

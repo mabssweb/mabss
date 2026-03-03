@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-UG">
 
 <head>
@@ -89,28 +89,28 @@
             padding: 0.7rem 1.5rem;
         }
 
-        .logo {
-            height: 60px;
+       .logo {
+            height: 88px;
             width: auto;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             flex-shrink: 0;
         }
 
         .logo img {
-            width: 50px;
-            height: 50px;
+            width: 88px;
+            height: 88px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #ffffff;
             background-color: white;
-            padding: 3px;
+            padding: 5px; 
         }
 
         .logo span {
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 3.8rem;
             color: #ffffff;
             letter-spacing: -0.5px;
             white-space: nowrap;
@@ -210,18 +210,17 @@
             background: var(--primary-blue);
         }
 
-        /* ===== RESPONSIVE NAVBAR ===== */
-        @media (max-width: 1024px) {
+         @media (max-width: 1024px) {
             .nav-links {
                 gap: 1rem;
             }
-
+            
             .nav-links a {
                 font-size: 0.9rem;
             }
-
+            
             .apply-btn {
-                padding: 10px 15px;
+                padding: 6px 16px;
                 font-size: 0.85rem;
             }
         }
@@ -230,15 +229,15 @@
             .nav-links {
                 display: none;
             }
-
+            
             .hamburger {
                 display: flex;
             }
-
+            
             .nav-container {
                 padding: 0.7rem 1.5rem;
             }
-
+            
             .logo span {
                 font-size: 2.8rem;
             }
@@ -249,16 +248,16 @@
                 height: 70px;
                 gap: 8px;
             }
-
+            
             .logo img {
                 width: 60px;
                 height: 60px;
             }
-
+            
             .logo span {
                 font-size: 2.4rem;
             }
-
+            
             .nav-container {
                 padding: 0.5rem 1rem;
             }
@@ -268,7 +267,7 @@
             .logo span {
                 font-size: 2.2rem;
             }
-
+            
             .logo img {
                 width: 50px;
                 height: 50px;
@@ -347,10 +346,14 @@
             margin-top: 30px;
             width: 100%;
             text-align: center;
-            padding: 10px 15px;
+            padding: 14px;
             font-size: 1.1rem;
             background-color: green;
+<<<<<<< HEAD
             color: white;
+=======
+            color:white
+>>>>>>> 6f54073cfa8fabb81578981f6b5c5283f2a361fb
         }
 
         .overlay {
@@ -371,6 +374,7 @@
             opacity: 1;
             visibility: visible;
         }
+
 
         /* ===== IMPROVED HERO SECTION WITH PROFESSIONAL FADE ===== */
         .hero {
@@ -1044,6 +1048,7 @@
             font-size: 0.95rem;
         }
 
+<<<<<<< HEAD
         /* ===== IMPROVED TOAST NOTIFICATION FOR ALL DEVICES ===== */
         .toast-container {
             position: fixed;
@@ -1176,172 +1181,101 @@
             color: #475569;
         }
 
+=======
+>>>>>>> 6f54073cfa8fabb81578981f6b5c5283f2a361fb
         /* ===== IMPROVED RESPONSIVE STYLES ===== */
-        @media (max-width: 900px) {
+      @media (max-width: 900px) {
             .nav-links {
                 display: none;
             }
-
             .hamburger {
                 display: flex;
             }
-
             .nav-container {
                 padding: 0.7rem 1.5rem;
             }
-
+            
             .hero {
                 min-height: 500px;
                 height: 80vh;
             }
-
+            
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-
             .hero-content p {
                 font-size: 1.1rem;
             }
-
             .about-container {
                 grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
-            .nav-container {
-                padding: 0.5rem 1rem;
-            }
-
-            .logo {
-                height: 50px;
-                gap: 8px;
-            }
-
-            .logo img {
-                width: 40px;
-                height: 40px;
-            }
-
-            .logo span {
-                font-size: 1.5rem;
-            }
-
             .container {
-                padding: 3rem 1.2rem;
+                padding: 3rem 1.5rem;
             }
-
             .section-title {
                 font-size: 2rem;
             }
-
             .counter-number {
                 font-size: 3rem;
             }
-
             .counter-label {
                 font-size: 1.2rem;
             }
-
             .apply-container h2 {
                 font-size: 2.2rem;
             }
-
-            .toast-container {
-                bottom: 20px;
-                right: 20px;
-                left: 20px;
-                justify-content: center;
-            }
-
-            .toast {
-                width: 100%;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
+            
             .hero {
                 min-height: 450px;
                 height: 70vh;
                 padding: 1rem;
             }
-
+            
             .hero-slide {
                 background-position: center center;
             }
         }
 
         @media (max-width: 480px) {
-            .logo span {
-                font-size: 1.3rem;
-            }
-
             .hero {
                 min-height: 400px;
-                height: auto;
-                padding: 4rem 1rem 2rem;
+                height: 60vh;
             }
-
+            
             .hero-content h1 {
-                font-size: 1.6rem;
-                line-height: 1.2;
-                margin-top: 1rem;
+                font-size: 1.8rem;
+                line-height: 1.3;
             }
-
+            
             .hero-content p {
-                font-size: 0.95rem;
-                margin-bottom: 2rem;
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
-
+            
             .hero-buttons {
                 flex-direction: column;
-                gap: 0.8rem;
+                gap: 1rem;
                 width: 100%;
-                max-width: 260px;
+                max-width: 280px;
                 margin: 0 auto;
             }
-
+            
             .hero-btn {
                 width: 100%;
                 text-align: center;
-                padding: 0.8rem 1.2rem;
-                font-size: 0.95rem;
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
             }
-
+            
             .counter-container {
                 flex-direction: column;
                 gap: 2rem;
             }
-
-            .toast-container {
-                bottom: 15px;
-                right: 15px;
-                left: 15px;
-            }
-
-            .toast {
-                padding: 1.2rem;
-            }
-
-            .toast-header {
-                gap: 0.8rem;
-            }
-
-            .toast-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
-            .toast-title {
-                font-size: 1rem;
-            }
-
-            .toast-actions {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
         }
+
 
         /* Landscape mode optimization */
         @media (max-height: 600px) and (orientation: landscape) {
@@ -1552,8 +1486,8 @@
         <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
         <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
         <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
-        <a href="contacts.html"><i class="fas fa-users"></i> Our Staff</a>
-        <a href="contacts.html"><i class="fas fa-address-book"></i> Directorate</a>
+        <a href="Staff.html"><i class="fas fa-users"></i> Our Staff</a>
+        <a href="directory .html"><i class="fas fa-address-book"></i> Directorate</a>
         <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
         <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
     </div>
@@ -1564,6 +1498,9 @@
     <section class="hero">
         <div class="hero-slides">
             <div class="hero-slide active"
+                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1772544046/IMG_9882_dlmere.jpg');">
+            </div>
+            <div class="hero-slide"
                 style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346792/three_rqyuym.jpg');">
             </div>
             <div class="hero-slide"
@@ -1575,8 +1512,12 @@
         </div>
         <div class="hero-content">
             <h1>Mbarara Army Boarding<br>Secondary School</h1>
+            <p>
+
+                
+            </p>
             <p>CREATIVITY FOR EXCELLENCE</p>
-            <p>Excellence Through Discipline, Leadership, and Patriotism</p>
+            
             <div class="hero-buttons">
                 <a href="https://mabss.ac.ug/login.html?redirect=admission" target="_blank"
                     class="hero-btn hero-btn-primary">Apply Now</a>
@@ -1874,23 +1815,6 @@
         </div>
     </footer>
 
-    <!-- ===== IMPROVED TOAST NOTIFICATION ===== -->
-    <div class="toast-container">
-        <div class="toast" id="admissionToast">
-            <button class="toast-close" id="toastClose">×</button>
-            <div class="toast-header">
-                <div class="toast-icon">📘</div>
-                <div class="toast-title">2026 Admissions Now Open<br><span style="font-size: 0.9rem; color: #666;">S.1,
-                        S.2, S.3 & S.5</span></div>
-            </div>
-            <p class="toast-message">Secure your spot at MABSS. Download the admission leaflet for more information.</p>
-            <div class="toast-actions">
-                <a href="leaflet/index.html" class="toast-btn btn-download" target="_blank">View Leaflet</a>
-                <button class="toast-btn btn-close" id="closeBtn">Close</button>
-            </div>
-        </div>
-    </div>
-
     <!-- ===== SCRIPTS ===== -->
     <script>
         // Load latest news
@@ -2065,46 +1989,6 @@
             observer.observe(counterSection);
         }
 
-        // Toast Notification
-        class ToastNotification {
-            constructor() {
-                this.toast = document.getElementById('admissionToast');
-                this.closeBtn = document.getElementById('closeBtn');
-                this.toastClose = document.getElementById('toastClose');
-                this.isVisible = false;
-                this.hasBeenClosed = false;
-
-                if (!this.toast) return;
-
-                const toastClosed = sessionStorage.getItem('toastClosed');
-                if (toastClosed) {
-                    this.hasBeenClosed = true;
-                }
-
-                this.init();
-            }
-
-            init() {
-                setTimeout(() => this.show(), 2000);
-                this.closeBtn?.addEventListener('click', () => this.hide());
-                this.toastClose?.addEventListener('click', () => this.hide());
-            }
-
-            show() {
-                if (this.isVisible || this.hasBeenClosed || !this.toast) return;
-                this.toast.classList.add('visible');
-                this.isVisible = true;
-                setTimeout(() => this.hide(), 10000);
-            }
-
-            hide() {
-                if (!this.isVisible || !this.toast) return;
-                this.toast.classList.remove('visible');
-                this.isVisible = false;
-                this.hasBeenClosed = true;
-                sessionStorage.setItem('toastClosed', 'true');
-            }
-        }
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', () => {

@@ -1,493 +1,1273 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-UG">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Mbarara Army Boarding SS - Contacts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
-        type="image/x-icon">
+
+    <!-- Meta Tags -->
+    <meta name="author" content="Amwine Frankline / CodeMatrix">
+    <meta name="description" content="Contact Mbarara Army Boarding Secondary School - Get in touch with us for admissions, academic inquiries, student welfare, and general information.">
+    <meta name="keywords" content="MABSS, contact, admissions, phone, email, location, WhatsApp, school contacts">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MABSS - Contact Us">
+    <meta property="og:description" content="Get in touch with Mbarara Army Boarding Secondary School for any inquiries or information">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mabss.ac.ug/contacts.html">
+    <meta property="og:image" content="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345190/of_b6iiqx.jpg">
+    <meta property="og:site_name" content="Mbarara Army Boarding Secondary School">
+
+    <title>MABSS - Contact Us</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        .here {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* ===== RESET & VARIABLES ===== */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            box-sizing: border-box;
         }
 
-        /* Responsive Navigation */
-        .header {
-            background-color: #0e7704;
-            color: white;
-            padding: 0.5rem 0;
+        :root {
+            --primary-navy: #0b2c4d;
+            --primary-blue: #1a4fa3;
+            --accent-green: #2e8b57;
+            --accent-red: #d62828;
+            --sky-blue: #4da8da;
+            --text-dark: #333;
+            --text-light: #555;
+            --bg-light: #f5f7fb;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 20, 30, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --navbar-green: #0e7704;
+            --army-green-dark: #004d33;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+            width: 100%;
+            position: relative;
+        }
+
+        /* ===== STICKY NAVBAR (MATCHING MATERIALS.HTML) ===== */
+        .navbar {
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            background: var(--navbar-green);
+            box-shadow: var(--shadow);
+            z-index: 1200;
         }
 
         .nav-container {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
+            padding: 0.7rem 2rem;
         }
 
         .logo {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid white;
-            margin-right: 0.5rem;
+            height: 88px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
-        .school-name {
-            margin: 0;
-            font-size: 1rem;
+        .logo img {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
             white-space: nowrap;
         }
 
-        .menu-toggle {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .nav-menu {
-            display: none;
-            background-color: #0e7704;
-            padding: 1rem;
-        }
-
-        .nav-menu.show {
-            display: block;
-        }
-
-        .nav-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .nav-links {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
-        .nav-item {
-            margin: 0.5rem 0;
-        }
-
-        .nav-link {
-            color: white;
+        .nav-links a {
             text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem;
-            display: block;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.25s ease;
+            padding: 0.4rem 0;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #02f7ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2.5px;
+            background: #ffffff;
+            transition: width 0.3s ease;
             border-radius: 4px;
         }
 
-        /* Hero Section */
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .apply-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.25);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1300;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--primary-blue);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--primary-blue);
+        }
+
+        /* ===== IMPROVED RESPONSIVE NAVBAR ===== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .apply-btn {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-container {
+                padding: 0.7rem 1rem;
+            }
+            
+            .logo span {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                height: auto;
+                gap: 8px;
+            }
+            
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo span {
+                font-size: 1.5rem;
+            }
+            
+            .nav-container {
+                padding: 0.5rem 0.8rem;
+            }
+            
+            .hamburger {
+                width: 28px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo span {
+                font-size: 1.2rem;
+            }
+            
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .hamburger {
+                width: 25px;
+                height: 18px;
+            }
+            
+            .hamburger span {
+                height: 2.5px;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        @media (max-width: 320px) {
+            .logo span {
+                font-size: 1rem;
+            }
+            
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .logo {
+                gap: 5px;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.5rem;
+            transition: right 0.35s ease-in-out;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .mobile-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--navbar-green);
+            flex-shrink: 0;
+        }
+
+        .mobile-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            line-height: 1.3;
+            word-break: break-word;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #1f2a44;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 12px 10px;
+            border-radius: 14px;
+            transition: 0.2s;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-menu a i {
+            width: 24px;
+            color: var(--navbar-green);
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu a:hover i,
+        .mobile-menu a.active i {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu .apply-btn {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            font-size: 1rem;
+            background-color: var(--navbar-green);
+            color: white;
+        }
+
+        .mobile-menu .apply-btn i {
+            color: white;
+        }
+
+        .mobile-menu .apply-btn:hover {
+            background-color: #0a5a03;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 44, 77, 0.5);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1300;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== IMPROVED HERO SECTION ===== */
         .hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345190/of_b6iiqx.jpg');
-            background-size: cover;
-            background-position: center;
+            position: relative;
             min-height: 300px;
-            padding: 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: var(--white);
+            padding: 2rem 1rem;
+            width: 100%;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(11, 44, 77, 0.9), rgba(26, 79, 163, 0.8)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345190/of_b6iiqx.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .hero-content {
             max-width: 800px;
-            padding: 1rem;
-        }
-
-        .hero-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Contact Information */
-        .section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
             margin: 0 auto;
+            z-index: 2;
+            position: relative;
+            width: 100%;
+            padding: 0 0.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.5px;
+            word-break: break-word;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            margin-bottom: 0.8rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            word-break: break-word;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== IMPROVED SECTION STYLES ===== */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+            width: 100%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #006341;
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+            word-break: break-word;
         }
 
-        .grid {
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(80px, 30%);
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+            word-break: break-word;
+        }
+
+        /* ===== IMPROVED CONTACT GRID ===== */
+        .contact-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
             gap: 1.5rem;
+            margin-top: 1.5rem;
+            width: 100%;
         }
 
-        .card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .contact-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 4px solid transparent;
+            width: 100%;
         }
 
-        .card-title {
-            color: #006341;
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-card.address-card {
+            border-top-color: var(--sky-blue);
+        }
+
+        .contact-card.phone-card {
+            border-top-color: var(--accent-green);
+        }
+
+        .contact-card.email-card {
+            border-top-color: var(--primary-blue);
+        }
+
+        .contact-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
+            padding: 1.2rem;
             display: flex;
             align-items: center;
-            margin-top: 0;
+            gap: 1rem;
         }
 
-        .card-title span {
-            margin-right: 1rem;
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-header h3 {
+            font-size: clamp(1.2rem, 4vw, 1.4rem);
+            font-weight: 600;
+            word-break: break-word;
+        }
+
+        .contact-body {
+            padding: 1.5rem;
+        }
+
+        .contact-body p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .contact-detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-detail-item i {
+            width: 25px;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .contact-detail-item div {
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .contact-detail-item a {
+            word-break: break-all;
+        }
+
+        .office-hours {
+            margin-top: 1.2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .office-hours h4 {
+            color: var(--primary-navy);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .office-hours p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .office-hours i {
+            color: var(--accent-green);
+            width: 20px;
+            flex-shrink: 0;
+        }
+
+        /* ===== IMPROVED STAFF CONTACTS ===== */
+        .staff-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+            width: 100%;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+            gap: 1.5rem;
+            max-width: 1300px;
+            margin: 1.5rem auto 0;
+            width: 100%;
+        }
+
+        .staff-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--sky-blue);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .staff-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .staff-avatar {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.5rem;
+            flex-shrink: 0;
         }
 
-        /* Contact Form */
+        .staff-header h3 {
+            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            word-break: break-word;
+        }
+
+        .staff-header p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            word-break: break-word;
+        }
+
+        .staff-body {
+            padding: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .staff-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .staff-info i {
+            width: 22px;
+            color: var(--primary-blue);
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .staff-info span {
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .staff-info a {
+            word-break: break-all;
+        }
+
+        .staff-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 1rem 0;
+        }
+
+        /* ===== IMPROVED CONTACT FORM ===== */
         .form-section {
-            background-color: #f0f0f0;
-            padding: 2rem 1rem;
+            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+            background: var(--white);
+            width: 100%;
         }
 
         .form-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: clamp(1.5rem, 5vw, 2.5rem);
+            width: 100%;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-header h3 {
+            color: var(--primary-navy);
+            font-size: clamp(1.5rem, 5vw, 1.8rem);
+            margin-bottom: 0.5rem;
+            word-break: break-word;
+        }
+
+        .form-header p {
+            color: var(--text-light);
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            word-break: break-word;
         }
 
         .form {
             display: grid;
-            gap: 1.5rem;
+            gap: 1.2rem;
+            width: 100%;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: 1rem;
         }
 
         .form-group {
-            display: grid;
-            gap: 0.5rem;
-        }
-
-        .form-label {
-            font-weight: bold;
-        }
-
-        .form-input {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-
-        .form-button {
-            background-color: #006341;
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .form-button:hover {
-            background-color: #004d33;
-        }
-
-        .whatsapp-button {
-            background-color: #25d366;
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
             display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            width: 100%;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--primary-navy);
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.9rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+            padding-right: 2.5rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(26, 79, 163, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-top: 10px;
+            flex: 1 1 auto;
+            min-width: 200px;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .whatsapp-button:hover {
-            background-color: #128c7e;
+        @media (max-width: 600px) {
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                min-width: unset;
+            }
         }
 
-        .whatsapp-button i {
-            font-size: 1.2rem;
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.25);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-success {
+            background: #25d366;
+            color: var(--white);
+            box-shadow: 0 6px 14px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-success:hover {
+            background: #128c7e;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-success:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: var(--text-light);
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-secondary:active {
+            background: #d1d9e6;
         }
 
         .message-preview {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 20px;
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            background: #f8f9fa;
+            border-radius: 16px;
+            border-left: 4px solid var(--accent-green);
             display: none;
         }
 
         .message-preview.show {
             display: block;
+            animation: slideIn 0.3s ease;
         }
 
-        .message-preview h4 {
-            color: #006341;
-            margin-top: 0;
-            margin-bottom: 10px;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .message-preview p {
-            margin: 5px 0;
-            line-height: 1.5;
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .send-buttons {
+        .preview-header h4 {
+            color: var(--primary-navy);
+            font-size: 1.2rem;
+            word-break: break-word;
+        }
+
+        .preview-content {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .preview-item {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        /* Map Section */
-        .map-container {
-            height: 300px;
-            background-color: #ddd;
+            gap: 0.3rem;
+            padding: 0.5rem;
+            background: var(--white);
             border-radius: 8px;
-            overflow: hidden;
         }
 
-        /* Footer */
+        @media (min-width: 500px) {
+            .preview-item {
+                flex-direction: row;
+                gap: 1rem;
+            }
+        }
+
+        .preview-item strong {
+            min-width: 100px;
+            color: var(--primary-navy);
+            font-size: 0.95rem;
+        }
+
+        .preview-item span {
+            color: var(--text-light);
+            flex: 1;
+            word-break: break-word;
+            font-size: 0.95rem;
+        }
+
+        /* ===== IMPROVED MAP SECTION ===== */
+        .map-section {
+            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            width: 100%;
+        }
+
+        .map-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            height: clamp(250px, 50vw, 400px);
+            width: 100%;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== IMPROVED FOOTER ===== */
         .footer {
-            background-color: #004d33;
-            color: white;
-            padding: 2rem 1rem;
+            background: var(--army-green-dark);
+            color: var(--white);
+            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem) 1.5rem;
+            width: 100%;
         }
 
         .footer-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: 2rem;
         }
 
         .footer-section {
-            min-width: 250px;
+            width: 100%;
         }
 
-        .footer-heading {
-            border-bottom: 2px solid #006341;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.6rem;
+            word-break: break-word;
         }
 
-        .footer-list {
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--sky-blue);
+        }
+
+        .footer-section ul {
             list-style: none;
-            padding: 0;
         }
 
-        .footer-item {
-            margin-bottom: 0.5rem;
+        .footer-section ul li {
+            margin-bottom: 0.6rem;
         }
 
-        .footer-link {
-            color: white;
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
+            transition: color 0.3s;
+            word-break: break-word;
+            display: inline-block;
+            padding: 0.2rem 0;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.6rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            word-break: break-word;
+        }
+
+        .footer-section p i {
+            color: var(--sky-blue);
+            width: 20px;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .social-icon:active {
+            transform: translateY(0);
         }
 
         .footer-bottom {
             text-align: center;
             margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #006341;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
         }
 
-        .social-media {
-            margin-top: 1.5rem;
+        .footer-bottom p {
+            margin-bottom: 0.3rem;
+            word-break: break-word;
         }
 
-        .social-heading {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .social-icon.facebook:hover {
-            background-color: #3b5998;
-        }
-
-        .social-icon.twitter:hover {
-            background-color: #1da1f2;
-        }
-
-        .social-icon.youtube:hover {
-            background-color: #ff0000;
-        }
-
-        .social-icon.pinterest:hover {
-            background-color: #bd081c;
-        }
-
-        .social-icon.instagram:hover {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-
-        .social-icon.whatsapp:hover {
-            background-color: #25d366;
-        }
-
-        .social-icon.linkedin:hover {
-            background-color: #0077b5;
-        }
-
-        /* Responsive Adjustments */
-        @media (min-width: 768px) {
-            .menu-toggle {
-                display: none;
+        /* ===== ADDITIONAL RESPONSIVE FIXES ===== */
+        @media (max-width: 380px) {
+            .contact-header {
+                flex-direction: column;
+                text-align: center;
             }
-
-            .nav-menu {
-                display: block;
-                padding: 0;
+            
+            .staff-header {
+                flex-direction: column;
+                text-align: center;
             }
-
-            .nav-list {
-                flex-direction: row;
+            
+            .staff-info {
+                flex-wrap: wrap;
             }
-
-            .nav-item {
-                margin: 0 0.5rem;
+            
+            .preview-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
-
-            .hero {
-                min-height: 400px;
+            
+            .preview-header button {
+                width: 100%;
             }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .send-buttons {
-                flex-direction: row;
+            
+            .social-icons {
+                justify-content: center;
             }
         }
 
-        @media (min-width: 992px) {
-            .hero {
-                min-height: 500px;
+        @media (max-width: 280px) {
+            .logo span {
+                font-size: 0.9rem;
             }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .footer-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .school-name {
+            
+            .hero-content h1 {
                 font-size: 1.5rem;
             }
-
-            .logo {
-                height: 70px;
-                width: 70px;
+            
+            .section-title {
+                font-size: 1.5rem;
             }
-
-            header {
-                display: flex;
-                justify-content: left;
-                align-items: center;
-                padding-right: 200px;
-
+            
+            .contact-detail-item {
+                flex-direction: column;
+                gap: 0.3rem;
             }
+            
+            .contact-detail-item i {
+                margin-bottom: 0.2rem;
+            }
+            
+            .btn {
+                font-size: 0.85rem;
+                padding: 0.7rem 1rem;
+            }
+        }
 
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .btn:hover {
+                transform: none;
+            }
+            
+            .btn:active {
+                transform: scale(0.98);
+            }
+            
+            .contact-card:hover {
+                transform: none;
+            }
+            
+            .staff-card:hover {
+                transform: none;
+            }
+            
+            .social-icon:hover {
+                transform: none;
+            }
+            
+            .social-icon:active {
+                transform: scale(0.95);
+            }
+        }
+
+        /* Prevent text overflow */
+        a, p, h1, h2, h3, h4, span, div {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Improve form elements on mobile */
+        @media (max-width: 600px) {
+            input, select, textarea {
+                font-size: 16px !important; /* Prevents zoom on iOS */
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
+<body>
 
-<body class="here">
-    <!-- Navigation Bar -->
-    <div class="header">
-        <header>
-            <div class="nav-container">
-                <div class="logo-container">
-                    <a href="index.html" style="text-decoration:none"><img
-                            src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
-                            alt="logo mabss" class="logo"></a>
-                    <h1 class="school-name">Mbarara Army Boarding <br />Secondary School</h1>
-                </div>
-                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <!-- ===== MODERN NAVBAR (MATCHING MATERIALS.HTML) ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS Logo">
+                <span>MABSS</span>
             </div>
+<<<<<<< HEAD
             <nav class="nav-menu" id="mainNav">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -498,76 +1278,284 @@
                     <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
                     <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
                 </ul>
+=======
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="materials.html">Academics</a>
+                <a href="sports.html">Co-curricular</a>
+                <a href="services.html">Services</a>
+                <a href="welfare.html">Welfare</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contacts.html" class="active">Contact</a>
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+>>>>>>> 6f54073cfa8fabb81578981f6b5c5283f2a361fb
             </nav>
-        </header>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (matching materials.html) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-header">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
+            <h3>Mbarara Army<br>Boarding SS</h3>
+        </div>
+
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="materials.html"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
+        <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+        <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
+        <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+        <a href="contacts.html" class="active"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
     </div>
 
-    <!-- Contacts Hero Section -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== HERO SECTION ===== -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Contact Us</h1>
-            <p class="hero-subtitle">We're here to answer your questions and provide information</p>
+            <span class="hero-badge"><i class="fas fa-phone-alt"></i> GET IN TOUCH</span>
+            <h1>Contact Us</h1>
+            <p>We're here to answer your questions and provide information</p>
         </div>
     </section>
 
-    <!-- Contact Information -->
-    <section class="section">
+    <!-- ===== CONTACT INFORMATION ===== -->
+    <section class="container">
         <h2 class="section-title">School Contact Information</h2>
+        <p class="section-subtitle">Reach out to us through any of these channels</p>
 
-        <div class="grid">
-            <div class="card">
-                <h3 class="card-title"><span><i class="fas fa-map-marker-alt"></i></span>Physical Address</h3>
-                <p><strong>Mbarara Army Boarding Secondary School</strong><br>
-                    P.O. Box 521<br>
-                    Mbarara, Uganda</p>
-
-                <h3 class="card-title" style="margin-top: 2rem;"><span><i class="far fa-clock"></i></span>Office Hours
-                </h3>
-                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM<br>
-                    <strong>Saturday:</strong> 8:00 AM - 4:00 PM<br>
-                    <strong>Sunday:</strong> Closed
-                </p>
+        <div class="contact-grid">
+            <!-- Physical Address Card -->
+            <div class="contact-card address-card">
+                <div class="contact-header">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Physical Address</h3>
+                </div>
+                <div class="contact-body">
+                    <p><strong>Mbarara Army Boarding Secondary School</strong></p>
+                    <div class="contact-detail-item">
+                        <i class="fas fa-location-dot"></i>
+                        <span>P.O. Box 521, Mbarara, Uganda</span>
+                    </div>
+                    <div class="office-hours">
+                        <h4><i class="fas fa-clock"></i> Office Hours</h4>
+                        <p><i class="fas fa-calendar-day"></i> Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        <p><i class="fas fa-calendar-day"></i> Saturday: 8:00 AM - 4:00 PM</p>
+                        <p><i class="fas fa-calendar-day"></i> Sunday: Closed (Boarders only)</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <h3 class="card-title"><span><i class="fas fa-phone"></i></span>Phone Contacts</h3>
-                <p><strong>Head Teacher:</strong> +256 782 096231<br>
-                    <strong>Deputy Head Teacher-Administration:</strong> +256 782 371824<br>
-                    <strong>Deputy Head Teacher- Academic & co-curricular Activities :</strong> +256 779 927775<br>
-                <h3 class="card-title" style="margin-top: 2rem;"><span><i class="fas fa-envelope"></i></span>Email
-                    Addresses</h3>
-                <p><strong></strong> mabss2014@gmail.com<br>
+            <!-- Phone Contacts Card -->
+            <div class="contact-card phone-card">
+                <div class="contact-header">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <h3>Phone Contacts</h3>
+                </div>
+                <div class="contact-body">
+                    <div class="contact-detail-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <strong>Head Teacher:</strong><br>
+                            Capt. Richard Okullo<br>
+                            <a href="tel:+256782096231" style="color: var(--primary-blue); text-decoration: none;">+256 782 096231</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <strong>Deputy Head Teacher (Admin):</strong><br>
+                            LT. BM Rwakatsimba<br>
+                            <a href="tel:+256782371824" style="color: var(--primary-blue); text-decoration: none;">+256 782 371824</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <strong>Deputy Head Teacher (Academic):</strong><br>
+                            MR. Kyabalongo Yunusu<br>
+                            <a href="tel:+256779927775" style="color: var(--primary-blue); text-decoration: none;">+256 779 927775</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <strong>Director of Studies:</strong><br>
+                            MR. Amanya Robert<br>
+                            <a href="tel:+256771645344" style="color: var(--primary-blue); text-decoration: none;">+256 771 645344</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Card -->
+            <div class="contact-card email-card">
+                <div class="contact-header">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h3>Email & Social</h3>
+                </div>
+                <div class="contact-body">
+                    <div class="contact-detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:mabss2014@gmail.com" style="color: var(--primary-blue); text-decoration: none;">mabss2014@gmail.com</a>
+                    </div>
+                    <div class="contact-detail-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/256782096231" target="_blank" style="color: #25d366; text-decoration: none;">+256 782 096231 (WhatsApp)</a>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--primary-navy); margin-bottom: 1rem;">Follow Us</h4>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" style="color: #3b5998; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                            <a href="https://x.com/mabss2004" target="_blank" style="color: #1da1f2; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/@mabss2025" target="_blank" style="color: #ff0000; font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.instagram.com/mabss2025" target="_blank" style="color: #e4405f; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form -->
+    <!-- ===== KEY STAFF CONTACTS ===== -->
+    <section class="staff-section">
+        <div class="container">
+            <h2 class="section-title">Key Staff Contacts</h2>
+            <p class="section-subtitle">Meet our administration team</p>
+
+            <div class="staff-grid">
+                <!-- Head Teacher -->
+                <div class="staff-card">
+                    <div class="staff-header">
+                        <div class="staff-avatar"><i class="fas fa-user-tie"></i></div>
+                        <div>
+                            <h3>Capt. Richard Okullo</h3>
+                            <p>Head Teacher</p>
+                        </div>
+                    </div>
+                    <div class="staff-body">
+                        <div class="staff-info">
+                            <i class="fas fa-phone"></i>
+                            <span><a href="tel:+256782096231" style="color: var(--text-light); text-decoration: none;">+256 782 096231</a></span>
+                        </div>
+                        <div class="staff-info">
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="mailto:headteacher@mabss.ac.ug" style="color: var(--text-light); text-decoration: none;">headteacher@mabss.ac.ug</a></span>
+                        </div>
+                        <div class="staff-divider"></div>
+                        <p style="color: var(--text-light); font-size: 0.95rem;"><i class="fas fa-info-circle" style="color: var(--primary-blue);"></i> Overall school administration, discipline, and strategic leadership</p>
+                    </div>
+                </div>
+
+                <!-- Deputy Head Teacher Admin -->
+                <div class="staff-card">
+                    <div class="staff-header">
+                        <div class="staff-avatar"><i class="fas fa-user-tie"></i></div>
+                        <div>
+                            <h3>LT. BM Rwakatsimba</h3>
+                            <p>Deputy Head Teacher (Administration)</p>
+                        </div>
+                    </div>
+                    <div class="staff-body">
+                        <div class="staff-info">
+                            <i class="fas fa-phone"></i>
+                            <span><a href="tel:+256782371824" style="color: var(--text-light); text-decoration: none;">+256 782 371824</a></span>
+                        </div>
+                        <div class="staff-info">
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="mailto:admin@mabss.ac.ug" style="color: var(--text-light); text-decoration: none;">admin@mabss.ac.ug</a></span>
+                        </div>
+                        <div class="staff-divider"></div>
+                        <p style="color: var(--text-light); font-size: 0.95rem;"><i class="fas fa-info-circle" style="color: var(--primary-blue);"></i> Administrative affairs, staff management, and school operations</p>
+                    </div>
+                </div>
+
+                <!-- Deputy Head Teacher Academic -->
+                <div class="staff-card">
+                    <div class="staff-header">
+                        <div class="staff-avatar"><i class="fas fa-user-graduate"></i></div>
+                        <div>
+                            <h3>MR. Kyabalongo Yunusu</h3>
+                            <p>Deputy Head Teacher (Academic & Co-curricular)</p>
+                        </div>
+                    </div>
+                    <div class="staff-body">
+                        <div class="staff-info">
+                            <i class="fas fa-phone"></i>
+                            <span><a href="tel:+256779927775" style="color: var(--text-light); text-decoration: none;">+256 779 927775</a></span>
+                        </div>
+                        <div class="staff-info">
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="mailto:academics@mabss.ac.ug" style="color: var(--text-light); text-decoration: none;">academics@mabss.ac.ug</a></span>
+                        </div>
+                        <div class="staff-divider"></div>
+                        <p style="color: var(--text-light); font-size: 0.95rem;"><i class="fas fa-info-circle" style="color: var(--primary-blue);"></i> Curriculum implementation, examinations, and co-curricular activities</p>
+                    </div>
+                </div>
+
+                <!-- Director of Studies -->
+                <div class="staff-card">
+                    <div class="staff-header">
+                        <div class="staff-avatar"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <div>
+                            <h3>MR. Amanya Robert</h3>
+                            <p>Director of Studies</p>
+                        </div>
+                    </div>
+                    <div class="staff-body">
+                        <div class="staff-info">
+                            <i class="fas fa-phone"></i>
+                            <span><a href="tel:+256771645344" style="color: var(--text-light); text-decoration: none;">+256 771 645344</a></span>
+                        </div>
+                        <div class="staff-info">
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="mailto:dos@mabss.ac.ug" style="color: var(--text-light); text-decoration: none;">dos@mabss.ac.ug</a></span>
+                        </div>
+                        <div class="staff-divider"></div>
+                        <p style="color: var(--text-light); font-size: 0.95rem;"><i class="fas fa-info-circle" style="color: var(--primary-blue);"></i> Academic programs, timetabling, and student assessment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT FORM WITH WHATSAPP INTEGRATION ===== -->
     <section class="form-section">
         <div class="form-container">
-            <h2 class="section-title">Send Us a Message</h2>
-            <p style="text-align: center; margin-bottom: 20px; color: #666;">
-                Fill out the form below and your message will be sent directly to WhatsApp (+256 782 096231)
-            </p>
+            <div class="form-header">
+                <h3>Send Us a Message</h3>
+                <p>Fill out the form below and your message will be sent directly to WhatsApp (+256 782 096231)</p>
+            </div>
 
             <form class="form" id="contactForm">
-                <div class="form-group">
-                    <label for="name" class="form-label">Your Name</label>
-                    <input type="text" id="name" name="name" class="form-input" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" id="email" name="email" class="form-input" required>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" class="form-input" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="subject" class="form-label">Subject</label>
-                    <select id="subject" name="subject" class="form-input" required>
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
                         <option value="">Select a subject</option>
                         <option value="admissions">Admissions Inquiry</option>
                         <option value="academics">Academic Matters</option>
@@ -578,16 +1566,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="message" class="form-label">Your Message</label>
-                    <textarea id="message" name="message" rows="5" class="form-input" required></textarea>
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
                 </div>
 
-                <div class="send-buttons">
-                    <button type="submit" class="form-button" id="previewMessage">
-                        <i class="fas fa-eye"></i> Preview & Send via WhatsApp
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="previewMessage">
+                        <i class="fas fa-eye"></i> Preview Message
                     </button>
-
-                    <button type="button" class="whatsapp-button" id="directWhatsApp">
+                    <button type="button" class="btn btn-success" id="directWhatsApp">
                         <i class="fab fa-whatsapp"></i> Open WhatsApp Directly
                     </button>
                 </div>
@@ -595,75 +1582,61 @@
 
             <!-- Message Preview Section -->
             <div class="message-preview" id="messagePreview">
-                <h4>Your Message Preview</h4>
-                <p><strong>From:</strong> <span id="previewName"></span></p>
-                <p><strong>Phone:</strong> <span id="previewPhone"></span></p>
-                <p><strong>Email:</strong> <span id="previewEmail"></span></p>
-                <p><strong>Subject:</strong> <span id="previewSubject"></span></p>
-                <p><strong>Message:</strong> <span id="previewMessageText"></span></p>
-
-                <button type="button" class="whatsapp-button" id="sendWhatsApp">
+                <div class="preview-header">
+                    <h4><i class="fas fa-envelope-open-text"></i> Your Message Preview</h4>
+                    <button type="button" class="btn btn-secondary" id="editMessage" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                </div>
+                <div class="preview-content">
+                    <div class="preview-item">
+                        <strong>From:</strong>
+                        <span id="previewName"></span>
+                    </div>
+                    <div class="preview-item">
+                        <strong>Phone:</strong>
+                        <span id="previewPhone"></span>
+                    </div>
+                    <div class="preview-item">
+                        <strong>Email:</strong>
+                        <span id="previewEmail"></span>
+                    </div>
+                    <div class="preview-item">
+                        <strong>Subject:</strong>
+                        <span id="previewSubject"></span>
+                    </div>
+                    <div class="preview-item">
+                        <strong>Message:</strong>
+                        <span id="previewMessageText"></span>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success" id="sendWhatsApp" style="margin-top: 1rem; width: 100%;">
                     <i class="fab fa-whatsapp"></i> Send via WhatsApp Now
                 </button>
-
-                <button type="button" class="form-button" style="margin-top: 10px;" id="editMessage">
-                    <i class="fas fa-edit"></i> Edit Message
-                </button>
             </div>
         </div>
     </section>
 
-    <!-- Staff Contacts -->
-    <section class="section">
-        <h2 class="section-title">Key Staff Contacts</h2>
-
-        <div class="grid">
-            <div class="card">
-                <h3 class="card-title">Administration</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
-                        <strong>Head Teacher</strong><br>
-                        Capt.Richard Okullo<br>
-                        Phone: +256 782 096231<br>
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>Deputy Head Teacher (Administration)</strong><br>
-                        LT. BM Rwakatsimba <br>
-                        Phone: +256 782 371824<br>
-
-                    </li>
-                    <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
-                        <strong>Deputy Head Teacher (Academic & Co-curricular Activities)</strong><br>
-                        MR. Kyabalongo Yunusu<br>
-                        Phone: +256 779927775<br>
-
-                    </li>
-                    <li style="margin-bottom: 1rem;">
-                        <strong>Director of studies</strong><br>
-                        MR. Amanya Robert<br>
-                        Phone: +256 771 645344<br>
-
-                    </li>
-                </ul>
-            </div>
-
+    <!-- ===== MAP SECTION ===== -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Our Location</h2>
+            <p class="section-subtitle">Visit us at Makenke, Mbarara, along the Mbarara-Masaka Highway</p>
         </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="section">
-        <h2 class="section-title">Our Location</h2>
         <div class="map-container">
-            <!-- Embedded Google Map -->
-            <iframe
+            <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.753622315743!2d30.65841431475389!3d-0.6132999994674606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d91a3a1c1d1a3b%3A0x1b0b0b0b0b0b0b0b!2sMbarara%20Army%20Boarding%20Secondary%20School!5e0!3m2!1sen!2sug!4v1620000000000!5m2!1sen!2sug"
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
         </div>
     </section>
-    <!-- Footer -->
+
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
+<<<<<<< HEAD
                 <h3 class="footer-heading">Quick Links</h3>
                 <ul class="footer-list">
                     <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
@@ -673,62 +1646,97 @@
                     <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
                     <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
                     <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+=======
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="welfare.html">Welfare</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+>>>>>>> 6f54073cfa8fabb81578981f6b5c5283f2a361fb
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">Contact Us</h3>
-                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
-                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
-                <p><strong>Direct WhatsApp:</strong> +256 782 096231</p>
-                <p><strong>Email:</strong> mabss2014@gmail.com</p>
 
-                <!-- Social Media Icons -->
-                <div class="social-media">
-                    <h4 class="social-heading">Follow Us</h4>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
-                            class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2004" class="social-icon twitter" target="_blank"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i
-                                class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
-                            class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
-                            target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> P.O. Box 521, Mbarara, Uganda</p>
+                <p><i class="fas fa-phone"></i> +256 782 096231</p>
+                <p><i class="fas fa-phone"></i> +256 782 371824</p>
+                <p><i class="fas fa-phone"></i> +256 779 927775</p>
+                <p><i class="fas fa-envelope"></i> mabss2014@gmail.com</p>
+
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
+
             <div class="footer-section">
-                <h3 class="footer-heading">School Hours</h3>
-                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
-                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
-                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+                <h3>School Hours</h3>
+                <p><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p><i class="fas fa-clock"></i> Saturday: 8:00 AM - 4:00 PM</p>
+                <p><i class="fas fa-clock"></i> Sunday: Closed (Boarders only)</p>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p> &copy; <span id="year"></span> Mbarara Army Boarding Secondary School. <br>
-    Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
+            <p>&copy; <span id="year"></span> Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p>Powered by <strong>Amwine Frankline / CodeMatrix</strong></p>
         </div>
-        
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
     </footer>
 
-
+    <!-- ===== SCRIPTS ===== -->
     <script>
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function () {
-            const nav = document.getElementById('mainNav');
-            nav.classList.toggle('show');
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            hamburger.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
         });
 
         // WhatsApp Integration - YOUR NUMBER: 256782096231
-        const phoneNumber = "256782096231"; // Your WhatsApp number
+        const phoneNumber = "256782096231";
 
         // Form elements
         const contactForm = document.getElementById('contactForm');
@@ -745,7 +1753,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
         const previewSubject = document.getElementById('previewSubject');
         const previewMessageText = document.getElementById('previewMessageText');
 
-        // Subject mapping for better display
+        // Subject mapping
         const subjectMap = {
             'admissions': 'Admissions Inquiry',
             'academics': 'Academic Matters',
@@ -758,30 +1766,24 @@ document.getElementById("year").textContent = new Date().getFullYear();
         previewMessageBtn.addEventListener('click', function (e) {
             e.preventDefault();
 
-            // Get form values
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value.trim();
 
-            // Validate form
             if (!name || !email || !phone || !subject || !message) {
                 alert('Please fill in all fields before sending.');
                 return;
             }
 
-            // Update preview
             previewName.textContent = name;
             previewPhone.textContent = phone;
             previewEmail.textContent = email;
             previewSubject.textContent = subjectMap[subject] || subject;
             previewMessageText.textContent = message;
 
-            // Show preview section
             messagePreview.classList.add('show');
-
-            // Scroll to preview
             messagePreview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
 
@@ -800,7 +1802,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value.trim();
 
-            // Create formatted message for WhatsApp
             const whatsappMessage = `*MABSS CONTACT FORM MESSAGE*
 
 *From:* ${name}
@@ -814,44 +1815,25 @@ ${message}
 *Sent via:* MABSS Website Contact Form
 *Time:* ${new Date().toLocaleString()}`;
 
-            // Create WhatsApp URL - CORRECT FORMAT
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
-            // Open WhatsApp in new tab
             window.open(whatsappUrl, '_blank');
-
-            // Show success message
             alert('WhatsApp is opening with your message. Please click send to complete the process.');
-
-            // Clear form after sending (optional)
-            // contactForm.reset();
-            // messagePreview.classList.remove('show');
         });
 
         // Edit message button
         editMessageBtn.addEventListener('click', function () {
             messagePreview.classList.remove('show');
-            // Scroll back to form
             contactForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
 
-        // Also allow Enter key to submit form
-        contactForm.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                previewMessageBtn.click();
-            }
-        });
-
-        // Add form validation
+        // Form validation
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             previewMessageBtn.click();
         });
 
-        // Debug log to verify phone number
-        console.log("WhatsApp integration ready. Messages will be sent to: +" + phoneNumber);
-        console.log("Test link: https://wa.me/" + phoneNumber + "?text=Test%20message");
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 
