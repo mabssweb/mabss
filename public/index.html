@@ -285,7 +285,7 @@
             box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
             padding: 2rem 1.8rem;
             transition: right 0.35s ease-in-out;
-            z-index: 1400;
+            z-index: 11000;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
@@ -350,7 +350,7 @@
             padding: 10px 15px;
             font-size: 1.1rem;
             background-color: green;
-            color: white
+            color: white;
         }
 
         .overlay {
@@ -1067,6 +1067,7 @@
             position: relative;
             transform: translateX(0) translateY(20px);
             opacity: 0;
+            visibility: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: all;
             border-left: 4px solid #d4af37;
@@ -1076,6 +1077,7 @@
         .toast.visible {
             transform: translateX(0) translateY(0);
             opacity: 1;
+            visibility: visible;
         }
 
         .toast-header {
