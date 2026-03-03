@@ -1,127 +1,403 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en-UG">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <title>Mbarara Army Boarding Secondary School - Discipline</title>
-    <meta name="description"
-        content="Discipline at Mbarara Army Boarding Secondary School - Excellence through order, respect, and military-style discipline principles.">
-    <meta name="keywords"
-        content="Mbarara Army School, School Discipline, Military Discipline, Student Conduct, School Rules, Behavior Management">
-    <meta name="author" content="Mbarara Army Boarding Secondary School">
+
+    <!-- Meta Tags -->
+    <meta name="author" content="Amwine Frankline / CodeMatrix">
+    <meta name="description" content="Mbarara Army Boarding Secondary School - Discipline system based on UPDF values. Excellence through order, respect, and military-style discipline principles.">
+    <meta name="keywords" content="MABSS, discipline, military discipline, UPDF, school rules, student conduct, behavior management, punctuality">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MABSS - Discipline System">
+    <meta property="og:description" content="Excellence Through Order & Respect - Military-style discipline at Mbarara Army Boarding Secondary School">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mabss.ac.ug/discipline.html">
+    <meta property="og:image" content="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346790/THE_rmamrh.jpg">
+    <meta property="og:site_name" content="Mbarara Army Boarding Secondary School">
+
+    <title>MABSS - Discipline System</title>
+    
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
-        type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* ===== RESET & VARIABLES ===== */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            box-sizing: border-box;
         }
 
-        /* Header/Navigation - EXACTLY like homepage */
-        .header {
-            background-color: #0e7704;
-            color: white;
-            padding: 0.5rem 0;
+        :root {
+            --primary-navy: #0b2c4d;
+            --primary-blue: #1a4fa3;
+            --accent-green: #2e8b57;
+            --accent-red: #d62828;
+            --sky-blue: #4da8da;
+            --text-dark: #333;
+            --text-light: #555;
+            --bg-light: #f5f7fb;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 20, 30, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --navbar-green: #0e7704;
+            --army-green-dark: #004d33;
+            --military-tan: #c4a484;
+            --military-brown: #8b5a2b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== STICKY NAVBAR (MATCHING MATERIALS.HTML) ===== */
+        .navbar {
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            background: var(--navbar-green);
+            box-shadow: var(--shadow);
+            z-index: 1200;
         }
 
         .nav-container {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
+            padding: 0.7rem 2rem;
         }
 
         .logo {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid white;
-            margin-right: 0.5rem;
+            height: 88px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
-        .school-name {
-            margin: 0;
-            font-size: 1rem;
+        .logo img {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
             white-space: nowrap;
         }
 
-        .menu-toggle {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .nav-menu {
-            display: none;
-            background-color: #0e7704;
-            padding: 1rem;
-        }
-
-        .nav-menu.show {
-            display: block;
-        }
-
-        .nav-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .nav-links {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
-        .nav-item {
-            margin: 0.5rem 0;
-        }
-
-        .nav-link {
-            color: white;
+        .nav-links a {
             text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem;
-            display: block;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.25s ease;
+            padding: 0.4rem 0;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #02f7ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2.5px;
+            background: #ffffff;
+            transition: width 0.3s ease;
             border-radius: 4px;
         }
 
-        /* Hero Section with Slideshow - RE-ADDED SLIDESHOW */
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .apply-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.25);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1300;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--primary-blue);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--primary-blue);
+        }
+
+        /* ===== RESPONSIVE NAVBAR ===== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .apply-btn {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-container {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .logo span {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 70px;
+                gap: 8px;
+            }
+            
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo span {
+                font-size: 2.4rem;
+            }
+            
+            .nav-container {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo span {
+                font-size: 2.2rem;
+            }
+            
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.8rem;
+            transition: right 0.35s ease-in-out;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .mobile-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--navbar-green);
+        }
+
+        .mobile-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #1f2a44;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 14px 10px;
+            border-radius: 14px;
+            transition: 0.2s;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-menu a i {
+            width: 28px;
+            color: var(--navbar-green);
+            font-size: 1.3rem;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu a:hover i,
+        .mobile-menu a.active i {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu .apply-btn {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            font-size: 1.1rem;
+            background-color: var(--navbar-green);
+            color: white;
+        }
+
+        .mobile-menu .apply-btn i {
+            color: white;
+        }
+
+        .mobile-menu .apply-btn:hover {
+            background-color: #0a5a03;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 44, 77, 0.5);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1300;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== HERO SECTION WITH SLIDESHOW ===== */
         .hero {
             position: relative;
-            min-height: 300px;
-            padding: 2rem;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: var(--white);
+            padding: 3rem 1rem;
+            width: 100%;
             overflow: hidden;
         }
 
@@ -156,662 +432,961 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, rgba(11, 44, 77, 0.85), rgba(26, 79, 163, 0.75));
         }
 
         .hero-content {
-            max-width: 800px;
-            padding: 1rem;
-            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            z-index: 2;
+            position: relative;
         }
 
-        .hero-title {
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-weight: 500;
         }
 
-        .hero-subtitle {
-            font-size: 2rem;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
             margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Discipline Content Sections */
-        .section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
+        /* ===== SECTION STYLES ===== */
+        .container {
+            max-width: 1300px;
             margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #006341;
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
         }
 
-        .card-container {
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-red);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .military-quote {
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--primary-navy);
+            margin: 2rem 0;
+            padding: 1rem;
+            border-left: 4px solid var(--accent-red);
+            background: rgba(214, 40, 40, 0.05);
+        }
+
+        /* ===== DISCIPLINE PRINCIPLES GRID ===== */
+        .principles-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .discipline-card {
-            background-color: white;
+        .principle-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .principle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .principle-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
             padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .card-title {
-            color: #006341;
-            margin-top: 0;
-            border-bottom: 2px solid #0e7704;
-            padding-bottom: 0.5rem;
+        .principle-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .principle-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .principle-body {
+            padding: 2rem;
         }
 
         .principle-item {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .principle-icon {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            color: #0e7704;
-        }
-
-        /* Daily Routine Section */
-        .routine-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-
-        .routine-table th,
-        .routine-table td {
-            padding: 0.8rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .routine-table th {
-            background-color: #0e7704;
-            color: white;
-        }
-
-        .routine-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        /* Consequences & Rewards */
-        .system-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .system-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .system-card h3 {
-            color: #006341;
-            margin-top: 0;
-        }
-
-        /* Testimonials */
-        .testimonial-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            gap: 1rem;
             margin-bottom: 1.5rem;
         }
 
-        .testimonial-text {
-            font-style: italic;
+        .principle-item-icon {
+            color: var(--accent-red);
+            font-size: 1.2rem;
+            margin-top: 3px;
         }
 
-        .testimonial-author {
-            font-weight: bold;
-            text-align: right;
+        .principle-item-content h4 {
+            color: var(--primary-navy);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
-        /* Footer - EXACTLY like homepage */
-        .footer {
-            background-color: #004d33;
-            color: white;
-            padding: 2rem 1rem;
+        .principle-item-content p {
+            color: var(--text-light);
+            line-height: 1.6;
         }
 
-        .footer-container {
-            max-width: 1200px;
+        /* ===== DAILY ROUTINE SECTION ===== */
+        .routine-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 4rem 2rem;
+        }
+
+        .routine-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            max-width: 1300px;
             margin: 0 auto;
+        }
+
+        .routine-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .routine-table thead tr {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
+        }
+
+        .routine-table th {
+            padding: 1.2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: left;
+        }
+
+        .routine-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #f0f0f0;
+            color: var(--text-light);
+        }
+
+        .routine-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .routine-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .time-cell {
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        .discipline-focus {
+            background: rgba(214, 40, 40, 0.1);
+            color: var(--accent-red);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* ===== CONSEQUENCES & REWARDS SECTION ===== */
+        .system-section {
+            padding: 4rem 2rem;
+            background: var(--white);
+        }
+
+        .system-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 2rem auto 0;
         }
 
-        .footer-section {
-            min-width: 250px;
-            list-style: none;
+        .system-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 4px solid transparent;
         }
 
-        .footer-heading {
-            border-bottom: 2px solid #006341;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            list-style: none;
+        .system-card.consequences {
+            border-top-color: var(--accent-red);
         }
 
-        .footer-list {
+        .system-card.rewards {
+            border-top-color: var(--accent-green);
+        }
+
+        .system-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .system-header i {
+            font-size: 1.8rem;
+        }
+
+        .system-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .system-body {
+            padding: 2rem;
+        }
+
+        .system-list {
             list-style: none;
             padding: 0;
         }
 
-        .footer-item {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-link {
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Social Media Icons - EXACTLY like homepage */
-        .social-media {
-            margin-top: 1.5rem;
-        }
-
-        .social-heading {
-            font-size: 1.2rem;
+        .system-list li {
             margin-bottom: 1rem;
-            color: #fff;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--text-light);
+        }
+
+        .system-list li i {
+            color: var(--accent-red);
+            margin-top: 3px;
+        }
+
+        .rewards .system-list li i {
+            color: var(--accent-green);
+        }
+
+        .bible-quote {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(214, 40, 40, 0.05);
+            border-left: 4px solid var(--accent-red);
+            font-style: italic;
+            color: var(--primary-navy);
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 4rem 2rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 2rem auto 0;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            border-left: 4px solid var(--sky-blue);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .testimonial-quote {
+            font-size: 2rem;
+            color: var(--sky-blue);
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            color: var(--primary-navy);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--army-green-dark);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--sky-blue);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section p i {
+            color: var(--sky-blue);
+            width: 20px;
         }
 
         .social-icons {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
         }
 
         .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 45px;
             height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
             text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
         .social-icon:hover {
             transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .social-icon.facebook:hover {
-            background-color: #3b5998;
-        }
-
-        .social-icon.twitter:hover {
-            background-color: #1da1f2;
-        }
-
-        .social-icon.youtube:hover {
-            background-color: #ff0000;
-        }
-
-        .social-icon.pinterest:hover {
-            background-color: #bd081c;
-        }
-
-        .social-icon.instagram:hover {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-
-        .social-icon.whatsapp:hover {
-            background-color: #25d366;
-        }
-
-        .social-icon.linkedin:hover {
-            background-color: #0077b5;
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .footer-bottom {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #006341;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
         }
 
-        /* Responsive Adjustments - EXACTLY like homepage */
-        @media (min-width: 768px) {
-            .menu-toggle {
-                display: none;
-            }
-
-            .nav-menu {
-                display: block;
-                padding: 0;
-            }
-
-            .nav-list {
-                flex-direction: row;
-            }
-
-            .nav-item {
-                margin: 0 0.5rem;
-            }
-
-            .hero {
-                min-height: 400px;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 2.2rem;
-            }
-
-            .card-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .system-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 992px) {
-            .hero {
-                min-height: 500px;
-            }
-
-            .hero-title {
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero-content h1 {
                 font-size: 2.5rem;
             }
-
-            .card-container {
-                grid-template-columns: repeat(3, 1fr);
+            .hero-content p {
+                font-size: 1.2rem;
             }
+        }
 
-            .footer-container {
-                grid-template-columns: repeat(3, 1fr);
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 1.5rem;
             }
-
-            .school-name {
-                font-size: 1.5rem;
+            .section-title {
+                font-size: 2rem;
             }
-
-            .logo {
-                height: 70px;
-                width: 70px;
+            .hero-content h1 {
+                font-size: 2rem;
             }
-
-            header {
-                display: flex;
-                justify-content: left;
-                align-items: center;
-                padding-right: 200px;
+            .hero-content p {
+                font-size: 1.1rem;
             }
+            .principles-grid,
+            .system-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .routine-table {
+                font-size: 0.9rem;
+            }
+            .routine-table th,
+            .routine-table td {
+                padding: 0.8rem;
+            }
+        }
 
-            .social-icons {
-                justify-content: center;
+        @media (max-width: 480px) {
+            .principle-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .routine-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation Bar - EXACTLY like homepage -->
-    <div class="header">
-        <header>
-            <div class="nav-container">
-                <div class="logo-container">
-                    <a href="index.html" style="text-decoration:none"><img
-                            src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
-                            alt="logo mabss" class="logo"></a>
-                    <h1 class="school-name">Mbarara Army Boarding<br> Secondary School</h1>
-                </div>
-                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+
+    <!-- ===== MODERN NAVBAR (MATCHING MATERIALS.HTML) ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS Logo">
+                <span>MABSS</span>
             </div>
-            <nav class="nav-menu" id="mainNav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="materials.html" class="nav-link">Academics</a></li>
-                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
-                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
-                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
-                </ul>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="materials.html">Academics</a>
+                <a href="sports.html">Co-curricular</a>
+                <a href="welfare.html">Welfare</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contacts.html">Contact</a>
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
             </nav>
-        </header>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (matching materials.html) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-header">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
+            <h3>Mbarara Army<br>Boarding SS</h3>
+        </div>
+
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="materials.html"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
+        <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
+        <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+        <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+        <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
     </div>
 
-    <!-- Hero Section with Slideshow - RE-ADDED SLIDESHOW -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== HERO SECTION WITH SLIDESHOW ===== -->
     <section class="hero">
         <div class="hero-slides">
-            <div class="hero-slide active"
-                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346790/THE_rmamrh.jpg');">
-            </div>
-            <div class="hero-slide"
-                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346779/real_wxnlsa.jpg');">
-            </div>
-            <div class="hero-slide"
-                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346769/now_xn6tuo.jpg');">
-            </div>
-            <div class="hero-slide"
-                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346795/tour_h6cad6.jpg');">
-            </div>
-
+            <div class="hero-slide active" style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346790/THE_rmamrh.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346779/real_wxnlsa.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346769/now_xn6tuo.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346795/tour_h6cad6.jpg');"></div>
         </div>
         <div class="hero-content">
-            <h1 class="hero-title">Discipline at Mbarara Army Boarding SS</h1>
-            <p class="hero-subtitle">Excellence Through Order & Respect</p>
+            <span class="hero-badge"><i class="fas fa-shield-alt"></i> UPDF VALUES</span>
+            <h1>Discipline at MABSS</h1>
+            <p>Excellence Through Order & Respect</p>
         </div>
     </section>
 
-    <!-- Discipline Principles Section -->
-    <section class="section">
+    <!-- ===== DISCIPLINE PRINCIPLES ===== -->
+    <section class="container">
         <h2 class="section-title">Our Discipline Principles</h2>
-        <div class="card-container">
-            <div class="discipline-card">
-                <h3 class="card-title">The UPDF Way</h3>
-                <p>Our discipline system is modeled after the Uganda People's Defence Forces values:</p>
-                <div class="principle-item">
-                    <span class="principle-icon"></span>
-                    <div>
-                        <h4>Punctuality</h4>
-                        <p>"Early is on time, on time is late!" - All students must be 5 minutes early to all
-                            activities.</p>
-                    </div>
+        <p class="section-subtitle">Military-style discipline based on Uganda People's Defence Forces values</p>
+
+        <div class="principles-grid">
+            <!-- UPDF Way -->
+            <div class="principle-card">
+                <div class="principle-header">
+                    <div class="principle-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>The UPDF Way</h3>
                 </div>
-                <div class="principle-item">
-                    <span class="principle-icon"></span>
-                    <div>
-                        <h4>Respect</h4>
-                        <p>Salute superiors, address staff properly, and maintain decorum at all times.</p>
+                <div class="principle-body">
+                    <div class="principle-item">
+                        <div class="principle-item-icon"><i class="fas fa-chevron-right"></i></div>
+                        <div class="principle-item-content">
+                            <h4>Punctuality</h4>
+                            <p>"Early is on time, on time is late!" - All students must be 5 minutes early to all activities.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="principle-item">
-                    <span class="principle-icon"></span>
-                    <div>
-                        <h4>Uniform Code</h4>
-                        <p>Full uniform must be worn correctly at all times - no alterations allowed.<br>T.shirt is worn
-                            every Wednesday & Weekend ONLY.</p>
+                    <div class="principle-item">
+                        <div class="principle-item-icon"><i class="fas fa-chevron-right"></i></div>
+                        <div class="principle-item-content">
+                            <h4>Respect</h4>
+                            <p>Salute superiors, address staff properly, and maintain decorum at all times.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-item-icon"><i class="fas fa-chevron-right"></i></div>
+                        <div class="principle-item-content">
+                            <h4>Uniform Code</h4>
+                            <p>Full uniform must be worn correctly at all times - no alterations allowed. T-shirt is worn every Wednesday & Weekend ONLY.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="discipline-card">
-                <h3 class="card-title">Academic Standards</h3>
-                <div class="principle-item">
-                    <span class="principle-icon"></span>
-                    <div>
-                        <h4>Integrity</h4>
-                        <p>Zero tolerance for cheating. All work must be original with proper citations.</p>
-                    </div>
+            <!-- Academic Standards -->
+            <div class="principle-card">
+                <div class="principle-header">
+                    <div class="principle-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Academic Standards</h3>
                 </div>
-                <div class="principle-item">
-                    <span class="principle-icon"></span>
-                    <div>
-                        <h4>Assignments</h4>
-                        <p>All homework must be completed and submitted on time - no exceptions.</p>
+                <div class="principle-body">
+                    <div class="principle-item">
+                        <div class="principle-item-icon"><i class="fas fa-chevron-right"></i></div>
+                        <div class="principle-item-content">
+                            <h4>Integrity</h4>
+                            <p>Zero tolerance for cheating. All work must be original with proper citations.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="principle-item">
-                    <span class="principle-icon"></span>
-                    <div>
-                        <h4>Classroom Conduct</h4>
-                        <p>Stand when teacher enters, no phones, attentive participation required.</p>
+                    <div class="principle-item">
+                        <div class="principle-item-icon"><i class="fas fa-chevron-right"></i></div>
+                        <div class="principle-item-content">
+                            <h4>Assignments</h4>
+                            <p>All homework must be completed and submitted on time - no exceptions.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-item-icon"><i class="fas fa-chevron-right"></i></div>
+                        <div class="principle-item-content">
+                            <h4>Classroom Conduct</h4>
+                            <p>Stand when teacher enters, no phones, attentive participation required.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="discipline-card">
-                <h3 class="card-title">Community Values</h3>
-                <div class="principle-item">
-                    <span class="principle-icon"></span>
-                    <div>
-                        <h4>Dormitory Rules</h4>
-                        <p>Beds made military-style by 6:30am, no unauthorized items, lights out at 9:30pm sharp.</p>
-                    </div>
+            <!-- Community Values -->
+            <div class="principle-card">
+                <div class="principle-header">
+                    <div class="principle-icon"><i class="fas fa-users"></i></div>
+                    <h3>Community Values</h3>
                 </div>
-                <div class="principle-item">
-                    <span class="principle-icon"></span>
-                    <div>
-                        <h4>Teamwork</h4>
-                        <p>House competitions encourage unity and collective responsibility.</p>
+                <div class="principle-body">
+                    <div class="principle-item">
+                        <div class="principle-item-icon"><i class="fas fa-chevron-right"></i></div>
+                        <div class="principle-item-content">
+                            <h4>Dormitory Rules</h4>
+                            <p>Beds made military-style by 6:30am, no unauthorized items, lights out at 9:30pm sharp.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="principle-item">
-                    <span class="principle-icon"></span>
-                    <div>
-                        <h4>Physical Fitness</h4>
-                        <p>Mandatory morning drills keep students physically and mentally sharp.</p>
+                    <div class="principle-item">
+                        <div class="principle-item-icon"><i class="fas fa-chevron-right"></i></div>
+                        <div class="principle-item-content">
+                            <h4>Teamwork</h4>
+                            <p>House competitions encourage unity and collective responsibility.</p>
+                        </div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-item-icon"><i class="fas fa-chevron-right"></i></div>
+                        <div class="principle-item-content">
+                            <h4>Physical Fitness</h4>
+                            <p>Mandatory morning drills keep students physically and mentally sharp.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Daily Routine Section -->
-    <section class="section" style="background-color: #f0f0f0;">
-        <h2 class="section-title">Daily Program</h2>
-        <div class="discipline-card">
-            <table class="routine-table">
-                <thead>
-                    <tr>
-                        <th>Time</th>
-                        <th>Activity</th>
-                        <th>Discipline Focus</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>4:00 AM</td>
-                        <td>Wake-up Morning Preps</td>
-                        <td>Punctuality, Physical Fitness</td>
-                    </tr>
-                    <tr>
-                        <td>6:00 AM</td>
-                        <td>Inspection (Uniform & Dorm)</td>
-                        <td>Personal Grooming, Attention to Detail</td>
-                    </tr>
-                    <tr>
-                        <td>6:00 AM</td>
-                        <td>Breakfast & Assembly</td>
-                        <td>Formation Discipline, Silence During Announcements</td>
-                    </tr>
-                    <tr>
-                        <td>8:00 AM - 4:00 PM</td>
-                        <td>Academic Classes</td>
-                        <td>Academic Integrity, Classroom Conduct</td>
-                    </tr>
-                    <tr>
-                        <td>4:40 PM</td>
-                        <td>Sports & Extra-Curricular</td>
-                        <td>Teamwork, Leadership</td>
-                    </tr>
-                    <tr>
-                        <td>7:00 PM - 09:30 PM</td>
-                        <td> Evening Prep</td>
-                        <td>Academic Focus, Silent Study</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <!-- ===== DAILY ROUTINE ===== -->
+    <section class="routine-section">
+        <div class="container">
+            <h2 class="section-title">Daily Program</h2>
+            <p class="section-subtitle">A structured day builds disciplined habits</p>
 
-    <!-- Consequences & Rewards Section -->
-    <section class="section">
-        <h2 class="section-title">Discipline System</h2>
-        <div class="system-container">
-            <div class="system-card">
-                <h3>Consequences for Violations</h3>
-                <ol>
-                    <li><strong>Verbal Warning:</strong> First minor offense noted</li>
-                    <li><strong>Written Warning:</strong> Documented in student file</li>
-                    <li><strong>Extra Duty:</strong> Cleaning, gardening, or other service</li>
-                    <li><strong>Demerits:</strong> 3 demerits = suspension</li>
-                    <li><strong>Suspension:</strong> 1-5 days depending on severity</li>
-                    <li><strong>Expulsion:</strong> For repeated or serious offenses</li>
-                    <p><em><strong> the Rod Spoil the child(Proverbs 13-24.)</strong></em></p>
-                </ol>
-                <p><em>Serious offenses (fighting, theft, etc.) may lead to indefinite suspension.</em></p>
+            <div class="routine-card">
+                <table class="routine-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Activity</th>
+                            <th>Discipline Focus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-cell">4:00 AM</td>
+                            <td>Wake-up & Morning Preps</td>
+                            <td><span class="discipline-focus">Punctuality, Physical Fitness</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">6:00 AM</td>
+                            <td>Inspection (Uniform & Dorm)</td>
+                            <td><span class="discipline-focus">Personal Grooming, Attention to Detail</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">6:30 AM</td>
+                            <td>Breakfast & Assembly</td>
+                            <td><span class="discipline-focus">Formation Discipline, Silence During Announcements</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">8:00 AM - 4:00 PM</td>
+                            <td>Academic Classes</td>
+                            <td><span class="discipline-focus">Academic Integrity, Classroom Conduct</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">4:40 PM</td>
+                            <td>Sports & Extra-Curricular</td>
+                            <td><span class="discipline-focus">Teamwork, Leadership</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">7:00 PM - 9:30 PM</td>
+                            <td>Evening Prep</td>
+                            <td><span class="discipline-focus">Academic Focus, Silent Study</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div class="system-card">
-                <h3>Rewards for Excellence</h3>
-                <ul>
-                    <li><strong>Bursary :</strong> Bursary for disciplined students </li>
-                    <li><strong>Bursary :</strong> Academic Bursary for best perfomers in class </li>
-                    <li><strong>Leadership Roles:</strong> Prefect, House Captain positions</li>
-                    <li><strong>Weekend Passes:</strong> For students with clean records</li>
-                    <li><strong>Honors Society:</strong> Academic and discipline excellence</li>
-                    <li><strong>Special Events:</strong> Invitations to military ceremonies</li>
-                    <li><strong>Recommendation Letters:</strong> For university applications</li>
-                </ul>
+            <div class="military-quote">
+                <i class="fas fa-quote-left"></i> Discipline is the bridge between goals and accomplishment. <i class="fas fa-quote-right"></i>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section" style="background-color: #f0f0f0;">
-        <h2 class="section-title">What Our Community Says</h2>
-        <div class="card-container">
-            <div class="testimonial-card">
-                <p class="testimonial-text">"The discipline I learned at MABSS gave me structure that helped me succeed
-                    at Makerere University and now in my military career."</p>
-                <p class="testimonial-author">&mdash; Lt. James Mugisha, OB</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"As a parent, I've seen remarkable changes in my son's responsibility and
-                    time management since joining this school."</p>
-                <p class="testimonial-author">&mdash; Mrs. Atim, Parent</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"The morning drills and uniform inspections taught me attention to detail
-                    that I now apply in my medical studies."</p>
-                <p class="testimonial-author">&mdash; Sarah K., S6 (OG)
+    <!-- ===== CONSEQUENCES & REWARDS ===== -->
+    <section class="system-section">
+        <div class="container">
+            <h2 class="section-title">Discipline System</h2>
+            <p class="section-subtitle">Clear consequences and meaningful rewards</p>
+
+            <div class="system-grid">
+                <!-- Consequences -->
+                <div class="system-card consequences">
+                    <div class="system-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Consequences for Violations</h3>
+                    </div>
+                    <div class="system-body">
+                        <ol class="system-list" style="list-style-type: decimal; padding-left: 1.5rem;">
+                            <li><strong>Verbal Warning:</strong> First minor offense noted</li>
+                            <li><strong>Written Warning:</strong> Documented in student file</li>
+                            <li><strong>Extra Duty:</strong> Cleaning, gardening, or other service</li>
+                            <li><strong>Demerits:</strong> 3 demerits = suspension</li>
+                            <li><strong>Suspension:</strong> 1-5 days depending on severity</li>
+                            <li><strong>Expulsion:</strong> For repeated or serious offenses</li>
+                        </ol>
+                        <div class="bible-quote">
+                            <i class="fas fa-quote-left"></i> Spare the rod, spoil the child (Proverbs 13:24)
+                        </div>
+                        <p style="color: var(--text-light); margin-top: 1rem;"><em>Serious offenses (fighting, theft, etc.) may lead to indefinite suspension.</em></p>
+                    </div>
+                </div>
+
+                <!-- Rewards -->
+                <div class="system-card rewards">
+                    <div class="system-header">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Rewards for Excellence</h3>
+                    </div>
+                    <div class="system-body">
+                        <ul class="system-list">
+                            <li><i class="fas fa-check-circle"></i> <strong>Bursary:</strong> For disciplined students</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Academic Bursary:</strong> For best performers in class</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Leadership Roles:</strong> Prefect, House Captain positions</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Weekend Passes:</strong> For students with clean records</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Honors Society:</strong> Academic and discipline excellence</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Special Events:</strong> Invitations to military ceremonies</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Recommendation Letters:</strong> For university applications</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer - EXACTLY like homepage -->
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Our Community Says</h2>
+            <p class="section-subtitle">Real stories from our alumni and parents</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"The discipline I learned at MABSS gave me structure that helped me succeed at Makerere University and now in my military career."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JM</div>
+                        <div class="author-info">
+                            <h4>Lt. James Mugisha</h4>
+                            <p>Old Boy (OB)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"As a parent, I've seen remarkable changes in my son's responsibility and time management since joining this school."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MA</div>
+                        <div class="author-info">
+                            <h4>Mrs. Atim</h4>
+                            <p>Parent</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"The morning drills and uniform inspections taught me attention to detail that I now apply in my medical studies."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SK</div>
+                        <div class="author-info">
+                            <h4>Sarah K.</h4>
+                            <p>S6 (Old Girl)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <h3 class="footer-heading">Quick Links</h3>
-                <ul class="footer-list">
-                    <li class="footer-item"><a href="index.html" class="footer-link">Home</a></li>
-                    <li class="footer-item"><a href="materials.html" class="footer-link">Academics</a></li>
-                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
-                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
-                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
-                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
-                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="welfare.html">Welfare</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">Contact Us</h3>
-                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
-                <p><strong>Phone:</strong> +256 782 096231 <br> +256 782 371824 | +256 779 927775</p>
-                <p><strong>Email:</strong> mabss2014@gmail.com</p>
 
-                <!-- Social Media Icons - EXACTLY like homepage -->
-                <div class="social-media">
-                    <h4 class="social-heading">Follow Us</h4>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
-                            class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2004" class="social-icon twitter" target="_blank"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i
-                                class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
-                            class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
-                            target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> P.O. Box 521, Mbarara, Uganda</p>
+                <p><i class="fas fa-phone"></i> +256 782 096231</p>
+                <p><i class="fas fa-phone"></i> +256 782 371824</p>
+                <p><i class="fas fa-phone"></i> +256 779 927775</p>
+                <p><i class="fas fa-envelope"></i> mabss2014@gmail.com</p>
+
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
+
             <div class="footer-section">
-                <h3 class="footer-heading">School Hours</h3>
-                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
-                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
-                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
+                <h3>School Hours</h3>
+                <p><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p><i class="fas fa-clock"></i> Saturday: 8:00 AM - 4:00 PM</p>
+                <p><i class="fas fa-clock"></i> Sunday: Closed (Boarders only)</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p> &copy; <span id="year"></span> Mbarara Army Boarding Secondary School. <br>
-                Powered by <strong>Amwine Frankline / CodeMatrix</strong>.</p>
-        </div>
 
-        <script>
-            document.getElementById("year").textContent = new Date().getFullYear();
-        </script>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p>Powered by <strong>Amwine Frankline / CodeMatrix</strong></p>
+        </div>
     </footer>
 
-
+    <!-- ===== SCRIPTS ===== -->
     <script>
-        // Mobile menu toggle - EXACTLY like homepage
-        document.getElementById('menuToggle').addEventListener('click', function () {
-            const nav = document.getElementById('mainNav');
-            nav.classList.toggle('show');
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            hamburger.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
         });
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const nav = document.getElementById('mainNav');
-                if (nav.classList.contains('show')) {
-                    nav.classList.remove('show');
-                }
-            });
+        overlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
 
-        // Hero Slideshow Animation - RE-ADDED SLIDESHOW FUNCTIONALITY
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Hero Slideshow
         function startSlideshow() {
             const slides = document.querySelectorAll('.hero-slide');
+            if (slides.length === 0) return;
             let currentSlide = 0;
 
             function showNextSlide() {
-                // Remove active class from current slide
                 slides[currentSlide].classList.remove('active');
-
-                // Move to next slide
                 currentSlide = (currentSlide + 1) % slides.length;
-
-                // Add active class to new slide
                 slides[currentSlide].classList.add('active');
             }
 
-            // Change slide every 5 seconds
             setInterval(showNextSlide, 5000);
         }
 
-        // Start slideshow when page loads
         window.addEventListener('load', startSlideshow);
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 
