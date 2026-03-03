@@ -1,9 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en-UG">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     
     <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -38,7 +37,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
     <style>
-        /* ===== RESET & VARIABLES ===== */
+        /* ===== RESET & VARIABLES (keeping original 51.44kb theme) ===== */
         * {
             margin: 0;
             padding: 0;
@@ -67,11 +66,9 @@
             color: var(--text-dark);
             overflow-x: hidden;
             line-height: 1.6;
-            width: 100%;
-            position: relative;
         }
 
-        /* ===== STICKY NAVBAR (MATCHING MATERIALS.HTML) ===== */
+        /* ===== STICKY NAVBAR (original theme) ===== */
         .navbar {
             position: sticky;
             top: 0;
@@ -87,26 +84,33 @@
             justify-content: space-between;
             max-width: 1300px;
             margin: 0 auto;
-            padding: 0.7rem 2rem;
+            padding: 0.5rem 1rem;
+        }
+        @media (min-width: 640px) {
+            .nav-container { padding: 0.7rem 2rem; }
         }
 
         .logo {
-            height: 88px;
-            width: auto;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             flex-shrink: 0;
+        }
+        @media (min-width: 640px) {
+            .logo { gap: 12px; }
         }
 
         .logo img {
-            width: 88px;
-            height: 88px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #ffffff;
             background-color: white;
-            padding: 5px;
+            padding: 3px;
+        }
+        @media (min-width: 640px) {
+            .logo img { width: 88px; height: 88px; padding: 5px; }
         }
 
         .logo span {
@@ -116,20 +120,33 @@
             letter-spacing: -0.5px;
             white-space: nowrap;
         }
+        @media (max-width: 400px) {
+            .logo span { font-size: 1.8rem; }
+        }
+        @media (max-width: 340px) {
+            .logo span { font-size: 1.5rem; }
+            .logo img { width: 50px; height: 50px; }
+        }
 
         .nav-links {
-            display: flex;
+            display: none;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
             justify-content: flex-end;
+        }
+        @media (min-width: 901px) {
+            .nav-links { display: flex; }
+        }
+        @media (min-width: 1024px) {
+            .nav-links { gap: 1.5rem; }
         }
 
         .nav-links a {
             text-decoration: none;
             color: #ffffff;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             position: relative;
             transition: color 0.25s ease;
             padding: 0.4rem 0;
@@ -162,10 +179,10 @@
             background: var(--primary-blue);
             color: var(--white);
             border: none;
-            padding: 8px 20px;
+            padding: 8px 18px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: 0.2s ease;
             box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
@@ -173,6 +190,7 @@
             white-space: nowrap;
             text-decoration: none;
             display: inline-block;
+            text-align: center;
         }
 
         .apply-btn:hover {
@@ -182,14 +200,17 @@
         }
 
         .hamburger {
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 30px;
-            height: 22px;
+            width: 28px;
+            height: 20px;
             cursor: pointer;
             z-index: 1300;
             flex-shrink: 0;
+        }
+        @media (min-width: 901px) {
+            .hamburger { display: none; }
         }
 
         .hamburger span {
@@ -202,134 +223,35 @@
         }
 
         .hamburger.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
+            transform: translateY(8.5px) rotate(45deg);
             background: var(--primary-blue);
         }
         .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
         .hamburger.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
+            transform: translateY(-8.5px) rotate(-45deg);
             background: var(--primary-blue);
         }
 
-        /* ===== IMPROVED RESPONSIVE NAVBAR ===== */
-        @media (max-width: 1024px) {
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-            
-            .apply-btn {
-                padding: 6px 16px;
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hamburger {
-                display: flex;
-            }
-            
-            .nav-container {
-                padding: 0.7rem 1rem;
-            }
-            
-            .logo span {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .logo {
-                height: auto;
-                gap: 8px;
-            }
-            
-            .logo img {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .logo span {
-                font-size: 1.5rem;
-            }
-            
-            .nav-container {
-                padding: 0.5rem 0.8rem;
-            }
-            
-            .hamburger {
-                width: 28px;
-                height: 20px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .logo span {
-                font-size: 1.2rem;
-            }
-            
-            .logo img {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .hamburger {
-                width: 25px;
-                height: 18px;
-            }
-            
-            .hamburger span {
-                height: 2.5px;
-            }
-            
-            .hamburger.active span:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            
-            .hamburger.active span:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-        }
-
-        @media (max-width: 320px) {
-            .logo span {
-                font-size: 1rem;
-            }
-            
-            .logo img {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .logo {
-                gap: 5px;
-            }
-        }
-
+        /* mobile menu */
         .mobile-menu {
             position: fixed;
             top: 0;
-            right: -100%;
-            width: 85%;
-            max-width: 320px;
+            right: -280px;
+            width: 260px;
             height: 100%;
             background: var(--white);
             box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
-            padding: 2rem 1.5rem;
+            padding: 1.5rem 1.2rem;
             transition: right 0.35s ease-in-out;
             z-index: 1400;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
+        }
+        @media (min-width: 380px) {
+            .mobile-menu { width: 280px; padding: 2rem 1.8rem; }
         }
 
         .mobile-menu.active {
@@ -339,26 +261,24 @@
         .mobile-header {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             margin-bottom: 30px;
             border-bottom: 1px solid #eef2f6;
-            padding-bottom: 20px;
+            padding-bottom: 16px;
         }
 
         .mobile-header img {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             border: 2px solid var(--navbar-green);
-            flex-shrink: 0;
         }
 
         .mobile-header h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary-navy);
-            line-height: 1.3;
-            word-break: break-word;
+            line-height: 1.2;
         }
 
         .mobile-menu a {
@@ -367,12 +287,12 @@
             font-size: 1.1rem;
             font-weight: 500;
             padding: 12px 10px;
-            border-radius: 14px;
+            border-radius: 12px;
             transition: 0.2s;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
         .mobile-menu a i {
@@ -380,7 +300,6 @@
             color: var(--navbar-green);
             font-size: 1.2rem;
             transition: color 0.2s ease;
-            flex-shrink: 0;
         }
 
         .mobile-menu a:hover,
@@ -395,7 +314,7 @@
         }
 
         .mobile-menu .apply-btn {
-            margin-top: 20px;
+            margin-top: 30px;
             width: 100%;
             text-align: center;
             padding: 12px;
@@ -406,10 +325,6 @@
 
         .mobile-menu .apply-btn i {
             color: white;
-        }
-
-        .mobile-menu .apply-btn:hover {
-            background-color: #0a5a03;
         }
 
         .overlay {
@@ -431,10 +346,10 @@
             visibility: visible;
         }
 
-        /* ===== IMPROVED HERO SECTION ===== */
+        /* ===== HERO SECTION (original theme) ===== */
         .hero {
             position: relative;
-            min-height: 300px;
+            min-height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -448,145 +363,132 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+        @media (min-width: 640px) {
+            .hero { min-height: 350px; padding: 3rem 1rem; }
+        }
+        @media (min-width: 1024px) {
+            .hero { min-height: 400px; }
+        }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             z-index: 2;
             position: relative;
-            width: 100%;
-            padding: 0 0.5rem;
         }
 
         .hero-content h1 {
-            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: -0.5px;
-            word-break: break-word;
+        }
+        @media (min-width: 640px) {
+            .hero-content h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+        }
+        @media (min-width: 1024px) {
+            .hero-content h1 { font-size: 3.5rem; }
         }
 
         .hero-content p {
-            font-size: clamp(1rem, 4vw, 1.3rem);
+            font-size: 1.1rem;
             margin-bottom: 0.8rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            word-break: break-word;
+        }
+        @media (min-width: 768px) {
+            .hero-content p { font-size: 1.3rem; }
         }
 
         .hero-badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
-            padding: 0.4rem 1rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 40px;
             font-weight: 600;
-            font-size: clamp(0.8rem, 3vw, 1rem);
+            font-size: 0.9rem;
             margin-bottom: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* ===== GALLERY NAVIGATION ===== */
+        /* ===== GALLERY NAVIGATION (original theme) ===== */
         .gallery-nav {
             background: var(--army-green-dark);
             padding: 0.8rem 0;
             position: sticky;
-            top: 88px;
+            top: 80px;
             z-index: 1100;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-
-        @media (max-width: 900px) {
-            .gallery-nav {
-                top: 76px;
-            }
+        @media (min-width: 640px) {
+            .gallery-nav { top: 96px; }
         }
-
-        @media (max-width: 600px) {
-            .gallery-nav {
-                top: 60px;
-                padding: 0.6rem 0;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .gallery-nav {
-                top: 55px;
-            }
+        @media (min-width: 901px) {
+            .gallery-nav { top: 106px; }
         }
 
         .gallery-nav-container {
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 1rem;
-            width: 100%;
+        }
+        @media (min-width: 640px) {
+            .gallery-nav-container { padding: 0 2rem; }
         }
 
         .gallery-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 0.6rem;
             justify-content: center;
+        }
+        @media (max-width: 480px) {
+            .gallery-buttons { flex-direction: column; align-items: stretch; }
         }
 
         .gallery-link {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             padding: 0.5rem 1.2rem;
             border-radius: 40px;
             font-weight: 500;
-            font-size: clamp(0.85rem, 3vw, 1rem);
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.1);
-            white-space: nowrap;
+            text-align: center;
+            border: 1px solid transparent;
         }
-
         .gallery-link:hover,
         .gallery-link.active {
             background: var(--white);
             color: var(--primary-navy);
+            border-color: var(--white);
+        }
+        @media (max-width: 480px) {
+            .gallery-link { display: block; }
         }
 
-        @media (max-width: 500px) {
-            .gallery-buttons {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                justify-content: flex-start;
-                padding-bottom: 5px;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: thin;
-            }
-            
-            .gallery-buttons::-webkit-scrollbar {
-                height: 3px;
-            }
-            
-            .gallery-buttons::-webkit-scrollbar-thumb {
-                background: rgba(255, 255, 255, 0.3);
-                border-radius: 10px;
-            }
-            
-            .gallery-link {
-                flex: 0 0 auto;
-            }
-        }
-
-        /* ===== IMPROVED SECTION STYLES ===== */
+        /* ===== SECTION STYLES (original theme) ===== */
         .container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
-            width: 100%;
+            padding: 2.5rem 1rem;
+        }
+        @media (min-width: 640px) {
+            .container { padding: 4rem 2rem; }
         }
 
         .section-title {
             text-align: center;
-            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            font-size: 2rem;
             color: var(--primary-navy);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             position: relative;
-            padding-bottom: 1rem;
-            word-break: break-word;
+            padding-bottom: 0.8rem;
+        }
+        @media (min-width: 768px) {
+            .section-title { font-size: 2.5rem; }
         }
 
         .section-title::after {
@@ -595,7 +497,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: min(80px, 30%);
+            width: 60px;
             height: 4px;
             background: var(--accent-green);
             border-radius: 2px;
@@ -604,18 +506,26 @@
         .section-subtitle {
             text-align: center;
             color: var(--text-light);
-            font-size: clamp(1rem, 3.5vw, 1.2rem);
+            font-size: 1rem;
             max-width: 800px;
             margin: 0 auto 2rem;
-            padding: 0 1rem;
-            word-break: break-word;
+            padding: 0 0.5rem;
+        }
+        @media (min-width: 768px) {
+            .section-subtitle { font-size: 1.2rem; margin: 0 auto 3rem; }
         }
 
-        /* ===== IMPROVED PHOTO GALLERY ===== */
+        /* ===== PHOTO GALLERY (enhanced with 56.99kb styling) ===== */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            grid-template-columns: 1fr;
             gap: 1.5rem;
+        }
+        @media (min-width: 560px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         .gallery-item {
@@ -625,11 +535,24 @@
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             position: relative;
-            width: 100%;
+            animation: fadeUp 0.6s ease forwards;
+            opacity: 0;
+            animation-delay: calc(var(--item-index) * 0.1s);
+        }
+        .gallery-item:nth-child(1) { --item-index: 1; }
+        .gallery-item:nth-child(2) { --item-index: 2; }
+        .gallery-item:nth-child(3) { --item-index: 3; }
+        .gallery-item:nth-child(4) { --item-index: 4; }
+        .gallery-item:nth-child(5) { --item-index: 5; }
+        .gallery-item:nth-child(6) { --item-index: 6; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
         }
 
@@ -638,18 +561,15 @@
             overflow: hidden;
             height: 200px;
         }
-
-        @media (min-width: 768px) {
-            .gallery-image-container {
-                height: 250px;
-            }
+        @media (min-width: 640px) {
+            .gallery-image-container { height: 240px; }
         }
 
         .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.7s ease;
         }
 
         .gallery-item:hover .gallery-image {
@@ -665,20 +585,9 @@
             background: linear-gradient(to top, rgba(11, 44, 77, 0.9), transparent);
             display: flex;
             align-items: flex-end;
-            padding: 1rem;
+            padding: 1.2rem;
             opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            .gallery-overlay {
-                opacity: 1;
-                background: linear-gradient(to top, rgba(11, 44, 77, 0.8), transparent);
-            }
-            
-            .gallery-caption {
-                transform: translateY(0);
-            }
+            transition: opacity 0.4s ease;
         }
 
         .gallery-item:hover .gallery-overlay {
@@ -689,26 +598,34 @@
             color: var(--white);
             font-size: 0.9rem;
             transform: translateY(20px);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
         }
 
         .gallery-item:hover .gallery-caption {
             transform: translateY(0);
         }
 
-        /* ===== IMPROVED VIDEO GALLERY ===== */
+        /* ===== VIDEO GALLERY (enhanced with 56.99kb styling) ===== */
         .video-section {
             background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
-            width: 100%;
+            padding: 2.5rem 1rem;
+        }
+        @media (min-width: 640px) {
+            .video-section { padding: 4rem 2rem; }
         }
 
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            grid-template-columns: 1fr;
             gap: 1.5rem;
             max-width: 1300px;
             margin: 0 auto;
+        }
+        @media (min-width: 640px) {
+            .video-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .video-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         .video-card {
@@ -718,11 +635,16 @@
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             border-top: 4px solid var(--sky-blue);
-            width: 100%;
+            animation: fadeUp 0.6s ease forwards;
+            opacity: 0;
+            animation-delay: calc(var(--video-index) * 0.1s);
         }
+        .video-card:nth-child(1) { --video-index: 1; }
+        .video-card:nth-child(2) { --video-index: 2; }
+        .video-card:nth-child(3) { --video-index: 3; }
 
         .video-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
         }
 
@@ -732,11 +654,8 @@
             object-fit: cover;
             background: #000;
         }
-
-        @media (min-width: 768px) {
-            .video-player {
-                height: 200px;
-            }
+        @media (min-width: 640px) {
+            .video-player { height: 200px; }
         }
 
         .video-info {
@@ -745,71 +664,120 @@
 
         .video-info h3 {
             color: var(--primary-navy);
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            font-size: 1.1rem;
             margin-bottom: 0.4rem;
-            word-break: break-word;
         }
 
         .video-info p {
             color: var(--text-light);
             font-size: 0.9rem;
             line-height: 1.5;
-            word-break: break-word;
         }
 
-        /* ===== IMPROVED ALUMNI SECTION ===== */
+        /* ===== ALUMNI SECTION (completely redesigned with 56.99kb styling) ===== */
         .alumni-section {
-            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
-            background: var(--white);
-            width: 100%;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            position: relative;
+            overflow: hidden;
         }
 
         .alumni-container {
-            max-width: 1300px;
+            max-width: 1280px;
             margin: 0 auto;
-            width: 100%;
+            padding: 0 20px;
+            position: relative;
         }
 
+        .alumni-title-container {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .alumni-title {
+            font-size: 2.2rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+        @media (max-width: 767px) {
+            .alumni-title { font-size: 1.8rem; }
+        }
+
+        .alumni-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        @media (max-width: 767px) {
+            .alumni-subtitle { font-size: 1rem; padding: 0 15px; }
+        }
+
+        /* Swiper Carousel Container */
+        .alumni-carousel-container {
+            position: relative;
+            padding: 20px 0 60px;
+        }
+
+        /* Swiper Custom Styling */
         .alumni-swiper {
-            padding: 1rem 1rem 3rem;
-            overflow: visible;
             width: 100%;
+            height: auto;
+            padding: 20px 10px 50px;
         }
 
+        /* Alumni Card Styling */
         .alumni-card {
-            background: var(--white);
-            border-radius: 20px;
+            background: white;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
             height: 100%;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             display: flex;
             flex-direction: column;
+            position: relative;
             border-top: 4px solid var(--accent-green);
-            width: 100%;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: calc(var(--card-index) * 0.1s);
+        }
+        @media (min-width: 768px) {
+            .alumni-card:hover {
+                transform: translateY(-10px);
+                box-shadow: var(--shadow-hover);
+            }
         }
 
-        .alumni-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
+        /* Proper circular image container */
         .alumni-image-container {
-            width: 100px;
-            height: 100px;
-            margin: 1.5rem auto 0.5rem;
+            width: 120px;
+            height: 120px;
+            margin: 1.5rem auto 1rem;
+            position: relative;
             border-radius: 50%;
-            overflow: hidden;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
             border: 4px solid var(--sky-blue);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
+            overflow: hidden;
         }
-
         @media (min-width: 768px) {
             .alumni-image-container {
-                width: 120px;
-                height: 120px;
-                margin: 2rem auto 1rem;
+                width: 140px;
+                height: 140px;
+                margin: 1.8rem auto 1.2rem;
+            }
+        }
+        @media (max-width: 375px) {
+            .alumni-image-container {
+                width: 100px;
+                height: 100px;
             }
         }
 
@@ -817,231 +785,217 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            object-position: center;
+            transition: transform 0.7s ease;
         }
-
-        .alumni-card:hover .alumni-image {
-            transform: scale(1.1);
-        }
-
-        .alumni-content {
-            padding: 0 1.2rem 1.5rem;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
         @media (min-width: 768px) {
-            .alumni-content {
-                padding: 0 2rem 2rem;
+            .alumni-card:hover .alumni-image {
+                transform: scale(1.1);
             }
         }
 
+        .alumni-content {
+            padding: 0 1.5rem 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        @media (max-width: 767px) {
+            .alumni-content { padding: 0 1.2rem 1.2rem; }
+        }
+
         .alumni-name {
+            font-size: 1.2rem;
             color: var(--primary-navy);
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
-            margin-bottom: 0.3rem;
-            font-weight: 600;
-            word-break: break-word;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
             line-height: 1.3;
+        }
+        @media (max-width: 767px) {
+            .alumni-name { font-size: 1.1rem; }
         }
 
         .alumni-position {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary-blue), var(--sky-blue));
-            color: var(--white);
-            padding: 0.3rem 1rem;
+            background: linear-gradient(to right, var(--primary-blue), var(--sky-blue));
+            color: white;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 0.8rem;
-            align-self: center;
-            word-break: break-word;
-            max-width: 100%;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 8px rgba(26, 79, 163, 0.2);
+        }
+        @media (max-width: 767px) {
+            .alumni-position { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
         }
 
         .alumni-desc {
             color: var(--text-light);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
             flex-grow: 1;
-            word-break: break-word;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-align: center;
+        }
+        @media (max-width: 767px) {
+            .alumni-desc { font-size: 0.85rem; }
         }
 
         .alumni-read-more {
             color: var(--primary-blue);
-            text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 6px;
             transition: all 0.3s ease;
             margin-top: auto;
-            padding: 0.3rem 0;
         }
-
         .alumni-read-more:hover {
             color: var(--primary-navy);
-            gap: 10px;
+            transform: translateX(5px);
         }
-
         .alumni-read-more i {
-            font-size: 0.8rem;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        .alumni-read-more:hover i {
+            transform: translateX(3px);
         }
 
-        /* Swiper Navigation - Improved for mobile */
+        /* Swiper Navigation Buttons */
         .alumni-nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background: var(--white);
+            width: 50px;
+            height: 50px;
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             border: none;
             cursor: pointer;
             z-index: 10;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0.9;
             color: var(--primary-navy);
         }
-
-        @media (min-width: 768px) {
-            .alumni-nav-btn {
-                width: 50px;
-                height: 50px;
-            }
-        }
-
         .alumni-nav-btn:hover {
             background: var(--primary-blue);
-            color: var(--white);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .alumni-nav-btn.prev {
-            left: 0;
-        }
-
-        .alumni-nav-btn.next {
-            right: 0;
-        }
-
-        @media (max-width: 640px) {
-            .alumni-nav-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9rem;
-            }
-            
-            .alumni-nav-btn.prev {
-                left: -5px;
-            }
-            
-            .alumni-nav-btn.next {
-                right: -5px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .alumni-nav-btn {
-                display: none;
-            }
-        }
-
-        .swiper-pagination {
-            position: relative;
-            margin-top: 1rem;
-        }
-
-        .swiper-pagination-bullet {
-            width: 8px;
-            height: 8px;
-            background: #ccc;
+            color: white;
             opacity: 1;
-            margin: 0 4px !important;
+            transform: translateY(-50%) scale(1.05);
+        }
+        .alumni-nav-btn.prev { left: -10px; }
+        .alumni-nav-btn.next { right: -10px; }
+        @media (max-width: 767px) {
+            .alumni-nav-btn { display: none; }
+        }
+        @media (min-width: 1024px) {
+            .alumni-nav-btn.prev { left: -25px; }
+            .alumni-nav-btn.next { right: -25px; }
         }
 
+        /* Swiper Pagination */
+        .alumni-pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+            margin-top: 20px;
+        }
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 0 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
         .swiper-pagination-bullet-active {
             background: var(--primary-blue);
             transform: scale(1.2);
+            opacity: 1;
         }
 
+        /* View More Button */
         .alumni-view-more {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
-
         .alumni-view-more-btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--sky-blue));
-            color: var(--white);
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
+            background: linear-gradient(to right, var(--primary-blue), var(--sky-blue));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            font-size: clamp(0.9rem, 3vw, 1rem);
+            font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.3);
-            width: fit-content;
-            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(26, 79, 163, 0.25);
+            border: none;
+            cursor: pointer;
         }
-
-        @media (max-width: 480px) {
-            .alumni-view-more-btn {
-                width: 100%;
-                padding: 0.8rem 1rem;
-            }
-        }
-
         .alumni-view-more-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.4);
-            gap: 12px;
+            box-shadow: 0 8px 20px rgba(26, 79, 163, 0.35);
+        }
+        .alumni-view-more-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        .alumni-view-more-btn:hover i {
+            transform: translateX(5px);
         }
 
-        .alumni-view-more-btn:active {
-            transform: translateY(0);
-        }
-
-        /* ===== IMPROVED FOOTER ===== */
+        /* ===== FOOTER (original theme) ===== */
         .footer {
             background: var(--army-green-dark);
             color: var(--white);
-            padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem) 1.5rem;
-            width: 100%;
+            padding: 2.5rem 1rem 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .footer { padding: 4rem 2rem 2rem; }
         }
 
         .footer-container {
             max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            grid-template-columns: 1fr;
             gap: 2rem;
         }
-
-        .footer-section {
-            width: 100%;
+        @media (min-width: 640px) {
+            .footer-container { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .footer-container { grid-template-columns: repeat(3, 1fr); }
         }
 
         .footer-section h3 {
             font-size: 1.2rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             position: relative;
             padding-bottom: 0.6rem;
-            word-break: break-word;
         }
-
         .footer-section h3::after {
             content: '';
             position: absolute;
@@ -1055,20 +1009,15 @@
         .footer-section ul {
             list-style: none;
         }
-
         .footer-section ul li {
             margin-bottom: 0.6rem;
         }
-
         .footer-section ul li a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: color 0.3s;
-            word-break: break-word;
-            display: inline-block;
-            padding: 0.2rem 0;
+            font-size: 0.9rem;
         }
-
         .footer-section ul li a:hover {
             color: var(--white);
             text-decoration: underline;
@@ -1078,29 +1027,25 @@
             margin-bottom: 0.6rem;
             color: rgba(255, 255, 255, 0.8);
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            word-break: break-word;
+            align-items: center;
+            gap: 8px;
             font-size: 0.9rem;
         }
-
         .footer-section p i {
             color: var(--sky-blue);
-            width: 20px;
-            flex-shrink: 0;
-            margin-top: 0.2rem;
+            width: 18px;
         }
 
         .social-icons {
             display: flex;
             gap: 0.8rem;
-            margin-top: 1.2rem;
+            margin-top: 1rem;
             flex-wrap: wrap;
         }
 
         .social-icon {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -1109,17 +1054,11 @@
             color: var(--white);
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1.1rem;
-            flex-shrink: 0;
+            font-size: 1rem;
         }
-
         .social-icon:hover {
             transform: translateY(-3px);
             background: rgba(255, 255, 255, 0.2);
-        }
-
-        .social-icon:active {
-            transform: translateY(0);
         }
 
         .footer-bottom {
@@ -1130,146 +1069,19 @@
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.85rem;
         }
+        .footer-bottom p { margin-bottom: 0.3rem; }
 
-        .footer-bottom p {
-            margin-bottom: 0.3rem;
-            word-break: break-word;
-        }
-
-        /* ===== ADDITIONAL RESPONSIVE FIXES ===== */
-        @media (max-width: 380px) {
-            .alumni-image-container {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .alumni-name {
-                font-size: 1rem;
-            }
-            
-            .alumni-position {
-                font-size: 0.75rem;
-                padding: 0.2rem 0.8rem;
-            }
-            
-            .alumni-desc {
-                font-size: 0.85rem;
-            }
-            
-            .gallery-image-container {
-                height: 180px;
-            }
-            
-            .video-player {
-                height: 160px;
-            }
-        }
-
-        @media (max-width: 280px) {
-            .logo span {
-                font-size: 0.9rem;
-            }
-            
-            .hero-content h1 {
-                font-size: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .gallery-link {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.8rem;
-            }
-            
-            .alumni-image-container {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
-            
-            .social-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Touch-friendly improvements */
-        @media (hover: none) and (pointer: coarse) {
-            .btn:hover,
-            .gallery-item:hover,
-            .video-card:hover,
-            .alumni-card:hover,
-            .social-icon:hover,
-            .alumni-view-more-btn:hover,
-            .alumni-nav-btn:hover {
-                transform: none;
-            }
-            
-            .btn:active,
-            .gallery-item:active,
-            .video-card:active,
-            .alumni-card:active,
-            .social-icon:active,
-            .alumni-view-more-btn:active,
-            .alumni-nav-btn:active {
-                transform: scale(0.98);
-            }
-            
-            .gallery-overlay {
-                opacity: 1;
-            }
-            
-            .gallery-caption {
-                transform: translateY(0);
-            }
-        }
-
-        /* Prevent text overflow */
-        a, p, h1, h2, h3, h4, span, div {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 100px;
-        }
-
-        @media (max-width: 900px) {
-            html {
-                scroll-padding-top: 80px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            html {
-                scroll-padding-top: 70px;
-            }
-        }
-
-        /* Image optimization */
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        img, video { max-width: 100%; height: auto; display: block; }
+        .no-scroll { overflow: hidden; }
     </style>
 </head>
-
 <body>
 
-    <!-- ===== MODERN NAVBAR (MATCHING MATERIALS.HTML) ===== -->
+    <!-- ===== NAVBAR (original 51.44kb theme) ===== -->
     <header class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS Logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS Logo" loading="lazy">
                 <span>MABSS</span>
             </div>
 
@@ -1284,7 +1096,7 @@
                 <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
             </nav>
 
-            <div class="hamburger" id="hamburger">
+            <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1295,7 +1107,7 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-header">
-            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS" loading="lazy">
             <h3>Mbarara Army<br>Boarding SS</h3>
         </div>
 
@@ -1306,7 +1118,7 @@
         <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
         <a href="gallery.html" class="active"><i class="fas fa-images"></i> Gallery</a>
         <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
-        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn"><i class="fas fa-edit"></i> Apply Now</a>
     </div>
 
     <div class="overlay" id="overlay"></div>
@@ -1320,18 +1132,7 @@
         </div>
     </section>
 
-    <!-- ===== GALLERY NAVIGATION ===== -->
-    <div class="gallery-nav">
-        <div class="gallery-nav-container">
-            <div class="gallery-buttons">
-                <a href="#photo-gallery" class="gallery-link active">Photo Gallery</a>
-                <a href="#video-gallery" class="gallery-link">Video Gallery</a>
-                <a href="#alumni-section" class="gallery-link">Alumni Stories</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== PHOTO GALLERY ===== -->
+    <!-- ===== PHOTO GALLERY (enhanced with 56.99kb styling) ===== -->
     <section class="container" id="photo-gallery">
         <h2 class="section-title">Photo Gallery</h2>
         <p class="section-subtitle">Memorable moments captured across our campus and events</p>
@@ -1393,7 +1194,7 @@
         </div>
     </section>
 
-    <!-- ===== VIDEO GALLERY ===== -->
+    <!-- ===== VIDEO GALLERY (enhanced with 56.99kb styling) ===== -->
     <section class="video-section" id="video-gallery">
         <div class="video-container">
             <h2 class="section-title">Video Gallery</h2>
@@ -1436,156 +1237,195 @@
         </div>
     </section>
 
-    <!-- ===== ALUMNI STORIES SECTION ===== -->
+    <!-- ===== ALUMNI STORIES SECTION (completely redesigned with 56.99kb styling) ===== -->
     <section class="alumni-section" id="alumni-section">
         <div class="alumni-container">
-            <h2 class="section-title">OB's & OG's Success Stories</h2>
-            <p class="section-subtitle">Celebrating the achievements of our alumni who continue to excel in various fields</p>
+            <div class="alumni-title-container">
+                <h2 class="alumni-title">OB's & OG's Success Stories</h2>
+                <p class="alumni-subtitle">Celebrating the achievements of our alumni who continue to excel in various fields, carrying forward the values and discipline instilled at MABSS.</p>
+            </div>
 
-            <div class="swiper alumni-swiper">
-                <div class="swiper-wrapper">
-                    <!-- Alumni Card 1 -->
-                    <div class="swiper-slide">
-                        <div class="alumni-card">
-                            <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" alt="MR.TUMWESIGYE RONALD" class="alumni-image" loading="lazy">
-                            </div>
-                            <div class="alumni-content">
-                                <h3 class="alumni-name">MR. TUMWESIGYE RONALD</h3>
-                                <span class="alumni-position">Teacher & OB</span>
-                                <p class="alumni-desc">Once a student, now a teacher at my alma mater. MABSS instilled in me the discipline and passion I now bring to my History and Divinity classes.</p>
-                                <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
+            <div class="alumni-carousel-container">
+                <!-- Swiper Carousel -->
+                <div class="swiper alumni-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Alumni Card 1 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 0">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" alt="MR.TUMWESIGYE RONALD" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR. TUMWESIGYE RONALD</h3>
+                                    <span class="alumni-position">Teacher & OB</span>
+                                    <p class="alumni-desc">Once a student, now a teacher at my alma mater. MABSS instilled in me the discipline and passion I now bring to my History and Divinity classes.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Alumni Card 2 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 1">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1766224445/og_zhjemi.jpg" alt="MISS. Karungi Regina carol" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MISS. KARUNGI REGINA CAROL</h3>
+                                    <span class="alumni-position">Midwife</span>
+                                    <p class="alumni-desc">Proud to have studied at MABSS (2004-2007). We were the pioneers who started and shaped the school.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Alumni Card 3 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 2">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1769775575/KELLY1_gkaxvc.jpg" alt="MR. TWESIGYE KELLY" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR. TWESIGYE KELLY</h3>
+                                    <span class="alumni-position">OB (2017-2023)</span>
+                                    <p class="alumni-desc">Stand firm in character, sharp in mind, and disciplined in action. This is how great leaders are forged.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Alumni Card 4 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 3">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Miss KABAHINDA SHANNITAH" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MISS KABAHINDA SHANNITAH</h3>
+                                    <span class="alumni-position">Social Worker</span>
+                                    <p class="alumni-desc">At MABSS, education is more than academics. Without hesitation, I attest to the excellence of MABSS as an institution.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Alumni Card 5 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 4">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345616/tr_foxrgt.jpg" alt="Miss ABAASA NANCY PATRA" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MISS ABAASA NANCY PATRA</h3>
+                                    <span class="alumni-position">MENTOR</span>
+                                    <p class="alumni-desc">Beyond the gates of MABSS lies a world of opportunity, and our alumni are rising to meet it.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Alumni Card 6 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 5">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345080/MS_p4tfnj.jpg" alt="MR. TWIJUKYE EDSON" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR. TWIJUKYE EDSON</h3>
+                                    <span class="alumni-position">GRC Computer Science</span>
+                                    <p class="alumni-desc">Former H.P (2022-2023). MABSS has shaped my mind, character, and ambition. Today, our alumni stand tall.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Alumni Card 7 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 6">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/brita_fw5x7j.jpg" alt="MISS ASHABA BRITAH" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MISS ASHABA BRITAH</h3>
+                                    <span class="alumni-position">OG (2023-2024)</span>
+                                    <p class="alumni-desc">Once a MABSS student, always a part of the MABSS family. Our alumni carry forward the values, discipline, and excellence.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Alumni Card 8 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 7">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345091/no_ytbaub.jpg" alt="MR. AMWINE FRANKLINE" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR. AMWINE FRANKLINE</h3>
+                                    <span class="alumni-position">OB (2017-2023)</span>
+                                    <p class="alumni-desc">7 Years of Transformation & Triumph! Every success story that begins at MABSS strengthens our legacy.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Alumni Card 9 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 8">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/KATO_rb7fvj.jpg" alt="MR. KATO SURAIMAN" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR. KATO SURAIMAN</h3>
+                                    <span class="alumni-position">OB (2017-2023)</span>
+                                    <p class="alumni-desc">From classrooms to careers, MABSS alumni continue to shine.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Alumni Card 10 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 9">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/hawali_ehkfkn.jpg" alt="MR.KYARIKUNDA HAWALI" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR. KYARIKUNDA HAWALI</h3>
+                                    <span class="alumni-position">OB (2017-2023)</span>
+                                    <p class="alumni-desc">The journey may take you far, but MABSS will always be home.</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Alumni Card 11 -->
+                        <div class="swiper-slide">
+                            <article class="alumni-card" style="--card-index: 10">
+                                <div class="alumni-image-container">
+                                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1769775574/KELLY2_s7okgt.jpg" alt="MR.MPIRWE ROBERT KELLY" class="alumni-image" loading="lazy">
+                                </div>
+                                <div class="alumni-content">
+                                    <h3 class="alumni-name">MR. MPIRWE ROBERT KELLY</h3>
+                                    <span class="alumni-position">OB (2017-2020)</span>
+                                    <p class="alumni-desc">The trust in what you want will never stop unless you stop pushing towards your goals. Keep believing & have trust</p>
+                                    <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
                         </div>
                     </div>
 
-                    <!-- Alumni Card 2 -->
-                    <div class="swiper-slide">
-                        <div class="alumni-card">
-                            <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1766224445/og_zhjemi.jpg" alt="MISS. Karungi Regina carol" class="alumni-image" loading="lazy">
-                            </div>
-                            <div class="alumni-content">
-                                <h3 class="alumni-name">MISS. KARUNGI REGINA CAROL</h3>
-                                <span class="alumni-position">Midwife</span>
-                                <p class="alumni-desc">Proud to have studied at MABSS (2004-2007). We were the pioneers who started and shaped the school.</p>
-                                <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Alumni Card 3 -->
-                    <div class="swiper-slide">
-                        <div class="alumni-card">
-                            <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1769775575/KELLY1_gkaxvc.jpg" alt="MR. TWESIGYE KELLY" class="alumni-image" loading="lazy">
-                            </div>
-                            <div class="alumni-content">
-                                <h3 class="alumni-name">MR. TWESIGYE KELLY</h3>
-                                <span class="alumni-position">OB (2017-2023)</span>
-                                <p class="alumni-desc">Stand firm in character, sharp in mind, and disciplined in action. This is how great leaders are forged.</p>
-                                <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Alumni Card 4 -->
-                    <div class="swiper-slide">
-                        <div class="alumni-card">
-                            <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="Miss KABAHINDA SHANNITAH" class="alumni-image" loading="lazy">
-                            </div>
-                            <div class="alumni-content">
-                                <h3 class="alumni-name">MISS KABAHINDA SHANNITAH</h3>
-                                <span class="alumni-position">Social Worker</span>
-                                <p class="alumni-desc">At MABSS, education is more than academics. Without hesitation, I attest to the excellence of MABSS as an institution.</p>
-                                <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Alumni Card 5 -->
-                    <div class="swiper-slide">
-                        <div class="alumni-card">
-                            <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345616/tr_foxrgt.jpg" alt="Miss ABAASA NANCY PATRA" class="alumni-image" loading="lazy">
-                            </div>
-                            <div class="alumni-content">
-                                <h3 class="alumni-name">MISS ABAASA NANCY PATRA</h3>
-                                <span class="alumni-position">MENTOR</span>
-                                <p class="alumni-desc">Beyond the gates of MABSS lies a world of opportunity, and our alumni are rising to meet it.</p>
-                                <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Alumni Card 6 -->
-                    <div class="swiper-slide">
-                        <div class="alumni-card">
-                            <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345080/MS_p4tfnj.jpg" alt="MR. TWIJUKYE EDSON" class="alumni-image" loading="lazy">
-                            </div>
-                            <div class="alumni-content">
-                                <h3 class="alumni-name">MR. TWIJUKYE EDSON</h3>
-                                <span class="alumni-position">GRC Computer Science</span>
-                                <p class="alumni-desc">Former H.P (2022-2023). MABSS has shaped my mind, character, and ambition. Today, our alumni stand tall.</p>
-                                <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Alumni Card 7 -->
-                    <div class="swiper-slide">
-                        <div class="alumni-card">
-                            <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765650781/brita_fw5x7j.jpg" alt="MISS ASHABA BRITAH" class="alumni-image" loading="lazy">
-                            </div>
-                            <div class="alumni-content">
-                                <h3 class="alumni-name">MISS ASHABA BRITAH</h3>
-                                <span class="alumni-position">OG (2023-2024)</span>
-                                <p class="alumni-desc">Once a MABSS student, always a part of the MABSS family. Our alumni carry forward the values, discipline, and excellence.</p>
-                                <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Alumni Card 8 -->
-                    <div class="swiper-slide">
-                        <div class="alumni-card">
-                            <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345091/no_ytbaub.jpg" alt="MR. AMWINE FRANKLINE" class="alumni-image" loading="lazy">
-                            </div>
-                            <div class="alumni-content">
-                                <h3 class="alumni-name">MR. AMWINE FRANKLINE</h3>
-                                <span class="alumni-position">OB (2017-2023)</span>
-                                <p class="alumni-desc">7 Years of Transformation & Triumph! Every success story that begins at MABSS strengthens our legacy.</p>
-                                <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Alumni Card 9 -->
-                    <div class="swiper-slide">
-                        <div class="alumni-card">
-                            <div class="alumni-image-container">
-                                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345572/KATO_rb7fvj.jpg" alt="MR. KATO SURAIMAN" class="alumni-image" loading="lazy">
-                            </div>
-                            <div class="alumni-content">
-                                <h3 class="alumni-name">MR. KATO SURAIMAN</h3>
-                                <span class="alumni-position">OB (2017-2023)</span>
-                                <p class="alumni-desc">From classrooms to careers, MABSS alumni continue to shine.</p>
-                                <a href="#" class="alumni-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Pagination dots -->
+                    <div class="swiper-pagination alumni-pagination"></div>
                 </div>
 
-                <!-- Navigation Buttons -->
-                <button class="alumni-nav-btn prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-                <button class="alumni-nav-btn next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-
-                <!-- Pagination -->
-                <div class="swiper-pagination"></div>
+                <!-- Navigation buttons -->
+                <button class="alumni-nav-btn prev" aria-label="Previous alumni stories">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="alumni-nav-btn next" aria-label="Next alumni stories">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
 
             <div class="alumni-view-more">
@@ -1596,7 +1436,7 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER (original 51.44kb theme) ===== -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
@@ -1620,12 +1460,12 @@
                 <p><i class="fas fa-envelope"></i> mabss2014@gmail.com</p>
 
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon" aria-label="X"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
 
@@ -1646,178 +1486,168 @@
     <!-- ===== SCRIPTS ===== -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Mobile Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const overlay = document.getElementById('overlay');
+        (function() {
+            // Mobile Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+            const body = document.body;
 
-        function openMenu() {
-            mobileMenu.classList.add('active');
-            overlay.classList.add('active');
-            hamburger.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
-        });
-
-        overlay.addEventListener('click', closeMenu);
-
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                closeMenu();
+            function openMenu() {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                hamburger.classList.add('active');
+                body.classList.add('no-scroll');
             }
-        });
 
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
-                closeMenu();
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.classList.remove('active');
+                body.classList.remove('no-scroll');
             }
-        });
 
-        // Gallery Navigation Active State and Smooth Scroll
-        const galleryLinks = document.querySelectorAll('.gallery-link');
-        const sections = {
-            '#photo-gallery': document.getElementById('photo-gallery'),
-            '#video-gallery': document.getElementById('video-gallery'),
-            '#alumni-section': document.getElementById('alumni-section')
-        };
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
+            });
 
-        galleryLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetSection = sections[targetId];
-                
-                if (targetSection) {
-                    galleryLinks.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-                    
-                    const offset = window.innerWidth <= 600 ? 70 : (window.innerWidth <= 900 ? 80 : 100);
-                    
-                    window.scrollTo({
-                        top: targetSection.offsetTop - offset,
-                        behavior: 'smooth'
-                    });
+            overlay.addEventListener('click', closeMenu);
+
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    closeMenu();
                 }
             });
-        });
 
-        // Update active state on scroll
-        window.addEventListener('scroll', () => {
-            const offset = window.innerWidth <= 600 ? 70 : (window.innerWidth <= 900 ? 80 : 100);
-            const scrollPosition = window.scrollY + offset + 50;
-
-            for (const [id, section] of Object.entries(sections)) {
-                if (section && section.offsetTop <= scrollPosition && 
-                    section.offsetTop + section.offsetHeight > scrollPosition) {
-                    galleryLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === id) {
-                            link.classList.add('active');
-                        }
-                    });
-                    break;
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+                    closeMenu();
                 }
-            }
-        });
+            });
 
-        // Initialize Swiper with improved mobile settings
-        const swiper = new Swiper('.alumni-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 15,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: true,
-            },
-            navigation: {
-                nextEl: '.alumni-nav-btn.next',
-                prevEl: '.alumni-nav-btn.prev',
-            },
-            breakpoints: {
-                480: {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                },
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                },
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 25,
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
-                },
-            },
-            on: {
-                init: function () {
-                    // Adjust navigation buttons position on mobile
-                    if (window.innerWidth <= 480) {
-                        document.querySelectorAll('.alumni-nav-btn').forEach(btn => {
-                            btn.style.display = 'none';
+            // Gallery Navigation Active State and Smooth Scroll
+            const galleryLinks = document.querySelectorAll('.gallery-link');
+            const sections = {
+                '#photo-gallery': document.getElementById('photo-gallery'),
+                '#video-gallery': document.getElementById('video-gallery'),
+                '#alumni-section': document.getElementById('alumni-section')
+            };
+
+            galleryLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = sections[targetId];
+                    
+                    if (targetSection) {
+                        galleryLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                        
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const galleryNavHeight = document.querySelector('.gallery-nav').offsetHeight;
+                        const offset = navbarHeight + galleryNavHeight + 10;
+                        
+                        window.scrollTo({
+                            top: targetSection.offsetTop - offset,
+                            behavior: 'smooth'
                         });
-                    }
-                },
-                resize: function () {
-                    if (window.innerWidth <= 480) {
-                        document.querySelectorAll('.alumni-nav-btn').forEach(btn => {
-                            btn.style.display = 'none';
-                        });
-                    } else {
-                        document.querySelectorAll('.alumni-nav-btn').forEach(btn => {
-                            btn.style.display = 'flex';
-                        });
-                    }
-                }
-            }
-        });
-
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Add loading="lazy" to all images for better performance
-        document.querySelectorAll('img').forEach(img => {
-            if (!img.hasAttribute('loading')) {
-                img.setAttribute('loading', 'lazy');
-            }
-        });
-
-        // Handle video playback on mobile
-        const videos = document.querySelectorAll('video');
-        videos.forEach(video => {
-            video.addEventListener('play', () => {
-                // Pause other videos when one starts playing
-                videos.forEach(otherVideo => {
-                    if (otherVideo !== video && !otherVideo.paused) {
-                        otherVideo.pause();
                     }
                 });
             });
-        });
+
+            // Update active state on scroll
+            window.addEventListener('scroll', () => {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const galleryNavHeight = document.querySelector('.gallery-nav').offsetHeight;
+                const offset = navbarHeight + galleryNavHeight + 20;
+                const scrollPosition = window.scrollY + offset;
+
+                for (const [id, section] of Object.entries(sections)) {
+                    if (section) {
+                        const sectionTop = section.offsetTop;
+                        const sectionBottom = sectionTop + section.offsetHeight;
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                            galleryLinks.forEach(link => {
+                                link.classList.remove('active');
+                                if (link.getAttribute('href') === id) {
+                                    link.classList.add('active');
+                                }
+                            });
+                            break;
+                        }
+                    }
+                }
+            });
+
+            // Initialize Swiper for Alumni Carousel
+            if (typeof Swiper !== 'undefined') {
+                const alumniSwiper = new Swiper('.alumni-swiper', {
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 1,
+                            spaceBetween: 15
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 20
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 25
+                        }
+                    },
+                    loop: true,
+                    speed: 600,
+                    grabCursor: true,
+                    centeredSlides: false,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true
+                    },
+                    navigation: {
+                        nextEl: '.alumni-nav-btn.next',
+                        prevEl: '.alumni-nav-btn.prev',
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                        dynamicBullets: true
+                    },
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true
+                    },
+                    touchRatio: 1,
+                    simulateTouch: true
+                });
+
+                // Pause autoplay when tab is not visible
+                document.addEventListener('visibilitychange', function () {
+                    if (document.hidden) {
+                        alumniSwiper.autoplay.stop();
+                    } else {
+                        alumniSwiper.autoplay.start();
+                    }
+                });
+
+                // Respect reduced motion preference
+                const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+                if (mediaQuery.matches) {
+                    alumniSwiper.params.speed = 0;
+                    alumniSwiper.params.autoplay = false;
+                    alumniSwiper.update();
+                }
+            }
+
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+        })();
     </script>
 </body>
-
 </html>
