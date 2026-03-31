@@ -1537,6 +1537,282 @@
             outline-offset: 2px;
         }
     </style>
+    <style>
+        /* ========== SECTION STYLES - MATCHING MABSS.AC.UG ========== */
+        /* Color scheme: Green (#2c5e2e), Gold (#c9a03d), White, Light Gray */
+        
+        .featured-videos-section {
+            background: #ffffff;
+            padding: 4rem 2rem;
+            font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        .featured-videos-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Section Header - matches academic style */
+        .featured-videos-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .featured-videos-header h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #2c5e2e;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.3px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.75rem;
+        }
+
+        .featured-videos-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: #c9a03d;
+            border-radius: 3px;
+        }
+
+        .featured-videos-header p {
+            font-size: 1.1rem;
+            color: #5a626e;
+            max-width: 650px;
+            margin: 1rem auto 0;
+            line-height: 1.5;
+        }
+
+        /* Video Grid - Responsive */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Video Card */
+        .video-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #eef2f0;
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 32px rgba(0, 0, 0, 0.12);
+            border-color: #c9a03d40;
+        }
+
+        /* Video Wrapper - 16:9 Aspect Ratio */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            background: #1a2a1a;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Custom Play Button Overlay (for better UX) */
+        .video-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .video-card:hover .video-play-overlay {
+            opacity: 1;
+        }
+
+        .play-icon-bg {
+            width: 60px;
+            height: 60px;
+            background: rgba(44, 94, 46, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-card:hover .play-icon-bg {
+            transform: scale(1.1);
+            background: #ff0000;
+        }
+
+        .play-icon-bg svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+            margin-left: 3px;
+        }
+
+        /* Card Content */
+        .video-info {
+            padding: 1.25rem 1.25rem 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c5e2e;
+            margin: 0 0 0.5rem 0;
+            line-height: 1.4;
+        }
+
+        .video-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.5;
+            margin: 0 0 1rem 0;
+        }
+
+        /* Watch on YouTube Link */
+        .watch-on-yt {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ff0000;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        .watch-on-yt:hover {
+            color: #2c5e2e;
+            border-bottom-color: #ff0000;
+            gap: 0.7rem;
+        }
+
+        .watch-on-yt svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* View All Button */
+        .view-all-wrapper {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        .btn-view-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #2c5e2e;
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid #ff0000;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-view-all:hover {
+            background: #1f4521;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 94, 46, 0.25);
+            border-color: #ff0000;
+        }
+
+        /* Status indicator for playing video */
+        .video-card.playing {
+            border-color: #c9a03d;
+            box-shadow: 0 12px 28px rgba(201, 160, 61, 0.2);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .featured-videos-section {
+                padding: 3rem 1.5rem;
+            }
+            .videos-grid {
+                gap: 1.5rem;
+            }
+            .featured-videos-header h2 {
+                font-size: 1.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .featured-videos-header h2 {
+                font-size: 1.7rem;
+            }
+            .featured-videos-header p {
+                font-size: 1rem;
+            }
+            .video-title {
+                font-size: 1rem;
+            }
+            .play-icon-bg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .featured-videos-section {
+                padding: 2.5rem 1rem;
+            }
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+            .featured-videos-header h2 {
+                font-size: 1.5rem;
+            }
+            .video-info {
+                padding: 1rem;
+            }
+        }
+
+        /* Loading state subtle */
+        iframe {
+            background: #f0f2f0;
+        }
+    </style>
 </head>
 
 <body>
@@ -1866,6 +2142,23 @@
         </div>
     </div>
 
+    
+<!-- ========== FEATURED VIDEOS SECTION - PROFESSIONAL WITH YOUTUBE API CONTROL ========== -->
+<section class="featured-videos-section">
+    <div class="featured-videos-container">
+        
+        <!-- Section Header -->
+        <div class="featured-videos-header">
+            <h2>Featured Videos</h2>
+            <p>Discover the vibrant life at Mbarara Army Boarding Secondary School through these highlights of academics, and special events</p>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="videos-grid" id="videosGrid">
+            <!-- Videos will be dynamically injected with YouTube API support -->
+        </div>
+    </div>
+</section>
 
     <!-- ===== ABOUT SECTION ===== -->
     <section class="about-section" id="about">
@@ -2344,6 +2637,289 @@
         dark gradient overlay, responsive grid (4/2/1 cols), lightbox popup on click, fade-in on scroll, 
         "View More Gallery" button with interactive prompt. All HTML/CSS native, no frameworks.
     -->
+        <script>
+    // Video data with YouTube IDs and metadata
+    const videosData = [
+        {
+            id: "video2",
+            youtubeId: "RDwaHF7ZKDs",
+            title: "Headteacher’s Remarks on Academic Performance (Past Years–2026) | MABSS",
+            description: "Our school successfully held a productive At the PTA & AGM meeting, the Headteacher of Mbarara Army Boarding Secondary School delivered insightful remarks on the school’s academic performance over the years up to 2026",
+            youtubeUrl: "https://www.youtube.com/watch?v=RDwaHF7ZKDs"
+        },
+        {
+            id: "video1",
+            youtubeId: "MC-nkfoamEU",
+            title: "Mr. Kyabalongo Yunusu Highlights Headteacher’s Transformational Achievements",
+            description: "Our school successfully held a productive At the PTA & AGM meeting, the Headteacher of Mbarara Army Boarding Secondary School delivered insightful remarks on the schools academic performance over the years up to 2026",
+            youtubeUrl: "https://www.youtube.com/watch?v=MC-nkfoamEU"
+        },
+        {
+            id: "video3",
+            youtubeId: "Hqlseh7aik0",
+            title: "Financial Report & Accountability Highlights | PTA & AGM 2026",
+            description: "During the PTA & AGM meeting at Mbarara Army Boarding Secondary School, a detailed presentation on the school’s financial highlights was delivered, providing parents and stakeholders with clear insight into the institution’s financial status.",
+            youtubeUrl: "https://www.youtube.com/watch?v=Hqlseh7aik0"
+        }
+    ];
+
+    // Store player instances
+    let players = {};
+    let currentlyPlayingId = null;
+
+    // Load YouTube IFrame API
+    function loadYouTubeAPI() {
+        if (window.YT && window.YT.Player) {
+            initializePlayers();
+            return;
+        }
+        
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+        window.onYouTubeIframeAPIReady = function() {
+            initializePlayers();
+        };
+    }
+
+    // Initialize all YouTube players
+    function initializePlayers() {
+        const videoCards = document.querySelectorAll('.video-card');
+        
+        videoCards.forEach((card, index) => {
+            const videoId = card.dataset.videoId;
+            const youtubeId = card.dataset.youtubeId;
+            const iframeElement = card.querySelector('.youtube-iframe');
+            
+            if (iframeElement && !players[videoId]) {
+                // Create YouTube player instance
+                players[videoId] = new YT.Player(iframeElement, {
+                    videoId: youtubeId,
+                    playerVars: {
+                        modestbranding: 1,
+                        rel: 0,
+                        showinfo: 0,
+                        controls: 1,
+                        autoplay: 0,
+                        origin: window.location.origin,
+                        enablejsapi: 1
+                    },
+                    events: {
+                        onStateChange: function(event) {
+                            // Handle video state changes
+                            if (event.data === YT.PlayerState.PLAYING) {
+                                // If another video is playing, pause it
+                                if (currentlyPlayingId && currentlyPlayingId !== videoId) {
+                                    if (players[currentlyPlayingId] && players[currentlyPlayingId].pauseVideo) {
+                                        players[currentlyPlayingId].pauseVideo();
+                                    }
+                                    // Remove playing class from previous card
+                                    const prevCard = document.querySelector(`.video-card[data-video-id="${currentlyPlayingId}"]`);
+                                    if (prevCard) prevCard.classList.remove('playing');
+                                }
+                                currentlyPlayingId = videoId;
+                                card.classList.add('playing');
+                            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                                if (currentlyPlayingId === videoId) {
+                                    currentlyPlayingId = null;
+                                    card.classList.remove('playing');
+                                }
+                            }
+                        },
+                        onReady: function(event) {
+                            // Player is ready
+                            console.log(`Player ${videoId} ready`);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    // Function to pause all videos (utility)
+    function pauseAllVideos() {
+        for (const [id, player] of Object.entries(players)) {
+            if (player && player.pauseVideo) {
+                player.pauseVideo();
+            }
+        }
+        currentlyPlayingId = null;
+        document.querySelectorAll('.video-card').forEach(card => {
+            card.classList.remove('playing');
+        });
+    }
+
+    // Build the video cards HTML
+    function buildVideoCards() {
+        const gridContainer = document.getElementById('videosGrid');
+        if (!gridContainer) return;
+        
+        let cardsHTML = '';
+        videosData.forEach((video, index) => {
+            // Use placeholder div for iframe that YouTube API will replace
+            cardsHTML += `
+                <div class="video-card" data-video-id="${video.id}" data-youtube-id="${video.youtubeId}">
+                    <div class="video-wrapper" data-video-id="${video.id}">
+                        <div id="player-${video.id}" class="youtube-iframe"></div>
+                        <div class="video-play-overlay">
+                            <div class="play-icon-bg">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="white"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">${escapeHtml(video.title)}</h3>
+                        <p class="video-description">${escapeHtml(video.description)}</p>
+                        <a href="${video.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="watch-on-yt">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/>
+                            </svg>
+                            Watch on YouTube
+                        </a>
+                    </div>
+                </div>
+            `;
+        });
+        
+        gridContainer.innerHTML = cardsHTML;
+        
+        // After DOM is updated, load YouTube API if not already loaded
+        if (typeof YT === 'undefined' || !YT.Player) {
+            loadYouTubeAPI();
+        } else {
+            initializePlayers();
+        }
+    }
+    
+    // Helper function to escape HTML
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        buildVideoCards();
+        
+        // Optional: Add intersection observer for smooth appearance (professional touch)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -20px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Wait for cards to be added to DOM
+        setTimeout(() => {
+            const cards = document.querySelectorAll('.video-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, border-color 0.2s ease';
+                observer.observe(card);
+            });
+        }, 100);
+        
+        // Optional: Global click handler to pause all videos when clicking outside? (professional)
+        // But we'll keep the logic focused on video-to-video pausing
+    });
+    
+    // Clean up function for any potential memory leaks (not strictly needed but professional)
+    window.addEventListener('beforeunload', () => {
+        for (const [id, player] of Object.entries(players)) {
+            if (player && player.destroy) {
+                player.destroy();
+            }
+        }
+    });
+</script>
+
+<!-- Additional styles for smooth fade-in and professional polish -->
+<style>
+    .video-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, border-color 0.2s ease;
+    }
+    
+    .video-card.playing {
+        border-left: 3px solid #c9a03d;
+        border-left-width: 3px;
+        border-left-style: solid;
+    }
+    
+    .watch-on-yt {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #e90707;
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        padding: 0.5rem 0 0.25rem 0;
+        border-bottom: 1px solid transparent;
+    }
+    
+    .watch-on-yt:hover {
+        color: #2c5e2e;
+        border-bottom-color: #c9a03d;
+        gap: 0.7rem;
+    }
+    
+    .watch-on-yt svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+    }
+    
+    /* Ensure iframe container has proper background */
+    .youtube-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Smooth loading state */
+    .video-wrapper {
+        background: #e9ecef;
+    }
+    
+    /* Professional focus states */
+    .btn-view-all:focus-visible,
+    .watch-on-yt:focus-visible {
+        outline: 2px solid #c9a03d;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+    
+    /* Ensure cards are accessible */
+    @media (prefers-reduced-motion: reduce) {
+        .video-card,
+        .btn-view-all,
+        .watch-on-yt,
+        .play-icon-bg {
+            transition: none;
+        }
+    }
+</style>
+
 </body>
 
 </html>
