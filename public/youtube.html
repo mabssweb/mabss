@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en-UG">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MABSS | Video Gallery - More Videos</title>
+    
+    <!-- Favicons (mirroring main site) -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #0b2c4d;
+            --primary-blue: #1a4fa3;
+            --accent-green: #2e8b57;
+            --accent-red: #d62828;
+            --sky-blue: #4da8da;
+            --text-dark: #333;
+            --text-light: #555;
+            --bg-light: #f5f7fb;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 20, 30, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --army-green: #0e7704;
+            --gold-accent: #c9a03d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ===== STICKY NAVBAR (identical to main site) ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: #0e7704;
+            box-shadow: var(--shadow);
+            z-index: 1200;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.7rem 1.5rem;
+        }
+
+        .logo {
+            height: 88px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 3.8rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #02f7ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2.5px;
+            background: #ffffff;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .nav-links a {
+            position: relative;
+        }
+
+        .apply-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .apply-btn:hover {
+            background-color: #0b3a7a;
+            transform: translateY(-3px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1300;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.8rem;
+            transition: right 0.35s ease-in-out;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .mobile-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid green;
+        }
+
+        .mobile-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #1f2a44;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 14px 10px;
+            border-radius: 14px;
+            transition: 0.2s;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-menu a i {
+            width: 28px;
+            color: green;
+        }
+
+        .mobile-menu a:hover {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu .apply-btn {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            background-color: green;
+            color: white;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 44, 77, 0.5);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1300;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .logo span { font-size: 2.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            .logo img { width: 60px; height: 60px; }
+            .logo span { font-size: 2.4rem; }
+        }
+
+        /* ===== PAGE SPECIFIC ===== */
+        .videos-page-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(to bottom, #ffffff 0%, #fef9e6 100%);
+        }
+
+        .page-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .page-header h1:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gold-accent);
+            border-radius: 2px;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 1rem auto 0;
+        }
+
+        /* Video Grid - extended */
+        .videos-grid-full {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #eef2f0;
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 32px rgba(0, 0, 0, 0.12);
+            border-color: var(--gold-accent);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #1a2a1a;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info {
+            padding: 1.25rem 1.25rem 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c5e2e;
+            margin: 0 0 0.5rem 0;
+            line-height: 1.4;
+        }
+
+        .video-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.5;
+            margin: 0 0 1rem 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .watch-on-yt {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ff0000;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        .watch-on-yt:hover {
+            color: #2c5e2e;
+            border-bottom-color: var(--gold-accent);
+            gap: 0.7rem;
+        }
+
+        .back-button-wrapper {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #2c5e2e;
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid var(--gold-accent);
+        }
+
+        .back-btn:hover {
+            background: #1f4521;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 94, 46, 0.25);
+        }
+
+        /* Footer (exactly as main site) */
+        .footer {
+            background: #004d33;
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--sky-blue);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 992px) {
+            .videos-grid-full {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .videos-grid-full {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .videos-page-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR (identical to main site) ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS Logo">
+                <span>MABSS</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="materials.html">Academics</a>
+                <a href="sports.html">Co-curricular</a>
+                <a href="welfare.html">Welfare</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contacts.html">Contact</a>
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-header">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
+            <h3>Mbarara Army<br>Boarding SS</h3>
+        </div>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="materials.html"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
+        <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
+        <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+        <a href="Staff.html"><i class="fas fa-users"></i> Our Staff</a>
+        <a href="directory.html"><i class="fas fa-address-book"></i> Directorate</a>
+        <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== VIDEO GALLERY PAGE (VIEW MORE) ===== -->
+    <section class="videos-page-section">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>Video Gallery</h1>
+                <p>Explore more inspiring moments, athletic achievements, academic highlights, and school events at Mbarara Army Boarding Secondary School.</p>
+            </div>
+
+            <div class="videos-grid-full" id="allVideosGrid">
+                <!-- videos will be injected via JavaScript -->
+                <div style="text-align: center; width: 100%; grid-column: 1/-1;">Loading video collection...</div>
+            </div>
+
+            <div class="back-button-wrapper">
+                <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER (identical) ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="discpline.html">Discipline</a></li>
+                    <li><a href="welfare.html">Welfare</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> P.O. Box 521, Mbarara, Uganda</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 782 096231</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 782 371824</p>
+                <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> mabss2014@gmail.com</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>School Hours</h3>
+                <p><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</p>
+                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
+                <p><strong>Sunday:</strong> Closed (Boarders only)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p>Powered by <strong>Amwine Frankline / CodeMatrix</strong></p>
+        </div>
+    </footer>
+
+    <script>
+        // ------------------------------
+        // FULL VIDEO DATABASE (includes all videos from homepage plus additional ones for "view more")
+        // This matches the style and color scheme while extending the content.
+        // ------------------------------
+        const fullVideosList = [
+            {
+                id: "video_full_1",
+                youtubeId: "M9W0wOTfgyg",
+                title: "Mbarara Army Boarding SS Athletics Highlights 2025 | Strength, Speed & Discipline",
+                description: "Experience the energy, passion, and determination from Mbarara Army Boarding Secondary School during our 2025 Athletics events! From sprints to long-distance races, field events to team spirit — our students showcased true discipline, resilience, and sportsmanship on the track and field.",
+                youtubeUrl: "https://www.youtube.com/watch?v=M9W0wOTfgyg"
+            },
+            {
+                id: "video_full_2",
+                youtubeId: "Yy3kwDABOSw",
+                title: "Sports updates: Champions of Mbarara City!",
+                description: "Champions of Mbarara City! Mbarara Army Boarding Secondary School emerges victorious after a thrilling and intense final against Ntare High School, winning 6-5 on penalties. A match full of passion, resilience, and determination.",
+                youtubeUrl: "https://www.youtube.com/watch?v=Yy3kwDABOSw"
+            },
+            {
+                id: "video_full_3",
+                youtubeId: "HHhJUWHN_Jg",
+                title: "Mbarara Army Boarding SS Crowned Mbarara City Champions 2026 ",
+                description: "Victory Over Ntare High (6-5 Pens). Champions of Mbarara City! Our boys showed true fighting spirit, discipline, and teamwork to secure the championship title.",
+                youtubeUrl: "https://www.youtube.com/watch?v=HHhJUWHN_Jg"
+            },
+            {
+                id: "video_full_4",
+                youtubeId: "iZHU4W_Ke7E",
+                title: "Sports updates 2026 | Mbarara City Champions",
+                description: "Mbarara Army Boarding SS Crowned Mbarara City Champions 2026 | Victory Over Ntare High (6-5 Pens). Relive the glory moments and trophy celebration.",
+                youtubeUrl: "https://www.youtube.com/watch?v=iZHU4W_Ke7E"
+            },
+            {
+                id: "video_full_5",
+                youtubeId: "RDwaHF7ZKDs",
+                title: "Headteacher’s Remarks on Academic Performance (Past Years–2026)",
+                description: "Our school successfully held a productive PTA & AGM meeting, the Headteacher of Mbarara Army Boarding Secondary School delivered insightful remarks on the school’s academic performance over the years up to 2026.",
+                youtubeUrl: "https://www.youtube.com/watch?v=RDwaHF7ZKDs"
+            },
+            {
+                id: "video_full_6",
+                youtubeId: "MC-nkfoamEU",
+                title: "Mr. Kyabalongo Yunusu Highlights Headteacher’s Transformational Achievements",
+                description: "During the PTA & AGM meeting, the Deputy Headteacher Academics, Mr. Kyabalongo Yunusu, delivered a compelling speech highlighting remarkable achievements of the Headteacher in transforming academic landscape, facilities, and teaching quality.",
+                youtubeUrl: "https://www.youtube.com/watch?v=MC-nkfoamEU"
+            },
+            {
+                id: "video_full_7",
+                youtubeId: "Hqlseh7aik0",
+                title: "Financial Report & Accountability Highlights | PTA & AGM 2026",
+                description: "Detailed presentation on the school’s financial highlights, providing parents and stakeholders with clear insight into the institution’s financial status and transparency.",
+                youtubeUrl: "https://www.youtube.com/watch?v=Hqlseh7aik0"
+            }
+        ];
+
+        // Function to embed YouTube iframe with API-friendly structure (no autoplay on load, but click-to-play friendly)
+        function buildVideoCards() {
+            const container = document.getElementById('allVideosGrid');
+            if (!container) return;
+
+            let html = '';
+            fullVideosList.forEach(video => {
+                html += `
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe 
+                                src="https://www.youtube.com/embed/${video.youtubeId}?rel=0&modestbranding=1&enablejsapi=1" 
+                                title="${escapeHtml(video.title)}"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">${escapeHtml(video.title)}</h3>
+                            <p class="video-description">${escapeHtml(video.description)}</p>
+                            <a href="${video.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="watch-on-yt">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" fill="currentColor"/>
+                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/>
+                                </svg>
+                                Watch on YouTube
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+                return c;
+            });
+        }
+
+        // Mobile Menu Logic (exactly same as main site)
+        function initMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+            if (!hamburger || !mobileMenu || !overlay) return;
+
+            function openMenu() {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                hamburger.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (mobileMenu.classList.contains('active')) closeMenu();
+                else openMenu();
+            });
+            overlay.addEventListener('click', closeMenu);
+            document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', closeMenu));
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenu(); });
+        }
+
+        // Set current year in footer
+        function setYear() {
+            const yearSpan = document.getElementById('year');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+        }
+
+        // Lazy-load style enhancement: fade-in effect on scroll (consistent with main site)
+        function addScrollReveal() {
+            const cards = document.querySelectorAll('.video-card');
+            if (!cards.length) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            buildVideoCards();
+            initMobileMenu();
+            setYear();
+            setTimeout(() => addScrollReveal(), 150);
+        });
+    </script>
+</body>
+</html>
