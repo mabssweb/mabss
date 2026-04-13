@@ -1813,7 +1813,404 @@
             background: #f0f2f0;
         }
     </style>
-    
+<style>
+/* =========================
+   BASE STYLES
+========================= */
+.up-section {
+  padding: 60px 20px;
+  background: #f8fafc;
+  font-family: 'Poppins', 'Open Sans', sans-serif;
+}
+
+.up-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Header */
+.up-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.up-header h2 {
+  color: #0b1f3a;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.up-header p {
+  color: #555;
+  font-size: 16px;
+}
+
+/* =========================
+   CAROUSEL
+========================= */
+.up-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.up-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.6s ease;
+}
+
+/* Card */
+.up-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  min-width: calc(33.333% - 13.33px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.up-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.up-card h3 {
+  color: #0b1f3a;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.up-date {
+  color: #c9a227;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.up-card p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* =========================
+   ARROWS
+========================= */
+.up-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0b1f3a;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.up-left { left: 10px; }
+.up-right { right: 10px; }
+
+.up-arrow:hover {
+  background: #c9a227;
+}
+
+/* =========================
+   DOTS
+========================= */
+.up-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.up-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.up-dot.active {
+  background: #0b1f3a;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .up-card {
+    min-width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 600px) {
+  .up-card {
+    min-width: 100%;
+  }
+}
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Upcoming Programs | School Events</title>
+  <!-- Google Fonts: Modern, clean typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & GLOBAL SCOPE (using unique prefix "up-") ========== */
+    .up-programs-section * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .up-programs-section {
+      font-family: 'Inter', 'Poppins', 'Roboto', system-ui, -apple-system, sans-serif;
+      background: #f8fafc;   /* soft academic background */
+      padding: 4rem 1.5rem;
+      width: 100%;
+      overflow-x: clip;
+    }
+
+    /* container for max width & centering */
+    .up-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* ========== HEADER STYLES ========== */
+    .up-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .up-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0a2540;        /* deep navy / academic blue */
+      letter-spacing: -0.02em;
+      font-family: 'Poppins', 'Inter', sans-serif;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .up-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #d4af37;   /* gold accent */
+      margin: 0.6rem auto 0;
+      border-radius: 4px;
+    }
+
+    .up-subtitle {
+      font-size: 1.1rem;
+      color: #2c3e66;
+      font-weight: 400;
+      margin-top: 1rem;
+      opacity: 0.85;
+    }
+
+    /* ========== CAROUSEL WRAPPER (no overflow hidden issues) ========== */
+    .up-carousel-wrapper {
+      position: relative;
+      margin: 2rem 0 1.5rem;
+      padding: 0 2.5rem;    /* space for arrows */
+    }
+
+    /* viewport: hides overflow to show only visible cards */
+    .up-carousel-viewport {
+      overflow: hidden;
+      border-radius: 28px;
+    }
+
+    /* track: flex row, smooth transition (transform) */
+    .up-carousel-track {
+      display: flex;
+      gap: 1.8rem;
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      will-change: transform;
+    }
+
+    /* cards: flexible width based on count, responsive via media queries */
+    .up-card {
+      flex: 0 0 calc(33.333% - 1.2rem); /* default 3 cards (desktop) */
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.5rem 2rem;
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s ease-out;
+      cursor: pointer;
+      border: 1px solid rgba(10, 37, 64, 0.05);
+    }
+
+    /* hover effect: slight lift + subtle shadow */
+    .up-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.15);
+      border-color: rgba(212, 175, 55, 0.2);
+    }
+
+    /* program title */
+    .up-card-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      font-family: 'Poppins', 'Inter', sans-serif;
+      color: #0a2540;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    /* date badge style */
+    .up-card-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eef2ff;
+      color: #1e4a76;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.3rem 1rem 0.3rem 0.9rem;
+      border-radius: 40px;
+      margin-bottom: 1rem;
+      letter-spacing: -0.2px;
+    }
+
+    .up-card-date::before {
+      content: "📅";
+      font-size: 0.85rem;
+    }
+
+    .up-card-desc {
+      color: #334155;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-top: 0.5rem;
+    }
+
+    /* ========== NAVIGATION ARROWS ========== */
+    .up-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 12;
+      transition: all 0.2s ease;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(2px);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #0a2540;
+    }
+
+    .up-arrow:hover {
+      background: #0a2540;
+      border-color: #0a2540;
+      color: white;
+      box-shadow: 0 10px 20px rgba(10, 37, 64, 0.2);
+    }
+
+    .up-arrow-left {
+      left: -12px;
+    }
+
+    .up-arrow-right {
+      right: -12px;
+    }
+
+    /* ========== PAGINATION DOTS ========== */
+    .up-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .up-dot {
+      width: 10px;
+      height: 10px;
+      background: #cbd5e1;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .up-dot.active {
+      background: #d4af37;    /* gold accent */
+      width: 28px;
+      border-radius: 20px;
+      background: #d4af37;
+    }
+
+    /* ========== RESPONSIVE BREAKPOINTS ========== */
+    /* Tablet: show 2 cards */
+    @media (max-width: 1024px) and (min-width: 641px) {
+      .up-card {
+        flex: 0 0 calc(50% - 0.9rem);
+      }
+      .up-carousel-wrapper {
+        padding: 0 2rem;
+      }
+    }
+
+    /* Mobile: show 1 card */
+    @media (max-width: 640px) {
+      .up-programs-section {
+        padding: 2.5rem 1rem;
+      }
+      .up-title {
+        font-size: 1.9rem;
+      }
+      .up-card {
+        flex: 0 0 100%;
+      }
+      .up-carousel-wrapper {
+        padding: 0 1.5rem;
+      }
+      .up-arrow-left {
+        left: -8px;
+      }
+      .up-arrow-right {
+        right: -8px;
+      }
+      .up-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+      }
+    }
+
+    /* small desktop adjustment gap */
+    @media (min-width: 1025px) {
+      .up-card {
+        flex: 0 0 calc(33.333% - 1.2rem);
+      }
+    }
+
+    /* additional touch-friendly */
+    button.up-arrow {
+      background: rgba(255,255,255,0.96);
+      user-select: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -1924,6 +2321,34 @@
                 All News</a>
         </div>
     </section>
+    <!-- ========== SECTION: UPCOMING PROGRAMS (unique prefix up-) ========== -->
+<section class="up-programs-section" id="upcoming-programs">
+  <div class="up-container">
+    <!-- Header -->
+    <div class="up-header">
+      <h2 class="up-title">Upcoming Programs</h2>
+      <p class="up-subtitle">Stay updated with our latest school activities and events</p>
+    </div>
+
+    <!-- Carousel Area -->
+    <div class="up-carousel-wrapper">
+      <!-- Left Navigation Arrow -->
+      <div class="up-arrow up-arrow-left" id="up-prevBtn" aria-label="Previous programs">‹</div>
+      
+      <div class="up-carousel-viewport">
+        <div class="up-carousel-track" id="up-track">
+          <!-- Cards will be injected dynamically from JS array -->
+        </div>
+      </div>
+
+      <!-- Right Navigation Arrow -->
+      <div class="up-arrow up-arrow-right" id="up-nextBtn" aria-label="Next programs">›</div>
+    </div>
+
+    <!-- Pagination Dots -->
+    <div class="up-pagination" id="up-paginationDots"></div>
+  </div>
+</section>
 
     <!-- ===== GUIDING PRINCIPLES ===== -->
     <section class="container">
@@ -2080,30 +2505,6 @@
             </div>
         </div>
     </div>
-
-    
-<!-- ========== FEATURED VIDEOS SECTION - PROFESSIONAL WITH YOUTUBE API CONTROL ========== -->
-<section class="featured-videos-section">
-    <div class="featured-videos-container">
-        
-        <!-- Section Header -->
-        <div class="featured-videos-header">
-            <h2>Featured Videos</h2>
-            <p>Discover the vibrant life at Mbarara Army Boarding Secondary School through these highlights of academics, and special events</p>
-        </div>
-
-        <!-- Video Grid -->
-        <div class="videos-grid" id="videosGrid">
-            <!-- Videos will be dynamically injected with YouTube API support -->
-        </div>
-    </div>
-</section>
-<div style="text-align: center; margin: 2rem auto;">
-    <a href="youtube.html" class="hero-btn hero-btn-secondary" style="display: inline-flex; align-items: center; gap: 0.75rem; background:#0e7704; color: #ffffff; border: none; font-weight: 700;">
-        <i class=""></i> Watch More Videos
-    </a>
-</div>
-
     <!-- ===== CORE VALUES ===== -->
     <section class="values-section">
         <h2 class="section-title">Our Core Values</h2>
@@ -2245,6 +2646,27 @@
             </div>
         </div>
     </section>
+    <!-- ========== FEATURED VIDEOS SECTION - PROFESSIONAL WITH YOUTUBE API CONTROL ========== -->
+<section class="featured-videos-section">
+    <div class="featured-videos-container">
+        
+        <!-- Section Header -->
+        <div class="featured-videos-header">
+            <h2>Featured Videos</h2>
+            <p>Discover the vibrant life at Mbarara Army Boarding Secondary School through these highlights of academics, and special events</p>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="videos-grid" id="videosGrid">
+            <!-- Videos will be dynamically injected with YouTube API support -->
+        </div>
+    </div>
+</section>
+<div style="text-align: center; margin: 2rem auto;">
+    <a href="youtube.html" class="hero-btn hero-btn-secondary" style="display: inline-flex; align-items: center; gap: 0.75rem; background:#0e7704; color: #ffffff; border: none; font-weight: 700;">
+        <i class=""></i> Watch More Videos
+    </a>
+</div>
 
     <!-- ===== COUNTER SECTION ===== -->
     <section class="counter-section">
@@ -2925,7 +3347,373 @@
         }
     }
 </style>
+<script>
+  // ========== DATA ARRAY: EASY TO EDIT & ADD MORE CARDS ==========
+  // Each object: title, date, description (short text)
+  const programsData = [
+    {
+      title: "End Of Term Exams",
+      date: "April 16–21, 2026",
+      description: "End of Term examinations for Non-Candidate classes."
+    },
+    {
+      title: "Patriotism Training Begins",
+      date: "April 22-28, 2026",
+      description: "Patriotism Training for S.1,S.5 & All new students Begins."
+    },
+    {
+      title: "Pass out of the new Patriots",
+      date: "April 29, 2026",
+      description: "Passing out ceremony for the new Patriots, featuring student performances and celebrations, with family and friends invited to honor the graduates.."
+    },
+    {
+      title: "End of Term staff meeting",
+      date: "April 30, 2026",
+      description: "A meeting for staff to review the term’s progress, discuss key outcomes, and plan for the upcoming term."
+    },
+    {
+      title: "Closure of the term",
+      date: "May 1, 2026",
+      description: "Final wrap-up meeting to reflect on the term’s achievements and plan for the next academic year."
+    }
+  ];
 
+  // ========== CAROUSEL CONFIGURATION ==========
+  // Auto-slide interval (ms), infinite forward loop (marquee style: never goes backward)
+  // Wrapping mechanism: we implement a virtual infinite loop by rearranging or using
+  // an index that rotates forward. We will treat the track as a "circular buffer"
+  // using transform based on currentIndex and total cards. But to get seamless forward wrap,
+  // we adjust the track position and when near the end we "jump" without transition
+  // to a cloned set? Actually, the clean way: we duplicate cards to create infinite illusion.
+  // But requirement: "when it reaches the last card, it should seamlessly continue from the first card,
+  // not scroll backward." Means infinite forward scrolling (marquee). We implement a technique:
+  // we duplicate the card set (clone cards) so track width holds original * 2.
+  // Then we slide to clone set and reset position without transition when index reaches original length.
+  // That gives PERFECT infinite forward continuous motion with no backward jump visible.
+  // Additional: auto-slide advances each 4-5 secs, and left/right navigation still works infinitely forward.
+  // For simplicity and perfect UX, we will use "infinite duplicated track" method.
+  
+  (function() {
+    // DOM elements
+    const track = document.getElementById('up-track');
+    const prevBtn = document.getElementById('up-prevBtn');
+    const nextBtn = document.getElementById('up-nextBtn');
+    const dotsContainer = document.getElementById('up-paginationDots');
+    
+    // original cards count
+    const originalItemsCount = programsData.length;
+    if (originalItemsCount === 0) return;
+    
+    // Helper: create card HTML from data object
+    function createCardHTML(program) {
+      return `
+        <div class="up-card">
+          <div class="up-card-title">${escapeHtml(program.title)}</div>
+          <div class="up-card-date">${escapeHtml(program.date)}</div>
+          <div class="up-card-desc">${escapeHtml(program.description)}</div>
+        </div>
+      `;
+    }
+    
+    // simple XSS prevention
+    function escapeHtml(str) {
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+        return c;
+      });
+    }
+    
+    // Build initial set of cards + duplicate set (for infinite seamless forward loop)
+    let allCardsHTML = '';
+    // First, original cards
+    for (let i = 0; i < originalItemsCount; i++) {
+      allCardsHTML += createCardHTML(programsData[i]);
+    }
+    // Duplicate set: clone original cards to make infinite forward possible (marquee style)
+    for (let i = 0; i < originalItemsCount; i++) {
+      allCardsHTML += createCardHTML(programsData[i]);
+    }
+    track.innerHTML = allCardsHTML;
+    
+    // total cards now = originalItemsCount * 2
+    const totalCards = originalItemsCount * 2;
+    // get all card elements after render
+    let cardElements = Array.from(document.querySelectorAll('#up-track .up-card'));
+    
+    // Determine number of visible cards based on screen width (responsive)
+    function getVisibleCardsCount() {
+      const width = window.innerWidth;
+      if (width <= 640) return 1;
+      if (width <= 1024) return 2;
+      return 3;
+    }
+    
+    let visibleCount = getVisibleCardsCount();
+    // calculate card width including gap
+    // We'll compute card width + gap dynamically from style
+    function getCardTotalWidth() {
+      if (cardElements.length === 0) return 0;
+      const trackRect = track.getBoundingClientRect();
+      if (trackRect.width === 0) return 0;
+      // get computed gap style from track (gap property)
+      const trackStyle = window.getComputedStyle(track);
+      const gap = parseFloat(trackStyle.gap) || 24; // 1.8rem => ~28.8px but safe fallback
+      const firstCard = cardElements[0];
+      if (!firstCard) return 0;
+      const cardWidth = firstCard.offsetWidth;
+      return cardWidth + gap;
+    }
+    
+    // state
+    let currentIndex = 0;      // start at first card of original set
+    let autoSlideInterval = null;
+    let isHovering = false;
+    let isTransitioning = false;
+    
+    // update carousel transform based on currentIndex
+    function updateTransform(instant = false) {
+      if (cardElements.length === 0) return;
+      const cardTotalWidth = getCardTotalWidth();
+      if (cardTotalWidth === 0) {
+        requestAnimationFrame(() => updateTransform(instant));
+        return;
+      }
+      const newTranslateX = -(currentIndex * cardTotalWidth);
+      if (instant) {
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${newTranslateX}px)`;
+        // force reflow
+        track.offsetHeight;
+        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+      } else {
+        track.style.transform = `translateX(${newTranslateX}px)`;
+      }
+      
+      // Update pagination dots: active dot based on (currentIndex % originalItemsCount)
+      updatePaginationActive(currentIndex % originalItemsCount);
+      
+      // Infinite forward wrap logic: if we slide beyond the original range into the duplicate zone,
+      // and if we reached a point where currentIndex >= originalItemsCount, we need to reset
+      // WITHOUT transition to the equivalent position in the first set (maintaining forward illusion)
+      // But we want endless forward, when scrolling to the end of duplicate, reset to index 0 of original.
+      // We'll do after transition end. For auto and manual next: after slide finished, check.
+    }
+    
+    function resetInfiniteForwardIfNeeded() {
+      // When we have advanced so far that currentIndex >= originalItemsCount, we need to reset
+      // to currentIndex - originalItemsCount, but without transition jump to keep infinite forward.
+      if (currentIndex >= originalItemsCount) {
+        // seamless reset: disable transition, move to equivalent position in first set
+        const offsetIndex = currentIndex - originalItemsCount;
+        currentIndex = offsetIndex;
+        track.style.transition = 'none';
+        const cardTotalWidth = getCardTotalWidth();
+        if (cardTotalWidth > 0) {
+          track.style.transform = `translateX(-${currentIndex * cardTotalWidth}px)`;
+        }
+        // force reflow then restore transition
+        track.offsetHeight;
+        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+        updatePaginationActive(currentIndex % originalItemsCount);
+      }
+      // Also handle negative edge (theoretically if left button triggers, but we restrict left logic to never go below 0)
+      if (currentIndex < 0) {
+        currentIndex = 0;
+        updateTransform(false);
+      }
+    }
+    
+    function updatePaginationActive(activeIdx) {
+      const dots = document.querySelectorAll('.up-dot');
+      dots.forEach((dot, idx) => {
+        if (idx === activeIdx) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+    }
+    
+    // move to next slide (forward, marquee style)
+    function nextSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      const maxIndex = totalCards - visibleCount;
+      if (currentIndex + 1 <= maxIndex) {
+        currentIndex++;
+      } else {
+        // At the end of duplicated set, wrap to the beginning of original set but keep infinite forward.
+        // However using duplication method: once we reach totalCards - visibleCount, the next step should reset
+        // to index 0 but without breaking illusion. We'll set currentIndex = 0 and reset transform without transition.
+        currentIndex = 0;
+        // instantly reposition track without transition
+        track.style.transition = 'none';
+        const cardTotalWidth = getCardTotalWidth();
+        if (cardTotalWidth > 0) {
+          track.style.transform = `translateX(0px)`;
+        }
+        track.offsetHeight;
+        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+        isTransitioning = false;
+        updatePaginationActive(0);
+        return;
+      }
+      updateTransform(false);
+      setTimeout(() => { isTransitioning = false; }, 450);
+      // after transform, also apply infinite reset check if needed (though not needed here due to duplication)
+      setTimeout(() => {
+        resetInfiniteForwardIfNeeded();
+      }, 420);
+    }
+    
+    // previous slide: But requirement: carousel "infinite loop / marquee style – continues forward and wraps around, never goes backward"
+    // That means we don't really need backward? But navigation arrows should also move forward but using left arrow? 
+    // For consistent user expectation: left arrow goes to previous item, BUT since we have infinite forward design, 
+    // we can implement left to go "backward" in traditional sense, yet infinite loop still works seamlessly without breaking.
+    // but the "never goes backward" refers to auto-slide direction. It's okay to have left arrow moving previous slide for usability.
+    // We'll implement left arrow to go backward but it's still finite within infinite track, but that won't conflict.
+    // However to be robust, left arrow moves reverse direction.
+    function prevSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      if (currentIndex - 1 >= 0) {
+        currentIndex--;
+      } else {
+        // wrap to end (but consistent)
+        const maxPossible = totalCards - visibleCount;
+        currentIndex = maxPossible;
+        track.style.transition = 'none';
+        const cardTotalWidth = getCardTotalWidth();
+        if (cardTotalWidth > 0) {
+          track.style.transform = `translateX(-${currentIndex * cardTotalWidth}px)`;
+        }
+        track.offsetHeight;
+        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+        isTransitioning = false;
+        updatePaginationActive(currentIndex % originalItemsCount);
+        return;
+      }
+      updateTransform(false);
+      setTimeout(() => { isTransitioning = false; }, 450);
+      setTimeout(() => resetInfiniteForwardIfNeeded(), 420);
+    }
+    
+    // reset visible cards count on window resize (rebuild track widths, reposition)
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const newVisible = getVisibleCardsCount();
+        if (newVisible !== visibleCount) {
+          visibleCount = newVisible;
+          // Adjust max index limit but keep currentIndex within valid range
+          const maxIdx = totalCards - visibleCount;
+          if (currentIndex > maxIdx) currentIndex = Math.max(0, maxIdx);
+          updateTransform(true);
+        } else {
+          // just reposition to maintain correct offset
+          updateTransform(true);
+        }
+      }, 150);
+    });
+    
+    // initialize carousel: set initial position, pagination dots, event listeners
+    function initCarousel() {
+      visibleCount = getVisibleCardsCount();
+      // generate pagination dots based on originalItemsCount
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < originalItemsCount; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('up-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', (function(idx) {
+          return function() {
+            if (isTransitioning) return;
+            // jump to a specific slide (original index) - but within the first set
+            let targetIndex = idx;
+            if (targetIndex >= originalItemsCount) targetIndex = idx;
+            currentIndex = targetIndex;
+            updateTransform(false);
+            resetInfiniteForwardIfNeeded();
+          };
+        })(i));
+        dotsContainer.appendChild(dot);
+      }
+      
+      // Set initial transform
+      currentIndex = 0;
+      updateTransform(true);
+      
+      // event listeners for arrows
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoSlideTimer();
+      });
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoSlideTimer();
+      });
+      
+      // Pause on hover / resume
+      const carouselWrapper = document.querySelector('.up-carousel-wrapper');
+      carouselWrapper.addEventListener('mouseenter', () => {
+        isHovering = true;
+        stopAutoSlide();
+      });
+      carouselWrapper.addEventListener('mouseleave', () => {
+        isHovering = false;
+        startAutoSlide();
+      });
+      
+      startAutoSlide();
+    }
+    
+    // Auto-slide every 4-5 seconds (4.5s interval)
+    function startAutoSlide() {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(() => {
+        if (!isHovering && !isTransitioning) {
+          nextSlide();
+        }
+      }, 4500);
+    }
+    
+    function stopAutoSlide() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    }
+    
+    function resetAutoSlideTimer() {
+      if (!isHovering) {
+        stopAutoSlide();
+        startAutoSlide();
+      }
+    }
+    
+    // Recompute card width after images/fonts load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        cardElements = Array.from(document.querySelectorAll('#up-track .up-card'));
+        visibleCount = getVisibleCardsCount();
+        updateTransform(true);
+        resetInfiniteForwardIfNeeded();
+      }, 60);
+    });
+    
+    initCarousel();
+    
+    // Also track resize ensures card width recompute
+    const resizeObserver = new ResizeObserver(() => {
+      if (track && cardElements.length) {
+        updateTransform(true);
+      }
+    });
+    if (track) resizeObserver.observe(track);
+  })();
+</script>
 </body>
 
 </html>
