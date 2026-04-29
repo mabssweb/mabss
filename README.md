@@ -24,6 +24,31 @@ This news system provides a complete solution for managing and displaying school
 - Neon PostgreSQL account (free tier available)
 - Git repository
 
+## 🤝 Collaborator Setup (Testing this Branch)
+
+If you are pulling this branch to test the new **Admin News Management** features, follow these steps:
+
+### 1. Environment Configuration
+Create a file named `.env` in the root directory (this file is ignored by git).
+Add the following credentials (ask the team lead for the actual values):
+
+```ini
+DATABASE_URL="postgres://user:password@ep-cool-project-123456.us-east-2.aws.neon.tech/neondb?sslmode=require"
+ADMIN_PASSWORD="your-secure-password"
+```
+
+### 2. Install & Run
+```bash
+npm install
+npm run start-local
+```
+*Note: `npm run start-local` runs `vercel dev` which correctly loads the `.env` file.*
+
+### 3. Verify Admin Features
+1. Go to `http://localhost:3000/admin.html`
+2. Log in with the `ADMIN_PASSWORD` you set in `.env`.
+3. Test **Add News**, **Edit News**, and **Delete News**.
+
 ## 🚀 Quick Start
 
 ### 1. Clone and Setup

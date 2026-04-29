@@ -63,6 +63,15 @@
             font-weight: bold;
         }
 
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+        }
+
         .nav-menu {
             display: flex;
             align-items: center;
@@ -242,6 +251,14 @@
             border-bottom-color: #0e7704;
         }
 
+        /* Responsive Table Container */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 1rem;
+        }
+
         /* Table Styles */
         .news-table {
             width: 100%;
@@ -294,6 +311,17 @@
 
         .edit-btn:hover {
             background-color: #e0a800;
+            transform: scale(1.05);
+        }
+
+        .view-btn {
+            background-color: #0e7704;
+            color: white;
+        }
+
+        .view-btn:hover {
+            background-color: #0b5e03;
+            transform: scale(1.05);
         }
 
         .delete-btn {
@@ -319,6 +347,37 @@
             background-color: #b71c1c;
         }
 
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            /* Stack buttons vertically */
+            gap: 0.3rem;
+            align-items: stretch;
+            /* Make buttons full width */
+        }
+
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: opacity 0.2s;
+            background-color: #2196F3;
+            color: white;
+            white-space: nowrap;
+            /* Prevent text wrapping */
+        }
+
+        .action-btn:hover {
+            opacity: 0.8;
+        }
+
+        .action-btn i {
+            font-size: 1rem;
+        }
+
         /* Login Styles */
         .login-container {
             max-width: 400px;
@@ -336,6 +395,55 @@
         }
 
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #0e7704;
+                flex-direction: column;
+                align-items: stretch;
+                display: none;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-item {
+                margin: 0;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 0.8rem;
+            }
+
+            .logout-btn {
+                width: 100%;
+                margin-top: 0.5rem;
+            }
+
+            .school-name {
+                font-size: 1.2rem;
+            }
+
+            .helo {
+                height: 50px;
+                width: 50px;
+            }
+
             .admin-section {
                 padding: 2rem 1rem;
             }
@@ -347,6 +455,351 @@
             .admin-title {
                 font-size: 1.5rem;
             }
+
+            .tabs-container {
+                flex-wrap: wrap;
+            }
+
+            .tab-btn {
+                padding: 0.8rem 1rem;
+                font-size: 1rem;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+
+            .detail-label {
+                width: 100%;
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 15px;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-footer button {
+                width: 100% !important;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: black;
+        }
+
+        .detail-row {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            width: 200px;
+            color: #006400;
+        }
+
+        .app-status {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: white;
+            text-transform: capitalize;
+            font-size: 0.85rem;
+        }
+
+        .status-pending {
+            background: #ff9800;
+        }
+
+        .status-accepted {
+            background: #4caf50;
+        }
+
+        .status-rejected {
+            background: #f44336;
+        }
+
+        .modal-footer {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+
+        .modal-footer button {
+            transition: transform 0.2s;
+        }
+
+        .modal-footer button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Modal Content Layout Enhancements */
+        .modal-body-content {
+            padding: 10px;
+        }
+
+        .modal-section {
+            background: #fbfbfb;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            page-break-inside: avoid;
+        }
+
+        .modal-section-title {
+            color: #0e7704;
+            border-bottom: 2px solid #0e7704;
+            padding-bottom: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-section-title i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .detail-card {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px 0;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .detail-value {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .document-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #fff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .document-tag:hover {
+            background: #0e7704;
+            color: white !important;
+            border-color: #0e7704;
+            transform: translateY(-2px);
+        }
+
+        .document-tag i {
+            margin-right: 10px;
+            color: #0e7704;
+        }
+
+        .document-tag:hover i {
+            color: white;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+
+        .no-print {
+            display: block;
+        }
+
+        /* Print Header Only visible on print */
+        #print-header {
+            display: none;
+            text-align: center;
+            border-bottom: 3px double #000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        #print-header h1 {
+            font-size: 26pt;
+            margin-bottom: 8px;
+            color: #000;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        #print-header p {
+            font-size: 12pt;
+            margin: 4px 0;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                margin: 0.5cm;
+            }
+
+            body * {
+                visibility: hidden;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            #appModal,
+            #appModal * {
+                visibility: visible;
+            }
+
+            #appModal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white;
+                height: auto;
+                overflow: visible;
+            }
+
+            .modal-content {
+                box-shadow: none;
+                border: none;
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding: 0;
+                height: auto;
+                overflow: visible;
+                display: block !important;
+            }
+
+            #print-header {
+                display: block;
+            }
+
+            .close-modal,
+            .modal-footer,
+            .print-btn {
+                display: none !important;
+            }
+
+            .modal-section {
+                border: 1px solid #ccc;
+                background: white;
+                margin-bottom: 15pt;
+                padding: 15pt;
+                page-break-inside: avoid;
+            }
+
+            .image-preview {
+                width: 100% !important;
+                max-width: none !important;
+                height: auto !important;
+                border: none !important;
+                box-shadow: none !important;
+                image-rendering: auto;
+                margin: 20px 0 !important;
+            }
+
+            .modal-section-title {
+                color: black;
+                border-color: black;
+            }
+
+            .detail-label {
+                color: #555;
+            }
+
+            .detail-value {
+                color: #000;
+            }
+
+            /* Force black text for better contrast on paper */
+            * {
+                color: black !important;
+            }
+
+            /* Links don't print well unless we show URL or just hide them */
+            .document-tag i {
+                display: none;
+            }
+
+            .document-tag {
+                border: 1px solid #000;
+                padding: 5px;
+            }
         }
     </style>
 </head>
@@ -355,13 +808,18 @@
     <header class="header">
         <div class="header-container">
             <div class="logo-container">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
-                    alt="MABSS Logo" class="helo">
+                <a href="index.html" style="text-decoration:none">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                        alt="MABSS Logo" class="helo">
+                </a>
                 <h1 class="school-name">MABSS Admin</h1>
             </div>
-            <nav class="nav-menu">
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <nav class="nav-menu" id="mainNav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item" id="admissions-nav" style="display: none;"><a href="#"
+                            onclick="switchTab('admissions')" class="nav-link">Admissions</a></li>
                     <li class="nav-item" id="logout-item" style="display: none;">
                         <button onclick="logout()" class="logout-btn">Logout</button>
                     </li>
@@ -380,7 +838,7 @@
                     <label class="form-label" for="password">Password</label>
                     <input type="password" id="password" class="form-input" placeholder="Enter Admin Password" required>
                 </div>
-                <button type="submit" class="submit-btn">Login</button>
+                <button type="submit" class="submit-btn" id="login-btn">Login</button>
             </form>
         </div>
     </section>
@@ -390,12 +848,13 @@
         <div class="tabs-container">
             <button class="tab-btn active" onclick="switchTab('add-news')">Add News</button>
             <button class="tab-btn" onclick="switchTab('manage-news')">Manage News</button>
+            <button class="tab-btn" onclick="switchTab('admissions')">Admissions</button>
         </div>
 
         <!-- Add News Section -->
         <section id="add-news-section" class="admin-section">
             <div class="admin-card">
-                <h2 class="admin-title" id="form-title">Add New News Article</h2>
+                <h2 class="admin-title" id="form-title">Add News Article</h2>
                 <form id="news-form">
                     <input type="hidden" id="edit-id">
                     <div class="form-group">
@@ -428,13 +887,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Featured Image</label>
-                        <div class="image-upload" onclick="document.getElementById('image-input').click()">
+                        <label class="form-label">Featured Image (Optional)</label>
+                        <div class="image-upload" id="upload-zone"
+                            onclick="document.getElementById('image-input').click()">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Click to upload image or enter image URL</p>
-                            <input type="file" id="image-input" accept="image/*" style="display: none;">
-                            <input type="url" id="image-url" class="form-input" placeholder="Or paste image URL here"
-                                style="margin-top: 1rem;">
+                            <p id="upload-status">Click to upload image (Optional. JPG, PNG, WebP. Max 5MB)</p>
+                            <input type="file" id="image-input" name="image" accept="image/jpeg,image/png,image/webp"
+                                style="display: none;">
+                        </div>
+                        <div id="image-preview" style="display: none; margin-top: 1rem; text-align: center;">
+                            <img id="preview-img" src="" alt="Preview"
+                                style="max-width: 100%; max-height: 200px; border-radius: 8px;">
+                            <p id="file-name" style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;"></p>
                         </div>
                     </div>
 
@@ -452,30 +916,107 @@
             <div class="admin-card">
                 <h2 class="admin-title">Manage Published News</h2>
                 <div id="loading-news" style="text-align: center;">Loading...</div>
-                <table class="news-table" id="news-table" style="display: none;">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="news-table-body"></tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="news-table" id="news-table" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="news-table-body"></tbody>
+                    </table>
+                </div>
             </div>
         </section>
+
+        <!-- Admissions Section -->
+        <section id="admissions-section" class="admin-section" style="display: none;">
+            <div class="admin-card">
+                <h2 class="admin-title">Admissions Management</h2>
+                <div style="margin-bottom: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="submit-btn" style="width: auto; padding: 0.5rem 1rem;"
+                        onclick="loadApplications('all')">All</button>
+                    <button class="submit-btn" style="width: auto; padding: 0.5rem 1rem; background: #ff9800;"
+                        onclick="loadApplications('pending')">Pending</button>
+                    <button class="submit-btn" style="width: auto; padding: 0.5rem 1rem; background: #4caf50;"
+                        onclick="loadApplications('accepted')">Accepted</button>
+                </div>
+                <div id="loading-apps" style="text-align: center; display: none;">Loading Applications...</div>
+                <div class="table-responsive">
+                    <table class="news-table" id="apps-table">
+                        <thead>
+                            <tr>
+                                <th>App No</th>
+                                <th>Name</th>
+                                <th>Class</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="apps-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Detail Modal -->
+        <div id="appModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2 class="admin-title" style="margin: 0;">Application Details</h2>
+                    <button onclick="window.print()" class="submit-btn print-btn"
+                        style="width: auto; background: #2196f3; box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3);"><i
+                            class="fas fa-print"></i> Print Application</button>
+                </div>
+
+                <!-- Print Header -->
+                <div id="print-header">
+                    <h1><i>MABSS</i><br><i>Creativity For Excellence</i></h1>
+                    <p>Address: P.O. Box 521, Mbarara, Uganda</p>
+                    <p>Phone: +256 782 096231 | +256 782 371824 | +256 779 927775</p>
+                    <p>Email: mabss2014@gmail.com</p>
+                    <h2 style="margin-top: 15px; text-decoration: underline;">ADMISSION FORM</h2>
+                </div>
+
+                <div id="modal-body"></div>
+                <div class="modal-footer">
+                    <button id="approveBtn" class="submit-btn"
+                        style="width: auto; background: #4caf50;">Approve</button>
+                    <button id="rejectBtn" class="submit-btn" style="width: auto; background: #f44336;">Reject</button>
+                    <button id="deleteBtn" class="submit-btn" style="width: auto; background: #333;">Delete
+                        Application</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
         // Check Auth Status on Load
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 1. Check Legacy Token
             const token = localStorage.getItem('adminToken');
             if (token) {
-                showDashboard();
-            } else {
-                showLogin();
+                return showDashboard();
             }
+
+            // 2. Check Session Cookie
+            try {
+                const res = await fetch('/api/auth/me');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.user && data.user.role === 'admin') {
+                        return showDashboard();
+                    }
+                }
+            } catch (e) {
+                console.log('Session check failed', e);
+            }
+
+            showLogin();
         });
 
         function showLogin() {
@@ -488,8 +1029,8 @@
             document.getElementById('login-section').style.display = 'none';
             document.querySelector('.main-container').style.display = 'block';
             document.getElementById('logout-item').style.display = 'block';
+            document.getElementById('admissions-nav').style.display = 'block';
 
-            // Check which tab should be active, default to first if hidden
             if (document.getElementById('manage-news-section').style.display === 'block') {
                 loadAllNews();
             }
@@ -502,18 +1043,34 @@
 
         // --- Tabs ---
         function switchTab(tabName) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if (tabName === 'add-news') document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
-            if (tabName === 'manage-news') document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
-
+            // Update Section Visibility
             if (tabName === 'add-news') {
                 document.getElementById('add-news-section').style.display = 'block';
                 document.getElementById('manage-news-section').style.display = 'none';
-            } else {
+                document.getElementById('admissions-section').style.display = 'none';
+            } else if (tabName === 'manage-news') {
                 document.getElementById('add-news-section').style.display = 'none';
                 document.getElementById('manage-news-section').style.display = 'block';
+                document.getElementById('admissions-section').style.display = 'none';
                 loadAllNews();
+            } else if (tabName === 'admissions') {
+                document.getElementById('add-news-section').style.display = 'none';
+                document.getElementById('manage-news-section').style.display = 'none';
+                document.getElementById('admissions-section').style.display = 'block';
+                loadApplications('all');
             }
+
+            // Close mobile menu if open
+            const nav = document.getElementById('mainNav');
+            if (nav.classList.contains('show')) {
+                nav.classList.remove('show');
+            }
+
+            // Update Tab Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if (tabName === 'add-news') document.querySelectorAll('.tab-btn')[0].classList.add('active');
+            if (tabName === 'manage-news') document.querySelectorAll('.tab-btn')[1].classList.add('active');
+            if (tabName === 'admissions') document.querySelectorAll('.tab-btn')[2].classList.add('active');
         }
 
         // --- Manage News ---
@@ -559,6 +1116,297 @@
             }
         }
 
+        // --- Manage Applications ---
+        async function loadApplications(filter = 'all') {
+            const tbody = document.getElementById('apps-table-body');
+            const loading = document.getElementById('loading-apps');
+            loading.style.display = 'block';
+            tbody.innerHTML = '';
+
+            try {
+                const token = localStorage.getItem('adminToken');
+                const headers = {};
+                if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                const response = await fetch(`/api/admin/actions?status=${filter}`, {
+                    headers: headers
+                });
+                const data = await response.json();
+                const applications = data.applications || [];
+
+                loading.style.display = 'none';
+
+                if (applications.length > 0) {
+                    tbody.innerHTML = applications.map(app => `
+                        <tr>
+                            <td>${app.application_number}</td>
+                            <td>${app.surname} ${app.other_names}</td>
+                            <td>${app.class_applying || app.class} ${app.preferred_combination ? `<br><small style="color:#d32f2f; font-weight:bold;">${app.preferred_combination}</small>` : ''}</td>
+                            <td><span class="app-status status-${app.status.toLowerCase()}">${app.status}</span></td>
+                            <td>
+                                <button class="action-btn view-btn" onclick="openAppModal('${app.id}')" title="View Details"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                    `).join('');
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No applications found.</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error loading applications:', error);
+                loading.textContent = 'Error loading applications.';
+            }
+        }
+
+        async function updateStatus(id, status) {
+            if (!confirm(`Are you sure you want to ${status} this application?`)) return;
+
+            const token = localStorage.getItem('adminToken');
+            try {
+                // CORRECTED ROUTE
+                const response = await fetch(`/api/admin/actions?id=${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ status })
+                });
+
+                if (response.ok) {
+                    loadApplications(); // Refresh the list
+                } else {
+                    const data = await response.json();
+                    alert('Failed to update status: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error updating status:', error);
+                alert('Error updating status.');
+            }
+        }
+
+        async function deleteApplication(id) {
+            if (!confirm('Are you sure you want to PERMANENTLY delete this application? This action cannot be undone.')) {
+                return;
+            }
+
+            try {
+                const token = localStorage.getItem('adminToken');
+                // CORRECTED ROUTE
+                const res = await fetch(`/api/admin/actions?id=${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (res.ok) {
+                    loadApplications(); // Refresh list
+                } else {
+                    const data = await res.json();
+                    alert('Error: ' + data.error);
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Failed to delete.');
+            }
+        }
+
+        // Modal Functions
+        let currentModalAppId = null;
+
+        async function openAppModal(id) {
+            console.log('openAppModal called with id:', id);
+            currentModalAppId = id;
+            const modal = document.getElementById('appModal');
+            const modalBody = document.getElementById('modal-body');
+
+            try {
+                const token = localStorage.getItem('adminToken');
+                const res = await fetch(`/api/admin/actions?id=${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!res.ok) throw new Error('Failed to fetch application details');
+
+                const data = await res.json();
+                const app = data.application; // API returns { application: {...} } when ID is provided
+                console.log('Admin: Fetched application details:', app);
+
+                if (!app) throw new Error('Application not found');
+
+                // Render application details in professional sections
+                modalBody.innerHTML = `
+                <div class="modal-body-content">
+                    <div class="modal-section">
+                        <h3 class="modal-section-title"><i class="fas fa-user-circle"></i> Student Information</h3>
+                        <div class="modal-grid">
+                            <div class="detail-card"><span class="detail-label">Application Number</span><span class="detail-value">${app.application_number}</span></div>
+                            <div class="detail-card"><span class="detail-label">Full Name</span><span class="detail-value" style="font-size: 1.2rem; color: #0e7704; font-weight: bold;">${app.surname} ${app.other_names}</span></div>
+                            <div class="detail-card"><span class="detail-label">Date of Birth / Age</span><span class="detail-value">${app.dob} (${app.age} years)</span></div>
+                            <div class="detail-card"><span class="detail-label">Gender / Sex</span><span class="detail-value">${app.sex}</span></div>
+                            <div class="detail-card"><span class="detail-label">Learner ID (LIN)</span><span class="detail-value">${app.lin || 'No LIN Provided'}</span></div>
+                            <div class="detail-card"><span class="detail-label">District of Origin</span><span class="detail-value">${app.birth_district}, ${app.birth_country}</span></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title"><i class="fas fa-graduation-cap"></i> Academic Background</h3>
+                        <div style="background: #f0f7f0; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+                            <h4 style="margin: 0 0 10px 0; color: #2e7d32;">Primary Leaving Examination (PLE)</h4>
+                            <div class="modal-grid">
+                                <div class="detail-card"><span class="detail-label">School attended</span><span class="detail-value">${app.former_school}</span></div>
+                                <div class="detail-card"><span class="detail-label">Year / Index</span><span class="detail-value">${app.ple_year} / ${app.ple_index}</span></div>
+                            </div>
+                            <div class="modal-grid" style="margin-top: 15px;">
+                                <div class="detail-card"><span class="detail-label">English</span><span class="detail-value">${app.english_agg}</span></div>
+                                <div class="detail-card"><span class="detail-label">Maths</span><span class="detail-value">${app.maths_agg}</span></div>
+                                <div class="detail-card"><span class="detail-label">Science</span><span class="detail-value">${app.science_agg}</span></div>
+                                <div class="detail-card"><span class="detail-label">S.S.T</span><span class="detail-value">${app.social_agg}</span></div>
+                                <div class="detail-card" style="border-left: 2px solid #0e7704; padding-left: 15px;">
+                                    <span class="detail-label" style="color: #0e7704;">Total Aggregate / Division</span>
+                                    <span class="detail-value" style="font-size: 1.1rem; font-weight: bold;">${app.total_aggregates} (Div ${app.division})</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        ${app.uce_year ? `
+                        <div style="background: #f0f7f0; padding: 15px; border-radius: 6px;">
+                            <h4 style="margin: 0 0 10px 0; color: #2e7d32;">Ordinary Level (UCE) Results</h4>
+                            <div class="modal-grid">
+                                <div class="detail-card"><span class="detail-label">Year / Index No</span><span class="detail-value">${app.uce_year} / ${app.uce_index}</span></div>
+                                ${app.preferred_combination ? `<div class="detail-card"><span class="detail-label">Preferred Combination</span><span class="detail-value" style="font-weight: bold; color: #d32f2f;">${app.preferred_combination}</span></div>` : ''}
+                            </div>
+                            <div style="margin-top:10px;">
+                                <label class="detail-label">Subject Grades</label>
+                                ${renderUceResultsHtml(app.uce_results)}
+                            </div>
+                        </div>
+                        ` : ''}
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title"><i class="fas fa-info-circle"></i> Enrollment Details</h3>
+                        <div class="modal-grid">
+                            <div class="detail-card"><span class="detail-label">Class Applied For</span><span class="detail-value" style="font-weight: 700;">${app.class_applying}</span></div>
+                            <div class="detail-card"><span class="detail-label">Admission Mode</span><span class="detail-value">${app.admission_mode}</span></div>
+                            <div class="detail-card"><span class="detail-label">Residential Status</span><span class="detail-value">${app.boarding_status === 'BOARDER CIVILIAN' ? 'Boarding' : (app.boarding_status === 'DAY CIVILIAN' ? 'Day Scholar' : app.boarding_status)}</span></div>
+                            <div class="detail-card"><span class="detail-label">Student Category</span><span class="detail-value">${app.parent_category}</span></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title"><i class="fas fa-users-cog"></i> Family & Guardian Information</h3>
+                        <div class="modal-grid">
+                            <div class="detail-card">
+                                <span class="detail-label">Father's Name (Contact)</span>
+                                <span class="detail-value">${app.father_name || 'N/A'} (${app.father_contact || ''})</span>
+                                <div style="margin-top:5px; font-size:0.85rem; color:#666;">NIN: ${app.father_nin || 'N/A'}</div>
+                            </div>
+                            <div class="detail-card">
+                                <span class="detail-label">Mother's Name (Contact)</span>
+                                <span class="detail-value">${app.mother_name || 'N/A'} (${app.mother_contact || ''})</span>
+                                <div style="margin-top:5px; font-size:0.85rem; color:#666;">NIN: ${app.mother_nin || 'N/A'}</div>
+                            </div>
+                            <div class="detail-card" style="background:#e8f5e9; padding: 10px; border-radius: 4px;">
+                                <span class="detail-label" style="color: #2e7d32;">Guardian Name (Primary Contact)</span>
+                                <span class="detail-value" style="font-weight: bold;">${app.guardian_name} (${app.guardian_contact})</span>
+                                <div style="margin-top:5px; font-size:0.85rem; color:#2e7d32;">NIN: ${app.guardian_nin}</div>
+                            </div>
+                            <div class="detail-card"><span class="detail-label">Guardian Occupation</span><span class="detail-value">${app.guardian_occupation}</span></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title"><i class="fas fa-heartbeat"></i> Health & Talents</h3>
+                        <div class="modal-grid">
+                            <div class="detail-card"><span class="detail-label">Health Needs / Allergies</span><span class="detail-value">${app.health_needs || 'None reported'}</span></div>
+                            <div class="detail-card"><span class="detail-label">Special Talents / Hobbies</span><span class="detail-value">${app.talents || 'None reported'}</span></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title"><i class="fas fa-paperclip"></i> Attached Supporting Documents</h3>
+                        <div class="docs-container" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+                            ${(app.documents || []).map(doc => {
+                    const isImage = ['jpg', 'jpeg', 'png', 'webp'].some(ext => doc.url.toLowerCase().endsWith(ext));
+                    return `
+                                <div style="width: 100%; margin-bottom: 20px;">
+                                    <a href="${doc.url}" target="_blank" class="document-tag">
+                                        <i class="fas fa-file-pdf"></i> <strong>${doc.type.replace(/_/g, ' ').toUpperCase()}</strong>
+                                    </a>
+                                    ${isImage ? `<img src="${doc.url}" class="image-preview" alt="${doc.type}">` : ''}
+                                </div>
+                                `;
+                }).join('') || '<p style="color: #888;">No electronic documents were attached to this application.</p>'}
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end; padding: 20px; background: #eee; border-radius: 8px;">
+                        <div>
+                            <p style="margin:0; font-size: 0.85rem; color: #555;">Application Submitted on:</p>
+                            <p style="margin:0; font-weight: bold;">${new Date(app.created_at).toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="detail-label">Current Processing Status</span>
+                            <div style="margin-top: 5px;"><span class="app-status status-${app.status}" style="font-size: 1rem; padding: 8px 20px;">${app.status.toUpperCase()}</span></div>
+                        </div>
+                    </div>
+                </div>
+                `;
+
+                // Update modal buttons
+                document.getElementById('approveBtn').onclick = () => {
+                    closeModal();
+                    updateStatus(id, 'accepted');
+                };
+                document.getElementById('rejectBtn').onclick = () => {
+                    closeModal();
+                    updateStatus(id, 'rejected');
+                };
+                document.getElementById('deleteBtn').onclick = () => {
+                    closeModal();
+                    deleteApplication(id);
+                };
+
+                modal.style.display = 'block';
+            } catch (error) {
+                console.error('Error loading application:', error);
+                alert('Failed to load application details: ' + error.message);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('appModal').style.display = 'none';
+            currentModalAppId = null;
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            const modal = document.getElementById('appModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        function renderUceResultsHtml(uceResultsStr) {
+            if (!uceResultsStr) return '<p style="color: #888;">No structured results provided.</p>';
+            if (uceResultsStr.indexOf(': ') === -1) return `<div style="padding: 10px; background: white; border: 1px solid #ddd; border-radius: 4px;">${uceResultsStr}</div>`;
+
+            const pairs = uceResultsStr.split(', ');
+            let html = '<table style="width: 100%; border-collapse: collapse; margin-top: 5px; background: white; border: 1px solid #ddd; border-radius: 4px; overflow: hidden;">';
+            html += '<tr style="background: #f1f8f1;"><th style="padding: 10px; border: 1px solid #ddd; text-align: left; font-size: 0.85rem; color: #2e7d32;">Subject</th><th style="padding: 10px; border: 1px solid #ddd; text-align: left; font-size: 0.85rem; color: #2e7d32; width: 80px;">Grade</th></tr>';
+            pairs.forEach(pair => {
+                const parts = pair.split(': ');
+                if (parts.length === 2) {
+                    html += `<tr><td style="padding: 8px 10px; border: 1px solid #ddd; font-size: 0.95rem;">${parts[0]}</td><td style="padding: 8px 10px; border: 1px solid #ddd; font-weight: bold; text-align: center; color: #0e7704;">${parts[1]}</td></tr>`;
+                }
+            });
+            html += '</table>';
+            return html;
+        }
+
         function formatDate(dateString) {
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             return new Date(dateString).toLocaleDateString(undefined, options);
@@ -592,8 +1440,17 @@
                 document.getElementById('title').value = data.title;
                 document.getElementById('summary').value = data.summary;
                 document.getElementById('content-editor').innerHTML = data.content;
-                document.getElementById('image-url').value = data.image;
                 document.getElementById('edit-id').value = data.id;
+
+                // Handle image preview for edit
+                if (data.image) {
+                    const preview = document.getElementById('image-preview');
+                    const previewImg = document.getElementById('preview-img');
+                    const fileName = document.getElementById('file-name');
+                    previewImg.src = data.image;
+                    fileName.textContent = 'Current Image';
+                    preview.style.display = 'block';
+                }
 
                 document.getElementById('form-title').textContent = 'Edit News Article';
                 const submitBtn = document.querySelector('#news-form button[type="submit"]');
@@ -611,6 +1468,8 @@
             document.getElementById('news-form').reset();
             document.getElementById('content-editor').innerHTML = '';
             document.getElementById('edit-id').value = '';
+            document.getElementById('image-preview').style.display = 'none';
+            document.getElementById('upload-status').textContent = 'Click to upload image (JPG, PNG, WebP. Max 5MB)';
             document.getElementById('form-title').textContent = 'Add New News Article';
             const submitBtn = document.querySelector('#news-form button[type="submit"]');
             submitBtn.textContent = 'Publish News Article';
@@ -620,7 +1479,13 @@
         // Login Handler
         document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const password = document.getElementById('password').value;
+            const passwordEl = document.getElementById('password');
+            if (!passwordEl) {
+                console.error('Password input not found!');
+                alert('Fatal Error: Login form is broken. Please refresh.');
+                return;
+            }
+            const password = passwordEl.value;
             const errorDiv = document.getElementById('login-error');
             const submitBtn = e.target.querySelector('button');
 
@@ -629,7 +1494,7 @@
             errorDiv.style.display = 'none';
 
             try {
-                const response = await fetch('/api/login', {
+                const response = await fetch('/api/auth/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ password })
@@ -678,12 +1543,51 @@
 
         // Enable submit button
         document.getElementById('news-form').addEventListener('input', function () {
-            if (document.querySelector('.submit-btn').textContent.includes('...')) return;
+            validateSubmit();
+        });
+
+        document.getElementById('content-editor').addEventListener('input', function () {
+            validateSubmit();
+        });
+
+        function validateSubmit() {
+            const submitBtn = document.querySelector('#news-form button[type="submit"]');
+            if (!submitBtn || submitBtn.textContent.includes('...')) return;
             const title = document.getElementById('title').value.trim();
             const summary = document.getElementById('summary').value.trim();
             const content = document.getElementById('content-editor').innerHTML.trim();
-            const submitBtn = document.querySelector('#news-form .submit-btn');
             submitBtn.disabled = !(title && summary && content);
+        }
+
+        // Handle Image Selection and Preview
+        document.getElementById('image-input').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const status = document.getElementById('upload-status');
+            const preview = document.getElementById('image-preview');
+            const previewImg = document.getElementById('preview-img');
+            const fileNameDisplay = document.getElementById('file-name');
+
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File is too large! Max 5MB allowed.');
+                    this.value = '';
+                    return;
+                }
+
+                status.textContent = `Selected: ${file.name}`;
+                fileNameDisplay.textContent = `${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImg.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                status.textContent = 'Click to upload image (JPG, PNG, WebP. Max 5MB)';
+                preview.style.display = 'none';
+            }
+            validateSubmit();
         });
 
         // Handle news submission
@@ -693,52 +1597,62 @@
             const title = document.getElementById('title').value.trim();
             const summary = document.getElementById('summary').value.trim();
             const content = document.getElementById('content-editor').innerHTML.trim();
-            const imageUrl = document.getElementById('image-url').value.trim();
+            const fileInput = document.getElementById('image-input');
             const editId = document.getElementById('edit-id').value;
-            const submitBtn = document.querySelector('#news-form .submit-btn');
+            const submitBtn = document.querySelector('#news-form button[type="submit"]');
 
             const token = localStorage.getItem('adminToken');
             if (!token) { logout(); return; }
 
             if (title && summary && content) {
                 submitBtn.disabled = true;
+                const originalBtnText = submitBtn.textContent;
                 submitBtn.textContent = editId ? 'Updating...' : 'Publishing...';
 
                 try {
+                    const formData = new FormData();
+                    formData.append('title', title);
+                    formData.append('summary', summary);
+                    formData.append('content', content);
+
+                    if (fileInput.files[0]) {
+                        formData.append('image', fileInput.files[0]);
+                    }
+
                     const method = editId ? 'PUT' : 'POST';
                     const url = editId ? `/api/news/${editId}` : '/api/news';
 
                     const response = await fetch(url, {
                         method: method,
                         headers: {
-                            'Content-Type': 'application/json',
                             'Authorization': `Bearer ${token}`
                         },
-                        body: JSON.stringify({
-                            title, summary, content, featuredImageUrl: imageUrl
-                        })
+                        body: formData
                     });
 
-                    if (!response.ok) throw new Error('Failed to save');
+                    if (!response.ok) {
+                        const errData = await response.json();
+                        throw new Error(errData.error || 'Failed to save article');
+                    }
 
-                    const result = await response.json();
-                    alert(editId ? 'Updated!' : 'Published!');
+                    alert(editId ? 'News article updated successfully!' : 'News article published successfully!');
                     resetForm();
+                    if (editId) switchTab('manage-news');
 
                 } catch (error) {
+                    console.error('Submission error:', error);
                     alert(`Error: ${error.message}`);
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Publish News Article';
+                    submitBtn.textContent = originalBtnText;
                 }
             }
         });
 
-        document.getElementById('image-input').addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
-                document.querySelector('.image-upload p').textContent = `Selected: ${file.name}`;
-            }
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('show');
         });
     </script>
 </body>

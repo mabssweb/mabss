@@ -1,304 +1,472 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Mbarara Army Boarding SS</title>
-    <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico" type="image/x-icon">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <title>Login - MABSS Admission</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --army-green: #1a5f23;
+            --army-green-light: #2a7d32;
+            --army-green-dark: #0f4a17;
+            --gold-accent: #d4af37;
+            --white: #ffffff;
+            --gray-light: #f7faf7;
+            --gray-border: #d1e7d1;
+            --gray-text: #5a725a;
+            --shadow: 0 4px 12px rgba(26, 95, 35, 0.1);
         }
-       
+
         body {
-            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f7f0 0%, #e8f5e9 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            margin: 0;
             padding: 20px;
         }
-       
-        .login-container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            padding: 2rem;
+
+        .auth-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
             width: 100%;
-            max-width: 400px;
+            max-width: 460px;
+            overflow: hidden;
+            border: 1px solid var(--gray-border);
         }
-       
+
         .login-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            min-height: 80px; /* Ensure consistent height during animation */
+            padding: 30px 30px 20px;
+            text-align: center;
+            background: linear-gradient(to right, var(--army-green), var(--army-green-light));
+            color: white;
+            position: relative;
         }
-        
+
         .logo-container {
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
-            border-radius: 4px;
-            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
         }
-        
-        .school-logo {
-            width: 100%;
-            height: 100%;
+
+        .logo-img {
+            max-height: 80px;
+            width: auto;
             object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            border-radius: 50%;
+            border: 3px solid white;
         }
 
-        h1 {
-            color: #006341;
-            text-align: left;
-            margin-bottom: 0;
-            font-size: 1.8rem;
-            flex-grow: 1;
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
         }
 
-        .typewriter-container {
-            display: inline-block;
-            vertical-align: top;
+        .login-subtitle {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .typewriter {
-            display: inline-block;
-            overflow: hidden;
-            border-right: 2px solid #006341;
-            white-space: nowrap;
-            animation: blink-caret 0.75s step-end infinite;
-            font-size: 20px;
+        .login-form-container {
+            padding: 30px;
         }
 
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #006341; }
-        }
-
-        .static-text {
-            display: inline-block;
-        }
-       
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
-       
-        label {
+
+        .form-label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--army-green);
+            margin-bottom: 8px;
         }
-       
+
         input {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 14px 16px;
+            border: 2px solid var(--gray-border);
+            border-radius: 10px;
             font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
         }
-       
-        button {
-            background-color: #006341;
+
+        input:focus {
+            outline: none;
+            border-color: var(--army-green-light);
+            box-shadow: 0 0 0 3px rgba(42, 125, 50, 0.15);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(to right, var(--army-green), var(--army-green-light));
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 4px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
             cursor: pointer;
-            font-size: 1rem;
-            width: 100%;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-       
-        button:hover {
-            background-color: #004d33;
+            transition: all 0.3s;
+            margin-top: 10px;
         }
 
-        .message {
-            margin-top: 1rem;
-            padding: 0.8rem;
-            border-radius: 4px;
-            text-align: center;
-            display: none;
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(42, 125, 50, 0.25);
         }
-       
+
+        button[type="submit"]:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .error {
-            background-color: #ffebee;
+            background: #ffebee;
             color: #c62828;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+            border-left: 4px solid #c62828;
         }
-       
+
         .success {
-            background-color: #e8f5e9;
+            background: #e8f5e9;
             color: #2e7d32;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+            border-left: 4px solid #2e7d32;
         }
-       
-        .info {
-            margin-top: 1.5rem;
-            text-align: center;
-            color: #666;
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: var(--gray-text);
             font-size: 0.9rem;
         }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        .divider span {
+            padding: 0 12px;
+        }
+
+        /* WhatsApp Support Section */
+        .whatsapp-section {
+            margin-top: 25px;
+            background-color: #f7fff7;
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid #e0f7e0;
+        }
+
+        .whatsapp-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--army-green);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .whatsapp-title i {
+            color: #25D366;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background-color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--army-green);
+            border: 1px solid #e0f7e0;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .whatsapp-button:hover {
+            border-color: #25D366;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.1);
+        }
+
+        .whatsapp-icon {
+            background-color: #25D366;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            margin-right: 12px;
+        }
+
+        .whatsapp-info {
+            flex: 1;
+        }
+
+        .whatsapp-name {
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .whatsapp-description {
+            font-size: 0.75rem;
+            color: var(--gray-text);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray-text);
+            font-size: 0.85rem;
+            background-color: #f8fff8;
+            border-top: 1px solid var(--gray-border);
+        }
+
+        .footer-link {
+            color: var(--army-green-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .links {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--army-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-    <div class="login-container">
+    <div class="auth-card">
         <div class="login-header">
             <div class="logo-container">
-                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg" alt="School Logo" class="school-logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
+                    alt="MABSS Logo" class="logo-img">
             </div>
-            <h1>
-                <div class="typewriter-container">
-                    <span id="typewriter"></span>
-                </div>
-                <br>
-                <span class="static-text"></span>
-            </h1>
+            <h1 class="login-title">Student Login Portal</h1>
+            <p class="login-subtitle">Secure access for registered MABSS applicants</p>
         </div>
 
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" required placeholder="Enter username">
+        <div class="login-form-container">
+            <div id="error" class="error"></div>
+            <div id="success" class="success"></div>
+
+            <!-- Google Sign-In -->
+            <div id="googleButtonDiv" style="display: flex; justify-content: center; margin-bottom: 20px;"></div>
+
+            <div class="divider">
+                <span>OR</span>
             </div>
-           
-            <div class="form-group">
-                <label for="accessCode">Access Code</label>
-                <input type="password" id="accessCode" required placeholder="Enter your access code">
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit">LOGIN</button>
+            </form>
+
+            <div class="links">
+                <p>Don't have an account? <a href="signup.html">Sign Up Now</a></p>
+                <p style="margin-top: 10px;"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
             </div>
-           
-            <button type="submit">Login</button>
-           
-            <div id="message" class="message"></div>
-        </form>
-       
-        <p class="info">Access codes are provided by the system administrator. Contact admin if you need access.</p>
+
+            <!-- WhatsApp Support (Registration Support) -->
+            <div class="whatsapp-section">
+                <div class="whatsapp-title">
+                    <i class="fab fa-whatsapp"></i> Registration Support
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <a href="https://wa.me/256200928601?text=Hello%20MABSS%20Support%2C%20I%20need%20help%20with%20my%20admission%20registration."
+                        class="whatsapp-button" target="_blank" style="padding: 12px 10px;">
+                        <div class="whatsapp-icon"
+                            style="width: 32px; height: 32px; font-size: 1rem; margin-right: 8px;"><i
+                                class="fab fa-whatsapp"></i></div>
+                        <div class="whatsapp-info">
+                            <div class="whatsapp-name" style="font-size: 0.85rem;">Primary Support</div>
+                            <div class="whatsapp-description" style="font-size: 0.7rem;">Account & Technical</div>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/256777930357?text=Hello%20MABSS%20Support%2C%20I%20need%20help%20with%20my%20admission%20registration."
+                        class="whatsapp-button" target="_blank" style="padding: 12px 10px;">
+                        <div class="whatsapp-icon"
+                            style="width: 32px; height: 32px; font-size: 1rem; margin-right: 8px; background-color: #128C7E;">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="whatsapp-info">
+                            <div class="whatsapp-name" style="font-size: 0.85rem;">Secondary Support</div>
+                            <div class="whatsapp-description" style="font-size: 0.7rem;">Registration Inquiries</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Mbarara Army Boarding Secondary School (MABSS).<br>All rights reserved.</p>
+            <p style="margin-top: 8px;"><a href="https://www.mabss.ac.ug" class="footer-link"
+                    target="_blank">www.mabss.ac.ug</a></p>
+            <p style="margin-top: 10px; font-size: 0.75rem;">
+                <i class="fas fa-phone-alt"></i> School Office: +256 782096231
+            </p>
+        </div>
     </div>
 
+    <!-- Google Sign-In API -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Enhanced Typewriter Effect
-            const typewriterElement = document.getElementById('typewriter');
-            const lines = [
-                "Welcome to User login",
-                "Your Learning Portal",
-                "Please continue To Login",
-            ];
-            let currentLine = 0;
-            let i = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
-            let pauseBetweenLines = 2000;
+        // Google Sign-In Callback
+        async function handleGoogleCallback(response) {
+            const errorDiv = document.getElementById('error');
+            const successDiv = document.getElementById('success');
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
 
-            function typeWriter() {
-                const currentText = lines[currentLine];
-                
-                if (isDeleting) {
-                    typewriterElement.innerHTML = currentText.substring(0, i-1);
-                    i--;
-                    typingSpeed = 50; // Faster when deleting
+            try {
+                const res = await fetch('/api/auth/google', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ credential: response.credential })
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    if (data.isNewUser) {
+                        successDiv.textContent = 'Account created successfully! Redirecting...';
+                        successDiv.style.display = 'block';
+                    }
+
+                    // Redirect based on role
+                    setTimeout(() => {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const redirect = urlParams.get('redirect');
+
+                        if (data.user.role === 'admin') {
+                            window.location.href = 'admin.html';
+                        } else {
+                            window.location.href = 'dashboard.html';
+                        }
+                    }, 1000);
                 } else {
-                    typewriterElement.innerHTML = currentText.substring(0, i+1);
-                    i++;
-                    typingSpeed = 100;
+                    throw new Error(data.error);
                 }
-
-                if (!isDeleting && i === currentText.length) {
-                    // Pause at end of line before deleting
-                    typingSpeed = pauseBetweenLines;
-                    isDeleting = true;
-                } else if (isDeleting && i === 0) {
-                    isDeleting = false;
-                    currentLine = (currentLine + 1) % lines.length; // Move to next line or loop
-                    typingSpeed = 500; // Pause before typing next line
-                }
-
-                // Add/remove cursor based on animation state
-                if (i > 0) {
-                    typewriterElement.classList.add('typewriter');
-                } else {
-                    typewriterElement.classList.remove('typewriter');
-                }
-
-                setTimeout(typeWriter, typingSpeed);
+            } catch (err) {
+                errorDiv.textContent = err.message || 'Google sign-in failed';
+                errorDiv.style.display = 'block';
             }
+        }
 
-            // Start the typewriter effect after a brief delay
-            setTimeout(typeWriter, 500);
+        // Initialize Google Sign-In when page has loaded
+        // Initialize Google Sign-In when page has loaded
+        window.onload = async function () {
+            try {
+                const configRes = await fetch('/api/auth/config');
+                const config = await configRes.json();
+                const clientId = config.googleClientId;
 
-            // Login Form Functionality
-            const loginForm = document.getElementById('loginForm');
-            const messageDiv = document.getElementById('message');
-           
-            // In a real implementation, this would be stored securely on the server
-            const validUsers = {
-                "Academic": { code: "2004", email: "anwiinefrankline@gmail.com" },
-                "teacher1": { code: "TEACH123", email: "anwiinefrankline@gmail.com" },
-                "teacher2": { code: "TEACH456", email: "anwiinefrankline@gmail.com" }
-            };
-           
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-               
-                const username = document.getElementById('username').value.trim();
-                const accessCode = document.getElementById('accessCode').value.trim();
-               
-                // Validate inputs
-                if (!username || !accessCode) {
-                    showMessage('Please fill in all fields', 'error');
-                    return;
+                google.accounts.id.initialize({
+                    client_id: clientId,
+                    callback: handleGoogleCallback,
+                    // FedCM is enabled by default, so we don't need to explicitly set it to true
+                    use_fedcm_for_prompt: false // Disable FedCM to fix localhost network errors
+                });
+
+                // Render the button in the div
+                // Width must be an integer (pixels), "100%" is invalid
+                google.accounts.id.renderButton(
+                    document.getElementById("googleButtonDiv"),
+                    { theme: "outline", size: "large", width: 350 }
+                );
+
+                google.accounts.id.prompt();
+            } catch (error) {
+                console.error('Failed to initialize Google Sign-In:', error);
+            }
+        };
+
+        // Regular form login
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+            const btn = e.target.querySelector('button');
+
+            btn.disabled = true;
+            btn.innerText = 'Logging in...';
+            errorDiv.style.display = 'none';
+
+            try {
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    // Check for redirect parameter
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const redirect = urlParams.get('redirect');
+
+                    // Role-based redirect
+                    if (data.user.role === 'admin') {
+                        window.location.href = 'admin.html';
+                    } else {
+                        window.location.href = 'dashboard.html';
+                    }
+                } else {
+                    throw new Error(data.error);
                 }
-               
-                // Check if user exists
-                if (!validUsers[username]) {
-                    showMessage('Invalid username', 'error');
-                    return;
-                }
-               
-                // Check access code
-                if (validUsers[username].code !== accessCode) {
-                    showMessage('Invalid access code', 'error');
-                    return;
-                }
-               
-                // Successful login
-                showMessage('Login successful! Redirecting...', 'success');
-               
-                // Store login status (in a real app, use proper session management)
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('username', username);
-               
-                // Redirect after delay
-                setTimeout(() => {
-                    window.location.href = 'materials.html';
-                }, 1000);
-            });
-           
-            function showMessage(text, type) {
-                messageDiv.textContent = text;
-                messageDiv.className = `message ${type}`;
-                messageDiv.style.display = 'block';
-               
-                // Hide message after 3 seconds
-                setTimeout(() => {
-                    messageDiv.style.display = 'none';
-                }, 3000);
+            } catch (err) {
+                errorDiv.textContent = err.message;
+                errorDiv.style.display = 'block';
+                btn.disabled = false;
+                btn.innerText = 'Login';
             }
         });
     </script>
 </body>
+
 </html>

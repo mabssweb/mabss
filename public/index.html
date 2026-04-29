@@ -1,801 +1,3704 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="en-UG">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico"
-        type="image/x-icon">
-    <title>Mbarara Army Boarding Secondary School - Home</title>
+
+    <!-- Meta Tags -->
+    <meta name="author" content="Amwine Frankline / CodeMatrix">
+    <meta name="description"
+        content="Mbarara Army Boarding Secondary School - Quality education with discipline, patriotism and academic excellence. O-Level & A-Level education in Uganda.">
+    <meta name="keywords"
+        content="MABSS, Mbarara Army Boarding Secondary School, boarding school Uganda, O-Level Uganda, A-Level Uganda, quality education, discipline, patriotism">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mbarara Army Boarding Secondary School | Excellence & Discipline">
+    <meta property="og:description"
+        content="Premier Ugandan boarding school offering O-Level & A-Level education with strong values, discipline & academic excellence.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mabss.ac.ug">
+    <meta property="og:image" content="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346792/three_rqyuym.jpg">
+    <meta property="og:site_name" content="Mbarara Army Boarding Secondary School">
+    <meta property="og:locale" content="en_UG">
+
+    <!-- Title -->
+    <title>Mbarara Army Boarding Secondary School | Home</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <style>
-        .here {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* ===== RESET & VARIABLES ===== */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            box-sizing: border-box;
         }
 
-        /* Responsive Navigation */
-        .header {
-            background-color: #0e7704;
-            color: white;
-            padding: 0.5rem 0;
+        :root {
+            --primary-navy: #0b2c4d;
+            --primary-blue: #1a4fa3;
+            --accent-green: #2e8b57;
+            --accent-red: #d62828;
+            --sky-blue: #4da8da;
+            --text-dark: #333;
+            --text-light: #555;
+            --bg-light: #f5f7fb;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 20, 30, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== STICKY NAVBAR ===== */
+        .navbar {
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
+            width: 100%;
+            background: #0e7704;
+            box-shadow: var(--shadow);
+            z-index: 1200;
         }
 
         .nav-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            justify-content: space-between;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0.7rem 1.5rem;
         }
 
-        .logo-container {
+       .logo {
+            height: 88px;
+            width: auto;
             display: flex;
             align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
-        .logo {
-            height: 50px;
-            width: 50px;
+        .logo img {
+            width: 88px;
+            height: 88px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid white;
-            margin-right: 0.5rem;
+            border: 2px solid #ffffff;
+            background-color: white;
+            padding: 5px; 
         }
 
-        .school-name {
-            margin: 0;
-            font-size: 1rem;
+        .logo span {
+            font-weight: 700;
+            font-size: 3.8rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
             white-space: nowrap;
         }
 
-        .menu-toggle {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .nav-menu {
-            display: none;
-            background-color: #0e7704;
-            padding: 1rem;
-        }
-
-        .nav-menu.show {
-            display: block;
-        }
-
-        .nav-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .nav-links {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
-        .nav-item {
-            margin: 0.5rem 0;
-        }
-
-        .nav-link {
-            color: white;
+        .nav-links a {
             text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem;
-            display: block;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #02f7ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2.5px;
+            background: #ffffff;
+            transition: width 0.3s ease;
             border-radius: 4px;
         }
 
-        /* Hero Section */
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .apply-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .apply-btn:hover {
+            background-color: #0b3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.25);
+            padding: 10px 15px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1300;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--primary-blue);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--primary-blue);
+        }
+
+         @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .apply-btn {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-container {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .logo span {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 70px;
+                gap: 8px;
+            }
+            
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo span {
+                font-size: 2.4rem;
+            }
+            
+            .nav-container {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo span {
+                font-size: 2.2rem;
+            }
+            
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.8rem;
+            transition: right 0.35s ease-in-out;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .mobile-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid green;
+        }
+
+        .mobile-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #1f2a44;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 14px 10px;
+            border-radius: 14px;
+            transition: 0.2s;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-menu a i {
+            width: 28px;
+            color: green;
+            font-size: 1.3rem;
+        }
+
+        .mobile-menu a:hover {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu .apply-btn {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            font-size: 1.1rem;
+            background-color: green;
+            color:white
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 44, 77, 0.5);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1300;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* ===== IMPROVED HERO SECTION WITH PROFESSIONAL FADE ===== */
         .hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346805/walking_fjcrzy.jpg');
-            background-size: cover;
-            background-position: center;
-            min-height: 300px;
-            padding: 2rem;
+            position: relative;
+            min-height: 600px;
+            height: 100vh;
+            max-height: 800px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: var(--white);
+            padding: 2rem 1rem;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .hero-slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: opacity;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            z-index: 0;
+        }
+
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
         }
 
         .hero-content {
-            max-width: 800px;
-            padding: 1rem;
-        }
-
-        .hero-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-subtitle {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-button {
-            background-color: #006341;
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
+            z-index: 2;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .hero-btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.4);
+        }
+
+        .hero-btn-primary:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.5);
+        }
+
+        .hero-btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .hero-btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-navy);
+            transform: translateY(-3px);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #006341;
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
         }
 
-        .about-grid {
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .about-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
         }
 
-        .about-card-title {
-            color: #006341;
-            margin-top: 0;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
         }
 
-        /* Academics Section */
-        .academics-section {
-            background-color: #006341;
-            color: white;
-            padding: 2rem 1rem;
+        .vision-card {
+            border-top-color: var(--sky-blue);
         }
 
-        .academics-container {
-            max-width: 1200px;
+        .mission-card {
+            border-top-color: var(--accent-green);
+        }
+
+        .motto-card {
+            border-top-color: var(--primary-navy);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto 1rem;
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        .vision-card .card-icon {
+            background: var(--sky-blue);
+        }
+
+        .mission-card .card-icon {
+            background: var(--accent-green);
+        }
+
+        .motto-card .card-icon {
+            background: var(--primary-navy);
+        }
+
+        .card-content {
+            padding: 1.5rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            color: var(--primary-navy);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .motto-card .card-content p {
+            font-size: 1.6rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--primary-navy);
+        }
+
+        /* ===== VALUES SECTION ===== */
+        .values-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 4rem 2rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 3rem auto 0;
+        }
+
+        .value-item {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid;
+            height: 100%;
+        }
+
+        .value-item:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .value-item.discipline {
+            border-left-color: var(--primary-navy);
+        }
+
+        .value-item.creativity {
+            border-left-color: var(--sky-blue);
+        }
+
+        .value-item.punctuality {
+            border-left-color: var(--accent-green);
+        }
+
+        .value-item.patriotism {
+            border-left-color: var(--accent-red);
+        }
+
+        .value-item.team-spirit {
+            border-left-color: #f77f00;
+        }
+
+        .value-item.god-fearing {
+            border-left-color: #7209b7;
+        }
+
+        .value-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.3rem;
+        }
+
+        .discipline .value-icon {
+            background: var(--primary-navy);
+        }
+
+        .creativity .value-icon {
+            background: var(--sky-blue);
+        }
+
+        .punctuality .value-icon {
+            background: var(--accent-green);
+        }
+
+        .patriotism .value-icon {
+            background: var(--accent-red);
+        }
+
+        .team-spirit .value-icon {
+            background: #f77f00;
+        }
+
+        .god-fearing .value-icon {
+            background: #7209b7;
+        }
+
+        .value-header h3 {
+            color: var(--primary-navy);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .value-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+        }
+
+        .about-text h2 {
+            color: var(--primary-navy);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: rgba(77, 168, 218, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+
+        .updf-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(11, 44, 77, 0.08);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            color: var(--primary-navy);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .updf-badge i {
+            margin-right: 10px;
+            color: var(--accent-red);
+        }
+
+        .facts-sidebar {
+            background: #f1f7fc;
+            border-radius: 16px;
+            padding: 2rem;
+            border-top: 4px solid var(--accent-green);
+        }
+
+        .fact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .fact-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .fact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-navy);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .fact-text h4 {
+            color: var(--primary-navy);
+            margin-bottom: 0.3rem;
+        }
+
+        .fact-text p {
+            color: var(--text-light);
+        }
+
+        /* ===== NOTICEBOARD ===== */
+        .noticeboard-section {
+            background: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .noticeboard-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .notice-card {
+            background: #f9f9f9;
+            border-left: 4px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .notice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .notice-date {
+            display: inline-block;
+            background: var(--accent-green);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .notice-card h3 {
+            color: var(--primary-navy);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .notice-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== COUNTER SECTION ===== */
+        .counter-section {
+            background: rgba(3, 139, 22, 0.993);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .counter-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: nowrap;
+        }
+
+        .counter-item {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .counter-number {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .counter-label {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        /* ===== APPLY SECTION ===== */
+        .apply-section {
+            background: linear-gradient(135deg, var(--accent-green) 0%, #004d33 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .apply-container {
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .academics-grid {
+        .apply-container h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .apply-container p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .apply-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-navy);
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 1.2rem 3.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .apply-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background: #f8f8f8;
+        }
+
+        .apply-button i {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .apply-button:hover i {
+            transform: translateX(5px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #004d33;
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
 
-        .academics-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
         }
 
-        .academics-title {
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--sky-blue);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-bottom {
             text-align: center;
-            margin-top: 0;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
         }
 
-        /* News Section */
+        /* ===== IMPROVED RESPONSIVE STYLES ===== */
+      @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-container {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .hero {
+                min-height: 500px;
+                height: 80vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 1.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .counter-number {
+                font-size: 3rem;
+            }
+            .counter-label {
+                font-size: 1.2rem;
+            }
+            .apply-container h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero {
+                min-height: 450px;
+                height: 70vh;
+                padding: 1rem;
+            }
+            
+            .hero-slide {
+                background-position: center center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 400px;
+                height: 60vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+                line-height: 1.3;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            
+            .hero-btn {
+                width: 100%;
+                text-align: center;
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .counter-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+
+        /* Landscape mode optimization */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: 350px;
+                height: 100vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-buttons {
+                gap: 1rem;
+            }
+
+            .hero-btn {
+                padding: 0.7rem 1.8rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* News Section CSS (Aligned with news.html) */
         .news-section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
+            padding: 4rem 1.5rem;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
         .news-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            justify-content: center;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 2rem;
         }
 
         .news-card {
-            background-color: white;
-            border-radius: 8px;
+            background: var(--white);
+            border-radius: 1rem;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            border: 1px solid #e2e8f0;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-image-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
         }
 
         .news-image {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+
+        .category-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: #0e7704;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         .news-content {
             padding: 1.5rem;
-            flex: 1;
-        }
-
-        .news-title {
-            margin-top: 0;
-            color: #006341;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .news-meta {
-            color: #666;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            color: #64748b;
+            margin-bottom: 0.75rem;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .news-summary {
-            color: #444;
+            font-size: 0.9375rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
             line-height: 1.5;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .news-link {
-            color: #006341;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        /* Testimonials Section */
-        .testimonials-section {
-            background-color: #f0f0f0;
-            padding: 2rem 1rem;
-        }
-
-        .testimonials-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .testimonial-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            text-align: right;
-        }
-
-        /* Footer */
-        .social-media {
-            margin-top: 1.5rem;
-        }
-
-        .social-media {
-            margin-top: 1.5rem;
-        }
-
-        .social-heading {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .social-icons {
+        .read-more {
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .social-icon {
-            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
+            gap: 0.5rem;
+            color: #0e7704;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9375rem;
             transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .social-icon.facebook:hover {
-            background-color: #3b5998;
-        }
-
-        .social-icon.twitter:hover {
-            background-color: #1da1f2;
-        }
-
-        .social-icon.youtube:hover {
-            background-color: #ff0000;
-        }
-
-        .social-icon.pinterest:hover {
-            background-color: #bd081c;
-        }
-
-        .social-icon.instagram:hover {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-
-        .social-icon.whatsapp:hover {
-            background-color: #25d366;
-        }
-
-        .social-icon.linkedin:hover {
-            background-color: #0077b5;
-        }
-
-        .footer {
-            background-color: #004d33;
-            color: white;
-            padding: 2rem 1rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .footer-section {
-            min-width: 250px;
-            list-style: none;
-        }
-
-        .footer-heading {
-            border-bottom: 2px solid #006341;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            list-style: none;
-        }
-
-        .footer-list {
-            list-style: none;
+            margin-top: auto;
+            border: none;
+            background: none;
             padding: 0;
+            cursor: pointer;
+            width: fit-content;
         }
 
-        .footer-item {
-            margin-bottom: 0.5rem;
+        .read-more:hover {
+            gap: 0.75rem;
+            color: #004d33;
         }
 
-        .footer-link {
-            color: white;
-            text-decoration: none;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #006341;
-        }
-
-        /* Responsive Adjustments */
         @media (min-width: 768px) {
-            .menu-toggle {
-                display: none;
-            }
-
-            .nav-menu {
-                display: block;
-                padding: 0;
-            }
-
-            .nav-list {
-                flex-direction: row;
-            }
-
-            .nav-item {
-                margin: 0 0.5rem;
-            }
-
-            .hero {
-                min-height: 400px;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .news-card {
-                height: 100%;
-            }
-
-            .hero-subtitle {
-                font-size: 2.2rem;
-            }
-
-            .about-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .academics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .news-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (min-width: 992px) {
-            .hero {
-                min-height: 500px;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .about-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
             .news-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-
-            .footer-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .school-name {
-                font-size: 1.5rem;
-            }
-
-            .logo {
-                height: 50px;
-                width: 50px;
-            }
-
-            header {
-                display: flex;
-                justify-content: left;
-                align-items: center;
-                padding-right: 200px;
-            }
-
-            .social-icons {
-                justify-content: center;
-            }
-        }
-
-        /* Button Section */
-        .button-section {
-            max-width: 1600px;
-            padding: 3rem 1rem;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .learn-button {
-            background-color: #2b2f38;
-            color: white;
-            padding: 1em 2rem;
-            border-radius: 300px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            display: inline-block;
-        }
-
-        .learn-button:hover {
-            background-color: #004d33;
         }
     </style>
-</head>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Poppins', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            background-color: #fafaf5;   /* soft off-white, clean background */
+            color: #1e2a2e;
+            line-height: 1.4;
+        }
 
-<body class="here">
-    <!-- Navigation Bar -->
-    <div class="header">
-        <header>
-            <div class="nav-container">
-                <div class="logo-container">
-                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg"
-                        alt="logo mabss" class="logo">
-                    <h1 class="school-name">Mbarara Army Boarding<br> Secondary School</h1>
-                </div>
-                <button class="menu-toggle" id="menuToggle">☰</button>
-            </div>
-            <nav class="nav-menu" id="mainNav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="login.html" class="nav-link">Academics</a></li>
-                    <li class="nav-item"><a href="sports.html" class="nav-link">Co-curricular Activities</a></li>
-                    <li class="nav-item"><a href="welfare.html" class="nav-link">Welfare</a></li>
-                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
-                </ul>
-            </nav>
-        </header>
-    </div>
+        /* Container to align with typical school website width (consistent with MABSS theme) */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+            /* ----- SECTION STYLES (green, gold, white - prestige theme) ----- */
+        .gallery-section {
+            padding: 70px 0 80px;
+            background: linear-gradient(to bottom, #ffffff 0%, #fef9e6 100%);
+            position: relative;
+        }
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Welcome to Mbarara Army Boarding Secondary School</h1>
-            <p class="hero-subtitle">"Creativity For Excellence"</p>
-        </div>
-    </section>
+       
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <h2 class="section-title">About Our School</h2>
-        <div class="about-grid">
-            <div class="about-card">
-                <h3 class="about-card-title">Our Vision</h3>
-                <p>To empower humanity for self reliance.</p>
-            </div>
+        /* Section header with title */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
 
-            <div class="about-card">
-                <h3 class="about-card-title">Our Mission</h3>
-                <p>To impart skills, knowledge, attitude and values through team work.</p>
-            </div>
+        .section-titles {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #1f3b2c;      /* deep army green */
+            position: relative;
+            display: inline-block;
+            padding-bottom: 16px;
+            font-family: inherit;
+        }
 
-            <div class="about-card">
-                <h3 class="about-card-title">Our Motto</h3>
-                <p>Creativity For Excellence.</p>
-            </div>
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #d4af37;   /* gold accent */
+            border-radius: 4px;
+        }
 
-            <div class="about-card">
-                <h3 class="about-card-title">Core Values</h3>
-                <ul>
-                    <li>Discipline</li>
-                    <li>Creativity</li>
-                    <li>Panctuality</li>
-                    <li>Patriotism</li>
-                    <li>Team spirit</li>
-                    <li>God fearing</li>
-                </ul>
-            </div>
-            <div class="button-section">
-                <a href="history.html" class="learn-button">Continue</a>
-            </div>
-        </div>
-    </section>
+        /* subtitle / optional short description */
+        .section-sub {
+            color: #5a6e53;
+            margin-top: 12px;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
 
-    <!-- Academics Section -->
-    <section class="academics-section">
-        <div class="academics-container">
-            <h2 class="section-title">Academic Programs</h2>
-            <div class="academics-grid">
-                <div class="academics-card">
-                    <h3 class="academics-title">Ordinary Level (S1-S4)</h3>
-                    <p>Our 'O' Level program offers a comprehensive and rich curriculum with sciences, humanities, and
-                        vocational subjects to prepare students for both academic and practical life. Kiswahili is
-                        compulsory from S1-S4.</p>
-                </div>
-                <div class="academics-card">
-                    <h3 class="academics-title">Advanced Level (S5-S6)</h3>
-                    <p>The 'A' Level program offers specialization in Sciences, Arts, and Humanities with excellent
-                        teaching staff and modern facilities to ensure student success.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        /* ---------- PHOTO GRID (modern masonry-like with CSS Grid) ---------- */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            margin-bottom: 48px;
+        }
 
-    <!-- News Section -->
-    <section class="news-section">
-        <h2 class="section-title">Latest News & Events</h2>
-        <div id="latest-news-container" class="news-grid">
-            <div class="news-card" style="grid-column: 1 / -1; text-align: center; padding: 20px;">
-                <p>Loading news...</p>
-            </div>
-        </div>
-        <h2 class="section-title"><i>Two-months ago</i></h2>
-        <div id="older-news-container" class="news-grid">
-            <div class="loading" style="grid-column: 1/-1; text-align: center;">Loading older news...</div>
-        </div>
-        <div class="button-section">
-            <a href="news.html" class="learn-button">View All News</a>
-        </div>
-    </section>
+        /* Image Card */
+        .image-card {
+            position: relative;
+            background-color: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            transform: translateY(0);
+        }
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="testimonials-container">
-            <h2 class="section-title">What Parents & Students Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The discipline and academic excellence at Mbarara Army Boarding SS
-                        transformed my son into a responsible young man."</p>
-                    <p class="testimonial-author">— Mr. Kato, The Parent</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The teachers here are dedicated and go beyond to ensure we understand
-                        concepts. I'm proud to be a student here."</p>
-                    <p class="testimonial-author">— Sarah, S5 Student</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        /* hover lift effect */
+        .image-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -14px rgba(0, 0, 0, 0.2);
+        }
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3 class="footer-heading">Quick Links</h3>
-                <ul class="footer-list">
-                    <li class="footer-item"><a href="login.html" class="footer-link">Academics</a></li>
-                    <li class="footer-item"><a href="sports.html" class="footer-link">Co-curricular Activities</a></li>
-                    <li class="footer-item"><a href="discpline.html" class="footer-link">Discipline</a></li>
-                    <li class="footer-item"><a href="welfare.html" class="footer-link">Welfare</a></li>
-                    <li class="footer-item"><a href="Staff.html" class="footer-link">Staff</a></li>
-                    <li class="footer-item"><a href="contacts.html" class="footer-link">Contacts</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">Contact Us</h3>
-                <p><strong>Address:</strong> P.O. Box 521, Mbarara, Uganda</p>
-                <p><strong>Phone:</strong> +256 782 096231 | +256 782 371824 | +256 779 927775</p>
-                <p><strong>Email:</strong> mabss2014@gmail.com</p>
+        /* image wrapper for consistent sizing */
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* 4:3 aspect ratio - classic, disciplined look */
+            overflow: hidden;
+            background-color: #e9ece5;
+        }
 
-                <!-- Social Media Icons -->
-                <div class="social-media">
-                    <h4 class="social-heading">Follow Us</h4>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
-                            class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/mabss2004" class="social-icon twitter" target="_blank"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/@mabss2025" class="social-icon youtube" target="_blank"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://pin.it/5oaOEpb4Z" target="_blank" class="social-icon pinterest"><i
-                                class="fab fa-pinterest-p"></i></a>
-                        <a href="https://www.instagram.com/mabss2025?igsh=MTU2aGx3Y3czYWk5Yw==" target="_blank"
-                            class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256782096231?text=Hello%20MABSS%2C%20I%20have%20a%20question%20about..."
-                            target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">School Hours</h3>
-                <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
-                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
-                <p><strong>Sunday:</strong> Closed (Except for Boarders)</p>
-            </div>
+        .card-img-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
 
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
-        </div>
-    </footer>
+        /* zoom effect on hover */
+        .image-card:hover .card-img-wrapper img {
+            transform: scale(1.08);
+        }
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function () {
-            const nav = document.getElementById('mainNav');
-            nav.classList.toggle('show');
-        });
+        /* Overlay (gradient + title/caption) */
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+            padding: 20px 16px 16px;
+            color: white;
+            transition: all 0.3s ease;
+        }
 
-        // Load latest news
-        document.addEventListener('DOMContentLoaded', loadLatestNews);
+        /* hover effect: darker gradient & more details appear */
+        .image-card:hover .card-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.6) 70%, rgba(0, 0, 0, 0.2) 100%);
+        }
 
-        async function loadLatestNews() {
-            try {
-                // Fetch more news to populate both sections (e.g., top 6)
-                // Since /api/news/latest gets 3, we might want to use /api/news?limit=6 instead
-                const response = await fetch('/api/news?limit=6');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch news');
-                }
-                const data = await response.json();
+        .overlay-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            margin-bottom: 6px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            color: #ffeaac; /* soft gold tint */
+        }
 
-                // If the API returns { news: [], pagination: {} }, use data.news
-                const newsItems = data.news || [];
+        .overlay-caption {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-                const latestContainer = document.getElementById('latest-news-container');
-                const olderContainer = document.getElementById('older-news-container');
+        /* hidden extra details - appears on hover */
+        .extra-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            margin-top: 8px;
+            font-size: 0.75rem;
+            border-top: 1px solid rgba(255,255,240,0.3);
+            padding-top: 0px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
 
-                // Split news: First 3 for "Latest", rest for "Older"
-                const latestNews = newsItems.slice(0, 3);
-                const olderNews = newsItems.slice(3, 6);
+        .image-card:hover .extra-details {
+            max-height: 60px;
+            opacity: 1;
+            padding-top: 8px;
+        }
 
-                // Render Latest
-                if (latestNews.length > 0) {
-                    latestContainer.innerHTML = latestNews.map(news => createNewsCard(news)).join('');
-                } else {
-                    latestContainer.innerHTML = '<p>No news available at the moment.</p>';
-                }
+        .detail-badge {
+            background: rgba(212, 175, 55, 0.85);
+            padding: 2px 8px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #1f2e1a;
+        }
 
-                // Render Older
-                if (olderNews.length > 0) {
-                    olderContainer.innerHTML = olderNews.map(news => createNewsCard(news)).join('');
-                } else {
-                    olderContainer.innerHTML = '<p>No older news available.</p>';
-                }
+       
+        
+        /* fade-in animation on scroll (intersection observer based or simple CSS visible) */
+        .fade-scroll {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+        }
 
-            } catch (error) {
-                console.error('Error loading latest news:', error);
-                const latestContainer = document.getElementById('latest-news-container');
-                const olderContainer = document.getElementById('older-news-container');
+        .fade-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-                latestContainer.innerHTML = '<p>Unable to load news at the moment.</p>';
-                if (olderContainer) olderContainer.innerHTML = '';
+        /* Responsive grid */
+        @media (max-width: 1024px) {
+            .photo-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
             }
         }
 
-        function createNewsCard(news) {
-            return `
-                <div class="news-card">
-                    <img src="${news.image || '/placeholder-news.png'}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">
-                    <div class="news-content">
-                        <h3 class="news-title">${news.title}</h3>
-                        <p class="news-summary">${news.summary}</p>
-                        <div class="news-meta">
-                            <span class="news-date">${formatDate(news.date)}</span>
+        @media (max-width: 768px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .overlay-title {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .gallery-section {
+                padding: 50px 0 60px;
+            }
+            .btn-view-gallery {
+                padding: 10px 26px;
+                font-size: 1rem;
+            }
+        }
+
+        /* extra polish: images alt text accessible */
+        .image-card:focus-visible {
+            outline: 3px solid #d4af37;
+            outline-offset: 2px;
+        }
+    </style>
+    <style>
+        /* ========== SECTION STYLES - MATCHING MABSS.AC.UG ========== */
+        /* Color scheme: Green (#2c5e2e), Gold (#c9a03d), White, Light Gray */
+        
+        .featured-videos-section {
+            background: #ffffff;
+            padding: 4rem 2rem;
+            font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        .featured-videos-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Section Header - matches academic style */
+        .featured-videos-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .featured-videos-header h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #2c5e2e;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.3px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.75rem;
+        }
+
+        .featured-videos-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: #c9a03d;
+            border-radius: 3px;
+        }
+
+        .featured-videos-header p {
+            font-size: 1.1rem;
+            color: #5a626e;
+            max-width: 650px;
+            margin: 1rem auto 0;
+            line-height: 1.5;
+        }
+
+        /* Video Grid - Responsive */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Video Card */
+        .video-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #eef2f0;
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 32px rgba(0, 0, 0, 0.12);
+            border-color: #c9a03d40;
+        }
+
+        /* Video Wrapper - 16:9 Aspect Ratio */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            background: #1a2a1a;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Custom Play Button Overlay (for better UX) */
+        .video-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .video-card:hover .video-play-overlay {
+            opacity: 1;
+        }
+
+        .play-icon-bg {
+            width: 60px;
+            height: 60px;
+            background: rgba(44, 94, 46, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-card:hover .play-icon-bg {
+            transform: scale(1.1);
+            background: #ff0000;
+        }
+
+        .play-icon-bg svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+            margin-left: 3px;
+        }
+
+        /* Card Content */
+        .video-info {
+            padding: 1.25rem 1.25rem 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c5e2e;
+            margin: 0 0 0.5rem 0;
+            line-height: 1.4;
+        }
+
+        .video-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.5;
+            margin: 0 0 1rem 0;
+        }
+
+        /* Watch on YouTube Link */
+        .watch-on-yt {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ff0000;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        .watch-on-yt:hover {
+            color: #2c5e2e;
+            border-bottom-color: #ff0000;
+            gap: 0.7rem;
+        }
+
+        .watch-on-yt svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* View All Button */
+        .view-all-wrapper {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        .btn-view-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #2c5e2e;
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid #ff0000;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-view-all:hover {
+            background: #1f4521;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 94, 46, 0.25);
+            border-color: #ff0000;
+        }
+
+        /* Status indicator for playing video */
+        .video-card.playing {
+            border-color: #c9a03d;
+            box-shadow: 0 12px 28px rgba(201, 160, 61, 0.2);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .featured-videos-section {
+                padding: 3rem 1.5rem;
+            }
+            .videos-grid {
+                gap: 1.5rem;
+            }
+            .featured-videos-header h2 {
+                font-size: 1.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .featured-videos-header h2 {
+                font-size: 1.7rem;
+            }
+            .featured-videos-header p {
+                font-size: 1rem;
+            }
+            .video-title {
+                font-size: 1rem;
+            }
+            .play-icon-bg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .featured-videos-section {
+                padding: 2.5rem 1rem;
+            }
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+            .featured-videos-header h2 {
+                font-size: 1.5rem;
+            }
+            .video-info {
+                padding: 1rem;
+            }
+        }
+
+        /* Loading state subtle */
+        iframe {
+            background: #f0f2f0;
+        }
+    </style>
+<style>
+/* =========================
+   BASE STYLES
+========================= */
+.up-section {
+  padding: 60px 20px;
+  background: #f8fafc;
+  font-family: 'Poppins', 'Open Sans', sans-serif;
+}
+
+.up-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Header */
+.up-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.up-header h2 {
+  color: #0b1f3a;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.up-header p {
+  color: #555;
+  font-size: 16px;
+}
+
+/* =========================
+   CAROUSEL
+========================= */
+.up-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.up-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.6s ease;
+}
+
+/* Card */
+.up-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  min-width: calc(33.333% - 13.33px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.up-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.up-card h3 {
+  color: #0b1f3a;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.up-date {
+  color: #c9a227;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.up-card p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* =========================
+   ARROWS
+========================= */
+.up-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0b1f3a;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.up-left { left: 10px; }
+.up-right { right: 10px; }
+
+.up-arrow:hover {
+  background: #c9a227;
+}
+
+/* =========================
+   DOTS
+========================= */
+.up-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.up-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.up-dot.active {
+  background: #0b1f3a;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .up-card {
+    min-width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 600px) {
+  .up-card {
+    min-width: 100%;
+  }
+}
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Upcoming Programs | School Events</title>
+  <!-- Google Fonts: Modern, clean typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & GLOBAL SCOPE (using unique prefix "up-") ========== */
+    .up-programs-section * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .up-programs-section {
+      font-family: 'Inter', 'Poppins', 'Roboto', system-ui, -apple-system, sans-serif;
+      background: #f8fafc;   /* soft academic background */
+      padding: 4rem 1.5rem;
+      width: 100%;
+      overflow-x: clip;
+    }
+
+    /* container for max width & centering */
+    .up-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* ========== HEADER STYLES ========== */
+    .up-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .up-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0a2540;        /* deep navy / academic blue */
+      letter-spacing: -0.02em;
+      font-family: 'Poppins', 'Inter', sans-serif;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .up-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #d4af37;   /* gold accent */
+      margin: 0.6rem auto 0;
+      border-radius: 4px;
+    }
+
+    .up-subtitle {
+      font-size: 1.1rem;
+      color: #2c3e66;
+      font-weight: 400;
+      margin-top: 1rem;
+      opacity: 0.85;
+    }
+
+    /* ========== CAROUSEL WRAPPER (no overflow hidden issues) ========== */
+    .up-carousel-wrapper {
+      position: relative;
+      margin: 2rem 0 1.5rem;
+      padding: 0 2.5rem;    /* space for arrows */
+    }
+
+    /* viewport: hides overflow to show only visible cards */
+    .up-carousel-viewport {
+      overflow: hidden;
+      border-radius: 28px;
+    }
+
+    /* track: flex row, smooth transition (transform) */
+    .up-carousel-track {
+      display: flex;
+      gap: 1.8rem;
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      will-change: transform;
+    }
+
+    /* cards: flexible width based on count, responsive via media queries */
+    .up-card {
+      flex: 0 0 calc(33.333% - 1.2rem); /* default 3 cards (desktop) */
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.5rem 2rem;
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s ease-out;
+      cursor: pointer;
+      border: 1px solid rgba(10, 37, 64, 0.05);
+    }
+
+    /* hover effect: slight lift + subtle shadow */
+    .up-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.15);
+      border-color: rgba(212, 175, 55, 0.2);
+    }
+
+    /* program title */
+    .up-card-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      font-family: 'Poppins', 'Inter', sans-serif;
+      color: #0a2540;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    /* date badge style */
+    .up-card-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eef2ff;
+      color: #1e4a76;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.3rem 1rem 0.3rem 0.9rem;
+      border-radius: 40px;
+      margin-bottom: 1rem;
+      letter-spacing: -0.2px;
+    }
+
+    .up-card-date::before {
+      content: "📅";
+      font-size: 0.85rem;
+    }
+
+    .up-card-desc {
+      color: #334155;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-top: 0.5rem;
+    }
+
+    /* ========== NAVIGATION ARROWS ========== */
+    .up-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 12;
+      transition: all 0.2s ease;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(2px);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #0a2540;
+    }
+
+    .up-arrow:hover {
+      background: #0a2540;
+      border-color: #0a2540;
+      color: white;
+      box-shadow: 0 10px 20px rgba(10, 37, 64, 0.2);
+    }
+
+    .up-arrow-left {
+      left: -12px;
+    }
+
+    .up-arrow-right {
+      right: -12px;
+    }
+
+    /* ========== PAGINATION DOTS ========== */
+    .up-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .up-dot {
+      width: 10px;
+      height: 10px;
+      background: #cbd5e1;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .up-dot.active {
+      background: #d4af37;    /* gold accent */
+      width: 28px;
+      border-radius: 20px;
+      background: #d4af37;
+    }
+
+    /* ========== RESPONSIVE BREAKPOINTS ========== */
+    /* Tablet: show 2 cards */
+    @media (max-width: 1024px) and (min-width: 641px) {
+      .up-card {
+        flex: 0 0 calc(50% - 0.9rem);
+      }
+      .up-carousel-wrapper {
+        padding: 0 2rem;
+      }
+    }
+
+    /* Mobile: show 1 card */
+    @media (max-width: 640px) {
+      .up-programs-section {
+        padding: 2.5rem 1rem;
+      }
+      .up-title {
+        font-size: 1.9rem;
+      }
+      .up-card {
+        flex: 0 0 100%;
+      }
+      .up-carousel-wrapper {
+        padding: 0 1.5rem;
+      }
+      .up-arrow-left {
+        left: -8px;
+      }
+      .up-arrow-right {
+        right: -8px;
+      }
+      .up-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+      }
+    }
+
+    /* small desktop adjustment gap */
+    @media (min-width: 1025px) {
+      .up-card {
+        flex: 0 0 calc(33.333% - 1.2rem);
+      }
+    }
+
+    /* additional touch-friendly */
+    button.up-arrow {
+      background: rgba(255,255,255,0.96);
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- ===== MODERN NAVBAR ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png"
+                    alt="MABSS Logo">
+                <span>MABSS</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="materials.html">Academics</a>
+                <a href="sports.html">Co-curricular</a>
+                <a href="welfare.html">Welfare</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contacts.html">Contact</a>
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (with scroll enabled) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-header">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
+            <h3>Mbarara Army<br>Boarding SS</h3>
+        </div>
+
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="materials.html"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
+        <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
+        <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+        <a href="Staff.html"><i class="fas fa-users"></i> Our Staff</a>
+        <a href="directory .html"><i class="fas fa-address-book"></i> Directorate</a>
+        <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== IMPROVED HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-slides">
+            <div class="hero-slide active"
+                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1772544046/IMG_9882_dlmere.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1772559505/DSC_0704_ahfjen.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1772559203/new_orjvps.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1772558761/DSC_0715_jcfsug.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1772558771/DSC_0565_su4cke.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346792/three_rqyuym.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346779/real_wxnlsa.jpg');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: url('https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345629/TWO_olnsdz.jpg');">
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1>Mbarara Army Boarding<br>Secondary School</h1>
+            <p>
+
+                
+            </p>
+            <p>CREATIVITY FOR EXCELLENCE</p>
+            
+            <div class="hero-buttons">
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" target="_blank"
+                    class="hero-btn hero-btn-primary">Apply Now</a>
+                <a href="#about" class="hero-btn hero-btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+    <!-- NOTICEBOARD Section -->
+    <section class="noticeboard-section">
+        <h2 class="section-title">NOTICEBOARD</h2>
+
+        <div id="latest-news-container" class="news-grid">
+            <div style="text-align: center; width: 100%;">
+                <p>Loading updates...</p>
+            </div>
+        </div>
+
+        <div class="button-section" style="text-align: center; margin-top: 2rem;">
+            <a href="news.html" class="learn-button"
+                style="display: inline-block; padding: 0.8rem 2rem; background: var(--primary-blue); color: white; text-decoration: none; border-radius: 40px; font-weight: 600;">View
+                All News</a>
+        </div>
+    </section>
+    <!-- ========== SECTION: UPCOMING PROGRAMS (unique prefix up-) ========== -->
+<section class="up-programs-section" id="upcoming-programs">
+  <div class="up-container">
+    <!-- Header -->
+    <div class="up-header">
+      <h2 class="up-title">Upcoming Programs</h2>
+      <p class="up-subtitle">Stay updated with our latest school activities and events</p>
+    </div>
+
+    <!-- Carousel Area -->
+    <div class="up-carousel-wrapper">
+      <!-- Left Navigation Arrow -->
+      <div class="up-arrow up-arrow-left" id="up-prevBtn" aria-label="Previous programs">‹</div>
+      
+      <div class="up-carousel-viewport">
+        <div class="up-carousel-track" id="up-track">
+          <!-- Cards will be injected dynamically from JS array -->
+        </div>
+      </div>
+
+      <!-- Right Navigation Arrow -->
+      <div class="up-arrow up-arrow-right" id="up-nextBtn" aria-label="Next programs">›</div>
+    </div>
+
+    <!-- Pagination Dots -->
+    <div class="up-pagination" id="up-paginationDots"></div>
+  </div>
+</section>
+
+    <!-- ===== GUIDING PRINCIPLES ===== -->
+    <section class="container">
+        <h2 class="section-title">Our Guiding Principles</h2>
+        <p class="section-subtitle">At Mbarara Army Boarding Secondary School, we are committed to excellence in
+            education, character development, and preparing students for a successful future.</p>
+
+        <div class="cards-grid">
+            <div class="card vision-card">
+                <div class="card-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Our Vision</h3>
+                    <p>To empower humanity for self reliance.</p>
+                </div>
+            </div>
+
+            <div class="card mission-card">
+                <div class="card-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Our Mission</h3>
+                    <p>To impart skills, knowledge, attitude and values through team work.</p>
+                </div>
+            </div>
+
+            <div class="card motto-card">
+                <div class="card-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Our Motto</h3>
+                    <p>"Creativity For Excellence."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header fade-scroll">
+                <h2 class="section-titles">Recent Activities in Photos</h2>
+                <p class="section-sub">Moments of excellence, discipline, and partnership. Showcasing recent school activities at MABSS</p>
+            </div>
+
+            <!-- Photo Gallery Grid: 4-6 cards mixing AGM & PTA events -->
+            <div class="photo-grid" id="photoGalleryGrid">
+                <!-- Card 1: AGM 2026 - Annual General Meeting -->
+                <div class="image-card fade-scroll" data-title="AGM 2026 - Annual General Meeting" data-caption="Key deliberations & strategic roadmap unveiled" data-fullimg="https://placehold.co/800x600/2c5e2e/ffffff?text=AGM+2026+MABSS">
+                    <div class="card-img-wrapper">
+                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1774942065/2nd_div_commander_tx9oow.jpg" alt="Annual General Meeting at Mbarara Army SS - parents and staff">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="overlay-title">2nd Division Commander </div>
+                        <div class="overlay-caption">Maj Gen Paul Muhanguzi, Also attends PTA & AGM 2026</div>
+                        <div class="extra-details">
+                            <div class="overlay-caption">Emphasizing unity, student discipline, and the role of parents in academic success</div>
                         </div>
                     </div>
                 </div>
-            `;
+
+                <!-- Card 2: PTA Meeting Highlights -->
+                <div class="image-card fade-scroll" data-title="PTA Meeting - Strengthening Partnerships" data-caption="Engaging dialogue between parents, teachers and commandant" data-fullimg="https://placehold.co/800x600/3b6e3b/f7f3e0?text=PTA+Meeting+2026">
+                    <div class="card-img-wrapper">
+                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1774942324/headteacher_PTA_wwnbpn.jpg" alt="PTA Meeting at MABSS hall, parents and teachers collaborating">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="overlay-title">School HeadTeacher</div>
+                        <div class="overlay-caption">Capt. Richard Okullo <br>Mbarara Army Boarding Secondary School</div>
+                        <div class="extra-details">
+                            <div class="overlay-caption">Discussing improvements in facilities,and academic programs for the coming year.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: AGM Group Photo (students & officials) -->
+                <div class="image-card fade-scroll" data-title="AGM 2026 - Cadet & Staff Parade" data-caption="Discipline and camaraderie showcased during the annual assembly" data-fullimg="https://placehold.co/800x600/2c5e2e/f7e9c3?text=AGM+Parade+Cadets">
+                    <div class="card-img-wrapper">
+                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1774942431/kyabs_qksoiv.jpg" alt="AGM parade with army boarding school cadets">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="overlay-title">Deputy Headteacher - Academic & Co-curricular</div>
+                        <div class="overlay-caption">Mr. Kyabalongo Yunusu <br>Mbarara Army Boarding Secondary School</div>
+                        <div class="extra-details">
+                            <div class="overlay-caption">Emphasizing academic performance, curriculum delivery, and teaching quality.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: PTA Meeting - Interactive Session -->
+                <div class="image-card fade-scroll" data-title="PTA Meeting - Open Forum" data-caption="Parents actively contributing to school development plans" data-fullimg="https://placehold.co/800x600/4a7c4a/fef2df?text=PTA+Open+Forum">
+                    <div class="card-img-wrapper">
+                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1774942553/woman_vb3kp3.jpg" alt="PTA meeting open forum, parents speaking">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="overlay-title">Budget & Expenditure</div>
+                        <div class="overlay-caption">Parents discussing resource allocation for infrastructure and student welfare projects</div>
+                    </div>
+                </div>
+
+                <!-- Card 5: AGM 2026 - Parents & Staff Dinner / Networking -->
+                <div class="image-card fade-scroll" data-title="AGM Networking & Celebration" data-caption="Evening gala celebrating school milestones" data-fullimg="https://placehold.co/800x600/386f38/f8efda?text=AGM+Dinner">
+                    <div class="card-img-wrapper">
+                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1774942858/chairman_jsrefi.jpg" alt="AGM dinner and celebration with staff and parents">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="overlay-title">PTA Committee Address</div>
+                        <div class="overlay-caption">Honouring excellence together <br> Emphasizing parental involvement and support for academic success</div>
+                    </div>
+                </div>
+
+                <!-- Card 6: PTA Committee Meeting (small group, strategic) -->
+                <div class="image-card fade-scroll" data-title="PTA Executive Committee" data-caption="Planning for upcoming infrastructure & student welfare projects" data-fullimg="https://placehold.co/800x600/5a865a/fcf3e6?text=PTA+Strategic+Session">
+                    <div class="card-img-wrapper">
+                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1774942985/parents_z1zhou.jpg" alt="PTA executive committee meeting at MABSS">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="overlay-title">School Project Tour</div>
+                        <div class="overlay-caption">Parents touring school facilities to understand learning environment and development projects</div>
+                    </div>
+                </div>
+                <!-- Card 7: PTA Committee Meeting (small group, strategic) -->
+                <div class="image-card fade-scroll" data-title="PTA Executive Committee" data-caption="Planning for upcoming infrastructure & student welfare projects" data-fullimg="https://placehold.co/800x600/5a865a/fcf3e6?text=PTA+Strategic+Session">
+                    <div class="card-img-wrapper">
+                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1774943104/visit_tficqq.jpg" alt="PTA executive committee meeting at MABSS">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="overlay-title">School Project Tour</div>
+                        <div class="overlay-caption">Parents exploring school facilities and student learning environment</div>
+                    </div>
+                </div>
+
+                <!-- Card 8: PTA Committee Meeting (small group, strategic) -->
+                <div class="image-card fade-scroll" data-title="PTA Executive Committee" data-caption="Planning for upcoming infrastructure & student welfare projects" data-fullimg="https://placehold.co/800x600/5a865a/fcf3e6?text=PTA+Strategic+Session">
+                    <div class="card-img-wrapper">
+                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1774943319/performance_eaf1sg.jpg" alt="PTA executive committee meeting at MABSS">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="overlay-title">MDD Entertainment</div>
+                        <div class="overlay-caption">Students showcasing music, dance, and drama talents during school events</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal Structure -->
+    <div id="lightboxModal" class="lightbox">
+        <div class="lightbox-content">
+            <div class="lightbox-info">
+                <div id="lightboxTitle" class="lightbox-title"></div>
+                <div id="lightboxCaption" class="lightbox-caption"></div>
+            </div>
+        </div>
+    </div>
+    <!-- ===== CORE VALUES ===== -->
+    <section class="values-section">
+        <h2 class="section-title">Our Core Values</h2>
+        <p class="section-subtitle">The Foundation of Character at MABSS</p>
+
+        <div class="values-grid">
+            <div class="value-item discipline">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-user-check"></i></div>
+                    <h3>Discipline</h3>
+                </div>
+                <p>Cultivating self-control, orderliness, and responsible behavior in academic and personal life to
+                    build strong character and achieve excellence.</p>
+            </div>
+
+            <div class="value-item creativity">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Creativity</h3>
+                </div>
+                <p>Encouraging innovative thinking, original expression, and imaginative problem-solving to foster
+                    adaptability and prepare for future challenges.</p>
+            </div>
+
+            <div class="value-item punctuality">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Punctuality</h3>
+                </div>
+                <p>Valuing time as a precious resource, respecting schedules, and demonstrating commitment through
+                    timely attendance and task completion.</p>
+            </div>
+
+            <div class="value-item patriotism">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-flag"></i></div>
+                    <h3>Patriotism</h3>
+                </div>
+                <p>Instilling love for country, respect for national heritage, and commitment to contributing positively
+                    to society and national development.</p>
+            </div>
+
+            <div class="value-item team-spirit">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-users"></i></div>
+                    <h3>Team Spirit</h3>
+                </div>
+                <p>Promoting collaboration, mutual support, and collective achievement through effective communication
+                    and shared responsibility.</p>
+            </div>
+
+            <div class="value-item god-fearing">
+                <div class="value-header">
+                    <div class="value-icon"><i class="fas fa-hands-praying"></i></div>
+                    <h3>God Fearing</h3>
+                </div>
+                <p>Nurturing spiritual awareness, moral integrity, and reverence for the divine as the foundation for
+                    ethical living and service to others.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <div class="updf-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    Founded by Uganda People's Defence Forces (UPDF)
+                </div>
+                <h2>About Mbarara Army Boarding Secondary School</h2>
+                <p><span class="highlight">Mbarara Army Boarding Secondary School (MABSS)</span> was established in
+                    <span class="highlight">2004</span> with the aim of providing quality education to children of
+                    fallen & serving soldiers with <span class="highlight">military discipline</span> and patriotic
+                    values. All children are admitted regardless of background.
+                </p>
+                <p>Located on the scenic hills of Makenke, Mbarara, along the Mbarara-Masaka Highway, the school began
+                    with 120 students and 15 staff members. Today, it accommodates over <strong>2,000 students</strong>
+                    drawn from various regions of Uganda.</p>
+                <p>The school's unique approach combines <strong>rigorous academic training</strong> with military-style
+                    discipline, leadership development, and patriotism. This model consistently produces graduates who
+                    excel academically while demonstrating integrity and service to the nation.</p>
+                <p>MABSS stands as one of the premier educational institutions in the region, recognized for strong
+                    performance in national examinations and shaping disciplined citizens.</p>
+            </div>
+
+            <div class="facts-sidebar">
+                <h3 style="color: var(--primary-navy); margin-bottom: 1.5rem; font-size: 1.5rem;">Quick Facts</h3>
+
+                <div class="fact-item">
+                    <div class="fact-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="fact-text">
+                        <h4>Founded</h4>
+                        <p>Established in 2004 by UPDF</p>
+                    </div>
+                </div>
+
+                <div class="fact-item">
+                    <div class="fact-icon"><i class="fas fa-school"></i></div>
+                    <div class="fact-text">
+                        <h4>School Type</h4>
+                        <p>Army Day & Boarding Secondary School</p>
+                    </div>
+                </div>
+
+                <div class="fact-item">
+                    <div class="fact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="fact-text">
+                        <h4>Location</h4>
+                        <p>Makenke, Mbarara, Western Uganda</p>
+                    </div>
+                </div>
+
+                <div class="fact-item">
+                    <div class="fact-icon"><i class="fas fa-users"></i></div>
+                    <div class="fact-text">
+                        <h4>Student Body</h4>
+                        <p>Over 2,000 students nationwide</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h4 style="color: var(--primary-navy); margin-bottom: 1rem;">Core Values</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Discipline</span>
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Excellence</span>
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Patriotism</span>
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Leadership</span>
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Integrity</span>
+                        <span
+                            style="background: #e9ecef; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">Service</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========== FEATURED VIDEOS SECTION - PROFESSIONAL WITH YOUTUBE API CONTROL ========== -->
+<section class="featured-videos-section">
+    <div class="featured-videos-container">
+        
+        <!-- Section Header -->
+        <div class="featured-videos-header">
+            <h2>Featured Videos</h2>
+            <p>Discover the vibrant life at Mbarara Army Boarding Secondary School through these highlights of academics, and special events</p>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="videos-grid" id="videosGrid">
+            <!-- Videos will be dynamically injected with YouTube API support -->
+        </div>
+    </div>
+</section>
+<div style="text-align: center; margin: 2rem auto;">
+    <a href="youtube.html" class="hero-btn hero-btn-secondary" style="display: inline-flex; align-items: center; gap: 0.75rem; background:#0e7704; color: #ffffff; border: none; font-weight: 700;">
+        <i class=""></i> Watch More Videos
+    </a>
+</div>
+
+    <!-- ===== COUNTER SECTION ===== -->
+    <section class="counter-section">
+        <div class="counter-container">
+            <div class="counter-item">
+                <div class="counter-number" id="student-counter">0+</div>
+                <div class="counter-label">Students</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-number" id="subject-counter">0+</div>
+                <div class="counter-label">Subjects Taught</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-number" id="staff-counter">0+</div>
+                <div class="counter-label">Staff Members</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-number" id="nonstaff-counter">0+</div>
+                <div class="counter-label">Non Teaching Staff</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-number" id="support-counter">0+</div>
+                <div class="counter-label">Support staff</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== APPLY SECTION ===== -->
+    <section class="apply-section">
+        <div class="apply-container">
+            <h2>Ready to Join Our Community?</h2>
+            <p>Become part of the Mbarara Army Boarding Secondary School family. Apply now to secure your spot for the
+                upcoming academic year.</p>
+            <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-button">Apply Online <i
+                    class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="discpline.html">Discipline</a></li>
+                    <li><a href="welfare.html">Welfare</a></li>
+                    <li><a href="Staff.html">Staff</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> P.O. Box 521, Mbarara, Uganda</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 782 096231</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 782 371824</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 779 927775</p>
+                <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> mabss2014@gmail.com</p>
+
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank"
+                        class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>School Hours</h3>
+                <p><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</p>
+                <p><strong>Saturday:</strong> 8:00 AM - 4:00 PM</p>
+                <p><strong>Sunday:</strong> Closed (Boarders only)</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p>Powered by <strong>Amwine Frankline / CodeMatrix</strong></p>
+        </div>
+    </footer>
+<!-- ===== SCRIPTS ===== -->
+    <script>
+        // Load latest news
+        async function loadLatestNews() {
+            const latestContainer = document.getElementById('latest-news-container');
+            if (!latestContainer) return;
+
+            try {
+                const response = await fetch('/api/news?limit=3');
+                if (!response.ok) throw new Error('API failed');
+
+                const data = await response.json();
+                const newsItems = data.news || (Array.isArray(data) ? data : []);
+
+                if (newsItems.length > 0) {
+                    latestContainer.innerHTML = newsItems.slice(0, 3).map(news => `
+                        <article class="news-card">
+                            ${news.image ? `
+                            <div class="news-image-wrapper">
+                                <span class="category-tag">Update</span>
+                                <img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.src='/placeholder-news.png'">
+                            </div>
+                            ` : ''}
+                            <div class="news-content">
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar"></i> ${formatDate(news.date)}</span>
+                                </div>
+                                <h2 class="news-title">${news.title}</h2>
+                                <p class="news-summary">${news.summary}</p>
+                                <button class="read-more" onclick="viewNewsDetail(${news.id}, ${JSON.stringify(news).replace(/"/g, '&quot;')})">
+                                    Read Full Article <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </article>
+                    `).join('');
+                } else {
+                    latestContainer.innerHTML = '<div style="text-align: center; width: 100%;"><p>No news available at the moment.</p></div>';
+                }
+            } catch (error) {
+                console.error('Error loading news:', error);
+                latestContainer.innerHTML = '<div style="text-align: center; width: 100%;"><p>Unable to load updates. Please refresh the page.</p></div>';
+            }
         }
 
+        function viewNewsDetail(id, newsObj) {
+            localStorage.setItem('selectedNewsId', id);
+            localStorage.setItem('selectedNews', JSON.stringify(newsObj));
+            window.location.href = 'news-detail.html';
+        }
 
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            try {
+                return new Date(dateStr).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            } catch (e) {
+                return dateStr;
+            }
+        }
 
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
+        // Mobile Menu Toggle
+        function initializeMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+
+            if (!hamburger || !mobileMenu || !overlay) return;
+
+            function openMenu() {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                hamburger.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            overlay.addEventListener('click', closeMenu);
+
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                }
             });
         }
+
+        // Hero Slideshow
+        function startSlideshow() {
+            const slides = document.querySelectorAll('.hero-slide');
+            if (slides.length === 0) return;
+
+            let currentSlide = 0;
+
+            // Ensure first slide is active
+            slides.forEach((slide, index) => {
+                if (index === 0) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            function showNextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+
+            setInterval(showNextSlide, 5000);
+        }
+
+        // Counter Animation
+        function initializeCounters() {
+            function animateCounter(elementId, target) {
+                const element = document.getElementById(elementId);
+                if (!element) return;
+
+                let current = 0;
+                const duration = 2000; // 2 seconds
+                const frames = 60;
+                const increment = target / frames;
+                const interval = duration / frames;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        clearInterval(timer);
+                        element.textContent = target + '+';
+                    } else {
+                        element.textContent = Math.floor(current) + '+';
+                    }
+                }, interval);
+            }
+
+            const counterSection = document.querySelector('.counter-section');
+            if (!counterSection) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter('student-counter', 2000);
+                        animateCounter('subject-counter', 21);
+                        animateCounter('staff-counter', 85);
+                        animateCounter('nonstaff-counter', 26);
+                        animateCounter('support-counter', 14);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(counterSection);
+        }
+
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load news (this won't freeze the page)
+            loadLatestNews();
+
+            // Set current year
+            const yearElement = document.getElementById('year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+            // Initialize all other features
+            startSlideshow();
+            initializeMobileMenu();
+            initializeCounters();
+            new ToastNotification();
+        });
     </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Mbarara Army Boarding Secondary School",
+        "url": "https://www.mabss.ac.ug",
+        "logo": "https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345018/logo_mabss_shjvhz.jpg",
+        "foundingDate": "2004",
+        "founder": {
+            "@type": "Organization",
+            "name": "Uganda People's Defence Forces (UPDF)"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mbarara",
+            "addressRegion": "Western Uganda",
+            "addressCountry": "UG"
+        }
+    }
+    </script>
+    <script>
+        (function() {
+            // LIGHTBOX functionality
+            const lightbox = document.getElementById('lightboxModal');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const closeBtn = document.getElementById('closeLightboxBtn');
+
+            // All image cards
+            const imageCards = document.querySelectorAll('.image-card');
+
+            
+
+            // Attach click event to each image card
+            imageCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openLightbox(card);
+                });
+                // accessibility: allow Enter key if needed
+                card.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openLightbox(card);
+                    }
+                });
+                card.setAttribute('tabindex', '0'); // make focusable
+            });
+
+            // close lightbox on click background or close button
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target === closeBtn) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+
+            // SCROLL FADE-IN ANIMATION (Intersection Observer for .fade-scroll)
+            const fadeElements = document.querySelectorAll('.fade-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // only animate once
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
+            fadeElements.forEach(el => observer.observe(el));
+
+            // pre-set some images to avoid placeholder broken but we already used placehold.co. 
+            // In a real scenario, actual high-quality images would replace placeholder URLs.
+            // The placeholders are school-themed and professional (green/gold tones) representing meetings.
+            // For demo, we ensure each card has meaningful alt & data-fullimg fallback.
+            // Additional improvement: if images are already loaded, keep.
+
+            // for best user experience, if card doesn't have data-fullimg, assign using current img src for lightbox
+            imageCards.forEach(card => {
+                const existingImg = card.querySelector('.card-img-wrapper img');
+                if (existingImg && !card.getAttribute('data-fullimg')) {
+                    let srcValue = existingImg.src;
+                    if (srcValue) {
+                        card.setAttribute('data-fullimg', srcValue);
+                    } else {
+                        card.setAttribute('data-fullimg', 'https://placehold.co/800x600/2c5e2e/f5e7c8?text=MABSS+Event');
+                    }
+                }
+                // set default title if missing (fallback)
+                if (!card.getAttribute('data-title')) {
+                    const titleSpan = card.querySelector('.overlay-title');
+                    if (titleSpan) card.setAttribute('data-title', titleSpan.innerText);
+                    else card.setAttribute('data-title', 'MABSS Event');
+                }
+                if (!card.getAttribute('data-caption')) {
+                    const captionSpan = card.querySelector('.overlay-caption');
+                    if (captionSpan) card.setAttribute('data-caption', captionSpan.innerText.replace(/[🤝📋🎖️]/g, '').trim());
+                    else card.setAttribute('data-caption', 'School activity highlights');
+                }
+            });
+        })();
+    </script>
+    <!-- 
+        This "Recent Activities in Photos" section matches the existing Mbarara Army Boarding Secondary School theme 
+        (green, gold, white, disciplined, prestigious). Features: image cards with overlay titles, hover zoom, extra details,
+        dark gradient overlay, responsive grid (4/2/1 cols), lightbox popup on click, fade-in on scroll, 
+        "View More Gallery" button with interactive prompt. All HTML/CSS native, no frameworks.
+    -->
+        <script>
+    // Video data with YouTube IDs and metadata
+    const videosData = [
+        {
+    id: "video1",
+    youtubeId: "M9W0wOTfgyg",
+    title: "Mbarara Army Boarding SS Athletics Highlights 2025 | Strength, Speed & Discipline",
+    description: "Experience the energy, passion, and determination from Mbarara Army Boarding Secondary School during our 2025 Athletics events! From sprints to long-distance races, field events to team spirit — our students showcased true discipline, resilience, and sportsmanship on the track and field. Big congratulations to all participants, winners, and organizers who made this day a success.",
+    youtubeUrl: "https://www.youtube.com/watch?v=M9W0wOTfgyg"
+        },
+    {
+    id: "video2",
+    youtubeId: "Yy3kwDABOSw",
+    title: "Sports updates",
+    description: "Champions of Mbarara City! Mbarara Army Boarding Secondary School emerges victorious after a thrilling and intense final against Ntare High School, winning 6-5 on penalties in a match full of passion, resilience, and determination.From the first whistle to the final kick, our boys showed true fighting spirit, discipline, and teamwork to secure the championship title.Congratulations to the entire team, coaches, and supporters for this incredible achievement!",
+    youtubeUrl: "https://www.youtube.com/watch?v=Yy3kwDABOSw"
+    },
+    {
+    id: "video3",
+    youtubeId: "HHhJUWHN_Jg",
+    title: "Mbarara Army Boarding SS Crowned Mbarara City Champions 2026  | Victory Over Ntare High (6-5 Pens)",
+    description: "Champions of Mbarara City! Mbarara Army Boarding Secondary School emerges victorious after a thrilling and intense final against Ntare High School, winning 6-5 on penalties in a match full of passion, resilience, and determination.From the first whistle to the final kick, our boys showed true fighting spirit, discipline, and teamwork to secure the championship title.Congratulations to the entire team, coaches, and supporters for this incredible achievement!",
+    youtubeUrl: "https://www.youtube.com/watch?v=HHhJUWHN_Jg"
+},
+    ];
+
+    // Store player instances
+    let players = {};
+    let currentlyPlayingId = null;
+
+    // Load YouTube IFrame API
+    function loadYouTubeAPI() {
+        if (window.YT && window.YT.Player) {
+            initializePlayers();
+            return;
+        }
+        
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+        window.onYouTubeIframeAPIReady = function() {
+            initializePlayers();
+        };
+    }
+
+    // Initialize all YouTube players
+    function initializePlayers() {
+        const videoCards = document.querySelectorAll('.video-card');
+        
+        videoCards.forEach((card, index) => {
+            const videoId = card.dataset.videoId;
+            const youtubeId = card.dataset.youtubeId;
+            const iframeElement = card.querySelector('.youtube-iframe');
+            
+            if (iframeElement && !players[videoId]) {
+                // Create YouTube player instance
+                players[videoId] = new YT.Player(iframeElement, {
+                    videoId: youtubeId,
+                    playerVars: {
+                        modestbranding: 1,
+                        rel: 0,
+                        showinfo: 0,
+                        controls: 1,
+                        autoplay: 0,
+                        origin: window.location.origin,
+                        enablejsapi: 1
+                    },
+                    events: {
+                        onStateChange: function(event) {
+                            // Handle video state changes
+                            if (event.data === YT.PlayerState.PLAYING) {
+                                // If another video is playing, pause it
+                                if (currentlyPlayingId && currentlyPlayingId !== videoId) {
+                                    if (players[currentlyPlayingId] && players[currentlyPlayingId].pauseVideo) {
+                                        players[currentlyPlayingId].pauseVideo();
+                                    }
+                                    // Remove playing class from previous card
+                                    const prevCard = document.querySelector(`.video-card[data-video-id="${currentlyPlayingId}"]`);
+                                    if (prevCard) prevCard.classList.remove('playing');
+                                }
+                                currentlyPlayingId = videoId;
+                                card.classList.add('playing');
+                            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                                if (currentlyPlayingId === videoId) {
+                                    currentlyPlayingId = null;
+                                    card.classList.remove('playing');
+                                }
+                            }
+                        },
+                        onReady: function(event) {
+                            // Player is ready
+                            console.log(`Player ${videoId} ready`);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    // Function to pause all videos (utility)
+    function pauseAllVideos() {
+        for (const [id, player] of Object.entries(players)) {
+            if (player && player.pauseVideo) {
+                player.pauseVideo();
+            }
+        }
+        currentlyPlayingId = null;
+        document.querySelectorAll('.video-card').forEach(card => {
+            card.classList.remove('playing');
+        });
+    }
+
+    // Build the video cards HTML
+    function buildVideoCards() {
+        const gridContainer = document.getElementById('videosGrid');
+        if (!gridContainer) return;
+        
+        let cardsHTML = '';
+        videosData.forEach((video, index) => {
+            // Use placeholder div for iframe that YouTube API will replace
+            cardsHTML += `
+                <div class="video-card" data-video-id="${video.id}" data-youtube-id="${video.youtubeId}">
+                    <div class="video-wrapper" data-video-id="${video.id}">
+                        <div id="player-${video.id}" class="youtube-iframe"></div>
+                        <div class="video-play-overlay">
+                            <div class="play-icon-bg">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 5v14l11-7z" fill="white"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">${escapeHtml(video.title)}</h3>
+                        <p class="video-description">${escapeHtml(video.description)}</p>
+                        <a href="${video.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="watch-on-yt">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/>
+                            </svg>
+                            Watch on YouTube
+                        </a>
+                    </div>
+                </div>
+            `;
+        });
+        
+        gridContainer.innerHTML = cardsHTML;
+        
+        // After DOM is updated, load YouTube API if not already loaded
+        if (typeof YT === 'undefined' || !YT.Player) {
+            loadYouTubeAPI();
+        } else {
+            initializePlayers();
+        }
+    }
+    
+    // Helper function to escape HTML
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        buildVideoCards();
+        
+        // Optional: Add intersection observer for smooth appearance (professional touch)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -20px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Wait for cards to be added to DOM
+        setTimeout(() => {
+            const cards = document.querySelectorAll('.video-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, border-color 0.2s ease';
+                observer.observe(card);
+            });
+        }, 100);
+        
+        // Optional: Global click handler to pause all videos when clicking outside? (professional)
+        // But we'll keep the logic focused on video-to-video pausing
+    });
+    
+    // Clean up function for any potential memory leaks (not strictly needed but professional)
+    window.addEventListener('beforeunload', () => {
+        for (const [id, player] of Object.entries(players)) {
+            if (player && player.destroy) {
+                player.destroy();
+            }
+        }
+    });
+</script>
+
+<!-- Additional styles for smooth fade-in and professional polish -->
+<style>
+    .video-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, border-color 0.2s ease;
+    }
+    
+    .video-card.playing {
+        border-left: 3px solid #c9a03d;
+        border-left-width: 3px;
+        border-left-style: solid;
+    }
+    
+    .watch-on-yt {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #e90707;
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        padding: 0.5rem 0 0.25rem 0;
+        border-bottom: 1px solid transparent;
+    }
+    
+    .watch-on-yt:hover {
+        color: #2c5e2e;
+        border-bottom-color: #c9a03d;
+        gap: 0.7rem;
+    }
+    
+    .watch-on-yt svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+    }
+    
+    /* Ensure iframe container has proper background */
+    .youtube-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Smooth loading state */
+    .video-wrapper {
+        background: #e9ecef;
+    }
+    
+    /* Professional focus states */
+    .btn-view-all:focus-visible,
+    .watch-on-yt:focus-visible {
+        outline: 2px solid #c9a03d;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+    
+    /* Ensure cards are accessible */
+    @media (prefers-reduced-motion: reduce) {
+        .video-card,
+        .btn-view-all,
+        .watch-on-yt,
+        .play-icon-bg {
+            transition: none;
+        }
+    }
+</style>
+<script>
+  // ========== DATA ARRAY: EASY TO EDIT & ADD MORE CARDS ==========
+  // Each object: title, date, description (short text)
+  const programsData = [
+    {
+      title: "End of Term staff meeting",
+      date: "April 30, 2026",
+      description: "A meeting for staff to review the term’s progress, discuss key outcomes, and plan for the upcoming term."
+    },
+    {
+      title: "Closure of the term",
+      date: "May 1, 2026",
+      description: "Final wrap-up meeting to reflect on the term’s achievements and plan for the next academic year."
+    }
+  ];
+
+  // ========== CAROUSEL CONFIGURATION ==========
+  // Auto-slide interval (ms), infinite forward loop (marquee style: never goes backward)
+  // Wrapping mechanism: we implement a virtual infinite loop by rearranging or using
+  // an index that rotates forward. We will treat the track as a "circular buffer"
+  // using transform based on currentIndex and total cards. But to get seamless forward wrap,
+  // we adjust the track position and when near the end we "jump" without transition
+  // to a cloned set? Actually, the clean way: we duplicate cards to create infinite illusion.
+  // But requirement: "when it reaches the last card, it should seamlessly continue from the first card,
+  // not scroll backward." Means infinite forward scrolling (marquee). We implement a technique:
+  // we duplicate the card set (clone cards) so track width holds original * 2.
+  // Then we slide to clone set and reset position without transition when index reaches original length.
+  // That gives PERFECT infinite forward continuous motion with no backward jump visible.
+  // Additional: auto-slide advances each 4-5 secs, and left/right navigation still works infinitely forward.
+  // For simplicity and perfect UX, we will use "infinite duplicated track" method.
+  
+  (function() {
+    // DOM elements
+    const track = document.getElementById('up-track');
+    const prevBtn = document.getElementById('up-prevBtn');
+    const nextBtn = document.getElementById('up-nextBtn');
+    const dotsContainer = document.getElementById('up-paginationDots');
+    
+    // original cards count
+    const originalItemsCount = programsData.length;
+    if (originalItemsCount === 0) return;
+    
+    // Helper: create card HTML from data object
+    function createCardHTML(program) {
+      return `
+        <div class="up-card">
+          <div class="up-card-title">${escapeHtml(program.title)}</div>
+          <div class="up-card-date">${escapeHtml(program.date)}</div>
+          <div class="up-card-desc">${escapeHtml(program.description)}</div>
+        </div>
+      `;
+    }
+    
+    // simple XSS prevention
+    function escapeHtml(str) {
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+        return c;
+      });
+    }
+    
+    // Build initial set of cards + duplicate set (for infinite seamless forward loop)
+    let allCardsHTML = '';
+    // First, original cards
+    for (let i = 0; i < originalItemsCount; i++) {
+      allCardsHTML += createCardHTML(programsData[i]);
+    }
+    // Duplicate set: clone original cards to make infinite forward possible (marquee style)
+    for (let i = 0; i < originalItemsCount; i++) {
+      allCardsHTML += createCardHTML(programsData[i]);
+    }
+    track.innerHTML = allCardsHTML;
+    
+    // total cards now = originalItemsCount * 2
+    const totalCards = originalItemsCount * 2;
+    // get all card elements after render
+    let cardElements = Array.from(document.querySelectorAll('#up-track .up-card'));
+    
+    // Determine number of visible cards based on screen width (responsive)
+    function getVisibleCardsCount() {
+      const width = window.innerWidth;
+      if (width <= 640) return 1;
+      if (width <= 1024) return 2;
+      return 3;
+    }
+    
+    let visibleCount = getVisibleCardsCount();
+    // calculate card width including gap
+    // We'll compute card width + gap dynamically from style
+    function getCardTotalWidth() {
+      if (cardElements.length === 0) return 0;
+      const trackRect = track.getBoundingClientRect();
+      if (trackRect.width === 0) return 0;
+      // get computed gap style from track (gap property)
+      const trackStyle = window.getComputedStyle(track);
+      const gap = parseFloat(trackStyle.gap) || 24; // 1.8rem => ~28.8px but safe fallback
+      const firstCard = cardElements[0];
+      if (!firstCard) return 0;
+      const cardWidth = firstCard.offsetWidth;
+      return cardWidth + gap;
+    }
+    
+    // state
+    let currentIndex = 0;      // start at first card of original set
+    let autoSlideInterval = null;
+    let isHovering = false;
+    let isTransitioning = false;
+    
+    // update carousel transform based on currentIndex
+    function updateTransform(instant = false) {
+      if (cardElements.length === 0) return;
+      const cardTotalWidth = getCardTotalWidth();
+      if (cardTotalWidth === 0) {
+        requestAnimationFrame(() => updateTransform(instant));
+        return;
+      }
+      const newTranslateX = -(currentIndex * cardTotalWidth);
+      if (instant) {
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${newTranslateX}px)`;
+        // force reflow
+        track.offsetHeight;
+        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+      } else {
+        track.style.transform = `translateX(${newTranslateX}px)`;
+      }
+      
+      // Update pagination dots: active dot based on (currentIndex % originalItemsCount)
+      updatePaginationActive(currentIndex % originalItemsCount);
+      
+      // Infinite forward wrap logic: if we slide beyond the original range into the duplicate zone,
+      // and if we reached a point where currentIndex >= originalItemsCount, we need to reset
+      // WITHOUT transition to the equivalent position in the first set (maintaining forward illusion)
+      // But we want endless forward, when scrolling to the end of duplicate, reset to index 0 of original.
+      // We'll do after transition end. For auto and manual next: after slide finished, check.
+    }
+    
+    function resetInfiniteForwardIfNeeded() {
+      // When we have advanced so far that currentIndex >= originalItemsCount, we need to reset
+      // to currentIndex - originalItemsCount, but without transition jump to keep infinite forward.
+      if (currentIndex >= originalItemsCount) {
+        // seamless reset: disable transition, move to equivalent position in first set
+        const offsetIndex = currentIndex - originalItemsCount;
+        currentIndex = offsetIndex;
+        track.style.transition = 'none';
+        const cardTotalWidth = getCardTotalWidth();
+        if (cardTotalWidth > 0) {
+          track.style.transform = `translateX(-${currentIndex * cardTotalWidth}px)`;
+        }
+        // force reflow then restore transition
+        track.offsetHeight;
+        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+        updatePaginationActive(currentIndex % originalItemsCount);
+      }
+      // Also handle negative edge (theoretically if left button triggers, but we restrict left logic to never go below 0)
+      if (currentIndex < 0) {
+        currentIndex = 0;
+        updateTransform(false);
+      }
+    }
+    
+    function updatePaginationActive(activeIdx) {
+      const dots = document.querySelectorAll('.up-dot');
+      dots.forEach((dot, idx) => {
+        if (idx === activeIdx) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+    }
+    
+    // move to next slide (forward, marquee style)
+    function nextSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      const maxIndex = totalCards - visibleCount;
+      if (currentIndex + 1 <= maxIndex) {
+        currentIndex++;
+      } else {
+        // At the end of duplicated set, wrap to the beginning of original set but keep infinite forward.
+        // However using duplication method: once we reach totalCards - visibleCount, the next step should reset
+        // to index 0 but without breaking illusion. We'll set currentIndex = 0 and reset transform without transition.
+        currentIndex = 0;
+        // instantly reposition track without transition
+        track.style.transition = 'none';
+        const cardTotalWidth = getCardTotalWidth();
+        if (cardTotalWidth > 0) {
+          track.style.transform = `translateX(0px)`;
+        }
+        track.offsetHeight;
+        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+        isTransitioning = false;
+        updatePaginationActive(0);
+        return;
+      }
+      updateTransform(false);
+      setTimeout(() => { isTransitioning = false; }, 450);
+      // after transform, also apply infinite reset check if needed (though not needed here due to duplication)
+      setTimeout(() => {
+        resetInfiniteForwardIfNeeded();
+      }, 420);
+    }
+    
+    // previous slide: But requirement: carousel "infinite loop / marquee style – continues forward and wraps around, never goes backward"
+    // That means we don't really need backward? But navigation arrows should also move forward but using left arrow? 
+    // For consistent user expectation: left arrow goes to previous item, BUT since we have infinite forward design, 
+    // we can implement left to go "backward" in traditional sense, yet infinite loop still works seamlessly without breaking.
+    // but the "never goes backward" refers to auto-slide direction. It's okay to have left arrow moving previous slide for usability.
+    // We'll implement left arrow to go backward but it's still finite within infinite track, but that won't conflict.
+    // However to be robust, left arrow moves reverse direction.
+    function prevSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      if (currentIndex - 1 >= 0) {
+        currentIndex--;
+      } else {
+        // wrap to end (but consistent)
+        const maxPossible = totalCards - visibleCount;
+        currentIndex = maxPossible;
+        track.style.transition = 'none';
+        const cardTotalWidth = getCardTotalWidth();
+        if (cardTotalWidth > 0) {
+          track.style.transform = `translateX(-${currentIndex * cardTotalWidth}px)`;
+        }
+        track.offsetHeight;
+        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+        isTransitioning = false;
+        updatePaginationActive(currentIndex % originalItemsCount);
+        return;
+      }
+      updateTransform(false);
+      setTimeout(() => { isTransitioning = false; }, 450);
+      setTimeout(() => resetInfiniteForwardIfNeeded(), 420);
+    }
+    
+    // reset visible cards count on window resize (rebuild track widths, reposition)
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const newVisible = getVisibleCardsCount();
+        if (newVisible !== visibleCount) {
+          visibleCount = newVisible;
+          // Adjust max index limit but keep currentIndex within valid range
+          const maxIdx = totalCards - visibleCount;
+          if (currentIndex > maxIdx) currentIndex = Math.max(0, maxIdx);
+          updateTransform(true);
+        } else {
+          // just reposition to maintain correct offset
+          updateTransform(true);
+        }
+      }, 150);
+    });
+    
+    // initialize carousel: set initial position, pagination dots, event listeners
+    function initCarousel() {
+      visibleCount = getVisibleCardsCount();
+      // generate pagination dots based on originalItemsCount
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < originalItemsCount; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('up-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', (function(idx) {
+          return function() {
+            if (isTransitioning) return;
+            // jump to a specific slide (original index) - but within the first set
+            let targetIndex = idx;
+            if (targetIndex >= originalItemsCount) targetIndex = idx;
+            currentIndex = targetIndex;
+            updateTransform(false);
+            resetInfiniteForwardIfNeeded();
+          };
+        })(i));
+        dotsContainer.appendChild(dot);
+      }
+      
+      // Set initial transform
+      currentIndex = 0;
+      updateTransform(true);
+      
+      // event listeners for arrows
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoSlideTimer();
+      });
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoSlideTimer();
+      });
+      
+      // Pause on hover / resume
+      const carouselWrapper = document.querySelector('.up-carousel-wrapper');
+      carouselWrapper.addEventListener('mouseenter', () => {
+        isHovering = true;
+        stopAutoSlide();
+      });
+      carouselWrapper.addEventListener('mouseleave', () => {
+        isHovering = false;
+        startAutoSlide();
+      });
+      
+      startAutoSlide();
+    }
+    
+    // Auto-slide every 4-5 seconds (4.5s interval)
+    function startAutoSlide() {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(() => {
+        if (!isHovering && !isTransitioning) {
+          nextSlide();
+        }
+      }, 4500);
+    }
+    
+    function stopAutoSlide() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    }
+    
+    function resetAutoSlideTimer() {
+      if (!isHovering) {
+        stopAutoSlide();
+        startAutoSlide();
+      }
+    }
+    
+    // Recompute card width after images/fonts load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        cardElements = Array.from(document.querySelectorAll('#up-track .up-card'));
+        visibleCount = getVisibleCardsCount();
+        updateTransform(true);
+        resetInfiniteForwardIfNeeded();
+      }, 60);
+    });
+    
+    initCarousel();
+    
+    // Also track resize ensures card width recompute
+    const resizeObserver = new ResizeObserver(() => {
+      if (track && cardElements.length) {
+        updateTransform(true);
+      }
+    });
+    if (track) resizeObserver.observe(track);
+  })();
+</script>
 </body>
 
 </html>

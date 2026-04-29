@@ -1,195 +1,651 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="en-UG">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Teachers | Mbarara Army Boarding Secondary School</title>
+    
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765392119/favicon_s5hgzc.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <!-- Meta Tags -->
+    <meta name="author" content="Amwine Frankline / CodeMatrix">
+    <meta name="description" content="Mbarara Army Boarding Secondary School - Our dedicated class teachers who guide and mentor students at every level from Senior 1 to Senior 6.">
+    <meta name="keywords" content="MABSS, class teachers, form teachers, senior 1, senior 2, senior 3, senior 4, senior 5, senior 6">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MABSS - Class Teachers">
+    <meta property="og:description" content="Dedicated educators shaping the future of our students at Mbarara Army Boarding Secondary School">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mabss.ac.ug/class-teachers.html">
+    <meta property="og:image" content="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346448/OKULLO_a8bvxp.jpg">
+    <meta property="og:site_name" content="Mbarara Army Boarding Secondary School">
+
+    <title>MABSS - Class Teachers</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        /* ===== RESET & VARIABLES ===== */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-            padding-top: 80px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            box-sizing: border-box;
         }
 
-        /* Back Button */
-        .back-button {
-            display: inline-block;
-            margin: 1rem 0 2rem;
-            padding: 0.6rem 1.2rem;
-            background-color: #006341;
-            color: white;
+        :root {
+            --primary-navy: #0b2c4d;
+            --primary-blue: #1a4fa3;
+            --accent-green: #2e8b57;
+            --accent-red: #d62828;
+            --sky-blue: #4da8da;
+            --text-dark: #333;
+            --text-light: #555;
+            --bg-light: #f5f7fb;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 20, 30, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --navbar-green: #0e7704;
+            --army-green-dark: #004d33;
+            --gold: #ffd700;
+            --gold-light: #ffecb3;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== STICKY NAVBAR (MATCHING MATERIALS.HTML) ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: var(--navbar-green);
+            box-shadow: var(--shadow);
+            z-index: 1200;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.7rem 2rem;
+        }
+
+        .logo {
+            height: 88px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
             text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.25s ease;
+            padding: 0.4rem 0;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #02f7ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2.5px;
+            background: #ffffff;
+            transition: width 0.3s ease;
             border-radius: 4px;
-            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .apply-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+            box-shadow: 0 6px 14px rgba(26, 79, 163, 0.2);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            background: #0e3a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(26, 79, 163, 0.25);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1300;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--primary-blue);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--primary-blue);
+        }
+
+        /* ===== RESPONSIVE NAVBAR ===== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            
+            .apply-btn {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-container {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .logo span {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 70px;
+                gap: 8px;
+            }
+            
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo span {
+                font-size: 2.4rem;
+            }
+            
+            .nav-container {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo span {
+                font-size: 2.2rem;
+            }
+            
+            .logo img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 280px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1.8rem;
+            transition: right 0.35s ease-in-out;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 20px;
+        }
+
+        .mobile-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--navbar-green);
+        }
+
+        .mobile-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #1f2a44;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 14px 10px;
+            border-radius: 14px;
+            transition: 0.2s;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .mobile-menu a i {
+            width: 28px;
+            color: var(--navbar-green);
+            font-size: 1.3rem;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: #f0f5fe;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu a:hover i,
+        .mobile-menu a.active i {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu .apply-btn {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            font-size: 1.1rem;
+            background-color: var(--navbar-green);
+            color: white;
+        }
+
+        .mobile-menu .apply-btn i {
+            color: white;
+        }
+
+        .mobile-menu .apply-btn:hover {
+            background-color: #0a5a03;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 44, 77, 0.5);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1300;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== BACK BUTTON ===== */
+        .back-button-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            color: var(--primary-navy);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
         }
 
         .back-button:hover {
-            background-color: #004d33;
+            background: var(--primary-navy);
+            color: var(--white);
+            transform: translateX(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
-        .back-button svg {
-            vertical-align: middle;
-            margin-right: 5px;
+        .back-button i {
+            font-size: 1rem;
         }
-        
-        /* Header Styles */
-        .page-header {
-            background-color: #006341;
-            color: white;
-            padding: 3rem 1rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('image/classroom-bg.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .page-title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        
-        .page-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            font-style: italic;
-        }
-        
-        /* Level Navigation */
+
+        /* ===== LEVEL NAVIGATION ===== */
         .level-nav {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            gap: 1rem;
+            max-width: 1300px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
         }
-        
+
         .level-btn {
-            padding: 0.7rem 1.5rem;
-            background: #e9ecef;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
+            padding: 0.8rem 2rem;
+            background: var(--white);
+            border: 2px solid var(--primary-navy);
+            border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s;
+            color: var(--primary-navy);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
         }
-        
-        .level-btn:hover, .level-btn.active {
-            background: #006341;
-            color: white;
+
+        .level-btn:hover,
+        .level-btn.active {
+            background: var(--primary-navy);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
         }
-        
-        /* Teachers Grid */
+
+        /* ===== TEACHERS CONTAINER ===== */
         .teachers-container {
             display: none;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
             animation: fadeIn 0.5s ease;
         }
-        
+
         .teachers-container.active {
             display: block;
         }
-        
-        .teachers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .teacher-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        .teacher-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .teacher-img-container {
+        .section-title {
+            text-align: center;
+            color: var(--primary-navy);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        /* ===== TEACHERS GRID ===== */
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .teacher-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Color coding by level */
+        .teacher-card[data-level="s1"] {
+            border-left-color: var(--sky-blue);
+        }
+        .teacher-card[data-level="s2"] {
+            border-left-color: var(--accent-green);
+        }
+        .teacher-card[data-level="s3"] {
+            border-left-color: #f77f00;
+        }
+        .teacher-card[data-level="s4"] {
+            border-left-color: var(--accent-red);
+        }
+        .teacher-card[data-level="s5"] {
+            border-left-color: var(--primary-blue);
+        }
+        .teacher-card[data-level="s6"] {
+            border-left-color: var(--gold);
+        }
+
+        .teacher-image-container {
             width: 100%;
-            padding: 1.5rem 1.5rem 0;
+            padding: 2rem 2rem 1rem;
             display: flex;
             justify-content: center;
         }
-        
-        .teacher-img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
+
+        .teacher-image {
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            border: 5px solid #f5f5f5;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            border: 4px solid;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
         }
-        
+
+        .teacher-card[data-level="s1"] .teacher-image {
+            border-color: var(--sky-blue);
+        }
+        .teacher-card[data-level="s2"] .teacher-image {
+            border-color: var(--accent-green);
+        }
+        .teacher-card[data-level="s3"] .teacher-image {
+            border-color: #f77f00;
+        }
+        .teacher-card[data-level="s4"] .teacher-image {
+            border-color: var(--accent-red);
+        }
+        .teacher-card[data-level="s5"] .teacher-image {
+            border-color: var(--primary-blue);
+        }
+        .teacher-card[data-level="s6"] .teacher-image {
+            border-color: var(--gold);
+        }
+
+        .teacher-card:hover .teacher-image {
+            transform: scale(1.05);
+        }
+
         .teacher-info {
-            padding: 1.5rem;
+            padding: 0 1.5rem 2rem;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .teacher-name {
-            color: #006341;
-            margin-bottom: 0.5rem;
+            color: var(--primary-navy);
             font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
-        
-        .teacher-level {
+
+        .teacher-level-badge {
             display: inline-block;
-            background: #e9ecef;
-            padding: 0.3rem 0.8rem;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            padding: 0.3rem 1rem;
             border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 0.8rem;
-            color: #495057;
-        }
-        
-        .teacher-subjects {
-            color: #6c757d;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .teacher-qualification {
             font-size: 0.85rem;
-            color: #868e96;
-            font-style: italic;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            align-self: center;
         }
-        
-        /* Modal Styles */
+
+        .teacher-subjects {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .teacher-qualification {
+            color: var(--primary-blue);
+            font-size: 0.85rem;
+            font-style: italic;
+            padding-top: 0.5rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* ===== MODAL ===== */
         .modal {
             display: none;
             position: fixed;
@@ -197,780 +653,1075 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            padding: 1rem;
         }
-        
+
         .modal.active {
             display: flex;
-            opacity: 1;
+            animation: modalFadeIn 0.3s ease;
         }
-        
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         .modal-content {
-            background: white;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
             overflow-y: auto;
+            box-shadow: var(--shadow-hover);
             position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
         }
-        
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-        
-        .close-modal {
+
+        .modal-close {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: #666;
-            background: none;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
             border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
             z-index: 10;
         }
-        
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
         .modal-header {
-            height: 250px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-header img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 6px solid white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .modal-header-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 99, 65, 0.9), transparent);
-            padding: 2rem 1.5rem 1rem;
-            color: white;
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            color: var(--white);
+            padding: 2.5rem 2rem 2rem;
             text-align: center;
+            position: relative;
         }
-        
+
+        .modal-header img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--gold);
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
         .modal-name {
             font-size: 1.8rem;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
         }
-        
+
         .modal-title {
             font-size: 1.1rem;
             opacity: 0.9;
+            margin-bottom: 0.5rem;
         }
-        
+
+        .modal-level {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
         .modal-body {
             padding: 2rem;
         }
-        
+
         .modal-section {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
-        
+
         .modal-section h3 {
-            color: #006341;
-            margin-bottom: 0.8rem;
+            color: var(--primary-navy);
             font-size: 1.2rem;
-            border-bottom: 2px solid #e9ecef;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
         }
-        
-        .modal-bio {
+
+        .modal-section h3 i {
+            color: var(--primary-blue);
+        }
+
+        .modal-section p {
+            color: var(--text-light);
             line-height: 1.7;
         }
-        
+
         .modal-subjects {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
-        
+
         .subject-tag {
-            background: #e9ecef;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            background: #f0f5fe;
+            color: var(--primary-blue);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(26, 79, 163, 0.1);
         }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
+
+        .modal-qualification {
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--sky-blue);
+            line-height: 1.7;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--army-green-dark);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section p i {
+            color: var(--gold);
+            width: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
             .teachers-grid {
-                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
-            
-            .modal-content {
-                width: 95%;
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 2rem 1rem;
             }
-            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            .page-header p {
+                font-size: 1rem;
+            }
+            .level-nav {
+                gap: 0.8rem;
+                padding: 0 1rem;
+            }
+            .level-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .teachers-container {
+                padding: 0 1rem 3rem;
+            }
+            .teacher-image {
+                width: 140px;
+                height: 140px;
+            }
+            .modal-header img {
+                width: 120px;
+                height: 120px;
+            }
             .modal-name {
                 font-size: 1.5rem;
             }
-
-            .teacher-img {
-                width: 150px;
-                height: 150px;
-            }
-
-            .modal-header img {
-                width: 160px;
-                height: 160px;
-            }
         }
-        
+
         @media (max-width: 480px) {
             .teachers-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            .level-nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .level-btn {
-                width: 100%;
-            }
-
-            .teacher-img {
+            .teacher-image {
                 width: 130px;
                 height: 130px;
             }
-
-            .modal-header img {
-                width: 140px;
-                height: 140px;
+            .level-nav {
+                flex-direction: column;
+                align-items: stretch;
             }
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            .level-btn {
+                width: 100%;
+            }
+            .modal-content {
+                max-height: 80vh;
+            }
+            .modal-body {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
-    <!-- Back Button -->
-    <div class="container">
-        <a href="staff.html" class="back-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-            </svg>
+
+    <!-- ===== MODERN NAVBAR (MATCHING MATERIALS.HTML) ===== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS Logo">
+                <span>MABSS</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="materials.html">Academics</a>
+                <a href="sports.html">Co-curricular</a>
+                <a href="services.html">Services</a>
+                <a href="welfare.html">Welfare</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contacts.html">Contact</a>
+                <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (matching materials.html) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-header">
+            <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1771666735/MABSS_b0kc1x.png" alt="MABSS">
+            <h3>Mbarara Army<br>Boarding SS</h3>
+        </div>
+
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="materials.html"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="sports.html"><i class="fas fa-futbol"></i> Co-curricular</a>
+        <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+        <a href="welfare.html"><i class="fas fa-heart"></i> Welfare</a>
+        <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+        <a href="contacts.html"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="https://mabss.ac.ug/login.html?redirect=admission" class="apply-btn">Apply Now</a>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== BACK BUTTON ===== -->
+    <div class="back-button-container">
+        <a href="Staff.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
             Back to Staff
         </a>
     </div>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container">
-            <h1 class="page-title">Our Class Teachers</h1>
-            <p class="page-subtitle">Dedicated educators shaping the future of our students</p>
-        </div>
-    </header>
-    
-    <div class="container">
-        <!-- Level Navigation -->
-        <div class="level-nav">
-            <button class="level-btn active" data-level="s1">Senior 1</button>
-            <button class="level-btn" data-level="s2">Senior 2</button>
-            <button class="level-btn" data-level="s3">Senior 3</button>
-            <button class="level-btn" data-level="s4">Senior 4</button>
-            <button class="level-btn" data-level="s5">Senior 5</button>
-            <button class="level-btn" data-level="s6">Senior 6</button>
-        </div>
-        
-        <!-- Senior 1 Teachers -->
-        <div class="teachers-container active" id="s1-teachers">
-            <h2 class="section-title">Senior 1 Class Teachers</h2>
-            <div class="teachers-grid">
-                <!-- Teacher 1 -->
-                <div class="teacher-card" onclick="openModal('s1-teacher1')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346277/ALLAN_qwwygj.jpg" alt="ABIINE ALLAN" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">PTE. ABIINE ALLAN</h3>
-                        <span class="teacher-level">Senior 1A</span>
-                        <p class="teacher-subjects">KISWAHILI </p>
-                        <p class="teacher-qualification">BACHELORS IN ARTS WITH EDUCATION</p>
-                    </div>
-                </div>
-                
-                <!-- Teacher 2 -->
-                <div class="teacher-card" onclick="openModal('bosco')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346306/bosco_qzoze5.jpg" alt="SGT. NGABIRANO BOSCO" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">SGT. NGABIRANO BOSCO</h3>
-                        <span class="teacher-level">Senior 1B</span>
-                        <p class="teacher-subjects">CRE, ENTREPRENEURSHIP & ECONOMICS</p>
-                        <p class="teacher-qualification">BACHELORS OF ARTS WITH EDUCATION</p>
-                    </div>
-                </div>
-                
-                <!-- Teacher 3 -->
-                <div class="teacher-card" onclick="openModal('s1-teacher3')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346279/allen_uitgzy.jpg" alt="allen" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">MS. NABASA ALLEN</h3>
-                        <span class="teacher-level">Senior 1C</span>
-                        <p class="teacher-subjects">CRE & GEOGRAPHY</p>
-                        <p class="teacher-qualification">BACHELORS OF ARTS WITH EDUCATION</p>
-                    </div>
-                </div>
-                 <!-- Teacher 4 -->
-                <div class="teacher-card" onclick="openModal('davis')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346344/Davis_qjeeep.jpg" alt="davis" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">GUMA DAVIS</h3>
-                        <span class="teacher-level">Senior 1D</span>
-                        <p class="teacher-subjects">PHYSICS & MTC</p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
+    <!-- ===== PAGE HEADER ===== -->
+    <section class="page-header">
+        <h1>Our Class Teachers</h1>
+        <p>Dedicated educators guiding and mentoring students at every level</p>
+    </section>
 
-                 <!-- Teacher 5 -->
-                <div class="teacher-card" onclick="openModal('davis')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346290/baseeta_qi7obi.jpg" alt="davis" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">L/CPL. BASEETA JOHNWILSON</h3>
-                        <span class="teacher-level">Senior 1D</span>
-                        <p class="teacher-subjects">ICT </p>
-                        <p class="teacher-qualification">BACHELORS OF SCIENCE WITH EDUCATION</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Senior 2 Teachers -->
-        <div class="teachers-container" id="s2-teachers">
-            <h2 class="section-title">Senior 2 Class Teachers</h2>
-            <div class="teachers-grid">
-                <!-- Teacher 1 -->
-                <div class="teacher-card" onclick="openModal('s1-teacher1')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346388/innocent_t7deuw.jpg" alt="L/CPL. MBABAZI INNOCENT" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">L/CPL. MBABAZI INNOCENT</h3>
-                        <span class="teacher-level">Senior 2A</span>
-                        <p class="teacher-subjects">GEOGRAPHY, ENTREPRENEURSHIP</p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
-                
-                <!-- Teacher 2 -->
-                <div class="teacher-card" onclick="openModal('s2-teacher2')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346271/Akasigye_vr4af8.jpg" alt="FERESIANO" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">L/CPL. ATUHWERE FERESIANO.</h3>
-                        <span class="teacher-level">Senior 2B</span>
-                        <p class="teacher-subjects">ENTREPRENEURSHIP/ ICT</p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
-                
-                <!-- Teacher 3 -->
-                <div class="teacher-card" onclick="openModal('s2-teacher3')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346270/AGAABA_fkxdis.jpg"  alt="UNIQUE" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">PTE. AGAABA UNIQUE</h3>
-                        <span class="teacher-level">Senior 2C</span>
-                        <p class="teacher-subjects">English/Literature </p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
-                
-                <!-- Teacher 4-->
-                <div class="teacher-card" onclick="openModal('s2-teacher4')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346459/oluti_wwx1sd.jpg" alt="STEVEN" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">L/CPL. OLWIT STEVEN</h3>
-                        <span class="teacher-level">Senior 2D</span>
-                        <p class="teacher-subjects">AGRICULTURE</p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Senior 3 Teachers -->
-        <div class="teachers-container" id="s3-teachers">
-            <h2 class="section-title">Senior 3 Class Teachers</h2>
-            <div class="teachers-grid">
-                <!-- Teacher 1 -->
-                <div class="teacher-card" onclick="openModal('s3-teacher1')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346289/balu_zbmoue.jpg" alt="Mr. James Katongole" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">L/CPL.BALU ISAAC</h3>
-                        <span class="teacher-level">Senior 3A</span>
-                        <p class="teacher-subjects"></p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
-                
-                <!-- Teacher 2 -->
-                <div class="teacher-card" onclick="openModal('ben')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346430/micheal_gc1ob3.jpg" alt="ONGWECH MICHEAL BEN" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name"> L/CPL. ONGWECH MICHEAL BEN</h3>
-                        <span class="teacher-level">Senior 3B</span>
-                        <p class="teacher-subjects">Biology, Chemistry</p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
-                
-                <!-- Teacher 3 -->
-                <div class="teacher-card" onclick="openModal('s3-teacher3')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345594/rich_r01ouu.jpg" alt="Mr. Richard Byaruhanga" class="teacher-img">
-                    </div>
-                   <div class="teacher-info">
-                        <h3 class="teacher-name">L/CPL. AHEBWA RICHARD</h3>
-                        <span class="teacher-level">Senior 3D</span>
-                        <p class="teacher-subjects">ICT & COMPUTER</p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
+    <!-- ===== LEVEL NAVIGATION ===== -->
+    <div class="level-nav">
+        <button class="level-btn active" data-level="s1">Senior 1</button>
+        <button class="level-btn" data-level="s2">Senior 2</button>
+        <button class="level-btn" data-level="s3">Senior 3</button>
+        <button class="level-btn" data-level="s4">Senior 4</button>
+        <button class="level-btn" data-level="s5">Senior 5</button>
+        <button class="level-btn" data-level="s6">Senior 6</button>
+    </div>
 
-                 <!-- Teacher 4 -->
-               <div class="teacher-card" onclick="openModal('s3-teacher3')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346446/OJOK_jowf3q.jpg" alt="Mr. Richard Byaruhanga" class="teacher-img">
-                    </div>
-                   <div class="teacher-info">
-                        <h3 class="teacher-name">L/CPL. OJOK EMMANUEL</h3>
-                        <span class="teacher-level">Senior 3D</span>
-                        <p class="teacher-subjects">HISTORY & GEOGRAPHY</p>
-                        <p class="teacher-qualification"></p>
-                    </div>
+    <!-- ===== SENIOR 1 TEACHERS ===== -->
+    <div class="teachers-container active" id="s1-teachers">
+        <h2 class="section-title">Senior 1 Class Teachers</h2>
+        <div class="teachers-grid">
+            <!-- Teacher 1 -->
+            <div class="teacher-card" data-level="s1" onclick="openModal('s1-teacher1')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346277/ALLAN_qwwygj.jpg" alt="PTE. ABIINE ALLAN" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">PTE. ABIINE ALLAN</h3>
+                    <span class="teacher-level-badge">Senior 1A</span>
+                    <p class="teacher-subjects">KISWAHILI</p>
+                    <p class="teacher-qualification">BACHELORS IN ARTS WITH EDUCATION</p>
                 </div>
             </div>
-        </div>
-        
-        <!-- Senior 4 Teachers -->
-        <div class="teachers-container" id="s4-teachers">
-            <h2 class="section-title">Senior 4 Class Teachers</h2>
-            <div class="teachers-grid">
-                <!-- Teacher 1 -->
-                <div class="teacher-card" onclick="openModal('s4-teacher1')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="IKOBA FRANCIS" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">CPL. IKOBA FRANCIS</h3>
-                        <span class="teacher-level">Senior 4A</span>
-                        <p class="teacher-subjects"></p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
-                
-                <!-- Teacher 2 -->
-                <div class="teacher-card" onclick="openModal('s4-teacher2')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" alt="TUMWESIGYE RONALD" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">Mr.TUMWESIGYE RONALD</h3>
-                        <span class="teacher-level">Senior 4B</span>
-                        <p class="teacher-subjects">HISTORY</p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
-                
-                <!-- Teacher 3 -->
-                <div class="teacher-card" onclick="openModal('s4-teacher3')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="NIMWESIGA JUDE " class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">NIMWESIGA JUDE </h3>
-                        <span class="teacher-level">Senior 4C</span>
-                        <p class="teacher-subjects"></p>
-                        <p class="teacher-qualification"></p>
-                    </div>
-                </div>
 
-                <!-- Teacher 4 -->
-                <div class="teacher-card" onclick="openModal('s4-teacher4')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="NUWAMANYA HANNINGTON" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">NUWAMANYA HANNINGTON</h3>
-                        <span class="teacher-level">Senior 4D</span>
-                        <p class="teacher-subjects"></p>
-                        <p class="teacher-qualification"></p>
-                    </div>
+            <!-- Teacher 2 -->
+            <div class="teacher-card" data-level="s1" onclick="openModal('s1-teacher2')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346306/bosco_qzoze5.jpg" alt="SGT. NGABIRANO BOSCO" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">SGT. NGABIRANO BOSCO</h3>
+                    <span class="teacher-level-badge">Senior 1B</span>
+                    <p class="teacher-subjects">CRE, ENTREPRENEURSHIP & ECONOMICS</p>
+                    <p class="teacher-qualification">BACHELORS OF ARTS WITH EDUCATION</p>
                 </div>
             </div>
-        </div>
-        
-        <!-- Senior 5 Teachers -->
-        <div class="teachers-container" id="s5-teachers">
-            <h2 class="section-title">Senior 5 Class Teachers</h2>
-            <div class="teachers-grid">
-                <!-- Teacher 1 -->
-                <div class="teacher-card" onclick="openModal('s5-teacher1')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346402/Kariisa_ek3tm0.jpg" alt="james" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">WO1. KARIISA JAMES </h3>
-                        <span class="teacher-level">Senior 5ARTS</span>
-                        <p class="teacher-subjects">HISTORY</p>
-                        <p class="teacher-qualification">BACHELORS OF ARTS IN EDUCATION</p>
-                    </div>
+
+            <!-- Teacher 3 -->
+            <div class="teacher-card" data-level="s1" onclick="openModal('s1-teacher3')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346279/allen_uitgzy.jpg" alt="MS. NABASA ALLEN" class="teacher-image">
                 </div>
-                
-                <!-- Teacher 2 -->
-                <div class="teacher-card" onclick="openModal('s5-teacher2')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346271/agaba_o9zc3y.jpg" alt="AGABA GODFREY" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">AGABA GODFREY</h3>
-                        <span class="teacher-level">Senior 5SCI</span>
-                        <p class="teacher-subjects">MATHEMATICS & ECONOMICS</p>
-                        <p class="teacher-qualification">BACHELORS OF SCIENCE WITH EDUCATION (MUK)</p>
-                    </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">MS. NABASA ALLEN</h3>
+                    <span class="teacher-level-badge">Senior 1C</span>
+                    <p class="teacher-subjects">CRE & GEOGRAPHY</p>
+                    <p class="teacher-qualification">BACHELORS OF ARTS WITH EDUCATION</p>
                 </div>
             </div>
-        </div>
-        
-        <!-- Senior 6 Teachers -->
-        <div class="teachers-container" id="s6-teachers">
-            <h2 class="section-title">Senior 6 Class Teachers</h2>
-            <div class="teachers-grid">
-                <!-- Teacher 1 -->
-                <div class="teacher-card" onclick="openModal('s6-teacher1')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346457/PA_m91dse.jpg" alt="Dr. Elizabeth Nansubuga" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">MS. NASASIRA PAMELA</h3>
-                        <span class="teacher-level">Senior 6ARTS</span>
-                        <p class="teacher-subjects">GEOGRAPHY</p>
-                        <p class="teacher-qualification"></p>
-                    </div>
+
+            <!-- Teacher 4 -->
+            <div class="teacher-card" data-level="s1" onclick="openModal('s1-teacher4')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346344/Davis_qjeeep.jpg" alt="GUMA DAVIS" class="teacher-image">
                 </div>
-                
-                <!-- Teacher 2 -->
-                <div class="teacher-card" onclick="openModal('cossma')">
-                    <div class="teacher-img-container">
-                        <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346315/COSMA_yvvvhl.jpg" alt="cosma" class="teacher-img">
-                    </div>
-                    <div class="teacher-info">
-                        <h3 class="teacher-name">L/CPL. TUMUSINGIZE COSMA</h3>
-                        <span class="teacher-level">Senior 6.SCI</span>
-                        <p class="teacher-subjects">PHYSICS & MTC</p>
-                        <p class="teacher-qualification">BACHELORS OF SCIENCE WITH EDUCATION</p>
-                    </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">GUMA DAVIS</h3>
+                    <span class="teacher-level-badge">Senior 1D</span>
+                    <p class="teacher-subjects">PHYSICS & MATHEMATICS</p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 5 -->
+            <div class="teacher-card" data-level="s1" onclick="openModal('s1-teacher5')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346290/baseeta_qi7obi.jpg" alt="L/CPL. BASEETA JOHNWILSON" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">L/CPL. BASEETA JOHNWILSON</h3>
+                    <span class="teacher-level-badge">Senior 1E</span>
+                    <p class="teacher-subjects">ICT</p>
+                    <p class="teacher-qualification">BACHELORS OF SCIENCE WITH EDUCATION</p>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Modal -->
+
+    <!-- ===== SENIOR 2 TEACHERS ===== -->
+    <div class="teachers-container" id="s2-teachers">
+        <h2 class="section-title">Senior 2 Class Teachers</h2>
+        <div class="teachers-grid">
+            <!-- Teacher 1 -->
+            <div class="teacher-card" data-level="s2" onclick="openModal('s2-teacher1')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346388/innocent_t7deuw.jpg" alt="L/CPL. MBABAZI INNOCENT" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">L/CPL. MBABAZI INNOCENT</h3>
+                    <span class="teacher-level-badge">Senior 2A</span>
+                    <p class="teacher-subjects">GEOGRAPHY, ENTREPRENEURSHIP</p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 2 -->
+            <div class="teacher-card" data-level="s2" onclick="openModal('s2-teacher2')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346271/Akasigye_vr4af8.jpg" alt="L/CPL. ATUHWERE FERESIANO" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">L/CPL. ATUHWERE FERESIANO</h3>
+                    <span class="teacher-level-badge">Senior 2B</span>
+                    <p class="teacher-subjects">ENTREPRENEURSHIP / ICT</p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 3 -->
+            <div class="teacher-card" data-level="s2" onclick="openModal('s2-teacher3')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346270/AGAABA_fkxdis.jpg" alt="PTE. AGAABA UNIQUE" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">PTE. AGAABA UNIQUE</h3>
+                    <span class="teacher-level-badge">Senior 2C</span>
+                    <p class="teacher-subjects">ENGLISH / LITERATURE</p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 4 -->
+            <div class="teacher-card" data-level="s2" onclick="openModal('s2-teacher4')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346459/oluti_wwx1sd.jpg" alt="L/CPL. OLWIT STEVEN" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">L/CPL. OLWIT STEVEN</h3>
+                    <span class="teacher-level-badge">Senior 2D</span>
+                    <p class="teacher-subjects">AGRICULTURE</p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SENIOR 3 TEACHERS ===== -->
+    <div class="teachers-container" id="s3-teachers">
+        <h2 class="section-title">Senior 3 Class Teachers</h2>
+        <div class="teachers-grid">
+            <!-- Teacher 1 -->
+            <div class="teacher-card" data-level="s3" onclick="openModal('s3-teacher1')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346289/balu_zbmoue.jpg" alt="L/CPL. BALU ISAAC" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">L/CPL. BALU ISAAC</h3>
+                    <span class="teacher-level-badge">Senior 3A</span>
+                    <p class="teacher-subjects"></p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 2 -->
+            <div class="teacher-card" data-level="s3" onclick="openModal('s3-teacher2')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346430/micheal_gc1ob3.jpg" alt="L/CPL. ONGWECH MICHEAL BEN" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">L/CPL. ONGWECH MICHEAL BEN</h3>
+                    <span class="teacher-level-badge">Senior 3B</span>
+                    <p class="teacher-subjects">BIOLOGY, CHEMISTRY</p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 3 -->
+            <div class="teacher-card" data-level="s3" onclick="openModal('s3-teacher3')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345594/rich_r01ouu.jpg" alt="L/CPL. AHEBWA RICHARD" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">L/CPL. AHEBWA RICHARD</h3>
+                    <span class="teacher-level-badge">Senior 3C</span>
+                    <p class="teacher-subjects">ICT & COMPUTER</p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 4 -->
+            <div class="teacher-card" data-level="s3" onclick="openModal('s3-teacher4')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346446/OJOK_jowf3q.jpg" alt="L/CPL. OJOK EMMANUEL" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">L/CPL. OJOK EMMANUEL</h3>
+                    <span class="teacher-level-badge">Senior 3D</span>
+                    <p class="teacher-subjects">HISTORY & GEOGRAPHY</p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SENIOR 4 TEACHERS ===== -->
+    <div class="teachers-container" id="s4-teachers">
+        <h2 class="section-title">Senior 4 Class Teachers</h2>
+        <div class="teachers-grid">
+            <!-- Teacher 1 -->
+            <div class="teacher-card" data-level="s4" onclick="openModal('s4-teacher1')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="CPL. IKOBA FRANCIS" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">CPL. IKOBA FRANCIS</h3>
+                    <span class="teacher-level-badge">Senior 4A</span>
+                    <p class="teacher-subjects"></p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 2 -->
+            <div class="teacher-card" data-level="s4" onclick="openModal('s4-teacher2')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg" alt="Mr. TUMWESIGYE RONALD" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">Mr. TUMWESIGYE RONALD</h3>
+                    <span class="teacher-level-badge">Senior 4B</span>
+                    <p class="teacher-subjects">HISTORY</p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 3 -->
+            <div class="teacher-card" data-level="s4" onclick="openModal('s4-teacher3')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="NIMWESIGA JUDE" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">NIMWESIGA JUDE</h3>
+                    <span class="teacher-level-badge">Senior 4C</span>
+                    <p class="teacher-subjects"></p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 4 -->
+            <div class="teacher-card" data-level="s4" onclick="openModal('s4-teacher4')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png" alt="NUWAMANYA HANNINGTON" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">NUWAMANYA HANNINGTON</h3>
+                    <span class="teacher-level-badge">Senior 4D</span>
+                    <p class="teacher-subjects"></p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SENIOR 5 TEACHERS ===== -->
+    <div class="teachers-container" id="s5-teachers">
+        <h2 class="section-title">Senior 5 Class Teachers</h2>
+        <div class="teachers-grid">
+            <!-- Teacher 1 -->
+            <div class="teacher-card" data-level="s5" onclick="openModal('s5-teacher1')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346402/Kariisa_ek3tm0.jpg" alt="WO1. KARIISA JAMES" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">WO1. KARIISA JAMES</h3>
+                    <span class="teacher-level-badge">Senior 5 ARTS</span>
+                    <p class="teacher-subjects">HISTORY</p>
+                    <p class="teacher-qualification">BACHELORS OF ARTS IN EDUCATION</p>
+                </div>
+            </div>
+
+            <!-- Teacher 2 -->
+            <div class="teacher-card" data-level="s5" onclick="openModal('s5-teacher2')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346271/agaba_o9zc3y.jpg" alt="AGABA GODFREY" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">AGABA GODFREY</h3>
+                    <span class="teacher-level-badge">Senior 5 SCIENCE</span>
+                    <p class="teacher-subjects">MATHEMATICS & ECONOMICS</p>
+                    <p class="teacher-qualification">BACHELORS OF SCIENCE WITH EDUCATION (MUK)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SENIOR 6 TEACHERS ===== -->
+    <div class="teachers-container" id="s6-teachers">
+        <h2 class="section-title">Senior 6 Class Teachers</h2>
+        <div class="teachers-grid">
+            <!-- Teacher 1 -->
+            <div class="teacher-card" data-level="s6" onclick="openModal('s6-teacher1')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346457/PA_m91dse.jpg" alt="MS. NASASIRA PAMELA" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">MS. NASASIRA PAMELA</h3>
+                    <span class="teacher-level-badge">Senior 6 ARTS</span>
+                    <p class="teacher-subjects">GEOGRAPHY</p>
+                    <p class="teacher-qualification"></p>
+                </div>
+            </div>
+
+            <!-- Teacher 2 -->
+            <div class="teacher-card" data-level="s6" onclick="openModal('s6-teacher2')">
+                <div class="teacher-image-container">
+                    <img src="https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346315/COSMA_yvvvhl.jpg" alt="L/CPL. TUMUSINGIZE COSMA" class="teacher-image">
+                </div>
+                <div class="teacher-info">
+                    <h3 class="teacher-name">L/CPL. TUMUSINGIZE COSMA</h3>
+                    <span class="teacher-level-badge">Senior 6 SCIENCE</span>
+                    <p class="teacher-subjects">PHYSICS & MATHEMATICS</p>
+                    <p class="teacher-qualification">BACHELORS OF SCIENCE WITH EDUCATION</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL ===== -->
     <div class="modal" id="teacherModal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
             <div class="modal-header">
-                <img id="modalTeacherImg" src="" alt="Teacher Photo">
-                <div class="modal-header-overlay">
-                    <h2 class="modal-name" id="modalTeacherName"></h2>
-                    <p class="modal-title" id="modalTeacherTitle"></p>
-                </div>
+                <img id="modalTeacherImg" src="" alt="Teacher">
+                <h2 class="modal-name" id="modalTeacherName"></h2>
+                <p class="modal-title" id="modalTeacherTitle"></p>
+                <span class="modal-level" id="modalTeacherLevel"></span>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
-                    <h3>Professional Information</h3>
-                    <p id="modalTeacherQualification"></p>
-                    <p id="modalTeacherLevel"></p>
+                    <h3><i class="fas fa-graduation-cap"></i> Qualification</h3>
+                    <p class="modal-qualification" id="modalTeacherQualification"></p>
                 </div>
-                
                 <div class="modal-section">
-                    <h3>Subjects Taught</h3>
+                    <h3><i class="fas fa-book-open"></i> Subjects Taught</h3>
                     <div class="modal-subjects" id="modalTeacherSubjects"></div>
-                </div>
-                
-                <div class="modal-section">
-                    <h3>About</h3>
-                    <p class="modal-bio" id="modalTeacherBio"></p>
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="materials.html">Academics</a></li>
+                    <li><a href="sports.html">Co-curricular</a></li>
+                    <li><a href="welfare.html">Welfare</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contacts.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> P.O. Box 521, Mbarara, Uganda</p>
+                <p><i class="fas fa-phone"></i> +256 782 096231</p>
+                <p><i class="fas fa-phone"></i> +256 782 371824</p>
+                <p><i class="fas fa-phone"></i> +256 779 927775</p>
+                <p><i class="fas fa-envelope"></i> mabss2014@gmail.com</p>
+
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579385982187" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/mabss2004" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@mabss2025" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mabss2025" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/256782096231" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>School Hours</h3>
+                <p><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</p>
+                <p><i class="fas fa-clock"></i> Saturday: 8:00 AM - 4:00 PM</p>
+                <p><i class="fas fa-clock"></i> Sunday: Closed (Boarders only)</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Mbarara Army Boarding Secondary School. All Rights Reserved.</p>
+            <p>Powered by <strong>Amwine Frankline / CodeMatrix</strong></p>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
     <script>
-        // Teacher data
-        const teachersData = {
-            // Senior 1 Teachers
-            's1-teacher1': {
-                name: 'Mr. John Mugisha',
-                title: 'Senior 1 East Class Teacher',
-                level: 'Senior 1 East',
-                qualification: 'MSc. Mathematics, Makerere University | BEd. Science Education, Kyambogo University',
-                subjects: ['Mathematics', 'Physics', 'Additional Mathematics'],
-                bio: 'With over 10 years of teaching experience, Mr. Mugisha specializes in making complex mathematical concepts accessible to students. He has coached several national mathematics olympiad winners and runs the school\'s math club.'
-            },
-            's1-teacher2': {
-                name: 'Ms. Sarah Kiconco',
-                title: 'Senior 1 West Class Teacher',
-                level: 'Senior 1 West',
-                qualification: 'MA English, Kyambogo University | BA Education, Makerere University',
-                subjects: ['English Language', 'Literature in English', 'Reading Skills'],
-                bio: 'Ms. Kiconco is passionate about developing students\' communication skills. She organizes the annual school debating competition and drama festivals. Her innovative teaching methods have significantly improved students\' performance in English.'
-            },
-            's1-teacher3': {
-                name: 'Mr. Robert Tumwesigye',
-                title: 'Senior 1 North Class Teacher',
-                level: 'Senior 1 North',
-                qualification: 'BSc. Education (Biology, Chemistry), Mbarara University | Diploma in Education',
-                subjects: ['Biology', 'Chemistry', 'General Science'],
-                bio: 'Mr. Tumwesigye brings practical laboratory experience to his teaching. He established the school\'s science club and organizes annual science fairs to stimulate students\' interest in scientific inquiry.'
-            },
-            
-            // Senior 2 Teachers
-            's2-teacher1': {
-                name: 'Ms. Grace Nalwadda',
-                title: 'Senior 2 East Class Teacher',
-                level: 'Senior 2 East',
-                qualification: 'BA Education (History, Geography), Makerere University',
-                subjects: ['History', 'Geography', 'Political Education'],
-                bio: 'Ms. Nalwadda uses interactive methods including educational trips to historical sites to bring history to life. She coordinates the Model United Nations program and current affairs club.'
-            },
-            's2-teacher2': {
-                name: 'Mr. David Mwesigwa',
-                title: 'Senior 2 West Class Teacher',
-                level: 'Senior 2 West',
-                qualification: 'MSc. Physics, Kyambogo University | BSc. Education, Makerere University',
-                subjects: ['Mathematics', 'Physics', 'ICT'],
-                bio: 'Mr. Mwesigwa integrates technology in teaching physics concepts. He established the school\'s robotics club and has led teams to national competitions.'
-            },
-            's2-teacher3': {
-                name: 'Ms. Juliet Kansiime',
-                title: 'Senior 2 North Class Teacher',
-                level: 'Senior 2 North',
-                qualification: 'MA Literature, Makerere University | BA Education, Kyambogo University',
-                subjects: ['English Language', 'Literature in English', 'Creative Writing'],
-                bio: 'A published poet, Ms. Kansiime runs the creative writing club and school magazine. Her students regularly win writing competitions at national level.'
-            },
-            
-            // Senior 3 Teachers
-            's3-teacher1': {
-                name: 'Mr. James Katongole',
-                title: 'Senior 3 East Class Teacher',
-                level: 'Senior 3 East',
-                qualification: 'MSc. Mathematics, Makerere University | BEd. Science Education',
-                subjects: ['Mathematics', 'Physics', 'Additional Mathematics'],
-                bio: 'Mr. Katongole specializes in exam preparation techniques. His students consistently achieve excellent results in national examinations.'
-            },
-            's3-teacher2': {
-                name: 'Ms. Prossy Namutebi',
-                title: 'Senior 3 West Class Teacher',
-                level: 'Senior 3 West',
-                qualification: 'BSc. Education (Biology, Chemistry), Mbarara University',
-                subjects: ['Biology', 'Chemistry', 'Health Education'],
-                bio: 'Ms. Namutebi emphasizes practical applications of biological concepts. She established the school\'s environmental club and leads tree planting initiatives.'
-            },
-            's3-teacher3': {
-                name: 'Mr. Richard Byaruhanga',
-                title: 'Senior 3 North Class Teacher',
-                level: 'Senior 3 North',
-                qualification: 'BA Education (History, CRE), Kyambogo University',
-                subjects: ['History', 'CRE', 'Political Education'],
-                bio: 'Mr. Byaruhanga integrates moral education with academic learning. He coordinates the school\'s community service program and interfaith dialogues.'
-            },
-            
-            // Senior 4 Teachers
-            's4-teacher1': {
-                name: 'Ms. Annet Nalubega',
-                title: 'Senior 4 East Class Teacher',
-                level: 'Senior 4 East',
-                qualification: 'MA English, Makerere University | BA Education, Kyambogo University',
-                subjects: ['English Language', 'Literature in English'],
-                bio: 'Ms. Nalubega specializes in exam preparation strategies for English. Her innovative teaching methods have significantly improved students\' performance in UNEB examinations.'
-            },
-            's4-teacher2': {
-                name: 'Mr. Patrick Okello',
-                title: 'Senior 4 West Class Teacher',
-                level: 'Senior 4 West',
-                qualification: 'MSc. Physics, Kyambogo University | BSc. Education, Makerere University',
-                subjects: ['Mathematics', 'Physics', 'ICT'],
-                bio: 'Mr. Okello focuses on developing problem-solving skills in physics. He has authored several revision booklets used by schools nationwide.'
-            },
-            's4-teacher3': {
-                name: 'Ms. Rose Akello',
-                title: 'Senior 4 North Class Teacher',
-                level: 'Senior 4 North',
-                qualification: 'BSc. Education (Biology, Chemistry), Mbarara University',
-                subjects: ['Biology', 'Chemistry', 'Agriculture'],
-                bio: 'Ms. Akello connects classroom learning with real-world applications. She established the school\'s agricultural project that supplies vegetables to the dining hall.'
-            },
-            
-            // Senior 5 Teachers
-            's5-teacher1': {
-                name: 'Mr. Samuel Wasswa',
-                title: 'Senior 5 Science Class Teacher',
-                level: 'Senior 5 Science',
-                qualification: 'PhD Physics, Makerere University | MSc. Physics, University of Nairobi',
-                subjects: ['Physics', 'Mathematics', 'Physical Chemistry'],
-                bio: 'Dr. Wasswa brings university-level research experience to A-level teaching. He mentors students pursuing careers in STEM fields and coordinates the science olympiad program.'
-            },
-            's5-teacher2': {
-                name: 'Ms. Jennifer Atim',
-                title: 'Senior 5 Arts Class Teacher',
-                level: 'Senior 5 Arts',
-                qualification: 'MA History, Makerere University | BA Education, Kyambogo University',
-                subjects: ['History', 'Geography', 'Political Education'],
-                bio: 'Ms. Atim emphasizes critical thinking in humanities. She organizes historical debates and has led student trips to national museums and cultural sites.'
-            },
-            's5-teacher3': {
-                name: 'Mr. Michael Ochieng',
-                title: 'Senior 5 Commercial Class Teacher',
-                level: 'Senior 5 Commercial',
-                qualification: 'MBA, Uganda Martyrs University | BCom, Makerere University',
-                subjects: ['Economics', 'Entrepreneurship', 'Business Studies'],
-                bio: 'With industry experience in banking, Mr. Ochieng brings practical business knowledge to the classroom. He coordinates the school\'s entrepreneurship fair.'
-            },
-            
-            // Senior 6 Teachers
-            's6-teacher1': {
-                name: 'Dr. Elizabeth Nansubuga',
-                title: 'Senior 6 Science Class Teacher',
-                level: 'Senior 6 Science',
-                qualification: 'PhD Chemistry, Makerere University | MSc. Chemistry, University of Dar es Salaam',
-                subjects: ['Biology', 'Chemistry', 'Physical Chemistry'],
-                bio: 'Dr. Nansubuga specializes in advanced chemistry concepts. She mentors students applying for international universities and competitive scholarships.'
-            },
-            's6-teacher2': {
-                name: 'Mr. Joseph Ssebaggala',
-                title: 'Senior 6 Arts Class Teacher',
-                level: 'Senior 6 Arts',
-                qualification: 'MA Literature, Kyambogo University | BA Education, Makerere University',
-                subjects: ['Literature in English', 'Divinity', 'General Paper'],
-                bio: 'Mr. Ssebaggala has extensive experience in UNEB examination marking. His students consistently achieve distinction grades in literature and general paper.'
-            },
-            's6-teacher3': {
-                name: 'Ms. Rebecca Namukasa',
-                title: 'Senior 6 Commercial Class Teacher',
-                level: 'Senior 6 Commercial',
-                qualification: 'MSc. Accounting, Makerere University | BBA, Uganda Christian University',
-                subjects: ['Accounts', 'Mathematics', 'Entrepreneurship'],
-                bio: 'A certified accountant, Ms. Namukasa prepares students for professional courses. She established the school\'s investment club where students manage a portfolio.'
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            hamburger.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
             }
-        };
-        
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
         // Level navigation
         document.querySelectorAll('.level-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                // Remove active class from all buttons
                 document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
-                
-                // Add active class to clicked button
                 this.classList.add('active');
                 
-                // Hide all teacher containers
                 document.querySelectorAll('.teachers-container').forEach(container => {
                     container.classList.remove('active');
                 });
                 
-                // Show selected teacher container
                 const level = this.getAttribute('data-level');
                 document.getElementById(`${level}-teachers`).classList.add('active');
             });
         });
-        
+
+        // Teacher data for modal
+        const teachersData = {
+            // Senior 1 Teachers
+            's1-teacher1': {
+                name: 'PTE. ABIINE ALLAN',
+                title: 'Senior 1A Class Teacher',
+                level: 'Senior 1A',
+                qualification: 'BACHELORS IN ARTS WITH EDUCATION',
+                subjects: ['KISWAHILI'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346277/ALLAN_qwwygj.jpg'
+            },
+            's1-teacher2': {
+                name: 'SGT. NGABIRANO BOSCO',
+                title: 'Senior 1B Class Teacher',
+                level: 'Senior 1B',
+                qualification: 'BACHELORS OF ARTS WITH EDUCATION',
+                subjects: ['CRE', 'ENTREPRENEURSHIP', 'ECONOMICS'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346306/bosco_qzoze5.jpg'
+            },
+            's1-teacher3': {
+                name: 'MS. NABASA ALLEN',
+                title: 'Senior 1C Class Teacher',
+                level: 'Senior 1C',
+                qualification: 'BACHELORS OF ARTS WITH EDUCATION',
+                subjects: ['CRE', 'GEOGRAPHY'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346279/allen_uitgzy.jpg'
+            },
+            's1-teacher4': {
+                name: 'GUMA DAVIS',
+                title: 'Senior 1D Class Teacher',
+                level: 'Senior 1D',
+                qualification: '',
+                subjects: ['PHYSICS', 'MATHEMATICS'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346344/Davis_qjeeep.jpg'
+            },
+            's1-teacher5': {
+                name: 'L/CPL. BASEETA JOHNWILSON',
+                title: 'Senior 1E Class Teacher',
+                level: 'Senior 1E',
+                qualification: 'BACHELORS OF SCIENCE WITH EDUCATION',
+                subjects: ['ICT'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346290/baseeta_qi7obi.jpg'
+            },
+
+            // Senior 2 Teachers
+            's2-teacher1': {
+                name: 'L/CPL. MBABAZI INNOCENT',
+                title: 'Senior 2A Class Teacher',
+                level: 'Senior 2A',
+                qualification: '',
+                subjects: ['GEOGRAPHY', 'ENTREPRENEURSHIP'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346388/innocent_t7deuw.jpg'
+            },
+            's2-teacher2': {
+                name: 'L/CPL. ATUHWERE FERESIANO',
+                title: 'Senior 2B Class Teacher',
+                level: 'Senior 2B',
+                qualification: '',
+                subjects: ['ENTREPRENEURSHIP', 'ICT'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346271/Akasigye_vr4af8.jpg'
+            },
+            's2-teacher3': {
+                name: 'PTE. AGAABA UNIQUE',
+                title: 'Senior 2C Class Teacher',
+                level: 'Senior 2C',
+                qualification: '',
+                subjects: ['ENGLISH', 'LITERATURE'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346270/AGAABA_fkxdis.jpg'
+            },
+            's2-teacher4': {
+                name: 'L/CPL. OLWIT STEVEN',
+                title: 'Senior 2D Class Teacher',
+                level: 'Senior 2D',
+                qualification: '',
+                subjects: ['AGRICULTURE'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346459/oluti_wwx1sd.jpg'
+            },
+
+            // Senior 3 Teachers
+            's3-teacher1': {
+                name: 'L/CPL. BALU ISAAC',
+                title: 'Senior 3A Class Teacher',
+                level: 'Senior 3A',
+                qualification: '',
+                subjects: [],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346289/balu_zbmoue.jpg'
+            },
+            's3-teacher2': {
+                name: 'L/CPL. ONGWECH MICHEAL BEN',
+                title: 'Senior 3B Class Teacher',
+                level: 'Senior 3B',
+                qualification: '',
+                subjects: ['BIOLOGY', 'CHEMISTRY'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346430/micheal_gc1ob3.jpg'
+            },
+            's3-teacher3': {
+                name: 'L/CPL. AHEBWA RICHARD',
+                title: 'Senior 3C Class Teacher',
+                level: 'Senior 3C',
+                qualification: '',
+                subjects: ['ICT', 'COMPUTER'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345594/rich_r01ouu.jpg'
+            },
+            's3-teacher4': {
+                name: 'L/CPL. OJOK EMMANUEL',
+                title: 'Senior 3D Class Teacher',
+                level: 'Senior 3D',
+                qualification: '',
+                subjects: ['HISTORY', 'GEOGRAPHY'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346446/OJOK_jowf3q.jpg'
+            },
+
+            // Senior 4 Teachers
+            's4-teacher1': {
+                name: 'CPL. IKOBA FRANCIS',
+                title: 'Senior 4A Class Teacher',
+                level: 'Senior 4A',
+                qualification: '',
+                subjects: [],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png'
+            },
+            's4-teacher2': {
+                name: 'Mr. TUMWESIGYE RONALD',
+                title: 'Senior 4B Class Teacher',
+                level: 'Senior 4B',
+                qualification: '',
+                subjects: ['HISTORY'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346471/RO_ka4lvm.jpg'
+            },
+            's4-teacher3': {
+                name: 'NIMWESIGA JUDE',
+                title: 'Senior 4C Class Teacher',
+                level: 'Senior 4C',
+                qualification: '',
+                subjects: [],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png'
+            },
+            's4-teacher4': {
+                name: 'NUWAMANYA HANNINGTON',
+                title: 'Senior 4D Class Teacher',
+                level: 'Senior 4D',
+                qualification: '',
+                subjects: [],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765345568/holder_fswv26.png'
+            },
+
+            // Senior 5 Teachers
+            's5-teacher1': {
+                name: 'WO1. KARIISA JAMES',
+                title: 'Senior 5 Arts Class Teacher',
+                level: 'Senior 5 Arts',
+                qualification: 'BACHELORS OF ARTS IN EDUCATION',
+                subjects: ['HISTORY'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346402/Kariisa_ek3tm0.jpg'
+            },
+            's5-teacher2': {
+                name: 'AGABA GODFREY',
+                title: 'Senior 5 Science Class Teacher',
+                level: 'Senior 5 Science',
+                qualification: 'BACHELORS OF SCIENCE WITH EDUCATION (MUK)',
+                subjects: ['MATHEMATICS', 'ECONOMICS'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346271/agaba_o9zc3y.jpg'
+            },
+
+            // Senior 6 Teachers
+            's6-teacher1': {
+                name: 'MS. NASASIRA PAMELA',
+                title: 'Senior 6 Arts Class Teacher',
+                level: 'Senior 6 Arts',
+                qualification: '',
+                subjects: ['GEOGRAPHY'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346457/PA_m91dse.jpg'
+            },
+            's6-teacher2': {
+                name: 'L/CPL. TUMUSINGIZE COSMA',
+                title: 'Senior 6 Science Class Teacher',
+                level: 'Senior 6 Science',
+                qualification: 'BACHELORS OF SCIENCE WITH EDUCATION',
+                subjects: ['PHYSICS', 'MATHEMATICS'],
+                image: 'https://res.cloudinary.com/dr7bzccrr/image/upload/v1765346315/COSMA_yvvvhl.jpg'
+            }
+        };
+
         // Modal functions
         function openModal(teacherId) {
             const teacher = teachersData[teacherId];
             if (!teacher) return;
-            
-            document.getElementById('modalTeacherImg').src = document.querySelector(`[onclick="openModal('${teacherId}')] img`).src;
+
+            document.getElementById('modalTeacherImg').src = teacher.image;
             document.getElementById('modalTeacherName').textContent = teacher.name;
             document.getElementById('modalTeacherTitle').textContent = teacher.title;
-            document.getElementById('modalTeacherQualification').textContent = teacher.qualification;
-            document.getElementById('modalTeacherLevel').textContent = `Class: ${teacher.level}`;
-            
+            document.getElementById('modalTeacherLevel').textContent = teacher.level;
+            document.getElementById('modalTeacherQualification').textContent = teacher.qualification || 'Qualification information not available';
+
             // Clear previous subjects
             const subjectsContainer = document.getElementById('modalTeacherSubjects');
             subjectsContainer.innerHTML = '';
-            
+
             // Add subjects
-            teacher.subjects.forEach(subject => {
-                const subjectTag = document.createElement('span');
-                subjectTag.className = 'subject-tag';
-                subjectTag.textContent = subject;
-                subjectsContainer.appendChild(subjectTag);
-            });
-            
-            document.getElementById('modalTeacherBio').textContent = teacher.bio;
-            
+            if (teacher.subjects && teacher.subjects.length > 0) {
+                teacher.subjects.forEach(subject => {
+                    if (subject) {
+                        const subjectTag = document.createElement('span');
+                        subjectTag.className = 'subject-tag';
+                        subjectTag.textContent = subject;
+                        subjectsContainer.appendChild(subjectTag);
+                    }
+                });
+            } else {
+                const noSubjects = document.createElement('span');
+                noSubjects.className = 'subject-tag';
+                noSubjects.textContent = 'Subject information not available';
+                subjectsContainer.appendChild(noSubjects);
+            }
+
             const modal = document.getElementById('teacherModal');
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
+
         function closeModal() {
             const modal = document.getElementById('teacherModal');
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        
-        // Close modal when clicking outside content
+
+        // Close modal when clicking outside
         window.addEventListener('click', (e) => {
             const modal = document.getElementById('teacherModal');
             if (e.target === modal) {
                 closeModal();
             }
         });
-        
+
         // Close modal with ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
+
 </html>

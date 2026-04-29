@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MABSS Learner Dashboard</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #006400;
+            --primary-dark: #004d00;
+            --secondary-color: #8B0000;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --sidebar-width: 260px;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--primary-dark);
+        }
+
+        .sidebar-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .user-profile {
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            padding: 0;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border-left: 4px solid transparent;
+        }
+
+        .nav-link i {
+            width: 25px;
+            font-size: 1.1rem;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: #ffd700;
+        }
+
+        .logout-section {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            padding: 2rem;
+            transition: margin 0.3s ease;
+            width: 100%;
+        }
+
+        .top-bar {
+            display: none;
+            /* Desktop hidden */
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Sections --- */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2.section-heading {
+            color: var(--primary-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Reuse existing form/card styles... */
+        /* --- Status Cards --- */
+        .status-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #e0e0e0;
+        }
+
+        .status-header {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-pending {
+            background-color: #f59e0b;
+        }
+
+        .status-accepted {
+            background-color: #10b981;
+        }
+
+        .status-rejected {
+            background-color: #ef4444;
+        }
+
+        /* Table Styles for "Pending Applications" list */
+        .app-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .app-table th,
+        .app-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .app-table th {
+            background: #f8fafc;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .app-table tr:hover {
+            background: #fafafa;
+        }
+
+        /* --- Form Styling from previous Step --- */
+        .form-container {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .form-header h2 {
+            color: var(--primary-color);
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-grid.thirds {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        label span.required {
+            color: var(--secondary-color);
+            margin-left: 2px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="email"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ccd0d5;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 100, 0, 0.15);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            background: #f8fafc;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 280px;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding-top: 80px;
+            }
+
+            .top-bar {
+                display: flex;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .form-grid,
+            .form-grid.thirds {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Mobile Top Bar -->
+    <div class="top-bar">
+        <button class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <h3>MABSS Dashboard</h3>
+        <div style="width: 24px;"></div> <!-- Spacer -->
+    </div>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-graduation-cap"></i> MABSS</h2>
+        </div>
+        <div class="user-profile">
+            <div class="user-avatar" id="user-initials">
+                <img src="/default-avatar.jpg" alt="User Avatar">
+            </div>
+            <div id="user-name">Loading...</div>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a class="nav-link active" onclick="showSection('apply')">
+                    <i class="fas fa-file-pen"></i> Apply
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('status')">
+                    <i class="fas fa-info-circle"></i> Application Status
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="showSection('pending')">
+                    <i class="fas fa-clock"></i> Pending Applications
+                </a>
+            </li>
+        </ul>
+        <div class="logout-section">
+            <button onclick="logout()" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- SECTION: APPLY -->
+        <div id="section-apply" class="content-section active">
+            <div id="apply-content">
+                <!-- Form or "Already Applied" message will go here -->
+            </div>
+        </div>
+
+        <!-- SECTION: STATUS -->
+        <div id="section-status" class="content-section">
+            <h2 class="section-heading">Application Status</h2>
+            <div id="status-content">
+                <p>Loading status...</p>
+            </div>
+        </div>
+
+        <!-- SECTION: PENDING (History) -->
+        <div id="section-pending" class="content-section">
+            <h2 class="section-heading">Pending Applications</h2>
+            <div id="pending-content">
+                <!-- Table of applications -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Templates -->
+    <template id="submission-form-tpl">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Admission Form 2026</h2>
+                <p>Please fill out all details carefully. Fields with <span style="color:red">*</span> are required.</p>
+            </div>
+
+            <form id="admissionForm" onsubmit="submitApplication(event)">
+
+                <!-- Personal Info -->
+                <div class="form-section">
+                    <div class="section-title">Personal Information</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Surname <span class="required">*</span></label>
+                            <input type="text" name="surname" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Other Names <span class="required">*</span></label>
+                            <input type="text" name="other_names" required>
+                        </div>
+                        <div class="form-group">
+                            <label>LIN <span class="required">*</span></label>
+                            <input type="text" name="lin" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth <span class="required">*</span></label>
+                            <input type="date" name="dob" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Sex <span class="required">*</span></label>
+                            <select name="sex" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Age <span class="required">*</span></label>
+                            <input type="number" name="age" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Details -->
+                <div class="form-section">
+                    <div class="section-title">Academic Details</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Class Applying For <span class="required">*</span></label>
+                            <select name="class" required>
+                                <option value="">-- Select Class --</option>
+                                <option value="S.1">S.1 (O-Level)</option>
+                                <option value="S.2">S.2 (O-Level)</option>
+                                <option value="S.3">S.3 (O-Level)</option>
+                                <option value="S.4">S.4 (O-Level)</option>
+                                <option value="S.5">S.5 (A-Level)</option>
+                                <option value="S.6">S.6 (A-Level)</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Former School <span class="required">*</span></label>
+                            <input type="text" name="former_school" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div class="form-section">
+                    <div class="section-title">Location & Origin</div>
+                    <div class="form-grid thirds">
+                        <div class="form-group">
+                            <label>Country <span class="required">*</span></label>
+                            <input type="text" name="country" required>
+                        </div>
+                        <div class="form-group">
+                            <label>District <span class="required">*</span></label>
+                            <input type="text" name="district" required>
+                        </div>
+                        <div class="form-group">
+                            <label>County <span class="required">*</span></label>
+                            <input type="text" name="county" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Parish <span class="required">*</span></label>
+                            <input type="text" name="parish" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Village <span class="required">*</span></label>
+                            <input type="text" name="village" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category -->
+                <div class="form-section">
+                    <div class="section-title">Learner's Category</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Parent Category <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="parent_category" value="CIVILIAN'S CHILD" required>
+                                    Civilian
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="parent_category" value="SOLDIER'S CHILD"> Soldier
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Admission Mode <span class="required">*</span></label>
+                            <select name="admission_mode" required>
+                                <option value="NEW(TRANSITIONAL)">New (Transitional)</option>
+                                <option value="NEW (TRANSFER)">New (Transfer)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Boarding Status <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="boarding_status" value="BOARDER CIVILIAN" required>
+                                    Boarding
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="boarding_status" value="DAY CIVILIAN"> Day Scholar
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Hidden Day Status field for backend compatibility -->
+                        <input type="hidden" name="day_status" value="DAY CIVILIAN">
+                    </div>
+                </div>
+
+                <!-- PLE Results -->
+                <div class="form-section">
+                    <div class="section-title">PLE Results</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Year <span class="required">*</span></label>
+                            <input type="number" name="ple_year" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Index No <span class="required">*</span></label>
+                            <input type="text" name="ple_index" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Total Aggregates <span class="required">*</span></label>
+                            <input type="text" name="total_aggregates" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Division <span class="required">*</span></label>
+                            <input type="text" name="division" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid thirds" style="margin-top: 1rem;">
+                        <div class="form-group"><label>English <span class="required">*</span></label><input type="text"
+                                name="english_agg" required></div>
+                        <div class="form-group"><label>Math <span class="required">*</span></label><input type="text"
+                                name="maths_agg" required></div>
+                        <div class="form-group"><label>Science <span class="required">*</span></label><input type="text"
+                                name="science_agg" required></div>
+                        <div class="form-group"><label>Social Studies <span class="required">*</span></label><input
+                                type="text" name="social_agg" required></div>
+                    </div>
+
+                    <div class="form-group full-width" style="margin-top: 1rem;">
+                        <label>Attach PLE Slip (PDF/Image) <span class="required">*</span></label>
+                        <input type="file" name="ple_slip" accept=".pdf,.jpg,.png" required>
+                        <small style="color:#666; margin-top:5px;">Max file size: 5MB</small>
+                    </div>
+                </div>
+
+                <!-- UCE Results -->
+                <div class="form-section" id="uce-section">
+                    <div class="section-title">UCE Results</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>UCE Year</label>
+                            <input type="number" name="uce_year" id="uce_year" min="2000" max="2030">
+                        </div>
+                        <div class="form-group">
+                            <label>UCE Index Number</label>
+                            <input type="text" name="uce_index" id="uce_index">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">UCE Subject Grades <span
+                                class="required">*</span></label>
+                        <div id="uce-subjects-container">
+                            <!-- Dynamic rows will be added here -->
+                        </div>
+                        <button type="button" onclick="addUceSubject()" class="nav-link"
+                            style="margin-top: 10px; width: auto; padding: 8px 15px; background: #e9f5e9; border: 1px solid var(--primary-color); color: var(--primary-color); border-radius: 6px; cursor: pointer;">
+                            <i class="fas fa-plus"></i> Add Subject Grade
+                        </button>
+                    </div>
+
+                    <div class="form-group full-width" style="margin-top: 1.5rem;">
+                        <label id="preferred_combination_label">Preferred Combination (must have obtained A, B,
+                            C)</label>
+                        <input type="text" name="preferred_combination" id="preferred_combination"
+                            placeholder="e.g. PCM/ICT, BCM/SubMath">
+                    </div>
+
+                    <div class="form-group full-width" style="margin-top: 1.5rem;">
+                        <label id="uce_slip_label">Attach UCE Slip (provisional results)</label>
+                        <input type="file" name="uce_slip" id="uce_slip" accept=".pdf,.jpg,.png">
+                    </div>
+                </div>
+
+
+                <!-- Extra Info -->
+                <div class="form-section">
+                    <div class="section-title">Additional Information</div>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Health Needs / Medical Condition <span class="required">*</span></label>
+                            <textarea name="health_needs" required
+                                placeholder="Describe any medical conditions we should be aware of..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Talents & Interests <span class="required">*</span></label>
+                            <textarea name="talents" required placeholder="Sports, Music, Leadership..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parent Info -->
+                <div class="form-section">
+                    <div class="section-title">Parent/Guardian Information</div>
+
+                    <h4
+                        style="color:#666; font-size: 0.95rem; margin-bottom: 10px; border-bottom: 1px dashed #ccc; padding-bottom: 5px;">
+                        Father's Details</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="father_name">
+                        </div>
+                        <div class="form-group">
+                            <label>NIN</label>
+                            <input type="text" name="father_nin" pattern="[A-Z0-9]{14}"
+                                title="Ugandan NIN must be exactly 14 characters long and contain only letters and numbers."
+                                oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 14)">
+                        </div>
+                        <div class="form-group">
+                            <label>National ID Copy (Image/PDF)</label>
+                            <input type="file" name="father_id_card" accept=".jpg,.jpeg,.png,.pdf">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact</label>
+                            <input type="tel" name="father_contact">
+                        </div>
+                        <div class="form-group">
+                            <label>Occupation</label>
+                            <input type="text" name="father_occupation">
+                        </div>
+                        <div class="form-group">
+                            <label>District of Residence</label>
+                            <input type="text" name="father_district">
+                        </div>
+                    </div>
+
+                    <h4
+                        style="color:#666; font-size: 0.95rem; margin: 20px 0 10px 0; border-bottom: 1px dashed #ccc; padding-bottom: 5px;">
+                        Mother's Details</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="mother_name">
+                        </div>
+                        <div class="form-group">
+                            <label>NIN</label>
+                            <input type="text" name="mother_nin" pattern="[A-Z0-9]{14}"
+                                title="Ugandan NIN must be exactly 14 characters long and contain only letters and numbers."
+                                oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 14)">
+                        </div>
+                        <div class="form-group">
+                            <label>National ID Copy (Image/PDF)</label>
+                            <input type="file" name="mother_id_card" accept=".jpg,.jpeg,.png,.pdf">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact</label>
+                            <input type="tel" name="mother_contact">
+                        </div>
+                        <div class="form-group">
+                            <label>Occupation</label>
+                            <input type="text" name="mother_occupation">
+                        </div>
+                        <div class="form-group">
+                            <label>District of Residence</label>
+                            <input type="text" name="mother_district">
+                        </div>
+                    </div>
+
+                    <h4
+                        style="color:#666; font-size: 0.95rem; margin: 20px 0 10px 0; border-bottom: 1px dashed #ccc; padding-bottom: 5px;">
+                        Guardian's Details (Required)</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Name <span class="required">*</span></label>
+                            <input type="text" name="guardian_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>NIN <span class="required">*</span></label>
+                            <input type="text" name="guardian_nin" required pattern="[A-Z0-9]{14}"
+                                title="Ugandan NIN must be exactly 14 characters long and contain only letters and numbers."
+                                oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 14)">
+                        </div>
+                        <div class="form-group">
+                            <label>National ID Copy <span class="required">*</span></label>
+                            <input type="file" name="guardian_id_card" accept=".jpg,.jpeg,.png,.pdf" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact <span class="required">*</span></label>
+                            <input type="tel" name="guardian_contact" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Occupation <span class="required">*</span></label>
+                            <input type="text" name="guardian_occupation" required>
+                        </div>
+                        <div class="form-group">
+                            <label>District of Residence <span class="required">*</span></label>
+                            <input type="text" name="guardian_district" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Declaration -->
+                <div class="form-section"
+                    style="background: #fff3cd; border: 1px solid #ffeeba; border-radius: 8px; padding: 1.5rem;">
+                    <div class="form-group" style="flex-direction: row; align-items: center; gap: 1rem;">
+                        <input type="checkbox" name="declaration" id="declaration" required
+                            style="width: 20px; height: 20px;">
+                        <label for="declaration" style="margin: 0; font-weight: 500;">
+                            I hereby certify that the information provided in this application is true and correct to
+                            the best of my knowledge.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+            </form>
+        </div>
+    </template>
+
+    <script>
+        let currentUser = null;
+        let currentApp = null;
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('show');
+        }
+
+        // Close sidebar on mobile click outside (optional refinement)
+        document.addEventListener('click', (e) => {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.querySelector('.menu-toggle');
+            if (window.innerWidth <= 768 &&
+                !sidebar.contains(e.target) &&
+                !toggle.contains(e.target) &&
+                sidebar.classList.contains('show')) {
+                sidebar.classList.remove('show');
+            }
+        });
+
+        function showSection(sectionId) {
+            // Update UI
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('section-' + sectionId).classList.add('active');
+
+            // Update Nav
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            document.querySelector(`.nav-link[onclick="showSection('${sectionId}')"]`).classList.add('active');
+
+            // Mobile: close sidebar after click
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('show');
+            }
+
+            // Refresh content if needed
+            if (sectionId === 'apply') renderApply();
+            if (sectionId === 'status') renderStatus();
+            if (sectionId === 'pending') renderPending();
+        }
+
+        async function init() {
+            try {
+                const authRes = await fetch('/api/auth/me');
+                if (!authRes.ok) throw new Error('Auth failed');
+                const authData = await authRes.json();
+                currentUser = authData.user;
+
+                document.getElementById('user-name').textContent = currentUser.name || 'Student';
+
+                const appRes = await fetch('/api/application/manage');
+                const appData = await appRes.json();
+
+                if (appData.hasApplication) {
+                    currentApp = appData.application;
+                    showSection('status'); // Default to status if applied
+                } else {
+                    showSection('apply'); // Default to apply if new
+                }
+
+            } catch (e) {
+                console.error(e);
+                window.location.replace('login.html');
+            }
+        }
+
+        function renderApply() {
+            const container = document.getElementById('apply-content');
+            container.innerHTML = '';
+
+            if (currentApp) {
+                container.innerHTML = `
+                    <div class="status-card">
+                        <div class="status-header">Application Submitted</div>
+                        <p>You have already submitted an application.</p>
+                        <button class="submit-btn" onclick="showSection('status')" style="width: auto; margin: 20px auto;">View Status</button>
+                    </div>
+                `;
+            } else {
+                const tpl = document.getElementById('submission-form-tpl').content.cloneNode(true);
+                container.appendChild(tpl);
+                setupFormToggles();
+            }
+        }
+
+        function setupFormToggles() {
+            const classSelect = document.querySelector('select[name="class"]');
+            const uceSection = document.getElementById('uce-section');
+
+            if (classSelect && uceSection) {
+                // Initialize with at least one subject row if empty
+                const container = document.getElementById('uce-subjects-container');
+                if (container && container.children.length === 0) {
+                    addUceSubject();
+                }
+
+                classSelect.addEventListener('change', function () {
+                    const selectedClass = this.value;
+                    // Make UCE fields required ONLY for S.5 and S.6
+                    if (selectedClass === 'S.5' || selectedClass === 'S.6') {
+                        document.getElementById('uce_year')?.setAttribute('required', 'required');
+                        document.getElementById('uce_index')?.setAttribute('required', 'required');
+
+                        const slipInput = document.getElementById('uce_slip');
+                        const slipLabel = document.getElementById('uce_slip_label');
+                        if (slipInput) slipInput.setAttribute('required', 'required');
+                        if (slipLabel) slipLabel.innerHTML = 'Attach UCE Slip (provisional results) <span class="required">*</span>';
+
+                        const combInput = document.getElementById('preferred_combination');
+                        const combLabel = document.getElementById('preferred_combination_label');
+                        if (combInput) combInput.setAttribute('required', 'required');
+                        if (combLabel) combLabel.innerHTML = 'Preferred Combination (must have obtained A, B, C) <span class="required">*</span>';
+                    } else {
+                        document.getElementById('uce_year')?.removeAttribute('required');
+                        document.getElementById('uce_index')?.removeAttribute('required');
+
+                        const slipInput = document.getElementById('uce_slip');
+                        const slipLabel = document.getElementById('uce_slip_label');
+                        if (slipInput) slipInput.removeAttribute('required');
+                        if (slipLabel) slipLabel.textContent = 'Attach UCE Slip (provisional results)';
+
+                        const combInput = document.getElementById('preferred_combination');
+                        const combLabel = document.getElementById('preferred_combination_label');
+                        if (combInput) combInput.removeAttribute('required');
+                        if (combLabel) combLabel.textContent = 'Preferred Combination (must have obtained A, B, C)';
+                    }
+                });
+                // Initial check
+                classSelect.dispatchEvent(new Event('change'));
+            }
+        }
+
+        function renderStatus() {
+            const container = document.getElementById('status-content');
+            container.innerHTML = '';
+
+            if (!currentApp) {
+                container.innerHTML = '<p>You have not applied yet. Go to the <strong>Apply</strong> tab to start.</p>';
+                return;
+            }
+
+            const app = currentApp;
+            let badgeClass = 'status-pending';
+            let badgeText = 'Under Review';
+            let msg = 'Your application is being reviewed.';
+
+            if (app.status === 'accepted') {
+                badgeClass = 'status-accepted';
+                badgeText = 'Admitted';
+                msg = 'Congratulations! You have been offered admission.';
+            } else if (app.status === 'rejected') {
+                badgeClass = 'status-rejected';
+                badgeText = 'Not Admitted';
+                msg = 'We regret to inform you that you have not been selected.';
+            }
+
+            container.innerHTML = `
+                <div class="status-card">
+                    <div class="status-header">${badgeText}</div>
+                    <div class="status-badge ${badgeClass}">${badgeText}</div>
+                    <p>${msg}</p>
+                    <div class="app-details">
+                        <p><strong>App Number:</strong> ${app.application_number || 'N/A'}</p>
+                        <p><strong>Date:</strong> ${new Date(app.created_at).toLocaleDateString()}</p>
+                        <p><strong>Class:</strong> ${app.class_applied || 'N/A'}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPending() {
+            const container = document.getElementById('pending-content');
+            container.innerHTML = '';
+
+            if (!currentApp) {
+                container.innerHTML = '<p>No applications found.</p>';
+                return;
+            }
+
+            // Simple table view for "Pending Applications" list
+            container.innerHTML = `
+                <table class="app-table">
+                    <thead>
+                        <tr>
+                            <th>Ref No</th>
+                            <th>Class</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>${currentApp.application_number || 'N/A'}</td>
+                            <td>${currentApp.class_applied || 'N/A'}</td>
+                            <td>${new Date(currentApp.created_at).toLocaleDateString()}</td>
+                            <td><span style="font-weight:bold; color: ${getModelColor(currentApp.status)}">${currentApp.status.toUpperCase()}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function getModelColor(status) {
+            if (status === 'accepted') return 'green';
+            if (status === 'rejected') return 'red';
+            return 'orange';
+        }
+
+
+        // Dynamic UCE Subjects Logic
+        function addUceSubject(subject = '', grade = '') {
+            const container = document.getElementById('uce-subjects-container');
+            const row = document.createElement('div');
+            row.className = 'uce-subject-row';
+            row.style = 'display: flex; gap: 10px; margin-bottom: 10px; align-items: center;';
+            row.innerHTML = `
+                <div style="flex: 2;">
+                    <input type="text" placeholder="Subject (e.g. Mathematics)" class="uce-sbj-name" value="${subject}" style="width: 100%; padding: 8px;">
+                </div>
+                <div style="flex: 1;">
+                    <input type="text" placeholder="Grade (e.g. D1)" class="uce-sbj-grade" value="${grade}" style="width: 100%; padding: 8px;">
+                </div>
+                <button type="button" onclick="this.parentElement.remove()" style="background: #fee2e2; color: #dc2626; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            `;
+            container.appendChild(row);
+        }
+
+        function getUceResultsString() {
+            const rows = document.querySelectorAll('.uce-subject-row');
+            let results = [];
+            rows.forEach(row => {
+                const subject = row.querySelector('.uce-sbj-name').value.trim();
+                const grade = row.querySelector('.uce-sbj-grade').value.trim();
+                if (subject && grade) {
+                    results.push(`${subject}: ${grade}`);
+                }
+            });
+            return results.join(', ');
+        }
+
+        async function submitApplication(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.textContent = 'Submitting...';
+            btn.disabled = true;
+
+            const formData = new FormData(e.target);
+
+            // Special handling for dynamic UCE subjects
+            const uceResultsString = getUceResultsString();
+            if (uceResultsString) {
+                formData.set('uce_results', uceResultsString);
+            } else {
+                const classVal = formData.get('class');
+                if (classVal === 'S.5' || classVal === 'S.6') {
+                    alert('Please add at least one UCE subject and grade.');
+                    btn.textContent = 'Submit Application';
+                    btn.disabled = false;
+                    return;
+                }
+            }
+
+            try {
+                const res = await fetch('/api/application/manage', { method: 'POST', body: formData });
+                const data = await res.json();
+                if (res.ok) {
+                    alert('Submitted!');
+                    window.location.reload();
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            } catch (err) {
+                alert('Network Error');
+            } finally {
+                btn.textContent = 'Submit Application';
+                btn.disabled = false;
+            }
+        }
+
+        function logout() {
+            fetch('/api/auth/logout', { method: 'POST' }).finally(() => window.location.href = 'index.html');
+        }
+
+        window.onload = init;
+    </script>
+</body>
+
+</html>
