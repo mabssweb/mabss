@@ -3551,20 +3551,18 @@
       });
     }
     
-    // Build initial set of cards + duplicate set (for infinite seamless forward loop)
+    // Build set of cards
     let allCardsHTML = '';
     // First, original cards
     for (let i = 0; i < originalItemsCount; i++) {
       allCardsHTML += createCardHTML(programsData[i]);
     }
-    // Duplicate set: clone original cards to make infinite forward possible (marquee style)
-    for (let i = 0; i < originalItemsCount; i++) {
-      allCardsHTML += createCardHTML(programsData[i]);
-    }
+    // We no longer duplicate the cards, so it will show exactly the number of items in the array.
+    
     track.innerHTML = allCardsHTML;
     
-    // total cards now = originalItemsCount * 2
-    const totalCards = originalItemsCount * 2;
+    // total cards now = originalItemsCount
+    const totalCards = originalItemsCount;
     // get all card elements after render
     let cardElements = Array.from(document.querySelectorAll('#up-track .up-card'));
     
@@ -3617,38 +3615,8 @@
         track.style.transform = `translateX(${newTranslateX}px)`;
       }
       
-      // Update pagination dots: active dot based on (currentIndex % originalItemsCount)
-      updatePaginationActive(currentIndex % originalItemsCount);
-      
-      // Infinite forward wrap logic: if we slide beyond the original range into the duplicate zone,
-      // and if we reached a point where currentIndex >= originalItemsCount, we need to reset
-      // WITHOUT transition to the equivalent position in the first set (maintaining forward illusion)
-      // But we want endless forward, when scrolling to the end of duplicate, reset to index 0 of original.
-      // We'll do after transition end. For auto and manual next: after slide finished, check.
-    }
-    
-    function resetInfiniteForwardIfNeeded() {
-      // When we have advanced so far that currentIndex >= originalItemsCount, we need to reset
-      // to currentIndex - originalItemsCount, but without transition jump to keep infinite forward.
-      if (currentIndex >= originalItemsCount) {
-        // seamless reset: disable transition, move to equivalent position in first set
-        const offsetIndex = currentIndex - originalItemsCount;
-        currentIndex = offsetIndex;
-        track.style.transition = 'none';
-        const cardTotalWidth = getCardTotalWidth();
-        if (cardTotalWidth > 0) {
-          track.style.transform = `translateX(-${currentIndex * cardTotalWidth}px)`;
-        }
-        // force reflow then restore transition
-        track.offsetHeight;
-        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
-        updatePaginationActive(currentIndex % originalItemsCount);
-      }
-      // Also handle negative edge (theoretically if left button triggers, but we restrict left logic to never go below 0)
-      if (currentIndex < 0) {
-        currentIndex = 0;
-        updateTransform(false);
-      }
+      // Update pagination dots
+      updatePaginationActive(currentIndex);
     }
     
     function updatePaginationActive(activeIdx) {
@@ -3659,7 +3627,7 @@
       });
     }
     
-    // move to next slide (forward, marquee style)
+    // move to next slide
     function nextSlide() {
       if (isTransitioning) return;
       isTransitioning = true;
@@ -3667,60 +3635,26 @@
       if (currentIndex + 1 <= maxIndex) {
         currentIndex++;
       } else {
-        // At the end of duplicated set, wrap to the beginning of original set but keep infinite forward.
-        // However using duplication method: once we reach totalCards - visibleCount, the next step should reset
-        // to index 0 but without breaking illusion. We'll set currentIndex = 0 and reset transform without transition.
+        // Rewind to beginning if at the end
         currentIndex = 0;
-        // instantly reposition track without transition
-        track.style.transition = 'none';
-        const cardTotalWidth = getCardTotalWidth();
-        if (cardTotalWidth > 0) {
-          track.style.transform = `translateX(0px)`;
-        }
-        track.offsetHeight;
-        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
-        isTransitioning = false;
-        updatePaginationActive(0);
-        return;
       }
       updateTransform(false);
       setTimeout(() => { isTransitioning = false; }, 450);
-      // after transform, also apply infinite reset check if needed (though not needed here due to duplication)
-      setTimeout(() => {
-        resetInfiniteForwardIfNeeded();
-      }, 420);
     }
     
-    // previous slide: But requirement: carousel "infinite loop / marquee style – continues forward and wraps around, never goes backward"
-    // That means we don't really need backward? But navigation arrows should also move forward but using left arrow? 
-    // For consistent user expectation: left arrow goes to previous item, BUT since we have infinite forward design, 
-    // we can implement left to go "backward" in traditional sense, yet infinite loop still works seamlessly without breaking.
-    // but the "never goes backward" refers to auto-slide direction. It's okay to have left arrow moving previous slide for usability.
-    // We'll implement left arrow to go backward but it's still finite within infinite track, but that won't conflict.
-    // However to be robust, left arrow moves reverse direction.
+    // previous slide
     function prevSlide() {
       if (isTransitioning) return;
       isTransitioning = true;
       if (currentIndex - 1 >= 0) {
         currentIndex--;
       } else {
-        // wrap to end (but consistent)
+        // wrap to end
         const maxPossible = totalCards - visibleCount;
         currentIndex = maxPossible;
-        track.style.transition = 'none';
-        const cardTotalWidth = getCardTotalWidth();
-        if (cardTotalWidth > 0) {
-          track.style.transform = `translateX(-${currentIndex * cardTotalWidth}px)`;
-        }
-        track.offsetHeight;
-        track.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
-        isTransitioning = false;
-        updatePaginationActive(currentIndex % originalItemsCount);
-        return;
       }
       updateTransform(false);
       setTimeout(() => { isTransitioning = false; }, 450);
-      setTimeout(() => resetInfiniteForwardIfNeeded(), 420);
     }
     
     // reset visible cards count on window resize (rebuild track widths, reposition)
@@ -3795,7 +3729,7 @@
     
     // Auto-slide every 4-5 seconds (4.5s interval)
     function startAutoSlide() {
-      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      stopAutoSlide();
       autoSlideInterval = setInterval(() => {
         if (!isHovering && !isTransitioning) {
           nextSlide();
